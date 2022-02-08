@@ -228,7 +228,6 @@
                 <div class="video-wrap">
                     <video autoplay muted>
                         <source src="${pageContext.request.contextPath }/resources/video/01_01.mp4" type="video/mp4">
-                        "?????"
                     </video>
                     <strong class="movie-title">
                         movie-title

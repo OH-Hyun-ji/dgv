@@ -8,22 +8,21 @@
 			<h1>
 				<!-- 상단 로고와 사이드 로고 -->
 				<a><img
-					src="${pageContext.request.contextPath }/resources/images/7.png"></a>
+					src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png" style="width: 82%;"></a>
 				<span id="sideLogo">CULTUREPLEX</span>
 			</h1>
 			<!-- 상단 우측 아이콘 메뉴 -->
 			<ul class="memberInfo_wrap">
-				<li><a href="#" title="로그인"> <i id="a" class="fas fa-lock"></i>
+				<li><a href="#" title="로그인"> <i id="a" style="padding-left: 15px;" class="fas fa-lock"></i>
 						<span id="main1" class="modiImg1">로그인</span>
 				</a></li>
-				<li><a href="#"> <i id="a" class="fas fa-portrait"></i> <span
+				<li><a href="#"> <i id="a" class="fas fa-portrait" style="padding-left: 9px;height: 31px;margin-bottom: 2px;"></i> <span
 						id="main1">회원가입</span>
 				</a></li>
-				<li><a href="#"> <i id="a" class="fas fa-user-alt"></i> <span
+				<li><a href="#"> <i id="a" class="fas fa-user-alt" style="padding-left: 12%;"></i> <span
 						id="main1">MY DGV</span>
 				</a></li>
-				<li><a href="#"> <i id="a"
-						class="fas fa-hand-holding-heart"></i> <span id="main1">고객센터</span>
+				<li><a href="#"> <i id="a" class="fas fa-hand-holding-heart" style="padding-left: 13%; height: 35px;width: 48%;margin-bottom: -1px;"></i> <span id="main1">고객센터</span>
 				</a></li>
 			</ul>
 		</div>
@@ -89,9 +88,7 @@
 	<div class="nav">
 		<div class="contents" style="left: 0px;">
 			<h1>
-				<a href="#" tabindex="-1"> <img
-					src="${pageContext.request.contextPath }/resources/images/logoWhite.png">
-				</a>
+				<a href="#" tabindex="-1"> </a>
 			</h1>
 			<ul class="nav-item">
 				<li>
@@ -111,7 +108,7 @@
 						</dd>
 						<dd>
 							<h2>
-								<a href="#">아트하우스</a>
+								<a href="/artHouse.do">아트하우스</a>
 							</h2>
 						</dd>
 					</dl>
@@ -119,22 +116,17 @@
 
 				<li>
 					<h2>
-						<a href="#">극장</a>
+						<a href="/theater.do">극장</a>
 					</h2>
 					<dl class="nav_overMenu" style="display: none;">
 						<dt>
 							<h2>
-								<a href="#">영화</a>
+								<a href="/theater.do">극장</a>
 							</h2>
 						</dt>
 						<dd>
 							<h2>
-								<a href="#">무비차트</a>
-							</h2>
-						</dd>
-						<dd>
-							<h2>
-								<a href="#">아트하우스</a>
+								<a href="/theater.do">DGV 극장</a>
 							</h2>
 						</dd>
 					</dl>
@@ -146,39 +138,17 @@
 					<dl class="nav_overMenu" style="display: none;">
 						<dt>
 							<h2>
-								<a href="#">영화</a>
+								<a href="#">예매</a>
 							</h2>
 						</dt>
 						<dd>
 							<h2>
-								<a href="#">무비차트</a>
+								<a href="#">빠른예매</a>
 							</h2>
 						</dd>
 						<dd>
 							<h2>
-								<a href="#">아트하우스</a>
-							</h2>
-						</dd>
-					</dl>
-				</li>
-				<li>
-					<h2>
-						<a href="#">스토어</a>
-					</h2>
-					<dl class="nav_overMenu" style="display: none;">
-						<dt>
-							<h2>
-								<a href="#">영화</a>
-							</h2>
-						</dt>
-						<dd>
-							<h2>
-								<a href="#">무비차트</a>
-							</h2>
-						</dd>
-						<dd>
-							<h2>
-								<a href="#">아트하우스</a>
+								<a href="#">상영스케줄</a>
 							</h2>
 						</dd>
 					</dl>
@@ -190,17 +160,22 @@
 					<dl class="nav_overMenu" style="display: none;">
 						<dt>
 							<h2>
-								<a href="#">영화</a>
+								<a href="#">이벤트</a>
 							</h2>
 						</dt>
 						<dd>
 							<h2>
-								<a href="#">무비차트</a>
+								<a href="#">DGV 극장별</a>
 							</h2>
 						</dd>
 						<dd>
 							<h2>
-								<a href="#">아트하우스</a>
+								<a href="#">당첨자 발표</a>
+							</h2>
+						</dd>
+						<dd>
+							<h2>
+								<a href="#">종료된 이벤트</a>
 							</h2>
 						</dd>
 					</dl>

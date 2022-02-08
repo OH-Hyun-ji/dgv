@@ -11,14 +11,13 @@ import com.dgv.web.admin.common.SqlSessionFactoryBean;
 import com.dgv.web.admin.vo.AdminMovieInfoVO;
 
 @Repository
-public class AdminMovieInfoDAO  extends SqlSessionDaoSupport {
+public class AdminMovieInfoDAO   {
 	@Autowired
-	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
-		super.setSqlSessionFactory(sqlSessionFactory);
-	}
+	SqlSessionTemplate sqlSessionTemplate;
+
 	public void insertMovieInfo(AdminMovieInfoVO vo) {
 		System.out.println("mybatis insert()기능처리");
-		getSqlSession().insert("AdminMovieInfoDAO.insertMovieInfo",vo);
+		sqlSessionTemplate.insert("AdminMovieInfoDAO.insertMovieInfo",vo);
 	}
 
 	
