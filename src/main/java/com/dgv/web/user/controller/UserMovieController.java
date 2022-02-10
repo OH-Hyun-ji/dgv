@@ -20,4 +20,9 @@ public class UserMovieController {
 	public String theater() {
 		return "/movie/user_movie_theater";
 	}
+	
+	@RequestMapping("/movieChart.do")
+	public String movieChart() {
+		return "/movie/user_movie_movieChart";
+	}
 }
