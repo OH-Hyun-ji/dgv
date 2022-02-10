@@ -25,4 +25,8 @@ public class UserMovieController {
 	public String movieChart() {
 		return "/movie/user_movie_movieChart";
 	}
+	@RequestMapping("/movieDetail.do")
+	public String movieDetail() {
+		return "/movie/user_movie_movieDetail";
+	}
 }
