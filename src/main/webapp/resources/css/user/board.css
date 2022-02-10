@@ -37,6 +37,7 @@ table.type09 thead th {
 	color: #000000;
 	border-bottom: 3px solid #000000;
 	margin: center;
+	text-align: center;
 }
 
 table.type09 tbody th {
@@ -46,6 +47,14 @@ table.type09 tbody th {
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
 	background: #f3f6f7;
+	text-align: center;
+	line-height: 95px;
+}
+
+table.type09 tbody td textarea {
+	width: 98%;
+	margin-top: 18px;
+	border-style: none;
 }
 
 table.type09 td {
@@ -53,4 +62,33 @@ table.type09 td {
 	padding: 10px;
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
+}
+.review-td{
+	padding-top: 40px; 
+	padding-left: 11px;
+}
+/*버튼 css*/
+.w-btn-outline:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn-red-outline:hover {
+    background-color: #ff5f2e;
+    color: #e1eef6;
+}
+.w-btn-red-outline {
+    border: 3px solid #ff5f2e;
+    color: #6e6e6e;
+}
+.w-btn-outline {
+    position: relative;
+    padding: 3px 5px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgb(0 0 0 / 20%);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
 }

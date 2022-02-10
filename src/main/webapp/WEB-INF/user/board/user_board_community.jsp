@@ -17,7 +17,7 @@
 				<span>속닥속닥 DGV</span>
 			</div>
 			<div class="dgv_board_img">
-				<img src="${pageContext.request.contextPath }/resources/images/welcome.png">
+				<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/owl.png">
 			</div>
 			<div class="dgv_board_table">
 				<table class="type09">

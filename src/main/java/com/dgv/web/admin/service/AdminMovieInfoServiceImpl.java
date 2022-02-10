@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import com.dgv.web.admin.dao.AdminMovieInfoDAO;
 import com.dgv.web.admin.vo.AdminMovieInfoVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class AdminMovieInfoServiceImpl implements AdminMovieInfoService {
 
-	@Autowired
-	private AdminMovieInfoDAO adminMovieInfoDAO;
+	private final AdminMovieInfoDAO adminMovieInfoDAO;
 	
 	public void insertMovieInfo(AdminMovieInfoVO vo) {
 		

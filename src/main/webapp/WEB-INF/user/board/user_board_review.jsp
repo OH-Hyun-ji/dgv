@@ -17,14 +17,14 @@
 				<span>모두의 Review</span>
 			</div>
 			<div class="dgv_board_img">
-				<img src="${pageContext.request.contextPath }/resources/images/review_banner.png">
+				<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/banner3.PNG">
 			</div>
 			<div class="dgv_board_table">
 				<table class="type09">
 					<thead>
 						<tr>
-							<th scope="cols">NO.1</th>
-							<th scope="cols">제목</th>
+							<th scope="cols" style="width: 8%;">NO.1</th>
+							<th scope="cols" >내가 본 영화</th>
 							<th scope="cols">작성자</th>
 							<th scope="cols">날짜</th>
 							<th scope="cols">조회수</th>
@@ -34,15 +34,21 @@
 					<tbody>
 						<tr>
 							<th scope="row">1</th>
-							<td><a href="#">내용.</a></td>
-							<td>내용이다.</td>
-							<td>내용이다.</td>
-							<td>내용이다.</td>
+							<td style="width: 50%;">
+								<textarea cols="10" rows="3" readonly="readonly" >리뷰남겨용</textarea>
+								<input class="w-btn-outline w-btn-red-outline" type="button" value="작성하기" style="margin-left: 81%;"> 
+								</td>
+							<td style="padding-top: 50px; padding-left: 11px;">내용이다.</td>
+							<td style="padding-top: 50px; padding-left: 11px;">내용이다.</td>
+							<td style="padding-top: 50px; padding-left: 11px;">내용이다.</td>
 
 						</tr>
 						<tr>
 							<th scope="row">2</th>
-							<td><a href="#">내용.</a></td>
+							<td>
+								<textarea cols="30" rows="3" readonly="readonly"></textarea>
+								<input type="button" value="작성하기"> 
+								</td>
 							<td>내용이다.</td>
 							<td>내용이다.</td>
 							<td>내용이다.</td>
@@ -50,7 +56,10 @@
 						</tr>
 						<tr>
 							<th scope="row">3</th>
-							<td><a href="#">내용.</a></td>
+						<td>
+								<textarea cols="30" rows="3" readonly="readonly"></textarea>
+								<input type="button" value="작성하기"> 
+								</td>
 							<td>내용이다.</td>
 							<td>내용이다.</td>
 							<td>내용이다.</td>
