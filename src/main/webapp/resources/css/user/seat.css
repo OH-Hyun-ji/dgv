@@ -1,274 +1,163 @@
-/* content */
+@charset "utf-8";
 
-.select-container {
-    margin-top: 140px;
-}
-
-.select-wrapper {
-    width: 900px;
-    background-color: #F2F0E5;
+.total-wrap{
+    position: relative;
     margin: 0 auto;
-    border-left: 1px solid #dddddd;
-    border-right: 1px solid #dddddd;
+    width: 996px;
+    z-index: 1;
 }
 
-.select-title {
-    background-color: #444444;
-    color: #dddddd;
-    font-size: 16px;
+.navi-bar-button{
+    float: right;
+    margin-top: 30px;
+}
+.top-navi-menu{
+    height: 105px;
+    width: 992px;
+}
+.select-people-title{
+    background-color: black;
+    opacity: 0.8;
+    height: 41px;
+    color: white;
+    font-size: 22px;
     text-align: center;
-    padding: 10px;
+    line-height: 40px;
 }
-
-.select-seat-container {
-    display: flex;
-    /* align-items: center; */
-    border-bottom: 2px solid #dddddd;
-}
-
-.select-seat-number-container {
-    flex-grow: 1;
-    border-right: 1px solid #dddddd;
+.select-people-number > ul{
     display: flex;
 }
-
-.select-seat-number-wrapper {
-    padding: 15px 0 20px 20px;
-    flex-grow: 1;
+.select-people-number-wrap{
+    padding: 23px;
 }
 
-.select-seat-ul {
-    display: flex;
-}
-
-.select-seat-ul>li {
+.select-people-number > ul > li{
+    border: 1px soild black;
     width: 20px;
     height: 20px;
-    border: 1px solid #dddddd;
     text-align: center;
     font-weight: bold;
-    /* line-height: 15px; */
-    /* padding: 5px; */
     padding: 2px;
 }
-
-.select-seat-ul>li:hover {
-    color: white;
-    background-color: #222222;
-    cursor: pointer;
-}
-
-.select-seat-ul-active {
-    color: white;
-    background-color: #222222;
-}
-
-.select-seat-ul>li:not(:first-child) {
-    margin-left: 5px;
-}
-
-.select-seat-information {
-    flex-grow: 1;
-    padding: 15px 0 20px 20px;
-}
-
-.select-seat {
+.select-people{
     display: flex;
-    font-size: 12px;
 }
-
-.select-seat:not(:first-child) {
-    margin-top: 12px;
+.select-people-number-box{
+    display: flex;
+    background-color: beige;
 }
-
-.select-seat-age {
-    width: 40px;
-}
-
-.select-seat-number {
-    margin-left: 15px;
-}
-
-.reserve-number-wrapper {
+.select-people-wrapper {
+    display: flex;
+    border-right: outset;
+    border-left: inset;
     flex-grow: 1;
-    padding-top: 15px;
-    border-left: 1px solid #DDDDDD;
+    border-bottom: outset;
+}
+.select-people-age{
+    width: 50px;
+    padding-right: 10px;
+    font-family: 'Gothic A1', sans-serif;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    font-weight: bold;
+}
+ li.select-people-basic{
+    border: 2px solid gray;
+    margin: 3px;
+}
+
+ li.select-people-student{
+    border: 2px solid gray;
+    margin: 3px;
+}
+
+ li.select-people-old{
+    border: 2px solid gray;
+    margin: 3px;
+}
+
+.selected-number-wrap {
+    padding: 40px 23px 0 0px;
+    border-right: outset;
+}
+.selected-number-title {
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+.selected-number {
     text-align: center;
+    font-size: 37px;
+    font-weight: bolder;
 }
 
-.reserve-number {
-    margin-top: 20px;
-    font-size: 34px;
-    font-weight: bold;
+.select-people-movie-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 5px;
 }
-
-.selected-movie {
-	font-size: 20px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.select-seat-information-wrapper {
+ul.select-people-movie-info-list {
     display: flex;
+    margin-top: 6px;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bolder;
 }
-
-.select-theater-place {
-    font-size: 12px;
-}
-
-.select-theater-place:not(:last-child) {
-    width: 55px;
-    border-right: 1px solid #dddddd;
-}
-
-.select-theater-place:last-child {
-    width: 150px;
-    /* border-right: 1px solid #dddddd; */
-}
-
-.select-theater-place:not(:first-child) {
-    margin-left: 12px;
-}
-
-.select-theater-date {
-    /*  font-size: 18px;
-    margin-top: 8px;
-    font-weight: bold; */
+.select-movie-time-info {
     display: flex;
-}
-
-.select-theater-date>div {
-    font-size: 18px;
-    margin-top: 8px;
-    font-weight: bold;
-}
-
-.theater-time {
-    margin-left: 5px;
-}
-
-.remain-seats {
-    margin-left: 3px;
-    color: rgba(255, 0, 0, 0.6);
-    font-weight: bold;
-}
-
-.selected-seats-wrapper {
     margin-top: 5px;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bolder;
 }
-
-.selected-seats {
-    font-size: 13px;
-    word-spacing: 2px;
-    margin-left: 20px;
-}
-
-.selected-seats-title {
-    color: black;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.ticket-price-wrapper{
-	margin-top: 5px;
-	display: flex;
-	align-items: center;
-}
-.ticket-price-wrapper>div{	
-	font-weight: bold;
-}
-.ticket-price-title{
-	font-size: 13px;
-}
-
-.ticket-price {
-	margin-left: 47px;
-	font-size:20px;
-}
-
-.reserve-button {
+.selected-seat-list {
     margin-top: 5px;
     display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 13px;
-    padding: 0;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bolder;
+}
+.selected-price-info {
+    margin-top: 5px;
+    display: flex;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bolder;
+}
+.select-people-info {
+    padding-left: 15px;
+    padding-top: 5px;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bolder;
 }
 
-.reserve-button img {
-    margin-left: 20px;
-    width: 60px;
+li.select-theater-local.selected-theater-local-info {
+    margin-right: 23px;
+}
+.select-movie-date {
+    margin-right: 106px;
+}
+.selected-seats-view {
+    margin-left: 10px;
 }
 
+/*좌석쪽 css*/
+
+.seat-wrapper {
+    width: 700px;
+    height: 400px;
+    background-color: black;
+    opacity: 0.7;
+}
 .seat-container {
-    margin-top: 20px;
+    margin-top: 38px;
     display: flex;
     justify-content: center;
 }
-
-.screen-view {
-    width: 140px;
-    color: #777777;
-    padding-top: 30px;
-    font-size: 30px;
+.screen-site {
+    width: 150px;
+    color: white;
+    padding-top: 40px;
+    font-size: 40px;
     text-align: center;
-    margin: 0 auto 30px auto;
-    border-bottom: 1px solid #666666;
-    letter-spacing: 4px;
+    margin: 0px 20px 0 39%;
 }
-
-.seat-wrapper {
-    background-color: #222222;
-    width: 700px;
-    height: 460px;
-    /* padding-top: 120px; */
-}
-
-.seat {
-    width: 30px;
-    height: 30px;
-}
-
-.seat {
-    font-size: 13px;
-    background-color: #555555;
-    color: white;
-    border: 1px solid rgba(223, 238, 11, 0.6);
-}
-
-.seat:hover {
-    background-color: rgb(255, 123, 0);
-    color: white;
-    cursor: pointer;
-}
-
-.seat:active {
-    background-color: rgb(55, 0, 255);
-    color: white;
-}
-
-.clicked {
-    background-color: rgb(182, 24, 142);
-    color: white;
-}
-
-.seatButtonWrapper {
-    text-align: center;
-}
-
-.seatButtonWrapper>input {
-    width: 30px;
-    height: 30px;
-}
-
-.left-margin {
-    margin-left: 30px;
-}
-
-.right-margin {
-    margin-right: 30px;
-}
-
-.top-margin {
-    margin-top: 30px;
+.selected-price-total {
+    padding-left: 11px;
 }
