@@ -33,7 +33,7 @@
                             <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="/movieList.mdo">영화등록</a>
-                                    <a class="nav-link" href="#">좌석관리</a>
+                                    <a class="nav-link" href="/adminSeat.mdo">좌석관리</a>
                                 </nav>
                             </div>
                             

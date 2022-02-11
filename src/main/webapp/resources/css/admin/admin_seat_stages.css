@@ -1,0 +1,52 @@
+@charset "UTF-8";
+.admin_seat_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+span.admin_seat_screen {
+    font-size: 34px;
+    margin-left: 43%;
+    margin-right: 26%;
+    font-weight: 700;
+}
+.admin_seat_view {
+    margin-top: 5px;
+    width: 73%;
+    height: 500px;
+    border: 2px solid grey;
+    background-color: gray;
+    opacity: 0.9;
+    padding: 51px;
+    margin-left: 13%;
+}
+
+.admin_seat_title {
+    margin-left: 13%;
+    margin-right: 14%;
+    border: 2px solid;
+    background-color: peachpuff;
+    display: flex;
+}
+input.newMakeTheater {
+    margin-left: 85%;
+    font-size: 31px;
+    margin-top: 30px;
+}
+
+.button-container-stage {
+    margin-left: 76%;
+    margin-top: 1px;
+    margin-bottom: 2px;
+}
+button#seatNumber {
+    margin-bottom: 1%;
+    width: 6%;
+    height: 36px;
+    border: 2px solid;
+}
+button#seatNumber:hover {
+	background-color:orange;
+	color:white;
+}
+

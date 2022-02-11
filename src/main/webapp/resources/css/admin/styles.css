@@ -113,7 +113,7 @@ h1, .h1 {
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -4580,10 +4580,10 @@ textarea.form-control-lg {
 }
 
 .card-header {
-  padding: 0.5rem 1rem;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    background-color: #a1a1a1;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
 }
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -7332,7 +7332,7 @@ textarea.form-control-lg {
 }
 
 .mt-4 {
-  margin-top: 1.5rem !important;
+  margin-top: 0.5rem !important;
 }
 
 .mt-5 {
@@ -7387,9 +7387,7 @@ textarea.form-control-lg {
   margin-bottom: 1rem !important;
 }
 
-.mb-4 {
-  margin-bottom: 1.5rem !important;
-}
+
 
 .mb-5 {
   margin-bottom: 3rem !important;
