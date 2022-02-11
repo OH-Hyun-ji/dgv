@@ -133,17 +133,17 @@
 				</li>
 				<li>
 					<h2>
-						<a href="#">예매</a>
+						<a href="/seatReservation.do">예매</a>
 					</h2>
 					<dl class="nav_overMenu" style="display: none;">
 						<dt>
 							<h2>
-								<a href="#">예매</a>
+								<a href="/seatReservation.do">예매</a>
 							</h2>
 						</dt>
 						<dd>
 							<h2>
-								<a href="#">빠른예매</a>
+								<a href="/seatReservation.do">빠른예매</a>
 							</h2>
 						</dd>
 						<dd>
