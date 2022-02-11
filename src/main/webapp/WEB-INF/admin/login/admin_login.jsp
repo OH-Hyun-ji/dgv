@@ -17,8 +17,7 @@
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-                    <div class="container">.
-                        
+                    <div class="container">.  
                         <div><img src="${pageContext.request.contextPath }/resources/images/7.png" style="width: 19%;"></div>
                         <div class="row justify-content-center">
                             <div class="col-lg-5" style="margin-top: 2%" >

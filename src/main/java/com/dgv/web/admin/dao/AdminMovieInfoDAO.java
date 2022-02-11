@@ -1,13 +1,10 @@
 package com.dgv.web.admin.dao;
 
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dgv.web.admin.common.SqlSessionFactoryBean;
 import com.dgv.web.admin.vo.AdminMovieInfoVO;
 
 @Repository
