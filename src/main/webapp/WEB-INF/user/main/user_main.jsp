@@ -815,12 +815,7 @@ href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css
 		</div>
 	</div>
 	<!--close .container-->
-	<div class="fixedBtn_wrap">
-		<a href="/ticket/" class="btn_fixedTicketing">예매하기</a> <a href="#none"
-			class="btn_gotoTop"><img
-			src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png"
-			alt="최상단으로 이동" /></a>
-	</div>
+	<jsp:include page="../default/user_bottom_reserve.jsp"></jsp:include>
 	<!--footer!!!!!!!!!!-->
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>
 
