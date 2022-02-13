@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>무비 차트</title>
+<title>Movie List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/movieChart.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">    
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="../lib/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-        crossorigin="anonymous"></script>
+ 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+  
 </head>
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
@@ -20,14 +21,14 @@
 		<div id="contents" class="">
             <div class="wrap-movie-chart">
                 <div class="tit-heading-wrap">
-                    <h3 style="margin-top: 1%;">무비차트</h3>
+                    <h3 style="margin-top: 1%;">영화목록</h3>
                     <div class="submenu">
                         <ul>
                             <li class="on">
-                                <a href="/movies/" title="선택">무비차트</a>
+                                <a href="movieChart.do" title="선택">무비차트</a>
                             </li>
                             <li>
-                                <a href="/movies/pre-movies.aspx">상영예정작</a>
+                                <a href="#">상영예정작</a>
                             </li>
                         </ul>
                     </div>
@@ -411,5 +412,4 @@
     </div>
    <jsp:include page="../default/user_footer.jsp"></jsp:include>
 </body>
-
 </html>

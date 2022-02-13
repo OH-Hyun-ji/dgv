@@ -16,22 +16,17 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-
             $("#btnMovie").click(function(){
-                $("#movie-list").show();
-                $("#movie-list-reser").hide();
-
-                $(".movie-all-view").attr("href", "#");
-            });
-
-            $("#btnReserMovie").click(function(){
+            $("#movie-list").show();
+            $("#movie-list-reser").hide();
+            $(".movie-all-view").attr("href", "#");
+         });
+        $("#btnReserMovie").click(function(){
                 $("#movie-list").hide();
                 $("#movie-list-reser").show();
                 $(".movie-all-view").attr("href", "#");
-            });
-
+          });
             var movieChartSwiper = new Swiper("#movie-list", {
-
                 slidesPerView: 5,
                 spaceBetween: 32,
                 slidesPerGroup: 5,
@@ -47,16 +42,13 @@
                     slideLabelMessage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
                 },
             });
-
             var movieChartSwiper2 = new Swiper("#movie-list-reser", {
-
                 slidesPerView: 5,
                 spaceBetween: 32,
                 slidesPerGroup: 5,
                 loopFillGroupWithBlank: true,
                 navigation: {
                     nextEl: ".swiper-button-next",
-
                     prevEl: ".swiper-button-prev",
                 },
                 a11y: {
@@ -65,9 +57,7 @@
                     slideLabelMessopenPopupage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
                 },
             });
-
             $("#movie-list-reser").hide(); //swiper 랜더링 완료 후 숨기기해야함
-
             var eventSwiper = new Swiper(".event_list", {
                 autoplay: {
                     delay: 2500,
@@ -87,11 +77,9 @@
                     slideLabelMessage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
                 },
             });
-
             if (eventSwiper.autoplay.running) {
                 $('.btn_eventControl').addClass('active');
             }
-
             $('.btn_eventControl').on({
                 click: function (e) {
                     if (eventSwiper.autoplay.running) {
@@ -124,7 +112,6 @@
                     $('.specialHall_link img').attr('alt', $(target).children('strong').text());
                 }
             });
-
             var movieSelectionVideoObj = $('.video_wrap video')[0];
 
             $('.video_wrap video').on({
@@ -132,10 +119,6 @@
                     $('.btn_movieSelection_playStop').removeClass('active');
                 }
             })
-            // movieSelectionVideoObj.onended = function(){
-                
-            // }
-
             $('.btn_movieSelection_playStop').on({
                 click:function(){
                     if(movieSelectionVideoObj.paused){
@@ -147,7 +130,6 @@
                     }
                 }
             });
-
             $('.btn_movieSelection_soundOnOff').on({
                 click:function(){
                     if(movieSelectionVideoObj.muted){
@@ -159,7 +141,6 @@
                     }
                 }
             });
-
             var noticeClientBannerSwiper = new Swiper(".noticeClient_banner_list", {
                 autoplay: {
                     delay: 2500,
@@ -169,11 +150,9 @@
                 spaceBetween: 0,
                 loopFillGroupWithBlank: true,
             });
-
             if(noticeClientBannerSwiper.autoplay.running){
                 $('.btn_noticeClientBannerControl').addClass('active');
             }
-
             $('.btn_noticeClientBannerControl').on({
                 click:function(e){
                     if(noticeClientBannerSwiper.autoplay.running){
@@ -185,7 +164,6 @@
                     }
                 } 
             });
-
             $.fn.openPopup = function( id ){
                 var popObj = $('#' + id);
 
@@ -210,11 +188,8 @@
                 $('.pop_wrap').removeClass('active');
                 $('.popup').fadeOut();
             };
-
-            
         });
     </script>
-
 </head>
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>

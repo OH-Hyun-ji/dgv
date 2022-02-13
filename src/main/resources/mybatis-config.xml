@@ -6,6 +6,7 @@
 <configuration>
 		<typeAliases>
 			<typeAlias alias="movieInfo" type="com.dgv.web.admin.vo.AdminMovieInfoVO"/>
+			<typeAlias alias="AdminSeatVO" type="com.dgv.web.admin.vo.AdminSeatVO"/>
 		</typeAliases>
 			<mappers>
 				<mapper resource="mappings/movieInfo-mapping.xml"/>

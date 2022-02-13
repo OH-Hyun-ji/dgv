@@ -11,4 +11,5 @@ public class AdminSeatController {
 		return "/movie/admin_movie_seat";
 	}
 	
+	
 }

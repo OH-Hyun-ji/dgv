@@ -7,6 +7,7 @@
 <title>영화 그 이상적인 감동을</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/style.css">
+<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/button.css">
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
 <link type="text/css" rel="stylesheet"
@@ -20,27 +21,22 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 </head>
 
-<body class="block" style="background-position-y: bottom;
-    background-image: url('http://res.heraldm.com/content/image/2022/02/03/20220203000304_0.jpg');
-    background-repeat : no-repeat;
-    background-size : cover;">
+<body class="block" style="">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
-	<div class="wrapper" style="">
+	<div class="wrapper sign-up-background">
 		<div class="inner">
 			<div class="image-holder">
 				<img id="poster" src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" alt="">
 			</div>
 			<form action="register.do" id="registerForm" method="post">
 				<p class="register-title">
-					<img src="http://img.cgv.co.kr/R2014/images/title/h1_cgv.png">
-					<span style="color: white;">회원가입</span>
+					<img src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png">
+					<span class="sign-up">Sign Up</span>
 				</p>
 				<div class="form-wrapper form-wrapper-id">
-					<div class="id-wrapper">
+					<div class="form-wrapper">
 						<input id="id" name="id" type="text" placeholder="아이디"
 							class="form-control">
-						<!-- <i class="zmdi zmdi-id">아이디 체크</i> -->
-						<button type="button" class="idCheckButton">아이디 체크</button>
 					</div>
 				</div>
 
@@ -63,11 +59,10 @@
 
 				<div class="form-wrapper">
 					<!-- BIRTH_YY -->
-					<div class="form-control"> 
-						<input class="yy" style="width: 38%; height: 30px;"
-						 type="text"  maxlength="4" placeholder="년(4자)">
+					<div class="user-birth"> 
+						<input class="userYear"  placeholder="년(4자)">
 						<!-- BIRTH_MM -->
-						<select class="mm" style="width: 20%; height: 30px;">
+						<select class="userMonth">
 							<option>월</option>
 							<option value="01">1월</option>
 							<option value="02">2월</option>
@@ -83,14 +78,13 @@
 							<option value="12">12월</option>
 						</select>
 						<!-- BIRTH_DD -->
-						<input type="text" class="dd" style="width: 96px;    height: 30px;" 
-							maxlength="2" placeholder="일">
+						<input class="userDay" placeholder="일">
 					</div>
 				</div>
 
 				<div class="form-wrapper">
 					<input type="text" name="phoneNumber" placeholder="휴대폰번호"
-						class="form-control"> <i class="zmdi  zmdi-phone"></i>
+						class="form-control"> <i class="zmdi zmdi-phone"></i>
 				</div>
 
 				<div class="form-wrapper">
@@ -98,10 +92,10 @@
 						class="form-control"> <i class="zmdi zmdi-email"></i>
 				</div>
 
-
-				<button class="registerButton clickedButton" disabled="disabled">
-					<span>회원가입 하기</span> <i class="zmdi zmdi-arrow-right"></i>
-				</button>
+				<button class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 80%; margin-left: 11%; padding-top: 6px;">
+        			<span class="sign-up-font">Register</span>
+   				 </button>
+				
 			</form>
 		</div>
 	</div>

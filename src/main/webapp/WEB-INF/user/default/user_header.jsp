@@ -7,8 +7,9 @@
 		<div class="contents">
 			<h1>
 				<!-- 상단 로고와 사이드 로고 -->
-				<a><img
-					src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png" style="width: 82%;"></a>
+				<a href="/dgvMain.do">
+					<img src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png" style="width: 82%;">
+				</a>
 				<span id="sideLogo">CULTUREPLEX</span>
 			</h1>
 			<!-- 상단 우측 아이콘 메뉴 -->
@@ -16,7 +17,7 @@
 				<li><a href="#" title="로그인"> <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
 						<span id="main1" class="modiImg1">로그인</span>
 				</a></li>
-				<li><a href="#"> <i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> <span
+				<li><a href="/join.do"> <i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> <span
 						id="main1">회원가입</span>
 				</a></li>
 				<li><a href="#"> <i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> <span
@@ -98,12 +99,12 @@
 					<dl class="nav_overMenu">
 						<dt>
 							<h2>
-								<a href="#" tabindex="-1">영화</a>
+								<a href="/movieChart.do" tabindex="-1">영화</a>
 							</h2>
 						</dt>
 						<dd>
 							<h2>
-								<a href="#">무비차트</a>
+								<a href="/movieChart.do">영화목록</a>
 							</h2>
 						</dd>
 						<dd>
@@ -113,7 +114,6 @@
 						</dd>
 					</dl>
 				</li>
-
 				<li>
 					<h2>
 						<a href="/theater.do">극장</a>

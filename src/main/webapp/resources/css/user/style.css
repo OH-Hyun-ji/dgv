@@ -2,12 +2,6 @@
     font-family: 'Poppins-Regular';
     src: url('../fonts/poppins/Poppins-Regular.ttf');
 }
-
-@font-face {
-    font-family: 'Poppins-SemiBold';
-    src: url('../fonts/poppins/Poppins-SemiBold.ttf');
-}
-
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -21,12 +15,6 @@ body {
     margin: 0;
 }
 
-body{
-    background-position-y: bottom;
-    background-image: url('http://res.heraldm.com/content/image/2022/02/03/20220203000304_0.jpg');
-    background-repeat : no-repeat;
-    background-size : cover;
-}
 
 input,
 textarea,
@@ -61,16 +49,6 @@ a:hover {
     text-decoration: none;
 }
 
-
-
-
-
-
-
-.foram-wrapper>input {
-    background-color: transparent;
-}
-
 :focus {
     outline: none;
 }
@@ -84,23 +62,27 @@ a:hover {
 }
 
 .inner {
-    padding: 15px 10px 15px 15px;
+  /*  padding: 15px 10px 15px 15px;
     max-width: 850px;
     margin: auto;
-    display: flex;
-    width: 700px;
     justify-content: center;
+    */
+    display: flex;
+    width: 43%;
+    margin-bottom: 3%;
+    margin-left: 28%;
+  	box-sizing: border-box;
 }
 
 .inner .image-holder {
-    width: 60%;
+    width: 100%;
 }
 
 .inner form {
-    width: 60%;
-    padding-top: 36px;
-    padding-left: 45px;
-    padding-right: 45px;
+    width: 84%;
+  /*  padding-top: 36px;*/
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .inner h3 {
@@ -124,7 +106,8 @@ a:hover {
 }
 
 .form-wrapper {
-    position: relative;
+ /* position: relative;*/
+    width: 100%;
 }
 
 .form-wrapper i {
@@ -140,9 +123,9 @@ a:hover {
     border-left: none;
     display: block;
     width: 100%;
-    height: 30px;
     padding: 0;
-    margin-bottom: 25px;
+  /*  height: 30px;
+    margin-bottom: 25px;*/
 }
 
 .form-control::-webkit-input-placeholder {
@@ -195,14 +178,14 @@ a:hover {
 }
 
 .image-holder>img {
-    width: 380px;
+    width: 100%;
     height: auto;
 }
-
+/*
 .image-holder>img:hover {
     opacity: 0.5;
 }
-
+*/
 .register-title {
     display: flex;
     align-items: center;
@@ -212,9 +195,8 @@ a:hover {
 }
 
 .register-title>img {
-    width: 80px;
+    width: 55%;
     height: auto;
-    opacity: 0.8;
     padding-bottom: 10px;
 }
 
@@ -254,23 +236,6 @@ a:hover {
 select option[value=''][disabled] {
     display: none;
 }
-
-input.yy{
-    width: 38%;
-    height: 30px;
-}
-
-.mm{
-    width: 20%;
-    height: 30px;
-}
-
-.dd{
-    width: 96px;
-    height: 30px;
-}
-
-
 
 button {
     border: none;
@@ -396,5 +361,44 @@ button:active i {
     }
 }
 
+.sign-up{
+	color: white;
+    font-size: 40px;
+    margin-top: 4%;
+    font-weight: bolder;
+	
+}
 
-/*# sourceMappingURL=style.css.map */
+.form-wrapper > input {
+    height: 43px;
+    margin-bottom: 8%;
+}
+
+input.userYear {
+    height: 42px;
+    width: 38%;
+}
+
+select.userMonth {
+    height: 42px;
+    width: 23%;
+}
+
+input.userDay {
+    height: 42px;
+    width: 35%;
+}
+
+.user-birth {
+    margin-bottom: 8%;
+}
+.wrapper.sign-up-background {
+    background-position-y: bottom;
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url(http://res.heraldm.com/content/image/2022/02/03/20220203000304_0.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+span.sign-up-font {
+    font-size: 22px;
+}
