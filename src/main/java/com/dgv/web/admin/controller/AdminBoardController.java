@@ -11,4 +11,9 @@ public class AdminBoardController {
 		
 		return "/board/admin_board_notice";
 	}
+	@RequestMapping("/adminEnquriy.mdo")
+	public String adminEnquriy() {
+		
+		return "/board/admin_board_enquriy";
+	}
 }
