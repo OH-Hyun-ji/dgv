@@ -63,7 +63,7 @@
 						<input class="userYear"  placeholder="년(4자)">
 						<!-- BIRTH_MM -->
 						<select class="userMonth">
-							<option>월</option>
+							<option class="optionMonth">월</option>
 							<option value="01">1월</option>
 							<option value="02">2월</option>
 							<option value="03">3월</option>

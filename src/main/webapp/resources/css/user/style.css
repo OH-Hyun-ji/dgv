@@ -2,11 +2,6 @@
     font-family: 'Poppins-Regular';
     src: url('../fonts/poppins/Poppins-Regular.ttf');
 }
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 body {
     font-family: 'Poppins-Regular';
@@ -128,29 +123,6 @@ a:hover {
     margin-bottom: 25px;*/
 }
 
-.form-control::-webkit-input-placeholder {
-    font-size: 13px;
-    color: black;
-    font-family: 'Poppins-Regular';
-}
-
-.form-control::-moz-placeholder {
-    font-size: 13px;
-    color: black;
-    font-family: 'Poppins-Regular';
-}
-
-.form-control:-ms-input-placeholder {
-    font-size: 13px;
-    color: black;
-    font-family: 'Poppins-Regular';
-}
-
-.form-control:-moz-placeholder {
-    font-size: 13px;
-    color: black;
-    font-family: 'Poppins-Regular';
-}
 
 .wrapper {
     position: relative;
@@ -363,7 +335,7 @@ button:active i {
 
 .sign-up{
 	color: white;
-    font-size: 40px;
+    font-size: 37px;
     margin-top: 4%;
     font-weight: bolder;
 	
@@ -380,17 +352,22 @@ input.userYear {
 }
 
 select.userMonth {
-    height: 42px;
+    height: 49px;
     width: 23%;
+    font-size: 18px;
+    font-weight: bold;
+    color: gray;
 }
 
 input.userDay {
     height: 42px;
-    width: 35%;
+    width: 30%;
 }
 
 .user-birth {
     margin-bottom: 8%;
+    display: flex;
+    justify-content: space-between;
 }
 .wrapper.sign-up-background {
     background-position-y: bottom;
@@ -402,3 +379,34 @@ input.userDay {
 span.sign-up-font {
     font-size: 22px;
 }
+input.form-control::placeholder {
+	padding-left: 11%;
+	font-size: 18px;
+	font-color:grey;
+	font-weight: bolder;
+}
+input.userMonth::placeholder {
+	padding-left: 11%;
+	font-size: 18px;
+	font-color:grey;
+	font-weight: bolder;
+}
+input.userYear::placeholder {
+	padding-left: 11%;
+	font-size: 18px;
+	font-color:grey;
+	font-weight: bolder;
+}
+input.userDay::placeholder {
+	padding-left: 11%;
+	font-size: 18px;
+	font-color:grey;
+	font-weight: bolder;
+}
+option.optionMonth {
+	font-size: 18px;
+	font-color:grey;
+	font-weight: bolder;
+	padding-left: 11%;
+}
+

@@ -33,30 +33,13 @@
                         </ul>
                     </div>
                 </div>
-                <!--
-                <div class="sect-sorting">
-                    <div class="nowshow">
-                        <input type="checkbox" id="chk_nowshow">
-                        <label for="chk_nowshow">현재 상영작만 보기</label>
-                    </div>
-                    <label for="order_type" class="hidden">정렬</label>
-                    <select id="order_type" name="order-type">
-                        <option title="현재 선택됨" selected="" value="1">예매율순</option>
-                        <option value="2">평점순</option>
-                        <option value="3">관람객순</option>
-                    </select>
-                    <button type="button" class="round gray">
-                        <span>GO</span>
-                    </button>
-                </div>
-                -->
                 <div class="sect-movie-chart">
-                    <h4 class="hidden">무비차트 - 예매율순</h4>
+                    <h4 class="hidden">무비목록 - 예매율순</h4>
                     <ol>
                         <li>
                             <div class="box-image">
                                 <strong class="rank">No.1</strong>
-                                <a href="#">
+                                <a href="/movieDetail.do">
                                     <span class="thumb-image">
                                         <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85561/85561_320.jpg" alt="해적-도깨비 깃발 포스터" onerror="errorImage(this)">
                                         <span class="ico-grade grade-12">12세 이상</span>
@@ -85,7 +68,7 @@
                         <li>
                             <div class="box-image">
                                 <strong class="rank">No.2</strong>
-                                <a href="#">
+                                <a href="/movieDetail.do">
                                     <span class="thumb-image">
                                         <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000084/84945/84945_320.jpg" alt="듄 포스터" onerror="errorImage(this)">
                                         <span class="ico-grade grade-12">12세 이상</span>

@@ -230,13 +230,7 @@ dt {
 [class|="sect-base"][class*="movie"] .spec dd {
     float: left;
 }
-a {
-    color: inherit;
-    text-decoration: none;
-}
-a:-webkit-any-link {
-    cursor: pointer;
-}
+
 [class|="sect-base"][class*="movie"] .spec dd {
     white-space: normal;
     text-overflow: clip;
@@ -350,15 +344,7 @@ div {
 ol, ul {
     list-style: none;
 }
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
-    font-size: 100%;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline;
-    word-break: break-all;
-}
+
 ul {
     display: block;
     margin-block-start: 1em;
@@ -375,15 +361,7 @@ ul {
     display: inline-block;
     margin-left: -4px;
 }
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
-    font-size: 100%;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline;
-    word-break: break-all;
-}
+
 li {
     text-align: -webkit-match-parent;
 }
@@ -401,19 +379,8 @@ li {
     text-align: center;
     line-height: 39px;
 }
-a {
-    text-decoration: none;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
-    margin: 0;
-    border: 0;
-    vertical-align: baseline;
-    word-break: break-all;
-}
-a:-webkit-any-link {
-    cursor: pointer;
-}
+
+
 .tab-menu li.on a:before {
     content: '';
     display: inline-block;
@@ -691,10 +658,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .box-contents > a {
     display: block;
 }
-a {
-    color: inherit;
-    text-decoration: none;
-}
 .wrap-movie-detail .sect-trailer .title {
     margin-top: 10px;
     font-size: 13px;
@@ -809,10 +772,6 @@ div[class^="sect-"] {
     vertical-align: middle;
     font: 0/0 a;
     zoom: 1;
-}
-a {
-    color: inherit;
-    text-decoration: none;
 }
 
 /* 스틸컷 사진부분 ////////////// */
