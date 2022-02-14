@@ -33,20 +33,20 @@
                             <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="/movieList.mdo">영화등록</a>
-                                    <a class="nav-link" href="#">좌석관리</a>
+                                    <a class="nav-link" href="/adminSeat.mdo">좌석관리</a>
                                 </nav>
                             </div>
                             
                             <!-- 게시글 관리 -->
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
+                            <a class="nav-link collapsed" href="/adminNotice.mdo" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                           게시글 관리
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                            </a>
                                <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion1">
                                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages1">
-                                       <a class="nav-link" href="#">공지사항</a>
-                                       <a class="nav-link" href="#">고객문의(답변대기)</a>
+                                       <a class="nav-link" href="/adminNotice.mdo">공지사항</a>
+                                       <a class="nav-link" href="/adminEnquriy.mdo">고객문의(답변대기)</a>
                                        <a class="nav-link" href="#">고객문의(답변완료)</a>
                                    </nav>
                                </div>

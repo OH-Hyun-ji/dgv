@@ -12,19 +12,13 @@ public class AdminMovieInfoVO {
 	public AdminMovieInfoVO() {
 		
 	}
-	
-	
-	
-	
+
 	public AdminMovieInfoVO(String img, String movieAge, String movieTitle) {
 		super();
 		this.img = img;
 		this.movieAge = movieAge;
 		this.movieTitle = movieTitle;
 	}
-
-
-
 
 	public Integer getNum() {
 		return num;

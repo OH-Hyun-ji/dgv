@@ -16,4 +16,5 @@ public class AdminMovieController {
 		return "/movie/admin_movie_register";
 	}
 	
+	
 }

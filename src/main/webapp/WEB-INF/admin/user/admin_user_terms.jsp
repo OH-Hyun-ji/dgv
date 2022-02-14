@@ -21,14 +21,6 @@
 	font-weight: bolder;
 }
 
-.card-header {
-	background-color: #a1a1a1;
-	height: 100%;
-	font-size: 30px;
-	padding-top: 1%;
-	padding-bottom: 1%;
-}
-
 #userLankAdd {
 	width: 11%;
 	margin-top: 17px;
