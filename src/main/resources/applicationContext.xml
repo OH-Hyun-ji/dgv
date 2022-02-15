@@ -14,11 +14,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-		
 	<context:component-scan base-package="com.dgv.web"></context:component-scan>
 	
-
+	
 	<context:property-placeholder location="classpath:db.properties"/>
+	
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
@@ -26,13 +26,11 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
-		  />
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DriverManagerDataSource" />
 	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-	
 	
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />

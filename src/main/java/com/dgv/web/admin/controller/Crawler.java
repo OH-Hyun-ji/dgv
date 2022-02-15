@@ -23,7 +23,7 @@ public class Crawler {
 	
 	@RequestMapping("/insertCity.mdo")
 	public String crawlCity() {
-		System.out.println("µµ½Ãµµ½Ã");
+		System.out.println("ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½");
 		try {
 			String url = "https://www.megabox.co.kr/theater/list";
 			
@@ -47,13 +47,13 @@ public class Crawler {
 	
 	@RequestMapping("/insertTheater.mdo")
 	public String crawlTheater() {
-		System.out.println("±ØÀå±ØÀå");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		
 		try {
 			String url ="https://www.megabox.co.kr/theater?brchNo=1372";
-			System.out.println("±ØÀå±ØÀå1");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1");
 			Connection conn = Jsoup.connect(url);
-			System.out.println("±ØÀå±ØÀå2");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2");
 			Document doc = conn.get();
 			
 			Elements city = doc.select("div.theater-area-list .depth1");
@@ -63,7 +63,7 @@ public class Crawler {
 			for(int i=0; i<city.size(); i++) {
 				String citys = city.get(i).text();
 				list.add(citys);
-				if(list.get(i).equals("¼­¿ï")) {
+				if(list.get(i).equals("ï¿½ï¿½ï¿½ï¿½")) {
 					for(int j=0;j<18;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -73,7 +73,7 @@ public class Crawler {
 						adminCrawlerService.insertRegion(vo);
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("°æ±â")) {
+				}else if(list.get(i).equals("ï¿½ï¿½ï¿½")) {
 					for(int j=19;j<47;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -82,7 +82,7 @@ public class Crawler {
 						adminCrawlerService.insertRegion(vo);
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("ÀÎÃµ")) {
+				}else if(list.get(i).equals("ï¿½ï¿½Ãµ")) {
 					for(int j=47;j<52;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -92,7 +92,7 @@ public class Crawler {
 					
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("´ëÀü/ÃæÃ»/¼¼Á¾")) {
+				}else if(list.get(i).equals("ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½Ã»/ï¿½ï¿½ï¿½ï¿½")) {
 					for(int j=52;j<69;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -100,7 +100,7 @@ public class Crawler {
 						adminCrawlerService.insertRegion(vo);
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("ºÎ»ê/´ë±¸/°æ»ó")) {
+				}else if(list.get(i).equals("ï¿½Î»ï¿½/ï¿½ë±¸/ï¿½ï¿½ï¿½")) {
 					for(int j=69;j<91;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -108,14 +108,14 @@ public class Crawler {
 						adminCrawlerService.insertRegion(vo);
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("±¤ÁÖ/Àü¶ó")) {
+				}else if(list.get(i).equals("ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½")) {
 					for(int j=91;j<100;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
 						AdminRegionVO vo = new AdminRegionVO(i+1, regions);
 						adminCrawlerService.insertRegion(vo);
 					}System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("°­¿ø")) {
+				}else if(list.get(i).equals("ï¿½ï¿½ï¿½ï¿½")) {
 					for(int j=100;j<104;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -134,7 +134,7 @@ public class Crawler {
 	
 	@RequestMapping("/insertMovieInfo.mdo")
 	public String crawlMovie() {
-		System.out.println("¿µÈ­Á¤º¸!!");
+		System.out.println("ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½!!");
 		
 		try {
 			String URL = "http://www.cgv.co.kr/movies/detail-view/?midx=85603";

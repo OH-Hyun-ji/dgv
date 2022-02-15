@@ -8,7 +8,7 @@
 			<typeAlias alias="movieInfo" type="com.dgv.web.admin.vo.AdminMovieInfoVO"/>
 			<typeAlias alias="AdminTheaterLocationVO" type="com.dgv.web.admin.vo.AdminTheaterLocationVO"/>
 			<typeAlias alias="AdminRegionVO" type="com.dgv.web.admin.vo.AdminRegionVO"/>
-			<typeAlias alias="UserVO" type="com.dgv.web.admin.vo.UserVO"/>
+			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 		</typeAliases>
 			<mappers>
 				<mapper resource="mappings/movieInfo-mapping.xml"/>

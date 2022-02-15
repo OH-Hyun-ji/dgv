@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-    <link href="css/styles.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-        crossorigin="anonymous"></script>   
+    <link href="${pageContext.request.contextPath}/resources/css/admin/styles.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>   
 </head>
 
-<body>
- <jsp:include page="../default/admin_top_menu.jsp" />
-	<jsp:include page="../default/admin_side_menu.jsp" />
+<body class="sb-nav-fixed">
+	<div id="layoutSidenav">
+ 		<jsp:include page="../default/admin_top_menu.jsp" />
+		<jsp:include page="../default/admin_side_menu.jsp" />
+			 <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">매출관리</h1>
@@ -21,15 +21,13 @@
 
                     </ol>
                     <div class="card mb-4">
-                        <div class="card-body"style="background-color: #a1a1a1; height: 100%;font-size: 30px; padding-top: 1%;padding-bottom: 1%;">
-                            
+                        <div class="card-body"style="background-color: #a1a1a1; height: 100%;font-size: 30px; font-weight: bold;padding-top: 1%;padding-bottom: 1%;">                      
                             매출통계관리
-
                         </div>
                     </div>
                     <div class="container1">
                         <form method="post" id="form1">
-                            <div class="row" style="flex-wrap: nowrap;">
+                            <div class="row" style="flex-wrap: nowrap; margin-top:1%">
                                 <div class="col-lg-6" style="float:left">
                                     <div class="card mb-4">
                                         <div class="card-header" style="background:#FF6384;">
@@ -44,7 +42,7 @@
                                             <!-- <i class="fas fa-chart-bar me-1"></i> Font Awesome fontawesome.com -->
                                             일별 매출 관리
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body" style="height: 353px;">
                                             <div style="text-align: center;">
                                                 <div class="chartjs-size-monitor">
                                                     <div class="chartjs-size-monitor-expand">
@@ -69,7 +67,7 @@
                                 &nbsp;&nbsp;&nbsp;
                                 <form method="post" id="form2">
                                     <div class="col-lg-6">
-                                        <div class="card mb-4">
+                                        <div class="card mb-4" style="width: 98%;height: 99%;">
                                             <div class="card-header" style="background:#660099; color:white">
                                                 <svg class="svg-inline--fa fa-chart-bar fa-w-16 me-1" aria-hidden="true"
                                                     focusable="false" data-prefix="fas" data-icon="chart-bar" role="img"
@@ -82,7 +80,7 @@
                                                 <!-- <i class="fas fa-chart-bar me-1"></i> Font Awesome fontawesome.com -->
                                                 월별 매출 관리
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body" style="height: 352px;">
                                                 <div style="text-align: center;">
                                                     <div class="chartjs-size-monitor">
                                                         <div class="chartjs-size-monitor-expand">
@@ -105,11 +103,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="con1" style="
-                        display: flex;
-                          margin-left: 1;">
+                    <div class="con1" style="display: flex; margin-top: 7%;">
                         <div class="col-lg-6">
-                            <div class="card mb-4">
+                            <div class="card mb-4" style="width: 98%; height: 148%; ">
                                 <div class="card-header">
                                     <svg class="svg-inline--fa fa-chart-pie fa-w-17 me-1" aria-hidden="true"
                                         focusable="false" data-prefix="fas" data-icon="chart-pie" role="img"
@@ -132,13 +128,11 @@
                                         style="display: block; width: 543px; height: 135px;"
                                         class="chartjs-render-monitor"></canvas>
                                 </div>
-                                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                               
                             </div>
                         </div>
-                        <div class="col-lg-7" style="
-    margin-left: 17px;
-">
-                            <div class="card mb-5">
+                        <div class="col-lg-7">
+                            <div class="card mb-5"style="width: 83%; height: 148%; margin-left: 3%;">
                                 <div class="card-header">
                                     <svg class="svg-inline--fa fa-chart-pie fa-w-17 me-1" aria-hidden="true"
                                         focusable="false" data-prefix="fas" data-icon="chart-pie" role="img"
@@ -162,7 +156,7 @@
                                         style="display: block; width: 543px; height: 135px;"
                                         class="chartjs-render-monitor"></canvas>
 
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                                  
                                 </div>
                             </div>
                         </div>

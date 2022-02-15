@@ -5,20 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-
-
-    </head>
-    <jsp:include page="../default/admin_top_menu.jsp" />
-	<jsp:include page="../default/admin_side_menu.jsp" />     
-                 <main>
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/css/admin/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+	<div id="layoutSidenav">
+	    <jsp:include page="../default/admin_top_menu.jsp" />
+		<jsp:include page="../default/admin_side_menu.jsp" />   
+		  	<div id="layoutSidenav_content">
+            <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">매출관리</h1>
                 <ol class="breadcrumb mb-4">
-
-
                 </ol>
                 <div class="card mb-4">
                     <div class="card-header">

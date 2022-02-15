@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.dgv.web.admin.service.UserService;
-import com.dgv.web.admin.vo.UserVO;
+
+import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.UserVO;
 
 @Controller
 public class UserRegisterController {

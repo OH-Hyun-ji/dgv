@@ -15,14 +15,14 @@ public class AdminMainController {
 	
 	@RequestMapping("/insertMovie.mdo")
 	public String insertMovie(AdminMovieInfoVO vo) throws IOException{
-		System.out.println("µî·Ï !!!");
+		System.out.println("ì•„.... !!!");
 		adminMovieInfoService.insertMovieInfo(vo);
 		return "/main/admin_main";
 	}
 	
 	@RequestMapping("/movie.mdo")
 	public String insertMovie1() {
-		System.out.println("µî·Ï !!!");
+		System.out.println("ï¿½ï¿½ï¿½ !!!");
 		
 		return "/main/admin_main";
 	}

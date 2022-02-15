@@ -8,12 +8,26 @@ public class AdminBoardController {
 
 	@RequestMapping("/adminNotice.mdo")
 	public String adminNotice() {
-		
 		return "/board/admin_board_notice";
 	}
+	
 	@RequestMapping("/adminEnquriy.mdo")
 	public String adminEnquriy() {
-		
 		return "/board/admin_board_enquriy";
+	}
+	
+	@RequestMapping("/adminAnswerOk.mdo")
+	public String adminAnswer() {
+		return "/board/admin_board_answerOk";
+	}
+	
+	@RequestMapping("/adminChart.mdo")
+	public String adminChart() {
+		return "/movie/admin_movie_chart";
+	}
+	
+	@RequestMapping("/adminBest.mdo")
+	public String adminBest() {
+		return "/movie/admin_movie_best";
 	}
 }
