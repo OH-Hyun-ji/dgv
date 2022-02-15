@@ -9,16 +9,6 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
        
-       <style>
-            .card-header{
-                     background-color: #a1a1a1; 
-                     height: 100%;
-                     font-size: 30px; 
-                     padding-top: 1%;
-                     padding-bottom: 1%;
-     
-                 }
-        </style>
     </head>
     <body>
         
