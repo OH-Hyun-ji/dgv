@@ -47,7 +47,7 @@
                                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages1">
                                        <a class="nav-link" href="/adminNotice.mdo">공지사항</a>
                                        <a class="nav-link" href="/adminEnquriy.mdo">고객문의(답변대기)</a>
-                                       <a class="nav-link" href="#">고객문의(답변완료)</a>
+                                       <a class="nav-link" href="admin_board_answerOk.jsp">고객문의(답변완료)</a>
                                    </nav>
                                </div>
 
@@ -59,8 +59,8 @@
                            </a>
                                <div class="collapse" id="collapsePages2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion1">
                                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages1">
-                                       <a class="nav-link" href="#">매출통계관리</a>
-                                       <a class="nav-link" href="#">베스트 영화</a>
+                                       <a class="nav-link" href="admin_movie_chart.jsp">매출통계관리</a>
+                                       <a class="nav-link" href="admin_movie_best.jsp">베스트 영화</a>
                                    </nav>
                                </div>
                         </div>
