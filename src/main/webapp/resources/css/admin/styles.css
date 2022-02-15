@@ -2406,7 +2406,7 @@ textarea.form-control-lg {
 
 .form-select, .dataTable-selector {
   display: block;
-  width: 100%;
+  width: 20%;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   -moz-padding-start: calc(0.75rem - 3px);
   font-size: 1rem;
@@ -3193,16 +3193,18 @@ textarea.form-control-lg {
   background-color: #ffc107;
   border-color: #ffc107;
 }
-
 .btn-danger {
-  color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+    color: #fff;
+    margin-top: 6%;
+    border-color: #b73f19;
+    background: linear-gradient(Red -32%, Orange);
+    font-weight: bolder;
 }
 .btn-danger:hover {
   color: #fff;
   background-color: #bb2d3b;
   border-color: #b02a37;
+  font-weight: 700;
 }
 .btn-check:focus + .btn-danger, .btn-danger:focus {
   color: #fff;
@@ -3580,7 +3582,7 @@ textarea.form-control-lg {
   color: #212529;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: #fdfcf2;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
@@ -3857,11 +3859,12 @@ textarea.form-control-lg {
   display: inline-flex;
   vertical-align: middle;
 }
+/*
 .btn-group > .btn,
 .btn-group-vertical > .btn {
   position: relative;
   flex: 1 1 auto;
-}
+}*/
 .btn-group > .btn-check:checked + .btn,
 .btn-group > .btn-check:focus + .btn,
 .btn-group > .btn:hover,
@@ -11696,4 +11699,33 @@ body {
   width: 20px !important;
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
+}
+.admin-theater-tb {
+    display: flex;
+    margin-left: 5px;
+}
+.city-zone-wrap {
+    margin-right: 4px;
+    margin-left: 1px;
+
+}
+input.cityZone {
+    width: 340px;
+    line-height: 1.7;
+}
+
+.registerCityBtn {
+    display: initial;
+    margin-left: 29%;
+}
+button#registerCity {
+    width: 11%;
+    margin-left: 30%;
+    background: linear-gradient(Red -32%, Orange 79%);
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    border-color: burlywood;
+    height: 42px;
+    font-size: 23px;
 }

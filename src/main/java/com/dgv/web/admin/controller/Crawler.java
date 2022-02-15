@@ -44,6 +44,7 @@ public class Crawler {
 		return"/movie/admin_movie_list";
 	}
 	
+	
 	@RequestMapping("/insertTheater.mdo")
 	public String crawlTheater() {
 		System.out.println("±ØÀå±ØÀå");
@@ -131,22 +132,21 @@ public class Crawler {
 		return"/movie/admin_movie_list";
 	}
 	
-	@RequestMapping("/insert.mdo")
+	@RequestMapping("/insertMovieInfo.mdo")
 	public String crawlMovie() {
-		System.out.println("dddd");
+		System.out.println("¿µÈ­Á¤º¸!!");
 		
 		try {
-			String URL = "https://www.cgv.co.kr/movies/";
+			String URL = "http://www.cgv.co.kr/movies/detail-view/?midx=85603";
 			
 			Connection conn =Jsoup.connect(URL);
 			
 			Document doc = conn.get();
 			
-			System.out.println("Å©·Ñ¸µÀÌ´å");
-			
-			Elements ranks = doc.select(".rank");
-			/* logger.info("rank" + ranks); */
-			 
+			Elements movieTitle = doc.select("div.title strong");
+			 /*logger.info("rank" + ranks); */
+			Elements movieTitleEn = doc.select("div.title p");
+		 
 			 Elements imgs = doc.select(".thumb-image > img");
 			/* logger.info("imgs" + imgs); */
 			 
@@ -160,27 +160,18 @@ public class Crawler {
 			/* logger.info("percents" + movieRates); */
 			 
 			 
-			 Elements movieOpenDates = doc.select(".txt-info strong");
+			 Elements gam = doc.select("div.spec dt");
 			/* logger.info("percents" + movieOpenDates); */
 			
-			 Elements likes = doc.select(".count strong>i");
+			 Elements actor = doc.select("div.spec dd a");
 			 
-			 List<AdminMovieInfoVO> list = new ArrayList<AdminMovieInfoVO>();
-			 
-			 for(int i = 0; i < ranks.size(); i++) {
-					
-				 String rank = ranks.get(i).text();
-				 String img = imgs.get(i).attr("src");
-				 String movieAge = movieAges.get(i).text();
-				 String movieTitle = movieTitles.get(i).text();
-				 String movieRate = movieRates.get(i).text();
-			
-			
-			 AdminMovieInfoVO vo = new AdminMovieInfoVO(img, movieAge, movieTitle);
-			 adminCrawlerService.insertMovieInfo(vo);
-			 
+			 for(int i=0; i<actor.size();i++) {
+				 String gams = gam.get(i).text();
+				 System.out.println(gam);
 			 }
+			
 			 
+	 
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
