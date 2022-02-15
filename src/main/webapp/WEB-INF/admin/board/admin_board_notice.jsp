@@ -10,7 +10,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
 	rel="stylesheet" />
- <link href="${pageContext.request.contextPath}/resources/css/admin/styles.css" rel="stylesheet" />
+ <link href="${pageContext.request.contextPath}/resources/css/user/button.css" rel="stylesheet" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>

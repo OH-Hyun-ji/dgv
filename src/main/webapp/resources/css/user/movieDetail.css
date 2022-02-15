@@ -351,7 +351,9 @@ ul {
     margin-left: -4px;
 }
 
-
+li {
+    text-align: -webkit-match-parent;
+}
 .tab-menu li:first-child a {
     background: #fb4357;
 }
@@ -447,7 +449,9 @@ div {
     overflow: hidden;
     border-bottom: 1px solid #cccccc;
 }
-
+ol, ul {
+    list-style: none;
+}
 .sect-graph.sect-graph-emotion li {
     width: 50% !important;
 }
@@ -464,7 +468,10 @@ div {
     border-top: 1px solid #cccccc;
     margin-right: -1px;
 }
-
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
 .graph li strong {
     display: block;
     height: 58px;
@@ -571,7 +578,9 @@ h4 {
 .wrap-movie-detail .sect-trailer > ul {
     margin-left: -10px;
 }
-
+ol, ul {
+    list-style: none;
+}
 .wrap-movie-detail .sect-trailer li {
     width: 260px;
     margin: 0 0 15px 10px;
@@ -817,7 +826,9 @@ button, input[type='submit'], input[type='reset'] {
     background-color: transparent;
     vertical-align: middle;
 }
-
+body, input, textarea, select, button, table {
+    color: #666;
+}
 button {
     letter-spacing: normal;
     word-spacing: normal;

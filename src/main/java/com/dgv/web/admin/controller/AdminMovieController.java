@@ -16,5 +16,15 @@ public class AdminMovieController {
 		return "/movie/admin_movie_register";
 	}
 	
+	@RequestMapping("/adminTheater.mdo")
+	public String movieTheater() {
+		
+		return "/movie/admin_movie_theater";
+	}
+	
+	@RequestMapping("/adminManageMent.mdo")
+	public String adminManagement() {
+		return "/movie/admin_movie_management";
+	}
 	
 }
