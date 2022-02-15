@@ -8,17 +8,7 @@
 
     <link href="css/styles.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-        crossorigin="anonymous"></script>
-    <style>
-        col-lg-6 {
-            position: static;
-            right: 30px;
-            padding:105px;
-            margin:-104px;
-        }
-        </style>
-
-    
+        crossorigin="anonymous"></script>   
 </head>
 
 <body>
