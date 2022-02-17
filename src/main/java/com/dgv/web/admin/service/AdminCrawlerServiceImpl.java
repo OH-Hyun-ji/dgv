@@ -1,8 +1,11 @@
 package com.dgv.web.admin.service;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import com.dgv.web.admin.dao.AdminCrawlerDAO;
+import com.dgv.web.admin.vo.AdminCityVO;
 import com.dgv.web.admin.vo.AdminMovieInfoVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminTheaterLocationVO;
@@ -24,6 +27,8 @@ public class AdminCrawlerServiceImpl implements AdminCrawlerService {
 
 	public void insertRegion(AdminRegionVO vo) {
 		adminCrawlerDAO.insertRegion(vo);		
-	}	
+	}
+
+
 	
 }
