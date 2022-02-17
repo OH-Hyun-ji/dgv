@@ -21,15 +21,12 @@
             <div id="layoutSidenav_content">
                 <main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4" style="font-size: 1.5rem;">게시글 관리</h1>
+					<h1 class="mt-4" style="font-size: 1.5rem;"><h1>게시글 관리</h1>
 					<div class="card mb-4"></div>
-					<div class="card mb-4">
 
-						<div class="card-header" >고객문의(답변대기)</div>
-					</div>
+				
 					<div class="card mb-4">
-						<div class="card-body">
-							<i class="fas fa-table me-1"></i> 목록
+					
 
 						<div class="card-header" >
 							<i class="fas fa-table me-1"></i> 고객문의(답변대기)목록

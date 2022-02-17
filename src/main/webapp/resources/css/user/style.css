@@ -338,7 +338,10 @@ button:active i {
     font-size: 37px;
     margin-top: 4%;
     font-weight: bolder;
-	
+}
+
+.id-up{
+	color: white;
 }
 
 .form-wrapper > input {

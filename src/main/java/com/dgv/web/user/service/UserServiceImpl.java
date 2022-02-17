@@ -2,6 +2,7 @@ package com.dgv.web.user.service;
 
 
 import org.springframework.stereotype.Service;
+
 import com.dgv.web.user.dao.UserDAO;
 import com.dgv.web.user.vo.UserVO;
 
@@ -20,5 +21,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void register(UserVO userVO) {
 		userDAO.register(userVO);
+	}
+	
+	//로그인처리
+	@Override
+	public UserVO login(UserVO userVO)throws Exception{
+		return userDAO.login(userVO);
 	}
 }

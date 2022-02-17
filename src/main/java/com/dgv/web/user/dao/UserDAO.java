@@ -1,8 +1,5 @@
 package com.dgv.web.user.dao;
 
-import javax.inject.Inject;
-
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,7 +15,11 @@ public class UserDAO{
 	
 	//회원가입처리
 	public void register(UserVO userVO) {
-		sqlSessionTemplate.insert("UserDAO.register",userVO);
 		
+		sqlSessionTemplate.insert("UserDAO.register",userVO);
+	}
+	//로그인처리
+	public UserVO login(UserVO userVO) {
+		return sqlSessionTemplate.selectOne("UserDAO.login",userVO);
 	}
 }
