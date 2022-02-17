@@ -12,13 +12,13 @@ import com.dgv.web.user.vo.UserVO;
 
 @Repository
 public class UserDAO{
+	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
 	//회원가입처리
 	public void register(UserVO userVO) {
-		
-		sqlSessionTemplate.insert("UserJoinDAO.register",userVO);
+		sqlSessionTemplate.insert("UserDAO.register",userVO);
 		
 	}
 }

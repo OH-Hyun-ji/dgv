@@ -220,14 +220,14 @@
 				<div class="movie-chart-btn-wrap">
 					<div class="chart-name-wrap">
 						<h3>
-							<a href="#" class="active" id="btnMovie"
-								style="font-weight: bold; font-size: 31px;">무비차트</a>
+							<a href="/movieChart.do" class="active" id="btnMovie"
+								style="font-weight: bold; font-size: 31px;">Movie List</a>
 						</h3>
 						<h3>
 							<a href="#" id="btnNextMovie" style="font-size: 30px;">상영예정작</a>
 						</h3>
 					</div>
-					<a href="#" class="movie-all-view">전체보기</a>
+					<a href="/movieChart.do" class="movie-all-view">전체보기</a>
 				</div>
 				<!-- swiper -->
 				<!-- 1번 -->
@@ -247,7 +247,7 @@
 										alt="12세">
 								</div>
 								<div class="movie-hidden-btn">
-									<a href="#" class="movie-detail">"상세보기"</a> <a href--="#"
+									<a href="/movieDetail.do" class="movie-detail">"상세보기"</a> <a href="#"
 										class="movie-ticketing">예매하기</a>
 								</div>
 							</div>
@@ -677,8 +677,7 @@
 								</dd>
 							</dl>
 							<div class="client_btn_wrap">
-								<a href="#">FAQ</a> <a href="#">1:1 문의</a> <a href="#">분실물
-									문의</a> <a href="#">대관/단체 문의</a>
+								<a href="#">FAQ</a> <a href="#">1:1 문의</a>
 							</div>
 						</div>
 					</div>

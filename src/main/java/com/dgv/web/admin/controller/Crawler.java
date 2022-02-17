@@ -23,7 +23,7 @@ public class Crawler {
 	
 	@RequestMapping("/insertCity.mdo")
 	public String crawlCity() {
-		System.out.println("���õ���");
+		System.out.println("크롤링");
 		try {
 			String url = "https://www.megabox.co.kr/theater/list";
 			
@@ -47,13 +47,13 @@ public class Crawler {
 	
 	@RequestMapping("/insertTheater.mdo")
 	public String crawlTheater() {
-		System.out.println("�������");
+		System.out.println("크롤링이닷");
 		
 		try {
 			String url ="https://www.megabox.co.kr/theater?brchNo=1372";
-			System.out.println("�������1");
+			
 			Connection conn = Jsoup.connect(url);
-			System.out.println("�������2");
+		
 			Document doc = conn.get();
 			
 			Elements city = doc.select("div.theater-area-list .depth1");
@@ -63,7 +63,7 @@ public class Crawler {
 			for(int i=0; i<city.size(); i++) {
 				String citys = city.get(i).text();
 				list.add(citys);
-				if(list.get(i).equals("����")) {
+				if(list.get(i).equals("서울")) {
 					for(int j=0;j<18;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -73,7 +73,7 @@ public class Crawler {
 						adminCrawlerService.insertRegion(vo);
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("���")) {
+				}else if(list.get(i).equals("경기")) {
 					for(int j=19;j<47;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -82,7 +82,7 @@ public class Crawler {
 						adminCrawlerService.insertRegion(vo);
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("��õ")) {
+				}else if(list.get(i).equals("인천")) {
 					for(int j=47;j<52;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -92,7 +92,7 @@ public class Crawler {
 					
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("����/��û/����")) {
+				}else if(list.get(i).equals("대전/충청/세종")) {
 					for(int j=52;j<69;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -100,7 +100,7 @@ public class Crawler {
 						adminCrawlerService.insertRegion(vo);
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("�λ�/�뱸/���")) {
+				}else if(list.get(i).equals("부산/대구/경상")) {
 					for(int j=69;j<91;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
@@ -108,20 +108,24 @@ public class Crawler {
 						adminCrawlerService.insertRegion(vo);
 					}
 					System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("����/����")) {
+				}else if(list.get(i).equals("광주/전라")) {
 					for(int j=91;j<100;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
 						AdminRegionVO vo = new AdminRegionVO(i+1, regions);
 						adminCrawlerService.insertRegion(vo);
 					}System.out.println("/////////////////////////////////");
-				}else if(list.get(i).equals("����")) {
+				}else if(list.get(i).equals("강원")) {
 					for(int j=100;j<104;j++) {
 						String regions = region.get(j).text();
 						System.out.println(regions);
 						AdminRegionVO vo = new AdminRegionVO(i+1, regions);
 						adminCrawlerService.insertRegion(vo);
+						
+						
+
 					}	
+					
 				}
 			}
 			
