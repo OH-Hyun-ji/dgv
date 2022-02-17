@@ -17,7 +17,7 @@
 }
 #userLankAdd {
   	width: 11%;
-    margin-left: 77%;
+    margin-left: 68%;
     background: linear-gradient(Red -32%, Orange 79%);
     border-radius: 5px;
     color: white;

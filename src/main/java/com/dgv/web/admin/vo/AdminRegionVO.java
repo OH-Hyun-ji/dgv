@@ -1,48 +1,53 @@
 package com.dgv.web.admin.vo;
 
+import java.util.List;
+
 public class AdminRegionVO {
 
-	Integer regionCode;
-	Integer cityCode;
-	String regionName;
-
+	private Integer region_code;
+	private Integer city_code;
+	private String region_name;
+	private List<AdminTheaterVO> theaterList;
 	
 	
-	public AdminRegionVO(Integer cityCode,String regionName) {
+	public AdminRegionVO(Integer region_code, String region_name) {
 		super();
-		this.cityCode=cityCode;
-		this.regionName = regionName;
+		this.region_code = region_code;
+		this.region_name = region_name;
 	}
-
-	public Integer getRegionCode() {
-		return regionCode;
+	public List<AdminTheaterVO> getTheaterList() {
+		return theaterList;
 	}
-
-	public void setRegionCode(Integer regionCode) {
-		this.regionCode = regionCode;
+	public void setTheaterList(List<AdminTheaterVO> theaterList) {
+		this.theaterList = theaterList;
 	}
-
-
-	public Integer getCityCode() {
-		return cityCode;
+	public Integer getRegion_code() {
+		return region_code;
 	}
-
-	public void setCityCode(Integer cityCode) {
-		this.cityCode = cityCode;
+	public void setRegion_code(Integer region_code) {
+		this.region_code = region_code;
 	}
-
-	public String getRegionName() {
-		return regionName;
+	public Integer getCity_code() {
+		return city_code;
 	}
-
-	public void setRegionName(String regionName) {
-		this.regionName = regionName;
+	public void setCity_code(Integer city_code) {
+		this.city_code = city_code;
 	}
-
+	public String getRegion_name() {
+		return region_name;
+	}
+	public void setRegion_name(String region_name) {
+		this.region_name = region_name;
+	}
 	@Override
 	public String toString() {
-		return "AdminRegionVO [regionCode=" + regionCode + ", cityCode=" + cityCode + ", regionName=" + regionName
+		return "AdminRegionVO [region_code=" + region_code + ", city_code=" + city_code + ", region_name=" + region_name
 				+ "]";
 	}
+
+	
+ 
+	
+	
 
 }

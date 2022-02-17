@@ -9,6 +9,7 @@ import com.dgv.web.user.vo.UserVO;
 
 @Repository
 public class UserDAO{
+	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
@@ -20,5 +21,6 @@ public class UserDAO{
 	//로그인처리
 	public UserVO login(UserVO userVO) {
 		return sqlSessionTemplate.selectOne("UserDAO.login",userVO);
+
 	}
 }
