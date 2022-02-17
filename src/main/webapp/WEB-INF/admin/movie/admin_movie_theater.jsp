@@ -57,8 +57,6 @@
 	$(document).ready(function() {
 		
 		const totalList = ${totalListJson};
-		
-		
 		const cityUl = $("#dgvCity")
 		const cityChoice ='';
 		
@@ -73,10 +71,6 @@
 			li.append(a)
 			cityUl.append(li)		
 		}
-		console.log("ddd "+ totalList[0].regionList[0].region_name);
-		console.log("ffff"+ cityChoice);
-		console.log(totalList);
-		console.log("212121 : "+totalList[0].regionList.length);
 		
 	})
 	
@@ -88,7 +82,7 @@
 	}
 	
 	function regionBtnAction(){
-	//	clean();
+		clean();
 		console.log("선택한 도시  :"+ cityChoice );
 		const totalList = ${totalListJson};
 		console.log("선택한 도시  :"+ cityChoice );
@@ -136,8 +130,8 @@
 	
 	//초기화 시키기
 	function clean(){
-		const cleanParent = document.getElementById("dgvRegion");
-		cleanParent.removeChild();
+		const cleanParent = $("#dgvRegion")
+		cleanParent.empty();
 		
 	}
 		

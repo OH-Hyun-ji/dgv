@@ -17,9 +17,9 @@
 	            <div id="layoutSidenav_content">
 	                <main>
 	                    <div class="container-fluid px-4">
-	                        <h1 class="mt-4">AdminMain</h1>
+	                        <h1 class="mt-4" style="font-weight: 800; font-size: 32px;">AdminMain</h1>
 	                        <ol class="breadcrumb mb-4">
-	                            <li class="breadcrumb-item active">Dashboard</li>
+	                            <li class="breadcrumb-item active" style="font-size: 27px; margin-left: 2%; margin-top: 1%;">Dashboard</li>
 	                        </ol>
 	                        <div class="row">
 	                            <div class="col-xl-3 col-md-6">

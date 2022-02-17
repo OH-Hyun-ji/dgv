@@ -10,4 +10,7 @@ public interface UserService {
 	
 	// 로그인처리
 	UserVO login(UserVO userVO) throws Exception;
+	
+	//회원가입 ID중복체크
+	int checkId(String id); 
 }

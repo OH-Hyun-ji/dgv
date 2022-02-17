@@ -6,10 +6,16 @@
 	<mapper namespace="UserDAO">
 		
 		<insert id="register" parameterType="UserVO">
-			INSERT INTO user_info VALUES(nextval('seq_user'),#{user_id},#{user_pw},#{user_name},#{user_phone},#{user_email},#{user_birth})
+			INSERT INTO user_info VALUES(nextval('seq_user'),#{user_id},#{user_pw},#{user_name},#{user_phone},#{user_email},#{user_year},#{user_month},#{user_day})
 		</insert>
 		
 		<select id="login" resultType="com.dgv.web.user.vo.UserVO">
 			SELECT * FROM user_info WHERE user_id = #{user_id}
+		</select>
+		
+		<select id="checkId" resultType="int" parameterType="String">
+			SELECT COUNT(*)
+			FROM user_info
+			WHERE user_id=#{user_id}
 		</select>
 	</mapper>

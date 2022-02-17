@@ -51,7 +51,7 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <h2 style="font-weight: bold;"> Genre List</h2>
-                                        <button class="w-btn-outline w-btn-red-outline" style="box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" margin-bottom: 1%; type="button">
+                                        <button class="w-btn-outline w-btn-red-outline" style="margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" margin-bottom: 1%; type="button">
                                             Register
                                         </button>
                                         <tr>
@@ -94,8 +94,8 @@
                             <div class="card-body-one">
                                 <div
                                     class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"style=" margin-top: 10%;">
-                                    <h2 style="font-weight: bold;">MovieAge List</h2>
-                                    <button class="w-btn-outline w-btn-red-outline" style="box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" type="button">
+                                    <h2 style="font-weight: bold; margin-left: 1%;">MovieAge List</h2>
+                                    <button class="w-btn-outline w-btn-red-outline" style="margin-left: 1%;margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" type="button">
                                         Register
                                     </button>
                                     <div class="dataTable-top">

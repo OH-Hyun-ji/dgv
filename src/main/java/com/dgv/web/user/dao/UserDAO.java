@@ -23,4 +23,9 @@ public class UserDAO{
 		return sqlSessionTemplate.selectOne("UserDAO.login",userVO);
 
 	}
+	
+	//회원가입 ID 중복체크 
+	public int checkId(String id) {
+		return sqlSessionTemplate.selectOne("UserDAO.checkId", id);
+	}
 }

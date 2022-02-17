@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
 	public UserVO login(UserVO userVO)throws Exception{
 		return userDAO.login(userVO);
 	}
+
+	@Override
+	public int checkId(String id) {
+		return userDAO.checkId(id);
+	}
 }

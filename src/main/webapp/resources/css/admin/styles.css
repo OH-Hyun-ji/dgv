@@ -64,6 +64,10 @@
   --bs-body-bg: #fff;
 }
 
+.card.mb-4 {
+    margin-top: 1%;
+}
+
 *,
 *::before,
 *::after {
@@ -350,6 +354,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  font-size: 13px;
 }
 
 button,
@@ -437,14 +442,6 @@ legend + * {
   -webkit-appearance: textfield;
 }
 
-/* rtl:raw:
-[type="tel"],
-[type="url"],
-[type="email"],
-[type="number"] {
-  direction: ltr;
-}
-*/
 ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
