@@ -39,6 +39,6 @@ public class UserRegisterController {
 		userService.register(userVO);
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		
-		return "/login/user_login";
+		return "/login/user_loginForm";
 	}
 }
