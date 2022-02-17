@@ -47,8 +47,8 @@
 				/WEB-INF/user-servlet.xml
 			</param-value>
 		</init-param>
-		
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>user</servlet-name>
 		<url-pattern>*.do</url-pattern>

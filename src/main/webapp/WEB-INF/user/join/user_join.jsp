@@ -35,13 +35,13 @@
 				</p>
 				<div class="form-wrapper form-wrapper-id">
 					<div class="form-wrapper">
-						<input id="id" name="id" type="text" placeholder="아이디"
+						<input id="id" name="user_id" type="text" placeholder="아이디"
 							class="form-control">
 					</div>
 				</div>
 
 				<div class="form-wrapper">
-					<input type="password" name="password" placeholder="비밀번호"
+					<input type="password" name="user_pw" placeholder="비밀번호"
 						id="password" class="form-control"> <i
 						class="zmdi zmdi-lock"></i>
 				</div>
@@ -52,7 +52,7 @@
 				</div>
 
 				<div class="form-wrapper">
-					<input name="name" type="text" placeholder="이름"
+					<input name="user_name" type="text" placeholder="이름"
 						class="form-control"> <i class="zmdi zmdi-account-box"></i>
 				</div>
 				<!-- BIRTH -->
@@ -83,20 +83,19 @@
 				</div>
 
 				<div class="form-wrapper">
-					<input type="text" name="phoneNumber" placeholder="휴대폰번호"
+					<input type="text" name="user_phone" placeholder="휴대폰번호"
 						class="form-control"> <i class="zmdi zmdi-phone"></i>
 				</div>
 
 				<div class="form-wrapper">
-					<input type="email" name="email" placeholder="이메일"
+					<input type="email" name="user_email" placeholder="이메일"
 						class="form-control"> <i class="zmdi zmdi-email"></i>
 				</div>
 
-				<button class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 80%; margin-left: 11%; padding-top: 6px;">
+				<button class="w-btn w-btn-gra3 w-btn-gra-anim" type="submit" style="width: 80%; margin-left: 11%; padding-top: 6px;">
         			<span class="sign-up-font">Register</span>
    				 </button>
-				
-			</form>
+				</form>
 		</div>
 	</div>
 	<script src="./js/register.js"></script>

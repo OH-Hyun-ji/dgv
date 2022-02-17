@@ -5,12 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Movie List</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <style>
 #delBT {
 	border: none;
@@ -19,15 +16,17 @@
 	font-weight: bolder;
 }
 #userLankAdd {
-	width: 11%;
-	margin-top: 17px;
-	margin-left: 88%;
-	height: 43px;
-	background-color: #f1eeee;
-	border-color: #f1eeee;
-	box-shadow: 0px 0px 20px #000;
-	border-radius: 2px;
-	font-weight: bold;
+  	width: 11%;
+    margin-left: 77%;
+    background: linear-gradient(Red -32%, Orange 79%);
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    border-color: burlywood;
+    height: 42px;
+    margin-top: 19px;
+    font-size: 23px;
+}
 }
 </style>
 
@@ -48,20 +47,22 @@
 				<div class="card mb-4"></div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 영화목록
+						<i class="fas fa-table me-1"></i> 영화등록
 					</div>
-					<div>
+					<div style="display: inline;">
+						<span style="font-size: 24px; font-weight: 800; margin-left: 2%;"><i class="fas fa-table me-1"></i>Movie List</span>
+							<button id="userLankAdd" onclick='adminTerms()'>Register</button>
 						<!--약관 동의 등록 창띄우기-->
 						<script>
                                     function adminTerms(){
-                                    var popupX =(window.screen.width/2)-(200/2);
+                                    var popupX =(window.screen.width/2)-(300/2);
                                     var popupY =(window.screen.height/2)-(300/2);
                             
-                                    window.open('/movieRegister.mdo','','width=430,height=750,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+                                    window.open('/movieRegister.mdo','','width=1200,height=900,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
                                     }
                                 </script>
-
-						<button id="userLankAdd" onclick='adminTerms()'>영화등록</button>
+						
+						
 					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
