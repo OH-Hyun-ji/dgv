@@ -89,6 +89,10 @@
 						<i class="zmdi zmdi-email"></i>
 							<div style="text-align: center;"><span id="emailCK"></span></div>
 				</div>
+				<div style=" text-align: center;">
+					 <input type="checkbox" name="user_term" value="OK" >
+					 <span style="color: orange;">약관동의여부</span>
+				</div>
 				<div style="display: flex; justify-content: space-evenly;">
 					<a id="findId" href="#">ID 찾기 ></a>
 					<a id="findPw" href="#">PW 찾기 ></a>
@@ -115,12 +119,11 @@
 		//회원가입 유효성 검사
 		//keyup -> 마우스 눌렀다가 떼면 이벤트 발생
 		
-		$("#id").on('focusout', function(){
-			
+		$("#id").on('keyup', function(){
 			if($("#id").val() === ""){ //빈칸 막기
 				$("#id").css("box-shadow","0px 0px 20px 11px tomato");
 				$("#id").css("background-color","pink");
-				$("#idCK").html('<b style="color:orangered; font-size: smaller;;">[ 아이디는 필수 입력값입니다! ]');
+				$("#idCK").html('<b style="color:orangered; font-size: smaller;">[ 아이디는 필수 입력값입니다! ]');
 				chk1 =false;
 			}else if(!getIdCheck.test($("#id").val())){
 				$("#id").css("box-shadow","0px 0px 20px 11px tomato");
@@ -133,7 +136,6 @@
 			let userId = $('#id').val(); //input에 사용자가 입력한값 받아오고 
 			console.log("userId : " + userId)
 			$.ajax({
-	//			type: "POST",
 				method:"POST", //서버전송
 				url:"/join.do", //controller쪽 url
 				contentType: "text/plain", // 서버에 보내는 데이터 형식
@@ -146,7 +148,7 @@
 						if(!getIdCheck.test($("#id").val())){
 							$("#id").css("box-shadow","0px 0px 20px 11px tomato");
 							$("#id").css("background-color","pink");
-							$("#idCK").html('<b style="color:orangered; font-size: smaller;">[ 영문/숫자/특수문자 최대 15자입니다! ]');
+							$("#idCK").html('<b style="color:orangered; font-size: smaller;">[ 영문/숫자포함 최대 15자입니다! ]');
 							chk1=false;
 						}else {
 						$("#id").css("box-shadow","0px 0px 20px 11px aquamarine");
@@ -162,7 +164,7 @@
 						chk1=false;
 						return false;
 					}else {
-						alert("결과값을 받지 못했습니다. 관리자에게 문의를 왜해 왜 너가 나오냐고 나오지마 통신성공시켜 제발....");
+						alert("결과값을 받지 못했습니다. ");
 						return false;
 					}
 				},//success function

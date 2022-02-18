@@ -138,7 +138,7 @@ public class Crawler {
 	
 	@RequestMapping("/insertMovieInfo.mdo")
 	public String crawlMovie() {
-		System.out.println("��ȭ����!!");
+		System.out.println("등록 !!");
 		
 		try {
 			String URL = "http://www.cgv.co.kr/movies/detail-view/?midx=85603";

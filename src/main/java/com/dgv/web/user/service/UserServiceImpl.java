@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 	public UserVO login(UserVO userVO)throws Exception{
 		return userDAO.login(userVO);
 	}
-
+	//ID 중복 체크 
 	@Override
 	public int checkId(String id) {
 		return userDAO.checkId(id);

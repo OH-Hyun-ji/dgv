@@ -46,7 +46,7 @@
 							<button id="dgvRegionBtn" type="button" style="width: 100%;margin-top:0;" class="btn btn-danger dropdown-toggle"
 								data-bs-toggle="dropdown" aria-expanded="false" onclick="regionBtnAction()">Region
 							</button>
-							<input class="cityZone city-list" style="margin-left: 1px;" readonly="readonly">
+							<input class="cityZone city-list" id="regionChoice" style="margin-left: 1px;" readonly="readonly">
 							<ul id="dgvRegion" class="dropdown-menu" style="width: 100%;">
 									
 							</ul>
@@ -59,6 +59,7 @@
 		const totalList = ${totalListJson};
 		const cityUl = $("#dgvCity")
 		const cityChoice ='';
+		const regionChoice ='';
 		
 		
 		for(var i=0; i<totalList.length; i++) {
@@ -74,13 +75,23 @@
 		
 	})
 	
-	function dgvCityResult(cityResult) { // input에 선택한 지역 나타나게 함
-		var city = $(cityResult).text();
-		$("#cityChoice").val(city);
+	function dgvCityResult(cityResult) { // input에 선택한 도시 나타나게 함
+		const city = $(cityResult).text();
+		$("#cityChoice").val(city);  //선택한 요소의 속성값을 city로 변경한다.
 		cityChoice = document.getElementById('cityChoice').value;
 		console.log("input 현재값  :"+ cityChoice );
 	}
+	function dgvRegionResult(regionResult){ //input에 선택한 지역 나타나게함
+		const region =$(regionResult).text();
+		$("#regionChoice").val(region);
+		regionChoice = document.getElementById('regionChoice').value;
+		console.log("region 현재값 : " + regionChoice);
+		
+		
+		
+	}
 	
+	//카테고리~~~~~
 	function regionBtnAction(){
 		clean();
 		console.log("선택한 도시  :"+ cityChoice );
@@ -105,7 +116,7 @@
 					const a = $("<a>")
 					.attr("class","dropdown-item")
 					.attr("href","#")
-					.attr("onclick","#")
+					.attr("onclick","dgvRegionResult(this)")
 					.text(totalList[i].regionList[j].region_name);
 					li.append(a)
 					regionUI.append(li)		
