@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.movie-all-container {
+    width: 100%;
+}
+
+.form-group.dgvContainer {
+    display: inline-grid;
+    text-align: end;
+}
+.dgvTopWrapping{
+    display: flex;
+}
+
+.dgvCitySite {
+    margin-left: 4%;
+}
+button.dgvRegBtn{
+    margin-left: 58%;
+    margin-bottom: 9%;
+    height: 46px;
+    width: 22%;
+    font-size: 21px;
+    border: 1px solid;
+}
+.movie-all-container.dgvBackground-img{
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3)),url(https://dgvworld.s3.ap-northeast-2.amazonaws.com/movieRegister1.jpg);
+    height: 1196px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-group.dgvTheater-width {
+    width: 17%;
+}

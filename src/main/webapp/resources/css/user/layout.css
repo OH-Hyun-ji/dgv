@@ -347,7 +347,7 @@ h3.sub > span > strong{ color:#c62422;}
 
 /* Heading Css (combo) */
 .tit-heading-wrap {position:relative; height:60px; margin-top:30px; border-bottom:3px solid #241d1e;}
-.tit-heading-wrap > h3 {display:inline-block; position:relative; height:inherit; margin:0; background-image:none; color:#222; font-weight:500; font-size:32px; text-align:left; vertical-align:middle;}
+.tit-heading-wrap > h3 {display:inline-block; position:relative; height:inherit; margin:0; background-image:none; color:#222; font-weight:500; font-size:36px; text-align:left; vertical-align:middle;}
 *+html .tit-heading-wrap > h3 { display:inline;}
 .tit-heading-wrap > h3 + a {display:inline-block;}
 .tit-heading-wrap > .submenu {position:absolute; top:18px; right:0;}
@@ -538,6 +538,7 @@ h4.tit-showtime {padding-bottom:18px; color:#333; font-size:31px; text-align:lef
 .box-contents{
 	text-align: center;
 }
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 .sect-showtimes .type-hall .screentype,
 .sect-mycgv-cancle .screentype,
 .cols-mycgv-booking .lst-item .box-contents .screentype {display:inline-block;}
@@ -798,17 +799,7 @@ p.main_banner_text2.type1 {color:#497b67}
 p.main_banner_text2.type2 {color:#1a3849;width:270px;left:177px}
 p.main_banner_text2.type3 {color:#29343d;width:247px;left:203px;top:250px}
 p.main_banner_text2.type4 {color:#5a3a4e}
-/*My CGV - 취소내역 예매 환불규정 툴팁 추가*/
 
-/*My CGV - 취소내역 예매 환불규정 툴팁 추가*/
-.sect-mycgv-cancle .tbl-data tbody td.mv_payment {width: 24%;padding-right: 50px;overflow: visible;}
-.sect-mycgv-cancle td.mv_cancel_date {width: 15%;}
-.cancel_tooltip span {display: block;}
-.cancel_tooltip {position: relative;padding-right: 26px;}
-.i_cancel_wrap {display: none;}
-a.ico_cancel_i {position: absolute;top: 50%;right: 0;margin-top: -8px;}
-.cancel_tooltip .tooltip_con {text-indent: -9999px;}
-.cancel_tooltip.cardandphone .i_cancel_wrap, .cancel_tooltip.card .i_cancel_wrap, .cancel_tooltip.phone .i_cancel_wrap, .cancel_tooltip.banking .i_cancel_wrap {display: block}
 
 
 

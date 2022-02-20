@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminTheaterDAO">
+
+	<resultMap type="AdminCityVO" id="cityVo">
+	  <result column="city_code" property="city_code" jdbcType="INTEGER"/>
+	  <result column="city_name" property="city_name" jdbcType="VARCHAR" />
+	  <collection property="regionList" ofType="AdminRegionVO">
+		<result column="region_code" property="region_code" jdbcType="INTEGER"/>
+		<result column="region_name" property="region_name" jdbcType="VARCHAR"/>
+		<result column="city_code" property="city_code" jdbcType="INTEGER"/>
+		<collection property="theaterList" ofType="AdminTheaterVO">
+  			<result column="theater_code" property="theater_code" jdbcType="INTEGER"/>
+  			<result column="theater_name" property="theater_name" jdbcType="VARCHAR" />
+	  		<result column="theater_seat_count" property="theater_seat_count" jdbcType="INTEGER"/>
+	  	</collection>
+	  </collection>
+	</resultMap>
+	
+	<resultMap type="AdminRegionVO" id="regionVo">
+	  <result column="region_code" property="region_code" jdbcType="INTEGER"/>
+	  <result column="city_code" property="city_code" jdbcType="INTEGER"/>
+	  <result column="region_name" property="region_name" jdbcType="VARCHAR" />
+	  <collection property="theaterList" javaType="java.util.ArrayList" ofType="AdminTheaterVO"/>
+	</resultMap>
+
+	<select id="totalTheater" resultMap="cityVo" >
+		SELECT 
+			city.city_code AS "city_code",
+			city.city_name AS "city_name",
+			region.region_code AS "region_code",
+			region.region_name AS "region_name",
+			theater.theater_code AS "theater_code",
+			theater.theater_name AS "theater_name",
+			theater.theater_seat_count AS "theater_seat_count"
+		FROM dgv_city_info city
+		LEFT OUTER JOIN dgv_region_info region
+		ON city.city_code = region.city_code
+		LEFT OUTER JOIN movie_theater theater
+		ON region.region_code = theater.region_code
+	</select>
+</mapper>

@@ -1,0 +1,533 @@
+@charset "utf-8";
+
+/* 본격 컨텐츠 /////////////////////////////////////////////////////////////////////////// */
+#contaniner {
+    /* overflow: hidden; */
+    position: relative;
+    width: 100%;
+    z-index: 7;
+}
+
+/* 영화차트 리스트 */ 
+[class|="sect"][class*="chart"] {
+    position: relative;
+    overflow: hidden;
+}
+[class|="sect"][class*="chart"] > ol {
+    padding-top: 30px;
+    margin-left: -64px;
+    zoom: 1;
+}
+[class|="sect"][class*="chart"] > ol:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+[class|="sect"][class*="chart"] > h4 {
+    margin-top: 30px;
+    color: #222222;
+    font-size: 21px;
+    font-weight: 500;
+}
+[class|="sect"][class*="chart"] > h4 + ol {
+    padding-top: 20px;
+}
+[class|="sect"][class*="chart"] > h3:first-child + ol,
+[class|="sect"][class*="chart"] > h4:first-child + ol {
+    padding-top: 0;
+}
+[class|="sect"][class*="chart"] > h3:first-child + ol .rank,
+[class|="sect"][class*="chart"] > h4:first-child + ol .rank,
+[class|="sect"][class*="chart"] > .spec + ol .rank {
+    background: #fb4357;
+}
+[class|="sect"][class*="chart"] > h3 {
+    margin-top: 30px;
+    color: #222222;
+    font-size: 21px;
+    font-weight: 500;
+}
+[class|="sect"][class*="chart"] > h3 + ol {
+    padding-top: 20px;
+}
+[class|="sect"][class*="chart"] > ol > li {
+    float: left;
+    width: 197px;
+    margin-left: 64px;
+    padding-bottom: 30px;
+}
+[class|="sect"][class*="chart"] > h4 + ol > li:first-child .title,
+[class|="sect"][class*="chart"] > h3 + ol > li:first-child .title {
+    width: 90%;
+}
+[class|="sect"][class*="chart"] .chart-ad {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+[class|="sect"][class*="chart"] .btn-more-fontbold {
+    float: right;
+    margin-top: 10px;
+}
+[class|="sect"][class*="chart"] .box-image {
+    position: relative;
+    width: 197px;
+    min-height: 272px;
+    margin-bottom: 10px;
+}
+/* [class|="sect"][class*="chart"] .thumb-image{  border: 6px solid #000000;} */
+[class|="sect"][class*="chart"] .thumb-image > img {
+    height: 260px;
+}
+[class|="sect"][class*="chart"] .screentype {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 29px;
+    padding-top: 27px;
+    background: url("../images/common/bg/bg_poster-gradation.png") 0 0 repeat-x;
+    text-align: center;
+}
+[class|="sect"][class*="chart"] .screentype a,
+[class|="sect"][class*="chart"] .screentype span {
+    width: 59px;
+    height: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+[class|="sect"][class*="chart"] .screentype .imax {
+    background-position: 0 -780px;
+}
+[class|="sect"][class*="chart"] .screentype .threeD {
+    background-position: 0 -800px;
+}
+[class|="sect"][class*="chart"] .screentype .forDX {
+    background-position: 0 -820px;
+}
+[class|="sect"][class*="chart"] .screentype .soundX {
+    background-position: 0 -840px;
+}
+[class|="sect"][class*="chart"] .screentype .arthouse {
+    background-position: 0 -860px;
+}
+[class|="sect"][class*="chart"] .screentype .collage {
+    background-position: 0 -860px;
+}
+[class|="sect"][class*="chart"] .screentype .screenx {
+    background-position: 0 -880px;
+}
+[class|="sect"][class*="chart"] .screentype .gold {
+    background-position: 0 -900px;
+}
+[class|="sect"][class*="chart"] .screentype .cine {
+    background-position: 0 -920px;
+}
+
+[class|="sect"][class*="chart"] .rank {
+    display: block;
+    height: 28px;
+    margin-bottom: 4px;
+    /*border: 6px solid #000000;*/
+    background: #333333;
+    color: #ffffff;
+    font-size: 19px;
+    text-align: center;
+    line-height: 28px;
+}
+[class|="sect"][class*="chart"] .rank.on {
+    background: #fb4357;
+}
+[class|="sect"][class*="chart"] .no1 {
+    position: absolute;
+    right: -15px;
+    bottom: -45px;
+    display: block;
+    width: 48px;
+    height: 74px;
+    background: url("../images/sprite/sprite_icon.png") -300px -20px no-repeat;
+    font: 0/0 a;
+    zoom: 1;
+    z-index: 1;
+}
+
+[class|="sect"][class*="chart"] .title {
+    font-size: 15px;
+}
+[class|="sect"][class*="chart"] .score {
+    margin-top: 7px;
+}
+[class|="sect"][class*="chart"] .score .percent span {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: top;
+}
+[class|="sect"][class*="chart"] .point {
+    margin-left: 2px;
+    padding-left: 6px;
+    background: url("../images/common/bg/bg_writeinfo.gif") left 1px no-repeat;
+}
+[class|="sect"][class*="chart"] .point li {
+    margin-left: 2px;
+}
+[class|="sect"][class*="chart"] .txt-info {
+    margin-top: 3px;
+    height: 13px;
+    color: #666666;
+    font-weight: 500;
+    white-space: nowrap;
+}
+[class|="sect"][class*="chart"] .like {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+[class|="sect"][class*="chart"] .btn-like {
+    width: 23px;
+    height: 23px;
+    background-position: -60px -66px;
+}
+[class|="sect"][class*="chart"] .btn-like.on {
+    background-position: -83px -66px;
+}
+[class|="sect"][class*="chart"] .count {
+    height: 25px;
+    line-height: 23px;
+    vertical-align: middle;
+}
+[class|="sect"][class*="chart"] .count strong {
+    padding: 0 4px;
+}
+[class|="sect"][class*="chart"] .count .corner-arrow {
+    left: -3px;
+    top: 50%;
+    width: 4px;
+    height: 6px;
+    margin-top: -4px;
+    background-position: -10px 0;
+    background-color: #ffffff;
+}
+[class|="sect"][class*="chart"] .link-reservation {
+    width: 57px;
+    height: 25px;
+    background-position: -96px 0;
+}
+[class|="sect"][class*="chart"] .dday {
+    display: inline-block;
+}
+[class|="sect"][class*="chart"] .warp-chart-ad {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+[class|="sect"][class*="chart"] .spec {
+    padding: 20px 22px;
+    background: #f5f3e8;
+    line-height: 1.8;
+}
+[class|="sect"][class*="chart"] .spec dt {
+    width: 90px;
+    padding-left: 6px;
+    background: url("../images/common/bg/blit.gif") 0 7px no-repeat;
+}
+[class|="sect"][class*="chart"] .spec dd {
+    padding-left: 96px;
+}
+[class|="sect"][class*="chart"] .sort {
+    margin: 40px 0 20px;
+    text-align: center;
+}
+
+/* [class|="sect"][class*="chart"] .list-more{} */
+[class|="sect"][class*="chart"] .list-more {
+    padding-top: 0;
+}
+[class|="sect"][class*="chart"] .list-more li {
+    margin: 0 0 -3px;
+    padding: 30px 0 30px 64px;
+}
+[class|="sect"][class*="chart"] .list-more li:first-child,
+[class|="sect"][class*="chart"] .list-more li:first-child + li,
+[class|="sect"][class*="chart"] .list-more li:first-child + li +li,
+[class|="sect"][class*="chart"] .list-more li:first-child + li + li + li {
+    margin-top: 0;
+    border-top: none;
+}
+.wrap-movie-chart .box-contents {
+    height: 93px;
+}
+
+div {
+    display: block;
+}
+#contents {
+    clear: both;
+    padding-bottom: 50px;
+}
+.sect-sorting {
+    position: relative;
+    margin-top: 20px;
+    text-align: right;
+}
+
+#cgvwrap .cgv-ad-wrap .sect-head-ad,
+#contents,
+.foot,
+.head,
+.im-wrap,
+.sect-cinfo,
+.sect-smuse {
+    position: relative;
+    width: 980px;
+    margin: 0 auto;
+}
+
+.tit-heading-wrap {
+    position: relative;
+    height: 60px;
+    margin-top: 30px;
+    border-bottom: 3px solid #241d1e;
+}
+.tit-heading-wrap > h3 {
+    display: inline-block;
+    position: relative;
+    height: inherit;
+    margin: 0;
+    background-image: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 36px;
+    text-align: left;
+    vertical-align: middle;
+}
+.tit-heading-wrap > .submenu {
+    position: absolute;
+    top: 18px;
+    right: 0;
+}
+.tit-heading-wrap > .submenu > ul {
+    overflow: hidden;
+}
+.tit-heading-wrap > .submenu > ul > li:first-child {
+    margin-left: 0;
+}
+.tit-heading-wrap > .submenu > ul > li > a:focus,
+.tit-heading-wrap > .submenu > ul > li > a:hover,
+.tit-heading-wrap > .submenu > ul > li.on > a {
+    background: url("https://img.cgv.co.kr/r2014/images/common/ico/ico_arrow07.png") no-repeat 0 3px;
+    color: #fb4357;
+}
+.tit-heading-wrap > .submenu > ul > li {
+    float: left;
+    margin-left: 15px;
+}
+.tit-heading-wrap > .submenu > ul > li > a {
+    display: inline-block;
+    padding-left: 13px;
+    font-weight: 500;
+    font-size: 14px;
+}
+.tit-heading-wrap > .submenu > ul:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+.sect-sorting .nowshow {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+.hidden {
+    font: 0/0 a;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    zoom: 1;
+}
+.sect-sorting > select {
+    padding: 3px 5px;
+}
+.sect-sorting > select option {
+    height: 23px;
+    line-height: 23px;
+}
+.round.gray {
+    border: 2px solid #7b7b7b;
+    color: #7b7b7b;
+}
+.round > * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0 5px;
+}
+div[class^="sect-"]:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+[class|="wrap-movie"][class*="chart"] .sect-movie-chart {
+    margin-top: 30px;
+}
+[class|="sect"][class*="chart"] {
+    position: relative;
+    overflow: hidden;
+}
+div[class^="sect-"] {
+    clear: both;
+    zoom: 1;
+}
+[class|="sect"][class*="chart"] > h4 {
+    margin-top: 30px;
+    color: #222222;
+    font-size: 21px;
+    font-weight: 500;
+}
+[class|="sect"][class*="chart"] > h3:first-child + ol,
+[class|="sect"][class*="chart"] > h4:first-child + ol {
+    padding-top: 0;
+}
+[class|="sect"][class*="chart"] > ol > li {
+    float: left;
+    width: 197px;
+    margin-left: 64px;
+    padding-bottom: 30px;
+}
+[class|="sect"][class*="chart"] .box-image {
+    position: relative;
+    width: 197px;
+    min-height: 272px;
+    margin-bottom: 10px;
+}
+[class|="sect"][class*="chart"] > h3:first-child + ol .rank,
+[class|="sect"][class*="chart"] > h4:first-child + ol .rank,
+[class|="sect"][class*="chart"] > .spec + ol .rank {
+    background: #fb4357;
+}
+.box-image a {
+    display: block;
+}
+
+.thumb-image {
+    display: block;
+    position: relative;
+}
+[class|="sect"][class*="chart"] .thumb-image > img {
+    height: 260px;
+}
+.box-image img {
+    width: 100%;
+}
+img,
+input,
+select {
+    vertical-align: middle;
+}
+.ico-grade.grade-12 {
+    background-position: -51px 0;
+}
+.ico-grade {
+    display: block;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 21px;
+    height: 21px;
+    background: url("../images/12.png") no-repeat;
+    font: 0/0 a;
+    zoom: 1;
+}
+.wrap-movie-chart .box-contents {
+    height: 93px;
+}
+.box-contents > a {
+    display: block;
+}
+[class|="sect"][class*="chart"] > h4 + ol > li:first-child .title,
+[class|="sect"][class*="chart"] > h3 + ol > li:first-child .title {
+    width: 90%;
+}
+[class|="sect"][class*="chart"] .title {
+    font-size: 15px;
+}
+.title {
+    display: block;
+    color: #333333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+[class|="sect"][class*="chart"] .score {
+    margin-top: 7px;
+}
+.score {
+    font-size: 11px;
+}
+[class|="sect"][class*="chart"] .score .egg-gage,
+[class|="sect"][class*="chart"] .score .percent {
+    vertical-align: middle;
+}
+strong {
+    font-weight: 500;
+}
+[class|="sect"][class*="chart"] .score .percent span {
+    vertical-align: initial;
+}
+[class|="sect"][class*="chart"] .txt-info {
+    margin-top: 3px;
+    height: 13px;
+    color: #666666;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.txt-info {
+    display: block;
+    color: #999999;
+    font-size: 12px;
+}
+.txt-info > strong {
+    font-size: 11px;
+}
+strong {
+    font-weight: 500;
+}
+[class|="sect"][class*="wishlist"] .like,
+[class|="sect"][class*="chart"] .like {
+    text-align: left !important;
+}
+.like {
+    display: inline-block;
+    margin-right: 3px;
+}
+[class|="sect"][class*="wishlist"] .like .link-reservation,
+[class|="sect"][class*="chart"] .like .link-reservation {
+    width: 97px !important;
+    height: 25px !important;
+    background: url("../images/reserbtn.png") 0 -110px no-repeat !important;
+}
+[class|="sect"][class*="chart"] .link-reservation {
+    width: 57px;
+    height: 25px;
+    background-position: -96px 0;
+}
+[class|="sect"][class*="chart"] > ol:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+[class|="sect"][class*="chart"] .rank {
+    display: block;
+    height: 28px;
+    margin-bottom: 4px;
+    /* border: 6px solid #000000; */
+    background: #333333;
+    color: #ffffff;
+    font-size: 19px;
+    text-align: center;
+    line-height: 28px;
+}

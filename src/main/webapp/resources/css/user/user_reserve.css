@@ -1,0 +1,2140 @@
+@charset "utf-8";
+
+.nav{
+  position: absolute;
+	padding: 5px 0;
+	top: 113px;
+	width: 100%;
+	background-color: white;
+}
+
+.nav .contents h1 {
+  display: none;
+}
+.com_tabtype .tab_title.active{padding:0; border:3px solid #2c2c2c}
+.com_tabtype .tab_title.active span{border:1px solid transparent}
+
+.com_tabtype .tab_title.active + .tab_content{display:block}
+.nav-item>li{
+  list-style: none;
+  width: 162px;
+  padding: 20px 0;
+
+}
+.nav .contents {
+  position: relative;
+}
+
+.nav-item{
+  display: inline-flex;
+}
+.nav-item > li > h2 > a {
+    font-weight: 600;
+    font-size: 16px;
+    color: #222;
+    line-height: 1.500em;
+}
+.nav-item > li > h2 {
+  position: absolute;
+  top: 7px;
+}
+
+h1{
+	display: inline-flex;
+	align-items: flex-end;
+  height: 53px;
+}
+
+ol, ul{
+  list-style: none;
+}
+.block{
+	margin: 0 auto;
+}
+
+.block-img{
+	width:100%;
+	height:70px;
+}
+.memberInfo_wrap{
+	display: flex;
+  align-items: center;
+}
+
+
+.contents .contents>span{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-size: 13px;
+  line-height: 1.462em;
+  transform: translate(-21%, 0);
+}
+#sideLogo{
+  font-weight: 300;
+  font-size: 16px;
+  color: #222;
+  letter-spacing: 0.313em;
+  line-height: 1.500em;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.header .contents {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.header .contents .memberInfo_wrap li a {
+  display: block;
+  position: relative;
+  padding-bottom: 19px;
+ 
+}
+#a{
+    width: 22px;
+    height: 33px;
+    padding-left: 5px;
+    color: black;
+}
+
+
+#mainImg {
+  width: 36px;
+  height: 36px;
+}
+.memberInfo_wrap>li{
+  margin-left: 10%;
+  height: 58px;
+  width: 84px;
+}
+.modiImg1{
+  padding-left: 10%;
+
+}
+
+#main1{
+    position: absolute;
+    bottom: 0;
+    left: 28%;
+    font-size: 13px;
+    color: rgba(24, 23, 23, 0.911);
+    line-height: 1.462em; 
+    white-space: nowrap;
+    transform: translate(-50%, 0);
+}
+.nav-item > li:first-child .nav_overMenu {
+    padding-left: 0;
+}
+.nav-item > li:first-child{
+  width:137px;
+}
+.nav_overMenu {
+    display: none;
+    position: relative;
+    margin-bottom: 8px;
+    padding: 40px 0 0 25px;
+}
+
+
+.header_content .contents .memberInfo_wrap li a span {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-size: 13px;
+  color: rgb(255, 255, 255);
+  line-height: 1.462em;
+  white-space: nowrap;
+  transform: translate(-50%, 0)
+}
+
+.header {
+  position: relative;
+  z-index: 101;
+}
+
+.nav:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 53px;
+  width: 100%;
+  height: 1px;
+  background-color: #fb5f43;
+
+}
+
+.nav.fixed{
+  position:fixed; 
+  top:0px; 
+  min-width:1040px; 
+  padding:10px 0;
+}
+
+.nav.fixed:after {
+  top: 0px;
+  bottom: auto;
+  height: 63px;
+  background-image: linear-gradient(to right, rgb(215, 67, 87), rgb(241,79,58) 59%, rgb(239, 100, 47));
+  z-index: 1;
+}
+/*
+.nav.fixed .contents .nav-item > li:first-child > h2{
+  left: 120px;
+}*/
+
+.nav.fixed .contents .nav-item > li > h2 > a{
+  color: #fff;
+
+}
+
+.nav.fixed .contents .nav-item > li > h2 > a.btn-fix{
+ padding: 10px;
+}
+
+.nav_overMenu dt a {
+  font-weight: 700;
+  font-size: 14px;
+  color: rgb(15, 15, 15);
+  line-height: 1.429em;
+}
+.nav_overMenu dt + dd {
+  margin-top: 8px;
+}
+.nav_overMenu dd a {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(134, 131, 131);
+  line-height: 2.143em;
+}
+
+.nav_overMenu h3 {
+  height: auto;
+  margin: 0;
+  line-height: 1em;
+  text-align: left;
+  background-image: none;
+}
+.nav_menu > li:nth-child(2) > h2 {
+  left: 80px;
+}
+.header_content .contents {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 6px 25px 5px;
+  background-color: #fff;
+}
+.header_content .contents h1 a img i {
+  display: block;
+  width:auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+.header_content .contents h1 a {
+  display: block;
+  float: left;
+  height: 100%;
+}
+
+.header_content{
+  margin-bottom: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+html, body, div, span, 
+applet, object, iframe, 
+h1, h2, h3, h4, h5, h6, p, 
+blockquote, pre, a, abbr, 
+acronym, address, big, cite, code, del, 
+dfn, em, font, img, ins, kbd, q, s, samp, 
+small, strike, strong, sub, sup, tt, var, 
+dl, dt, dd, ol, ul, li, fieldset, form, 
+label, legend, table, caption, tbody, tfoot, 
+thead, tr, th, td {
+
+  
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  word-break: break-all;
+}
+
+.nav_overMenu:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 45px;
+  display: block;
+  width: 1px;
+  height: 100px;
+  background-color: rgb(158, 155, 155);
+  opacity: 0.8;
+}
+
+
+
+.nav_overMenu:before{
+  content: none;
+}
+
+.nav.fixed .contents{
+  z-index: 2;
+}
+
+.fixedBtn_wrap{
+  display: none;
+  justify-content: flex-end;
+  position: fixed;
+  right: 0;
+  bottom: 80px;
+  min-height: 50px;
+  margin-left: 440px;
+  text-align: center;
+  z-index: 7;
+ 
+}
+
+
+.fixedBtn_wrap .btn_fixedTicketing{
+  position: absolute;
+  left: auto;
+  width: 136px;
+  padding: 12px 0 14px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.5em;
+  background-image: linear-gradient(to left, rgb(255,115,86), rgb(251,67,87));
+  box-shadow: 1px 3px 6px 0 rgb(0 0 0 / 30%);
+  border-radius: 25px;
+  transition: right 0.4s;
+}
+
+.fixedBtn_wrap .btn_gotoTop{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position:relative;
+  right: 0;
+  width:48px;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition:opacity0.2s;
+}
+.fixedBtn_wrap.topBtn{
+  display: block;
+}
+
+.fixedBtn_wrap.topBtn .btn_gotoTop{
+  opacity:1; 
+  pointer-events:auto; 
+  transition:opacity 0.4s
+}
+
+.fixedBtn_wrap.topBtn .btn_fixedTicketing{
+  right: 58px;
+  opacity: 1;
+}
+
+
+
+.mypageContainer{
+  position: relative;
+  width: 100%;
+  z-index: 7;
+}
+
+.mypageContent{
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+.mypage-info{
+  height: 450px;
+  margin-top: 25px;
+  width: 980px;
+}
+
+.mypage-info-wrap{
+  width: 882px;
+  height: 390px;
+  padding: 60px 40px 0 58px;
+  background: url(https://img.cgv.co.kr/R2014/images/common/bg/bg_mycgv_info.gif) no-repeat 0 0;
+}
+.cols-content{
+  float: left;
+  width: 217px;
+}
+.cols-content:after{
+  content: '';
+  clear: both;
+  display: block;
+}
+
+.mypage-box-img{
+  float: left;
+  width: 135px;
+  height: 135px; 
+}
+.thumb-img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+.mypage-box-content{
+  float: right;
+  width: 686px;
+}
+.mypage-side-bar:first-child{
+  float: left;
+}
+.mypage-side-bar{
+  width: 217px;
+}
+.on{
+  margin-top: 1px;
+  border-top: 0 none;
+}
+
+.mypage-sub-bar>ul{
+  list-style: none;
+}
+.mypage-sub-bar > ul > li{
+  border-top: 1px solid rgb(73, 72, 72);
+  width: 135%;
+  height: 50px;
+  text-align: inherit;
+  margin-top: 18%;
+}
+.mypage-sub-bar > ul > li > a{
+  font-size: 18px;
+  padding-left: 9%;
+}
+
+/*메인 콘텐츠/////////////////////*/
+.container{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 7;
+}
+
+.movie-wrap{
+  position: relative;
+  height: 500px;
+  background-color: black;
+  border-top: 2px solid red;
+}
+
+.container .contents{
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+}
+.movie-wrap .contents .video-wrap{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.movie-wrap .contents .movie-title{
+  position: absolute;
+  top: 170px;
+  left: 0;
+  font-weight: 700;
+  font-size: 55px;
+  color: pink;
+  line-height: 1.450em;
+  z-index: 2;
+  text-shadow: 2px 2px 4px red;
+}
+.movie-wrap .contents .movie-txt{
+  display: -webkit-box;
+  overflow: hidden;
+  position: absolute;
+  top:240px;
+  left:0;
+  max-width: 100%;
+  color: purple;
+  line-height: 2em;
+  text-overflow: ellipsis;
+  z-index: 3;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  pointer-events: none;
+  font-size: 40px;
+
+}
+.movie-wrap .contents .movie-wrap-controller{
+  display: inline-flex;
+  position: absolute;
+  top: 400px;
+  left: 3;
+  left: 3px;
+  z-index: 4;
+
+}
+
+.movie-wrap .contents .movie-wrap-controller .movie-detail-btn{
+  display: block;
+  padding: 7px 45px 7px 35px;
+  font-size: 14px;
+  color: rgb(7, 7, 7);
+  line-height: 2em;
+  background: darksalmon url(../images/multimedia.png) calc(100% - 11px) center/8px 13px scroll no-repeat;
+  border-radius: 15px;
+}
+
+.movie-wrap .contents .movie-wrap-controller .movie-stop-btn{
+  display: block;
+  margin-left: 10px;
+  height: 40px;
+  font-size: 0;
+  background: transparent url(../images/video-play-button.png) center/18px no-repeat;
+  border: 1px solid;
+  border-radius: 50%;
+  width: 44px;
+  background-color: bisque;
+  border-color: bisque;
+}
+.movie-wrap .contents .movie-wrap-controller .movie-sound-off-btn{
+  display: block;
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  background: transparent url(../images/mute.png) center/18px no-repeat;
+  border: 1px solid;
+  border-radius: 50%;
+  border-color: bisque;
+  background-color: bisque;
+}
+
+
+
+/* 무비차트 */
+
+.movie-chart-wrap{
+  clear: none;
+  float: none;
+  background-image: linear-gradient(to bottom, white, white);
+}
+
+.movie-chart-wrap .contents{
+  overflow: hidden;
+ /*margin-left: 30px;*/
+  padding: px 30px 60px;
+  width: 980px;
+  height: 100%;
+  margin: 0 AUTO;
+}
+.movie-chart-btn-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.movie-chart-btn-wrap .chart-name-wrap{
+  display: inline-flex;
+}
+
+.movie-chart-btn-wrap .chart-name-wrap h3{
+  height:auto;
+  margin:0;
+  line-height: 1em;
+  background-image: none;
+
+}
+h3{
+  height: 40px;
+  margin:30px 0 15px;
+  line-height: 40px;
+  text-align: center;
+  font-weight:500;
+}S
+
+.movie-chart-btn-wrap .chart-name-wrap h3 a.active{
+  font-weight: 700;
+  color: rgb(114, 111, 111);
+}
+
+.movie-chart-btn-wrap .chart-name-wrap h3 a{
+  font-weight: 400;
+  font-size: 26px;
+  color: rgb(70, 68, 68);
+  line-height: 1.5em;
+}
+.movie-chart-btn-wrap .chart-name-wrap h3 ~ h3{
+  position:relative;
+  margin-left: 32px;
+}
+
+.movie-chart-btn-wrap .chart-name-wrap h3 ~ h3:before{
+  content:'';
+  display: block;
+  position: absolute;
+  left:-16px;
+  top:50%;
+  width:1px;
+  height:14px;
+  margin-top: -7px;
+  background-color: white;
+  
+}
+.movie-chart-btn-wrap .movie-all-view {
+  padding: 2px 18px 3px 15px;
+  font-size: 14px;
+  color: rgb(8, 0, 0);
+  line-height: 1.5em;
+  background: transparent url(../images/right-arrow.png) calc(100% - 7px) center/8px 13px scroll no-repeat;
+  border: 1px solid rgb(201, 198, 198);
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 0 rgb(0 0 0 / 5%);
+}
+.movie-chart-btn-wrap .movie-all-view1 {
+  padding: 2px 18px 3px 15px;
+  font-size: 14px;
+  color: rgb(8, 0, 0);
+  line-height: 1.5em;
+  background: transparent url(../images/right-arrow.png) calc(100% - 7px) center/8px 13px scroll no-repeat;
+  border: 1px solid rgb(201, 198, 198);
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 0 rgb(0 0 0 / 5%);
+  margin-left: 66%;
+}
+.movie-list.swiper{
+  overflow: visible;
+  position: relative;
+}
+
+.movie-list .swiper-wrapper .swiper-slide .img-wrap{
+  overflow: hidden;
+  position: relative;
+  width: 170px;
+  height: 234px;
+  border-radius: 10px;
+}
+
+.img-wrap > img{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: auto;
+    transform: translate(0, -50%)
+}
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.09) 35%, rgba(0, 0, 0, 0.85));
+  z-index: 2;
+}
+
+.movie-list:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #fff;
+  z-index: 2;
+}
+.movie-list .swiper-wrapper .swiper-slide .img-wrap .movie-age-limit{
+  position: absolute;
+  right: 6px;
+  top: 7px;
+}
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-age-limit{
+  display: none;
+}
+
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:hover{
+  box-shadow: 6px 10px 20px 0 rgb(0, 0, 0,0.4);
+}
+.movie-list .swiper-slide .swiper-wrapper .img-wrap:hover:before{
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: none;
+}
+.movie-list .swiper-slide .swiper-wrapper .img-wrap:hover:after{
+ opacity: 0;
+}
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn a.movie-detail{
+  color:rgb(83, 81, 81);
+  background: white;
+ 
+}
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn a.movie-ticketing{
+  color:rgb(255, 255, 255);
+  background: rgb(170, 67, 67);
+ 
+}
+
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn a:hover{
+  opacity: 0.8;
+}
+.movie-list .swiper-wrapper .swiper-slide .img-wrap .movie-hidden-btn{
+  display: none;
+}
+
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn a{
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 123px;
+  height:34px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.5em;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.movie-list .swiper-wrapper .swiper-slide .img-wrap:hover:before {
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: none;
+}
+
+.movie-list .swiper-wrapper .swiper-slide .img-wrap .movie-age-limit img{
+  width: 30px;
+  height: 30px;
+}
+
+.movie-list .swiper-wrapper .swiper-slide .movie-info-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+.movie-list .swiper-wrapper .swiper-slide .movie-info-wrap .movie-name{
+  display: block;
+  flex-basis: 100%;
+  overflow: hidden;
+  margin-top: 14px;
+  font-size: 18px;
+  color: #222;
+  line-height: 1.2em;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.movie-list .swiper-wrapper .swiper-slide .movie-info-wrap > span{
+  display: block;
+  float: left;
+  margin-top: 9px;
+  font-size: 14px;
+  color: rgb(99, 97, 97);
+  line-height: 1.2em;
+  font-weight: 600;
+
+}
+.movie-list .swiper-wrapper .swiper-slide .movie-info-wrap > span img{
+  width: 16px;
+  height:16px;
+  vertical-align:top;
+}
+.movie-list .swiper-wrapper .swiper-slide .movie-info-wrap > span ~ span{
+  position: relative;
+  padding-left: 40px;
+}
+
+.movie-list .swiper-button-next:after{
+  content: '';
+  width: 40px;
+  height: 40px;
+  background: rgb(255, 255, 255, 0.8) url(../images/right-arrow.png) center/9px 13px scroll no-repeat;
+  transform: rotate(-180deg);
+}
+.movie-list .swiper-button-next{
+  overflow: hidden;
+    right: -20px;
+    top: calc(50% - 26px);
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    font-size: 0;
+    border-radius: 50%;
+    box-shadow: 2px 2px 8px 0 rgb(0 0 0 / 20%);
+}
+
+/*이벤트 부분 css*/
+
+.event-wrap{
+  padding:60px 0 6px;
+}
+
+.event-title-wrap{
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.event-title-wrap h3{
+  float: left;
+  height: auto;
+  margin: 0;
+  font-weight: 700;
+  font-size: 26px;
+  color: #222;
+  line-height: 16px;
+  background-image: none;
+}
+
+.event-title-wrap .btn-allView{
+  float: right;
+  margin-top: 4px;
+  padding: 4px 32px 4px 15px;
+  font-size: 14px;
+  color: #222;
+  line-height: 16px;
+  background: transparent url(../images/video-play-button.png) calc(100% - 7px) center/8px 13px scroll no-repeat;
+  border:1px solid white;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 0 rgb(0 0 0 / 5%);
+}
+
+.event-title-wrap .btn-eventControl{
+  display: block;
+  position: absolute;
+  right: 106px;
+  top: 4px;
+  width: 28px;
+  height: 28px;
+  font-size: 0;
+  background: transparent url(./../images/common/ico/main/play.png) 10px center/11px 15px scroll no-repeat;
+  border: 1px solid #e3e3e3;
+  border-radius: 50%;
+}
+
+.event-list-wrap{
+  overflow:hidden;
+  position: relative;
+  width: 100%;
+  margin-top:19px;
+  margin-left: -30px;
+  padding: 0 30px;
+}
+.event-list-wrap .event-list{
+  overflow: visible;
+  position: relative;
+}
+
+/* 본격 컨텐츠 ///////////////////////////////////////////////////////////////////////////////////////////////// */
+#contents {
+  clear: both;
+}
+#cgvwrap .cgv-ad-wrap .sect-head-ad, .head, .im-wrap, #contents, .foot, .sect-smuse, .sect-cinfo {
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+  font-size: 100%;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  word-break: break-all;
+}
+div {
+  display: block;
+}
+a {
+  text-decoration: none;
+  text-overflow: ellipsis;
+  color: #333;
+}
+#wrap > #container {
+  position: relative;
+  margin: 0 auto;
+  width: 996px;
+  z-index: 1;
+  /* padding: 0 140px; */
+}
+#ticket {
+  position: relative;
+}
+#ticket .navi {
+  position: relative;
+  width: 996px;
+  height: 74px;
+}
+#ticket .navi > span.right {
+  float: right;
+  margin-top: 30px;
+}
+
+/*컨텐츠 상단 메뉴 영역 /////////////////////*/
+#ticket .navi > span.right a.button-english {
+  background-position: 0 0;
+}
+#ticket .navi > span.right a {
+  position: relative;
+  display: block;
+  float: left;
+  margin-left: 5px;
+  width: 81px;
+  height: 30px;
+  overflow: hidden;
+  background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/top_buttons.png);
+  background-repeat: no-repeat;
+}
+a:link, a:active {
+  text-decoration: none;
+}
+.button {
+  /* display: inline; */
+  border: none;
+  padding: 0 0;
+  background: none;
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: center;
+  cursor: pointer;
+  /* text-decoration: none; */
+  -webkit-user-drag: none;
+  /* -webkit-user-select: none; */
+  /* -moz-user-select: none;
+  -ms-user-select: none; */
+  user-select: none;
+}
+
+a:-webkit-any-link {
+  color: -webkit-link;
+  /* cursor: pointer;
+  text-decoration: underline; */
+}
+#ticket .navi > span.right a > span {
+  position: absolute;
+  left: 500px;
+}
+#ticket .navi > span.right a.button-guide {
+  background-position: 0 -30px;
+}
+#ticket .navi > span.right a.button-discount {
+  background-position: 0 -60px;
+  width: 88px;
+}
+#ticket .navi > span.right a.button-schedule {
+  background-position: 0 -90px;
+  width: 101px;
+}
+#ticket .navi > span.right a.button-reservation-restart {
+  background-position: 0 -120px;
+  width: 113px;
+}
+/*////////////////////////////////////////////////////*/
+
+#ticket .steps {
+  position: relative;
+  width: 996px;
+  background-color: #F2F0E4;
+}
+#ticket .steps .step1 {
+  /* height: 530px; */
+  background-color: #d4d3c9;
+}
+#ticket .steps .step {
+  position: relative;
+}
+#ticket .section-movie {
+  width: 284px;
+  /* height: 528px; */
+}
+#ticket .section {
+  position: relative;
+  float: left;
+  height: 100%;
+  margin-left: 2px;
+  background-color: #f2f0e5;
+  overflow: hidden;
+}
+#ticket .section.section-movie .col-head {
+  background-position: 50% 8px;
+}
+#ticket .section .col-head {
+  background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/titles.png);
+  background-repeat: no-repeat;
+  /* background-position: 50% 3px; */
+}
+#ticket .section .col-head {
+  position: relative;
+  height: 33px;
+  line-height: 33px;
+  text-align: center;
+  background-color: #333333;
+  /* background-repeat: no-repeat; */
+  /* background-position: 50% 50%; */
+}
+.sreader {
+  display: block;
+  position: absolute;
+  left: -10000px;
+}
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+h3 {
+  /* display: block; */
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+#ticket a.skip_to_something {
+  display: block;
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #333;
+  line-height: 33px;
+  text-decoration: none;
+  color: #fff;
+}
+a:-webkit-any-link {
+  /* color: -webkit-link; */
+  cursor: pointer;
+  /* text-decoration: underline; */
+}
+#ticket .section-movie .col-body {
+  min-height: 495px;
+}
+#ticket .section .col-body {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#ticket .section-movie .col-body .movie-select {
+  float: left;
+  position: relative;
+  margin-left: 20px;
+  margin-top: 9px;
+  width: 254px;
+  height: 100%;
+}
+#ticket .section-movie .col-body .movie-select .tabmenu {
+  float: left;
+  width: 244px;
+}
+#ticket .tabmenu {
+  z-index: 1;
+  position: relative;
+  height: 38px;
+}
+#ticket .tabmenu .side {
+  float: left;
+  margin-top: 10px;
+  height: 28px;
+  width: 2px;
+  /* background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_side_off.png) no-repeat; */
+}
+
+/* 영화 탭메뉴 */
+#ticket .section-movie .col-body .movie-select .tabmenu .button.menu1 {
+  width: 58px;
+}
+#ticket .tabmenu .button.selected {
+  background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_body_on.png) repeat-x left;
+}
+#ticket .tabmenu .button {
+  position: relative;
+  float: left;
+  margin-top: 10px;
+  height: 28px;
+  line-height: 28px;
+  /* background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_body_off.png) repeat-x left; */
+  color: #333;
+  font-size: 12px;
+}
+a:link, a:active {
+  text-decoration: none;
+}
+.button {
+  /* display: inline; */
+  border: none;
+  padding: 0 0;
+  background: none;
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: center;
+  cursor: pointer;
+  /* text-decoration: none; */
+  -webkit-user-drag: none;
+  /* -webkit-user-select: none; */
+  /* -moz-user-select: none;
+  -ms-user-select: none; */
+  user-select: none;
+}
+#ticket .tabmenu .side.on {
+  background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_side_on.png) no-repeat;
+}
+#ticket .tabmenu .side {
+  float: left;
+  margin-top: 10px;
+  height: 28px;
+  width: 2px;
+  /* background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_side_off.png) no-repeat; */
+}
+#ticket .section-movie .col-body .movie-select .tabmenu .button.menu2 {
+  width: 90px;
+}
+#ticket .tabmenu .button {
+  position: relative;
+  float: left;
+  margin-top: 10px;
+  height: 28px;
+  line-height: 28px;
+  /* background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_body_off.png) repeat-x left; */
+  color: #333;
+  font-size: 12px;
+}
+a:link, a:active {
+  text-decoration: none;
+}
+#ticket .tabmenu .button .arrow {
+  vertical-align: middle;
+  display: inline-block;
+  /* *display: inline; */
+  zoom: 1;
+  width: 7px;
+  height: 4px;
+  margin-left: 6px;
+  margin-bottom: 2px;
+  background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_arrow.png) no-repeat;
+}
+#ticket .section-movie .col-body .movie-select .tabmenu .tabmenu-selectbox.MOVIECOLLAGE {
+  width: 90px;
+  left: 60px;
+  top: 38px;
+}
+#ticket .tabmenu .tabmenu-selectbox {
+  position: absolute;
+  z-index: 1;
+  /* top: 0px; */
+  padding: 2px 2px 8px 2px;
+  background-color: #333;
+}
+#ticket .tabmenu .tabmenu-selectbox ul {
+  width: 100%;
+  overflow: hidden;
+}
+dl, ul, ol {
+  list-style: none;
+}
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/* ul {  이상해서 일단 각주
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+} */
+#ticket .tabmenu .tabmenu-selectbox ul li {
+  height: 25px;
+  line-height: 25px;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+#ticket .tabmenu .tabmenu-selectbox ul li a {
+  display: block;
+  height: 100%;
+  color: #fff;
+  text-align: left;
+  letter-spacing: -0.1em;
+  padding-left: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+a:link, a:active {
+  text-decoration: none;
+}
+a:-webkit-any-link {
+  /* color: -webkit-link; */
+  cursor: pointer;
+  /* text-decoration: underline; */
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+#ticket .tabmenu .side {
+  float: left;
+  margin-top: 10px;
+  height: 28px;
+  width: 2px;
+  /* background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_side_off.png) no-repeat; */
+}
+
+/* 예매율순 / 가나다순 //////////////////////////////*/
+#ticket .section-movie .col-body .movie-select .sortmenu {
+  float: left;
+  width: 244px;
+  margin-top: 2px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+  background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/sortmenu_border_bottom.png) repeat-x bottom;
+}
+div {
+  display: block;
+}
+#ticket .section-movie .col-body .movie-select .sortmenu .button.selected {
+  /* color: #333; */
+  background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/sortmenu_btn_on.png) no-repeat 50% 100%;
+  color: #333;
+}
+#ticket .section-movie .col-body .movie-select .sortmenu .button {
+  float: left;
+  min-width: 50px;
+  height: 32px;
+  line-height: 32px;
+  /* color: #666; */
+  padding: 0 5px;
+}
+a:link, a:active {
+  text-decoration: none;
+}
+.button {
+  /* display: inline; */
+  border: none;
+  /* padding: 0 0; */
+  /* background: none; */
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: center;
+  cursor: pointer;
+  /* text-decoration: none; */
+  -webkit-user-drag: none;
+  /* -webkit-user-select: none; */
+  /* -moz-user-select: none;
+  -ms-user-select: none; */
+  user-select: none;
+}
+#ticket .section-movie .col-body .movie-select .movie-list {
+  float: left;
+  width: 254px;
+  margin-top: 3px;
+  height: 84%;
+}
+.nano {
+  position: relative;
+  /* width: 100%; */
+  /* height: 100%; */
+  overflow: hidden;
+}
+div {
+  display: block;
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul {
+  width: 280px;
+}
+.nano .content.scroll-y {
+  overflow-x: hidden;
+}
+.nano .content {
+  position: absolute;
+  top: 0;
+  /* right: 0; */
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+}
+#ticket .section-movie .col-body .selectbox-movie-type {
+  position: absolute;
+  /* width: 88px; */
+  /* top: 0px; */
+  right: 19px;
+  z-index: 1;
+  border: 2px solid #333;
+  background-color: #f2f0e5;
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul > li.selected, #ticket .section-movie .col-body .movie-select .movie-list > ul > li.press {
+  background-color: #333;
+  width: 242px;
+  height: 33px;
+  line-height: 33px;
+  border: 1px solid #000;
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul > li {
+  clear: both;
+  float: left;
+  /* width: 244px; */
+  /* height: 35px; */
+  /* line-height: 35px; */
+  margin-bottom: 1px;
+  position: relative;
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul > li > a {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a:link, a:active {
+  text-decoration: none;
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul > li.rating-15.selected > a span.icon, #ticket .section-movie .col-body .movie-select .movie-list > ul > li.rating-15.press > a span.icon {
+  background-position: 2px -67px;
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul > li.selected > a span.icon, #ticket .section-movie .col-body .movie-select .movie-list > ul > li.press > a span.icon {
+  height: 29px;
+  width: 29px;
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul > li > a span.icon {
+  display: inline-block;
+  zoom: 1;
+  width: 32px;
+  height: 35px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/icon/icon_ratings2.png);
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul > li.press > a span.text {
+  color: #fff;
+}
+#ticket .section-movie .col-body .movie-select .movie-list > ul > li > a span.text {
+  /* color: #333; */
+  font-weight: bold;
+  padding-right: 5px;
+}
+.nano.has-scrollbar-x .pane-y {
+  margin-bottom: 6px;
+}
+.nano > .pane, .nano > .pane-y, .nano > .pane-x {
+  background: none;
+}
+.nano > .pane-y {
+  width: 10px;
+  top: 4px;
+  bottom: 4px;
+  right: 0;
+}
+.nano > .pane > .slider, .nano > .pane-y > .slider-y, .nano > .pane-x > .slider-x {
+  /* background: #444; */
+  background: rgba(0,0,0,.5);
+  position: relative;
+  /* margin: 0px 2px; */
+  /* -moz-border-radius: 3px; */
+  /* -webkit-border-radius: 3px; */
+  border-radius: 3px;
+}
+.nano .slider-y {
+  width: 6px;
+}
+.nano.has-scrollbar-y .pane-x {
+  margin-right: 6px;
+}
+.nano > .pane, .nano > .pane-y, .nano > .pane-x {
+  background: none;
+}
+.nano > .pane-x {
+  height: 10px;
+  left: 4px;
+  right: 4px;
+  bottom: 0;
+}
+.nano > .pane, .nano > .pane-y, .nano > .pane-x {
+  /* background: rgba(0,0,0,.25); */
+  position: absolute;
+  /* visibility: hidden\9; */
+  /* opacity: .01; */
+  /* -webkit-transition: .2s; */
+  /* -moz-transition: .2s;
+  -o-transition: .2s; */
+  transition: .2s;
+  /* -moz-border-radius: 5px; */
+  /* -webkit-border-radius: 5px; */
+  /* border-radius: 5px; */
+}
+
+
+
+/* THEATER 섹션 ////////////////////////////////////////*/
+#ticket .section-theater {
+  width: 265px;
+  /* height: 528px; */
+}
+#ticket .section {
+  position: relative;
+  float: left;
+  height: 100%;
+  margin-left: 2px;
+  background-color: #f2f0e5;
+  overflow: hidden;
+}
+#ticket .section.section-theater .col-head {
+  background-position: 50% -25px;
+}
+#ticket .section .col-head {
+  background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/titles.png);
+  background-repeat: no-repeat;
+  /* background-position: 50% 3px; */
+}
+#ticket .section .col-head {
+  position: relative;
+  height: 33px;
+  line-height: 33px;
+  text-align: center;
+  background-color: #333333;
+  /* background-repeat: no-repeat; */
+  /* background-position: 50% 50%; */
+}
+.sreader {
+  display: block;
+  position: absolute;
+  left: -10000px;
+}
+h3 {
+  /* display: block; */
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+#ticket a.skip_to_something {
+  display: block;
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #333;
+  line-height: 33px;
+  text-decoration: none;
+  color: #fff;
+}
+a {
+  /* text-decoration: none; */
+  text-overflow: ellipsis;
+  /* -o-text-overflow: ellipsis; */
+  /* color: #333; */
+}
+a:-webkit-any-link {
+  /* color: -webkit-link; */
+  cursor: pointer;
+  /* text-decoration: underline; */
+}
+#ticket .section .col-body {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#ticket .section-theater .col-body .theater-select {
+  float: left;
+  width: 235px;
+  /* height: 364px; */
+  margin-left: 20px;
+  margin-top: 8px;
+}
+#ticket .section-theater .col-body .theater-select .tabmenu {
+  float: left;
+  width: 100%;
+}
+#ticket .tabmenu {
+  z-index: 1;
+  position: relative;
+  height: 38px;
+}
+#ticket .tabmenu .side {
+  float: left;
+  margin-top: 10px;
+  height: 28px;
+  width: 2px;
+  /* background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_side_off.png) no-repeat; */
+}
+#ticket .section-theater .col-body .theater-select .tabmenu .button.menu1 {
+  width: 59px;
+}
+#ticket .tabmenu .button {
+  position: relative;
+  float: left;
+  margin-top: 10px;
+  height: 28px;
+  line-height: 28px;
+  /* background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_body_off.png) repeat-x left; */
+  color: #333;
+  font-size: 12px;
+}
+a:link, a:active {
+  text-decoration: none;
+}
+.button {
+  /* display: inline; */
+  border: none;
+  /* padding: 0 0; */
+  /* background: none; */
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: center;
+  cursor: pointer;
+  /* text-decoration: none; */
+  -webkit-user-drag: none;
+  /* -webkit-user-select: none; */
+  /* -moz-user-select: none;
+  -ms-user-select: none; */
+  user-select: none;
+}
+#ticket .section-theater .col-body .theater-select .tabmenu .button.menu2 {
+  width: 85px;
+}
+#ticket .tabmenu .button.selected {
+  background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/tabmenu_body_on.png) repeat-x left;
+}
+#ticket .section-theater .col-body .theater-select .theater-list {
+  position: relative;
+  float: left;
+  width: 100%;
+  /* height: 323px; */
+  margin-top: 3px;
+}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-area-list > ul {
+  width: 100%;
+  height: 100%;
+}
+dl, ul, ol {
+  list-style: none;
+}
+ul {
+  display: block;
+  /* list-style-type: disc; */
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+#ticket .section-theater{width:265px;/* height:528px; */}
+#ticket .section-theater .body{height:495px;}
+
+#ticket .section-theater .col-body .favorite_cgv{position:relative;float:left;width:225px;height:91px;margin-left:20px;margin-top:19px;border-top:2px solid #d4d3c9;border-bottom:2px solid #d4d3c9;}
+#ticket .section-theater .col-body .favorite_cgv p.tit {position:absolute;top:16px;left:9px;color:#ae5d1b;font-size:12px;font-weight:bold;letter-spacing:-0.1em;}
+#ticket .section-theater .col-body .favorite_cgv p.setting {position:absolute;top:50px;left:8px;font-size:11px;letter-spacing:-0.1em;}
+#ticket .section-theater .col-body .favorite_cgv p.setting a{color:#2276a2;}
+#ticket .section-theater .col-body .favorite_cgv ul.theaters {position:absolute;width:131px;top:15px;left:93px;overflow:hidden;}
+#ticket .section-theater .col-body .favorite_cgv ul.theaters li{float:left;width:100%;height:24px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+#ticket .section-theater .col-body .favorite_cgv ul.theaters li a{color:#333333;font-size:12px;font-weight:bold;letter-spacing:-0.1em;}
+#ticket .section-theater .col-body .favorite_cgv .nolist {display:none;position:absolute;width:131px;top:32px;left:93px;overflow:hidden;text-align:center;}
+
+#ticket .section-theater .col-body .theater-select {float:left;width:235px;/* height:364px; *//*355px*/margin-left:20px;margin-top:8px;}
+
+#ticket .section-theater .col-body .theater-select .tabmenu{float:left;width:100%;}
+#ticket .section-theater .col-body .theater-select .tabmenu .button.menu1{width:59px;}
+#ticket .section-theater .col-body .theater-select .tabmenu .button.menu2{width:85px;}
+#ticket .section-theater .col-body .theater-select .tabmenu .button.menu3{width:73px;}
+#ticket.english .section-theater .col-body .theater-select .tabmenu{letter-spacing:-1px;}
+
+#ticket .section-theater .col-body .theater-select .theater-list{position:relative;float:left;width:100%;/* height:323px; */margin-top:3px;}
+
+#ticket .section-theater .col-body .theater-select .theater-list .theater-area-list{float:left;width:109px;height:100%;overflow:hidden;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-area-list > ul{width:100%;height:100%;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-area-list > ul > li{clear:both;overflow:hidden;float:left;width:100%;height:33px;line-height:33px;margin-bottom:1px;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-area-list > ul > li > a{display:block;color:#333333;font-size:12px;letter-spacing: -0.1em;text-align:right; white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding-left:6px;padding-right:8px;background-color:#e6e4d9;} /*vertical-align:middle;*/
+#ticket .section-theater .col-body .theater-select .theater-list .theater-area-list > ul > li.selected > a{background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/theaterarealist_item_selected.png) no-repeat right;background-color:transparent;} 
+#ticket .section-theater .col-body .theater-select .theater-list .theater-area-list > ul > li > div{display:none;position:absolute;top:0;right:0;width:124px;height:100%;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-area-list > ul > li.selected > div{display:block;}
+/*
+#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list{display:none;float:left;width:124px;height:100%;margin-left:2px;overflow:hidden;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list ul{width:154px;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list ul li{clear:both;overflow:hidden;float:left;width:114px;height:35px;line-height:35px;margin-bottom:1px;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list ul li a{display:block;color:#333333;font-size:12px;font-weight:bold;letter-spacing:-0.1em;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;vertical-align:middle;padding-left:7px;padding-right:7px;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list ul li.dimmed{opacity:0.25; filter:alpha(opacity=25);}
+*/
+/*
+#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list ul li.dimmed a {color:#666; background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/theatercgvlist_item_dimmed.png) no-repeat;}
+*/ 
+/*#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list ul li.selected a {color:#fff;background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/theatercgvlist_item_selected.png) no-repeat;}*/
+/*#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list ul li.selected{background-color:#333;width:112px;height:33px;line-height:33px;border:1px solid #000;}
+#ticket .section-theater .col-body .theater-select .theater-list .theater-cgv-list ul li.selected a{border:1px solid #5c5c5c;height:29px;line-height:29px;margin:1px;color:#fff;padding-left:5px;padding-right:5px;}
+*/
+#ticket .section-theater .col-body .theater-select .theater-list .area_theater_list ul{width:126px;}
+#ticket .section-theater .col-body .theater-select .theater-list .area_theater_list ul li{clear:both;overflow:hidden;float:left;width:114px;height:33px;line-height:33px;margin-bottom:1px;}
+#ticket .section-theater .col-body .theater-select .theater-list .area_theater_list ul li a{display:block;color:#333333;font-size:12px;font-weight:bold;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding-left:7px;padding-right:7px;} /* vertical-align:middle; */
+#ticket .section-theater .col-body .theater-select .theater-list .area_theater_list ul li.dimmed{opacity:0.25; filter:alpha(opacity=25);}
+#ticket .section-theater .col-body .theater-select .theater-list .area_theater_list ul li.selected{background-color:#333;width:112px;height:31px;line-height:31px;border:1px solid #000;}
+#ticket .section-theater .col-body .theater-select .theater-list .area_theater_list ul li.selected a{border:1px solid #5c5c5c;height:27px;line-height:27px;margin:1px;color:#fff;padding-left:5px;padding-right:5px;}
+#ticket .section-theater .col-body .theater-select .theater-list .area_theater_list ul li.duplicate {display:none;}
+
+.nano {
+  position: relative;
+  /* width: 100%; */
+  /* height: 100%; */
+  overflow: hidden;
+}
+.nano .content.scroll-y {
+  overflow-x: hidden;
+}
+.nano .content {
+  position: absolute;
+  top: 0;
+  /* right: 0; */
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+}
+.nano > .pane, .nano > .pane-y, .nano > .pane-x {
+  background: none;
+}
+.nano > .pane-y {
+  width: 10px;
+  top: 4px;
+  bottom: 4px;
+  right: 0;
+}
+.nano > .pane > .slider, .nano > .pane-y > .slider-y, .nano > .pane-x > .slider-x {
+  /* background: #444; */
+  background: rgba(0,0,0,.5);
+  position: relative;
+  /* margin: 0px 2px; */
+  /* -moz-border-radius: 3px; */
+  /* -webkit-border-radius: 3px; */
+  border-radius: 3px;
+}
+.nano > .pane, .nano > .pane-y, .nano > .pane-x {
+  background: none;
+}
+.nano > .pane-x {
+  height: 10px;
+  left: 4px;
+  right: 4px;
+  bottom: 0;
+}
+.nano > .pane-x > .slider-x {
+  margin: 2px 0;
+}
+.nano .slider-x {
+  height: 6px;
+}
+#ticket .section-date {
+  width: 91px;
+  /* height: 528px; */
+}
+#ticket .section {
+  position: relative;
+  float: left;
+  height: 100%;
+  margin-left: 2px;
+  background-color: #f2f0e5;
+  overflow: hidden;
+}
+#ticket .section.section-date .col-head {
+  background-position: 50% -58px;
+}
+#ticket .section .col-head {
+  background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/titles.png);
+  background-repeat: no-repeat;
+  /* background-position: 50% 3px; */
+}
+
+#ticket .section .col-head {
+    background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/titles.png);
+    background-repeat: no-repeat;
+    /* background-position: 50% 3px; */
+}
+#ticket .section .col-head {
+    position: relative;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    background-color: #333333;
+    /* background-repeat: no-repeat; */
+    /* background-position: 50% 50%; */
+}
+.sreader {
+  display: block;
+  position: absolute;
+  left: -10000px;
+}
+#ticket a.skip_to_something {
+  display: block;
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #333;
+  line-height: 33px;
+  text-decoration: none;
+  color: #fff;
+}
+#ticket .section .col-body {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#ticket .section-date .col-body .date-list {
+  float: left;
+  width: 74px;
+  height: 96%;
+  margin-top: 19px;
+  margin-left: 7px;
+}
+.nano {
+  position: relative;
+  /* width: 100%; */
+  /* height: 100%; */
+  overflow: hidden;
+}
+#ticket .section-date .col-body .date-list ul {
+  width: 104px;
+}
+.nano .content.scroll-y {
+  overflow-x: hidden;
+}
+.nano .content {
+  position: absolute;
+  top: 0;
+  /* right: 0; */
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+}
+#ticket .section-date .col-body .date-list ul li.month {
+  clear: both;
+  overflow: hidden;
+  float: left;
+  width: 64px;
+  height: 67px;
+  margin-bottom: 1px;
+  margin-left: 7px;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+#ticket .section-date .col-body .date-list ul li.month span.year {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  color: #666;
+  font-size: 11px;
+  font-family: Verdana;
+  font-weight: bold;
+  line-height: 11px;
+}
+#ticket .section-date .col-body .date-list ul li.month span.month {
+  display: block;
+  margin-top: 3px;
+  text-align: center;
+  color: #666;
+  font-size: 30px;
+  font-family: Verdana;
+  font-weight: bold;
+  line-height: 30px;
+}
+/* nav */
+
+.nav-line {
+  background-color: red;
+  border-radius: 50px;
+  height: 5px;
+  /* background-image: linear-gradient(to right, white 33%, rgba(255, 255, 255, 0) 0%);
+background-position: bottom;
+background-size: 15px 1px;
+background-repeat: repeat-x; */
+}
+
+.nav-wrapper {
+  /* background: url(../images/bg_header.gif) repeat-x 0 0; */
+  /* width: 100%;*/
+  height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-content {
+  padding-top: 15px;
+}
+
+.movieLogo-wrapper {
+  text-align: center;
+}
+
+.cgvLogo {
+  width: 120px;
+  margin-left: 150px;
+  /* margin-right: -40px; */
+}
+
+.cgvMovie {
+  width: auto;
+  height: 28px;
+}
+
+.nav-inner {
+  display: flex;
+  /* margin-left: -250px; */
+  margin-left: 150px;
+  margin-right: auto;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.nav-inner>div>button {
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.search-wrapper {
+  margin-left: 70px;
+  height: 20px;
+}
+
+.search-wrapper>input {
+  width: 100px;
+  height: 20px;
+}
+
+.searchButton {
+  margin: 0 !important;
+  padding: 2px !important;
+  background-color: red;
+  color: white;
+  width: 30px;
+  height: 100%;
+  font-size: 10px !important;
+}
+
+
+/* content */
+
+.reserve-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  height: 800px;
+  /* border: 1px solid #dddddd; */
+}
+
+.reserve-container>div {
+  border: 1px solid #dddddd;
+}
+
+.reserve-title {
+  border-bottom: 1px solid #dddddd;
+  background-color: #444444;
+  text-align: center;
+  color: #dddddd;
+  padding: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.movie-part {
+  width: 284px;
+}
+
+.theater-part {
+  width: 264px;
+}
+
+.day-part {
+  width: 91px;
+}
+
+.time-part {
+  width: 384px;
+}
+
+.sort-wrapper {
+  margin: 10px 6px 6px 10px;
+  /* padding: 3px; */
+  display: flex;
+  border-bottom: 1px solid #dddddd;
+  font-size: 12px;
+}
+
+.sort-wrapper>div {
+  padding: 3px;
+}
+
+.sort-wrapper>div:hover {
+  border-bottom: 1px solid #111111;
+}
+
+.sort-selected {
+  font-weight: bold;
+  border-bottom: 1px solid #111111;
+}
+
+.sort-korean {
+  margin-left: 6px;
+}
+
+.reserve-date {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 770px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.movie-date-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 2px;
+}
+
+.movie-week-of-day {
+  margin-left: 5px;
+  font-size: 10px;
+  width: 12px;
+  height: 22px;
+  line-height: 22px;
+}
+
+.movie-day {
+  text-align: center;
+  width: 34px;
+  height: 22px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.saturday {
+  color: #31597E;
+  font-weight: bold;
+}
+
+.sunday {
+  color: #AF2D2D;
+  font-weight: bold;
+}
+
+.movie-date-wrapper-active {
+  background-color: #333333;
+}
+
+.movie-date-wrapper-active>* {
+  color: white;
+}
+#ticket .step1 .section-time {
+  width: 346px;
+  /* height: 528px; */
+}
+#ticket .section {
+  position: relative;
+  float: left;
+  height: 100%;
+  margin-left: 2px;
+  background-color: #f2f0e5;
+  overflow: hidden;
+}
+#ticket .section.section-time .col-head {
+  background-position: 50% -91px;
+}
+#ticket .section .col-head {
+  background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/titles.png);
+  background-repeat: no-repeat;
+  /* background-position: 50% 3px; */
+}
+#ticket .section .col-head {
+  position: relative;
+  height: 33px;
+  line-height: 33px;
+  text-align: center;
+  background-color: #333333;
+  /* background-repeat: no-repeat; */
+  /* background-position: 50% 50%; */
+}
+#ticket a.skip_to_something {
+  display: block;
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #333;
+  line-height: 33px;
+  text-decoration: none;
+  color: #fff;
+}
+#ticket .section .col-body {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#ticket .step1 .section-time .col-body .placeholder.hidden {
+  display: none;
+}
+#ticket .step1 .section-time .col-body .placeholder {
+  float: left;
+  width: 100%;
+  height: 416px;
+  line-height: 416px;
+  text-align: center;
+  color: #666;
+}
+.hidden {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width: 0; */
+  /* height: 0; */
+  font-size: 0;
+  /* line-height: 0; */
+  visibility: hidden;
+}
+#ticket .step1 .section-time .col-body .time-list {
+  float: left;
+  width: 316px;
+  height: 88%;
+  margin-left: 20px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+/* section-time step1 */
+#ticket .step1 .section-time{width:346px;/* height:528px; */}
+#ticket .step1 .section-time .body{height:495px;}
+
+#ticket .step1 .section-time .col-body .time-option{width:306px;height:23px;margin-left:20px;margin-top:19px;border-bottom:solid 2px #cfcdc3;}
+#ticket .step1 .section-time .col-body .time-option span.morning{float:left;height:14px;padding-left:18px;background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/icon/icon_morning_night.png) no-repeat left;background-position:0 0;}
+#ticket .step1 .section-time .col-body .time-option span.night{float:left;height:14px;padding-left:14px;margin-left:14px;background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/icon/icon_morning_night.png) no-repeat left;background-position:0 -20px;}
+
+#ticket .step1 .section-time .col-body .placeholder {float:left; width:100%; height:416px; line-height:416px; text-align:center; color:#666;}
+#ticket .step1 .section-time .col-body .placeholder.hidden {display:none;}
+
+#ticket .step1 .section-time .col-body .time-list {float:left;width:316px;height:88%;margin-left:20px;margin-top:15px;overflow:hidden;}
+#ticket .step1 .section-time .col-body .time-list .content{width:346px;}
+#ticket .step1 .section-time .col-body .time-list .theater {float:left; width:306px; border-bottom:solid 2px #cfcdc3;margin-top:16px;overflow:hidden;}
+#ticket .step1 .section-time .col-body .time-list .theater:first-child {margin-top:0px;}
+#ticket .step1 .section-time .col-body .time-list .theater.last {border:none;}
+
+#ticket .step1 .section-time .col-body .time-list .theater .title span.name {color:#b54d15;font-size:12px;font-weight:bold;margin-right:6px;}
+#ticket .step1 .section-time .col-body .time-list .theater .title span.floor {color:#333;font-size:12px;font-weight:bold;margin-right:5px;}
+#ticket .step1 .section-time .col-body .time-list .theater .title span.seatcount {color:#666;font-size:12px;}
+
+#ticket .step1 .section-time .col-body .time-list .theater ul {width:309px;margin-top:10px;margin-bottom:6px;overflow:hidden;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li {position:relative; float:left;height:25px;line-height:25px;padding-bottom:9px;}
+/* #ticket .step1 .section-time .col-body .time-list .theater ul li a {display:block;vertical-align:middle;width:103px;height:25px;} */
+#ticket .step1 .section-time .col-body .time-list .theater ul li a span.time{float:left;width:51px;height:25px;line-height:25px;color:#333;font-size:12px;font-weight:bold;font-family:Verdana;background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/timelist_item_none.png) no-repeat;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li a span.time{width:49px;height:23px;line-height:23px;border:1px solid #d6d3ce;background-image:none;background-color:#f2f0e5;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li a span.time span{display:block;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li a span.count{float:left;width:49px;height:20px;line-height:25px;text-align:left;color:#3d7c35;font-size:12px;padding-left:3px;overflow:hidden;}
+
+#ticket .step1 .section-time .col-body .time-list .theater ul li.selected a span.time{color:#fff;background-image:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/timelist_item_selected.png);}
+#ticket .step1 .section-time .col-body .time-list .theater ul li.selected a span.time{background-image:none;border-color:#000;background-color:#333;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li.selected a span.time span{border:1px solid #5c5c5c;margin:1px;line-height:19px;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li.morning a span.count{padding-left:19px;width:33px;background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/icon/icon_morning_night.png) no-repeat left;background-position:2px 6px;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li.night a span.count{padding-left:16px; width:33px;background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/icon/icon_morning_night.png) no-repeat left;background-position:2px -15px;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li.disabled a span.time {color:#666; text-decoration:line-through; background-image:none;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li.disabled a span.count {color:#666; padding-left:1px;background-image:none;}
+#ticket .step1 .section-time .col-body .time-list .theater ul li.morning.disabled a span.count,
+#ticket .step1 .section-time .col-body .time-list .theater ul li.night.disabled a span.count{width:47px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 푸터 /////////////////////////////////////////////////////////////////////////////////////////////// */
+footer {
+  min-width: 1040px;
+  padding: 0 0 14px;
+  background-color: #f8f8f8;
+}
+footer .company_info_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 23px 0;
+}
+.company_info {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.667em;
+}
+.company_info address {
+  font-style: normal;
+}
+.company_info .company_info_list {
+  display: flex;
+}
+.company_info .company_info_list dt:after {
+  content: ':';
+  padding: 0 4px;
+}
+.company_info .company_info_list dt ~ dt:before {
+  content: '·';
+  padding: 0 8px 0 4px;
+}
+.company_info .company_info_list dd a {
+  text-decoration: underline;
+}
+
+
+
+
+

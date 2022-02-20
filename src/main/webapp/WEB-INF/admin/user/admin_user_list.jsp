@@ -20,11 +20,8 @@
 			<main>
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">회원관리</h1>
-
-					<div class="card mb-4"></div>
 					<div class="card mb-4">
-						<div class="card-header"
-							style="background-color: #a1a1a1; height: 100%; font-size: 30px; padding-top: 1%; padding-bottom: 1%;">
+						<div class="card-header">
 							<i class="fas fa-table me-1"></i> 회원목록
 						</div>
 						<div class="card-body">

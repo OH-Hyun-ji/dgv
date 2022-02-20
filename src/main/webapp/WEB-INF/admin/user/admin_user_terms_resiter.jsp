@@ -12,55 +12,45 @@
 	<!-- Main -->
 	<div id="layoutSidenav_content">
 		<main>
-			<div class="container-fluid px-4">
+			<main>
+            <div class="container-fluid px-4">
 
-				<!-- 여기만 수정해서 사용 -->
-				<h1 class="mt-4">약관관리</h1>
+                <!-- 여기만 수정해서 사용 -->
+                <h1 class="mt-4"><strong>약관관리</strong></h1>
 
-				<div class="card mb-4">
-					<div class="card-header">
-						<div class="col three">
-							<div style="font-size: 25px; color: #ff8818; font-weight: bold;">
-								약관 등록</div>
-						</div>
-					</div>
-					<div class="card-body">
-						<form action="updateTerms.mdo" method="POST">
-							<table class="type02">
-								<tr>
-									<th scope="row">약관번호</th>
-									<td><input type="text" id="inpupu" name="terms_serial"
-										readonly="readonly" value="" /></td>
-
-								</tr>
-								<tr>
-
-									<th scope="row">약관이름</th>
-									<td><input type="text" id="inpupu" class="*"
-										name="terms_id" value="" /></td>
-								</tr>
-								<tr>
-									<th scope="row">약관 필수여부</th>
-									<td><input type="text" id="inpupu"
-										name="terms_agree_status" readonly="readonly" value="" /></td>
-								</tr>
-								<tr>
-									<th scope="row">약관내용</th>
-									<td><textarea rows="30" name="terms_content"></textarea></td>
-								</tr>
-
-							</table>
-							<br>
-							<div style="margin-left: 10px">
-								<input type="submit" value="등록" /> <input type="button"
-									value="목록" onclick="location.href='terms_agreeList.mdo'" />
-							</div>
-
-						</form>
-					</div>
-				</div>
-				<!-- 여기만 수정해서 사용하세요!! -->
-			</div>
-		</main>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="col three">
+                            <div style="font-size: 25px;  font-weight: bold; ">
+                                약관 등록
+                            </div>
+                        </div>
+                    </div>
+                    <table border="1" style="border-color: snow;">
+                        <tr>
+                            <td style="background-color: lightgray;">약관번호</td>
+                            <td> <input type="text" name="productName" id="productName" style="border-color: lightgray;" ></td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: lightgray; ">약관이름</td>
+                            <td><input type="text" name="productPrice" id="productPrice"style="border-color: lightgray;"></td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: lightgray;"> 약관 필수여부</td>
+                         <td><label><input type="checkbox" name="a-check"> 필수</label> 
+                         <label><input type="checkbox" name="b-check">선택</label></td>
+                        </tr>
+                         <tr>
+                            <td style="background-color: lightgray;"> 약관 내용</td>
+                            <td> <textarea rows="40" cols="65" name="productImage" id="productImage"style="border-color: lightgray;"></textarea></td>
+                        </tr>
+                    </table>
+                    <div class="bottom">
+                    <td colspan="2" align="center" >
+                        <input type="button" value="수정하기">
+                        <input type="button" value="등록하기">
+                    </td>
+                </div>    
+        </main>
 </body>
 </html>

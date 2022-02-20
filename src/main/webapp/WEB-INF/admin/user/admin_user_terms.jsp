@@ -21,14 +21,6 @@
 	font-weight: bolder;
 }
 
-.card-header {
-	background-color: #a1a1a1;
-	height: 100%;
-	font-size: 30px;
-	padding-top: 1%;
-	padding-bottom: 1%;
-}
-
 #userLankAdd {
 	width: 11%;
 	margin-top: 17px;
@@ -64,7 +56,7 @@
                                     var popupX =(window.screen.width/2)-(200/2);
                                     var popupY =(window.screen.height/2)-(300/2);
                             
-                                    window.open('/userTermRegister.mdo','','width=430,height=750,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+                                    window.open('/userTermRegister.mdo','','width=650,height=850,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
                                     }
                                 </script>
 
