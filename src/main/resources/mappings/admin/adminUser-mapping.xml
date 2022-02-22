@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminUserDAO">
+	<select id="UserList">
+		SELECT u.user_num, u.user_id, u.user_name, u.user_phone, u.user_email,d.user_rank,d.user_point
+		FROM user_info u  FULL JOIN user_info_detail d ON u.user_id = d.user_id;
+	</select>
+</mapper>
