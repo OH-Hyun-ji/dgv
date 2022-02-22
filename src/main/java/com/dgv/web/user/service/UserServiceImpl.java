@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
 	
 	//회원가입처리
 	@Override
-	public void register(UserVO userVO) {
-		userDAO.register(userVO);
+	public int register(UserVO userVO) {
+		return userDAO.register(userVO);
 	}
 	
 	//로그인처리
