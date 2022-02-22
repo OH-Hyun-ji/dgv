@@ -6,9 +6,11 @@
 	<mapper namespace="UserDAO">
 		
 		<insert id="register" parameterType="UserVO">
-			INSERT INTO user_info VALUES(nextval('seq_user'),#{user_id},#{user_pw},#{user_name},#{user_phone},#{user_email},#{user_year},#{user_month},#{user_day})
+			INSERT INTO user_info(user_num,user_id,user_pw,user_name,user_phone,user_email,user_year,user_month,user_day,user_term)
+			VALUES(nextval('seq_user'),#{user_id},#{user_pw},#{user_name},#{user_phone},#{user_email},#{user_year},#{user_month},#{user_day},#{user_term})
 		</insert>
-		
+		 <!-- 여기서 해당 컬럼 명 안정해주고 바로 values값 쓸때는 db컬럼 순서에 맞게 해줘야해 컬럼이 너무 많아지면 그냥 지금 처럼 이렇게 순서를 너가 알아서 적는수밖에없어
+		 이제 이해가 되는구야?? 네 누나 약관동의를 생각을 못했네요ㅜㅜㅋㅋㅋ 지금은 일단 내가 null로했지만 약관쪽 값까지 받아와야해   -->
 		<select id="login" resultType="com.dgv.web.user.vo.UserVO">
 			SELECT * FROM user_info WHERE user_id = #{user_id}
 		</select>

@@ -61,7 +61,7 @@ a:hover {
 }
 
 .inner .image-holder {
-    width: 100%;
+    width: 58%;
     height: 102%;
 }
 
@@ -348,16 +348,19 @@ input.userYear {
 
 select.userMonth {
     height: 44px;
-    width: 23%;
-    font-size: 13px;
+    width: 27%;
+    font-size: 12px;
     font-weight: bold;
     color: gray;
     border-radius: 8px;
 }
 
-input.userDay {
-    height: 39px;
-    width: 30%;
+select.userDay {
+    height: 44px;
+    width: 23%;
+    font-size: 13px;
+    font-weight: bold;
+    color: gray;
     border-radius: 8px;
 }
 
