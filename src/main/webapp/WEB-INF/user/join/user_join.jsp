@@ -29,18 +29,18 @@
    </style>
    
    <script type="text/javascript">
-   $(function(){
-      const getIdCheck = new RegExp(/^[a-zA-Z0-9]{4,14}$/);
-      const getPwCheck= new RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
-      const getName= new RegExp(/^[가-힣]+$/);
-      const getPhone= new RegExp(/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/);
-      const getEmail= new RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+$/);
-      const getBirth= new RegExp(/^(19[0-9][0-9]|20\d{2})$/);
+      var getIdCheck = new RegExp(/^[a-zA-Z0-9]{4,14}$/);
+      var getPwCheck= new RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
+      var getName= new RegExp(/^[가-힣]+$/);
+      var getPhone= new RegExp(/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/);
+      var getEmail= new RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+$/);
+      var getBirth= new RegExp(/^(19[0-9][0-9]|20\d{2})$/);
 
 
     //가입중재 참거짓판별을 위한 논리변수 
-      let chk1 =false, chk2 = false, ch3 = false, chk4 = false, chk5 =false, chk6 =false, chk7 =false;
+      var chk1 =false, chk2 = false, ch3 = false, chk4 = false, chk5 =false, chk6 =false, chk7 =false;
       
+   $(function(){
       //회원가입 유효성 검사
       //keyup -> 마우스 눌렀다가 떼면 이벤트 발생
       
@@ -236,71 +236,25 @@
              }                 
          });//생년월일 "년" 확인 메서드 끝  
          
-         $("#joinBtn").click(function(){
-        	
-        	 if(chk1 && chk2 && chk3 && chk4 && chk5 && chk6 && chk7){
-        		 let userId =$("#id").val();
-        		 let userPw = $("#password").val();
-        		 let userName =$("#name").val();
-        		 let userYY = $("#userYY").val();
-        		 let userMM = $("#userMM").val();
-        		 let userDD = $("#userDD").val();
-        		 let userEmail =$("#email").val();
-        		 let userPhone =$("#phone").val();
-        		 let userTermCk ='input[name="user_term"]:checked';
-        		 let userSelect = document.querySelector(userTermCk);
-        		 let userTermResult = userSelect.value;
-        		 
-        		 
-        		
-        		 console.log("checkBox value : "+ userTermResult);
-        		 
-        		 
-        		 
-        		 const userVO ={
-        				 "user_id" :userId,
-        				 "user_pw" :userPw,
-        				 "user_name" :userName,
-        				 "user_year" :userYY,
-        				 "user_month" :userMM,
-        				 "user_day" :userDD,
-        				 "user_email" :userEmail,
-        				 "user_phone" :userPhone,
-        				 "user_term" :userTermResult
-        		 };
-        		 
-        		 $.ajax({
-        			 method:"POST",
-        			 url:"/register.do",
-        			 contentType : "application/json",
-        			 dataType:"json",
-        			 data:JSON.stringify(userVO),
-        			 success:function(result){
-        				 const resultCk = JSON.parse(result);
-        				 console.log("result : "+ result);
-        				 console.log("resultCk : "+ resultCk);
-        				 if(resultCk.res == "SUCCESS"){
-        					 alert("가입축하드립니다. 환영합니다.");
-        					 
-        				 }else{
-        					 alert("다시 확인해주세요!!!")
-        				 }
-        			 },
-        			 error:function(e){
-        				 console.log("통신실패!!!!!!!!!!!!!"+e)
-        				 
-        			 }
-        			 
-        			 
-        		 }); //ajax close
-        		 
-        		 
-        		 
-        	 }
-         });
-         
-   });
+        
+  
+      
    
+   });
+ 	 function checkAll(){
+        	 console.log("ㅠㅠ제발")
+        	 alert("/??????1")
+ 	  	 if(chk1 && chk2 && chk3 && chk4 && chk5 && chk6 && chk7){
+ 	  		alert("회원가입 성공!!")
+ 	  		console.log("성공")
+ 	  		 document.joinForm.submit();
+ 	  	 }else{
+ 	  		 alert("빈칸이나 유효하지 않는 값이 있습니다. 다시 확인해주세요!!")
+ 	  		 console.log("실패")
+ 	  		 return false;
+ 	  	 }
+ 	 }
+         
   
 </script>
 </head>
@@ -312,8 +266,8 @@
          <div class="image-holder">
             <img id="poster" src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" alt="">
          </div>
-      <div id="registerForm" >
- 			
+      <form action="/register.do" method="post" name="joinForm" >
+ 			<div class="register-wrapping">
             <p class="register-title">
                <img src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png">
                <span class="sign-up">Sign Up</span>
@@ -331,7 +285,7 @@
                      
             </div>
             <div class="form-wrapper">
-               <input type="password" placeholder="비밀번호 확인" class="form-control" id="passwordRepeat" onChange="passwordValidate()"> 
+               <input type="password" placeholder="비밀번호 확인" class="form-control" id="passwordRepeat"> 
                   <i class="zmdi zmdi-lock"></i>
                      <div style="text-align: center;"><span id="psCK"></span></div>
             </div>
@@ -412,9 +366,9 @@
                <a id="findId" href="#">ID 찾기 ></a>
                <a id="findPw" href="#">PW 찾기 ></a>
             </div>
-            <button class="w-btn w-btn-gra3 w-btn-gra-anim" id="joinBtn" type="submit" style="width: 80%; margin-left: 11%; padding-top: 6px;">
-                 <span class="sign-up-font">Register</span>
-                </button>
+            <input class="w-btn w-btn-gra3 w-btn-gra-anim sign-up-font"  id="joinBtn" onclick="checkAll()" value="Register" >            
+                </div>
+                </form>
                 </div>
 		</div>
       </div>

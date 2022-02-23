@@ -37,8 +37,7 @@ public class UserRegisterController {
 	
 	// 회원가입 처리
 	@PostMapping("/register.do")
-	@ResponseBody
-	public String registerPOST(@RequestBody UserVO userVO, RedirectAttributes redirectAttributes){
+	public String registerPOST(UserVO userVO, RedirectAttributes redirectAttributes){
 		System.out.println("??????");
 		String hashedPw = BCrypt.hashpw(userVO.getUser_pw(), BCrypt.gensalt());
 		userVO.setUser_pw(hashedPw);
@@ -46,23 +45,17 @@ public class UserRegisterController {
 		int num =userService.register(userVO);
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		
-		Gson gson = new Gson();
-		JsonObject jsonObject = new JsonObject();
+	
 		 
 		if(num ==0 ) {
 			System.out.println("회원가입 실패!!");
-			jsonObject.addProperty("res", "FAIL");
 			
 		}else {
 			System.out.println("회원가입 성공!!");
-			jsonObject.addProperty("res", "SUCCESS");
 			
 		}
 		
-		String jsonResult = gson.toJson(jsonObject);
-		
-		System.out.println(jsonObject);
-		return jsonResult;
+		return"/login/user_loginForm";
 		
 		
 		

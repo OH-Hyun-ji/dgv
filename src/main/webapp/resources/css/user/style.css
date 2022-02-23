@@ -61,7 +61,7 @@ a:hover {
 }
 
 .inner .image-holder {
-    width: 58%;
+    width: 100%;
     height: 102%;
 }
 
@@ -426,4 +426,15 @@ a#findPw:hover {
     font-weight: 700;
     font-size: 19px;
 }
-
+.register-wrapping {
+    height: 91%;
+    margin-top: 0%;
+}
+input#joinBtn {
+    width: 62%;
+    margin-left: 11%;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 22px;
+    margin-top: 5%;
+}
