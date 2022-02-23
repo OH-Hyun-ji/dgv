@@ -15,6 +15,7 @@
 			<typeAlias alias="AdminGroupVO"   type="com.dgv.web.admin.vo.AdminGroupVO"/>
 			<typeAlias alias="AdminActorVO"   type="com.dgv.web.admin.vo.AdminActorVO"/>
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
+			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>
 		</typeAliases>
 			<mappers>
 				<mapper resource="mappings/admin/movieInfo-mapping.xml"/>
@@ -23,6 +24,7 @@
 				<mapper resource="mappings/admin/movieGenre-mapping.xml"/>
 				<mapper resource="mappings/admin/movieGroup-mapping.xml"/>
 				<mapper resource="mappings/admin/movieAge-mapping.xml"/>
+				<mapper resource="mappings/admin/adminUser-mapping.xml"/>
 				<mapper resource="mappings/user/userMapper.xml"/>
 			</mappers>
 </configuration>
