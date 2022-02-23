@@ -5,13 +5,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin user List</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-	crossorigin="anonymous"></script>
+	<title>Admin user List</title>
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function deleteAction(id){
+			
+		let result = confirm("정말 삭제하시겠습니까??");
+			console.log(id)
+		if(result == true){
+			console.log("쿄쿄");
+			$.ajax({
+				method:"POST",
+				url:"/userDelete.mdo",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify({"user_id":id}),
+				success:function(num){
+					
+					location.replace("/userList.mdo");
+				},
+				error:function(){
+					console.log("통신실패")
+				}
+			});//ajax close 
+
+		}
+	}
+	</script>
 </head>
 <body class="sb-nav-fixed">
 	<div id="layoutSidenav">
@@ -26,7 +49,7 @@
 							<i class="fas fa-table me-1"></i> 회원목록
 						</div>
 						<div class="card-body">
-							<table id="datatablesSimple">
+							<table id="datatablesSimple" name="userTable">
 								<thead>
 									<tr>
 										<th>No</th>
@@ -41,7 +64,7 @@
 								</thead>
 								<tbody>
 								<c:forEach var="userList" items="${userList}">
-									<tr>
+									<tr id="trWrap">
 										<td>${userList.user_num}</td>
 										<td>${userList.user_id}</td>
 										<td>${userList.user_name}</td>
@@ -49,10 +72,7 @@
 										<td>${userList.user_email}</td>
 										<td>${userList.detailVO.user_rank}</td>
 										<td>${userList.detailVO.user_point}</td>
-										<td><select>
-												<option>탈퇴</option>
-												<option>활성</option>
-										</select></td>
+										<td><button id="delBt"  onclick="deleteAction('${userList.user_id}')"><i class="fas fa-trash-alt"></i></button><button ><i class="fas fa-pencil-alt"></i></button></td>
 									</tr>		
 								</c:forEach>						
 								</tbody>

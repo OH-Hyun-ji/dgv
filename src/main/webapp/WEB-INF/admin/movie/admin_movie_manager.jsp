@@ -134,6 +134,7 @@
                                                     <td>${actorList.movie_actor}</td>
                                                     <td>${actorList.reg_id}</td>
                                                     <td>${actorList.reg_date}</td>
+                                                    	<td><button id="delBt"  onclick="deleteAction('${userList.user_id}')"><i class="fas fa-trash-alt"></i></button><button ><i class="fas fa-pencil-alt"></i></button></td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>

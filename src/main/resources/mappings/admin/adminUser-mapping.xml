@@ -15,6 +15,10 @@
 	<result column="user_name" property="user_name" jdbcType="VARCHAR"/>
 	<result column="user_phone" property="user_phone" jdbcType="VARCHAR"/>
 	<result column="user_email" property="user_email" jdbcType="VARCHAR"/>
+	<result column="user_year" property="user_year" jdbcType="VARCHAR"/>
+	<result column="user_month" property="user_month" jdbcType="VARCHAR"/>
+	<result column="user_day" property="user_day" jdbcType="VARCHAR"/>
+	<result column="user_term" property="user_term" jdbcType="VARCHAR"/>
 	<collection property="detailVO" resultMap="UserDetailVO"></collection>
 </resultMap>
 
@@ -22,4 +26,14 @@
 		SELECT u.user_num, u.user_id, u.user_name, u.user_phone, u.user_email,d.user_rank,d.user_point
 		FROM user_info u  FULL JOIN user_info_detail d ON u.user_id = d.user_id;
 	</select>
+	
+	<delete id="UserDelete" parameterType="UserVO">
+		DELETE FROM user_info WHERE user_id='${user_id}'
+	</delete>
+	
+	<!-- adminLogin -->
+	<select id="AdminLogin" resultType="AdminVO" >
+		SELECT * FROM admin_info WHERE admin_id=#{admin_id}
+	</select>
+	
 </mapper>

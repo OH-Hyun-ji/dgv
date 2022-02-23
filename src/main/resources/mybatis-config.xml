@@ -14,6 +14,7 @@
 			<typeAlias alias="AdminAgeVO"   type="com.dgv.web.admin.vo.AdminAgeVO"/>
 			<typeAlias alias="AdminGroupVO"   type="com.dgv.web.admin.vo.AdminGroupVO"/>
 			<typeAlias alias="AdminActorVO"   type="com.dgv.web.admin.vo.AdminActorVO"/>
+			<typeAlias alias="AdminVO"   type="com.dgv.web.admin.vo.AdminVO"/>
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>
 		</typeAliases>
