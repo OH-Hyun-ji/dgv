@@ -42,10 +42,8 @@
    					toastr.warning("아이디를 입력해주세요!!","경고!!");
    				}else if(adminPw ==""){
    					toastr.warning("비밀번호를 입력해주세요!!","경고!!");
-   				}
-   				
-   				else{
-   				
+   				}   				
+   				else{  				
    					$.ajax({
    						method:"POST",
    						url:"/loginCheck.mdo",
@@ -65,16 +63,9 @@
    						},
    						error:function(){
    							console.log("통신실패")
-   						}
-   					
-   					})//ajax close
-   					
-   					
+   						}   					
+   					})//ajax close   					 					
    				}
-   				
-   				
-   				
-   				
    			}
    		</script>
     </head>
@@ -87,21 +78,20 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5" style="margin-top: 2%" >
                                 <div class="card shadow-lg border-0 rounded-lg mt-5" style="border-radius: 40px; opacity: 0.8; background-color:rgba(43, 41, 41, 0.863);">
-                                    <div class="card-header"><img src="${pageContext.request.contextPath }/resources/images/loginLogo-01.png" style="margin-left: 28%;"></div>
+                                    <div class="card-headers"><img src="${pageContext.request.contextPath }/resources/images/loginLogo-01.png" style="margin-left: 29%;"></div>
                                     <div class="card-body">
                                         <div name="adminLoginForm">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="adminId" name="admin_id" type="id" placeholder="Id" style="border-radius: 20px; background-color: rgb(101, 102, 102); border: none;"/>
-                                                <label for="inputId" style="background-color: rgb(101, 102, 102);border-radius: 20px;" ><span style="color: azure;">id</span></label>
+                                                <input class="form-control" id="adminId" name="admin_id" type="id" placeholder="Id" style="border-radius: 20px;padding-left: 13%; background-color: rgb(101, 102, 102); border: none;"/>
+                                                <label for="inputId" ><span style="color: azure;">id</span></label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="adminPassword" name="admin_passwd"type="password" placeholder="Password"style="border-radius: 20px; background-color: rgb(101, 102, 102); border: none;" />
-                                                <label for="inputPassword"style="background-color: rgb(101, 102, 102); border-radius: 20px;"><span style="color: azure;">Password</span></label>
+                                                <input class="form-control" id="adminPassword" name="admin_passwd"type="password" placeholder="Password" style="padding-left: 13%; border-radius: 20px; background-color: rgb(101, 102, 102); border: none;" />
+                                                <label for="inputPassword"><span style="color: azure;">Password</span></label>
                                             </div>
                                         
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0" style="margin-left: 22%">
-                                            
-                                                <input class="btn btn-primary"  onclick="loginCheck()" style="padding: 0.375rem 7rem; border-radius: 20px; border-color: #929696; ; background-color: #464343be; color: rgb(194, 194, 197);" >Login</a>
+                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0" style="margin-left: 9%">
+                                                <input class="btn btn-primary"  value="login" onclick="loginCheck()" style="padding: 0.375rem 7rem; border-radius: 20px; border-color: #929696; background-color: #464343be; color: rgb(194, 194, 197);" >
                                             </div>
                                         </div>
                                     </div>

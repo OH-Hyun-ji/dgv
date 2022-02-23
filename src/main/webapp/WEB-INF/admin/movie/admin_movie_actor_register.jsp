@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,9 +56,32 @@
    
     	function actorCheck() {
     		let regId = $("#regId").val();
-    		let groupCode = $("#groupCode").val();
-    		let actorName =$("#group")
+    		let actorN = $("#actorName").val();
+    		let groupC = $("#groupCode option:selected").val();
+    		console.log(regId)
+    		console.log(actorN)
+    		$.ajax({
+    			method:"POST",
+    			url:"/adminInsertActor.mdo",
+    			contentType:"application/json",
+    			dataType:"json",
+    			data:JSON.stringify({"movie_group_code":groupC,"reg_id":regId,"movie_actor":actorN}),
+    			success:function(result){
+    				const res = JSON.parse(result);
+    				if(res.msg=="SUCCESS"){
+    					alert("등록 완료!");
+    					window.opener.location.reload();
+    					window.close();
+    				}else{
+    					alert("등록실패");
+    				}
+    			},
+    			error:function(){
+    				console.log("통신실패 ");
+    			}
+    		});//ajax close
 			
+    		
 		}
     </script>
        
@@ -78,15 +102,21 @@
 					</div>
 					<div class="card-body">
                             <div id="table-container">
-                            	<input type="hidden" id="regId" name="reg_id" value="관리자">
+                            	<input type="hidden" id="regId" name="reg_id" value="${adminID}">
                             
 								<table class="type02">			
 									<tr>
 										<th scope="row" style="font-ssize:18px;"">Group</th>
-										<td><input type="text" id="groupCode" name="movie_group_code" style="border-radius: 7px;line-height: 25px;"/></td>
+										<td>
+											<select id="groupCode" >
+												<c:forEach var="groupCode" items="${groupCode}">
+												<option  name="movie_group_code" value="${groupCode.movie_group_code}">${groupCode.movie_group_code}</option>
+												</c:forEach>
+											</select>
+										</td>
 									</tr>	
 									<tr>
-										<th scope="row" style="font-ssize:18px;"">Actor Name</th>
+										<th scope="row" style="font-size:18px;"">Actor Name</th>
 										<td><input type="text" id="actorName" name="movie_actor" style="border-radius: 7px;line-height: 25px;"/></td>
 									</tr>
 								</table>

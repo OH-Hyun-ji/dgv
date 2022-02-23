@@ -6,8 +6,7 @@ e<%@ page language="java" contentType="text/html; charset=UTF-8"
 <meta charset="UTF-8">
 <title>Admin Age Register</title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
-    
+ <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script> 
     <style>
         .mt-4{
             text-align: center;
@@ -74,7 +73,9 @@ e<%@ page language="java" contentType="text/html; charset=UTF-8"
     				console.log("result.msg = "+ result.msg);
     				if(reT.msg=="SUCCESS"){
     					alert("등록 성공!!")
+    					window.opener.location.reload();
     					window.close();
+    					
     				}else{
     					alert("등록 실패!!")
     				}

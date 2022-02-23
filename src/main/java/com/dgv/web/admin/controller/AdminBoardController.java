@@ -10,6 +10,12 @@ public class AdminBoardController {
 	public String adminNotice() {
 		return "/board/admin_board_notice";
 	}
+	//공지사항 등록창 
+	@RequestMapping("/adminNoticeRegister.mdo")
+	public String adminNoticeRegister() {
+		return "/board/admin_board_notice_register";
+	}
+	
 	
 	@RequestMapping("/adminEnquriy.mdo")
 	public String adminEnquriy() {

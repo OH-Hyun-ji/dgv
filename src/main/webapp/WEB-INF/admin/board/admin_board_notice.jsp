@@ -7,7 +7,16 @@
 <title>Insert title here</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/resources/css/admin/styles.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath }/resources/css/user/button.css" rel="stylesheet"  />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script>
+       function adminNotice(){
+             var popupX =(window.screen.width/2)-(200/2);
+             var popupY =(window.screen.height/2)-(300/2);
+                            
+             window.open('/adminNoticeRegister.mdo','','width=650,height=850,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+		}
+    </script>
 </head>
 <body class="sb-nav-fixed">
 	<div id="layoutSidenav">
@@ -21,7 +30,13 @@
 					</ol>
 					<div class="card mb-4">
 						<div class="card-header">
-							<i class="fas fa-table me-1"></i> 목록
+							<i class="fas fa-table me-1"></i> 목록							
+						</div>
+						<div style="display: flex; justify-content: end;margin-right: 2%;">
+							<button class="w-btn-outline w-btn-red-outline" style="margin-left: 1%;margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" 
+                                     type="button" onclick="adminNotice()">
+                                        Register
+                            </button>
 						</div>
 						<div class="card-body">
 							<table class="table">
@@ -154,13 +169,7 @@
 				</div>
 			</main>
 			<jsp:include page="../default/admin_footer.jsp" />
-			<div class="container-fluid px-4">
-				<div class="d-flex align-items-center justify-content-between small">
-					<div class="text-muted">by DGV © DGV COMPANY</div>
-
-				</div>
-			</div>
-			</footer>
+			
 		</div>
 	</div>
 	<script

@@ -49,7 +49,7 @@ public class AdminMovieController {
 	}
 	
 	//admin 장르/연령 관리페이지이동
-	@RequestMapping("/adminManageMent.mdo")
+	@RequestMapping("/adminManageMent.mdo/adminManageMent.mdo")
 	public String adminManagement(AdminGenreVO vo ,Model model , AdminAgeVO ageVo) {
 		model.addAttribute("genreList",adminMovieService.genreList());
 		model.addAttribute("ageList" ,adminMovieService.ageList());
@@ -145,10 +145,7 @@ public class AdminMovieController {
 		
 	}
 	
-	@RequestMapping("/adminInsertActor.mdo")
-	public void adminInsertActor(AdminActorVO vo) {
-		adminMovieService.insertActor(vo);
-	}
+	
 	
 	//그룹관리
 	@RequestMapping("/adminGroup.mdo")
@@ -159,8 +156,31 @@ public class AdminMovieController {
 	}
 	
 	//감독/배우관리
-		@RequestMapping("/adminActor.mdo")
-		public String adminActor() {
-			return "/movie/admin_movie_actor_register";
+	@RequestMapping("/adminActor.mdo")
+	public String adminActor(AdminGroupVO vo, Model model) {
+		model.addAttribute("groupCode",adminMovieService.groupList());
+		return "/movie/admin_movie_actor_register";
+	}
+		
+	@PostMapping("/adminInsertActor.mdo")
+	@ResponseBody
+	public String adminInsertActor(@RequestBody AdminActorVO vo) {
+		int num =adminMovieService.insertActor(vo);
+		System.out.println(vo.getMovie_actor());
+		System.out.println(vo.getReg_id());
+		
+		Gson gson = new Gson();
+		JsonObject jsonObject = new JsonObject();
+		
+		if(num==0) {
+			System.out.println("등록 실패");
+			jsonObject.addProperty("msg", "FAIL");
+			
+		}else {
+			jsonObject.addProperty("msg", "SUCCESS");
 		}
+		String jsonResult = gson.toJson(jsonObject);
+		return jsonResult;
+	}
+
 }

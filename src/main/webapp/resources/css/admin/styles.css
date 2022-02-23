@@ -4580,7 +4580,7 @@ textarea.form-control-lg {
 }
 
 .card-header {
-   /* background-color: #a1a1a1;*/
+   background-color: #a1a1a1;
     font-size: 20px;
     font-weight: bold;
     padding: 0.5rem 1rem;

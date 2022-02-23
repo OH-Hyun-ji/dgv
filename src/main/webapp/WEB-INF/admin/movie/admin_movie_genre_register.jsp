@@ -61,6 +61,7 @@
 					console.log(resultT);
 					if(resultT.isSuccess){
 		        	alert("등록이 완료되었습니다.♡")
+		        	window.opener.location.reload();
 					window.close();
 					}else {
 						alert("등록 실패!!!")

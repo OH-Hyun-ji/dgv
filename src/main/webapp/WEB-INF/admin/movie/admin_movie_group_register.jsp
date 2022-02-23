@@ -69,6 +69,7 @@
     				const res = JSON.parse(result);
     				if(res.msg=="SUCCESS"){
     					alert("등록 완료!")
+    					window.opener.location.reload();
     					window.close();
     					
     				}else{
