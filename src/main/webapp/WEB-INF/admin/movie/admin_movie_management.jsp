@@ -1,25 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Admin Genre, MovieAge Management</title>
-	<link
-		href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath }/resources/css/user/button.css" rel="stylesheet"  />
-	<link
-		href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>  
+	
+	 <script>
+        function adminGenre(){
+        var popupX =(window.screen.width/2)-(300/2);
+        var popupY =(window.screen.height/2)-(500/2);
+                            
+       window.open('/adminGenre.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+  		}
+        
+        function deleteAction(){
+        	alert("정말로 삭제하시겠습니까?")
+        	toastr.options = {
+        			  "closeButton": true,
+        			  "debug": false,
+        			  "newestOnTop": false,
+        			  "progressBar": true,
+        			  "positionClass": "toast-top-center",
+        			  "preventDuplicates": true,
+        			  "onclick": null,
+        			  "showDuration": "300",
+        			  "hideDuration": "1000",
+        			  "timeOut": 3000,
+        			  "extendedTimeOut": 0,
+        			  "showEasing": "swing",
+        			  "hideEasing": "linear",
+        			  "showMethod": "fadeIn",
+        			  "hideMethod": "fadeOut",
+        			  "tapToDismiss": false
+        			}
+        	toastr.success("삭제완료!!");
+        }
+     </script>	
 
 <style>
-#delBT {
-	border: none;
-	background-color: rgb(255, 255, 255);
-	color: red;
-	font-weight: bolder;
-}
+
 #userLankAdd {
 	width: 11%;
 	margin-top: 17px;
@@ -46,56 +74,51 @@
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 장르/연령 목록
-                            </div>
+                            </div>                           
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <h2 style="font-weight: bold;"> Genre List</h2>
-                                        <button class="w-btn-outline w-btn-red-outline" style="margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" margin-bottom: 1%; type="button">
+                                        <button class="w-btn-outline w-btn-red-outline" style="margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; left:500; top:400; margin-bottom: 10px; margin-bottom: 1%;" 
+                                        type="button" onclick="adminGenre()">
                                             Register
                                         </button>
                                         <tr>
-                                            <th></th>
-                                            <th>ID</th>
-                                            <th>이름</th>
-                                            <th>핸드폰번호</th>
-                                            <th>회원등급</th>
-                                            <th>마지막로그인</th>
-                                            <th>상태</th>
+                                            <th>Genre Code</th>
+                                            <th>Genre Name</th>
+                                            <th>Writer</th>
+                                            <th>Write Date</th>
                                             <th>수정/삭제</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach var="genreList" items="${genreList}" >
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>
-                                                <select>
-                                                    <option>탈퇴</option>
-                                                    <option>활성</option>
-                                                </select>
-                                            </td>
+                                            <td>${genreList.movie_genre_code}</td>
+                                            <td>${genreList.movie_genre_name}</td>
+                                            <td>${genreList.reg_id}</td>
+                                            <td>${genreList.reg_date}</td>
+                                            <td><button id="delBt"  onclick="deleteAction()"><i class="fas fa-trash-alt"></i></button> <button ><i class="fas fa-pencil-alt"></i></button></td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
+                                        </c:forEach>                            
                                     </tbody>
                                 </table>
                             </div>
+                            	<!-- 등록 창 띄우기 -->
+                            		<script>
+                                    function adminAge(){
+                                    var popupX =(window.screen.width/2)-(200/2);
+                                    var popupY =(window.screen.height/2)-(300/2);
+                            
+                                    window.open('/adminAge.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+                                    }
+                                </script>
                             <div class="card-body-one">
                                 <div
-                                    class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"style=" margin-top: 10%;">
+                                    class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                                     <h2 style="font-weight: bold; margin-left: 1%;">MovieAge List</h2>
-                                    <button class="w-btn-outline w-btn-red-outline" style="margin-left: 1%;margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" type="button">
+                                    <button class="w-btn-outline w-btn-red-outline" style="margin-left: 1%;margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" 
+                                     type="button" onclick="adminAge()">
                                         Register
                                     </button>
                                     <div class="dataTable-top">
@@ -119,60 +142,28 @@
                                             <thead>
                                                
                                                 <tr>
-                                                    <th data-sortable="" style="width: 14.3831%;">
-                                                        <a href="#" class="dataTable-sorter">번호</a>
-                                                    </th>
-                                                    <th data-sortable="" style="width: 15.4371%;">
-                                                        <a href="#" class="dataTable-sorter">ID</a>
-                                                    </th>
-                                                    <th data-sortable="" style="width: 10.3534%;">
-                                                        <a href="#" class="dataTable-sorter">이름</a>
-                                                    </th>
-                                                    <th data-sortable="" style="width: 13.0192%;">
-                                                        <a href="#" class="dataTable-sorter">핸드폰번호</a>
-                                                    </th>
-                                                    <th data-sortable="" style="width: 11.3453%;">
-                                                        <a href="#" class="dataTable-sorter">회원등급</a>
-                                                    </th>
-                                                    <th data-sortable="" style="width: 14.7551%;">
-                                                        <a href="#" class="dataTable-sorter">마지막로그인</a>
-                                                    </th>
-                                                    <th data-sortable="" style="width: 8.67948%;">
-                                                        <a href="#" class="dataTable-sorter">상태</a>
-                                                    </th>
-                                                    <th data-sortable="" style="width: 12.0273%;">
-                                                        <a href="#" class="dataTable-sorter">수정/삭제</a>
-                                                    </th>
+                                                    <th data-sortable="" style="width: 22.3831%;">Age Num</th>                                                 
+                                                    <th data-sortable="" style="width: 23.7551%;">Age Name</th>
+                                                    <th data-sortable="" style="width: 15.67948%;">Age Img</th>
+                                                    <th data-sortable="" style="width: 20.0273%;">수정/삭제</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <c:forEach var="ageList" items="${ageList }">
                                                 <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                    <td>
-                                                        <select>
-                                                            <option>탈퇴</option>
-                                                            <option>활성</option>
-                                                        </select>
-                                                    </td>
+                                                    <td>${ageList.movie_age_num}</td>
+                                                    <td>${ageList.movie_age_name}</td>
+                                                    <td>${ageList.movie_age_img}</td>
+                                                    <td>${ageList.reg_id}</td>
+                                                    <td>${ageList.reg_date}</td>
+                                                   <td><button id="delBT"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                </tr>
+                                            </c:forEach>
+                                              
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="dataTable-bottom">
-                                        <div class="dataTable-info">Showing 1 to 2 of 2 entries</div>
                                         <nav class="dataTable-pagination">
                                             <ul class="dataTable-pagination-list"></ul>
                                         </nav>
