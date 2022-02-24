@@ -6,7 +6,9 @@ import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.user.vo.UserInquiryVO;
 
 public interface AdminMovieService {
 
@@ -24,8 +26,15 @@ public interface AdminMovieService {
 	
 	//공지사항 등록 
 	int insertNotice(AdminNoticeVO vo);
-		
+	
 	List<AdminNoticeVO> noticeList();
+	
+	//답변대기 목록
+	List<UserInquiryVO> inquiryList();
+	
+	//답변완료 목록
+	List<AdminInquiryVO> answerList();
+		
 	
 	List<AdminGenreVO> genreList();
 	

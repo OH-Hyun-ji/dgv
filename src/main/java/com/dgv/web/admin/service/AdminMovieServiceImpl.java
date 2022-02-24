@@ -9,7 +9,9 @@ import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.user.vo.UserInquiryVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -79,6 +81,16 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 	public List<AdminNoticeVO> noticeList() {
 		
 		return adminMovieDAO.noticeList();
+	}
+
+	@Override
+	public List<UserInquiryVO> inquiryList() {
+		return adminMovieDAO.inquiryList();
+	}
+
+	@Override
+	public List<AdminInquiryVO> answerList() {
+		return adminMovieDAO.answerList();
 	}
 
 

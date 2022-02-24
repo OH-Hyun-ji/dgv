@@ -10,7 +10,9 @@ import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.user.vo.UserInquiryVO;
 
 @Repository
 public class AdminMovieDAO {
@@ -56,6 +58,17 @@ public class AdminMovieDAO {
 	
 	public List<AdminNoticeVO> noticeList(){
 		return sqlSessionTemplate.selectList("AdminBoardDAO.NoticeList");
+	}
+	
+	//////////고객답변대기 목록/////////////
+	public List<UserInquiryVO> inquiryList(){
+		
+		return sqlSessionTemplate.selectList("AdminBoardDAO.InquiryList");
+	}
+	
+	////////고객 답변 완료 목록/////////////
+	public List<AdminInquiryVO> answerList(){
+		return sqlSessionTemplate.selectList("AdminBoardDAO.AnswerList");
 	}
 
 }

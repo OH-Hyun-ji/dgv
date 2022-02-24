@@ -56,14 +56,18 @@ public class AdminBoardController {
 	
 	
 	@RequestMapping("/adminEnquriy.mdo")
-	public String adminEnquriy() {
+	public String adminEnquriy(Model model) {
+		model.addAttribute("inquiryList",adminMovieService.inquiryList());
 		return "/board/admin_board_enquriy";
 	}
 	
 	@RequestMapping("/adminAnswerOk.mdo")
-	public String adminAnswer() {
+	public String adminAnswer(Model model) {
+		model.addAttribute("answerList",adminMovieService.answerList());
 		return "/board/admin_board_answerOk";
 	}
+	//답변하기 등록창 
+	
 	
 	@RequestMapping("/adminChart.mdo")
 	public String adminChart() {
