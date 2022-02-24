@@ -14,13 +14,13 @@
 			</h1>
 			<!-- 상단 우측 아이콘 메뉴 -->
 			<ul class="memberInfo_wrap">
-				<li><a href="#" title="로그인"> <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
+				<li><a href="/loginForm.do" title="로그인"> <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
 						<span id="main1" class="modiImg1">로그인</span>
 				</a></li>
 				<li><a href="/join.do"> <i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> <span
 						id="main1">회원가입</span>
 				</a></li>
-				<li><a href="#"> <i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> <span
+				<li><a href="/myPage.do"> <i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> <span
 						id="main1">MY DGV</span>
 				</a></li>
 				<li><a href="#"> <i id="a" class="fas fa-hand-holding-heart" style="padding-left: 5%;; height: 35px;width: 48%;margin-bottom: -1px;"></i> <span id="main1">고객센터</span>
