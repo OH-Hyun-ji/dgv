@@ -6,6 +6,7 @@ import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminNoticeVO;
 
 public interface AdminMovieService {
 
@@ -20,6 +21,11 @@ public interface AdminMovieService {
 	
 	//배우등록
 	int insertActor(AdminActorVO vo);
+	
+	//공지사항 등록 
+	int insertNotice(AdminNoticeVO vo);
+		
+	List<AdminNoticeVO> noticeList();
 	
 	List<AdminGenreVO> genreList();
 	

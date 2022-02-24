@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,125 +43,25 @@
 							<table class="table">
 								<thead>
 									<tr>
-
-										<th>번호</th>
-										<th>작성자</th>
-										<th>내용</th>
-										<th>작성일</th>
-										<th>조회</th>
+										<th>No</th>
+										<th>Notice Title</th>
+										<th>Notice Text</th>
+										<th>Writer</th>
+										<th>Date</th>
+										<th>Count</th>
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="noticeList" items="${noticeList}">
 									<tr>
-										<td>1</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
+										<td>${noticeList.notice_num }</td>
+										<td>${noticeList.notice_title }</td>
+										<td>${noticeList.notice_text }</td>
+										<td>${noticeList.reg_id }</td>
+										<td>${noticeList.reg_date }</td>
+										<td>${noticeList.notice_count }</td>
 									</tr>
-									<tr>
-										<td>2</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
-									<tr>
-										<td>5</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
-									<tr>
-										<td>6</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
-									<tr>
-										<td>7</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
-									<tr>
-										<td>8</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
-									<tr>
-										<td>9</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
-									<tr>
-										<td>10</td>
-										<td>사고</td>
-										<td><button id="checkButton"
-												onclick="window.open('admin-notice.html','window_name','width=500,height=420,scrollbars=yes' );"
-												style="background-color: white; border: white;">
-												<u>공지사항 내용 나타날 곳</u>
-											</button></td>
-										<td>이거 살짝 엑시던트임</td>
-										<td>2022-02-09</td>
-									</tr>
+								</c:forEach>	
 								</tbody>
 							</table>
 						</div>

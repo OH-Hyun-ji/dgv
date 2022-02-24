@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminBoardDAO">
+	
+	<insert parameterType="AdminNoticeVO" id="InsertNotice">
+		INSERT INTO dgv_notice(notice_num,reg_id,notice_title,notice_text,reg_date,notice_count)
+		VALUES(DEFAULT,#{reg_id},#{notice_title},#{notice_text},current_date,#{notice_count}) 
+	</insert>
+	
+	<select id="NoticeList" resultType="AdminNoticeVO">
+		SELECT * FROM dgv_notice 
+	</select>
+	
+	<select id="InquiryList">
+		SELECT * FROM dgv_qna_wait 
+	</select>
+
+</mapper>
