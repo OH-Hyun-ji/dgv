@@ -8,8 +8,45 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
+
+const waitInfo = {
+	"dgv_inquiry_code" : "${user.dgv_inquiry_code}"
+}
 	function answerCheck(){
 		
+		const answerT = $("#answerTitle").val();
+		const answerV =$("#answerText").val();
+		const userId = $("#userId").val();
+		const regId =$("#regId").val();
+		
+		const answerVo ={
+				"admin_answer_title":answerT,
+				"admin_answer_text":answerV,
+				"reg_id":regId,
+				"dgv_inquiry_user":userId,
+				"wait_code":waitInfo.dgv_inquiry_code
+		}
+		
+		$.ajax({
+			method:"POST",
+			url:"insertAnswer.mdo",
+			contentType:"application/json",
+			dataType:"json",
+			data:JSON.stringify(answerVo),
+			success:function(result){
+				const res = JSON.parse(result)
+				if(res.msg == "SUCCESS"){
+					alert('등록 성공')
+					window.opener.location.reload();
+					window.close();
+				}else{
+					alert('등록 실패')
+				}
+			},
+			error:function(){
+				console.log("통신 실패")
+			}
+		});//ajax close
 	}
 </script>
 </head>
@@ -31,18 +68,18 @@
 					<table border="1" style="border-color: snow;">
 						<tr>
 							<td style="background-color: lightgray;">User Id</td>
-							<td><input type="text" name="notice_title" id="noticeTitle"
+							<td><input type="text" name="dgv_inquiry_user" id="userId" value="${user.dgv_inquiry_user}"
 								style="border-color: lightgray;"></td>
 						</tr>
 						<tr>
 							<td style="background-color: lightgray;">Answer Title</td>
-							<td><input type="text" name="notice_title" id="noticeTitle"
+							<td><input type="text" name="admin_answer_title" id="answerTitle"
 								style="border-color: lightgray;"></td>
 						</tr>
 						<tr>
 							<td style="background-color: lightgray;">Answer Text</td>
-							<td><textarea rows="40" cols="65" name="notice_text"
-									id="noticeText" style="border-color: lightgray;"></textarea></td>
+							<td><textarea rows="25" cols="65" name="admin_answer_text"
+									id="answerText" style="border-color: lightgray;"></textarea></td>
 						</tr>
 					</table>
 					<div class="bottom">

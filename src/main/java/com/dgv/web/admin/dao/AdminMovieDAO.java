@@ -70,5 +70,15 @@ public class AdminMovieDAO {
 	public List<AdminInquiryVO> answerList(){
 		return sqlSessionTemplate.selectList("AdminBoardDAO.AnswerList");
 	}
+	
+	///////답변등록페이지에 고객아이디 readonly///////
+	public UserInquiryVO answerUser(int code) {
+		return sqlSessionTemplate.selectOne("AdminBoardDAO.AnswerUser",code);
+		
+	}
+	
+	public int insertAnswer(AdminInquiryVO vo) {
+		return sqlSessionTemplate.insert("AdminBoardDAO.InsertAnswer", vo);
+	}
 
 }

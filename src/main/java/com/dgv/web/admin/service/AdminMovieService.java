@@ -27,6 +27,11 @@ public interface AdminMovieService {
 	//공지사항 등록 
 	int insertNotice(AdminNoticeVO vo);
 	
+	//답변 등록 고객 코드
+	UserInquiryVO waitCode(int code);
+	
+	int insertAnswer(AdminInquiryVO vo);
+	
 	List<AdminNoticeVO> noticeList();
 	
 	//답변대기 목록

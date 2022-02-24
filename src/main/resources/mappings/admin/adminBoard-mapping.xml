@@ -30,13 +30,21 @@
 	</select>
 	
 	<select id="InquiryList" resultType="UserInquiryVO">
-		SELECT * FROM dgv_qna_wait 
+		SELECT dqw.* FROM dgv_qna_wait dqw LEFT OUTER JOIN dgv_qna_answer dqa ON dqw.dgv_inquiry_code = dqa.wait_code WHERE dqa.wait_code is null
 	</select>
 	
 	<select id="AnswerList" resultMap="AdminInquiryVO">
 		SELECT w.dgv_inquiry_tag, w.dgv_inquiry_title,w.dgv_inquiry_text,w.dgv_inquiry_date,n.admin_answer_code,n.admin_answer_title,
 		n.admin_answer_text,n.dgv_inquiry_user,n.reg_id,n.reg_date
-		FROM dgv_qna_wait w  FULL JOIN dgv_qna_answer n ON w.dgv_inquiry_user = n.dgv_inquiry_user ;
+		FROM dgv_qna_wait w  FULL JOIN dgv_qna_answer n ON w.dgv_inquiry_code = n.wait_code WHERE n.wait_code >0
 	</select>
+	
+	<select id="AnswerUser" resultType="UserInquiryVO">
+		select * from dgv_qna_wait where dgv_inquiry_code=#{dgv_inquiry_code}
+	</select>
+	<insert id="InsertAnswer" parameterType="AdminInquiryVO">
+		INSERT INTO dgv_qna_answer(admin_answer_code,admin_answer_title,admin_answer_text,dgv_inquiry_user, reg_id,reg_date,wait_code)
+		VALUES(DEFAULT, #{admin_answer_title},#{admin_answer_text},#{dgv_inquiry_user},#{reg_id},current_date,#{wait_code})
+	</insert>
 
 </mapper>

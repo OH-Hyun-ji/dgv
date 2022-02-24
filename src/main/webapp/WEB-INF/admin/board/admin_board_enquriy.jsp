@@ -11,11 +11,15 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
- 	function answerPage(){
+ 	function answerPage(url){
+ 		console.log("넘어온 값 : "+ url)
  		 var popupX =(window.screen.width/2)-(200/2);
          var popupY =(window.screen.height/2)-(300/2);
- 
-         window.open('/userTermRegister.mdo','','width=650,height=700,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+ 	
+      window.open(url,'','width=650,height=700,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+
+ 	  
+
  	}
 </script>
 </head>
@@ -53,7 +57,7 @@
 												<td>${inquiryList.dgv_inquiry_text}</td>
 												<td>${inquiryList.dgv_inquiry_user}</td>
 												<td>${inquiryList.dgv_inquiry_date}</td>
-												<td><input type="button" id="answer" onclick="answerPage()" value="답변하기"/></td>
+												<td><input type="button" id="answer" onclick="answerPage('/answerRegister.mdo?dgv_inquiry_code=${inquiryList.dgv_inquiry_code}')" value="답변하기"/></td>
 											</tr>	
 										</c:forEach>										
 										</tbody>

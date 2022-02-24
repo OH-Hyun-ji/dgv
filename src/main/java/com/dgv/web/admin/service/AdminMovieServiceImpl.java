@@ -93,6 +93,18 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.answerList();
 	}
 
+	@Override
+	public UserInquiryVO waitCode(int code) {
+		
+		return adminMovieDAO.answerUser(code);
+	}
+
+	@Override
+	public int insertAnswer(AdminInquiryVO vo) {
+		
+		return adminMovieDAO.insertAnswer(vo);
+	}
+
 
 
 	

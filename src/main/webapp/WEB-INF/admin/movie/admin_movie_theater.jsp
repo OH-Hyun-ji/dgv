@@ -11,6 +11,7 @@
 <title>Admin Theater</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/resources/css/admin/admin_seat_stages.css" rel="stylesheet" />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
@@ -145,7 +146,38 @@
 		cleanParent.empty();
 		
 	}
+	
+	function createSeat(){
+			const seatRow = $("#seat_row").val();
+			const seatCol = $("#seat_column").val();
+			console.log(parseInt(seatRow)+64);
+			var aa =parseInt(seatCol)+64;
+			console.log("seatRow = "+ aa)
+
+
+ 			var bb =String.fromCharCode(aa);
+			console.log("bb : "+ bb)
+ 			var str_html ='';
+ 			for(let i=65;i<=(parseInt(seatCol)+64);i++){
+ 				console.log("행수 : "+seatRow);		
+				str_html = str_html + '<br>';
+ 				for(let j=1;j<=(parseInt(seatRow));j++){
+ 					
+ 					var seat_btn = '<input type="button" value={}>';			
+ 					var a1 = String.fromCharCode(i);
+ 					console.log("total =" +a1+j);
+ 		            seat_btn = seat_btn.replace('{}', a1+j);
+ 		            str_html = str_html + seat_btn;
+			
+ 				}
+ 				str_html = str_html + '<br>';
+ 			}	
+ 			$('.adminSeatSite').html(str_html);	
+	}
+	
 		
+	
+	
 	</script>	
 						<div class="btn-group" style="width: 19%;">
 							<button type="button"style="width: 100%; margin-top:0;" class="btn btn-danger dropdown-toggle"
@@ -162,38 +194,94 @@
 						</div>
 							<button id="registerCity">Register</button>
 						</div>
-						<div class="card-body">
-							<table id="datatablesSimple">
-								<thead>
-									<tr>
-										<th>Num</th>
-										<th>CityCode</th>
-										<th>City</th>
-										<th>Region</th>
-										<th>Theater</th>
-										<th>Delete | Update</th>
-									</tr>
-								</thead>
-								<tbody>
-
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td></td>
-										<td></td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button>
-											<button id="upBT">
-												Update
-											</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
+						<div class="seat_count_total">
+							<label class="max_title">상영관 이름 : </label>
+							<input id="seat_title" type="text" placeholder="상영관 입력">
+							<label class="max_title">최대 행수 : </label>
+							<input id="seat_row" type="text" placeholder="행 입력">
+							<label class="max_title">최대 열수 : </label>
+							<input id="seat_column" type="text" placeholder="열 입력">
+							<button class="theater_seat_making" onclick="createSeat()">Create</button>
 						</div>
+				<div class="admin_seat_container">
+						<div class="admin_seat_wrapper">
+							<div class="button-container-stage"></div>
+							<div class="admin_seat_wrap">
+								<div class="admin_seat_title">
+									<span class="admin_seat_screen">SCREEN</span>
+								</div>
+								<div class="admin_seat_view">
+									<div class="admin_seat_line">
+										<form action="#" id="adminTheaterSeatResult">
+											<div class="adminSeatSite" id="seatWrap">
+<%-- 												<c:forEach begin="1" end="9" var="i"> --%>
+<%-- 													<c:if test="${i == 1}"> --%>
+<%-- 														<c:set value="A" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:if test="${i == 2}"> --%>
+<%-- 														<c:set value="B" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:if test="${i == 3}"> --%>
+<%-- 														<c:set value="C" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:if test="${i == 4}"> --%>
+<%-- 														<c:set value="D" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:if test="${i == 5}"> --%>
+<%-- 														<c:set value="E" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:if test="${i == 6}"> --%>
+<%-- 														<c:set value="F" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:if test="${i == 7}"> --%>
+<%-- 														<c:set value="G" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:if test="${i == 8}"> --%>
+<%-- 														<c:set value="H" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:if test="${i == 9}"> --%>
+<%-- 														<c:set value="I" var="seatColumn"></c:set> --%>
+<%-- 													</c:if> --%>
+<%-- 													<c:forEach begin="1" end="15" var="seatRow"> --%>
+<%-- 														<c:if test="${seatRow == 1}"> --%>
+<!-- 															<br> -->
+<%-- 														</c:if> --%>
+<%-- 														<button id="seatNumber" onclick="#" value="true">${seatColumn}${seatRow}</button> --%>
+<%-- 													</c:forEach> --%>
+<!-- 													j foreach close -->
+<%-- 												</c:forEach> --%>
+												<!-- i foreach close-->
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="card-body">
+									<table id="datatablesSimple">
+										<thead>
+											<tr>
+												<th>번호</th>
+												<th>약관이름</th>
+												<th>>약관 등록일</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Tiger Nixon</td>
+												<td>System Architect</td>
+												<td>Edinburgh</td>
+												<td><button id="delBT">
+														<i class="fas fa-times"></i>
+													</button></td>
+											</tr>	
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
 					</div>
 			</div>
 		</main>
