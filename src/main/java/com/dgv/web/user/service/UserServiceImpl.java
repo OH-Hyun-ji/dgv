@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	
 	//로그인처리
 	@Override
-	public UserVO login(UserVO userVO)throws Exception{
+	public UserVO login(UserVO userVO){
 		return userDAO.login(userVO);
 	}
 	//ID 중복 체크 

@@ -9,7 +9,7 @@ public interface UserService {
 	int register(UserVO userVO);
 	
 	// 로그인처리
-	UserVO login(UserVO userVO) throws Exception;
+	UserVO login(UserVO userVO);
 	
 	//회원가입 ID중복체크
 	int checkId(String id); 
