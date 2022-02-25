@@ -148,7 +148,6 @@ i {
 }
 .cols-content {
     margin-top: 25px;
-    margin-left: 11%;
     margin-right: 11%;
 }
 .cols-content .col-detail:first-child {
@@ -156,7 +155,7 @@ i {
 }
 .cols-content .col-detail {
   	position: relative;
-    width: 92%;
+    width: 113%;
     padding-left: 8%;
     box-sizing: border-box;
     padding-right: 20%;

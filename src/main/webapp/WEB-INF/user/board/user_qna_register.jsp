@@ -14,6 +14,15 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function userQna(){
+			var popupX =(window.screen.width/2)-(200/2);
+	        var popupY =(window.screen.height/2)-(300/2);
+	 	
+	      window.open("/qnaRegister.do",'','width=650,height=700,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+
+		}
+	</script>
 </head>
       <body class="">
         <div id="cgvwrap">
@@ -29,29 +38,21 @@
                 <jsp:include page="../default/user_notice_side.jsp"></jsp:include>
                   <div class="myPage-content-wrap">
                   <div class="button-wrapping">
-                  <span class="service-center-text">나의 문의내역</span>                 
-              		 <button class="w-btn-outline w-btn-red-outline qna-button" type="button" onclick="location.href='/qnaRegister.do'">
-                      문의하기
-                      </button>
+                  <span class="service-center-text">문의하기</span>                 
                     </div>
                     <div class="myPage-table-wrap" >
-                  	<span><i class="fas fa-table me-1" style=" margin-right: 1%;"></i>1:1문의내역 </span>
-                  	<table class="myPage-table">
-								<thead class="myPage-table-wrapping">
-									<tr>
-										<th>번호</th>
-										<th>내용</th>
-										<th>답변완료</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">문의 제목</a></td>
-										<td>나 자신</td>								
-									</tr>							
-								</tbody>
-							</table>
+                  	<span><i class="fas fa-table me-1" style=" margin-right: 1%;"></i>문의작성</span>
+                  	 <table border="1" style="border-color: coral;margin-left: 4%;">                      
+                        <tr>
+                            <td style="background-color: lightgray; ">Notice Title</td>
+                            <td><input type="text" name="notice_title" id="noticeTitle"style="border-color: lightgray;"></td>
+                        </tr>
+             
+                         <tr>
+                            <td style="background-color: lightgray;">Notice Text</td>
+                            <td> <textarea rows="25" cols="65" name="notice_text" id="noticeText" style="border-color: lightgray;"></textarea></td>
+                        </tr>
+                    </table>
                   	
                   </div>
                 

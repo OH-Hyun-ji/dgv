@@ -41,6 +41,7 @@ public class UserLoginController {
 			System.out.println("로그인 실패");
 			return "/login/user_loginForm";
 		} else {
+			httpSession.setAttribute("userId", userVO.getUser_id());
 			model.addAttribute("user", userVo);
 			model.addAttribute("userId", userVO.getUser_id());
 			model.addAttribute("userName", userVo.getUser_name());

@@ -33,4 +33,6 @@ public class UserServiceImpl implements UserService {
 	public int checkId(String id) {
 		return userDAO.checkId(id);
 	}
+
+
 }

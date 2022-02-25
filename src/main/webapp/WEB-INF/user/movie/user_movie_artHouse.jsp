@@ -34,9 +34,8 @@
 					</div>
 				</div>
 				<div class="sect-arthouse-visual">
-					<a href="#"> <img
-						src="https://img.cgv.co.kr/R2014/images/arthouse/main_visual.jpg"
-						alt="CGV ARTHOUSE - 한국 독립예술영화를 상영하는 CGV만의 차별화된 상영관입니다.">
+					<a href="#"> 
+					<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20220220_175402868.png">
 					</a>
 				</div>
 				<div class="wrap-collage-chart">

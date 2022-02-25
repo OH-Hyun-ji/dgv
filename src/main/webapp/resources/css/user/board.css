@@ -129,3 +129,10 @@ table.type10 td {
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
 }
+.userQna-title{
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 11%;
+    margin-left: 2%;
+    margin-top: 5%;
+}

@@ -29,8 +29,17 @@ public class UserBoardController {
 	@RequestMapping("/oftenQna.do")
 	public String oftenQna() {
 		return "/board/user_often_qna";
-	}@RequestMapping("/myQna.do")
+		
+	}
+	
+	@RequestMapping("/myQna.do")
 	public String myQna() {
 		return "/board/user_one_qna";
 	}
+	
+	@RequestMapping("/qnaRegister.do")
+	public String qnaRegister() {
+		return "/board/user_qna_register";
+	}
+	
 }

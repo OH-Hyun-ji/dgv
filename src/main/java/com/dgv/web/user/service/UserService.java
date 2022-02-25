@@ -13,4 +13,6 @@ public interface UserService {
 	
 	//회원가입 ID중복체크
 	int checkId(String id); 
+	
+	
 }

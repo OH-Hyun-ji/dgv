@@ -25,7 +25,7 @@
 		<div class="event-board-wrap"> 
 		<jsp:include page="../default/user_event_header.jsp"></jsp:include>
 		<div class="cols-content" style="width: 100%;margin-top: -29px;margin-left: 0%;">
-			<div class="col-detail event">
+			<div class="col-detail event" style=" width: 98%; padding-left: 2%;">
 				<div class="sect-evt-item-list">
 				<div class="dgv_board_table">
 				<table class="type10">

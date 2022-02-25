@@ -1,5 +1,11 @@
 package com.dgv.web.admin.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +24,9 @@ public class AdminUserController {
 	private AdminUserService adminUserService;
 	
 	@RequestMapping("/userList.mdo")
-	public String userList(UserVO vo, Model model) {
+	public String userList(UserVO vo, Model model, HttpServletRequest request) {
 		model.addAttribute("userList" ,adminUserService.userList());
+		model.addAttribute("userListCount", adminUserService.userList().size());
 		return "/user/admin_user_list";
 	}
 	

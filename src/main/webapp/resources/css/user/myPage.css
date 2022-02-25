@@ -648,4 +648,9 @@ a.service-sub-03 {
 span.service-center-text {
     font-size: 22px;
     font-weight: bolder;
+    align-self: center;
+}
+.button-wrapping {
+    display: flex;
+    justify-content: space-between;
 }

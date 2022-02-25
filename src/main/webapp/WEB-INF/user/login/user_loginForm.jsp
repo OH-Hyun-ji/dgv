@@ -15,15 +15,10 @@
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
 <link
-	href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap"
-	rel="stylesheet">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
+	href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 </head>
 
@@ -53,13 +48,10 @@
 						id="password" class="form-control"> <i
 						class="zmdi zmdi-lock"></i>
 				</div>
-
 				<div class="sort1">
 					<input type="checkbox" id="checkSaveId" name="useCookie"> 
 					<span style="color:white;">아이디 저장</span>
 				</div>
-
-
 				<button type="submit" class="w-btn w-btn-gra3 w-btn-gra-anim">
 					<span>로그인 하기</span> <i class="zmdi zmdi-arrow-right"></i>
 				</button>

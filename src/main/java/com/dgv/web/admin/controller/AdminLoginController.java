@@ -35,6 +35,8 @@ public class AdminLoginController {
 	public String adminLogin(@RequestBody AdminVO vo, Model model, HttpSession session) {
 		System.out.println("관리자 로그인 처리");
 		AdminVO adminId = adminUserService.adminLogin(vo.getAdmin_id());
+		System.out.println("내가 작성한 아이디 : "+vo.getAdmin_id());
+		System.out.println("데이터 베이스 아이디 : " + adminId.getAdmin_id());
 		
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
