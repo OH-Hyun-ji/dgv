@@ -584,3 +584,68 @@ input.myPage-button-wrap02:hover{
 	font-weight: bolder;
     font-size: 16px;
 }
+.service-center-01 {
+    height: 170px;
+    width: 24%;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 9px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 4%;
+    display: grid;
+}
+
+a.service-sub-01 {
+    display: contents;
+}
+.service-center-02 {
+    height: 170px;
+    width: 24%;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 9px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 4%;
+    display: grid;
+}
+
+a.service-sub-02 {
+    display: contents;
+}
+.service-center-03 {
+    height: 170px;
+    width: 24%;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 9px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 4%;
+    display: grid;
+}
+
+a.service-sub-03 {
+    display: contents;
+}
+
+.service-center-wrapping {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3%;
+}
+
+.service-table-wrap {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+span.service-center-text {
+    font-size: 22px;
+    font-weight: bolder;
+}

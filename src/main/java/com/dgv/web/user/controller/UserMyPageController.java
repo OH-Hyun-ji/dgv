@@ -6,54 +6,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserMyPageController {
 
-//  아직 CSS 적용중
-//	@RequestMapping("/myPage.do")
-//	public String mypage() {
-//		return "/mypage/user_mypage";
-//	}
-	
-	@RequestMapping("/informationUpdateChange.do")
-	public String informationChange() {
-		return "/mypage/user_mypage_informationupdatechange";
+ 
+	@RequestMapping("/myPage.do")
+	public String mypage() {
+		return "/myPage/user_myPage";
 	}
 	
-	@RequestMapping("/informationUpdatePassword.do")
-	public String informationUpdatePassword() {
-		return "/mypage/user_mypage_informationupdatepassword";
+	@RequestMapping("/myPage_reserve.do")
+	public String myPage_reserve() {
+		return "/myPage/user_myPage_reserve";
+	}
+	
+	@RequestMapping("/myPage_coupon.do")
+	public String myPage_coupon() {
+		return "/myPage/user_myPage_coupon";
+	}
+	
+	@RequestMapping("/myPage_event.do")
+	public String myPage_event() {
+		return "/myPage/user_myPage_event";
+	}
+	
+	@RequestMapping("/myPage_checkData.do")
+	public String myPage_checkData() {
+		return "/myPage/user_myPage_checkData";
+	}
+	
+	@RequestMapping("/myPage_myData.do")
+	public String myPage_myData() {
+		return "/myPage/user_myPage_myData";
 	}
 	
 }
-
-//참고하기
-//package com.dgv.web.user.controller;
-//
-//import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//
-//@Controller
-//public class UserMovieController {
-//
-//	@RequestMapping("/artHouse.do")
-//	public String artHouse() {
-//		return "/movie/user_movie_artHouse";
-//	}
-//	
-//	@RequestMapping("/arthouseVideo.do")
-//	public String artVideo() {
-//		return "/movie/user_movie_video";
-//	}
-//	
-//	@RequestMapping("/theater.do")
-//	public String theater() {
-//		return "/movie/user_movie_theater";
-//	}
-//	
-//	@RequestMapping("/movieChart.do")
-//	public String movieChart() {
-//		return "/movie/user_movie_movieChart";
-//	}
-//	@RequestMapping("/movieDetail.do")
-//	public String movieDetail() {
-//		return "/movie/user_movie_movieDetail";
-//	}
-//}

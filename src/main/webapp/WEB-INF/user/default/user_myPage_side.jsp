@@ -42,11 +42,11 @@
                                         </a>
                                     </li>
                                     <li >
-                                        <a href="#">나의 문의내역
+                                        <a href="/myQna.do">나의 문의내역
                                         </a>
                                         <ul>
                                             <li >
-                                                <a href="#" style="padding-left: 26%;">1:1 문의</a>
+                                                <a href="/myQna.do" style="padding-left: 26%;">1:1 문의</a>
                                             </li>
                                         </ul>
                                     </li>

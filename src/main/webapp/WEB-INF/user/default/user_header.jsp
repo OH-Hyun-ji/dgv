@@ -23,7 +23,7 @@
 				<li><a href="/myPage.do"> <i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> <span
 						id="main1">MY DGV</span>
 				</a></li>
-				<li><a href="#"> <i id="a" class="fas fa-hand-holding-heart" style="padding-left: 5%;; height: 35px;width: 48%;margin-bottom: -1px;"></i> <span id="main1">고객센터</span>
+				<li><a href="/serviceCenter.do"> <i id="a" class="fas fa-hand-holding-heart" style="padding-left: 5%;; height: 35px;width: 48%;margin-bottom: -1px;"></i> <span id="main1">고객센터</span>
 				</a></li>
 			</ul>
 		</div>
@@ -177,12 +177,12 @@
 				</li>
 				<li>
 					<h2>
-						<a href="#">이벤트</a>
+						<a href="/event.do">이벤트</a>
 					</h2>
 					<dl class="nav_overMenu" style="display: none;">
 						<dt>
 							<h2>
-								<a href="#">이벤트</a>
+								<a href="/event.do">이벤트</a>
 							</h2>
 						</dt>
 						<dd>
@@ -192,12 +192,12 @@
 						</dd>
 						<dd>
 							<h2>
-								<a href="#">당첨자 발표</a>
+								<a href="/eventWinner.do">당첨자 발표</a>
 							</h2>
 						</dd>
 						<dd>
 							<h2>
-								<a href="#">종료된 이벤트</a>
+								<a href="/eventEnd.do">종료된 이벤트</a>
 							</h2>
 						</dd>
 					</dl>
