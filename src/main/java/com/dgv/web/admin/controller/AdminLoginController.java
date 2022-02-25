@@ -43,9 +43,9 @@ public class AdminLoginController {
 			jsonObject.addProperty("msg", "SUCCESS");
 			session.setAttribute("adminID", adminId.getAdmin_name());
 			System.out.println(jsonObject);		
-		}else {
+		}else { 
 			System.out.println("로그인 실패");
-			jsonObject.addProperty("msg", "FAil");
+			jsonObject.addProperty("msg", "FAIL");
 			System.out.println(jsonObject);		
 		}
 		String jsonResult = gson.toJson(jsonObject);

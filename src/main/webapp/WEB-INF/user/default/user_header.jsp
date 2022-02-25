@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <div class="header">
@@ -13,10 +14,23 @@
 				<span id="sideLogo">CULTUREPLEX</span>
 			</h1>
 			<!-- 상단 우측 아이콘 메뉴 -->
-			<ul class="memberInfo_wrap">
-				<li><a href="/loginForm.do" title="로그인"> <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
-						<span id="main1" class="modiImg1">로그인</span>
-				</a></li>
+			<ul class="memberInfo_wrap">		
+<!-- ///////////////////////////////////////////// -->	
+				<li>
+					<c:if test="${empty userID}">
+	                     <span>
+	                     	<a href="/loginForm.do" title="로그인"> 
+							  <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
+							  <span id="main1" class="modiImg1">로그인</span>
+							</a>
+	                     </span>
+	                </c:if>
+	                <c:if test="${!empty userID}">
+	                  		
+	                     <span><a style="width: 88%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;" href="/logout.do">${userID}님 Logout</a></span>
+	                </c:if>
+                </li>
+<!-- ///////////////////////////////////////////// -->
 				<li><a href="/join.do"> <i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> <span
 						id="main1">회원가입</span>
 				</a></li>

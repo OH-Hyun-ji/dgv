@@ -25,6 +25,38 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script type="text/javascript">
+	function loginCheck(){
+		alert("?????")
+		const id = $('#id').val()
+		const pw = $('#password').val()
+		
+// 		console.log("내가입력한 id : "+ id)
+// 		console.log("내가입력한 pw : "+ pw)
+		$.ajax({
+			method:"POST",
+			url:"/login.do",
+			contentType:"application/json",
+			dataType:"json",
+			data:JSON.stringify({"user_id":id, "user_pw": pw}),
+			success:function(result){
+				const reT = JSON.parse(result)
+				
+				if(reT.msg == "SUCCESS"){
+					alert("로그인 성공!!")
+					location.href='/dgvMain.do';
+				}else{
+					alert("실패")
+				}
+			},
+			error:function(){
+				console.log("통신실패!!!")
+			}
+		}); //ajax close()
+		
+		
+	}
+</script>
 </head>
 
 <body class="block" style="">
@@ -60,9 +92,9 @@
 				</div>
 
 
-				<button type="submit" class="w-btn w-btn-gra3 w-btn-gra-anim">
-					<span>로그인 하기</span> <i class="zmdi zmdi-arrow-right"></i>
-				</button>
+				<input type="button" class="w-btn w-btn-gra3 w-btn-gra-anim" onclick="loginCheck()" value="로그인 하기">
+					
+			
 				<button type="button" onclick="location.href='/join.do'" class="w-btn w-btn-gra3 w-btn-gra-anim" style="margin-top: 10px;">
 					<span>회원가입</span> <i class="zmdi zmdi-arrow-right"></i>
 				</button>
@@ -70,6 +102,7 @@
 
 		</div>
 	</div>
+	
 		
 	<script src="./js/register.js"></script>
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>

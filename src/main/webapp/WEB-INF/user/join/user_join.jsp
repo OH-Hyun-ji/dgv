@@ -57,7 +57,8 @@
          }else if(!getIdCheck.test($("#id").val())){
            $("#id").addClass("issetUser");
             $("#id").removeClass("nonesetUser");
-            $("#idCK").html('<b style="color:orangered; font-size: smaller;;">[ 영문/숫자 최대 15자입니다! ]');
+            $("#idCK").html('<b style="color:orangered; font-size: smaller;;">[ 영문/숫자 4~15자입니다! ]');
+
             chk1=false;
          } else {
              $("#id").removeClass("issetUser");
@@ -168,7 +169,8 @@
              $("#nameCK").html('<b style="color:orangered; font-size: smaller;">[ 이름을 입력해주세요. ]');    
              chk4 = false;
               
-           }else if(!getName.test($("#name").val())){            
+           }else if(!getName.test($("#name").val())){ 
+        	  $("#name").removeClass("nonesetUser");
               $("#name").addClass("issetUser"); 
               $("#nameCK").html('<b style="color:orangered; font-size: smaller;">[ 이름 형식이 맞지 않습니다! ]');    
               chk4 = false;
@@ -255,15 +257,15 @@
       console.log("동의 :? " +termCheck)
       
       if(chk1 && chk2 && chk3 && chk4 && chk5 && chk6 && chk7){
-   	  	 if(termCheck != true ){
-    	    alert('약관동의 체크해주세요')
-    	 }else{
-    		 alert("회원가입 성공!!")
+            if(termCheck != true ){
+           alert('약관동의 체크해주세요')
+        }else{
+           alert("회원가입 성공!!")
              console.log("성공")
-             document.joinForm.submit();		
-    	 }
+             document.joinForm.submit();      
+        }
       }else{
-    	  alert("빈칸이나 유효하지 않는 값이 있습니다. 다시 확인해주세요!!")
+         alert("빈칸이나 유효하지 않는 값이 있습니다. 다시 확인해주세요!!")
           console.log("실패")
           return false;
       }

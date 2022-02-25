@@ -11,7 +11,7 @@
             	
                 <div class="input-group">
                 	 <c:if test="${empty adminID}">
-                        <span><a class="dropdown-item" href="/login.mdo">Login</a></li></span>
+                        <span><a class="dropdown-item" href="/login.mdo">Login</a></span>
                      </c:if>
                      <c:if test="${!empty adminID}">
                         <span><a style="color:white" href="/logout.mdo">${adminID}님 Logout</a></span>
