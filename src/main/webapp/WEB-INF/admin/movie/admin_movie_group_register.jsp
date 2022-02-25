@@ -102,7 +102,7 @@
 					<div class="card-body">
 					
                             <div id="table-container">
-                            	<input type="hidden" id="regId" name="reg_id" value="관리자">
+                            	<input type="hidden" id="regId" name="reg_id" value="${adminID}">
 								<table class="type02">				
 									<tr>
 										<th scope="row" style="font-ssize:18px;">Movie Director Name</th>

@@ -186,6 +186,13 @@
 							const titleImg = $("<img>").attr("src", "${pageContext.request.contextPath }/resources/images/")						
 						});
 	</script>
+	<style type="text/css">
+		video {
+    			width: 104%;
+   				box-sizing: border-box;
+    			height: 100%;
+		}
+	</style>
 </head>
 <body class="block">
 	<jsp:include page="../default/user_header.jsp"></jsp:include>
@@ -195,21 +202,15 @@
 		<div class="movie-wrap">
 			<div class="contents">
 				<div class="video-wrap">
-					<video autoplay muted>
+					<video autoplay muted loop>
 						<source
-							src="${pageContext.request.contextPath }/resources/video/01_01.mp4"
-							type="video/mp4">
+							src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/movie.mp4"
+							type="video/mp4" >
 					</video>
-					<strong class="movie-title"> movie-title </strong> <span
-						class="movie-txt"> movie-sub-txt-1 <br>
-						movie-sub-txt-2
+					<strong class="movie-title">스파이더맨: 노 웨이 홈 </strong> <span
+						class="movie-txt">Spider-Man<br>
+						: No Way Home
 					</span>
-					<div class="movie-wrap-controller">
-						<a class="movie-detail-btn" href="#">상세보기</a> <a
-							class="movie-stop-btn" href="#">stop</a> <a
-							class="movie-sound-off-btn" href="#">soundOn</a>
-					</div>
-
 				</div>
 			</div>
 		</div>
