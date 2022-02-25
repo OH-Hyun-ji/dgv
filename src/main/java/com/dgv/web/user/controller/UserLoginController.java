@@ -62,19 +62,8 @@ public class UserLoginController {
 			System.out.println(jsonObject);		
 		}else { 
 			System.out.println("로그인 실패");
-<<<<<<< HEAD
-			return "/login/user_loginForm";
-		} else {
-			httpSession.setAttribute("userId", userVO.getUser_id());
-			model.addAttribute("user", userVo);
-			model.addAttribute("userId", userVO.getUser_id());
-			model.addAttribute("userName", userVo.getUser_name());
-			System.out.println("로그인 성공");
-			 return "/login/user_login";
-=======
 			jsonObject.addProperty("msg", "FAIL");
 			System.out.println(jsonObject);		
->>>>>>> e8d06dd947be5e2e2c1cbb9c60c1103f5c3b1527
 		}
 		String jsonResult = gson.toJson(jsonObject);
 		
