@@ -49,6 +49,15 @@ const waitInfo = {
 		});//ajax close
 	}
 </script>
+<style>
+	input[type="button"] {
+    font-size: 22px;
+    border-radius: 8px;
+    width: 34%;
+    height: 50px;
+    margin-top: 1%;
+}
+</style>
 </head>
 <body>
 	<!-- Main -->
@@ -72,17 +81,23 @@ const waitInfo = {
 								style="border-color: lightgray;"></td>
 						</tr>
 						<tr>
+							<td style="background-color: lightgray;">Inquiry Text</td>
+							<td><textarea rows="15" cols="65" style="border-color: lightgray;">${user.dgv_inquiry_text}
+								</textarea>
+							</td>
+						</tr>
+						<tr>
 							<td style="background-color: lightgray;">Answer Title</td>
 							<td><input type="text" name="admin_answer_title" id="answerTitle"
 								style="border-color: lightgray;"></td>
 						</tr>
 						<tr>
 							<td style="background-color: lightgray;">Answer Text</td>
-							<td><textarea rows="25" cols="65" name="admin_answer_text"
+							<td><textarea rows="15" cols="65" name="admin_answer_text"
 									id="answerText" style="border-color: lightgray;"></textarea></td>
 						</tr>
 					</table>
-					<div class="bottom">
+					<div class="bottom" style="text-align-last: center;">
 						<input type="button" onclick="answerCheck()" value="등록하기">
 					</div>
 				</div>

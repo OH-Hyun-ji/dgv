@@ -58,6 +58,7 @@
            $("#id").addClass("issetUser");
             $("#id").removeClass("nonesetUser");
             $("#idCK").html('<b style="color:orangered; font-size: smaller;;">[ 영문/숫자 4~15자입니다! ]');
+
             chk1=false;
          } else {
              $("#id").removeClass("issetUser");

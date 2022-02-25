@@ -147,15 +147,19 @@ i {
   padding-top: 25px;
 }
 .cols-content {
-  margin-top: 25px;
+    margin-top: 25px;
+    margin-left: 11%;
+    margin-right: 11%;
 }
 .cols-content .col-detail:first-child {
   float: left;
 }
 .cols-content .col-detail {
-  position: relative;
-  width: 800px;
-  float: left;
+  	position: relative;
+    width: 92%;
+    padding-left: 8%;
+    box-sizing: border-box;
+    padding-right: 20%;
 }
 .sect-evt-item-list {
   display: flex;
@@ -199,10 +203,11 @@ input, select, img {
   vertical-align: middle;
 }
 .sect-evt-item-list li .evt-desc {
-  min-height: 90px;
-  padding-bottom: 17px;
-  border: 1px solid #dddfe2;
-  border-top: 0;
+    min-height: 90px;
+    padding-bottom: 17px;
+    border: 1px solid #dddfe2;
+    border-top: 0;
+    width: 255px;
 }
 .sect-evt-item-list li .txt1 {
   padding: 18px 11px 0 11px;
@@ -225,5 +230,24 @@ input, select, img {
   padding: 17px 11px 0 11px;
   letter-spacing: -0.5px;
 }
+ul.event-ul {
+    display: flex;
+    padding-top: 1%;
+    font-size: 18px;
+    padding-left: 7%;
+}
+ul.event-ul > li {
+    margin-left: 8%;
+    margin-right: 15%;
+}
 
-
+ul.event-ul > li:hover {
+    color:red;
+    font-weight: bold;
+}
+.event-board-wrap {
+    height: 66%;
+    position: absolute;
+    margin-left: 18%;
+    margin-right: 29%;
+}

@@ -18,26 +18,9 @@
   <!--본격 콘텐츠-->
   <div id="contaniner" style="height: 1100px" class="">
     <!-- Contents Area -->
-		<div id="contents" class="">
-      <!-- Contents Start -->
-      <div class="tit-heading-wrap tit-evt">
-        <h3>EVENT</h3>
-      </div>
-      <!--이벤트 컨텐츠 메뉴/////////////////////////////////////////////////////////////////////////////////////////////-->
-      <div class="evt-nav-area">
-        <ul class="evt-tab-menu">
-          <li><a href="/culture-event/event/defaultNew.aspx?mCode=001" title="" class="on">SPECIAL</a></li>
-          <li><a href="/culture-event/event/defaultNew.aspx?mCode=004" title="" class="">영화/예매</a></li>
-          <li><a href="/culture-event/event/defaultNew.aspx?mCode=008" title="" class="">멤버십/CLUB</a></li>
-        <li><a href="/culture-event/event/defaultNew.aspx?mCode=005" title="" class="">CGV 극장별</a></li>
-        <li><a href="/culture-event/event/defaultNew.aspx?mCode=006" title="" class="">제휴/할인</a></li>
-        </ul>
-        <div class="submenu">
-          <a href="/user/mycgv/event/result_list.aspx" class="round red on"><i>당첨자 발표</i></a>
-          <a href="/culture-event/event/end-list.aspx" class="round red on"><i>종료된 이벤트</i></a>
-        </div>
-        <div class="evt-select-area"></div>
-        <div class="cols-content">
+    <div class="event-board-wrap"> 
+    <jsp:include page="../default/user_event_header.jsp"></jsp:include>
+        <div class="cols-content" style="width: 100%;">
           <div class="col-detail event">
             <ul class="sect-evt-item-list">
               <li>
@@ -147,6 +130,7 @@
           </div>
         </div>
       </div>
+     </div>
     </div>
   </div>
  <jsp:include page="../default/user_footer.jsp"></jsp:include>
