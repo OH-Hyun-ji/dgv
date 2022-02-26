@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserVO;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 @Controller
 public class UserRegisterController {
@@ -45,18 +47,26 @@ public class UserRegisterController {
 		return "/login/user_loginForm";
 	}
 	
-	//회원가입 ID중복체크 
-	@PostMapping("/join.do")
-	@ResponseBody
-	public String checkId(@RequestBody String id) {
-		int checkNum = userService.checkId(id);
-		
-		if(checkNum > 0) {
-			System.out.println("존재하는 아이디");
-			return "NO";
-		}else {
-			System.out.println("존재하지 않는 아이디 이므로 회원가입 가능!!");
-			return "YES";
-		}
-	}
+	 //회원가입 ID중복체크 
+	   @PostMapping("/join.do")
+	   @ResponseBody
+	   public String checkId(UserVO vo) {
+	      int checkNum = userService.checkId(vo.getUser_id());
+	      
+	      Gson gson = new Gson();
+	      JsonObject jsonObject = new JsonObject();
+	      
+	      if(checkNum > 0) {
+	         System.out.println("존재하는 아이디");
+	         jsonObject.addProperty("ret", "N");  //ret = N
+	      }else {
+	         System.out.println("존재하지 않는 아이디 이므로 회원가입 가능!!");
+	         jsonObject.addProperty("ret", "Y");
+	      }
+	      
+	      String jsonStr = gson.toJson(jsonObject);
+	      
+
+	      return jsonStr;
+	   }
 }
