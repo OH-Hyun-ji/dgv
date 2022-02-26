@@ -1,0 +1,656 @@
+@charset "UTF-8";
+
+.myPage-title-box > img{
+	display: block;
+    left: 6%;
+    top: 7%;
+    width: 139px;
+    height: 135px;
+    border-radius: 70px;
+	margin-top: 14%;
+
+}
+.myPage-sect-common {
+   background-color: rgba(127,125,13,0.1);
+}
+
+h2.myPage-top {
+    width: 84%;
+    margin-top: 2%;
+    font-size: 35px;
+    margin-left: 4%;
+    margin-right: 32px;
+}
+
+.myPage-box-image {
+	width: 100%;
+    margin-top: 8%;
+    font-size: 35px;
+    margin-left: 15%;	
+}
+
+.sect-person-info {
+    display: flex;
+    margin-top: 4%;
+}
+
+.person-info {
+  	margin-top: 13%;
+    font-size: 18px;
+    display: inline-grid;
+    height: 63%;
+    width: 88%;
+}
+
+
+.person-info > *{
+	margin-bottom: 4%;
+}
+
+button#myPage-change-info {
+    font-size: 18px;
+    height: 73%;
+    border-radius: 33px;
+    border: 3px solid darkgray;
+    width: 71%;
+}
+button#myPage-change-info:hover{
+	background-color: gray;
+	color:white;
+}
+.myPage-info-box > p{
+	font-size: 24px;
+    font-weight: bold;
+    margin-left: 8%;
+    margin-top: 3%;
+}
+
+.myPage-grade-info {
+    margin-top: 7%;
+    width: 61%;
+    height: 76%;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 12px;
+}
+
+button#myPage-view_usergrade {
+    margin-top: 2%;
+    line-height: 27px;
+    margin-left: 22%;
+    border-radius: 6px;
+    border: 2px solid darkgrey;
+}
+button#myPage-view_usergrade:hover {
+	background-color: gray;
+	color:white;
+}
+
+.myPage-box-contents.newtype {
+ 	margin-left: 4%;
+    display: flex;
+    width: 62%;
+    height: 307px;
+    
+}
+.myPage-sect-common {
+    height: 309px;
+    border-radius: 11px;
+}
+
+.mydgv-info-wrap {
+    height: 309px;
+}
+
+.myPage-title-box {
+    margin-left: 6%;
+    margin-top: 4%;
+    margin-right: 5%;
+    height: 222px;
+    margin-bottom: 6%;
+    border-right: 1px solid;
+    padding-right: 3%;
+}
+
+.myPage-coupon-title {
+    background-color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: 22px;
+    margin-top: 5%;
+    margin-bottom: 11%;
+}
+
+.myPage-grade-title {
+    background-color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: 22px;
+    margin-top: 5%;
+}
+.myPage-coupon-count > strong{
+	font-size: 17px;
+	margin-left: 10%;
+}
+.myPage-coupon-count > span{
+	font-size: 17px;
+	margin-left: 3%;
+}
+.myPage-content-wrap {
+    width: 100%;
+    margin-top: 3%;
+    height: 511px;
+    background-color: rgba(127,125,13,0.1);
+    border-radius: 9px;
+    padding: 2%;
+    position: relative;
+    overflow: hidden;
+}
+.myPage-cols-container {
+    display: flex;
+}
+
+.myPage-table-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+table.myPage-table {
+    --bs-table-bg: transparent;
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: #212529;
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+    --bs-table-active-color: #212529;
+    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+    --bs-table-hover-color: #212529;
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    vertical-align: top;
+    border-color: #dee2e6;
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+.myPage-table-wrap > span{
+	font-size: 17px;
+    padding-bottom: 1%;
+    padding-left: 3%;
+    padding-top: 1%;
+    font-weight: bold;
+}
+table.myPage-table {
+    text-align: center;
+}
+thead.myPage-table-wrapping {
+     border: 1px solid darkgray;
+    background-color: rgba(245, 245, 245, 0.6);
+}
+.myPage-table-wrap {
+    margin-top: 4%;
+    border-radius: 8px;
+}
+thead.myPage-table-wrapping >tr {
+	border-style: solid;
+}
+tbody > tr {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.myPage-table-wrap > span > button{
+	margin-left: 69%;
+    border-radius: 6px;
+    background-color: black;
+    color: white;
+    font-weight: 800;
+    line-height: 26px;
+}
+div#myPage-movie-list {
+    margin-top: 5%;
+    padding-top: 2%;
+    position: absolute;
+    width: 97%;
+    text-align: -webkit-center;
+    
+}
+.myPage-movie-list .swiper-button-next:after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    background: rgb(255, 255, 255, 0.8) url(./../../images/arrowL.png) center/9px 13px scroll no-repeat;
+    transform: rotate(-180deg);
+}
+.myPage-movie-list.swiper {
+    overflow: visible;
+    position: relative;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap {
+    overflow: hidden;
+    position: relative;
+    width: 170px;
+    height: 234px;
+    border-radius: 10px;
+}
+
+.img-wrap > img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: auto;
+    transform: translate(0, -50%);
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.09) 35%, rgba(0, 0, 0, 0.85));
+    z-index: 2;
+}
+
+.myPage-movie-list:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 2;
+}
+.movieChart_list:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: -30px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 3;
+}
+
+.myPage-movie-list .swiper-wrapper {
+    counter-reset: movie-chart-counter;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap .movie-age-limit {
+    position: absolute;
+    right: 6px;
+    top: 7px;
+    z-index: 4;
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-age-limit {
+    display: none;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.09) 35%, rgba(0, 0, 0, 0.85));
+    z-index: 2;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:after {
+    content: counter(movie-chart-counter);
+    counter-increment: movie-chart-counter;
+    position: absolute;
+    left: 9px;
+    bottom: -4px;
+    font-weight: 400;
+    font-size: 50px;
+    font-style: italic;
+    color: #fff;
+    line-height: 1em;
+    z-index: 3;
+    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.45);
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap img {
+    z-index: 1;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:hover {
+    box-shadow: 6px 10px 20px 0 rgb(0, 0, 0,0.4);
+}
+.myPage-movie-list .swiper-slide .swiper-wrapper .img-wrap:hover:before {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: none;
+}
+.myPage-movie-list .swiper-slide .swiper-wrapper .img-wrap:hover:after {
+    opacity: 0;
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn a.movie-detail {
+    color: rgb(83, 81, 81);
+    background: white;
+
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn a.movie-ticketing {
+    color: rgb(255, 255, 255);
+    background: rgb(170, 67, 67);
+
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn a:hover {
+    opacity: 0.8;
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap .movie-hidden-btn {
+    display: none;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:hover .movie-hidden-btn a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 123px;
+    height: 34px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.5em;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap:hover:before {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: none;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .img-wrap .movie-age-limit img {
+    width: 30px;
+    height: 30px;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .movie-info-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .movie-info-wrap .movie-name {
+    display: block;
+    flex-basis: 100%;
+    overflow: hidden;
+    margin-top: 14px;
+    font-size: 18px;
+    color: #222;
+    line-height: 1.2em;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.myPage-movie-list .swiper-wrapper .swiper-slide .movie-info-wrap > span {
+    display: block;
+    float: left;
+    margin-top: 9px;
+    font-size: 14px;
+    color: rgb(99, 97, 97);
+    line-height: 1.2em;
+    font-weight: 600;
+
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .movie-info-wrap > span img {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+}
+.myPage-movie-list .swiper-wrapper .swiper-slide .movie-info-wrap > span ~ span {
+    position: relative;
+    padding-left: 40px;
+}
+
+.myPage-movie-list .swiper-button-next:after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    background: rgb(255, 255, 255, 0.8) url("./../../images/arrowL.png") center/9px 13px scroll no-repeat;
+    transform: rotate(-180deg);
+}
+.myPage-movie-list .swiper-button-next {
+    overflow: hidden;
+    right: -20px;
+    top: calc(50% - 26px);
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    font-size: 0;
+    border-radius: 50%;
+    box-shadow: 2px 2px 8px 0 rgb(0 0 0 / 20%);
+    margin-right: 5%;
+}
+.myPage-movie-list .swiper-button-disabled {
+    display: none;
+}
+
+.myPage-movie-list .swiper-button-prev {
+    overflow: hidden;
+    left: -20px;
+    top: calc(50% - 26px);
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    font-size: 0;
+    border-radius: 50%;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 5%;
+}
+
+.myPage-movie-list .swiper-button-prev::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.8) url("./../../images/arrowL.png") center/9px 13px scroll no-repeat;
+}
+.myPage-password-title {
+    font-size: 19px;
+    font-weight: 800;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 2%;
+}
+
+.myPage-check-title-wrap {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: rgba(58,84,72,0.1);
+    margin-bottom: 10%;
+    padding-left: 3%;
+    font-weight: 700;
+}
+.myPage-mydata-all {
+    display: flex;
+    justify-content: center;
+    height: 117px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.myPage-mydata-all > ul{
+    margin-right: 6%;
+    font-weight: 700;
+    color: grey;
+}
+.myPage-mydata-all > ul >li#myId{
+	margin-bottom: 26%;
+}
+.myPage-mydata-all > ul >li#myIdCk{
+	margin-bottom: 7%;
+	text-align: center;
+}
+input.myPwCk {
+	line-height: 26px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.myPage-button-wrap {
+    margin-top: 4%;
+    text-align: center;
+}
+input.myPage-button-wrap01{
+	height: 35px;
+    width: 10%;
+    background-color: gray;
+    border: none;
+    color: white;
+    margin-left: 6%;
+    border-radius: 7px;
+}
+input.myPage-button-wrap01:hover{
+	background-color: darkgray;
+	color:white;
+	font-weight: bolder;
+    font-size: 16px;
+}
+
+input.myPage-button-wrap02{
+	height: 35px;
+    width: 20%;
+    background-color: gray;
+    border: none;
+    color: white;
+    border-radius: 7px;
+}
+input.myPage-button-wrap02:hover{
+	background-color: darkgray;
+	color:white;
+	font-weight: bolder;
+    font-size: 16px;
+
+}
+.myPage-update-title {
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 2%;
+}
+
+.myPage-update-title-wrapper {
+    font-size: 17px;
+    font-weight: bold;
+    padding-bottom: 1%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.myPage-update-all > div > ul{
+	display: flex;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 2%;
+    padding-left: 5%;
+}
+.myPage-update-all > div > ul > li >input{
+	margin-left: 157%;
+    line-height: 20px;
+    border: none;
+    background-color: rgba(130,140,13,0);
+}
+
+.myPage-update-allButton {
+    text-align: center;
+}
+
+.myPage-update-allButton > input[type="button"] {
+    border: none;
+    height: 33px;
+    background-color: gray;
+    color: white;
+    border-radius: 11px;
+    width: 19%;
+    font-weight: bolder;
+}
+.myPage-update-allButton > input:hover {
+	background-color: darkgray;
+	color:white;
+	font-weight: bolder;
+    font-size: 16px;
+}
+.service-center-01 {
+    height: 170px;
+    width: 24%;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 9px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 4%;
+    display: grid;
+}
+
+a.service-sub-01 {
+    display: contents;
+}
+.service-center-02 {
+    height: 170px;
+    width: 24%;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 9px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 4%;
+    display: grid;
+}
+
+a.service-sub-02 {
+    display: contents;
+}
+.service-center-03 {
+    height: 170px;
+    width: 24%;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 9px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 4%;
+    display: grid;
+}
+
+a.service-sub-03 {
+    display: contents;
+}
+
+.service-center-wrapping {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3%;
+}
+
+.service-table-wrap {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+span.service-center-text {
+    font-size: 22px;
+    font-weight: bolder;
+    align-self: center;
+}
+.button-wrapping {
+    display: flex;
+    justify-content: space-between;
+}

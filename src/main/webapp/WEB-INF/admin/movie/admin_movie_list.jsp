@@ -8,6 +8,13 @@
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script>
+           function adminTerms(){
+                 var popupX =(window.screen.width/2)-(300/2);
+                 var popupY =(window.screen.height/2)-(300/2);                            
+                 window.open('/movieRegister.mdo','','width=1200,height=700,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+            }
+    </script>
 <style>
 #delBT {
 	border: none;
@@ -52,15 +59,8 @@
 					<div style="display: inline;">
 						<span style="font-size: 24px; font-weight: 800; margin-left: 2%;"><i class="fas fa-table me-1"></i>Movie List</span>
 							<button id="userLankAdd" onclick='adminTerms()'>Register</button>
-						<!--약관 동의 등록 창띄우기-->
-						<script>
-                                    function adminTerms(){
-                                    var popupX =(window.screen.width/2)-(300/2);
-                                    var popupY =(window.screen.height/2)-(300/2);
-                            
-                                    window.open('/movieRegister.mdo','','width=1200,height=900,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
-                                    }
-                                </script>
+						
+					
 						
 						
 					</div>

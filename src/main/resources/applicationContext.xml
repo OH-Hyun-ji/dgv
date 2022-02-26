@@ -52,4 +52,20 @@
 		</mvc:interceptor>
 	</mvc:interceptors> 
 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+<!--        <property name="webBindingInitializer"> -->
+<!--             <bean class="com.wizexpert.framework.web.BindingInitializer"/> -->
+<!--         </property> -->
+       <!--   @ResponseBody application/json 으로 변경 -->
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+	
+
+
 </beans>

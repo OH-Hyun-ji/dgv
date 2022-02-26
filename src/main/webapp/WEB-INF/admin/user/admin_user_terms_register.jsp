@@ -12,7 +12,7 @@
 	<!-- Main -->
 	<div id="layoutSidenav_content">
 		<main>
-			<main>
+			
             <div class="container-fluid px-4">
 
                 <!-- 여기만 수정해서 사용 -->
@@ -45,12 +45,13 @@
                             <td> <textarea rows="40" cols="65" name="productImage" id="productImage"style="border-color: lightgray;"></textarea></td>
                         </tr>
                     </table>
-                    <div class="bottom">
-                    <td colspan="2" align="center" >
+                    <div class="bottom">                 
                         <input type="button" value="수정하기">
-                        <input type="button" value="등록하기">
-                    </td>
-                </div>    
+                        <input type="button" value="등록하기">         
+                	</div>  
+            	</div>    
+            </div>  
         </main>
+       </div>
 </body>
 </html>

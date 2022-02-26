@@ -15,4 +15,31 @@ public class UserBoardController {
 	public String userReview() {
 		return "/board/user_board_review";
 	}
+	
+	/////고객센터 //////
+	@RequestMapping("/serviceCenter.do")
+	public String serviceCenter() {
+		return "/board/user_service_center";
+	}
+	
+	@RequestMapping("/notice.do")
+	public String userNotice() {
+		return "/board/user_board_notice";
+	}
+	@RequestMapping("/oftenQna.do")
+	public String oftenQna() {
+		return "/board/user_often_qna";
+		
+	}
+	
+	@RequestMapping("/myQna.do")
+	public String myQna() {
+		return "/board/user_one_qna";
+	}
+	
+	@RequestMapping("/qnaRegister.do")
+	public String qnaRegister() {
+		return "/board/user_qna_register";
+	}
+	
 }

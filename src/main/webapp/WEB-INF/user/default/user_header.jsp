@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <div class="header">
@@ -14,16 +15,29 @@
 			</h1>
 			<!-- 상단 우측 아이콘 메뉴 -->
 			<ul class="memberInfo_wrap">
-				<li><a href="#" title="로그인"> <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
-						<span id="main1" class="modiImg1">로그인</span>
-				</a></li>
+<!-- ///////////////////////////////////////////// -->
+				<li>
+					<c:if test="${empty userID}">
+	                     <span>
+	                     	<a href="/loginForm.do" title="로그인">
+							  <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
+							  <span id="main1" class="modiImg1">로그인</span>
+							</a>
+	                     </span>
+	                </c:if>
+	                <c:if test="${!empty userID}">
+	                  		
+	                     <span><a style="width: 88%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;" href="/logout.do">${userID}님 Logout</a></span>
+	                </c:if>
+                </li>
+<!-- ///////////////////////////////////////////// -->
 				<li><a href="/join.do"> <i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> <span
 						id="main1">회원가입</span>
 				</a></li>
-				<li><a href="#"> <i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> <span
+				<li><a href="/myPage.do"> <i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> <span
 						id="main1">MY DGV</span>
 				</a></li>
-				<li><a href="#"> <i id="a" class="fas fa-hand-holding-heart" style="padding-left: 5%;; height: 35px;width: 48%;margin-bottom: -1px;"></i> <span id="main1">고객센터</span>
+				<li><a href="/serviceCenter.do"> <i id="a" class="fas fa-hand-holding-heart" style="padding-left: 5%;; height: 35px;width: 48%;margin-bottom: -1px;"></i> <span id="main1">고객센터</span>
 				</a></li>
 			</ul>
 		</div>
@@ -177,12 +191,12 @@
 				</li>
 				<li>
 					<h2>
-						<a href="#">이벤트</a>
+						<a href="/event.do">이벤트</a>
 					</h2>
 					<dl class="nav_overMenu" style="display: none;">
 						<dt>
 							<h2>
-								<a href="#">이벤트</a>
+								<a href="/event.do">이벤트</a>
 							</h2>
 						</dt>
 						<dd>
@@ -192,12 +206,12 @@
 						</dd>
 						<dd>
 							<h2>
-								<a href="#">당첨자 발표</a>
+								<a href="/eventWinner.do">당첨자 발표</a>
 							</h2>
 						</dd>
 						<dd>
 							<h2>
-								<a href="#">종료된 이벤트</a>
+								<a href="/eventEnd.do">종료된 이벤트</a>
 							</h2>
 						</dd>
 					</dl>

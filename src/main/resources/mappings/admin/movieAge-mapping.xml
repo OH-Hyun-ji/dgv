@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminAgeDAO">
+	<insert id="InsertAge" parameterType="AdminAgeVO">
+		INSERT INTO movie_age_info
+		VALUES(DEFAULT,#{movie_age_name}, #{movie_age_img},#{reg_id},current_date)
+	</insert>
+	
+	<select id="AgeList" resultType="AdminAgeVO">
+		SELECT * FROM movie_age_info 
+	</select>
+</mapper>

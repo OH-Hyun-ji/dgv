@@ -348,16 +348,19 @@ input.userYear {
 
 select.userMonth {
     height: 44px;
-    width: 23%;
-    font-size: 13px;
+    width: 27%;
+    font-size: 12px;
     font-weight: bold;
     color: gray;
     border-radius: 8px;
 }
 
-input.userDay {
-    height: 39px;
-    width: 30%;
+select.userDay {
+    height: 44px;
+    width: 23%;
+    font-size: 13px;
+    font-weight: bold;
+    color: gray;
     border-radius: 8px;
 }
 
@@ -423,4 +426,15 @@ a#findPw:hover {
     font-weight: 700;
     font-size: 19px;
 }
-
+.register-wrapping {
+    height: 91%;
+    margin-top: 0%;
+}
+input#joinBtn {
+    width: 62%;
+    margin-left: 11%;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 22px;
+    margin-top: 5%;
+}

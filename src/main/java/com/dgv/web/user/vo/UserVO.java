@@ -1,5 +1,7 @@
 package com.dgv.web.user.vo;
 
+import java.util.List;
+
 import lombok.ToString;
 
 @ToString
@@ -14,6 +16,10 @@ public class UserVO {
 	private String user_month;
 	private String user_day;
 	private String user_term; // 약관동의여부
+	private UserDetailVO detailVO;
+	
+	
+	
 
 	public Integer getUser_num() {
 		return user_num;
@@ -94,6 +100,18 @@ public class UserVO {
 	public void setUser_term(String user_term) {
 		this.user_term = user_term;
 	}
+
+	public UserDetailVO getDetailVO() {
+		return detailVO;
+	}
+
+	public void setDetailVO(UserDetailVO detailVO) {
+		this.detailVO = detailVO;
+	}
+
+
+	
+	
 	
 	
 

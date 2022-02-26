@@ -1,18 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/css/admin/styles.css" rel="stylesheet" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-	crossorigin="anonymous"></script>
-
+<title>Answer Completion</title>
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/resources/css/admin/styles.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<div id="layoutSidenav">
@@ -21,13 +17,8 @@
             <div id="layoutSidenav_content">
                 <main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4" style="font-size: 1.5rem;"><h1>게시글 관리</h1>
-					<div class="card mb-4"></div>
-
-				
+					<h1 class="mt-4" style="font-size: 1.5rem;">게시글 관리</h1>
 					<div class="card mb-4">
-					
-
 						<div class="card-header" >
 							<i class="fas fa-table me-1"></i> 고객문의(답변완료)목록
 								</div>
@@ -35,160 +26,45 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th>번호</th>
-                                                <th>DGV문의</th>
-                                                <th>유형</th>
-                                                <th>제목</th>
-                                                <th>등록일</th>
-                                                <th>답변확인</th>
-                                                <th>수정</th>
-                                                <th>삭제</th>
-
-
+												<th>No</th>
+												<th>Category</th>
+												<th>User Title</th>
+												<th>Answer Title</th>
+												<th>Answer Text</th>
+												<th>User Id</th>
+												<th>Writer</th>
+												<th>Date</th>
+												<th>Result</th>
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach var="answerList" items="${answerList}">
 											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td>등록된 답변이 있다면 여기에 몇자 보이게 할 예정</td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-
-
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-
-
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-
-
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-
-
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-
-
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>사고</td>
-												<td>않이 이게 웨 안뒈</td>
-												<td>이거 살짝 엑시던트임</td>
-												<td>2022-02-09</td>
-												<td></td>
-												<td><button id="checkButton"
-														onclick="window.open('admin-customer-answer-modi.html','window_name','width=500,height=450, scrollbars=yes' );"
-														style="background-color: white; border: white;">확인하기</button></td>
-											</tr>
-
-
-
+												<td>${answerList.admin_answer_code}</td>
+												<td>${answerList.userInquiryVO.dgv_inquiry_tag}</td>
+												<td>${answerList.userInquiryVO.dgv_inquiry_title}</td>
+												<td>${answerList.admin_answer_title}</td>
+												<td>${answerList.admin_answer_text}</td>
+												<td>${answerList.dgv_inquiry_user}</td>
+												<td>${answerList.reg_id}</td>
+												<td>${answerList.reg_date}</td>
+												<td><span>답변완료</span></td>												
+											</tr>	
+										</c:forEach>										
 										</tbody>
-
-
 									</table>
 								</div>
 							</div>
-
 						</div>
 			</main>
 			<jsp:include page="../default/admin_footer.jsp"/>
 				<div class="container-fluid px-4">
 					<div
 						class="d-flex align-items-center justify-content-between small">
-						
+						<div class="text-muted">by DGV © DGV COMPANY</div>
 
 					</div>
 				</div>
-			</footer>
 		</div>
 	</div>
 	<script

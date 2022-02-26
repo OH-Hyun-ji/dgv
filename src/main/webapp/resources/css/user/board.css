@@ -48,7 +48,7 @@ table.type09 tbody th {
 	border-bottom: 1px solid #ccc;
 	background: #f3f6f7;
 	text-align: center;
-	line-height: 95px;
+
 }
 
 table.type09 tbody td textarea {
@@ -91,4 +91,48 @@ table.type09 td {
     text-decoration: none;
     font-weight: 600;
     transition: 0.25s;
+}
+
+table.type10 tbody th {
+	width: 70px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #f3f6f7;
+	text-align: center;
+
+}
+table.type10 {
+    border-collapse: collapse;
+    text-align: center;
+    width: 125%;
+}
+
+table.type10 thead th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #000000;
+	border-bottom: 3px solid #000000;
+	margin: center;
+	text-align: center;
+}
+table.type10 tbody td textarea {
+	width: 98%;
+	margin-top: 18px;
+	border-style: none;
+}
+table.type10 td {
+	width: 200px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+.userQna-title{
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 11%;
+    margin-left: 2%;
+    margin-top: 5%;
 }

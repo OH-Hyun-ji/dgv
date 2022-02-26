@@ -6,11 +6,13 @@ import com.dgv.web.user.vo.UserVO;
 public interface UserService {
 	
 	// 회원가입처리
-	void register(UserVO userVO);
+	int register(UserVO userVO);
 	
 	// 로그인처리
-	UserVO login(UserVO userVO) throws Exception;
+	UserVO login(UserVO userVO);
 	
 	//회원가입 ID중복체크
 	int checkId(String id); 
+	
+	
 }

@@ -5,12 +5,10 @@ import javax.inject.Inject;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserVO;
@@ -36,18 +34,33 @@ public class UserRegisterController {
 	
 	
 	// 회원가입 처리
-	@RequestMapping(value ="/register.do", method = RequestMethod.POST)
-	public String registerPOST(UserVO userVO, RedirectAttributes redirectAttributes)throws Exception{
-		
+	@PostMapping("/register.do")
+	public String registerPOST(UserVO userVO, RedirectAttributes redirectAttributes){
+		System.out.println("??????");
 		String hashedPw = BCrypt.hashpw(userVO.getUser_pw(), BCrypt.gensalt());
 		userVO.setUser_pw(hashedPw);
-		userService.register(userVO);
+		
+		int num =userService.register(userVO);
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		
-		return "/login/user_loginForm";
+	
+		 
+		if(num ==0 ) {
+			System.out.println("회원가입 실패!!");
+			
+		}else {
+			System.out.println("회원가입 성공!!");
+			
+		}
+		
+		return"/login/user_loginForm";
+		
+		
+		
 	}
 	
 	 //회원가입 ID중복체크 
+	//회원가입 ID중복체크 
 	   @PostMapping("/join.do")
 	   @ResponseBody
 	   public String checkId(UserVO vo) {

@@ -14,8 +14,46 @@
         <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+		<script>
+		
+		
+		$(function(){
+			$("#addTr").click(function(){
+				$("table").append("<tr><td>참여자그룹:</td><td><select name=\"movieJoinGroup\"><option value=''>=선택=</option><option value='1'>감독</option><option value='2'>배우</option><option value='3'>연출</option></select></td><td>참여자:</td><td><select name=\"movieJoin\"><option>=선택=</option><option>송강호</option><option>손예진</option><option>류승룡</option></select></td><td></td><td><input type=\"button\" class=\"delRow\" value=\"삭제\" /></td></tr>");
+			});
+			
+			/* $(".delRow").click(function(){
+				//$(this).remove();
+				
+				alert("11111111")
+			}) */
+			
+// 			$(".delRow").on("click", function(){
+// 				//$(this).remove();
+				
+				
+// 			})
 
+$(document).on('click', '.delRow', function(event) {
+	$(this).closest("tr").remove()
+});
+			
+			$(document).on('change', 'select[name=movieJoinGroup]', function(event){
+				var movieJoinGroup = $(this).val()
+			})
+			
+			/* $(".delRow").on("click", function(){
+				console.log($(this).html())
+			}) */
+			
+		})
+		</script>
     </head>
+    
+    <!-- 
+    
+     -->
     <body style="height: 1196px;">
         <div class="page-header">
             <h1 style="margin-left: 4%;">Movie Register<small>  영화등록</small></h1>
@@ -72,79 +110,38 @@
                                 </select>
                               </div>
                             </div>
-                                <br>
-                                <div class="dgvCitySite">
-                                    <h3 style="color:antiquewhite;font-weight: bolder;font-size: 28px;border-bottom: 1px solid rgba(255,255,255,0.4);width: 44%;margin-bottom: 2%;margin-top: 0;">Theater Site</h3>
-                                <div class="form-group ">
-                                    <label for="dgvMovieCity">City</label>
-                                    <select id="dgvMovieCity" class="form-control">
-                                        <option>서울</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                                <div class="form-group" style="width:16%;">
-                                    <label for="dgvMovieRegion" style="margin-left: 9%;">Region</label>
-                                    <select id="dgvMovieRegion" class="form-control" style="width: 60%;">
-                                        <option>강남</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                                <div class="form-group dgvTheater-width" "style="width:17%;">
-                                    <label for="dgvMovieTheater" style="margin-left: 9%;">Theater</label>
-                                    <select id="dgvMovieTheater" class="form-control">
-                                        <option>A관</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                                <br>
-
-                               
-                                <div class="form-group" style="margin-left:4%;width: 35%;" >
-                                   <h3 style="color: antiquewhite;font-weight: bolder;font-size: 28px;border-bottom: 1px solid rgba(255,255,255,0.4);width: 121%;margin-bottom: 5%;margin-top: 1%;">Start Date</h3>
-                            <div style="display: flex; ">
-                                    <div class="dgvMoviePlayDate" style="width: 38%;">
-                                     <label for="dgvMovieYear">Year</label>
-                                    <select id="dgvMovieYear" class="form-control">
-                                        <option>2022</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                                <div class="form-group "  style="width:36%;">
-                                        <label for="dgvMovieMonth">Month</label>
-                                       <select id="dgvMovieMonth" class="form-control">
-                                           <option>2</option>
-                                           <option>2</option>
-                                           <option>3</option>
-                                           <option>4</option>
-                                           <option>5</option>
-                                       </select>
-                                </div>
-                                <div class="form-group" style="width:36%;">
-                                    <label for="dgvMovieDay">Day</label>
-                                   <select id="dgvMovieDay" class="form-control">
-                                       <option>2</option>
-                                       <option>2</option>
-                                       <option>3</option>
-                                       <option>4</option>
-                                       <option>5</option>
-                                   </select>
-                                </div>
-                            </div>
-                            </div>
                                 <br><br>
+                                
+                                
+                                <div style="height: 300px; width:400px; border:1px solid #fff">
+                                <div style="float: right; color:#fff"><input type="button" id="addTr" value="추가"></div>
+                                <div style="width:100%; height: 100%; border: 1px solid #fff; margin-top:30px">
+                                <table width="100%" height="100%">
+                                	<tr>
+										<td>참여자그룹:</td>
+										<td>
+											<select name="movieJoinGroup">
+												<option value=''>=선택=</option><option value='1'>감독</option><option value='2'>배우</option><option value='3'>연출</option>
+											</select>
+										</td>
+										<td>참여자:</td>
+										<td>
+											<select name="movieJoin">
+												<option>=선택=</option>
+												<option>송강호</option>
+												<option>손예진</option>
+												<option>류승룡</option>
+											</select>
+										</td>
+										<td></td>
+										<td>
+											<input type="button" class="delRow" value="삭제" />
+										</td>
+										
+									</tr>
+                                </table>
+                                </div>
+                                </div>
                                 <div class="dgvMovieText-wrap" style="margin-left:4%;">
                                     <h3 style="color: antiquewhite;font-weight: bolder;font-size: 28px;border-bottom: 1px solid rgba(255,255,255,0.4);width: 44%;margin-bottom: 2%;margin-top: 0;">Movie Info</h3>
                                 <label for="dgvMovieText">Plot</label>

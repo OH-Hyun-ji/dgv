@@ -36,6 +36,7 @@
                                     <a class="nav-link" href="/adminSeat.mdo">좌석관리</a>
                                     <a class="nav-link" href="/adminTheater.mdo">극장관리</a>
                                     <a class="nav-link" href="/adminManageMent.mdo">장르/연령관리</a>
+                                    <a class="nav-link" href="/adminManager.mdo">감독/배우관리</a>
                                 </nav>
                             </div>
                             

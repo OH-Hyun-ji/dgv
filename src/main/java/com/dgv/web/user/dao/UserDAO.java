@@ -14,9 +14,9 @@ public class UserDAO{
 	SqlSessionTemplate sqlSessionTemplate;
 	
 	//회원가입처리
-	public void register(UserVO userVO) {
+	public int register(UserVO userVO) {
 		
-		sqlSessionTemplate.insert("UserDAO.register",userVO);
+		 return sqlSessionTemplate.insert("UserDAO.register",userVO);
 	}
 	//로그인처리
 	public UserVO login(UserVO userVO) {
