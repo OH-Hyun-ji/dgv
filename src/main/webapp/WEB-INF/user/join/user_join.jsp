@@ -57,8 +57,7 @@
          }else if(!getIdCheck.test($("#id").val())){
            $("#id").addClass("issetUser");
             $("#id").removeClass("nonesetUser");
-            $("#idCK").html('<b style="color:orangered; font-size: smaller;;">[ 영문/숫자 4~15자입니다! ]');
-
+            $("#idCK").html('<b style="color:orangered; font-size: smaller;;">[ 영문/숫자 최대 15자입니다! ]');
             chk1=false;
          } else {
              $("#id").removeClass("issetUser");
@@ -169,8 +168,7 @@
              $("#nameCK").html('<b style="color:orangered; font-size: smaller;">[ 이름을 입력해주세요. ]');    
              chk4 = false;
               
-           }else if(!getName.test($("#name").val())){ 
-        	  $("#name").removeClass("nonesetUser");
+           }else if(!getName.test($("#name").val())){            
               $("#name").addClass("issetUser"); 
               $("#nameCK").html('<b style="color:orangered; font-size: smaller;">[ 이름 형식이 맞지 않습니다! ]');    
               chk4 = false;
@@ -251,24 +249,26 @@
    
    });
    
-   // 회원가입 최종조건 검증(약관동의 포함)
+   // 회원가입 최종조건 검증
+   // 약관동의 체크 여부
    function checkAll(){
       const termCheck = $('input:checkbox[id="userTerm"]').is(":checked") ==true;
       console.log("동의 :? " +termCheck)
       
-      if(chk1 && chk2 && chk3 && chk4 && chk5 && chk6 && chk7){
-            if(termCheck != true ){
-           alert('약관동의 체크해주세요')
-        }else{
-           alert("회원가입 성공!!")
-             console.log("성공")
-             document.joinForm.submit();      
-        }
-      }else{
-         alert("빈칸이나 유효하지 않는 값이 있습니다. 다시 확인해주세요!!")
-          console.log("실패")
-          return false;
+      if(termCheck != true ){
+         alert('약관동의 체크해주세요')
       }
+          console.log("ㅠㅠ제발")
+          alert("/??????1")
+        if(chk1 && chk2 && chk3 && chk4 && chk5 && chk6 && chk7 &&termCheck){
+          alert("회원가입 성공!!")
+          console.log("성공")
+           document.joinForm.submit();
+        }else{
+           alert("빈칸이나 유효하지 않는 값이 있습니다. 다시 확인해주세요!!")
+           console.log("실패")
+           return false;
+        }
     }
 
          
@@ -376,7 +376,7 @@
                      <div style="text-align: center;"><span id="emailCK"></span></div>
             </div>
             <div style=" text-align: center;">
-                <input type="checkbox" id="userTerm" name="user_term" value="OK" >
+                <input type="checkbox" id="userTerm" name="user_term" value="OK">
                 <span style="color: orange;">약관동의여부</span>
             </div>
             <div style="display: flex; justify-content: space-evenly;">
@@ -387,12 +387,9 @@
                 </div>
                 </form>
                 </div>
-      </div>
-      </div>
-  
+      </div>  
 
    <jsp:include page="../default/user_footer.jsp"></jsp:include>
-
 
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->

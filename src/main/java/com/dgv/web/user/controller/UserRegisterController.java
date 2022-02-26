@@ -5,12 +5,10 @@ import javax.inject.Inject;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserVO;
@@ -61,6 +59,7 @@ public class UserRegisterController {
 		
 	}
 	
+	 //회원가입 ID중복체크 
 	//회원가입 ID중복체크 
 	   @PostMapping("/join.do")
 	   @ResponseBody
