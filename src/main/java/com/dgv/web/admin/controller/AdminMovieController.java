@@ -2,6 +2,8 @@ package com.dgv.web.admin.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dgv.web.admin.common.AwsS3;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
@@ -30,6 +33,9 @@ public class AdminMovieController {
 
 	@Autowired
 	private AdminMovieService adminMovieService;
+	
+	@Autowired
+	private AwsS3 awsS3;
 	
 	private static final String FILE_PATH="업로드될경로?";
 	
@@ -49,7 +55,7 @@ public class AdminMovieController {
 	}
 	
 	//admin 장르/연령 관리페이지이동
-	@RequestMapping("/adminManageMent.mdo/adminManageMent.mdo")
+	@RequestMapping("/adminManageMent.mdo")
 	public String adminManagement(AdminGenreVO vo ,Model model , AdminAgeVO ageVo) {
 		model.addAttribute("genreList",adminMovieService.genreList());
 		model.addAttribute("ageList" ,adminMovieService.ageList());
@@ -111,10 +117,10 @@ public class AdminMovieController {
 			 System.out.println(jsonRes);
 			return jsonRes;
 	}
+	
 	//admin 감독/배우 관리 페이지
 	@RequestMapping("/adminManager.mdo")
 	public String adminManager(AdminGroupVO vo, Model model, AdminActorVO actorVo) {
-		System.out.println("TEST 1: ");
 		model.addAttribute("groupList",adminMovieService.groupList());
 		model.addAttribute("actorList",adminMovieService.actorList());
 		return "/movie/admin_movie_manager";
@@ -129,8 +135,7 @@ public class AdminMovieController {
 		
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
-		
-		
+				
 		if(num ==0) {
 			System.out.println("등록 실패");
 			jsonObject.addProperty("msg", "FAIL");			
@@ -144,9 +149,7 @@ public class AdminMovieController {
 		return jsonResult;
 		
 	}
-	
-	
-	
+			
 	//그룹관리
 	@RequestMapping("/adminGroup.mdo")
 	public String adminGroup(AdminGroupVO vo) {
@@ -165,8 +168,22 @@ public class AdminMovieController {
 	@PostMapping("/adminInsertActor.mdo")
 	@ResponseBody
 	public String adminInsertActor(@RequestBody AdminActorVO vo) {
-		int num =adminMovieService.insertActor(vo);
-		System.out.println(vo.getMovie_actor());
+		int num =0;
+		int result =0;
+		
+		UUID uuid;
+		String url =null;
+		String path ="https://dgvworld.s3.ap-northeast-2.amazonaws.com/";
+		
+
+			uuid = UUID.randomUUID();
+			url="parPeople/"+uuid.toString()+vo.getMovie_actor_img();
+			vo.setMovie_actor_img(path+url);
+			
+			System.out.println("url : "+(path+url));
+		
+		 num =adminMovieService.insertActor(vo);
+		System.out.println(vo.getMovie_actor_name());
 		System.out.println(vo.getReg_id());
 		
 		Gson gson = new Gson();
@@ -174,13 +191,20 @@ public class AdminMovieController {
 		
 		if(num==0) {
 			System.out.println("등록 실패");
-			jsonObject.addProperty("msg", "FAIL");
-			
+			jsonObject.addProperty("msg", "FAIL");			
 		}else {
+//			try {
+//				InputStream is = file.getInputStream();
+//				String contentType = file.getContentType();
+//				long contentLength = file.getSize();
+//				awsS3.upload(is, path, contentType, contentLength);
+//				}catch(IOException e) {
+//					e.printStackTrace();
+//				}
 			jsonObject.addProperty("msg", "SUCCESS");
 		}
 		String jsonResult = gson.toJson(jsonObject);
+	
 		return jsonResult;
-	}
-
+}
 }

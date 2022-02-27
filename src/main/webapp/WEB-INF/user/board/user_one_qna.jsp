@@ -1,5 +1,6 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,16 +41,25 @@
 								<thead class="myPage-table-wrapping">
 									<tr>
 										<th>번호</th>
+										<th>유형</th>
+										<th>제목</th>
 										<th>내용</th>
+										<th>날짜</th>
 										<th>답변완료</th>
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="userQnaOneList" items="${userQnaOneList}">
 									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">문의 제목</a></td>
-										<td>나 자신</td>								
-									</tr>							
+										<td>${userQnaOneList.dgv_inquiry_code}</td>
+										<td>${userQnaOneList.dgv_inquiry_tag}</td>
+										<td><a id="myPage-title" href="#">${userQnaOneList.dgv_inquiry_title}</a></td>
+										<td><a id="myPage-text" href="#">${userQnaOneList.dgv_inquiry_text}</a></td>
+										<td>${userQnaOneList.dgv_inquiry_user}</td>								
+										<td>${userQnaOneList.dgv_inquiry_date}</td>								
+										<td></td>								
+									</tr>	
+								</c:forEach>						
 								</tbody>
 							</table>
                   	

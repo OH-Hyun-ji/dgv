@@ -33,11 +33,14 @@
 						<div class="card-header">
 							<i class="fas fa-table me-1"></i> 목록							
 						</div>
-						<div style="display: flex; justify-content: end;margin-right: 2%;">
+						<div style="display: flex;justify-content: space-between; margin-right: 2%;margin-left: 3%;">
+							<div style="box-sizing: border-box; padding-top: 2%;">
+								<h4 style="font-size: 36px; font-weight: bold;">Notice</h4>
+							</div>						
 							<button class="w-btn-outline w-btn-red-outline" style="margin-left: 1%;margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" 
                                      type="button" onclick="adminNotice()">
                                         Register
-                            </button>
+                            </button>                          
 						</div>
 						<div class="card-body">
 							<table class="table">

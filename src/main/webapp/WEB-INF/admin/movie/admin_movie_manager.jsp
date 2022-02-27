@@ -6,14 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Genre, MovieAge Management</title>
-	<link
-		href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath }/resources/css/user/button.css" rel="stylesheet"  />
-	<link
-		href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-
+	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <style>
 
 #userLankAdd {
@@ -86,7 +83,7 @@
                                     var popupX =(window.screen.width/2)-(200/2);
                                     var popupY =(window.screen.height/2)-(300/2);
                             
-                                    window.open('/adminActor.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+                                    window.open('/adminActor.mdo','','width=500,height=500,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
                                     }
                                 </script>
                             <div class="card-body-one">
@@ -100,9 +97,9 @@
                                     <div class="dataTable-top">
                                         <div class="dataTable-dropdown">
                                             <label>
-                                                <select class="dataTable-selector">
+                                                <select class="dataPerPage">
                                                     <option value="5">5</option>
-                                                    <option value="10" selected="">10</option>
+                                                    <option value="10">10</option>
                                                     <option value="15">15</option>
                                                     <option value="20">20</option>
                                                     <option value="25">25</option>
@@ -118,23 +115,25 @@
                                             <thead>
                                                
                                                 <tr>
-                                                    <th data-sortable="" style="width: 14.3831%;">Actor Num</th>                                                 
-                                                    <th data-sortable="" style="width: 11.7551%;">Group Code</th>
-                                                    <th data-sortable="" style="width: 15.67948%;">Movie Director/Actor Name</th>
-                                                    <th data-sortable="" style="width: 20.0273%;">Writer</th>
-                                                    <th data-sortable="" style="width: 20.0273%;">Writer Date</th>
-                                                    <th data-sortable="" style="width: 20.0273%;">수정/삭제</th>
+                                                    <th>Actor Code</th>                                                 
+                                                    <th>Actor Name</th>
+                                                    <th>Actor Birth</th>
+                                                    <th>Actor Nation</th>
+                                                    <th>Writer</th>
+                                                    <th>Writer Date</th>
+                                                    <th>수정/삭제</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             <c:forEach var="actorList" items="${actorList}">
                                                 <tr>
-                                                    <td>${actorList.movie_actor_num}</td>
-                                                    <td>${actorList.movie_group_code}</td>
-                                                    <td>${actorList.movie_actor}</td>
+                                                    <td>${actorList.movie_actor_code}</td>
+                                                    <td>${actorList.movie_actor_name}</td>
+                                                    <td>${actorList.movie_actor_birth}</td>
+                                                    <td>${actorList.movie_actor_nation}</td>
                                                     <td>${actorList.reg_id}</td>
                                                     <td>${actorList.reg_date}</td>
-                                                    	<td><button id="delBt"  onclick="deleteAction('${userList.user_id}')"><i class="fas fa-trash-alt"></i></button><button ><i class="fas fa-pencil-alt"></i></button></td>
+                                                    <td><button id="delBt"  onclick="deleteAction('${actorList.movie_actor_code}')"><i class="fas fa-trash-alt"></i></button><button ><i class="fas fa-pencil-alt"></i></button></td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
@@ -146,7 +145,6 @@
                                         </nav>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -154,16 +152,11 @@
          	<jsp:include page="../default/admin_footer.jsp" />
 	</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/admin/scripts.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/admin/scripts.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 		crossorigin="anonymous"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/admin/datatables-simple-demo.js"></script>
-
+	<script src="${pageContext.request.contextPath }/resources/js/admin/datatables-simple-demo.js"></script>
 </body>
 
 </html>

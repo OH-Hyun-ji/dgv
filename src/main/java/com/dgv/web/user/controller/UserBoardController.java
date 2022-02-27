@@ -1,11 +1,24 @@
 package com.dgv.web.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.UserInquiryVO;
 
 @Controller
 public class UserBoardController {
 
+	@Autowired
+	private UserBoardService userBoardService;
+	
 	@RequestMapping("/board.do")
 	public String userBoard() {
 		return "/board/user_board_community";
@@ -23,7 +36,8 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping("/notice.do")
-	public String userNotice() {
+	public String userNotice(Model model) {
+		model.addAttribute("noticeList",  userBoardService.noticeList());
 		return "/board/user_board_notice";
 	}
 	@RequestMapping("/oftenQna.do")
@@ -33,13 +47,31 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping("/myQna.do")
-	public String myQna() {
+	public String myQna(Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		System.out.println("session.getId() =" + session.getAttribute("userID"));
+		System.out.println("session.getId() =" +session.getAttributeNames());
+		String id = (String) session.getAttribute("userID");
+		System.out.println("id "+id);
+		model.addAttribute("userQnaOneList", userBoardService.userQnaOneList(id));
 		return "/board/user_one_qna";
 	}
 	
 	@RequestMapping("/qnaRegister.do")
 	public String qnaRegister() {
 		return "/board/user_qna_register";
+	}
+	
+
+	@PostMapping("/qnaInsert.do")
+	public String qnaRegisterAction(@RequestBody UserInquiryVO vo) {
+		int num = userBoardService.insertMyQna(vo);
+		if(num ==0) {
+			System.out.println("등록 실패");
+		}else {
+			System.out.println("등록 성공 ");
+		}
+		return "redirect:/myQna.do";
 	}
 	
 }

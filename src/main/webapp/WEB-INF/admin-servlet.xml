@@ -16,7 +16,10 @@
 	
 	
 	<context:component-scan base-package="com.dgv.web"/>
-
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="200000000" />
+		<property name="maxInMemorySize" value="200000000" />
+	</bean>
 	
 	
 	<bean id="viewResolver"

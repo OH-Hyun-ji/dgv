@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dgv.web.admin.common.S3KeyVO;
 import com.dgv.web.user.vo.UserVO;
 
 
@@ -28,4 +29,6 @@ public class UserDAO{
 	public int checkId(String id) {
 		return sqlSessionTemplate.selectOne("UserDAO.checkId", id);
 	}
+	
+	
 }
