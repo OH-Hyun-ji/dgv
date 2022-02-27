@@ -214,43 +214,7 @@
 									<div class="admin_seat_line">
 										<form action="#" id="adminTheaterSeatResult">
 											<div class="adminSeatSite" id="seatWrap">
-<%-- 												<c:forEach begin="1" end="9" var="i"> --%>
-<%-- 													<c:if test="${i == 1}"> --%>
-<%-- 														<c:set value="A" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${i == 2}"> --%>
-<%-- 														<c:set value="B" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${i == 3}"> --%>
-<%-- 														<c:set value="C" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${i == 4}"> --%>
-<%-- 														<c:set value="D" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${i == 5}"> --%>
-<%-- 														<c:set value="E" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${i == 6}"> --%>
-<%-- 														<c:set value="F" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${i == 7}"> --%>
-<%-- 														<c:set value="G" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${i == 8}"> --%>
-<%-- 														<c:set value="H" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${i == 9}"> --%>
-<%-- 														<c:set value="I" var="seatColumn"></c:set> --%>
-<%-- 													</c:if> --%>
-<%-- 													<c:forEach begin="1" end="15" var="seatRow"> --%>
-<%-- 														<c:if test="${seatRow == 1}"> --%>
-<!-- 															<br> -->
-<%-- 														</c:if> --%>
-<%-- 														<button id="seatNumber" onclick="#" value="true">${seatColumn}${seatRow}</button> --%>
-<%-- 													</c:forEach> --%>
-<!-- 													j foreach close -->
-<%-- 												</c:forEach> --%>
-												<!-- i foreach close-->
+
 											</div>
 										</form>
 									</div>

@@ -80,5 +80,9 @@ public class AdminMovieDAO {
 	public int insertAnswer(AdminInquiryVO vo) {
 		return sqlSessionTemplate.insert("AdminBoardDAO.InsertAnswer", vo);
 	}
+	//답변하고 status 변경
+	public int updateStatus(Integer num) {
+		return sqlSessionTemplate.update("AdminBoardDAO.UpdateStatus",num);
+	}
 
 }

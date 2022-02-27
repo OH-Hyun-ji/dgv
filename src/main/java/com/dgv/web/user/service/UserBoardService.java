@@ -14,5 +14,5 @@ public interface UserBoardService {
 	
 	//고객 문의 등록 
 	int insertMyQna(UserInquiryVO vo);
-	
+
 }

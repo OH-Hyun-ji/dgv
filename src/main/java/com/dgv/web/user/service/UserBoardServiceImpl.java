@@ -38,7 +38,9 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.insertMyQna(vo);
 	}
-	
+
+
+
 	
 
 }

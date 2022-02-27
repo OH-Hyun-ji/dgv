@@ -56,6 +56,7 @@ public class UserBoardController {
 		System.out.println("id "+id);
 		model.addAttribute("userQnaOneList", userBoardService.userQnaOneList(id));
 		model.addAttribute("userQnaCount",userBoardService.userQnaOneList(id).size());
+		
 		return "/board/user_one_qna";
 	}
 	
@@ -68,6 +69,7 @@ public class UserBoardController {
 	@PostMapping("/qnaInsert.do")
 	public String qnaRegisterAction(UserInquiryVO vo) {
 		int num = userBoardService.insertMyQna(vo);
+		
 		if(num ==0) {
 			System.out.println("등록 실패");
 		}else {

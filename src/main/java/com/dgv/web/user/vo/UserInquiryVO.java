@@ -11,6 +11,7 @@ public class UserInquiryVO {
 	private String dgv_inquiry_text;
 	private String dgv_inquiry_user;
 	private String dgv_inquiry_date;
+	private Integer dgv_inquiry_status;
 	
 	
 	

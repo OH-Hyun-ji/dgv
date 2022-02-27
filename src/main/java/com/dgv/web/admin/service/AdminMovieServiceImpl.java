@@ -105,6 +105,12 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.insertAnswer(vo);
 	}
 
+	@Override
+	public int updateStatus(Integer num) {
+		
+		return adminMovieDAO.updateStatus(num);
+	}
+
 
 
 	

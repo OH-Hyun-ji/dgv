@@ -11,8 +11,11 @@
 		SELECT * FROM dgv_qna_wait where dgv_inquiry_user = #{userID}
 	</select>
 	
-	<select id="InsertMyQna" parameterType="UserInquiryVO">
-		INSERT INTO dgv_qna_wait (dgv_inquiry_code,dgv_inquiry_tag,dgv_inquiry_title,dgv_inquiry_text,dgv_inquiry_user,dgv_inquiry_date)
-		VALUES(DEFAULT,#{dgv_inquiry_tag},#{dgv_inquiry_title},#{dgv_inquiry_text},#{dgv_inquiry_user},current_date)
-	</select>
+	<insert id="InsertMyQna" parameterType="UserInquiryVO">
+		INSERT INTO dgv_qna_wait (dgv_inquiry_code,dgv_inquiry_tag,dgv_inquiry_title,dgv_inquiry_text,dgv_inquiry_user,dgv_inquiry_date,dgv_inquiry_status)
+		VALUES(DEFAULT,#{dgv_inquiry_tag},#{dgv_inquiry_title},#{dgv_inquiry_text},#{dgv_inquiry_user},current_date,DEFAULT)
+	</insert>
+	
+	
+	
 </mapper>

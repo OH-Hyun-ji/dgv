@@ -32,6 +32,8 @@ public interface AdminMovieService {
 	
 	int insertAnswer(AdminInquiryVO vo);
 	
+	int updateStatus(Integer num);
+	
 	List<AdminNoticeVO> noticeList();
 	
 	//답변대기 목록
