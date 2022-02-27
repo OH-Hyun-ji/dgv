@@ -1,0 +1,335 @@
+/* 본격 컨텐츠 부터 /////////////////////////////////////////////////////////////////////////////////////////////////*/
+#contaniner {
+  /* overflow: hidden; */
+  position: relative;
+  width: 100%;
+  z-index: 7;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  word-break: break-all;
+}
+div {
+  display: block;
+}
+#contents {
+  clear: both;
+  padding-bottom: 50px;
+}
+#cgvwrap .cgv-ad-wrap .sect-head-ad, .head, .im-wrap, #contents, .foot, .sect-smuse, .sect-cinfo {
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+}
+.tit-heading-wrap {
+  position: relative;
+  height: 60px;
+  padding-top: 30px;
+  border-bottom: 3px solid #241d1e;
+}
+.tit-heading-wrap > h3 {
+  display: inline-block;
+  position: relative;
+  height: inherit;
+  margin: 0;
+  background-image: none;
+  color: #222;
+  font-weight: 500;
+  font-size: 36px;
+  text-align: left;
+  vertical-align: middle;
+}
+h3 {
+  /* height: 41px; */
+  /* margin: 30px 0 15px; */
+  background: url(https://img.cgv.co.kr/r2014/images/common/bg/bg_h3_line.jpg) repeat-x 0 50%;
+  line-height: 41px;
+  /* text-align: center; */
+  /* font-weight: 500; */
+}
+div[class^="sect-"] {
+  clear: both;
+  zoom: 1;
+}
+[class|="sect-base"] h3 {
+  font: 0/0 a;
+  zoom: 1;
+  height: auto;
+  margin: 0;
+  background: none;
+  text-align: left;
+}
+h3 {
+  display: block;
+  /* font-size: 1.17em; */
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  /* font-weight: bold; */
+}
+strong {
+  font-weight: 500;
+}
+[class|="sect-base"][class$="people"] .box-image {
+  margin-right: 40px;
+}
+[class|="sect-base"] .box-image {
+  float: left;
+}
+.box-image a {
+  display: block;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:-webkit-any-link {
+  /* color: -webkit-link; */
+  cursor: pointer;
+  /* text-decoration: underline; */
+}
+[class|="sect-base"][class$="people"] .thumb-image {
+  width: 230px;
+  height: 260px;
+  overflow: hidden;
+  text-align: center;
+}
+.thumb-image {
+  display: block;
+  position: relative;
+}
+.box-image img {
+  width: 100%;
+}
+input, select, img {
+  vertical-align: middle;
+}
+[class|="sect-base"][class$="people"] .box-contents {
+  width: 710px;
+}
+[class|="sect-base"] .box-contents {
+  float: left;
+  position: relative;
+}
+.title {
+  display: block;
+  color: #333333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+[class|="sect-base"] .title strong {
+  color: #1a1919;
+  font-size: 25px;
+  vertical-align: middle;
+}
+strong {
+  font-weight: 500;
+}
+[class|="sect-base"] .title p {
+  color: #666666;
+}
+.title p {
+  font-size: 12px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+[class|="sect-base"][class$="people"] .spec {
+  height: 186px;
+  margin-top: 12px;
+  padding: 7px 0;
+  border-top: 2px solid #e3e2d8;
+  border-bottom: 2px solid #e3e2d8;
+  color: #333333;
+  line-height: 1.5;
+}
+.spec {
+  /* color: #333333; */
+  font-size: 13px;
+  font-weight: 500;
+}
+dl {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+[class|="sect-base"][class$="people"] .spec dt {
+  width: 105px;
+  color: #666666;
+  font-weight: 300;
+}
+.spec dt {
+  float: left;
+}
+.spec dd {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+dl:after, ul:after, ol:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+div[class^="sect-"]:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+[class|="sect-story"][class*="people"] {
+  margin-top: 28px;
+  color: #333333;
+}
+div[class^="sect-"] {
+  clear: both;
+  zoom: 1;
+}
+[class|="sect-story"][class*="people"] p {
+  margin-top: 15px;
+  line-height: 1.6;
+}
+.wrap-people .cols-content {
+  margin-top: 30px;
+}
+.cols-content {
+  padding-top: 25px;
+}
+.cols-content .col-detail:first-child {
+  float: left;
+}
+.cols-content .col-detail {
+  position: relative;
+  width: 800px;
+  /* float: left; */
+}
+.tab-menu {
+  clear: both;
+  text-align: center;
+}
+ol, ul {
+  list-style: none;
+}
+.tab-menu li:first-child {
+  padding-left: 20px;
+  background: url(../images/sprite/sprite_corner.png) 0 -20px no-repeat;
+}
+.tab-menu li {
+  display: inline-block;
+  margin-left: -4px;
+}
+.tab-menu li:first-child a {
+  background: #fb4357;
+}
+.tab-menu li a {
+  display: inline-block;
+  position: relative;
+  height: 39px;
+  padding: 0 15px;
+  background: #fb4357 url(../images/common/bg/bg_tebmenu-line.gif) 0 12px no-repeat;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 39px;
+}
+a {
+  /* color: inherit; */
+  text-decoration: none;
+}
+.tab-menu li.on a:before {
+  content: '';
+  display: inline-block;
+  width: 26px;
+  height: 39px;
+  padding-right: 5px;
+  background: #fb4357 url(../images/common/ico/ico_finger.png) 0 50% no-repeat;
+  vertical-align: top;
+}
+.tab-menu .last {
+  padding-right: 19px;
+  background: url(../images/common/bg/ribon_right.png) right 0 no-repeat;
+}
+
+
+/* 필모그래피///////////////////////////////////////////////*/
+[class*="movielist"][class$="filmo"] ul {
+  margin-left: -20px;
+}
+[class*="movielist"][class$="filmo"] li {
+  width: 185px;
+  margin: 27px 0 0 20px;
+}
+[class*="movielist"] li {
+  float: left;
+}
+.box-image a {
+  display: block;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.thumb-image {
+  display: block;
+  position: relative;
+}
+[class*="movielist"][class$="filmo"] .thumb-image img {
+  width: 185px;
+  height: 260px;
+}
+input, select, img {
+  vertical-align: middle;
+}
+.ico-grade.grade-15 {
+  background-position: -72px 0;
+}
+.ico-grade {
+  display: block;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 21px;
+  height: 21px;
+  background: url(../images/sprite/sprite_icon.png) no-repeat;
+  font: 0/0 a;
+  zoom: 1;
+}
+[class*="movielist"][class$="filmo"] .box-contents {
+  margin-top: 17px;
+  color: #333333;
+  font-size: 13px;
+}
+.box-contents > a {
+  display: block;
+}
+[class*="movielist"][class$="filmo"] .box-contents strong {
+  display: block;
+  width: 100%;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+[class*="movielist"][class$="filmo"] .box-contents strong span {
+  display: block;
+  margin-top: 5px;
+  color: #666666;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
