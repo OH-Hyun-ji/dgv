@@ -14,12 +14,12 @@
 				<span id="sideLogo">CULTUREPLEX</span>
 			</h1>
 			<!-- 상단 우측 아이콘 메뉴 -->
-			<ul class="memberInfo_wrap">		
-<!-- ///////////////////////////////////////////// -->	
+			<ul class="memberInfo_wrap">
+<!-- ///////////////////////////////////////////// -->
 				<li>
 					<c:if test="${empty userID}">
 	                     <span>
-	                     	<a href="/loginForm.do" title="로그인"> 
+	                     	<a href="/loginForm.do" title="로그인">
 							  <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
 							  <span id="main1" class="modiImg1">로그인</span>
 							</a>
