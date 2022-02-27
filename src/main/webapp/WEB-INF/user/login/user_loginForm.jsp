@@ -22,7 +22,6 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script type="text/javascript">
 	function loginCheck(){
-		alert("?????")
 		const id = $('#id').val()
 		const pw = $('#password').val()
 		
@@ -84,17 +83,10 @@
 					<input type="checkbox" id="checkSaveId" name="useCookie"> 
 					<span style="color:white;">아이디 저장</span>
 				</div>
-<<<<<<< HEAD
-				<button type="submit" class="w-btn w-btn-gra3 w-btn-gra-anim">
-					<span>로그인 하기</span> <i class="zmdi zmdi-arrow-right"></i>
-				</button>
-=======
-
 
 				<input type="button" class="w-btn w-btn-gra3 w-btn-gra-anim" onclick="loginCheck()" value="로그인 하기">
 					
 			
->>>>>>> e8d06dd947be5e2e2c1cbb9c60c1103f5c3b1527
 				<button type="button" onclick="location.href='/join.do'" class="w-btn w-btn-gra3 w-btn-gra-anim" style="margin-top: 10px;">
 					<span>회원가입</span> <i class="zmdi zmdi-arrow-right"></i>
 				</button>
