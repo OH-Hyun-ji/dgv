@@ -12,34 +12,88 @@
         <title>Admin-Login</title>
         <link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+   		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 
+   		<script type="text/javascript">
+   			function loginCheck(){
+   				toastr.options = {
+   					  "closeButton": true,
+   					  "debug": false,
+   					  "newestOnTop": false,
+   					  "progressBar": true,
+   					  "positionClass": "toast-top-right",
+   					  "preventDuplicates": true,
+   					  "onclick": null,
+   					  "showDuration": "300",
+   					  "hideDuration": "1000",
+   					  "timeOut": "5000",
+   					  "extendedTimeOut": "1000",
+   					  "showEasing": "swing",
+   					  "hideEasing": "linear",
+   					  "showMethod": "fadeIn",
+   					  "hideMethod": "fadeOut"
+   					}
+   				
+   				const adminId = $("#adminId").val();
+   				const adminPw = $("#adminPassword").val();
+   				
+   				if(adminId ==""){
+   					toastr.warning("아이디를 입력해주세요!!","경고!!");
+   				}else if(adminPw ==""){
+   					toastr.warning("비밀번호를 입력해주세요!!","경고!!");
+   				}   				
+   				else{  				
+   					$.ajax({
+   						method:"POST",
+   						url:"/loginCheck.mdo",
+   						contentType:"application/json",
+   						dataType:"json",
+   						data:JSON.stringify({"admin_id":adminId,"admin_passwd":adminPw}),
+   						success:function(result){
+   							console.log(result)
+   							const res = JSON.parse(result);
+   							if(res.msg =="SUCCESS"){
+   								alert("로그인 성공!!");
+   								location.href="/movie.mdo";
+   							}else{
+   								alert("로그인 실패!!");
+   								location.href="/login.mdo";
+   							}
+   						},
+   						error:function(){
+   							console.log("통신실패")
+   						}   					
+   					})//ajax close   					 					
+   				}
+   			}
+   		</script>
     </head>
     <body class="" style="background-color:rgba(59, 58, 58, 0.986);">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-                    <div class="container">.
-                        
-                        <div><img src="${pageContext.request.contextPath }/resources/images/7.png" style="width: 19%;"></div>
+                    <div class="container">.  
+                        <div><img src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png" style="width: 19%;"></div>
                         <div class="row justify-content-center">
                             <div class="col-lg-5" style="margin-top: 2%" >
                                 <div class="card shadow-lg border-0 rounded-lg mt-5" style="border-radius: 40px; opacity: 0.8; background-color:rgba(43, 41, 41, 0.863);">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4" style="color: rgb(133, 134, 134);">Login</h3></div>
+                                    <div class="card-headers"><img src="${pageContext.request.contextPath }/resources/images/loginLogo-01.png" style="margin-left: 29%;"></div>
                                     <div class="card-body">
-                                        <form>
+                                        <div name="adminLoginForm">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputId" type="id" placeholder="Id" style="border-radius: 20px; background-color: rgb(101, 102, 102); border: none;"/>
-                                                <label for="inputId" style="background-color: rgb(101, 102, 102);border-radius: 20px;" ><span style="color: azure;">id</span></label>
+                                                <input class="form-control" id="adminId" name="admin_id" type="id" placeholder="Id" style="border-radius: 20px;padding-left: 13%; background-color: rgb(101, 102, 102); border: none;"/>
+                                                <label for="inputId" ><span style="color: azure;">id</span></label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password"style="border-radius: 20px; background-color: rgb(101, 102, 102); border: none;" />
-                                                <label for="inputPassword"style="background-color: rgb(101, 102, 102); border-radius: 20px;"><span style="color: azure;">Password</span></label>
+                                                <input class="form-control" id="adminPassword" name="admin_passwd"type="password" placeholder="Password" style="padding-left: 13%; border-radius: 20px; background-color: rgb(101, 102, 102); border: none;" />
+                                                <label for="inputPassword"><span style="color: azure;">Password</span></label>
                                             </div>
                                         
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0" style="margin-left: 22%">
-                                            
-                                                <a class="btn btn-primary" href="movie.mdo" style="padding: 0.375rem 7rem; border-radius: 20px; border-color: #929696; ; background-color: #464343be; color: rgb(194, 194, 197);" >Login</a>
+                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0" style="margin-left: 9%">
+                                                <input class="btn btn-primary"  value="login" onclick="loginCheck()" style="padding: 0.375rem 7rem; border-radius: 20px; border-color: #929696; background-color: #464343be; color: rgb(194, 194, 197);" >
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                     <div class="card-footer text-center py-3">
                        

@@ -11,10 +11,9 @@ public class AdminUserTermController {
 		return"/user/admin_user_terms";
 	}
 	
-	@RequestMapping("userTermRegister.mdo")
+	@RequestMapping("/userTermRegister.mdo")
 	public String userTermRegister() {
 		return "/user/admin_user_terms_resiter";
 	}
-	
-	
+
 }

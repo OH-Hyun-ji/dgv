@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminGroupDAO">
+	<insert id="InsertGroup" parameterType="AdminGroupVO">
+		INSERT INTO movie_group VALUES(DEFAULT,#{movie_group_name},#{reg_id},current_date)
+	</insert>
+	
+	<select id="GroupList" resultType="AdminGroupVO" >
+		SELECT * FROM movie_group;
+	</select>
+	
+	<insert id="InsertActor" parameterType="AdminActorVO">
+		INSERT INTO movie_actor
+		VALUES(DEFAULT,#{movie_group_code},#{movie_actor},#{reg_id},current_date)
+	</insert>
+	
+	<select id="ActorList" resultType="AdminActorVO">
+		SELECT * FROM movie_actor
+	</select>
+</mapper>

@@ -1,61 +1,10 @@
-/* @charset "utf-8";
-@font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 250;
-    src: local('Noto Sans Light'), local('NotoSans-thin'), url('../../fonts/notokr-thin.eot');
-    src: url('../../fonts/notokr-thin.eot?#iefix') format('embedded-opentype'), url('../../fonts/notokr-thin.woff') format('woff');
-}
 
-@font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Noto Sans Light'), local('NotoSans-Light'), url('../../fonts/notokr-light.eot');
-    src: url('../../fonts/notokr-light.eot?#iefix') format('embedded-opentype'), url('../../fonts/notokr-light.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 350;
-    src: local('Noto Sans Light'), local('NotoSans-demilight'), url('../../fonts/notokr-demilight.eot');
-    src: url('../../fonts/notokr-demilight.eot?#iefix') format('embedded-opentype'), url('../../fonts/notokr-demilight.woff') format('woff');
-} */
-
-
-/* 
-@font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Noto Sans Regular'), local('NotoSans-Regular'), url('../../fonts/notokr-regular.eot');
-    src: url('../../fonts/notokr-regular.eot?#iefix') format('embedded-opentype'), url('../../fonts/notokr-regular.woff') format('woff');
-} */
-
-
-/* @font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
-    src: local('Noto Sans Medium'), local('NotoSans-Medium'), url('../../fonts/notokr-medium.eot');
-    src: url('../../fonts/notokr-medium.eot?#iefix') format('embedded-opentype'), url('../../fonts/notokr-medium.woff') format('woff');
-} */
-
-
-/* @font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Noto Sans Bold'), local('NotoSans-Bold'), url('../../fonts/notokr-bold.eot');
-    src: url('../../fonts/notokr-bold.eot?#iefix') format('embedded-opentype'), url('../../fonts/notokr-bold.woff') format('woff');
-} */
-
+/*
 * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-}
+}*/
 
 html {
     height: 100%;
@@ -72,7 +21,7 @@ body {
     height: 100%;
     -webkit-text-size-adjust: none;
 }
-
+/*
 html,
 body,
 div,
@@ -160,9 +109,8 @@ input {
     font: inherit;
     letter-spacing: -0.5px;
     font-family: 'Noto Sans KR', sans-serif !important;
-    color: #545454;
-}
-
+    color: #545454;}
+*/
 article,
 aside,
 details,

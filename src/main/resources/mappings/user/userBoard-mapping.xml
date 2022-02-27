@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserBoardDAO">
+
+	<select id="NoticeList" resultType="AdminNoticeVO">
+		SELECT * FROM dgv_notice
+	</select>
+	
+	<select id="UserQnaOneList" resultType="UserInquiryVO">
+		SELECT * FROM dgv_qna_wait where dgv_inquiry_user = #{userID}
+	</select>
+	
+	<insert id="InsertMyQna" parameterType="UserInquiryVO">
+		INSERT INTO dgv_qna_wait (dgv_inquiry_code,dgv_inquiry_tag,dgv_inquiry_title,dgv_inquiry_text,dgv_inquiry_user,dgv_inquiry_date,dgv_inquiry_status)
+		VALUES(DEFAULT,#{dgv_inquiry_tag},#{dgv_inquiry_title},#{dgv_inquiry_text},#{dgv_inquiry_user},current_date,DEFAULT)
+	</insert>
+	
+	
+	
+</mapper>

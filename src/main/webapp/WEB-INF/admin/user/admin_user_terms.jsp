@@ -5,28 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin User Terms</title>
-	<link
-		href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
-		rel="stylesheet" />
-	<link
-		href="${pageContext.request.contextPath }/resources/css/admin/styles.css"
-		rel="stylesheet" /> <script
-		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-		crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<style>
 #delBT {
 	border: none;
 	background-color: rgb(255, 255, 255);
 	color: red;
 	font-weight: bolder;
-}
-
-.card-header {
-	background-color: #a1a1a1;
-	height: 100%;
-	font-size: 30px;
-	padding-top: 1%;
-	padding-bottom: 1%;
 }
 
 #userLankAdd {
@@ -64,7 +52,7 @@
                                     var popupX =(window.screen.width/2)-(200/2);
                                     var popupY =(window.screen.height/2)-(300/2);
                             
-                                    window.open('/userTermRegister.mdo','','width=430,height=750,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+                                    window.open('/userTermRegister.mdo','','width=650,height=700,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
                                     }
                                 </script>
 

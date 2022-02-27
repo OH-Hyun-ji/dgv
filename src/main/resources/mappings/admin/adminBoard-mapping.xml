@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminBoardDAO">
+	<resultMap type="UserInquiryVO" id="UserInquiryVO">
+		<result column="dgv_inquiry_code" property="dgv_inquiry_code" jdbcType="INTEGER"/>
+		<result column="dgv_inquiry_tag" property="dgv_inquiry_tag" jdbcType="VARCHAR"/>
+		<result column="dgv_inquiry_title" property="dgv_inquiry_title" jdbcType="VARCHAR"/>
+		<result column="dgv_inquiry_text" property="dgv_inquiry_text" jdbcType="VARCHAR"/>
+		<result column="dgv_inquiry_user" property="dgv_inquiry_user" jdbcType="VARCHAR"/>
+		<result column="dgv_inquiry_date" property="dgv_inquiry_date" jdbcType="VARCHAR"/>
+	</resultMap>
+	<resultMap type="AdminInquiryVO" id="AdminInquiryVO">
+		<result column="admin_answer_code" property="admin_answer_code" jdbcType="INTEGER" />
+		<result column="admin_answer_title" property="admin_answer_title" jdbcType="VARCHAR" />
+		<result column="admin_answer_text" property="admin_answer_text" jdbcType="VARCHAR" />
+		<result column="dgv_inquiry_user" property="dgv_inquiry_user" jdbcType="VARCHAR" />
+		<result column="reg_id" property="reg_id" jdbcType="VARCHAR" />
+		<result column="reg_date" property="reg_date" jdbcType="VARCHAR" />
+		<collection property="userInquiryVO" resultMap="UserInquiryVO"></collection>
+	</resultMap>
+	
+	<insert parameterType="AdminNoticeVO" id="InsertNotice">
+		INSERT INTO dgv_notice(notice_num,reg_id,notice_title,notice_text,reg_date,notice_count)
+		VALUES(DEFAULT,#{reg_id},#{notice_title},#{notice_text},current_date,#{notice_count}) 
+	</insert>
+	
+	<select id="NoticeList" resultType="AdminNoticeVO">
+		SELECT * FROM dgv_notice 
+	</select>
+	
+	<select id="InquiryList" resultType="UserInquiryVO">
+		SELECT dqw.* FROM dgv_qna_wait dqw LEFT OUTER JOIN dgv_qna_answer dqa ON dqw.dgv_inquiry_code = dqa.wait_code WHERE dqa.wait_code is null
+	</select>
+	
+	<select id="AnswerList" resultMap="AdminInquiryVO">
+		SELECT w.dgv_inquiry_tag, w.dgv_inquiry_title,w.dgv_inquiry_text,w.dgv_inquiry_date,n.admin_answer_code,n.admin_answer_title,
+		n.admin_answer_text,n.dgv_inquiry_user,n.reg_id,n.reg_date
+		FROM dgv_qna_wait w  FULL JOIN dgv_qna_answer n ON w.dgv_inquiry_code = n.wait_code WHERE n.wait_code >0
+	</select>
+	
+	<select id="AnswerUser" resultType="UserInquiryVO">
+		select * from dgv_qna_wait where dgv_inquiry_code=#{dgv_inquiry_code}
+	</select>
+	
+	<insert id="InsertAnswer" parameterType="AdminInquiryVO">
+		INSERT INTO dgv_qna_answer(admin_answer_code,admin_answer_title,admin_answer_text,dgv_inquiry_user, reg_id,reg_date,wait_code)
+		VALUES(DEFAULT, #{admin_answer_title},#{admin_answer_text},#{dgv_inquiry_user},#{reg_id},current_date,#{wait_code})
+	</insert>
+	
+	<update id="UpdateStatus" parameterType="Integer">
+		UPDATE dgv_qna_wait
+		SET dgv_inquiry_status = 1
+		WHERE dgv_inquiry_code = #{dgv_inquiry_code}
+	</update>
+	
+	
+
+</mapper>
