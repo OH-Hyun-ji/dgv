@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,30 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<style type="text/css">
+table.myPage-table {
+    height: 220px;
+}
+td {
+    box-sizing: border-box;
+    padding-top: 6px;
+    border-right: 1px solid #8080807a;
+}
+th{
+	box-sizing: border-box;
+    padding-top: 3px;
+    border-right: 1px solid #8080807a;
+}
+.myPage-table-wrap > span {
+	height: 49px;
+    box-sizing: border-box;
+    padding-top: 2%;
+    font-size: 18px;
+}
+thead.myPage-table-wrapping >tr {
+	line-height: 40px;
+}
+</style>
 </head>
       <body class="">
         <div id="cgvwrap">
@@ -34,17 +59,25 @@
                   	<table class="myPage-table">
 								<thead class="myPage-table-wrapping">
 									<tr>
-										<th>번호</th>
-										<th>내용</th>
-										<th>답변완료</th>
+										<th style="width: 34px;">번호</th>
+										<th style="width: 200px;">제목</th>
+										<th style="width: 308px;">내용</th>
+										<th style="width: 80px">관리자</th>
+										<th style="width: 95px">날짜</th>
+										<th>조회수</th>
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="noticeList" items="${noticeList}">
 									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">공지사항제목</a></td>
-										<td>나 자신</td>								
-									</tr>							
+										<td>${noticeList.notice_num }</td>
+										<td><a href="#">${noticeList.notice_title }</a></td>
+										<td><a href="#">${noticeList.notice_text }</a></td>
+										<td>${noticeList.reg_id }</td>
+										<td>${noticeList.reg_date }</td>
+										<td>${noticeList.notice_count }</td>								
+									</tr>
+								</c:forEach>							
 								</tbody>
 							</table>
                   	

@@ -1,5 +1,4 @@
-e<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,17 +40,10 @@ e<%@ page language="java" contentType="text/html; charset=UTF-8"
        #table-container {
             padding-left: 15%;
         }
-        
-
     </style>
-     </style>
-      <link rel='stylesheet'
-    href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
-<script
-	src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
-    <script type="text/javascript">
-    
-   
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
+	<script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
+    <script type="text/javascript">       
     	function bottonAction() {
     		let  ageName = $("#ageName").val();
     		let regId =$("#regId").val();
@@ -117,7 +109,6 @@ e<%@ page language="java" contentType="text/html; charset=UTF-8"
 										<th scope="row" style="font-size:18px;"">Age Img</th>
 										<td><input type="file" id="ageImg" name="movie_age_img" accept="image/jpeg,.txt" /></td>
 									</tr>
-
 								</table>
                             </div>
                             <div class="bottomBar">

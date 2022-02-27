@@ -22,6 +22,13 @@
        window.open('/adminGenre.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
   		}
         
+        function adminAge(){
+            var popupX =(window.screen.width/2)-(200/2);
+            var popupY =(window.screen.height/2)-(300/2);
+    
+            window.open('/adminAge.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+            }
+        
         function deleteAction(){
         	alert("정말로 삭제하시겠습니까?")
         	toastr.options = {
@@ -68,8 +75,6 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">장르/연령관리</h1>
-
-                        <div class="card mb-4"></div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -104,15 +109,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            	<!-- 등록 창 띄우기 -->
-                            		<script>
-                                    function adminAge(){
-                                    var popupX =(window.screen.width/2)-(200/2);
-                                    var popupY =(window.screen.height/2)-(300/2);
-                            
-                                    window.open('/adminAge.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
-                                    }
-                                </script>
+
                             <div class="card-body-one">
                                 <div
                                     class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
@@ -158,8 +155,7 @@
                                                     <td>${ageList.reg_date}</td>
                                                    <td><button id="delBT"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button></td>
                                                 </tr>
-                                            </c:forEach>
-                                              
+                                            </c:forEach>                                              
                                             </tbody>
                                         </table>
                                     </div>

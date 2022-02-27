@@ -14,15 +14,93 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+   	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 
 	<script type="text/javascript">
-		function userQna(){
-			var popupX =(window.screen.width/2)-(200/2);
-	        var popupY =(window.screen.height/2)-(300/2);
-	 	
-	      window.open("/qnaRegister.do",'','width=650,height=700,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
-
-		}
+	
+		$(document).ready(function(){
+			toastr.options = {
+ 					  "closeButton": true,
+ 					  "debug": false,
+ 					  "newestOnTop": false,
+ 					  "progressBar": true,
+ 					  "positionClass": "toast-top-right",
+ 					  "preventDuplicates": true,
+ 					  "onclick": null,
+ 					  "showDuration": "300",
+ 					  "hideDuration": "1000",
+ 					  "timeOut": "5000",
+ 					  "extendedTimeOut": "1000",
+ 					  "showEasing": "swing",
+ 					  "hideEasing": "linear",
+ 					  "showMethod": "fadeIn",
+ 					  "hideMethod": "fadeOut"
+ 					}
+			
+			$("#myQnaBtn").click(function(){
+				const userId = $("#inquiryUser").val();
+				const qnaT = $("#inquiryTitle").val();
+				const qnaTag = $('input[name="dgv_inquiry_tag"]:checked').val();
+				const qnaText = $("#inquiryText").val();
+				
+				console.log(userId)
+				console.log(qnaT)
+				console.log(qnaTag)
+				console.log(qnaText)
+				
+				if(qnaT == ""){
+					toastr.warning("제목란을 입력해주세요","빈칸이 있습니다.")
+				}
+				if(qnaTag == null){
+					toastr.warning("유형을 체크해주세요")
+				}
+				if(qnaText ==""){
+					toastr.warning("문의 내용 작성해주세요","빈칸이 있습니다.")
+				}
+				
+				
+				
+			});
+		});
 	</script>
+	<style type="text/css">
+	#noT{
+	    line-height: 46px;
+	    text-align: center;
+	    font-weight: bolder;
+	    width: 90px;
+	}
+	input#inquiryTitle {
+	    height: 25px;
+	    border: none;
+	    border-bottom: 2px solid #b7b7b794;
+	    background-color: #f2f2e6;
+	    width: 474px;
+	}
+	
+	input#inquiryUser {
+	    height: 25px;
+	    border: none;
+	    border-bottom: 2px solid #b7b7b794;
+	    background-color: #f2f2e6;
+	}
+	textarea#inquiryText {
+	    border-color: lightgray;
+	    overflow-y: scroll;
+	}
+	.qnaBtn {
+	    display: flex;
+	    justify-content: end;
+	    margin-right: 30px;
+	    margin-top: 47px;
+	    margin-bottom: 37px;
+	}
+	.qnaBtn >button:hover {
+		background-color: gray;
+		color: white;
+		border:none;
+	}
+	</style>
 </head>
       <body class="">
         <div id="cgvwrap">
@@ -42,18 +120,36 @@
                     </div>
                     <div class="myPage-table-wrap" >
                   	<span><i class="fas fa-table me-1" style=" margin-right: 1%;"></i>문의작성</span>
+                  	<form action="/qnaInsert.do" method="post" name="QnaSendForm">
                   	 <table border="1" style="border-color: coral;margin-left: 4%;">                      
+                          <tr>
+                            <td id="noT">Write</td>
+                            <td><input type="text" readonly="readonly" name="dgv_inquiry_user" id="inquiryUser" value="${userID}" style="border-color: lightgray;"></td>
+                        </tr>
                         <tr>
-                            <td style="background-color: lightgray; ">Notice Title</td>
-                            <td><input type="text" name="notice_title" id="noticeTitle"style="border-color: lightgray;"></td>
+                            <td id="noT">QNA Title</td>
+                            <td><input type="text" name="dgv_inquiry_title" id="inquiryTitle"style="border-color: lightgray;"></td>
                         </tr>
-             
+             			 <tr>
+                            <td id="noT">QNA Tag</td>
+                            <td>
+                            	<input type="radio" name="dgv_inquiry_tag" id="inquiryTag" value="문의" style="border-color: lightgray;">1.문의
+	                            <input type="radio" name="dgv_inquiry_tag" id="inquiryTag" value="불만" style="border-color: lightgray;">2.불만
+	                            <input type="radio" name="dgv_inquiry_tag" id="inquiryTag" value="칭찬"style="border-color: lightgray;">3.칭찬
+	                            <input type="radio" name="dgv_inquiry_tag" id="inquiryTag" value="제안" style="border-color: lightgray;">4.제안
+                            </td>
+                        </tr>
                          <tr>
-                            <td style="background-color: lightgray;">Notice Text</td>
-                            <td> <textarea rows="25" cols="65" name="notice_text" id="noticeText" style="border-color: lightgray;"></textarea></td>
+                            <td id="noT" style="position: absolute; box-sizing: border-box;  padding-top: 120px;">QNA Text</td>
+                            <td> <textarea rows="20" cols="65" name="dgv_inquiry_text" id="inquiryText" style="border-color: lightgray;" ></textarea></td>
                         </tr>
-                    </table>
-                  	
+                    </table>  
+                    </form>  
+                    <div class="qnaBtn">
+                    	 <button class="w-btn-outline w-btn-grey-outline qna-button" id="myQnaBtn" type="button" >
+                      문의하기
+                      </button>
+                    </div>               	
                   </div>
                 
                   <br><br><br><br><br>

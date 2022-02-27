@@ -58,7 +58,7 @@ public class UserLoginController {
 		if(userVO.getUser_id().equals(userId.getUser_id())&&BCrypt.checkpw(userVO.getUser_pw(), userId.getUser_pw())) {
 			System.out.println("로그인 성공!!");
 			jsonObject.addProperty("msg", "SUCCESS");
-			session.setAttribute("userID", userId.getUser_name());
+			session.setAttribute("userID", userId.getUser_id());
 			System.out.println(jsonObject);		
 		}else { 
 			System.out.println("로그인 실패");

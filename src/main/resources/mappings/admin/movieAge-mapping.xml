@@ -3,7 +3,7 @@
 
 <mapper namespace="AdminAgeDAO">
 	<insert id="InsertAge" parameterType="AdminAgeVO">
-		INSERT INTO movie_age_info
+		INSERT INTO movie_age_info(movie_age_num,movie_age_name,movie_age_img,reg_id,reg_date)
 		VALUES(DEFAULT,#{movie_age_name}, #{movie_age_img},#{reg_id},current_date)
 	</insert>
 	

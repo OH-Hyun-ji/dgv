@@ -17,6 +17,7 @@
 			<typeAlias alias="AdminVO"   type="com.dgv.web.admin.vo.AdminVO"/>
 			<typeAlias alias="AdminInquiryVO"   type="com.dgv.web.admin.vo.AdminInquiryVO"/>
 			<typeAlias alias="AdminNoticeVO"   type="com.dgv.web.admin.vo.AdminNoticeVO"/>
+			<typeAlias alias="S3keyVO"   type="com.dgv.web.admin.common.S3KeyVO"/>
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>
 			<typeAlias alias="UserInquiryVO" type="com.dgv.web.user.vo.UserInquiryVO"/>
@@ -30,6 +31,8 @@
 				<mapper resource="mappings/admin/movieAge-mapping.xml"/>
 				<mapper resource="mappings/admin/adminUser-mapping.xml"/>
 				<mapper resource="mappings/admin/adminBoard-mapping.xml"/>
+				<mapper resource="mappings/common/s3-mapping.xml"/>
+				<mapper resource="mappings/user/userBoard-mapping.xml"/>
 				<mapper resource="mappings/user/userMapper.xml"/>
 			</mappers>
 </configuration>

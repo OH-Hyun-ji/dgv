@@ -6,24 +6,15 @@
 <meta charset="UTF-8">
 <title>영화 그 이상적인 감동을</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/user/style.css">
-<link rel="stylesheet" media="all" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/user/button.css">
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap"
-	rel="stylesheet">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/style.css">
+<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/button.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
+
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script type="text/javascript">
 	function loginCheck(){
@@ -89,9 +80,9 @@
 					<input type="checkbox" id="checkSaveId" name="useCookie"> 
 					<span style="color:white;">아이디 저장</span>
 				</div>
+
 				<input type="button" class="w-btn w-btn-gra3 w-btn-gra-anim" onclick="loginCheck()" value="로그인 하기">
-					
-			
+
 				<button type="button" onclick="location.href='/join.do'" class="w-btn w-btn-gra3 w-btn-gra-anim" style="margin-top: 10px;">
 					<span>회원가입</span> <i class="zmdi zmdi-arrow-right"></i>
 				</button>
