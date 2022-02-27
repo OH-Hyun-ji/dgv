@@ -57,7 +57,7 @@
 				if(qnaText ==""){
 					toastr.warning("문의 내용 작성해주세요","빈칸이 있습니다.")
 				}
-				
+				document.QnaSendForm.submit();
 				
 				
 			});

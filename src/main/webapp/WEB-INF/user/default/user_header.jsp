@@ -27,12 +27,12 @@
 	                </c:if>
 	                <c:if test="${!empty userID}">
 	                  		
-	                     <span><a style="width: 88%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;" href="/logout.do">${userID}님 Logout</a></span>
+	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;" href="/logout.do">${userID}님 Logout</a></span>
 	                </c:if>
                 </li>
 <!-- ///////////////////////////////////////////// -->
-				<li><a href="/join.do"> <i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> <span
-						id="main1">회원가입</span>
+				<li><a href="/join.do" style="padding-left: 14%;"> <i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> <span
+						id="main1" style="padding-left: 25%;">회원가입</span>
 				</a></li>
 				<li><a href="/myPage.do"> <i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> <span
 						id="main1">MY DGV</span>

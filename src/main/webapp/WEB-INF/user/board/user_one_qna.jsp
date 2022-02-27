@@ -49,9 +49,9 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="userQnaOneList" items="${userQnaOneList}">
+								<c:forEach var="userQnaOneList" items="${userQnaOneList}" varStatus="status">
 									<tr>
-										<td>${userQnaOneList.dgv_inquiry_code}</td>
+										<td>${userQnaCount-status.index}</td>
 										<td>${userQnaOneList.dgv_inquiry_tag}</td>
 										<td><a id="myPage-title" href="#">${userQnaOneList.dgv_inquiry_title}</a></td>
 										<td><a id="myPage-text" href="#">${userQnaOneList.dgv_inquiry_text}</a></td>
