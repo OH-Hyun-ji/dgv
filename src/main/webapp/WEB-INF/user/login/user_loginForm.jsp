@@ -14,6 +14,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
+
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script type="text/javascript">
 	function loginCheck(){
@@ -60,7 +61,7 @@
 			</div>
 			<form action="login.do" id="loginForm" method="post" style="padding-top:90px;">
 				<p class="register-title">
-					<img src="http://img.cgv.co.kr/R2014/images/title/h1_cgv.png">
+					<img src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png">
 					<span class="sign-up">로그인</span>
 				</p>
 				<div class="form-wrapper form-wrapper-id">
@@ -75,11 +76,20 @@
 						id="password" class="form-control"> <i
 						class="zmdi zmdi-lock"></i>
 				</div>
+
 				<div class="sort1">
 					<input type="checkbox" id="checkSaveId" name="useCookie"> 
 					<span style="color:white;">아이디 저장</span>
 				</div>
+<<<<<<< HEAD
 				<input type="button" class="w-btn w-btn-gra3 w-btn-gra-anim" onclick="loginCheck()" value="로그인 하기">
+=======
+
+
+				<input type="button" class="w-btn w-btn-gra3 w-btn-gra-anim" onclick="loginCheck()" value="로그인 하기">
+					
+			
+>>>>>>> 4f95fe097645a60ef302a4fa13b44f44898ef8f0
 				<button type="button" onclick="location.href='/join.do'" class="w-btn w-btn-gra3 w-btn-gra-anim" style="margin-top: 10px;">
 					<span>회원가입</span> <i class="zmdi zmdi-arrow-right"></i>
 				</button>
