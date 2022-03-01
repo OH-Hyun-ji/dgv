@@ -1,5 +1,7 @@
 package com.dgv.web.admin.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data

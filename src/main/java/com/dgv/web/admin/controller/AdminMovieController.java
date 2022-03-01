@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,6 +23,7 @@ import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.CommonResultDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -37,23 +40,7 @@ public class AdminMovieController {
 	@Autowired
 	private AwsS3 awsS3;
 	
-	private static final String FILE_PATH="업로드될경로?";
-	
-	//파일업로드
-	@PostMapping("/upload")
-	public String upload(@RequestParam("movie_age_img")MultipartFile file, Model model) throws IllegalStateException, IOException{
-		String fileName = file.getOriginalFilename();
-		
-		if(!file.getOriginalFilename().isEmpty()) {
-			file.transferTo(new File(FILE_PATH, fileName));
-			model.addAttribute("msg","sucess");
-			model.addAttribute("fileName", fileName);
-		}else {
-			model.addAttribute("msg","fail!!!");
-		}
-		return "redirect:/adminGenre.mdo";
-	}
-	
+
 	//admin 장르/연령 관리페이지이동
 	@RequestMapping("/adminManageMent.mdo")
 	public String adminManagement(AdminGenreVO vo ,Model model , AdminAgeVO ageVo) {
@@ -99,23 +86,35 @@ public class AdminMovieController {
 	//admin 연령등록 후 처리
 	@PostMapping("/adminInsertAge.mdo")
 	@ResponseBody
-	public String adminInsertAge(@RequestBody AdminAgeVO vo) {
-			int num =adminMovieService.insertAge(vo);
-			 Gson gson = new Gson();
-			 System.out.println(vo.getMovie_age_name());
-			 JsonObject jsonObject = new JsonObject();
-			 System.out.println("num : "+ num);
-			 if(num == 0) {
-				System.out.println("등록 실패");
-				jsonObject.addProperty("msg", "FAIL");
-			}else {
+	public CommonResultDto adminInsertAge(@RequestPart("ageVo") AdminAgeVO ageVo, @RequestPart("imgFile") MultipartFile imgFile) {
+
+		final UUID uuid = UUID.randomUUID();
+		final String url = "age/" + uuid.toString() + ageVo.getMovie_age_img();
+		final String path = "https://dgvworld.s3.ap-northeast-2.amazonaws.com/";
+		ageVo.setMovie_age_img(path + url);
+		final int num = adminMovieService.insertAge(ageVo);
+
+		System.out.println("num : " + num);
+		if (num == 0) {
+			System.out.println("등록 실패");
+			return CommonResultDto.fail();
+
+		} else {
+			try {
+				InputStream is = imgFile.getInputStream();
+				String contentType = imgFile.getContentType();
+				long contentLength = imgFile.getSize();
+				awsS3.upload(is, path, contentType, contentLength);
+
 				System.out.println("등록 성공");
-				jsonObject.addProperty("msg", "SUCCESS");
-				
+
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			 String jsonRes = gson.toJson(jsonObject);
-			 System.out.println(jsonRes);
-			return jsonRes;
+			
+			return CommonResultDto.success();
+		}
+
 	}
 	
 	//admin 감독/배우 관리 페이지
@@ -167,44 +166,36 @@ public class AdminMovieController {
 		
 	@PostMapping("/adminInsertActor.mdo")
 	@ResponseBody
-	public String adminInsertActor(@RequestBody AdminActorVO vo) {
-		int num =0;
-		int result =0;
-		
-		UUID uuid;
-		String url =null;
-		String path ="https://dgvworld.s3.ap-northeast-2.amazonaws.com/";
-		
+	public CommonResultDto adminInsertActor(@RequestPart("actorVo") AdminActorVO actorVo, @RequestPart("imgFile") MultipartFile imgFile) {
 
-			uuid = UUID.randomUUID();
-			url="parPeople/"+uuid.toString()+vo.getMovie_actor_img();
-			vo.setMovie_actor_img(path+url);
-			
-			System.out.println("url : "+(path+url));
 		
-		 num =adminMovieService.insertActor(vo);
-		System.out.println(vo.getMovie_actor_name());
-		System.out.println(vo.getReg_id());
+		final UUID uuid= UUID.randomUUID();
+		final String url = "parPeople/"+uuid.toString()+actorVo.getMovie_actor_img();
+		final String path ="https://dgvworld.s3.ap-northeast-2.amazonaws.com/";
+		actorVo.setMovie_actor_img(path+url);
 		
-		Gson gson = new Gson();
-		JsonObject jsonObject = new JsonObject();
+		System.out.println("url : "+url);
+		
+		final int num =adminMovieService.insertActor(actorVo);
+		System.out.println(actorVo.getMovie_actor_name());
+		System.out.println(actorVo.getReg_id());
+	
 		
 		if(num==0) {
-			System.out.println("등록 실패");
-			jsonObject.addProperty("msg", "FAIL");			
-		}else {
-//			try {
-//				InputStream is = file.getInputStream();
-//				String contentType = file.getContentType();
-//				long contentLength = file.getSize();
-//				awsS3.upload(is, path, contentType, contentLength);
-//				}catch(IOException e) {
-//					e.printStackTrace();
-//				}
-			jsonObject.addProperty("msg", "SUCCESS");
-		}
-		String jsonResult = gson.toJson(jsonObject);
 	
-		return jsonResult;
+			return CommonResultDto.fail();
+		}else {
+			try {
+				InputStream is = imgFile.getInputStream();
+				String contentType = imgFile.getContentType();
+				long contentLength = imgFile.getSize();
+				awsS3.upload(is, url, contentType, contentLength);
+			
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+		}
+		
+		return CommonResultDto.success();
 }
 }

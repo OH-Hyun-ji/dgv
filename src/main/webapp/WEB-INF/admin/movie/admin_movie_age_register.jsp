@@ -45,25 +45,38 @@
 	<script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
     <script type="text/javascript">       
     	function bottonAction() {
-    		let  ageName = $("#ageName").val();
+    		let ageName = $("#ageName").val();
     		let regId =$("#regId").val();
     		let ageImg  = $("#ageImg").val();
+    		const imgFile = $('#ageImg')[0].files[0];
     		
+    		const arr = ageImg.split('\\');
+    		console.log("img 길이 "+arr.length);
+    		ageImgR =arr[arr.length-1];
+    		var formData = new FormData();
+    		
+    		formData.append("imgFile", imgFile)
+    		
+    		const ageVo = {
+    			"movie_age_name":ageName,
+    			"reg_id":regId,
+    			"ageImg":ageImg
+    		}
+    		formData.append("ageVo", new Blob([JSON.stringify(ageVo)], {type: "application/json"}));
+
     		console.log("ageName : "+ageName);
     		$.ajax({
     			method:"POST",
     			url:"/adminInsertAge.mdo",
-    			contentType:"application/json",
-    			dataType:"json",
-    			data:JSON.stringify({"movie_age_name":ageName,"reg_id":regId,"ageImg":ageImg}),
+    			enctype:"multipart/form-data",
+    			contentType:false,
+    			processData:false,
+    			data:formData,
     			success:function(result){
-    				const reT = JSON.parse(result);
-    				console.log("ageName"+ageName);
-    				console.log(reT);
-    				console.log("result :" + reT.msg);
-    			
-    				console.log("result.msg = "+ result.msg);
-    				if(reT.msg=="SUCCESS"){
+    				
+    				console.log("result :" + result);
+    				console.log("result :" + result.msg);
+    				if(result.msg=="SUCCESS"){
     					alert("등록 성공!!")
     					window.opener.location.reload();
     					window.close();
@@ -98,7 +111,7 @@
 					<div class="card-body">
 						<!--  <form action="/upload" method="POST" enctype="multipart/form-data" >-->
                             <div id="table-container">
-                            	<input type="hidden" id="regId" name="reg_id" value="관리자">
+                            	<input type="hidden" id="regId" name="reg_id" value="${adminID}">
                             
 								<table class="type02">				
 									<tr>
@@ -107,7 +120,7 @@
 									</tr>
 									<tr>
 										<th scope="row" style="font-size:18px;"">Age Img</th>
-										<td><input type="file" id="ageImg" name="movie_age_img" accept="image/jpeg,.txt" /></td>
+										<td><input type="file" id="ageImg" name="movie_age_img"  /></td>
 									</tr>
 								</table>
                             </div>

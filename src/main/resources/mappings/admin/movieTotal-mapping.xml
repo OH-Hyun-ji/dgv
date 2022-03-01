@@ -40,4 +40,9 @@
 		LEFT OUTER JOIN movie_theater theater
 		ON region.region_code = theater.region_code
 	</select>
+	
+	<insert id="InsertTheater" parameterType="AdminTheaterVO">
+		INSERT INTO movie_theather(theater_code,theater_name,theater_seat_count,region_code,theater_max_row,theater_max_column)
+		VALUES(DEFAULT,#{theater_name},#{theater_seat_count},#{region_code},#{theater_max_row},#{theater_max_column})
+	</insert>
 </mapper>

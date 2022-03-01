@@ -17,6 +17,7 @@
 			<typeAlias alias="AdminVO"   type="com.dgv.web.admin.vo.AdminVO"/>
 			<typeAlias alias="AdminInquiryVO"   type="com.dgv.web.admin.vo.AdminInquiryVO"/>
 			<typeAlias alias="AdminNoticeVO"   type="com.dgv.web.admin.vo.AdminNoticeVO"/>
+			<typeAlias alias="AdminTheaterVO"   type="com.dgv.web.admin.vo.AdminTheaterVO"/>
 			<typeAlias alias="S3keyVO"   type="com.dgv.web.admin.common.S3KeyVO"/>
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>

@@ -60,6 +60,7 @@
     		let actorNation = $("#actorNation").val();	
     		let actorInfo =$("#actorInfo").val();
     		let actorImgSample = $("#actorImg").val();
+    		const imgFile = $('#actorImg')[0].files[0];
     		    		
     		    		
     		console.log(regId)
@@ -78,34 +79,34 @@
      		console.log(" send img name : "+ actorImg)
      		var formData = new FormData();
      		
-     		formData.append('movie_actor_name',actorN)
-     		formData.append('movie_actor_ename',actorEn)
-     		formData.append('movie_actor_birth',actorB)
-     		formData.append('movie_actor_nation',actorNation)
-     		formData.append('movie_actor_info',actorInfo)
-     		formData.append('movie_actor_img',actorImg)
-    		
-    		
-    
+//      		formData.append('movie_actor_name',actorN)
+//      		formData.append('movie_actor_ename',actorEn)
+//      		formData.append('movie_actor_birth',actorB)
+//      		formData.append('movie_actor_nation',actorNation)
+//      		formData.append('movie_actor_info',actorInfo)
+//      		formData.append('movie_actor_img',actorImg)
+	      		formData.append('imgFile', imgFile)
     	
-//     		const actorVO = {
-//     			"movie_actor_name" : actorN,
-//     			"movie_actor_ename" :actorEn,
-//     			"movie_actor_birth" : actorB,
-//     			"movie_actor_nation" :actorNation,
-//     			"movie_actor_info":actionInfo,
-//     			"movie_actor_img":actionImg
-//     		}    		
+    		const formJson = {
+    			"movie_actor_name" : actorN,
+    			"movie_actor_ename" :actorEn,
+    			"movie_actor_birth" : actorB,
+    			"movie_actor_nation" :actorNation,
+    			"movie_actor_info":actorInfo,
+    			"movie_actor_img":actorImg
+    		}    		
+    		
+    		formData.append('actorVo', new Blob([JSON.stringify(formJson)], { type: "application/json" }));
     		
     		$.ajax({
     			method:"POST",
     			url:"/adminInsertActor.mdo",
-    			contentType:"multipart/form-data",
+    			enctype:"multipart/form-data",
     			processData: false,
-    			data:JSON.stringify(formData),
+    			data:formData,
+    			contentType: false,
     			success:function(result){
-    				const res = JSON.parse(result);
-    				if(res.msg=="SUCCESS"){
+    				if(result.msg=="SUCCESS"){
     					alert("등록 완료!");
     					window.opener.location.reload();
     					window.close();
