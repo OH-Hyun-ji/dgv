@@ -57,7 +57,7 @@
 				if(qnaText ==""){
 					toastr.warning("문의 내용 작성해주세요","빈칸이 있습니다.")
 				}
-				
+				document.QnaSendForm.submit();
 				
 				
 			});
@@ -123,7 +123,7 @@
                   	<form action="/qnaInsert.do" method="post" name="QnaSendForm">
                   	 <table border="1" style="border-color: coral;margin-left: 4%;">                      
                           <tr>
-                            <td id="noT">Write</td>
+                            <td id="noT">Writer</td>
                             <td><input type="text" readonly="readonly" name="dgv_inquiry_user" id="inquiryUser" value="${userID}" style="border-color: lightgray;"></td>
                         </tr>
                         <tr>

@@ -1,7 +1,7 @@
 package com.dgv.web.admin.vo;
 
 public class AdminMovieInfoVO {
-
+//크롤링용
 	
 	Integer num;
 	String img;

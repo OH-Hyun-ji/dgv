@@ -654,3 +654,45 @@ span.service-center-text {
     display: flex;
     justify-content: space-between;
 }
+
+qna-often-wrapping {
+    display: inline-block;
+}
+.qna-often-icon {
+    align-self: center;
+    margin-left: 7%;
+    margin-right: 3%;
+}
+.qna-often-wrapping {
+    text-align: -webkit-match-parent;
+}
+.qna-often-title > span {
+    font-weight: bold;
+    font-size: 18px;
+}
+.qna-often-title {
+    margin-top: 15%;
+}
+.qna-often-text {
+    font-size: 15px;
+    margin-top: 5%;
+    font-weight: bolder;
+}
+.qna-one-wrap {
+    border: 1px solid #8080807a;
+    height: 28%;
+    display: flex;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.qna-one-wrap01 {
+    width: 380px;
+    border-right: 1px solid #8080807a;
+    height: 174px;
+    display: flex;
+}
+.qna-one-wrap02{
+	display: flex;
+    width: 380px;
+    height: 174px;
+}

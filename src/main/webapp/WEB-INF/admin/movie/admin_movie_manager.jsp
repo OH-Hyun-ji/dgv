@@ -130,7 +130,7 @@
                                                     <td>${actorList.movie_actor_code}</td>
                                                     <td>${actorList.movie_actor_name}</td>
                                                     <td>${actorList.movie_actor_birth}</td>
-                                                    <td>${actorList.movie_actor_nation}</td>
+                                                    <td>${actorList.movie_actor_nation}</td>                                          
                                                     <td>${actorList.reg_id}</td>
                                                     <td>${actorList.reg_date}</td>
                                                     <td><button id="delBt"  onclick="deleteAction('${actorList.movie_actor_code}')"><i class="fas fa-trash-alt"></i></button><button ><i class="fas fa-pencil-alt"></i></button></td>

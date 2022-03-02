@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.vo.UserInquiryVO;
@@ -54,6 +55,8 @@ public class UserBoardController {
 		String id = (String) session.getAttribute("userID");
 		System.out.println("id "+id);
 		model.addAttribute("userQnaOneList", userBoardService.userQnaOneList(id));
+		model.addAttribute("userQnaCount",userBoardService.userQnaOneList(id).size());
+		
 		return "/board/user_one_qna";
 	}
 	
@@ -64,8 +67,9 @@ public class UserBoardController {
 	
 
 	@PostMapping("/qnaInsert.do")
-	public String qnaRegisterAction(@RequestBody UserInquiryVO vo) {
+	public String qnaRegisterAction(UserInquiryVO vo) {
 		int num = userBoardService.insertMyQna(vo);
+		
 		if(num ==0) {
 			System.out.println("등록 실패");
 		}else {

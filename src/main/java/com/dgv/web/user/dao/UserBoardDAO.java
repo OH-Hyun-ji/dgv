@@ -27,4 +27,6 @@ public class UserBoardDAO {
 		return sqlSessionTemplate.insert("UserBoardDAO.InsertMyQna",vo);
 	}
 	
+	
+	
 }

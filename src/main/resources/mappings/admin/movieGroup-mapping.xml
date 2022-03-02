@@ -11,8 +11,8 @@
 	</select>
 	
 	<insert id="InsertActor" parameterType="AdminActorVO">
-		INSERT INTO movie_actor
-		VALUES(DEFAULT,#{movie_group_code},#{movie_actor},#{reg_id},current_date)
+		INSERT INTO movie_actor(movie_actor_code,movie_actor_name,movie_actor_ename,reg_id,reg_date,movie_actor_birth,movie_actor_nation,movie_actor_info,movie_actor_img)
+		VALUES(DEFAULT,#{movie_actor_name},#{movie_actor_ename},#{reg_id},current_date,#{movie_actor_birth},#{movie_actor_nation},#{movie_actor_info},#{movie_actor_img})
 	</insert>
 	
 	<select id="ActorList" resultType="AdminActorVO">

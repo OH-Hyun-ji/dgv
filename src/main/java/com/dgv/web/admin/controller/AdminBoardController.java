@@ -91,6 +91,8 @@ public class AdminBoardController {
 			jsonObject.addProperty("msg", "FAIL");
 		}else {
 			System.out.println("등록 성공 ");
+			adminMovieService.updateStatus(vo.getWait_code());
+			System.out.println("status 상태 변경 완료!!");
 			jsonObject.addProperty("msg", "SUCCESS");
 		}
 		

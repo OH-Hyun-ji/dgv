@@ -42,9 +42,18 @@
 	<select id="AnswerUser" resultType="UserInquiryVO">
 		select * from dgv_qna_wait where dgv_inquiry_code=#{dgv_inquiry_code}
 	</select>
+	
 	<insert id="InsertAnswer" parameterType="AdminInquiryVO">
 		INSERT INTO dgv_qna_answer(admin_answer_code,admin_answer_title,admin_answer_text,dgv_inquiry_user, reg_id,reg_date,wait_code)
 		VALUES(DEFAULT, #{admin_answer_title},#{admin_answer_text},#{dgv_inquiry_user},#{reg_id},current_date,#{wait_code})
 	</insert>
+	
+	<update id="UpdateStatus" parameterType="Integer">
+		UPDATE dgv_qna_wait
+		SET dgv_inquiry_status = 1
+		WHERE dgv_inquiry_code = #{dgv_inquiry_code}
+	</update>
+	
+	
 
 </mapper>

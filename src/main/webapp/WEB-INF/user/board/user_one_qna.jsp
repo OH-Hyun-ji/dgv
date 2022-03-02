@@ -15,6 +15,73 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		
+// 	$.ajax({
+// 		method:"POST",
+// 		url:"/answerCheck",
+// 		contentType:"application/json",
+// 		dataType:"json",
+// 		data:
+// 	});//ajax close
+	</script>
+	<style type="text/css">
+table.myPage-table {
+      height: 160px;
+}
+td {
+    box-sizing: border-box;
+    padding-top: 6px;
+    border-right: 1px solid #8080807a;
+    line-height: 46px;
+}
+th{
+	box-sizing: border-box;
+    padding-top: 3px;
+    border-right: 1px solid #8080807a;
+}
+.myPage-table-wrap > span {
+	height: 49px;
+    box-sizing: border-box;
+    padding-top: 2%;
+    font-size: 18px;
+}
+thead.myPage-table-wrapping >tr {
+	line-height: 40px;
+}
+.myPage-table-wrap {
+    height: 78%;
+}
+#qna-often-btn, #qna-btn{
+    background-color: darkgray;
+    border: 0;
+    height: 25px;
+    width: 85px;
+    color:white;
+    font-weight: bolder;
+    border-radius: 3px;
+}
+#qna-often-btn:hover, #qna-btn:hover{
+	background-color: wheat;
+	font-weight: bolder;
+	color:gray;
+	border-radius: 2px;
+}
+input#waitingAnswer {
+    background-color: #80808042;
+    width: 73px;
+    height: 21px;
+    border: 1px solid #8080807a;
+    border-radius: 4px;
+    text-align: center;
+}
+#finishAnswer {
+    width: 79px;
+    height: 28px;
+    padding: 0;
+    border-radius: 6px;
+}
+</style>
 </head>
       <body class="">
         <div id="cgvwrap">
@@ -43,29 +110,72 @@
 										<th>번호</th>
 										<th>유형</th>
 										<th>제목</th>
-										<th>내용</th>
+										<th>내용</th>								
 										<th>날짜</th>
-										<th>답변완료</th>
+										<th>답변상태</th>
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="userQnaOneList" items="${userQnaOneList}">
+							
+								<c:forEach var="userQnaOneList" items="${userQnaOneList}" varStatus="status">
 									<tr>
-										<td>${userQnaOneList.dgv_inquiry_code}</td>
+										<td>${userQnaCount-status.index}</td>
 										<td>${userQnaOneList.dgv_inquiry_tag}</td>
 										<td><a id="myPage-title" href="#">${userQnaOneList.dgv_inquiry_title}</a></td>
-										<td><a id="myPage-text" href="#">${userQnaOneList.dgv_inquiry_text}</a></td>
-										<td>${userQnaOneList.dgv_inquiry_user}</td>								
+										<td><a id="myPage-text" href="#">${userQnaOneList.dgv_inquiry_text}</a></td>																		
 										<td>${userQnaOneList.dgv_inquiry_date}</td>								
-										<td></td>								
+										<td>
+											<c:choose>
+												<c:when test="${userQnaOneList.dgv_inquiry_status == 1}">
+													<button id="finishAnswer" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button">답변완료</button>																	
+												</c:when>
+												<c:otherwise>
+													<input id="waitingAnswer" type="text" value="답변대기중" readonly="readonly">													
+												</c:otherwise>											
+											</c:choose>
+											
+										</td>								
+							
 									</tr>	
-								</c:forEach>						
+								</c:forEach>
+														
 								</tbody>
 							</table>
+							<div class="qna-one-wrap">
+								<div class="qna-one-wrap01">
+									<div class="qna-often-icon">									
+										<i class="far fa-smile-wink" style="width: 66px; height: 49px; color: dimgrey;"></i>
+									</div>
+									<div class="qna-often-wrapping">
+									<div class="qna-often-title">
+										<span>자주하시는 질문</span>
+										<input type="button" id="qna-btn" value="바로가기">
+									</div >
+									<div class="qna-often-text">
+										<span>고객님들께서 주로 하시는 질문에 대한 답변을 한곳에 모아두었습니다.</span>
+									</div>
+									</div>
+								</div>
+								<div class="qna-one-wrap02">
+									<div class="qna-often-icon">									
+										<i class="fas fa-head-side-cough" style="width: 66px; height: 49px; color: dimgrey;"></i>
+									</div>
+									<div class="qna-often-wrapping">
+										<div class="qna-often-title"style="margin-top: 18%;">
+											<span>고객의 말씀</span>
+											<input type="button" id="qna-often-btn" value="바로가기">
+										</div >
+										<div class="qna-often-text" style="margin-top: 4%;">
+											<span>불편사항과 문의사항을 남겨주시면 <br>친절히 답변드리겠습니다.</span>
+											
+										</div>
+									</div>
+								</div>
+							</div>
                   	
                   </div>
                 
-                  <br><br><br><br><br>
+                  <br>
                   <div class="bottom-text-wrap">
                    <span class="bottom-text">DGV 고객센터 : 1234-1234(상담가능 시간, 월~금 12:00~15:00) *이 외 시간은 자동 응답 안내 가능</span>
                   </div>
