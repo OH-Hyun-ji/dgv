@@ -30,5 +30,9 @@ public class UserDAO{
 		return sqlSessionTemplate.selectOne("UserDAO.checkId", id);
 	}
 	
+	//회원정보 수정
+	public int userUpdate(UserVO userVO) {
+		return sqlSessionTemplate.update("UserDAO.userUpdate",userVO);
+	}
 	
 }

@@ -20,5 +20,11 @@
 			WHERE user_id=#{user_id}
 		</select>
 
-		
+		<!-- 회원정보 수정 -->
+		<update id="userUpdate">
+			UPDATE user_info SET 
+			user_pw = #{user_pw},
+			user_name = #{user_name}
+			WHERE user_id = #{user_id}
+		</update>
 	</mapper>

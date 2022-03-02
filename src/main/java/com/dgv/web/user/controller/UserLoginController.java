@@ -1,13 +1,10 @@
 package com.dgv.web.user.controller;
 
-import static org.junit.Assert.assertThat;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -76,5 +73,18 @@ public class UserLoginController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return"redirect:loginForm.do";
+	}
+	
+	//회원정보 수정
+	@RequestMapping(value="/myPage_myData.do", method=RequestMethod.GET)
+	public String registerUpdateView() throws Exception{
+		return "/myPage/user_myPage_myData";
+	}
+	
+	@RequestMapping(value="/logout.do" , method=RequestMethod.POST)
+	public String registerUpdate(UserVO userVO, HttpSession session)throws Exception{
+		userService.userUpdate(userVO);
+		session.invalidate();
+		return "redirect:loginForm.do";
 	}
 }

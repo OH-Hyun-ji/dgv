@@ -82,10 +82,9 @@
 				</div>
 
 				<input type="button" class="w-btn w-btn-gra3 w-btn-gra-anim" onclick="loginCheck()" value="로그인 하기">
-
-				<button type="button" onclick="location.href='/join.do'" class="w-btn w-btn-gra3 w-btn-gra-anim" style="margin-top: 10px;">
-					<span>회원가입</span> <i class="zmdi zmdi-arrow-right"></i>
-				</button>
+				
+				<input type="button" class="w-btn w-btn-gra3 w-btn-gra-anim" onclick="location.href='/join.do'" value="회원가입" style="width: 44%;">
+				
 			</form>
 
 		</div>

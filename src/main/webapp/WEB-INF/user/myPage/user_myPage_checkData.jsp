@@ -38,7 +38,7 @@
 									</ul>
 									<ul>
 										<li id="myIdCk">idNumber</li>
-										<li><input class="myPwCk"></li>
+										<li><input class="myPwCk" type="password"></li>
 									</ul>
 								</div>
 							</div>

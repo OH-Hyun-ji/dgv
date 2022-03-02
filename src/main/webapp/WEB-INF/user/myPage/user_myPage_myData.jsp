@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,13 +37,19 @@
 									<div class="myPage-myId">
 										<ul>
 											<li>아이디  </li>
-											<li><input type="text" readonly="readonly" value="moonLight"></li>
+											<li><input  readonly="readonly"></li>
+											 <c:if test="${!empty userID}">
+	                   							  <span>${userID}</span>
+	          							      </c:if>
 										</ul>
 									</div>
 									<div class="myPage-myName">
 										<ul>
 											<li>이름  </li>
 											<li><input type="text" readonly="readonly"></li>
+											<c:if test="${!empty userID}">
+	                   							  <span>${user_name}</span>
+	          							      </c:if>
 										</ul>										
 									</div>
 									<div class="myPage-myPass">
@@ -79,7 +86,7 @@
 							</div>
 						</div>
 						<div class="myPage-update-allButton">
-							<input type="button" value="회원정보수정">
+							<input type="submit" id="userUpdateBtn" value="회원정보수정" onclick="location.href='/logout.do'">
 							<input type="button" value="회원탈퇴">
 						</div>
 					</div>

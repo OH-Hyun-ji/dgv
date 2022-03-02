@@ -36,6 +36,11 @@ public class UserServiceImpl implements UserService {
 	public int checkId(String id) {
 		return userDAO.checkId(id);
 	}
-
+	
+	//회원정보 수정
+	@Override
+	public int userUpdate(UserVO userVO) {
+		return userDAO.userUpdate(userVO);
+	}
 
 }
