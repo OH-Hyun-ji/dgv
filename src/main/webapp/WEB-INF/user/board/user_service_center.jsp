@@ -25,7 +25,7 @@
                     <!-- Contents Start -->
 		<div class="myPage-cols-container">
              
-                   <jsp:include page="../default/user_notice_side.jsp"></jsp:include>
+                  <jsp:include page="../default/user_notice_side.jsp"></jsp:include>
                   <div class="myPage-content-wrap">
                   <span class="service-center-text">고객 센터</span>
 	                  <div class="service-center-wrapping">

@@ -33,7 +33,7 @@
                                         </a>
                                         <ul>
                                             <li >
-                                                <a href="/myPage_myData.do">개인정보 변경</a>
+                                                <a href="/myPage_checkData.do">개인정보 변경</a>
                                             </li>
                                         </ul>
                                     </li>

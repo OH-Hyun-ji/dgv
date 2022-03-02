@@ -25,6 +25,7 @@ import com.google.gson.JsonObject;
 @Controller
 public class UserLoginController {
 
+	@Autowired
 	private final UserService userService;
 
 
@@ -51,7 +52,7 @@ public class UserLoginController {
 		System.out.println("pw : "+ userVO.getUser_pw());
 		UserVO userId = userService.login(userVO);
 		
-		System.out.println(BCrypt.checkpw(userVO.getUser_pw(), userId.getUser_pw()));
+		//System.out.println(BCrypt.checkpw(userVO.getUser_pw(), userId.getUser_pw()));
 		System.out.println("TEST 1 : "+userId.getUser_pw() );
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();

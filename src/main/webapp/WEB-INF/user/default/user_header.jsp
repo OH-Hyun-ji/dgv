@@ -31,14 +31,34 @@
 	                </c:if>
                 </li>
 <!-- ///////////////////////////////////////////// -->
-				<li><a href="/join.do"> <i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> <span
-						id="main1">회원가입</span>
-				</a></li>
-				<li><a href="/myPage.do"> <i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> <span
-						id="main1">MY DGV</span>
-				</a></li>
-				<li><a href="/serviceCenter.do"> <i id="a" class="fas fa-hand-holding-heart" style="padding-left: 5%;; height: 35px;width: 48%;margin-bottom: -1px;"></i> <span id="main1">고객센터</span>
-				</a></li>
+				<li>
+					<a href="/join.do"> 
+						<i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> 
+						<span id="main1">회원가입</span>
+					</a>
+				</li>
+<!-- ///////////////////////////////////////////// -->				
+				<li>
+					<c:if test="${empty userID}">
+						<a href="/loginForm.do"> 
+							<i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> 
+							<span id="main1">MY DGV</span>
+						</a>
+					</c:if>
+					<c:if test="${!empty userID}">
+						<a href="/myPage.do"> 
+							<i id="a" class="fas fa-user-alt" style="padding-left: 4%;"></i> 
+							<span id="main1">MY DGV</span>
+						</a>
+					</c:if>
+				</li>
+<!-- ///////////////////////////////////////////// -->
+				<li>
+					<a href="/serviceCenter.do"> 
+						<i id="a" class="fas fa-hand-holding-heart" style="padding-left: 5%;; height: 35px;width: 48%;margin-bottom: -1px;"></i> 
+						<span id="main1">고객센터</span>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
