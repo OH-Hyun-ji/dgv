@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dgv.web.admin.common.AwsS3;
+import com.dgv.web.admin.config.AWSConfiguration;
 import com.dgv.web.admin.service.AdminMovieService;
+import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
@@ -39,6 +41,9 @@ public class AdminMovieController {
 	
 	@Autowired
 	private AwsS3 awsS3;
+	
+	@Autowired
+	private FileUploadService fileUploadService;
 	
 
 	//admin 장르/연령 관리페이지이동
@@ -90,7 +95,7 @@ public class AdminMovieController {
 
 		final UUID uuid = UUID.randomUUID();
 		final String url = "age/" + uuid.toString() + ageVo.getMovie_age_img();
-		final String path = "https://dgvworld.s3.ap-northeast-2.amazonaws.com/";
+		final String path = AWSConfiguration.S3_URL;
 		ageVo.setMovie_age_img(path + url);
 		final int num = adminMovieService.insertAge(ageVo);
 
@@ -104,7 +109,7 @@ public class AdminMovieController {
 				InputStream is = imgFile.getInputStream();
 				String contentType = imgFile.getContentType();
 				long contentLength = imgFile.getSize();
-				awsS3.upload(is, path, contentType, contentLength);
+				awsS3.upload(is, url, contentType, contentLength);
 
 				System.out.println("등록 성공");
 
@@ -171,7 +176,7 @@ public class AdminMovieController {
 		
 		final UUID uuid= UUID.randomUUID();
 		final String url = "parPeople/"+uuid.toString()+actorVo.getMovie_actor_img();
-		final String path ="https://dgvworld.s3.ap-northeast-2.amazonaws.com/";
+		final String path = AWSConfiguration.S3_URL;
 		actorVo.setMovie_actor_img(path+url);
 		
 		System.out.println("url : "+url);

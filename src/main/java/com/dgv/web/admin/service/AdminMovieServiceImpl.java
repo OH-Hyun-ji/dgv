@@ -10,7 +10,11 @@ import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
+import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.admin.vo.AdminParVO;
+import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 
 import lombok.RequiredArgsConstructor;
@@ -109,6 +113,30 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 	public int updateStatus(Integer num) {
 		
 		return adminMovieDAO.updateStatus(num);
+	}
+
+	@Override
+	public int insertTheater(AdminTheaterVO vo) {
+		
+		return adminMovieDAO.insertTheater(vo);
+	}
+
+	@Override
+	public AdminRegionVO regionList(String name) {
+		
+		return adminMovieDAO.regionList(name);
+	}
+
+	@Override
+	public int insertPar(AdminParVO vo) {
+		
+		return adminMovieDAO.insertPar(vo);
+	}
+
+	@Override
+	public int insertMovie(AdminMovieVO vo) {
+	
+		return adminMovieDAO.insertMovie(vo);
 	}
 
 

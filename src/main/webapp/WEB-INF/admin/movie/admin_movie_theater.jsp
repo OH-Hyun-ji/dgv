@@ -178,7 +178,24 @@
 			"theater_max_column" :maxC,
 			"theater_seat_count":seatCount
 		}
-		
+		$.ajax ({
+			method:"POST",
+			url:"/insertTheater.mdo",
+			contentType:"application/json",
+			dataType:"json",
+			data:JSON.stringify(theaterVo),
+			success:function(result){
+				if(result.msg=="SUCCESS"){
+					alert("상영관 등록 완료!")
+				}else{
+					alert("상영관 등록 실패")
+					
+				}
+			},error:function(){
+				console.log("통신오류")
+			}
+			
+		})//ajax close 
 		
 		
 	}
@@ -200,9 +217,10 @@
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i>지역별 상영관관리
 					</div>
-					<div div style=" margin-top: 1%; margin-left: 1%; margin-bottom: 2px;">
+					<div style="border: 1px solid #9e9e9ead;margin-top: 1%;">
+					<div style=" margin-top: 1%; margin-left: 1%; margin-bottom: 2px;">
 						<div>
-						<span  style="font-size: 21px; font-weight: 800; margin-left: 1%;"><i class="fas fa-table me-1"></i>상영관 조회</span>
+						<span  style="font-size: 21px; font-weight: 800; margin-left: 1%;"><i class="fas fa-table me-1"></i>상영관 생성</span>
 						</div>
 						<div class="btn-group" style="width: 19%;">
 							<button id="dgvCityBtn" type="button" style="width: 100%; margin-top:0;"class="btn btn-danger dropdown-toggle"
@@ -221,7 +239,7 @@
 							<input type="hidden" name="region_name" id="regionName" >		
 							</ul>
 						</div>
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 	
 						<div class="btn-group" style="width: 19%;">
 							<button type="button"style="width: 100%; margin-top:0;" class="btn btn-danger dropdown-toggle"
@@ -235,18 +253,20 @@
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="#">Separated link</a></li>
 							</ul>
+						</div>-->
+							<button id="registerCity"  style="background: linear-gradient(#f3e057 -32%, #ffc800f0);color: slategray;" onclick="registerAll()">Register</button>
 						</div>
-							<button id="registerCity" onclick="registerAll()">Register</button>
-						</div>
-						<div class="seat_count_total">
-							<label class="max_title">상영관 이름 : </label>
+						<div class="seat_count_total" style="display: inline-flex;margin-top: 2%;height: 37px; margin-bottom: 3%;">
+							<label class="btn btn-danger max_title" style="margin-top: 0%;margin-left: 1%;">상영관 이름 : </label>
 							<input id="theaterName" name="theater_name" type="text"  placeholder="상영관 입력">
-							<label class="max_title">최대 열수 : </label>
+							<label class="max_title btn btn-danger" style="margin-top: 0%;">최대 열수 : </label>
 							<input id="maxRow" name="theater_max_row" type="text" placeholder="열 입력">
-							<label class="max_title">최대 행수 : </label>
+							<label class="max_title btn btn-danger" style="margin-top: 0%;">최대 행수 : </label>
 							<input id="maxColumn" name="theater_max_column" type="text" placeholder="행 입력">
-							<button class="theater_seat_making" onclick="createSeat()">Create</button>
+							<button class="theater_seat_making btn btn-danger" style="margin: 0;background: linear-gradient(#f3e057 -32%, #ffc800f0);color: slategray;" onclick="createSeat()">Create</button>
 						</div>
+						</div>
+					
 				<div class="admin_seat_container">
 						<div class="admin_seat_wrapper">
 							<div class="button-container-stage"></div>
@@ -254,7 +274,7 @@
 								<div class="admin_seat_title">
 									<span class="admin_seat_screen">SCREEN</span>
 								</div>
-								<div class="admin_seat_view">
+								<div class="admin_seat_view" style="overflow-y:scroll ">
 									<div class="admin_seat_line">
 										<form action="#" id="adminTheaterSeatResult">
 											<div class="adminSeatSite" id="seatWrap">

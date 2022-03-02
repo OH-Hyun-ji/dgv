@@ -11,7 +11,11 @@ import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
+import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.admin.vo.AdminParVO;
+import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 
 @Repository
@@ -84,5 +88,24 @@ public class AdminMovieDAO {
 	public int updateStatus(Integer num) {
 		return sqlSessionTemplate.update("AdminBoardDAO.UpdateStatus",num);
 	}
+	
+	//상영관 등록
+	public int insertTheater(AdminTheaterVO vo) {
+		return sqlSessionTemplate.insert("AdminMovieDAO.InsertTheater",vo);
+	}
+	
+	public AdminRegionVO regionList(String name) {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.regionList",name);
+	}
+	
+	//영화등록전 참여자 테이블 등록 
+	public int insertPar(AdminParVO vo) {
+		return sqlSessionTemplate.insert("AdminMovieDAO.InsertPar",vo);
+	}
+	
+	public int insertMovie(AdminMovieVO vo) {
+		return sqlSessionTemplate.insert("AdminMovieDAO.InsertMovie",vo);
+	}
+
 
 }

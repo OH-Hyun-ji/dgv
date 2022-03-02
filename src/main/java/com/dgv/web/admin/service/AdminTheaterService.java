@@ -8,8 +8,9 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 public interface AdminTheaterService {
 
 	//관리자 지역별관리
-	List<AdminCityVO> selectCityList(AdminCityVO vo);
-	List<AdminRegionVO> selectRegionList(AdminRegionVO vo);
+	List<AdminCityVO> selectCityList();
+	List<AdminRegionVO> selectRegionList();
 	List<AdminCityVO> adminTotalList();
+	List<AdminRegionVO> choiceRegion(int num);
 	
 }

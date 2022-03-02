@@ -16,15 +16,15 @@ public class AdminTheaterDAO {
 	SqlSessionTemplate sqlSessionTemplate;
 	
 	
-	public List<AdminCityVO> adminCityList(AdminCityVO vo){
+	public List<AdminCityVO> adminCityList(){
 		System.out.println("TEST  8 :");
 		
 		return sqlSessionTemplate.selectList("AdminTheaterDAO.theaterCity");	
 		
 	}
 	
-	public List<AdminRegionVO> adminRegionList(AdminRegionVO vo){
-		return sqlSessionTemplate.selectList("AdminTheaterDAO.theaterRegion",vo);	
+	public List<AdminRegionVO> adminRegionList(){
+		return sqlSessionTemplate.selectList("AdminTheaterDAO.theaterRegion");	
 		
 	}
 	
@@ -32,6 +32,9 @@ public class AdminTheaterDAO {
 		return sqlSessionTemplate.selectList("AdminTheaterDAO.totalTheater");
 	}
 	
+	public List<AdminRegionVO> choiceRegion(int num){
+		return sqlSessionTemplate.selectList("AdminTheaterDAO.choiceRegion", num);
+	}
 	
 
 }

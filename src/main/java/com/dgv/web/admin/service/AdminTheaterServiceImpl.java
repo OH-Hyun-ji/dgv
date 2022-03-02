@@ -23,16 +23,16 @@ public class AdminTheaterServiceImpl implements AdminTheaterService{
 //		this.adminTheaterDAO = adminTheaterDAO;
 //	}
 	
-	public List<AdminCityVO> selectCityList(AdminCityVO vo) {
+	public List<AdminCityVO> selectCityList() {
 		System.out.println(" TEST : 5 !!!!!!! ");
 
-		return adminTheaterDAO.adminCityList(vo);
+		return adminTheaterDAO.adminCityList();
 	}
 
 	@Override
-	public List<AdminRegionVO> selectRegionList(AdminRegionVO vo) {
+	public List<AdminRegionVO> selectRegionList() {
 	
-		return adminTheaterDAO.adminRegionList(vo);
+		return adminTheaterDAO.adminRegionList();
 	}
 
 	@Override
@@ -40,6 +40,12 @@ public class AdminTheaterServiceImpl implements AdminTheaterService{
 		
 		List<AdminCityVO> test = adminTheaterDAO.adminTotalList();
 		return test;
+	}
+
+	@Override
+	public List<AdminRegionVO> choiceRegion(int num) {
+		
+		return adminTheaterDAO.choiceRegion(num);
 	}
 
 
