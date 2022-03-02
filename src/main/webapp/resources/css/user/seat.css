@@ -20,7 +20,7 @@
     opacity: 0.8;
     height: 41px;
     color: white;
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
     line-height: 40px;
 }
@@ -32,12 +32,13 @@
 }
 
 .select-people-number > ul > li{
-    border: 1px soild black;
+    border: 2px solid gray;
     width: 20px;
     height: 20px;
     text-align: center;
     font-weight: bold;
     padding: 2px;
+    margin: 3px;
 }
 .select-people{
     display: flex;
@@ -60,20 +61,6 @@
     margin-bottom: 10px;
     margin-top: 8px;
     font-weight: bold;
-}
- li.select-people-basic{
-    border: 2px solid gray;
-    margin: 3px;
-}
-
- li.select-people-student{
-    border: 2px solid gray;
-    margin: 3px;
-}
-
- li.select-people-old{
-    border: 2px solid gray;
-    margin: 3px;
 }
 
 .selected-number-wrap {
@@ -137,6 +124,18 @@ li.select-theater-local.selected-theater-local-info {
     margin-left: 10px;
 }
 
+/*인원수 클릭 반응*/
+
+.select-people-ul > li:hover{
+    color: white;
+    background-color: rgb(241, 157, 31);
+    cursor: pointer;
+}
+.select-people-ul-action{
+    color: white;
+    background-color: rgb(241, 157, 31);
+}
+
 /*좌석쪽 css*/
 
 .seat-wrapper {
@@ -160,4 +159,19 @@ li.select-theater-local.selected-theater-local-info {
 }
 .selected-price-total {
     padding-left: 11px;
+}
+
+/*검정바탕 예매 최종 확인버튼 */
+.reservation-wrapper {
+    background-color: currentcolor;
+    opacity: 0.8;
+    height: 165px;
+    margin-bottom: 28px;
+    padding-left: 11px;
+    padding-top: 11px;
+}
+
+.choicPrev a {
+    line-height: 270px;
+    font-size: 20px;
 }

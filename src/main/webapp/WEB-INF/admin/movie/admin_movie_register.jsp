@@ -78,23 +78,47 @@
 				
 				$(document).on('change', 'select[name=movieCityGroup]',function(){
 					var movieCityGroup =$(this).val()
-				
+					const selectNum = $("select[name=movieCityGroup] option:selected").val();
+					const number={"city_code": selectNum}
 					
+					
+					console.log("셀렉트값???? :"+selectNum)
+					var aa	=$("#theaterTable").children('tr')
+					//	console.log("tr의 인덱스 번호 ㅠ: "+aa.eq(0).children());
+						console.log(aa.length);
+						
+						console.log("aa 1번째"+aa.eq(0).children().index());
+						console.log("aa 1번째"+$(this).parent().index());
+						console.log(aa.eq(1));
+						console.log(aa.eq(0).children());
+						console.log(aa.eq(1).children());
+					
+						console.log(aa.eq(3).children());
+						console.log(aa.index(this));
+						$($("#theaterTable").children()).each(function(i){
+							
+							console.log("제발!!! "+ $(i))
+							console.log("child length : "+ $(i).children().length)
+							console.log("test : "+ $(i).children[1].children[0].children[0].value)
+						//	console.log($("select[name=movieCityGroup]").childNodes[i].value)
+						//	console.log("child : "+aa.eq(i).children()[i]);
+							
+						})
+						
+						
 				})
+				
+				
 			/*	
+			
 				$(document).on('click','select[name=movieCityGroup] option ',function(){
 					_($("#theaterTable").children()).forEach(function(n){
 						console.log("??? : "+$(n).children().eq(1).children().first().val())
 						console.log("!!! :"+selectNum)
 					})
 				*/
-				$("#regionSelect").change(function(){
-					var v = $("#regionSelect").val()
-					console.log("셀렉트값 "+ v)
-					const selectNum = $("select[name=movieCityGroup] option:selected").val();
-					const number={"city_code": selectNum}
-				})
-
+				
+	/*			
 					$.ajax({
 						method:"POST",
 						url:"lookingCode.mdo",
@@ -112,32 +136,16 @@
 												.attr("id" , "regionSelect")
 												.text(n.region_name)
 								select1.append(option1)
-							})
+					})
 
 				},
 				error:function(){
 					console.log("통신실패")
 				}
 				
-			})//ajax close
-					var aa	=$("#theaterTable").children('tr')
-				//	console.log("tr의 인덱스 번호 ㅠ: "+aa.eq(0).children());
-					console.log(aa.length);
-					
-					console.log("aa 1번째"+aa.eq(0).children().index());
-					console.log("aa 1번째"+$(this).parent().index());
-					console.log(aa.eq(1));
-					console.log(aa.eq(0).children().eq(1).city_code);
-					console.log(aa.eq(1).children().val());
-					console.log(aa.eq(2).children());
-					console.log(aa.eq(3).children());
-					console.log(aa.index(this));
+			})//ajax close   
 			
-					
-
-	
-					
-				
+			*/
 			test=this	
 				
 				

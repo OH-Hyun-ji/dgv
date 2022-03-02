@@ -113,8 +113,8 @@
 		   "user_pw": pw,
 		   "user_phone":phone
 	   }
-	   alert("DDDDDD")
-	   q1!
+	 
+	  
       	$.ajax({
       		method:"POST",
       		url:"/updateUser.do",
