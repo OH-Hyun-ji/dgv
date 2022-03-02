@@ -69,7 +69,6 @@
 							class="form-control"> <i class="zmdi zmdi-accounts"></i>
 					</div>
 				</div>
-
 				<div class="form-wrapper">
 					<input type="password" name="user_pw" placeholder="비밀번호"
 						id="password" class="form-control"> <i
