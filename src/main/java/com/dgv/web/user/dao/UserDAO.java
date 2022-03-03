@@ -46,5 +46,10 @@ public class UserDAO {
 		System.out.println(daoNum);
 		return daoNum;
 	}
+	
+	// 회원 탈퇴
+	public int deleteUser(UserVO userVO) {
+		return sqlSessionTemplate.delete("UserDAO.deleteUser", userVO);
+	}
 
 }
