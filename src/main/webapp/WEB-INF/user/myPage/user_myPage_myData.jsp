@@ -129,7 +129,7 @@
 				  "hideMethod": "fadeOut"
 				}
 			
-	   alert("윤호영!!!!!!!!!!!!!!!!!!!!!!!")
+	   
 	   const pw = $("#password").val()
 	   const phone =$("#phone").val()
 	   console.log("pw : "+ pw)
@@ -166,10 +166,43 @@
 	   
       
 	}
-      
-      
-    
-      </script>
+   
+   
+         
+
+
+// 회원탈퇴
+	function deleteUser(){  
+	const id = $("#id").val()
+	   let result = confirm("정말 삭제하시겠습니까??");
+	   console.log("ddddd")
+  
+	   if(result == true){  
+	      $.ajax({
+	         method:"POST",
+	         url:"/deleteUser.do",
+	         contentType:"application/json",
+	         dataType:"json",
+	         data:JSON.stringify({"user_id":id}),
+	         success:function(num){               
+	            if(num.msg=="SUCCESS"){
+	               alert("삭제완료")
+	               location.replace("/loginForm.do");
+	            }else{
+	               alert('삭제를 다시 진행해주세요')
+	            }
+	         },
+	         error:function(){
+	            
+	            console.log("통신실패")
+	            }
+	         
+	         });//ajax close 
+	
+	}
+}
+
+</script>
       
 </head>
 <body class="">
@@ -194,7 +227,7 @@
 	                           <div class="myPage-myId">
 	                              <ul>
 	                                 <li>아이디&nbsp;&nbsp;&nbsp;</li>
-	                                 <li><input type="text"  readonly="readonly" value="${userData.user_id}"></li>
+	                                 <li><input type="text" id="id" readonly="readonly" value="${userData.user_id}"></li>
 	                              </ul>
 	                           </div>
 	                           <div class="myPage-myName">
@@ -244,7 +277,7 @@
                   </div>
                   <div class="myPage-update-allButton">
                      <input type="button" onclick="checkAll()" value="회원정보수정">
-                     <input type="button" value="회원탈퇴">
+                     <input type="button" onclick="deleteUser()" value="회원탈퇴">
                   </div>
                </div>
                

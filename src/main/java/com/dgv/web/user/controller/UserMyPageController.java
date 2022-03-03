@@ -130,4 +130,23 @@ public class UserMyPageController {
 			return CommonResultDto.success();
 		}
    }
+   
+   
+   //회원 탈퇴
+   @RequestMapping("/deleteUser.do")
+   @ResponseBody
+	public CommonResultDto deleteUser(@RequestBody UserVO userVO,HttpSession session){
+		userVO.setUser_id((String) session.getAttribute("userID"));
+		int num =userService.deleteUser(userVO);
+		
+		System.out.println("num =: "+ num);
+		
+		if(num == 0 ) {
+			System.out.println("삭제 실패!!");
+			return CommonResultDto.fail();
+		}else {
+			System.out.println("삭제 성공!!");
+			return CommonResultDto.success();
+		}
+   }
 }

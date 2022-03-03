@@ -34,5 +34,12 @@
        	 user_phone = #{user_phone}
        	 WHERE user_id = #{user_id}
        </update>
+       
+       <delete id="deleteUser">
+       	 DELETE FROM user_info
+			WHERE user_id = #{user_id}
+       </delete>
+       
+       
 	</mapper>
       
