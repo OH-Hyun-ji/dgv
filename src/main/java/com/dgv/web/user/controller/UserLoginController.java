@@ -50,18 +50,23 @@ public class UserLoginController {
 	public String loginPOST(@RequestBody UserVO userVO, HttpSession session, Model model) {
 		System.out.println("id : "+ userVO.getUser_id());
 		System.out.println("pw : "+ userVO.getUser_pw());
-		UserVO userId = userService.login(userVO);
+		UserVO vo = userService.login(userVO);
 		
 		//System.out.println(BCrypt.checkpw(userVO.getUser_pw(), userId.getUser_pw()));
-		System.out.println("TEST 1 : "+userId.getUser_pw() );
+		System.out.println("TEST 1 : "+vo.getUser_pw() );
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
-		if(userVO.getUser_id().equals(userId.getUser_id())&&BCrypt.checkpw(userVO.getUser_pw(), userId.getUser_pw())) {
+		if(userVO.getUser_id().equals(vo.getUser_id())&&BCrypt.checkpw(userVO.getUser_pw(), vo.getUser_pw())) {
 			System.out.println("로그인 성공!!");
 			jsonObject.addProperty("msg", "SUCCESS");
+<<<<<<< HEAD
 			session.setAttribute("userID",userId.getUser_id());
 			String user = (String) session.getAttribute("userID");
 			System.out.println("session Id : "+ user);
+=======
+			session.setAttribute("userID",vo.getUser_id());
+			
+>>>>>>> c559f000c06274cbf32731595ca6f11eaaab53ef
 			System.out.println(jsonObject);		
 		}else { 
 			System.out.println("로그인 실패");

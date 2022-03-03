@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
@@ -66,28 +67,23 @@ public class UserMyPageController {
 	// 비밀번호 확인
 	@PostMapping("/myPage_checkData.do")
 	@ResponseBody
-	public String loginPOST(@RequestBody UserVO vo, HttpSession session, Model model) {
+	public CommonResultDto loginPOST(@RequestBody UserVO vo, HttpSession session, Model model) {
 		System.out.println("id : " + vo.getUser_id());
 		System.out.println("pw : " + vo.getUser_pw());
 		UserVO userId = userService.login(vo);
 
 		System.out.println(BCrypt.checkpw(vo.getUser_pw(), userId.getUser_pw()));
 		System.out.println("TEST 1 : " + userId.getUser_pw());
-		Gson gson = new Gson();
-		JsonObject jsonObject = new JsonObject();
+		
 		if (vo.getUser_id().equals(userId.getUser_id()) && BCrypt.checkpw(vo.getUser_pw(), userId.getUser_pw())) {
 			System.out.println("비밀번호 확인.");
-			jsonObject.addProperty("msg", "SUCCESS");
 			session.setAttribute("userID", userId.getUser_id());
-			System.out.println(jsonObject);
+			return CommonResultDto.success();
 		} else {
 			System.out.println("비밀번호를 다시 확인해 주세요.");
-			jsonObject.addProperty("msg", "FAIL");
-			System.out.println(jsonObject);
+			return CommonResultDto.fail();
 		}
-		String jsonResult = gson.toJson(jsonObject);
-
-		return jsonResult;
+	
 	}
    
    
@@ -109,27 +105,21 @@ public class UserMyPageController {
    //회원정보 수정
    @RequestMapping("/updateUser.do")
    @ResponseBody
-	public String updateUser(@RequestBody UserVO userVO, RedirectAttributes redirectAttributes, HttpSession session){
+	public CommonResultDto updateUser(@RequestBody UserVO userVO, RedirectAttributes redirectAttributes, HttpSession session){
 		String hashedPw = BCrypt.hashpw(userVO.getUser_pw(), BCrypt.gensalt());
 		userVO.setUser_pw(hashedPw);
 		
 		userVO.setUser_id((String) session.getAttribute("userID"));
 		int num =userService.updateUser(userVO);
 		redirectAttributes.addFlashAttribute("msg", "UPDATED");
-		Gson gson = new Gson();
 		System.out.println("num =: "+ num);
-		JsonObject jsonObject =new JsonObject();
 		
 		if(num ==0 ) {
 			System.out.println("회원정보 수정 실패!!");
-			jsonObject.addProperty("msg", "FAIL");
+			return CommonResultDto.fail();
 		}else {
 			System.out.println("회원정보 수정 성공!!");
-			jsonObject.addProperty("msg", "SUCCESS");
+			return CommonResultDto.success();
 		}
-		
-		String result = gson.toJson(jsonObject);
-		
-		return result;
    }
 }

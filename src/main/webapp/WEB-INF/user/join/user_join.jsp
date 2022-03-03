@@ -78,34 +78,24 @@
             $.ajax({
                method:"POST", //서버전송
                url:"/join.do", //controller쪽 url
-               //contentType: "text/plain", // 서버에 보내는 데이터 형식
+               contentType: "application/json", // 서버에 보내는 데이터 형식
                dataType:"json", //서버응답!
-               data: {"user_id":userId},
+               data: JSON.stringify({"user_id":userId}),
                success:function(result){
-                  if(result.ret == "Y"){
-                     if(!getIdCheck.test($("#id").val())){
-                        $("#id").addClass("issetUser");
+            	   console.log("result.msg"+result.msg)
+                  if(result.msg == "FAIL"){                   
                         $("#id").removeClass("nonesetUser");
-                        $("#idCK").html('<b style="color:orangered; font-size: smaller;">[ 영문/숫자포함 최대 15자입니다! ]');
+                        $("#id").addClass("issetUser");
+                        $("#idCK").html('<b style="color:orangered; font-size: smaller;">[ 이미 사용중인 아이디입니다. ]');
                         chk1=false;
-                     } else {
+                  } else {
                         $("#id").removeClass("issetUser");
                         $("#id").addClass("nonesetUser");
                         $("#idCK").html('<b style="color:aquamarine; font-size: smaller;">[ 사용가능한 아이디입니다. ]');
                         chk1 = true;
                      }
-                  //return ture;
-                  } else if(result.ret == "N") {
-                     console.log("N")
-                     $("#id").addClass("issetUser");
-                     $("#id").removeClass("nonesetUser");
-                     $("#idCK").html('<b style="color:orangered; font-size: smaller;;">[ 이미 사용중인 아이디입니다.  ]');
-                     chk1=false;
-                     //return false;
-                  } else {
-                     //alert("결과값을 받지 못했습니다. ");
-                     return false;
-                  }
+
+                  
                },//success function
                error:function(){
                   console.log("통신실패");
@@ -257,18 +247,17 @@
       
       if(termCheck != true ){
          alert('약관동의 체크해주세요')
-      }
-          console.log("ㅠㅠ제발")
-          alert("/??????1")
+      }else{
         if(chk1 && chk2 && chk3 && chk4 && chk5 && chk6 && chk7 &&termCheck){
           alert("회원가입 성공!!")
           console.log("성공")
-           document.joinForm.submit();
+          document.joinForm.submit();
         }else{
            alert("빈칸이나 유효하지 않는 값이 있습니다. 다시 확인해주세요!!")
            console.log("실패")
            return false;
         }
+      }
     }
 
          
