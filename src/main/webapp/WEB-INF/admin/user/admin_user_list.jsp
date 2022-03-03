@@ -63,7 +63,7 @@
 								</thead>
 								<tbody>
 								<c:forEach var="userList" items="${userList}" varStatus="status">
-									<tr id="trWrap">
+									<ZStr id="trWrap">
 										<td>${userListCount - status.index}</td>
 										<td>${userList.user_id}</td>
 										<td>${userList.user_name}</td>

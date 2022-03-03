@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,7 +52,9 @@ public class AdminMovieController {
 	@RequestMapping("/adminManageMent.mdo")
 	public String adminManagement(AdminGenreVO vo ,Model model , AdminAgeVO ageVo) {
 		model.addAttribute("genreList",adminMovieService.genreList());
+		model.addAttribute("genreListCount",adminMovieService.genreList().size());
 		model.addAttribute("ageList" ,adminMovieService.ageList());
+		model.addAttribute("ageListCount" ,adminMovieService.ageList().size());
 		return "/movie/admin_movie_management";
 	}
 	
@@ -72,6 +76,24 @@ public class AdminMovieController {
 		}else {
 			return new Result(true);
 		}
+	}
+	@PostMapping("deleteGenre.mdo")
+	@ResponseBody
+	public CommonResultDto deleteGenre(@RequestBody AdminGenreVO vo) {
+		int num = adminMovieService.deleteGenre(vo);
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
+	@PostMapping("deleteAge.mdo")
+	@ResponseBody
+	public CommonResultDto deleteAge(@RequestBody AdminAgeVO vo) {
+		int num = adminMovieService.deleteAge(vo);
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
 	}
 	
 	@Getter
@@ -126,9 +148,33 @@ public class AdminMovieController {
 	@RequestMapping("/adminManager.mdo")
 	public String adminManager(AdminGroupVO vo, Model model, AdminActorVO actorVo) {
 		model.addAttribute("groupList",adminMovieService.groupList());
+		model.addAttribute("groupListCount",adminMovieService.groupList().size());		
 		model.addAttribute("actorList",adminMovieService.actorList());
+		model.addAttribute("actorListCount",adminMovieService.actorList().size());
 		return "/movie/admin_movie_manager";
 	}
+	
+	//배우 삭제
+	@PostMapping("deleteActor.mdo")
+	@ResponseBody
+	public CommonResultDto deleteActor(@RequestBody AdminActorVO vo) {
+		int num =adminMovieService.deleteActor(vo);
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	//그룹 삭제
+	@PostMapping("deleteGroup.mdo")
+	@ResponseBody
+	public CommonResultDto deleteGroup(@RequestBody AdminGroupVO vo) {
+		
+		int num = adminMovieService.deleteGroup(vo);
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
 	
 	//그룹 등록후 처리 
 	@PostMapping("/adminInsertGroup.mdo")
@@ -165,20 +211,20 @@ public class AdminMovieController {
 	//감독/배우관리
 	@RequestMapping("/adminActor.mdo")
 	public String adminActor(AdminGroupVO vo, Model model) {
-		model.addAttribute("groupCode",adminMovieService.groupList());
+		model.addAttribute("groupList",adminMovieService.groupList());
 		return "/movie/admin_movie_actor_register";
 	}
 		
 	@PostMapping("/adminInsertActor.mdo")
 	@ResponseBody
-	public CommonResultDto adminInsertActor(@RequestPart("actorVo") AdminActorVO actorVo, @RequestPart("imgFile") MultipartFile imgFile) {
+	public CommonResultDto adminInsertActor(@RequestPart("actorVo") AdminActorVO actorVo, @RequestPart("imgFile") MultipartFile imgFile, HttpSession session) {
 
 		
 		final UUID uuid= UUID.randomUUID();
 		final String url = "parPeople/"+uuid.toString()+actorVo.getMovie_actor_img();
 		final String path = AWSConfiguration.S3_URL;
 		actorVo.setMovie_actor_img(path+url);
-		
+		actorVo.setReg_id((String)session.getAttribute("adminID")); 
 		System.out.println("url : "+url);
 		
 		final int num =adminMovieService.insertActor(actorVo);

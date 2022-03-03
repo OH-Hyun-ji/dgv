@@ -7,15 +7,29 @@
 	</insert>
 	
 	<select id="GroupList" resultType="AdminGroupVO" >
-		SELECT * FROM movie_group;
+		SELECT * FROM movie_group ;
 	</select>
 	
 	<insert id="InsertActor" parameterType="AdminActorVO">
-		INSERT INTO movie_actor(movie_actor_code,movie_actor_name,movie_actor_ename,reg_id,reg_date,movie_actor_birth,movie_actor_nation,movie_actor_info,movie_actor_img)
-		VALUES(DEFAULT,#{movie_actor_name},#{movie_actor_ename},#{reg_id},current_date,#{movie_actor_birth},#{movie_actor_nation},#{movie_actor_info},#{movie_actor_img})
+		INSERT INTO movie_actor(movie_actor_code,movie_actor_name,movie_actor_ename,reg_id,reg_date,movie_actor_birth,movie_actor_nation,movie_actor_info,movie_actor_img,movie_group_code)
+		VALUES(DEFAULT,#{movie_actor_name},#{movie_actor_ename},#{reg_id},current_date,#{movie_actor_birth},#{movie_actor_nation},#{movie_actor_info},#{movie_actor_img},#{movie_group_code})
 	</insert>
 	
 	<select id="ActorList" resultType="AdminActorVO">
 		SELECT * FROM movie_actor
 	</select>
+	
+	<select id="ChoiceActorList"  resultType="AdminActorVO" parameterType="int">
+		SELECT * FROM movie_actor WHERE movie_group_code =#{movie_group_code}
+	</select>
+	
+	<delete id="ActorDelete" parameterType="AdminActorVO">
+		DELETE FROM movie_actor WHERE movie_actor_code =#{movie_actor_code}
+	</delete>
+	
+	<delete id="GroupDelete" parameterType="AdminGroupVO">
+		DELETE FROM movie_group WHERE movie_group_code = #{movie_group_code}
+	</delete>
+	
+	
 </mapper>

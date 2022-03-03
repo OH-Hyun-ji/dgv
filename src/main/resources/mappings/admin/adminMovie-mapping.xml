@@ -44,4 +44,15 @@
 		INSERT INTO movie_info(movie_num,movie_genre_code,movie_img,movie_running_time,movie_open_date,movie_text,movie_title,movie_title_en,movie_age_code,reg_id,movie_time,movie_date,reg_date,movie_real_img)
 		VALUES(DEFAULT,#{movie_genre_code},#{movie_img},#{movie_running_time},#{movie_open_date},#{movie_text},#{movie_title},#{movie_title_en},#{movie_age_code},#{reg_id},#{movie_time},#{movie_date},current_date,#{movie_real_img})
 	</insert>
+	
+	<select id="TheaterList" resultType="AdminTheaterVO" parameterType="int">
+		SELECT * FROM movie_theater WHERE region_code = #{region_code}
+	</select>
+	
+	<insert id="InsertCityTheater" parameterType="AdminCityTheaterVO">
+		INSERT INTO city_region_theater(city_theater_code,movie_num,city_code,region_code,theater_code)
+		VALUES(DEFAULT,#{movie_num},#{city_code},#{region_code},#{theater_code})
+	</insert>
+	
+	
 </mapper>

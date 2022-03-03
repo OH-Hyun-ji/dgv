@@ -35,9 +35,11 @@
 				const tr =$("<tr>")
 				const tdT = $("<td>").text("도시 :")
 				const tdA = $("<td>").text("지역 :")
+				const tdB = $("<td>").text("상영관 :")
 				const td =$("<td>")
 				const td1 = $("<td>")
 				const td2 = $("<td>")
+				const td3 = $("<td>")
 				const input =$("<input>")
 						.attr("type","button")
 						.attr("class","delRow")
@@ -46,20 +48,86 @@
 						.attr("class","dgvCity")
 						.attr("name","movieCityGroup")
 						.attr("class","form-control1")
+
 				const select1=$("<select>")
 						.attr("name","movieCity")
-						
+						.attr("class","regionSelect")
+				
+				const select2=$("<select>")
+						.attr("name","theater")
+						.attr("class","theaterSelect")
 			
+						
+				//처음 생성하면서 불러오기 
+				select.on('change', function() {
+					const selectedVal = $(this).val();			
+					select1.empty();
+				
+					// ajax 
+					$.ajax({
+						method:"POST",
+						url:"lookingCode.mdo",
+						contentType:"application/json",
+						dataType:"json",
+						data:JSON.stringify({"city_code" : selectedVal}),
+						success:function(regionList){
+							const arr = JSON.parse(regionList)
+							console.log("ajax :" +regionList)
+							console.log("arr : "+ arr)
+ 							const cleanArea = $(".regionL")
+							console.log("arr.city_code : " +arr.city_code)
+							
+								_(arr).forEach(function(n){								
+									const option1=$("<option>")
+												.attr("class","regionL")
+												.attr("value",n.region_code)
+												.attr("id" , "regionSelect")
+												.text(n.region_name)
+								select1.append(option1)									
+						})
+				},
+				error:function(){
+					console.log("통신실패")
+				}				
+			})//ajax close   
+		});				
+		select1.on('change', function(){
+			const selectRegion = $(this).val();
+			select2.empty();
+				//theater ajax 
+			$.ajax({
+				method:"POST",
+				url:"lookingTheater.mdo",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify({"region_code":selectRegion}),
+				success:function(theaterList){
+					const arr= JSON.parse(theaterList)
+					_(arr).forEach(function(n){
+						const option2=$("<option>")
+									.attr("class","theaterL")
+									.attr("value",n.theater_code)
+									.text(n.theater_name)
+							select2.append(option2)
+					})
+				},
+				error:function(){
+					console.log("통신 실패")
+				}
+			})//ajax close
+		})
+		
+		
+			
+				
+
 				for(let i=0;i<cityList.length;i++){
-					console.log("city_code : "+cityList[i].city_code);
 					const option= $("<option>")
 									.attr("class","test")
 									.attr("value",cityList[i].city_code)
 									.text(cityList[i].city_name)					
 				select.append(option)	
-					const index=$("#theaterTable").index($(".dgvCity"));	
-				
-					console.log("#####" + index)
+					const index=$("#theaterTable").index($(".dgvCity"));
 				
 				}
 				
@@ -69,83 +137,14 @@
 				td1.append(select1)
 				tr.append(tdA)
 				tr.append(td1)
-				td2.append(input)
+				td3.append(select2)
+				tr.append(tdB)
+				tr.append(td3)
 				tr.append(td2)
+				td2.append(input)
 				$("#theaterTable").append(tr)
-			
-					let ind = $(this).index(this)
-					console.log("index :" +ind)	
-				
-				$(document).on('change', 'select[name=movieCityGroup]',function(){
-					var movieCityGroup =$(this).val()
-					const selectNum = $("select[name=movieCityGroup] option:selected").val();
-					const number={"city_code": selectNum}
-					
-					
-					console.log("셀렉트값???? :"+selectNum)
-					var aa	=$("#theaterTable").children('tr')
-					//	console.log("tr의 인덱스 번호 ㅠ: "+aa.eq(0).children());
-						console.log(aa.length);
-						
-						console.log("aa 1번째"+aa.eq(0).children().index());
-						console.log("aa 1번째"+$(this).parent().index());
-						console.log(aa.eq(1));
-						console.log(aa.eq(0).children());
-						console.log(aa.eq(1).children());
-					
-						console.log(aa.eq(3).children());
-						console.log(aa.index(this));
-						$($("#theaterTable").children()).each(function(i){
-							
-							console.log("제발!!! "+ $(i))
-							console.log("child length : "+ $(i).children().length)
-							console.log("test : "+ $(i).children[1].children[0].children[0].value)
-						//	console.log($("select[name=movieCityGroup]").childNodes[i].value)
-						//	console.log("child : "+aa.eq(i).children()[i]);
-							
-						})
-						
-						
-				})
-				
-				
-			/*	
-			
-				$(document).on('click','select[name=movieCityGroup] option ',function(){
-					_($("#theaterTable").children()).forEach(function(n){
-						console.log("??? : "+$(n).children().eq(1).children().first().val())
-						console.log("!!! :"+selectNum)
-					})
-				*/
-				
-	/*			
-					$.ajax({
-						method:"POST",
-						url:"lookingCode.mdo",
-						contentType:"application/json",
-						dataType:"json",
-						data:JSON.stringify(number),
-						success:function(regionList){
-							console.log("ajax :" +regionList)
-							const cleanArea = $("#regionSelect")
-							cleanArea.empty();
-							_(regionList).forEach(function(n){
-								const option1=$("<option>")
-												.attr("class","regionL")
-												.attr("value",n.region_code)
-												.attr("id" , "regionSelect")
-												.text(n.region_name)
-								select1.append(option1)
-					})
 
-				},
-				error:function(){
-					console.log("통신실패")
-				}
-				
-			})//ajax close   
-			
-			*/
+	
 			test=this	
 				
 				
@@ -167,9 +166,9 @@
  					const select=$("<select>")
  							.attr("class","dgvGroup")
 							.attr("name","movieJoinGroup")
-							.attr("class","form-control")
 					const select1=$("<select>")
-									.attr("name","movieJoin")			
+									.attr("name","movieJoin")	
+									
 													
 				for(let i=0;i<groupList.length; i++){
 					console.log(${groupList1[i].movie_group_name}+"휴...")
@@ -179,13 +178,34 @@
 
  					select.append(option)
 				}
-				for(let i =0;i<actorList.length;i++){
-					console.log("이번엔 참여자들뽑기")
-					const optionA = $("<option>")
-									.attr("value",actorList[i].movie_actor_code)
-									.text(actorList[i].movie_actor_name);
-					select1.append(optionA)
-				}
+				
+					
+					select.on('change', function(e){
+						var movieJoinGroup = $(this).val()
+						select1.empty();
+						console.log("movieJoinGroup : "+movieJoinGroup)
+						$.ajax({
+							method:"POST",
+							url:"lookingPar.mdo",
+							contentType:"application/json",
+							dataType:"json",
+							data:JSON.stringify({"movie_group_code": movieJoinGroup}),
+							success:function(parList){
+								const arr = JSON.parse(parList)
+								_(arr).forEach(function(n){
+									console.log("이번엔 참여자들뽑기")
+									const optionA = $("<option>")
+													.attr("value",n.movie_actor_code)									
+													.text(n.movie_actor_name);
+									select1.append(optionA)									
+								})																
+							},
+							error:function(){
+								console.log("통신실패")
+							}
+						})
+					})
+				
 				td.append(select)
 				tr.append(tdT)
 				tr.append(td)
@@ -194,13 +214,7 @@
 				tr.append(td1)
 				td2.append(input)
 				tr.append(td2)
-				$("#parTable").append(tr)
-				console.log("ddd");
-				console.log("ddd");	
-				const arr = new Array();
-				let ind = $(this).index(this)
-				console.log("index :" +ind)
-				
+				$("#parTable").append(tr)				
 			})
 
 			
@@ -208,21 +222,7 @@
 				
  				$(this).closest("tr").remove()
  			});
-						
-			
-			$(document).on('change', 'select[name=movieJoinGroup]', function(e){
-				var movieJoinGroup = $(this).val()
-				const arr = new Array();
-				console.log($("#dgvGroup").val())
-				//	console.log($("#dgvGroup").eq(2).val());
-				let index = $(this).index(this);
-				console.log("??? "+ index)
-			})
-			
-			/* $(".delRow").on("click", function(){
-				console.log($(this).html())
-			}) */
-			
+							
 			//제이쿼리니까 앞에 감싸고 시작
 			$.datepicker.setDefaults({
 			    dateFormat: 'yy-mm-dd' //Input Display Format 변경
@@ -247,6 +247,7 @@
 				const movieName = movieImgName.split("\\")
 				const imgName = movieName[movieName.length-1]
 				const imgFile = $("#movieImgName")[0].files[0];
+				
 				//console.log("session adminId : " + ${session.adminID})
 				const regId = "";
 				
@@ -277,6 +278,28 @@
 					}
 				});
 				
+				//지역/상영관 정보 
+				const tr1List =$("#theaterTable").children();
+				_($("#theaterTable").children()).forEach(function(n){
+					const cityCode = $(n).children().eq(1).children().first().val();
+					const regionCode =$(n).children().eq(3).children().first().val();	
+					const theaterCode =$(n).children().eq(5).children().first().val();
+				});
+				//key value로 ~~~
+				const theaterInfoList = _.map(tr1List, function(n){
+					const cityCode = $(n).childern().eq(1).children().first().val();
+					const regionCode=$(n).children().eq(3).children().first().val();
+					const theaterCode =$(n).children().eq(5).children().first().val();
+					return{
+						"cityCode":cityCode,
+						"reginCode":reginCode,
+						"TheaterCode":TheaterCode
+					}
+				});
+				
+				
+				
+				
 				const formData = new FormData();
 				const movieVo = {
 						"movie_title":movieTitle,
@@ -293,6 +316,7 @@
 				}
 				test = parList;
 				formData.append("imgFile",imgFile);
+				formData.append("theaterInfoList",new Blob([JSON.stringify(theaterInfoList)],{type:"application/json"}));
 				formData.append("parList", new Blob([JSON.stringify(parList)], {type:"application/json"}));
 				formData.append("movieVo", new Blob([JSON.stringify(movieVo)], {type:"application/json"}));
  				$.ajax({
@@ -427,7 +451,7 @@
 					<br> <br>
 					<div style="display: flex;">
 					<div
-						style="height: 300px; width: 500px; border: 1px solid #fff; border-bottom: 0; margin-left: 4%;">
+						style="height: 300px; width: 403px; border: 1px solid #fff; border-bottom: 0; margin-left: 4%;">
 						<div
 							style="float: right; color: antiquewhite; display: flex; margin-right: 8%;">
 							<span style="font-weight: bold; font-size: 27px; width: 266px;">
@@ -438,7 +462,7 @@
 						</div>
 					</div>
 					<div
-						style="height: 300px; width: 500px; border: 1px solid #fff; border-bottom: 0; margin-left: 4%;">
+						style="height: 300px; width: 620px; border: 1px solid #fff; border-bottom: 0; margin-left: 4%;">
 						<div style=" display: flex;justify-content: end;argin-bottom: 1%;">
 							<span style="font-weight: bold; color: antiquewhite; font-size: 27px; width: 266px;">Theater</span>
 							<input type="button" id="addTheater" value="추가">

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
+import com.dgv.web.admin.vo.AdminCityTheaterVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
@@ -106,6 +107,33 @@ public class AdminMovieDAO {
 	public int insertMovie(AdminMovieVO vo) {
 		return sqlSessionTemplate.insert("AdminMovieDAO.InsertMovie",vo);
 	}
+	
+	public List<AdminActorVO> choiceActorList(int num){
+		return sqlSessionTemplate.selectList("AdminGroupDAO.ChoiceActorList",num);
+	}
+	
+	public List<AdminTheaterVO> choiceTheaterList(int num){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.TheaterList", num);
+	}
 
+	public int insertCityTheater(AdminCityTheaterVO vo) {
+		return sqlSessionTemplate.insert("AdminMovieDAO.InsertCityTheater",vo);
+	}
+	
+	public int deleteActor(AdminActorVO vo) {
+		return sqlSessionTemplate.delete("AdminGroupDAO.ActorDelete",vo);
+	}
+	
+	public int deleteGroup(AdminGroupVO vo) {
+		return sqlSessionTemplate.delete("AdminGroupDAO.GroupDelete",vo);
+	}
 
+	public int deleteAge(AdminAgeVO vo) {
+		return sqlSessionTemplate.delete("AdminGenreDAO.AgeDelete",vo);
+	}
+
+	public int deleteGenre(AdminGenreVO vo) {
+		return sqlSessionTemplate.delete("AdminGenreDAO.GenreDelete",vo);
+	}
+	
 }

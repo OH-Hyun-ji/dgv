@@ -13,4 +13,5 @@
 	<select id="choiceRegion" resultType="AdminRegionVO" parameterType="int">
 		SELECT * FROM dgv_region_info WHERE city_code = #{city_code}
 	</select>
+	
 </mapper>

@@ -20,6 +20,7 @@
 			<typeAlias alias="AdminTheaterVO"   type="com.dgv.web.admin.vo.AdminTheaterVO"/>
 			<typeAlias alias="AdminParVO"   type="com.dgv.web.admin.vo.AdminParVO"/>
 			<typeAlias alias="AdminMovieVO"   type="com.dgv.web.admin.vo.AdminMovieVO"/>
+			<typeAlias alias="AdminCityTheaterVO"   type="com.dgv.web.admin.vo.AdminCityTheaterVO"/>
 			<typeAlias alias="S3keyVO"   type="com.dgv.web.admin.common.S3KeyVO"/>
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>
@@ -38,5 +39,6 @@
 				<mapper resource="mappings/common/s3-mapping.xml"/>
 				<mapper resource="mappings/user/userBoard-mapping.xml"/>
 				<mapper resource="mappings/user/userMapper.xml"/>
+				<mapper resource="mappings/user/userMovie-mapping.xml"/>
 			</mappers>
 </configuration>

@@ -11,6 +11,67 @@
 	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	
+	
+		function deleteAction(groupCode){
+			
+			let result = confirm("정말 삭제하시겠습니까??");
+				console.log(groupCode)
+			if(result == true){
+			
+				$.ajax({
+					method:"POST",
+					url:"deleteGroup.mdo",
+					contentType:"application/json",
+					dataType:"json",
+					data:JSON.stringify({"movie_group_code":groupCode}),
+					success:function(num){					
+						if(num.msg=="SUCCESS"){
+							alert("삭제완료")
+							location.replace("/adminManager.mdo");
+						}else{
+							alert('삭제를 다시 진행해주세요')
+						}
+					},
+					error:function(){
+						
+						console.log("통신실패")
+					}
+					
+				});//ajax close 
+	
+			}
+	
+		}
+		function deleteActor(actorCode){
+				let result = confirm("정말 삭제하시겠습니까??");
+					console.log(actorCode)
+				if(result == true){				
+					$.ajax({
+						method:"POST",
+						url:"deleteActor.mdo",
+						contentType:"application/json",
+						dataType:"json",
+						data:JSON.stringify({"movie_actor_code":actorCode}),
+						success:function(num){	
+						
+							if(num.msg=="SUCCESS"){
+								alert("삭제완료")
+								location.replace("/adminManager.mdo");
+							}else{
+								alert('삭제를 다시 진행해주세요')
+							}
+						},
+						error:function(){
+							console.log("통신실패")
+						}
+					});//ajax close 
+		
+				}
+		}	
+	
+	</script>
 <style>
 
 #userLankAdd {
@@ -61,17 +122,17 @@
                                             <th>Group Name</th>
                                             <th>Writer</th>
                                             <th>Write Date</th>
-                                            <th>수정/삭제</th>
+                                            <th>삭제/수정</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="groupList" items="${groupList}" >
+                                    <c:forEach var="groupList" items="${groupList}" varStatus="status" >
                                         <tr>
-                                            <td>${groupList.movie_group_code}</td>
+                                            <td>${groupListCount-status.index}</td>
                                             <td>${groupList.movie_group_name}</td>
                                             <td>${groupList.reg_id}</td>
                                             <td>${groupList.reg_date}</td>
-                                            <td><button id="delBT"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button></td>
+                                            <td><button id="delBtGroup"  onclick="deleteAction('${groupList.movie_group_code}')"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button></td>
                                         </tr>
                                         </c:forEach>                            
                                     </tbody>
@@ -94,24 +155,9 @@
                                      type="button" onclick="adminActor()">
                                         Register
                                     </button>
-                                    <div class="dataTable-top">
-                                        <div class="dataTable-dropdown">
-                                            <label>
-                                                <select class="dataPerPage">
-                                                    <option value="5">5</option>
-                                                    <option value="10">10</option>
-                                                    <option value="15">15</option>
-                                                    <option value="20">20</option>
-                                                    <option value="25">25</option>
-                                                </select>
-                                                entries per page</label>
-                                        </div>
-                                        <div class="dataTable-search">
-                                            <input class="dataTable-input" placeholder="Search..." type="text">
-                                        </div>
-                                    </div>
-                                    <div class="dataTable-container">
-                                        <table id="datatablesSimple" class="dataTable-table">
+                               
+                                    <div class="dataTable-container" style="overflow-y: scroll; height: 500px;">
+                                        <table id="datatablesSimple" class="dataTable-table" >
                                             <thead>
                                                
                                                 <tr>
@@ -121,19 +167,19 @@
                                                     <th>Actor Nation</th>
                                                     <th>Writer</th>
                                                     <th>Writer Date</th>
-                                                    <th>수정/삭제</th>
+                                                    <th>삭제/수정</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach var="actorList" items="${actorList}">
+                                            <c:forEach var="actorList" items="${actorList}" varStatus="status">
                                                 <tr>
-                                                    <td>${actorList.movie_actor_code}</td>
+                                                    <td>${actorListCount - status.index}</td>
                                                     <td>${actorList.movie_actor_name}</td>
                                                     <td>${actorList.movie_actor_birth}</td>
                                                     <td>${actorList.movie_actor_nation}</td>                                          
                                                     <td>${actorList.reg_id}</td>
                                                     <td>${actorList.reg_date}</td>
-                                                    <td><button id="delBt"  onclick="deleteAction('${actorList.movie_actor_code}')"><i class="fas fa-trash-alt"></i></button><button ><i class="fas fa-pencil-alt"></i></button></td>
+                                                    <td><button id="delBtActor"  onclick="deleteActor('${actorList.movie_actor_code}')"><i class="fas fa-trash-alt"></i></button><button ><i class="fas fa-pencil-alt"></i></button></td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>

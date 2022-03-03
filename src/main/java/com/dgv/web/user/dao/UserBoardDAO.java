@@ -6,7 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dgv.web.admin.vo.AdminCityVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 
 @Repository
@@ -27,6 +29,12 @@ public class UserBoardDAO {
 		return sqlSessionTemplate.insert("UserBoardDAO.InsertMyQna",vo);
 	}
 	
-	
+	///도시별 극장
+	public List<AdminCityVO> cityTheaterList(){
+		return sqlSessionTemplate.selectList("UserMovieDAO.TheaterList");
+	}
+	public List<AdminRegionVO> regionTheaterList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.RegionList",num);
+	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
+import com.dgv.web.admin.vo.AdminCityTheaterVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
@@ -34,9 +35,21 @@ public interface AdminMovieService {
 	//답변 등록 고객 코드
 	UserInquiryVO waitCode(int code);
 	
+	//배우 삭제
+	int deleteActor(AdminActorVO vo);
+	
+	int deleteGroup(AdminGroupVO vo);
+
+	int deleteAge(AdminAgeVO vo);
+	
+	int deleteGenre(AdminGenreVO vo);
+	
 	int insertAnswer(AdminInquiryVO vo);
 	
 	int updateStatus(Integer num);
+	
+	//도시-지역-상영광
+	int insertCityTheater(AdminCityTheaterVO vo);
 	
 	//상영관 등록 
 	int insertTheater(AdminTheaterVO vo);
@@ -66,5 +79,8 @@ public interface AdminMovieService {
 	
 	List<AdminActorVO> actorList();
 	
+	List<AdminActorVO> choiceActorList(int num);
+	
+	List<AdminTheaterVO> choiceTheaterList(int num);
 	
 }

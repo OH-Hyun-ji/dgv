@@ -40,7 +40,12 @@ public class UserMyPageController {
    }
    
    @RequestMapping("/myPage_reserve.do")
-   public String myPage_reserve() {
+   public String myPage_reserve(Model model,HttpServletRequest request) {
+	      HttpSession session = request.getSession();
+	      String id= (String) session.getAttribute("userID");
+	      System.out.println("세션" + id);
+	      UserVO vo = userService.MyUserList(id);
+	      model.addAttribute("userList", vo);
       return "/myPage/user_myPage_reserve";
    }
    

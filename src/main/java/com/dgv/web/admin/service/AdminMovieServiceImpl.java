@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.dgv.web.admin.dao.AdminMovieDAO;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
+import com.dgv.web.admin.vo.AdminCityTheaterVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
@@ -139,7 +140,49 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.insertMovie(vo);
 	}
 
+	@Override
+	public List<AdminActorVO> choiceActorList(int num) {
+		
+		return adminMovieDAO.choiceActorList(num);
+	}
 
+	@Override
+	public List<AdminTheaterVO> choiceTheaterList(int num) {
+		
+		return adminMovieDAO.choiceTheaterList(num);
+	}
+
+	@Override
+	public int insertCityTheater(AdminCityTheaterVO vo) {
+		
+		return adminMovieDAO.insertCityTheater(vo);
+	}
+
+	@Override
+	public int deleteActor(AdminActorVO vo) {
+		
+		return adminMovieDAO.deleteActor(vo);
+	}
+
+	@Override
+	public int deleteGroup(AdminGroupVO vo) {
+	
+		return adminMovieDAO.deleteGroup(vo);
+	}
+
+	@Override
+	public int deleteAge(AdminAgeVO vo) {
+		
+		return adminMovieDAO.deleteAge(vo);
+	}
+
+	@Override
+	public int deleteGenre(AdminGenreVO vo) {
+		
+		return adminMovieDAO.deleteGenre(vo) ;
+	}
+
+	
 
 	
 

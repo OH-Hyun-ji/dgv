@@ -9,4 +9,12 @@
 	<select id="GenreList" resultType="AdminGenreVO">
 		SELECT * FROM movie_genre_info
 	</select>
+	
+	<delete id="GenreDelete" parameterType="AdminGenreVO">
+		DELETE FROM movie_genre_info WHERE movie_genre_code =#{movie_genre_code}
+	</delete>
+	
+	<delete id="AgeDelete" parameterType="AdminAgeVO">
+		DELETE FROM movie_age_info WHERE movie_age_num =#{movie_age_num}
+	</delete>
 </mapper>

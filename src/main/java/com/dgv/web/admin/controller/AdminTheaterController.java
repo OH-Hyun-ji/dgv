@@ -22,6 +22,7 @@ import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminActorVO;
+import com.dgv.web.admin.vo.AdminCityTheaterVO;
 import com.dgv.web.admin.vo.AdminCityVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
@@ -32,7 +33,9 @@ import com.dgv.web.admin.vo.AdminTotalTheaterDto;
 import com.dgv.web.admin.vo.BuilderTest;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.admin.vo.ParticipantDto;
+import com.dgv.web.admin.vo.TheaterInfoDto;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 @Controller
 public class AdminTheaterController {
@@ -80,17 +83,46 @@ public class AdminTheaterController {
 	}
 	@PostMapping("lookingCode.mdo")
 	@ResponseBody
-	public List<AdminRegionVO> lookingCode(@RequestBody AdminCityVO cityVo,Model model) {
+	public String lookingCode(@RequestBody AdminCityVO cityVo,Model model) {
 		List<AdminRegionVO> regionList =adminTheaterService.choiceRegion(cityVo.getCity_code());
 		model.addAttribute("choiceRegionList",regionList);
+		System.out.println("jsp -> city_code : "+ cityVo);
+		Gson gson = new Gson();
+		
 		if(regionList.size() ==0)
-			return new ArrayList<AdminRegionVO>();
-		return regionList;
+			return new String();
+		System.out.println("regionList : "+regionList);
+		String regionL =gson.toJson(regionList);
+		return regionL;
+	}
+	
+	@PostMapping("lookingPar.mdo")
+	@ResponseBody
+	public String lookingPar(@RequestBody AdminActorVO vo  ) {
+		List<AdminActorVO> actorList = adminMovieService.choiceActorList(vo.getMovie_group_code());
+		
+		Gson gson = new Gson();
+		if(actorList.size() ==0)
+			return new String();
+		String actorL = gson.toJson(actorList);		
+		return actorL;
+	}
+	
+	@PostMapping("lookingTheater.mdo")
+	@ResponseBody
+	public String lookingTheater(@RequestBody AdminTheaterVO vo) {
+		List<AdminTheaterVO> theaterList =adminMovieService.choiceTheaterList(vo.getRegion_code());
+		
+		Gson gson = new Gson();
+		if(theaterList.size() ==0)
+			return new String();
+		String theaterL = gson.toJson(theaterList);
+		return theaterL;
 	}
 	
 	@PostMapping("/insertMovie.mdo")
 	@ResponseBody
-	public CommonResultDto insertMovie(HttpSession session, @RequestPart("movieVo") AdminMovieVO movieVO, @RequestPart("parList") List<ParticipantDto> dtoList, @RequestPart MultipartFile imgFile) {
+	public CommonResultDto insertMovie(HttpSession session, @RequestPart("movieVo") AdminMovieVO movieVO,@RequestPart("theaterInfoList") List<TheaterInfoDto> theaterInfoList , @RequestPart("parList") List<ParticipantDto> dtoList, @RequestPart MultipartFile imgFile) {
 		
 		// 1. 이미지 파일 s3 업
 		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "movie/", movieVO.getMovie_real_img());
@@ -113,8 +145,19 @@ public class AdminTheaterController {
 						.build() //객체를 만들겠다.
 				)	
 			).sum();
-		
-		if(dtoList.size() != insertCount)
+		//4.상영관 정보 insert
+		final int count = theaterInfoList.stream()
+				.mapToInt(til ->
+					adminMovieService.insertCityTheater(
+						AdminCityTheaterVO.builder()
+							.movie_num(movieVO.getMovie_num())
+							.city_code(til.getCityCode())
+							.region_code(til.getReginCode())
+							.theater_code(til.getTheaterCode())
+							.build()						
+					)					
+				).sum();
+		if(dtoList.size() != insertCount || theaterInfoList.size() !=count )
 			return CommonResultDto.fail();
 		
 		return CommonResultDto.success();

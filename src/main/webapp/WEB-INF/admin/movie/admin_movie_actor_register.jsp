@@ -60,6 +60,7 @@
     		let actorNation = $("#actorNation").val();	
     		let actorInfo =$("#actorInfo").val();
     		let actorImgSample = $("#actorImg").val();
+    		let groupCode =$("#groupN").val();
     		const imgFile = $('#actorImg')[0].files[0];
     		    		
     		    		
@@ -86,7 +87,7 @@
 //      		formData.append('movie_actor_info',actorInfo)
 //      		formData.append('movie_actor_img',actorImg)
 	      		formData.append('imgFile', imgFile)
-    	
+    			formData.append('movie_group_code',groupCode)
     		const formJson = {
     			"movie_actor_name" : actorN,
     			"movie_actor_ename" :actorEn,
@@ -94,6 +95,7 @@
     			"movie_actor_nation" :actorNation,
     			"movie_actor_info":actorInfo,
     			"movie_actor_img":actorImg
+    			
     		}    		
     		
     		formData.append('actorVo', new Blob([JSON.stringify(formJson)], { type: "application/json" }));
@@ -147,6 +149,16 @@
 										<th scope="row" style="font-size:18px;">Actor Eng Name</th>
 										<td><input type="text" id="actorEName" name="movie_actor_ename" style="border-radius: 7px;line-height: 25px;"/></td>
 									</tr>	
+									<th scope="row" style="font-size:18px;">Actor Group</th>
+										<td>
+											<select id="groupN" name="movie_group_code" style="border-radius: 7px; width: 22%; height: 27px;">
+												<option class="groupName">그룹</option>
+												<c:forEach var="groupList" items="${groupList}">
+													<option value="groupList.movie_group_code">${groupList.movie_group_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+									</tr>
 									<tr>
 										<th scope="row" style="font-size:18px;">Actor Birth</th>
 										<td>
