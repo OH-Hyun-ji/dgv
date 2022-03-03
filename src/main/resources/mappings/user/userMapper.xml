@@ -14,7 +14,7 @@
          SELECT * FROM user_info WHERE user_id = #{user_id}
       </select>
       
-      <select id="checkId" resultType="int" parameterType="String">
+      <select id="checkId" resultType="int" parameterType="UserVO">
          SELECT COUNT(*)
          FROM user_info
          WHERE user_id=#{user_id}

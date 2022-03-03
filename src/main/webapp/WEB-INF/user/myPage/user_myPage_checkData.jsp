@@ -18,16 +18,17 @@
 		const id = $('#id').val()
 		const pw = $('#password').val()
 		
+		
+		
+		
 		$.ajax({
 			method:"POST",
 			url:"/myPage_checkData.do",
 			contentType:"application/json",
 			dataType:"json",
 			data:JSON.stringify({"user_id":id, "user_pw": pw}),
-			success:function(result){
-				const reT = JSON.parse(result)
-				
-				if(reT.msg == "SUCCESS"){
+			success:function(result){			
+				if(result.msg == "SUCCESS"){
 					alert("비밀번호 확인!!")
 					location.href='/myPage_myData.do';
 				}else{
