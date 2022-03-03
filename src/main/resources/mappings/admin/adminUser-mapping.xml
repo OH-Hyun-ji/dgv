@@ -36,4 +36,21 @@
 		SELECT * FROM admin_info WHERE admin_id=#{admin_id}
 	</select>
 	
+	<select id="termList" resultType="AdminTermVO">
+		SELECT * FROM term_info;
+	</select>
+	
+	<insert id="termInsert" parameterType="AdminTermVO">
+		INSERT INTO term_info(term_num,term_name,term_status,term_text,reg_id,reg_date)
+		VALUES(DEFAULT,#{term_name},#{term_status},#{term_text},#{reg_id},current_date)	
+	</insert>
+	
+	<select id="rankList" resultType="AdminRankVO">
+		SELECT * FROM rank_info
+	</select>
+	
+	<insert id="rankInsert" parameterType="AdminRankVO">
+		INSERT INTO rank_info(rank_code,rank_name,rank_earn,rank_standard,rank_img,reg_id,reg_date)
+		VALUES(DEFAULT,#{rank_name},#{rank_earn},#{rank_standard},#{rank_img},#{reg_id},current_date)
+	</insert>
 </mapper>

@@ -12,28 +12,23 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>  
-	
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>  	
 	 <script>
         function adminGenre(){
         var popupX =(window.screen.width/2)-(300/2);
-        var popupY =(window.screen.height/2)-(500/2);
-                            
+        var popupY =(window.screen.height/2)-(500/2);                           
        window.open('/adminGenre.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
-  		}
-        
+  		}        
         function adminAge(){
             var popupX =(window.screen.width/2)-(200/2);
             var popupY =(window.screen.height/2)-(300/2);
     
             window.open('/adminAge.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
-            }
-        
+            }        
         function deleteAge(ageCode){
         	let result = confirm("정말 삭제하시겠습니까??");
 			console.log(ageCode)
-		if(result == true){
-		
+		if(result == true){		
 			$.ajax({
 				method:"POST",
 				url:"deleteAge.mdo",
@@ -49,15 +44,11 @@
 					}
 				},
 				error:function(){
-					
 					console.log("통신실패")
-					}
-				
+					}			
 				});//ajax close 
-
 			}	
         }
-        
         function deleteGenre(genreCode){
 			let result = confirm("정말 삭제하시겠습니까??");
 				console.log(genreCode)
@@ -80,15 +71,10 @@
 						console.log("통신실패")
 					}
 				});//ajax close 
-	
 			}
 		}	
-        
-        
      </script>	
-
 <style>
-
 #userLankAdd {
 	width: 11%;
 	margin-top: 17px;
@@ -143,7 +129,6 @@
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="card-body-one">
                                 <div
                                     class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
@@ -155,8 +140,7 @@
                                    
                                     <div class="dataTable-container" style="overflow-y: scroll; height: 500px;">
                                         <table id="datatablesSimple" class="dataTable-table">
-                                            <thead>
-                                               
+                                            <thead>      
                                                 <tr>
                                                     <th data-sortable="" style="width: 14.3831%;">Age Num</th>                                                 
                                                     <th data-sortable="" style="width: 14.7551%;">Age Name</th>
@@ -169,7 +153,7 @@
                                                 <tr>
                                                     <td>${ageListCount - status.index}</td>
                                                     <td>${ageList.movie_age_name}</td>
-                                                    <td>${ageList.movie_age_img}</td>
+                                                    <td style="text-align: center;"><img src='${ageList.movie_age_img}' style="height: 28px; box-sizing: border-box;"></td>
                                                     <td>${ageList.reg_id}</td>
                                                     <td>${ageList.reg_date}</td>
                                                    <td><button id="delBT" onclick="deleteAge('${ageList.movie_age_num}')"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button></td>
@@ -184,7 +168,6 @@
                                         </nav>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -192,15 +175,10 @@
          	<jsp:include page="../default/admin_footer.jsp" />
 	</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/admin/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-		crossorigin="anonymous"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/admin/datatables-simple-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/admin/scripts.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/admin/datatables-simple-demo.js"></script>
 
 </body>
 

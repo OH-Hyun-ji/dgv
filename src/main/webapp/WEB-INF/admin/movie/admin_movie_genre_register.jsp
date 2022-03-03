@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,8 +49,7 @@
     
    
     	function genreCheck() {
-    		
-    		
+    
 			$.ajax({
 				method:"POST",
 				url:"/adminInsertGenre.mdo",
@@ -94,7 +94,7 @@
 					</div>
 					<div class="card-body">
 						
-							<input type="hidden" name="reg_id" value="dd">
+							
                             <div id="table-container">
 								<table class="type02">
 									<tr>

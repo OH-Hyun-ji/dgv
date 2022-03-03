@@ -12,14 +12,10 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-	
-	
-		function deleteAction(groupCode){
-			
+		function deleteAction(groupCode){			
 			let result = confirm("정말 삭제하시겠습니까??");
 				console.log(groupCode)
-			if(result == true){
-			
+			if(result == true){			
 				$.ajax({
 					method:"POST",
 					url:"deleteGroup.mdo",
@@ -34,15 +30,11 @@
 							alert('삭제를 다시 진행해주세요')
 						}
 					},
-					error:function(){
-						
+					error:function(){	
 						console.log("통신실패")
 					}
-					
 				});//ajax close 
-	
 			}
-	
 		}
 		function deleteActor(actorCode){
 				let result = confirm("정말 삭제하시겠습니까??");
@@ -54,8 +46,7 @@
 						contentType:"application/json",
 						dataType:"json",
 						data:JSON.stringify({"movie_actor_code":actorCode}),
-						success:function(num){	
-						
+						success:function(num){							
 							if(num.msg=="SUCCESS"){
 								alert("삭제완료")
 								location.replace("/adminManager.mdo");
@@ -66,14 +57,11 @@
 						error:function(){
 							console.log("통신실패")
 						}
-					});//ajax close 
-		
+					});//ajax close 		
 				}
 		}	
-	
 	</script>
 <style>
-
 #userLankAdd {
 	width: 11%;
 	margin-top: 17px;
@@ -154,12 +142,10 @@
                                     <button class="w-btn-outline w-btn-red-outline" style="margin-left: 1%;margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; margin-bottom: 10px;" 
                                      type="button" onclick="adminActor()">
                                         Register
-                                    </button>
-                               
+                                    </button>                             
                                     <div class="dataTable-container" style="overflow-y: scroll; height: 500px;">
                                         <table id="datatablesSimple" class="dataTable-table" >
-                                            <thead>
-                                               
+                                            <thead>                                               
                                                 <tr>
                                                     <th>Actor Code</th>                                                 
                                                     <th>Actor Name</th>
@@ -196,12 +182,11 @@
                     </div>
                 </main>
          	<jsp:include page="../default/admin_footer.jsp" />
-	</div>
+		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/admin/scripts.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/admin/datatables-simple-demo.js"></script>
 </body>
 

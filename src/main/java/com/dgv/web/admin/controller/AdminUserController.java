@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class AdminUserController {
 	private AdminUserService adminUserService;
 	
 	@RequestMapping("/userList.mdo")
-	public String userList(UserVO vo, Model model, HttpServletRequest request) {
+	public String userList(UserVO vo, Model model, HttpSession session) {
 		model.addAttribute("userList" ,adminUserService.userList());
 		model.addAttribute("userListCount", adminUserService.userList().size());
 		return "/user/admin_user_list";

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,69 +49,30 @@
 	                               등급목록
 	                            </div>
 	                            <div>
-	                                <button id="userLankAdd" onclick="window.open('/userRankRegister.mdo','window_name','width=430,height=300,scrollbars=yes');">회원등급추가</button>
+	                                <button id="userLankAdd" onclick="window.open('/userRankRegister.mdo','window_name','width=430,height=500,scrollbars=yes');">회원등급추가</button>
 	                            </div>
 	                            <div class="card-body">
-	                                <table id="datatablesSimple">
+	                                <table id="datatablesSimple" style="text-align: center;">
 	                                    <thead>
 	                                        <tr>
-	                                            <th>번호</th>
-	                                            <th>등급종류</th>
-	                                            <th>등급적립률</th>
-	                                            <th>등급 전월실적조건</th>
-	                                            <th></th>
+	                                            <th>No</th>
+	                                            <th>Rank Name</th>
+	                                            <th>Rank Img</th>
+	                                            <th>Rank Earn</th>
+	                                            <th>Rank Standard</th>
 	                                        </tr>
 	                                    </thead>
 	                                    <tbody>
+	                                    	<c:forEach var="rankList" items="${rankList}" varStatus="status">
 	                                        <tr>
-	                                            <td>Tiger Nixon</td>
-	                                            <td>System Architect</td>
-	                                            <td>Edinburgh</td>
-	                                            <td>61</td>
+	                                            <td>${rankListCount - status.index }</td>
+	                                            <td>${rankList.rank_name }</td>
+	                                            <td><img src="${rankList.rank_img }" style="width: 50px;height: 64px;"></td>
+	                                            <td>${rankList.rank_earn }</td>
+	                                            <td>${rankList.rank_standard }</td>
 	                                            <td><button id="delBT" ><i class="fas fa-times"></i></button></td>                                           
 	                                        </tr>
-	                                        <tr>
-	                                            <td>Garrett Winters</td>
-	                                            <td>Accountant</td>
-	                                            <td>Tokyo</td>
-	                                            <td>63</td>
-	                                            <td><button id="delBT"><i class="fas fa-times"></i></button></td>    
-	                                        </tr>
-	                                        <tr>
-	                                            <td>Ashton Cox</td>
-	                                            <td>Junior Technical Author</td>
-	                                            <td>San Francisco</td>
-	                                            <td>66</td>
-	                                            <td><button id="delBT"><i class="fas fa-times"></i></button></td>        
-	                                        </tr>
-	                                        <tr>
-	                                            <td>Ashton Cox</td>
-	                                            <td>Junior Technical Author</td>
-	                                            <td>San Francisco</td>
-	                                            <td>66</td>
-	                                            <td></td>    
-	                                        </tr>
-	                                        <tr>
-	                                            <td>Ashton Cox</td>
-	                                            <td>Junior Technical Author</td>
-	                                            <td>San Francisco</td>
-	                                            <td>66</td>
-	                                            <td></td>    
-	                                        </tr>
-	                                        <tr>
-	                                            <td>Ashton Cox</td>
-	                                            <td>Junior Technical Author</td>
-	                                            <td>San Francisco</td>
-	                                            <td>66</td>
-	                                            <td></td>    
-	                                        </tr>
-	                                        <tr>
-	                                            <td>Ashton Cox</td>
-	                                            <td>Junior Technical Author</td>
-	                                            <td>San Francisco</td>
-	                                            <td>66</td>
-	                                            <td></td>    
-	                                        </tr>
+	                                       </c:forEach>
 	                                    </tbody>
 	                                </table>
 	                            </div>

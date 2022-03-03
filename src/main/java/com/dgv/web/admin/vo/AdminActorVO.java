@@ -1,7 +1,5 @@
 package com.dgv.web.admin.vo;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Data;
 
 @Data
@@ -17,7 +15,4 @@ public class AdminActorVO {
 	private String movie_actor_info;
 	private String movie_actor_img;
 	private Integer movie_group_code;
-
-
-
 }

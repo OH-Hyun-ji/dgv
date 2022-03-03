@@ -100,7 +100,7 @@ public class AdminTheaterController {
 	@ResponseBody
 	public String lookingPar(@RequestBody AdminActorVO vo  ) {
 		List<AdminActorVO> actorList = adminMovieService.choiceActorList(vo.getMovie_group_code());
-		
+		System.out.println("par : "+actorList);
 		Gson gson = new Gson();
 		if(actorList.size() ==0)
 			return new String();

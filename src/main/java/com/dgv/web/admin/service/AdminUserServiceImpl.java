@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.dgv.web.admin.dao.AdminUserDAO;
+import com.dgv.web.admin.vo.AdminRankVO;
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminVO;
 import com.dgv.web.user.vo.UserVO;
 
@@ -39,6 +41,30 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public void adminLogout(SessionStatus sessionStatus) {
 		sessionStatus.setComplete();
 		
+	}
+
+	@Override
+	public List<AdminTermVO> termList() {
+	
+		return adminUserDAO.termList();
+	}
+
+	@Override
+	public int termInsert(AdminTermVO vo) {
+		
+		return adminUserDAO.termInsert(vo);
+	}
+
+	@Override
+	public List<AdminRankVO> rankList() {
+	
+		return adminUserDAO.rankList();
+	}
+
+	@Override
+	public int rankInsert(AdminRankVO vo) {
+	
+		return adminUserDAO.rankInsert(vo);
 	}
 	
 	

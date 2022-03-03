@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dgv.web.admin.vo.AdminRankVO;
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminVO;
 import com.dgv.web.user.vo.UserVO;
 
@@ -27,5 +29,19 @@ public class AdminUserDAO {
 		return sqlSessionTemplate.selectOne("AdminUserDAO.AdminLogin", id);
 	}
 	
+	public List<AdminTermVO> termList(){
+		return sqlSessionTemplate.selectList("AdminUserDAO.termList");
+	}
 	
+	public int termInsert(AdminTermVO vo) {
+		return sqlSessionTemplate.insert("AdminUserDAO.termInsert",vo);
+	}
+	
+	public List<AdminRankVO> rankList(){
+		return sqlSessionTemplate.selectList("AdminUserDAO.rankList");
+		
+	}
+	public int rankInsert(AdminRankVO vo) {
+		return sqlSessionTemplate.insert("AdminUserDAO.rankInsert", vo);
+	}
 }

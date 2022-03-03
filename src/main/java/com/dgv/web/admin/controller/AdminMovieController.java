@@ -67,8 +67,10 @@ public class AdminMovieController {
 	//장르 등록후 처리
 	@ResponseBody
 	@PostMapping("/adminInsertGenre.mdo")
-	public Result adminInsertGenre( @RequestBody AdminGenreVO vo) {
+	public Result adminInsertGenre( @RequestBody AdminGenreVO vo, HttpSession session) {
 		int num=0;
+		String adminId = (String) session.getAttribute("adminID");
+		vo.setReg_id(adminId);
 		num = adminMovieService.insertGenre(vo);
 		System.out.println("TEST :1"+ vo.getMovie_genre_name());
 		if(num ==0) {

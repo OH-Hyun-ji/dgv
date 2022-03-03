@@ -1,12 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 <title>Admin Term Register</title>
+<script type="text/javascript">
+	$(function(){
+
+		$("#register").click(function(){
+			alert(">>>")
+			$("input:checkbox[name=checkBox]:checked").each(function(){
+				const termName = $("#termName").val()	
+				const checkVal = $(this).val();
+				const termText = $("#termText").val()
+				
+				const termVO = {
+					"term_name":termName,
+					"term_status":checkVal,
+					"term_text":termText
+				}
+				
+				$.ajax({
+					method:"POST",
+					url:"/termInsert.mdo",
+					contentType:"application/json",
+					dataType:"json",
+					data:JSON.stringify(termVO),
+					success:function(result){
+						if(result.msg=="SUCCESS"){
+							alert("약관 등록 완료^^");
+						}else{
+							alert("등록실패!! 다시 등록해주세요!!")
+						}					
+					},
+					error:function(){
+						console.log("통신오류")
+					}
+				});//ajax close
+			});
+			
+			
+			
+		})
+	
+	
+	});
+
+
+</script>
 </head>
 <body>
 	<!-- Main -->
@@ -27,27 +73,23 @@
                         </div>
                     </div>
                     <table border="1" style="border-color: snow;">
-                        <tr>
-                            <td style="background-color: lightgray;">약관번호</td>
-                            <td> <input type="text" name="productName" id="productName" style="border-color: lightgray;" ></td>
-                        </tr>
+                
                         <tr>
                             <td style="background-color: lightgray; ">약관이름</td>
-                            <td><input type="text" name="productPrice" id="productPrice"style="border-color: lightgray;"></td>
+                            <td><input type="text" name="term_name" id="termName" style="border-color: lightgray;"></td>
                         </tr>
                         <tr>
                             <td style="background-color: lightgray;"> 약관 필수여부</td>
-                         <td><label><input type="checkbox" name="a-check"> 필수</label> 
-                         <label><input type="checkbox" name="b-check">선택</label></td>
+                         <td><label><input type="checkbox" name="checkBox" value="true">TRUE</label> 
+                         <label><input type="checkbox" name="checkBox" value="false">FALSE</label></td>
                         </tr>
                          <tr>
                             <td style="background-color: lightgray;"> 약관 내용</td>
-                            <td> <textarea rows="40" cols="65" name="productImage" id="productImage"style="border-color: lightgray;"></textarea></td>
+                            <td> <textarea rows="30" cols="65" name="term_text" id="termText" style="border-color: lightgray;"></textarea></td>
                         </tr>
                     </table>
                     <div class="bottom">                 
-                        <input type="button" value="수정하기">
-                        <input type="button" value="등록하기">         
+                        <input type="button" id="register" value="등록하기">         
                 	</div>  
             	</div>    
             </div>  

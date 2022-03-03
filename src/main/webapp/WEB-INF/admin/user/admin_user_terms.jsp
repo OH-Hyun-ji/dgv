@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,95 +63,26 @@
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>번호</th>
-										<th>약관이름</th>
-										<th>>약관 등록일</th>
-										<th></th>
+										<th>No</th>
+										<th>Term Name</th>
+										<th>>Term Status</th>
+										<th>>Term Agree User</th>
+										<th>Writer</th>
+										<th>Date</th>
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="termList" items="${termList}" varStatus="status" >
 									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
+										<td>${termListCount - status.index }</td>
+										<td>${termList.term_name }</td>
+										<td>${termList.term_status }</td>
+										<td>${termList.user_term }</td>
+										<td>${termList.reg_id }</td>
+										<td>${termList.reg_date }</td>
+										<td><button id="delBt"  onclick="deleteTerm('${termList.term_num }')"><i class="fas fa-trash-alt"></i></button> <button ><i class="fas fa-pencil-alt"></i></button></td>
 									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td><button id="delBT">
-												<i class="fas fa-times"></i>
-											</button></td>
-									</tr>
-
-
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>

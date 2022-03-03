@@ -62,8 +62,8 @@
 				dataType:"json",
 				data:JSON.stringify({"city_code":cityCode}),
 				success:function(regionList){
-					const regionL = JSON.parse(regionList)
-					_(regionL).forEach(function(n){
+					//const regionL = JSON.parse(regionList)
+					_(regionList).forEach(function(n){
 						const area =$("<a>")
 								.attr("href","#")
 								.text(n.region_name)

@@ -190,9 +190,10 @@
 							contentType:"application/json",
 							dataType:"json",
 							data:JSON.stringify({"movie_group_code": movieJoinGroup}),
-							success:function(parList){
-								const arr = JSON.parse(parList)
-								_(arr).forEach(function(n){
+							success:function(parList){		
+								const arr1 = JSON.parse(parList)
+								_(arr1).forEach(function(n){
+									console.log(parList)
 									console.log("이번엔 참여자들뽑기")
 									const optionA = $("<option>")
 													.attr("value",n.movie_actor_code)									
