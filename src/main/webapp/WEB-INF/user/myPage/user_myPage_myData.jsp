@@ -8,12 +8,13 @@
 <meta name="viewport" content="width=1024"/>
    <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/layout.css">
    <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/myPage.css">
-    <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css"/>
+   <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css"/>
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/userModule.css"/>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-   
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+   	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 
    <style type="text/css">
    .issetUser {
       box-shadow : 0px 0px 20px 11px tomato;
@@ -41,7 +42,7 @@
       
       $(function(){
          //keyup -> 마우스 눌렀다가 떼면 이벤트 발생
-         
+         console.log("???????");
          //pw 검증 메서드
          $('#password').on('keyup',function(){    
             if($(this).val() ==""){
@@ -51,7 +52,8 @@
                 $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호를 입력해주세요. ]');    
                  chk2 = false;
                 
-             }else if(!getPwCheck.test($("#password").val())){            
+             }else if(!getPwCheck.test($("#password").val())){   
+            	 $("#password").removeClass("nonesetUser");
                  $("#password").addClass("issetUser"); 
                  $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호는 문자, 숫자, 특수문자의 조합으로<br> 8~16자리로 입력해주세요! ]');    
                  chk2 = false;
@@ -73,7 +75,8 @@
                 $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호를 확인해주세요. ]');    
                  chk3 = false;
             }else if($(this).val() != $("#password").val()){
-               $("#passwordRepeat").addClass("issetUser");
+            	$("#passwordRepeat").removeClass("nonesetUser");
+                $("#passwordRepeat").addClass("issetUser");
                 $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호가 다릅니다. 다시 확인해 주세요. ]');    
                  chk3 = false;
             }else{
@@ -87,15 +90,16 @@
           //휴대폰번호 확인 메서드
           $('#phone').on('keyup',function(){    
              if($(this).val() ==""){
-                $("#phone").removeClass("issetUser");
+                 $("#phone").removeClass("issetUser");
                  $("#phone").removeClass("nonesetUser");
                  $("#phone").addClass("issetUser");
                  $("#phoneCK").html('<b style="color:orangered; font-size: smaller;">[ 휴대폰번호를 입력해주세요.(-포함) ]');    
-                  chk5 = false;
-              }else if(!getPhone.test($("#phone").val())){            
-                  $("#phone").addClass("issetUser"); 
-                  $("#phoneCK").html('<b style="color:orangered; font-size: smaller;">[ 휴대폰번호를 확인해 주세요.(-포함) ]');    
-                  chk5 = false;
+                 chk5 = false;
+              }else if(!getPhone.test($("#phone").val())){     
+            	 $("#phone").removeClass("nonesetUser");
+                 $("#phone").addClass("issetUser"); 
+                 $("#phoneCK").html('<b style="color:orangered; font-size: smaller;">[ 휴대폰번호를 확인해 주세요.(-포함) ]');    
+                 chk5 = false;
               }else{
                  $("#phone").removeClass("issetUser");
                  $("#phone").addClass("nonesetUser");
@@ -107,36 +111,64 @@
       });
    // 회원정보 수정 검증
    function checkAll(){
+	   toastr.options = {
+				  "closeButton": true,
+				  "debug": false,
+				  "newestOnTop": false,
+				  "progressBar": true,
+				  "positionClass": "toast-top-right",
+				  "preventDuplicates": true,
+				  "onclick": null,
+				  "showDuration": "300",
+				  "hideDuration": "1000",
+				  "timeOut": "5000",
+				  "extendedTimeOut": "1000",
+				  "showEasing": "swing",
+				  "hideEasing": "linear",
+				  "showMethod": "fadeIn",
+				  "hideMethod": "fadeOut"
+				}
+			
+	   alert("윤호영!!!!!!!!!!!!!!!!!!!!!!!")
 	   const pw = $("#password").val()
 	   const phone =$("#phone").val()
+	   console.log("pw : "+ pw)
+	   console.log("phone"+phone)
+	   
 	   const updateVo = {
 		   "user_pw": pw,
 		   "user_phone":phone
 	   }
-	 
-	  
-      	$.ajax({
-      		method:"POST",
-      		url:"/updateUser.do",
-      		contentType:"application/json",
-      		dataType:"json",
-      		data:JSON.stringify(updateVo),
-      		success:function(result){
-      			const res = JSON.parse(result)
-      			if(res.msg=="SUCCESS"){
-      				alert("수정완료!!!")
-      				location.href="/myPage.do";
-      				
-      			}else{
-      				alert("수정 실패 다시 시도해주세요 ")
-      			}
-      		},
-      		error:function(){
-      			console.log("통신실패")
-      		}
-      	})//ajax close
 	   
-    }
+	   if(chk2 && chk3 && chk5){
+			$.ajax({
+	      		method:"POST",
+	      		url:"/updateUser.do",
+	      		contentType:"application/json",
+	      		dataType:"json",
+	      		data:JSON.stringify(updateVo),
+	      		success:function(result){
+	      			if(result.msg=="SUCCESS"){
+	      				alert("수정완료!!!")
+	      				location.href="/myPage.do";
+	      				
+	      			}else{
+	      				alert("수정 실패 다시 시도해주세요 ")
+	      			}
+	      		},
+	      		error:function(){
+	      			console.log("통신실패")
+	      		}
+	      	})//ajax close
+	   }else{
+		   toastr.warning("유효하지 않은 값이 있습니다.","다시 확인해주세요!!!!")
+	   }
+	   
+      
+	}
+      
+      
+    
       </script>
       
 </head>
