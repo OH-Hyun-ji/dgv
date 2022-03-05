@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.Session;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.dgv.web.admin.config.RequestUtils;
+import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class UserLoginController {
 
@@ -71,6 +79,24 @@ public class UserLoginController {
 		return jsonResult;
  	}
 	
+	@PostMapping("/kakaoLogin.do")
+	@ResponseBody
+	public CommonResultDto kakaoLogin(@RequestBody UserVO vo) {
+		
+		log.debug("debug!");
+		UserVO userVo = userService.kakaoLogin(vo);
+	
+		if(userVo.getUser_email().equals(vo.getUser_email())) {
+			System.out.println(userVo.getUser_email()+" 와 "+vo.getUser_email()+"는 같다.");
+			//session.setAttribute("userID", userVo.getUser_id());
+			RequestUtils.setUserId(userVo.getUser_id());
+			return CommonResultDto.success();
+		}else {
+			return CommonResultDto.fail();
+		}
+		
+	}
+	
 	// 로그아웃 처리
 	@RequestMapping("/logout.do")
 	public String userLogout(HttpServletRequest request) {
@@ -78,4 +104,5 @@ public class UserLoginController {
 		session.invalidate();
 		return"redirect:loginForm.do";
 	}
+	
 }

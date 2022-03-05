@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,7 @@
 					<div class="sect-collage-chart">
 						<h4 class="hidden"></h4>
 						<ol>
-
+							<c:forEach var="movieList" items="${movieList}">
 							<li>
 								<div class="box-image">
 									<a href="#"><span class="thumb-image"><img
@@ -54,7 +55,6 @@
 											class="ico-grade grade-15">15세 이상</span></span></a><span
 										class="screentype"> <a class="arthouse" href="#"
 										title="아트하우스 상세정보 바로가기" data-regioncode="MovieCollage">아트하우스</a>
-
 									</span>
 								</div>
 								<div class="box-contents">
@@ -73,7 +73,7 @@
 									</span>
 								</div>
 							</li>
-
+							</c:forEach>
 							<li>
 								<div class="box-image">
 									<a href="#"><span class="thumb-image"><img
@@ -101,7 +101,7 @@
 									</span>
 								</div>
 							</li>
-
+							
 							<li>
 								<div class="box-image">
 									<a href="#"><span class="thumb-image"><img

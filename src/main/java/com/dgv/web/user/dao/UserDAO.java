@@ -51,5 +51,10 @@ public class UserDAO {
 	public int deleteUser(UserVO userVO) {
 		return sqlSessionTemplate.delete("UserDAO.deleteUser", userVO);
 	}
+	
+	//카카오 로그인
+	public UserVO kakaoLogin(UserVO userVO) {
+		return sqlSessionTemplate.selectOne("UserDAO.kakaoUserList",userVO);
+	}
 
 }
