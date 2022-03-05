@@ -24,6 +24,10 @@ public class AdminMovieVO {
 	private Integer region_code;
 	private String movie_date;
 	private Integer city_code;
+	private String movie_genre;
+	private boolean movie_status;
+	private String age_img;
+	private String age_name;
 	
 	private List<AdminGenreVO> genreList;
 	private List<AdminAgeVO> ageList;

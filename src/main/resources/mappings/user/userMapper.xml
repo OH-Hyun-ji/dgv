@@ -40,6 +40,10 @@
 			WHERE user_id = #{user_id}
        </delete>
        
+       <select id="kakaoUserList" resultType="UserVO">
+         SELECT * FROM user_info WHERE user_email = #{user_email}     
+       </select>
+       
        
 	</mapper>
       

@@ -17,4 +17,20 @@
 	<delete id="AgeDelete" parameterType="AdminAgeVO">
 		DELETE FROM movie_age_info WHERE movie_age_num =#{movie_age_num}
 	</delete>
+	
+	<select id="GenreListInfo" resultType="AdminGenreVO" parameterType="int"> 
+		SELECT * FROM movie_genre_info WHERE movie_genre_code=#{movie_genre_code}
+	</select>
+	
+	<select id="AgeListinfo" resultType="AdminAgeVO" parameterType="int">
+		SELECT * FROM movie_age_info WHERE movie_age_num =#{movie_age_num}
+	</select>
+	<update id="GenreUpdate">
+		UPDATE movie_genre_info SET movie_genre_name=#{movie_genre_name} WHERE movie_genre_code=#{movie_genre_code}
+	</update>
+	
+	<update id="AgeUpdate">
+		UPDATE movie_age_info SET movie_age_name=#{movie_age_name},movie_age_img=#{movie_age_img} WHERE movie_age_num =#{movie_age_num}
+	</update>
+	
 </mapper>

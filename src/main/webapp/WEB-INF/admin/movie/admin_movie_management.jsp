@@ -24,7 +24,22 @@
             var popupY =(window.screen.height/2)-(300/2);
     
             window.open('/adminAge.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
-            }        
+        }     
+        function updateGenre(genreCode){
+        	 var popupX =(window.screen.width/2)-(200/2);
+             var popupY =(window.screen.height/2)-(300/2);
+     
+             window.open('/genreUpdate.mdo?movie_genre_code='+genreCode,'','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+        }
+        
+        function updateAge(){
+        	 var popupX =(window.screen.width/2)-(200/2);
+             var popupY =(window.screen.height/2)-(300/2);
+     
+             window.open('/adminAge.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+        	
+        }
+        
         function deleteAge(ageCode){
         	let result = confirm("정말 삭제하시겠습니까??");
 			console.log(ageCode)
@@ -123,7 +138,7 @@
                                             <td>${genreList.movie_genre_name}</td>
                                             <td>${genreList.reg_id}</td>
                                             <td>${genreList.reg_date}</td>
-                                            <td><button id="delBt"  onclick="deleteGenre('${genreList.movie_genre_code}')"><i class="fas fa-trash-alt"></i></button> <button ><i class="fas fa-pencil-alt"></i></button></td>
+                                            <td><button id="delBt"  onclick="deleteGenre('${genreList.movie_genre_code}')"><i class="fas fa-trash-alt"></i></button> <button  onclick="updateGenre('${genreList.movie_genre_code}')"><i class="fas fa-pencil-alt"></i></button></td>
                                         </tr>
                                         </c:forEach>                            
                                     </tbody>
@@ -156,7 +171,7 @@
                                                     <td style="text-align: center;"><img src='${ageList.movie_age_img}' style="height: 28px; box-sizing: border-box;"></td>
                                                     <td>${ageList.reg_id}</td>
                                                     <td>${ageList.reg_date}</td>
-                                                   <td><button id="delBT" onclick="deleteAge('${ageList.movie_age_num}')"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button></td>
+                                                   <td><button id="delBT" onclick="deleteAge('${ageList.movie_age_num}')"><i class="fas fa-trash-alt"></i></button> <button onclick="updateAge('${ageList.movie_age_num}')"><i class="fas fa-pencil-alt"></i></button></td>
                                                 </tr>
                                             </c:forEach>                                              
                                             </tbody>

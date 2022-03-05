@@ -23,26 +23,42 @@
 		<collection property="groupList" resultMap="AdminGroupVO"></collection>
 		<collection property="actorList" resultMap="AdminActorVO"></collection>
 	</resultMap>
+	<resultMap type="AdminRegionVO" id="AdminRegionVO">
+		<result column="region_code" property="region_code" jdbcType="INTEGER" />
+		<result column="city_code" property="city_code" jdbcType="INTEGER" />
+		<result column="region_name" property="region_name" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap type="AdminTheaterVO" id="AdminTheaterVO">
+		<result column="theater_code" property="theater_code" jdbcType="INTEGER" />
+		<result column="theater_name" property="theater_name" jdbcType="VARCHAR" />
+		<result column="theater_seat_count" property="theater_seat_count" jdbcType="INTEGER" />
+		<result column="region_code" property="region_code" jdbcType="INTEGER" />
+		<result column="theater_max_row" property="theater_max_row" jdbcType="INTEGER" />
+		<result column="theater_max_column" property="theater_max_column" jdbcType="INTEGER" />
+		<collection property="regionList" resultMap="AdminTheaterVO"></collection>
+	</resultMap>
 <!--close 참여자테이블 매핑   -->
 	
 	<insert id="InsertTheater" parameterType="AdminTheaterVO">
 		INSERT INTO movie_theater(theater_code,theater_name,theater_seat_count,region_code,theater_max_row,theater_max_column)
 		VALUES(DEFAULT,#{theater_name},#{theater_seat_count},#{region_code},#{theater_max_row},#{theater_max_column})
 	</insert>
-	
+	<select id="SelectTheater" resultMap="AdminTheaterVO">
+		SELECT * FROM movie_theater
+	</select>
 	<select id="regionList" resultType="AdminRegionVO">
 		SELECT * FROM dgv_region_info WHERE region_name =#{region_name}
 	</select>
 	<insert id="InsertPar" parameterType="AdminParVO">
 		INSERT INTO movie_par(movie_par_num,movie_num,movie_group_code,movie_actor_code,reg_id,reg_date)
-		VALUES(DEFAULT,#{movie_num},#{movie_group_code},#{movie_actor_code},#{reg_id},#{reg_date})
+		VALUES(DEFAULT,#{movie_num},#{movie_group_code},#{movie_actor_code},#{reg_id},current_date)
 	</insert>
 	<select id="MovieList" resultType="AdminMovieVO">
-		SELECT * FROM movie_info WHERE 
+		SELECT * FROM movie_info
 	</select>
 	<insert id="InsertMovie" useGeneratedKeys="true" keyProperty="movie_num" parameterType="AdminMovieVO">
-		INSERT INTO movie_info(movie_num,movie_genre_code,movie_img,movie_running_time,movie_open_date,movie_text,movie_title,movie_title_en,movie_age_code,reg_id,movie_time,movie_date,reg_date,movie_real_img)
-		VALUES(DEFAULT,#{movie_genre_code},#{movie_img},#{movie_running_time},#{movie_open_date},#{movie_text},#{movie_title},#{movie_title_en},#{movie_age_code},#{reg_id},#{movie_time},#{movie_date},current_date,#{movie_real_img})
+		INSERT INTO movie_info(movie_num,movie_genre_code,movie_img,movie_running_time,movie_open_date,movie_text,movie_title,movie_title_en,movie_age_code,reg_id,movie_time,reg_date,movie_real_img)
+		VALUES(DEFAULT,#{movie_genre_code},#{movie_img},#{movie_running_time},#{movie_open_date},#{movie_text},#{movie_title},#{movie_title_en},#{movie_age_code},#{reg_id},#{movie_time},current_date,#{movie_real_img})
 	</insert>
 	
 	<select id="TheaterList" resultType="AdminTheaterVO" parameterType="int">
@@ -53,6 +69,7 @@
 		INSERT INTO city_region_theater(city_theater_code,movie_num,city_code,region_code,theater_code)
 		VALUES(DEFAULT,#{movie_num},#{city_code},#{region_code},#{theater_code})
 	</insert>
+
 	
 	
 </mapper>

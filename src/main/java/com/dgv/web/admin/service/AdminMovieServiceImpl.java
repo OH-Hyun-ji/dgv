@@ -182,6 +182,67 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.deleteGenre(vo) ;
 	}
 
+	@Override
+	public List<AdminTheaterVO> selectTheater() {
+		
+		return adminMovieDAO.selectTheater();
+	}
+
+	@Override
+	public List<AdminMovieVO> movieList() {
+		
+		return adminMovieDAO.movieList();
+	}
+
+	@Override
+	public int updateGroup(AdminGroupVO vo) {
+		
+		return adminMovieDAO.updateGroup(vo);
+	}
+
+	@Override
+	public AdminGroupVO groupView(int num) {
+		
+		return adminMovieDAO.groupView(num);
+	}
+
+	@Override
+	public AdminActorVO actorListInfo(int num) {
+		
+		return adminMovieDAO.actorListInfo(num);
+	}
+
+	@Override
+	public int updateActor(AdminActorVO vo) {
+	
+		return adminMovieDAO.updateActor(vo);
+	}
+
+	@Override
+	public AdminGenreVO genreListInfo(int num) {
+		
+		return adminMovieDAO.genreListInfo(num);
+	}
+
+	@Override
+	public AdminAgeVO ageListInfo(int num) {
+		
+		return adminMovieDAO.ageListInfo(num);
+	}
+
+	@Override
+	public int updateGenre(AdminGenreVO vo) {
+	
+		return adminMovieDAO.genreUpdate(vo);
+	}
+
+	@Override
+	public int updateAge(AdminAgeVO vo) {
+	
+		return adminMovieDAO.updateAge(vo);
+	}
+
+
 	
 
 	

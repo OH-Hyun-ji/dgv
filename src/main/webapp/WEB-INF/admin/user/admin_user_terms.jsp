@@ -65,8 +65,8 @@
 									<tr>
 										<th>No</th>
 										<th>Term Name</th>
-										<th>>Term Status</th>
-										<th>>Term Agree User</th>
+										<th>Term Status</th>
+										<th>Term Agree User</th>
 										<th>Writer</th>
 										<th>Date</th>
 									</tr>

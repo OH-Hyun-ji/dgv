@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>Admin Movie List</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/resources/css/user/button.css" rel="stylesheet"  />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script>
            function adminTerms(){
@@ -34,6 +36,20 @@
     margin-top: 19px;
     font-size: 23px;
 }
+}
+input#statusContinue {
+    background-color: #80808042;
+    width: 73px;
+    height: 21px;
+    border: 1px solid #8080807a;
+    border-radius: 4px;
+    text-align: center;
+}
+#statusEnd {
+    width: 79px;
+    height: 28px;
+    padding: 0;
+    border-radius: 6px;
 }
 </style>
 
@@ -64,30 +80,42 @@
 						
 						
 					</div>
-					<div class="card-body">
-						<table id="datatablesSimple">
+					<div class="card-body" style="text-align: center;">
+						<table id="datatablesSimple" style="text-align: center;">
 							<thead>
 								<tr>
-									<th>번호</th>
-									<th>장르</th>
-									<th>>영화제목</th>
-									<th>개봉일</th>
-									<th>영화 상영 활성화여부</th>
-									<th></th>
+									<th style="text-align: center;">No</th>
+									<th style="text-align: center;">Poster</th>
+									<th style="text-align: center;">Genre</th>
+									<th style="text-align: center;">Movie Title</th>
+									<th style="text-align: center;">Movie Age</th>
+									<th style="text-align: center;">Open Date</th>
+									<th style="text-align: center;">Status</th>
+									<th style="text-align: center;">Delete/Update</th>
 								</tr>
 							</thead>
 							<tbody>
-							
+							<c:forEach var="movieList" items="${movieList }" varStatus="status">
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td></td>
-									<td></td>
-									<td><button id="delBT">
-											<i class="fas fa-times"></i>
-										</button></td>
+									<td style="box-sizing: border-box; padding-top: 70px;">${movieListCount - status.index}</td>
+									<td> <img style="width: 100px;" src="${movieList.movie_img }"></td>
+									<td style="box-sizing: border-box; padding-top: 70px;">${movieList.movie_genre }</td>
+									<td style="box-sizing: border-box; padding-top: 70px;">${movieList.movie_title}</td>
+									<td style="box-sizing: border-box; padding-top: 60px;"><img src="${movieList.age_img}"></td>
+									<td style="box-sizing: border-box; padding-top: 70px;">${movieList.movie_open_date}</td>
+									<td style="box-sizing: border-box; padding-top: 60px;">
+									<c:choose>
+												<c:when test="${movieList.movie_status == 'true'}">
+													<button id="statusEnd" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button">상영중</button>																	
+												</c:when>
+												<c:otherwise>
+													<input id="statusContinue" type="text" value="상영종료" readonly="readonly">													
+												</c:otherwise>											
+											</c:choose>
+									</td>
+ 									<td style="box-sizing: border-box; padding-top: 70px;"><button id="deleteMovie"  onclick="deleteMovie'${movieList.movie_num}')"><i class="fas fa-trash-alt"></i></button> <button ><i class="fas fa-pencil-alt"></i></button></td>
 								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
