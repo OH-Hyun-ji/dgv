@@ -9,6 +9,7 @@ import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.user.dao.UserBoardDAO;
 import com.dgv.web.user.vo.UserInquiryVO;
+import com.dgv.web.user.vo.UserMapVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -52,6 +53,20 @@ public class UserBoardServiceImpl implements UserBoardService {
 	public List<AdminRegionVO> regionTheater(int num) {
 		
 		return userBoardDAO.regionTheaterList(num);
+	}
+
+
+	@Override
+	public UserMapVO mapList(int num) {
+		
+		return userBoardDAO.mapList(num);
+	}
+
+
+	@Override
+	public int insertMap(UserMapVO vo) {
+		
+		return userBoardDAO.insertMap(vo);
 	}
 
 

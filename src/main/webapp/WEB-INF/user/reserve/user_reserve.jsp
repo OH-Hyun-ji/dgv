@@ -14,41 +14,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<style type="text/css">
-		.onBtn{
-			background-color: #9e9d9ba1;
-  			color: white;
-  			border-radius: 5px;
-		}
-		li.cityName {
-  			display: inline-grid;
-		}
-		li.selected:hover {
-  			background-color: gray;
-			color:white;
-		}
-		button.regionBtn {
-    		line-height: 36px;
-    		
-    		z-index: 10;
-		}
-		button.regionBtn:hover {
-			background-color: gray;
-			color:white;
-    		
-		}
-		button.timeList {
-		    border: 1px solid #80808075;
-		    width: 66px;
-		    height: 30px;
-		    margin-left: 2%;
-		    border-radius: 3px;
-		    font-weight: bolder;
-		}
-		button.timeList:hover {
-			background-color: gray;
-			color:white;
-		}
-	</style>
+.onBtn {
+	background-color: #9e9d9ba1;
+	color: white;
+	border-radius: 5px;
+}
+
+li.cityName {
+	display: inline-grid;
+}
+
+li.selected:hover {
+	background-color: #9e9d9ba1;
+	color: white;
+	z-index: 10;
+}
+
+button.regionBtn {
+	line-height: 36px;
+	z-index: 10;
+	background-color: #f2f0e5;
+}
+
+button.regionBtn:hover {
+	background-color: gray;
+	color: white;
+}
+
+button.timeList {
+	border: 1px solid #80808075;
+	width: 66px;
+	height: 30px;
+	margin-left: 2%;
+	border-radius: 3px;
+	font-weight: bolder;
+}
+
+button.timeList:hover {
+	background-color: gray;
+	color: white;
+}
+
+.movieStyle {
+	background-color: #f2f0e5;
+}
+
+.movieStyle:hover {
+	background-color: gray;
+	color: white;
+}
+</style>
 </head>
 <body class="block" >
 <jsp:include page="../default/user_header.jsp"></jsp:include>
@@ -124,10 +139,10 @@
                                         <ul class="content scroll-y" onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;padding: 0px;">
                                            <c:forEach var="movieList" items="${movieList}" varStatus="status">
                                             <li class="rating-15" data-index="${status.index}" >
-                                                <button href="#" onclick="movieCode(${movieList.movie_num })" title="${movieList.movie_title }"  value="${movieList.movie_num }">
+                                                <button href="#" class="movieStyle" onclick="movieCode(${movieList.movie_num })"id="movieTT${movieList.movie_num }" title="${movieList.movie_title }"  value="${movieList.movie_num }">
                                                 	<div class="movie-info" style="display: flex;">
 	                                                    <span class="age-icon">&nbsp;<img src="${movieList.age_img}" style="height: 33px; box-sizing: border-box; padding-top: 11%;"></span>
-	                                                    <span class="movieTitleBtn" class="title-text" style="background-color: #f2f0e5;box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
+	                                                    <span id="movieTitleBtn${movieList.movie_num }" class="title-text" style="box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
                                                     </div>
                                                     <span class="sreader"></span>
                                                 </button>
@@ -242,38 +257,11 @@
     </div>
     <jsp:include page="../default/user_footer.jsp"></jsp:include>
 	<script>
-	$(function(){
-		$(".movieTitleBtn").on('click',function(){
-			
-			$(".movieTitleBtn").css("background-color","#9e9d9ba1")
-// 			if($(".movieTitleBtn").hasClass("onBtn")){
-// 				$(".movieTitleBtn").removeClass("onBtn")
-// 			}else{
-// 				$(".movieTitleBtn").addClass("onBtn")
-// 			}
-			console.log("sksk"+$(this).val())
-			//$("#hiddenTitle").val()
-		})
-// 		$(".cityNameBtn").on('click',function(){
-// 			alert("¿?????")
-// 			if($(".cityNameBtn").hasClass("onBtn")){
-// 				$(".cityNameBtn").removeClass("onBtn")
-// 			}else{
-// 				$(".cityNameBtn").addClass("onBtn")
-// 			}
-// 		})
-		$(".regionBtn").on('click',function(){
-			alert("¿????3333?")
-					$(".movieTitleBtn").css("background-color","#9e9d9ba1")
-// 			if($('.regionBtn').hasClass("onBtn")){
-// 				$(".regionBtn").removeClass("onBtn")
-// 			}else{
-// 				$(".regionBtn").addClass("onBtn")
-// 			}
-		})
-	})
 	function movieCode(n){
 		alert("movie code :" +n)
+		$(".movieStyle").css("background-color","")	
+		$("#movieTT"+n).css("background-color","#9e9d9ba1")
+	
 		$("#hiddenTitle").val(n)
 	}
 	
@@ -283,12 +271,6 @@
 	}
 	function independence(n){
 		alert("Ddd")
-// 		if($("#selectBtn"+n).hasClass(".onBtn")){
-// 			$("#selectBtn"+n).removeClass(".onBtn")
-			
-// 		}else{
-// 			$("#selectBtn"+n).addClass(".onBtn")
-// 		}		
 		$("#selectBtn"+n).on('click',function(){
 			$("#selectBtn"+n).css("background-color","#9e9d9ba1")
 		})
@@ -296,11 +278,9 @@
 
 	function choiceCity(cityCode){
 	//	alert(cityCode)
-	init()
-	independence(cityCode)
-	$("#hiddenCity").val(cityCode)		
-// 	const li =$("<li>")
-//  		.attr("class","cityName")
+		init()
+		independence(cityCode)
+		$("#hiddenCity").val(cityCode)		
 		$(".region-list").empty();
 		$.ajax({
 			method:"POST",
@@ -313,7 +293,6 @@
 				_(regionList).forEach(function(n){
 					const button =$("<button>")
 					.attr("class","regionBtn")
-				//	.attr("onclick","choiceRegion()")
 					.attr("value",n.region_code)
 					.text(n.region_name)	
 					console.log(n.region_name)

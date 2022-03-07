@@ -7,6 +7,7 @@ import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.user.vo.UserInquiryVO;
+import com.dgv.web.user.vo.UserMapVO;
 
 public interface UserBoardService {
 
@@ -21,4 +22,8 @@ public interface UserBoardService {
 	List<AdminCityVO> cityTheater();
 	
 	List<AdminRegionVO> regionTheater(int num);
+	
+	UserMapVO mapList(int num);
+	
+	int insertMap(UserMapVO vo);
 }

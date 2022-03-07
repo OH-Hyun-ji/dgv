@@ -13,14 +13,24 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d2551cba1f0fc7db3031725ad908c785"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
 	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-	
 	<script type="text/javascript">
+		$(document).ready(function(){
+			const container = document.getElementById('map');
+			const options = {
+				center: new kakao.maps.LatLng(37.57097949310122, 126.99264220428894),
+				level: 3
+			};
+
+			const map = new kakao.maps.Map(container, options);
+			
+		})
+	
 		function thisCityCode(cityCode){
-		
 	//		var cityCode =$(this).val()// $(this).children().val();
 		test=this	
 			console.log("cityCode :" +cityCode)
@@ -47,6 +57,43 @@
 						$(".regionTitle").on('click',function(){
 							const regionNum = $(this).val()
 							console.log("지역번호   "+regionNum)
+							$.ajax({
+								method:"POST",
+								url:"/mapRegion.do",
+								contentType:"application/json",
+								dataType:"json",
+								data:JSON.stringify({"region_code":regionNum}),
+								success:function(result){
+									const mapVo = JSON.parse(result)
+									$("#map").empty();
+									console.log("map : "+ mapVo.map_x)
+									 const markers = [
+									    {
+									        position: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y)
+									    },
+									    {
+									        position: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y), 
+									        text: mapVo.map_name // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다     
+									    }
+									];
+
+									const staticMapContainer  = document.getElementById('map'), // 이미지 지도를 표시할 div  
+									    staticMapOption = { 
+									        center: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y), // 이미지 지도의 중심좌표
+									        level: 3,       // 이미지 지도의 확대 레벨
+									        marker: markers // 이미지 지도에 표시할 마커 
+									    };    
+									
+									console.log(" CHECK 1 : " + staticMapContainer + " CHECK 2 : " + staticMapOption)
+
+									// 이미지 지도를 생성합니다
+									const staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+								},
+								error:function(){
+									console.log("통신실패")
+								}
+								
+							})
 						})
 					})
 				},
@@ -58,14 +105,7 @@
 		//$(".regionThis").append(ul)	
 		
 		}
-	
-	
-	
-		
-	
-
 </script>
-
 <style type="text/css">
 
 	.cityCss{
@@ -111,17 +151,6 @@
 			<!-- 실컨텐츠 시작 -->
 			<div class="wrap-theater">
 				<div id="map" style="width: 980px; height: 400px;"></div>
-				<script type="text/javascript"
-					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d2551cba1f0fc7db3031725ad908c785"></script>
-				<script>
-				var container = document.getElementById('map');
-				var options = {
-					center: new kakao.maps.LatLng(37.57097949310122, 126.99264220428894),
-					level: 3
-				};
-		
-				var map = new kakao.maps.Map(container, options);
-				</script>
 					<h3>
 						<img
 							src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/theater.png"
@@ -129,7 +158,8 @@
 					</h3>
 					<div class="sect-theater ">
 						<h4 class="theater-tit">
-							<span>CGV강남</span>
+						
+							<span></span>
 						</h4>
 						<a href="/support/lease/default.aspx" class="round inred btn_lease"><span
 							style="padding: 0 14px; font-weight: bold; color: white;">단체/대관문의</span></a>

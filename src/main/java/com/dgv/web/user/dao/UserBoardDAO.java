@@ -10,6 +10,7 @@ import com.dgv.web.admin.vo.AdminCityVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.user.vo.UserInquiryVO;
+import com.dgv.web.user.vo.UserMapVO;
 
 @Repository
 public class UserBoardDAO {
@@ -36,5 +37,10 @@ public class UserBoardDAO {
 	public List<AdminRegionVO> regionTheaterList(int num){
 		return sqlSessionTemplate.selectList("UserMovieDAO.RegionList",num);
 	}
-	
+	public UserMapVO mapList(int num) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.MapList", num);
+	}
+	public int insertMap(UserMapVO vo) {
+		return sqlSessionTemplate.insert("UserMovieDAO.InsertMap",vo);
+	}
 }

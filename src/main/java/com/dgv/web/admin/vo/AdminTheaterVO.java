@@ -16,6 +16,10 @@ public class AdminTheaterVO {
 	private Integer theater_max_column;
 	private String seat_status;
 	//hidden처리
+	private Double map_x;
+	private Double map_y;
+	private String map_address;
+	private String map_name;
 	private String region_name;
 	private List<AdminRegionVO> regionList;
 	

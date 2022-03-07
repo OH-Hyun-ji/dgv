@@ -29,6 +29,7 @@
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>
 			<typeAlias alias="UserInquiryVO" type="com.dgv.web.user.vo.UserInquiryVO"/>
+			<typeAlias alias="UserMapVO" type="com.dgv.web.user.vo.UserMapVO"/>
 		</typeAliases>
 			<mappers>
 				<mapper resource="mappings/admin/movieInfo-mapping.xml"/>

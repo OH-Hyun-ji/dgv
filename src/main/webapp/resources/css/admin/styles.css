@@ -11724,12 +11724,11 @@ input.cityZone {
 }
 button#registerCity {
     width: 11%;
-    margin-left: 30%;
     background: linear-gradient(Red -32%, Orange 79%);
     border-radius: 5px;
     color: white;
     font-weight: bold;
     border-color: burlywood;
     height: 42px;
-    font-size: 23px;
+    font-size: 16px;
 }

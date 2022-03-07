@@ -189,12 +189,25 @@
 		const region =$("#regionChoice").val();
 		const seatCount=maxR*maxC
 		const seatStatus =$("#seatStatus").val();
+		const mapX = $("#mapX").val();
+		const mapY =$("#mapY").val();
+		const mapAddress =$("#mapAddress").val();
+		const mapName = $("#mapName").val();
 		if(city ==""){
 			toastr.warning("도시를 선택해주세요")
 		}
 		if(region == ""){
 			toastr.warning("지역을 선택해주세요")
 		}
+		if(mapX == ""){
+			toastr.warning("x좌표을 선택해주세요")
+		}
+		if(mapY == ""){
+			toastr.warning("y좌표을 선택해주세요")
+		}
+		console.log("map x:" +mapX)
+		console.log("map y:" +mapY)
+		
 		console.log("_--"+maxR*maxC)
 		
 		console.log("지역값이다"+$("#cityChoice").val())
@@ -204,7 +217,11 @@
 			"theater_max_row" : maxR,
 			"theater_max_column" :maxC,
 			"theater_seat_count":seatCount,
-			"seat_status":seatStatus
+			"seat_status":seatStatus,
+			"map_x":mapX,
+			"map_y":mapY,
+			"map_address":mapAddress,
+			"map_name":mapName
 		}
 		$.ajax ({
 			method:"POST",
@@ -279,24 +296,19 @@
 							<input type="hidden" name="region_name" id="regionName" >		
 							</ul>
 						</div>
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-	
-						<div class="btn-group" style="width: 19%;">
-							<button type="button"style="width: 100%; margin-top:0;" class="btn btn-danger dropdown-toggle"
-								data-bs-toggle="dropdown" aria-expanded="false">Theater
-							</button>
-							<input class="cityZone region-list" readonly="readonly">
-							<ul class="dropdown-menu" style="width: 100%;">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#">Separated link</a></li>
-							</ul>
-						</div>-->
+						<div class="registerMap" style="display: flex;">
+							<label class="btn btn-danger map_title" style="margin-top: 0%;">x좌표 : </label>
+							<input id="mapX" name="map_x" type="text"  placeholder="x좌표 입력">
+							<label class="map_title btn btn-danger" style="margin-top: 0%;">y좌표 : </label>
+							<input id="mapY" name="map_y" type="text" placeholder="y좌표 입력">
+							<label class="map_title btn btn-danger" style="margin-top: 0%;">명칭 : </label>
+							<input id="mapName" name="map_name" type="text" placeholder="명칭 입력">
+							<label class="map_title btn btn-danger" style="margin-top: 0%;">주소 : </label>
+							<input id="mapAddress" name="map_address" type="text" placeholder="주소 입력">
 							<button id="registerCity"  style="background: linear-gradient(#f3e057 -32%, #ffc800f0);color: slategray;" onclick="registerAll()">Register</button>
 						</div>
-						<div class="seat_count_total" style="display: inline-flex;margin-top: 2%;height: 37px; margin-bottom: 1%;">
+						</div>
+						<div class="seat_count_total" style="display: inline-flex;margin-top:3px;height: 37px; margin-bottom: 1%;">
 							<label class="btn btn-danger max_title" style="margin-top: 0%;margin-left: 1%;">상영관 이름 : </label>
 							<input id="theaterName" name="theater_name" type="text"  placeholder="상영관 입력">
 							<label class="max_title btn btn-danger" style="margin-top: 0%;">최대 열수 : </label>

@@ -16,6 +16,8 @@ import com.dgv.web.admin.vo.AdminCityVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.UserMapVO;
+import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 
 @Controller
@@ -52,10 +54,20 @@ public class UserMovieController {
 		Gson gson = new Gson();
 		final List<AdminCityVO> cityL = userBoardService.cityTheater();
 		
+		
 	//	final String cityList = gson.toJson(cityL);
 		
 		model.addAttribute("cityList",cityL);
 		return "/movie/user_movie_theater";
+	}
+	//지도
+	@PostMapping("/mapRegion.do")
+	@ResponseBody
+	public String mapRegion(@RequestBody UserMapVO vo) {
+		UserMapVO mapVo = userBoardService.mapList(vo.getRegion_code());
+		Gson gson = new Gson();
+		String result = gson.toJson(mapVo);
+		return result;
 	}
 	
 	@PostMapping("cityViewList.mdo")

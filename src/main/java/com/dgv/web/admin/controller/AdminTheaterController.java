@@ -38,6 +38,8 @@ import com.dgv.web.admin.vo.BuilderTest;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.admin.vo.ParticipantDto;
 import com.dgv.web.admin.vo.TheaterInfoDto;
+import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.UserMapVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -49,6 +51,9 @@ public class AdminTheaterController {
 	
 	@Autowired
 	private AdminMovieService adminMovieService;
+	
+	@Autowired
+	private UserBoardService userBoardService;
 	
 	@Autowired
 	private FileUploadService fileUploadService;
@@ -225,10 +230,11 @@ public class AdminTheaterController {
 	}
 	@PostMapping("/insertTheater.mdo")
 	@ResponseBody
-	public CommonResultDto insertTheater(@RequestBody AdminTheaterVO vo,AdminRegionVO regionVo,AdminSeatVO seatVo) {
+	public CommonResultDto insertTheater(@RequestBody AdminTheaterVO vo,AdminRegionVO regionVo,AdminSeatVO seatVo,UserMapVO mapVo) {
 		//지역이름을 지역코드로 불러오고 
 		AdminRegionVO regionCode= adminMovieService.regionList(vo.getRegion_name());
 		System.out.println("지역코드 : " +regionCode.getRegion_code());
+		System.out.println("좌표 "+ vo.getMap_x());
 		//다시 코드 넣어주기
 		vo.setRegion_code(regionCode.getRegion_code());
 		int result = adminMovieService.insertTheater(vo);
@@ -239,6 +245,15 @@ public class AdminTheaterController {
 		seatVo.setSeat_status(vo.getSeat_status());
 		int num = adminMovieService.insertSeat(seatVo);
 		result += num;
+		
+		//지도정보 insert
+		mapVo.setMap_x(vo.getMap_x());
+		mapVo.setMap_y(vo.getMap_y());
+		mapVo.setMap_name(vo.getMap_name());
+		mapVo.setRegion_code(regionCode.getRegion_code());
+		mapVo.setMap_address(vo.getMap_address());
+		int num1 = userBoardService.insertMap(mapVo);
+		result += num1;
 		if(result !=0 ) {
 			return CommonResultDto.success();
 		}else {			

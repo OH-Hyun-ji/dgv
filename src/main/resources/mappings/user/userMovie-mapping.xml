@@ -11,5 +11,12 @@
 		SELECT * FROM dgv_region_info WHERE city_code=#{city_code}
 	</select>
 	
+	<select id="MapList" resultType="UserMapVO" parameterType="int">
+		SELECT * FROM movie_map WHERE region_code=#{region_code}
+	</select>
+	<insert id="InsertMap" parameterType="UserMapVO">
+		INSERT INTO movie_map(map_code,map_x,map_y,map_address,map_name,region_code)
+		VALUES(DEFAULT,#{map_x},#{map_y},#{map_address},#{map_name},#{region_code})
+	</insert>
 	
 </mapper>
