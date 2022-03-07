@@ -438,3 +438,18 @@ input#joinBtn {
     font-size: 22px;
     margin-top: 5%;
 }
+#thisLogin, #thisJoin{
+	margin-top: 10px;
+    width: 140px;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding-top: 11px;
+	
+}
+.action-button {
+    margin-bottom: 4%;
+    display: flex;
+}
+.kakaoLogin-wrap {
+    text-align: center;
+}

@@ -115,8 +115,7 @@ input#waitingAnswer {
 										<th>답변상태</th>
 									</tr>
 								</thead>
-								<tbody>
-							
+								<tbody>	
 								<c:forEach var="userQnaOneList" items="${userQnaOneList}" varStatus="status">
 									<tr>
 										<td>${userQnaCount-status.index}</td>
@@ -132,13 +131,10 @@ input#waitingAnswer {
 												<c:otherwise>
 													<input id="waitingAnswer" type="text" value="답변대기중" readonly="readonly">													
 												</c:otherwise>											
-											</c:choose>
-											
-										</td>								
-							
+											</c:choose>	
+										</td>										
 									</tr>	
-								</c:forEach>
-														
+								</c:forEach>							
 								</tbody>
 							</table>
 							<div class="qna-one-wrap">

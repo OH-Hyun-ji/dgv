@@ -15,4 +15,5 @@ public class AdminActorVO {
 	private String movie_actor_info;
 	private String movie_actor_img;
 	private Integer movie_group_code;
+	private String movie_group_name;
 }

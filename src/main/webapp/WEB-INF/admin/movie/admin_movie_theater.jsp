@@ -55,6 +55,8 @@
 	
 	})
 	
+
+	
 	function dgvCityResult(cityResult) { // input에 선택한 도시 나타나게 함
 		const city = $(cityResult).text();
 		$("#cityChoice").val(city);  //선택한 요소의 속성값을 city로 변경한다.
@@ -199,6 +201,13 @@
 		
 		
 	}
+	function timeRegister(theaterCode){ // 영화 시간 설정 
+		alert("ㅠㅠㅠ")
+		var popupX =(window.screen.width/2)-(200/2);
+        var popupY =(window.screen.height/2)-(300/2);
+
+        window.open('/adminTime.mdo?theater_code='+theaterCode,'','width=500,height=280');
+	}
 	</script>	
 </head>
 <body class="sb-nav-fixed">
@@ -289,21 +298,25 @@
 									<table id="datatablesSimple">
 										<thead>
 											<tr>
-												<th>번호</th>
-												<th>약관이름</th>
-												<th>>약관 등록일</th>
-												<th></th>
+												<th>No</th>
+												<th>Region Name</th>
+												<th>Theater Name</th>
+												<th>Total Seat</th>
+												<th>Max Row</th>
+												<th>Max Column</th>
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach var="theaterList" items="${adminTheater}" varStatus="status">
 											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>	
+												<td>${adminTheaterCount - status.index }</td>
+												<td>${theaterList.region_name }</td>												
+												<td>${theaterList.theater_name }</td>
+												<td>${theaterList.theater_max_row }</td>
+												<td>${theaterList.theater_max_column }</td>
+												<td><button id="deleteTheater"  onclick="deleteAction('${theaterList.theater_code}')"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button><button style="margin-left: 3%;" onclick="timeRegister('${theaterList.theater_code}')"><i class="fas fa-clock"></i></button></td>
+											</tr>
+										</c:forEach>	
 										</tbody>
 									</table>
 								</div>

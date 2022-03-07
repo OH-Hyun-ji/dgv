@@ -19,11 +19,15 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-				
-		<script type="text/javascript">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 			
+	<script type="text/javascript">
 		
+		
+	
 		var test;
 		$(function(){
+		
 			$( "input[name='movie_open_date']" ).datepicker();
 			const groupList = ${groupList1};
 			const actorList =${actorList1};
@@ -232,7 +236,10 @@
 		
 			
 			$("#registerBtn").click(function(){
+			
+				
 				alert("영화등록버튼 click click!!!!")
+		
 				const movieTitle = $("#dgvMovieTitle").val()
 				const movieTitleEn = $("#dgvMovieTitle-en").val()
 				const movieRunTime = $("#dgvMovieRunTime").val()
@@ -289,13 +296,13 @@
 				});
 				//key value로 ~~~
 				const theaterInfoList = _.map(tr1List, function(n){
-					const cityCode = $(n).childern().eq(1).children().first().val();
+					const cityCode = $(n).children().eq(1).children().first().val();
 					const regionCode=$(n).children().eq(3).children().first().val();
 					const theaterCode =$(n).children().eq(5).children().first().val();
 					return{
 						"cityCode":cityCode,
-						"reginCode":reginCode,
-						"TheaterCode":TheaterCode
+						"reginCode":regionCode,
+						"TheaterCode":theaterCode
 					}
 				});
 				
@@ -321,6 +328,7 @@
 				formData.append("theaterInfoList",new Blob([JSON.stringify(theaterInfoList)],{type:"application/json"}));
 				formData.append("parList", new Blob([JSON.stringify(parList)], {type:"application/json"}));
 				formData.append("movieVo", new Blob([JSON.stringify(movieVo)], {type:"application/json"}));
+			
  				$.ajax({
 					method:"POST",
 					url:"/insertMovie.mdo",
@@ -345,6 +353,7 @@
 			
 			})
 		})
+		
 		</script>
 		
 		<style type="text/css">
@@ -449,6 +458,7 @@
                                 </select>
                                 </div>
                               </div>
+                        
                             </div>
 					<br> <br>
 					<div style="display: flex;">

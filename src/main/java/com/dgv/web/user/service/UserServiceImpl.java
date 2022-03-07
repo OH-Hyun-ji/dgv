@@ -61,4 +61,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.deleteUser(userVO);
 	}
 
+	@Override
+	public UserVO kakaoLogin(UserVO userVO) {
+		
+		return userDAO.kakaoLogin(userVO);
+	}
+
 }

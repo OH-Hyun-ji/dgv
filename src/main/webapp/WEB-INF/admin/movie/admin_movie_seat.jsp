@@ -39,43 +39,7 @@
 									<div class="admin_seat_line">
 										<form action="#" id="adminTheaterSeatResult">
 											<div class="adminSeatSite">
-												<c:forEach begin="1" end="9" var="i">
-													<c:if test="${i == 1}">
-														<c:set value="A" var="seatColumn"></c:set>
-													</c:if>
-													<c:if test="${i == 2}">
-														<c:set value="B" var="seatColumn"></c:set>
-													</c:if>
-													<c:if test="${i == 3}">
-														<c:set value="C" var="seatColumn"></c:set>
-													</c:if>
-													<c:if test="${i == 4}">
-														<c:set value="D" var="seatColumn"></c:set>
-													</c:if>
-													<c:if test="${i == 5}">
-														<c:set value="E" var="seatColumn"></c:set>
-													</c:if>
-													<c:if test="${i == 6}">
-														<c:set value="F" var="seatColumn"></c:set>
-													</c:if>
-													<c:if test="${i == 7}">
-														<c:set value="G" var="seatColumn"></c:set>
-													</c:if>
-													<c:if test="${i == 8}">
-														<c:set value="H" var="seatColumn"></c:set>
-													</c:if>
-													<c:if test="${i == 9}">
-														<c:set value="I" var="seatColumn"></c:set>
-													</c:if>
-													<c:forEach begin="1" end="15" var="seatRow">
-														<c:if test="${seatRow == 1}">
-															<br>
-														</c:if>
-														<button id="seatNumber" onclick="#" value="true">${seatColumn}${seatRow}</button>
-													</c:forEach>
-													<!-- j foreach close-->
-												</c:forEach>
-												<!-- i foreach close-->
+												
 											</div>
 										</form>
 									</div>
@@ -86,85 +50,15 @@
 									<table id="datatablesSimple">
 										<thead>
 											<tr>
-												<th>번호</th>
-												<th>약관이름</th>
-												<th>>약관 등록일</th>
-												<th></th>
+												<th>No</th>
+												<th>Theater Name</th>
+												<th>Region Name</th>
+												<th>Total Seat</th>
+												<th>Max Row</th>
+												<th>Max Column</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
-											<tr>
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td><button id="delBT">
-														<i class="fas fa-times"></i>
-													</button></td>
-											</tr>
 											<tr>
 												<td>Tiger Nixon</td>
 												<td>System Architect</td>
