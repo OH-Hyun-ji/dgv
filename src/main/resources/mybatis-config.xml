@@ -23,6 +23,8 @@
 			<typeAlias alias="AdminTermVO"   type="com.dgv.web.admin.vo.AdminTermVO"/>
 			<typeAlias alias="AdminCityTheaterVO"   type="com.dgv.web.admin.vo.AdminCityTheaterVO"/>
 			<typeAlias alias="AdminRankVO"   type="com.dgv.web.admin.vo.AdminRankVO"/>
+			<typeAlias alias="AdminTimeVO"   type="com.dgv.web.admin.vo.AdminTimeVO"/>
+			<typeAlias alias="AdminSeatVO"   type="com.dgv.web.admin.vo.AdminSeatVO"/>
 			<typeAlias alias="S3keyVO"   type="com.dgv.web.admin.common.S3KeyVO"/>
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>

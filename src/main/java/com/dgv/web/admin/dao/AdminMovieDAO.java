@@ -16,7 +16,9 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 
 @Repository
@@ -24,6 +26,22 @@ public class AdminMovieDAO {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
+	
+	public List<AdminTimeVO> timeList(int num){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.TimeList", num);
+	}
+	
+	public int insertSeat(AdminSeatVO vo) {
+		return sqlSessionTemplate.insert("AdminMovieDAO.InsertSeat", vo);
+	}
+	
+	public int insertTime(AdminTimeVO vo) {
+		return sqlSessionTemplate.insert("AdminMovieDAO.InsertTime", vo);
+	}
+	
+	public AdminTheaterVO theaterListInfo(int num) {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.theaterListInfo", num);
+	}
 	
 	public int insertGenre(AdminGenreVO vo) {
 		System.out.println("TEST :4");
@@ -115,6 +133,10 @@ public class AdminMovieDAO {
 	public List<AdminTheaterVO> choiceTheaterList(int num){
 		return sqlSessionTemplate.selectList("AdminMovieDAO.TheaterList", num);
 	}
+	
+	public List<AdminTheaterVO> selectTheater(){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.SelectTheater");
+	}
 
 	public int insertCityTheater(AdminCityTheaterVO vo) {
 		return sqlSessionTemplate.insert("AdminMovieDAO.InsertCityTheater",vo);
@@ -135,5 +157,37 @@ public class AdminMovieDAO {
 	public int deleteGenre(AdminGenreVO vo) {
 		return sqlSessionTemplate.delete("AdminGenreDAO.GenreDelete",vo);
 	}
+	public List<AdminMovieVO> movieList(){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.MovieList");
+	}
+	public int updateGroup(AdminGroupVO vo) {
+		return sqlSessionTemplate.update("AdminGroupDAO.UpdateGroup",vo);
+	}
+	public AdminGroupVO groupView(int num) {
+		return sqlSessionTemplate.selectOne("AdminGroupDAO.GroupListInfo",num);
+	}
 	
+	public AdminActorVO actorListInfo(int num) {
+		return sqlSessionTemplate.selectOne("AdminGroupDAO.actorListInfo",num);	
+	}
+	
+	public int updateActor(AdminActorVO vo) {
+		return sqlSessionTemplate.update("AdminGroupDAO.UpdateActor",vo);
+	}
+	public AdminGenreVO genreListInfo(int num) {
+		return sqlSessionTemplate.selectOne("AdminGenreDAO.GenreListInfo", num);
+	}
+	public AdminAgeVO ageListInfo(int num) {
+		return sqlSessionTemplate.selectOne("AdminGenreDAO.AgeListinfo", num);
+		
+	}
+	
+	public int genreUpdate(AdminGenreVO vo) {
+		return sqlSessionTemplate.update("AdminGenreDAO.GenreUpdate",vo);
+		
+	}
+	
+	public int updateAge(AdminAgeVO vo) {
+		return sqlSessionTemplate.update("AdminGenreDAO.AgeUpdate",vo);
+	}
 }

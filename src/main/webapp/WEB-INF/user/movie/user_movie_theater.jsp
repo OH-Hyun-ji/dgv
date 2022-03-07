@@ -5,68 +5,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>DGV Theater</title>
-
-<link rel="stylesheet" media="all" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/user/reset.css">
-<link rel="stylesheet" media="all" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/user/layout.css">
-<link rel="stylesheet" media="all" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css">
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap"
-	rel="stylesheet">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-<script type="text/javascript">
+	<title>DGV Theater</title>
+	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/reset.css">
+	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/layout.css">
+	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css">
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 	
-	$(function(){
-		var test;
-		const cityList = ${cityList};
+	<script type="text/javascript">
+		function thisCityCode(cityCode){
 		
-		const div= $("<div>")
-						.attr("class","area")
-		const ul =$("<ul>")
-		const li =$("<li>")
-				.attr("class","on")
-				
-		const li1 =$("<li>")
-				.attr("class","on")
-				.attr("id","cityChoice")
-				
-		
-		
-		const a =$("<a>")
-				.attr("href","#")
-		_(cityList).forEach(function(n){
-			const ini =$("<a>")
-				.attr("class","cityName")
-				.attr("title",n.city_code)
-				.text(n.city_name)
-			li1.append(ini)	
-		})		
-		
-		
-	
-		
-		li1.on('click',function(){
-			var cityCode =$(this).val()// $(this).children().val();
+	//		var cityCode =$(this).val()// $(this).children().val();
 		test=this	
 			console.log("cityCode :" +cityCode)
 			alert(cityCode)
-			
+			const  ul = $("<ul>")
+			.attr("class","region-list")
+			$(".region-list").empty();
 			$.ajax ({
 				method:"POST",
 				url:"cityViewList.mdo",
@@ -74,13 +35,19 @@
 				dataType:"json",
 				data:JSON.stringify({"city_code":cityCode}),
 				success:function(regionList){
-					//const regionL = JSON.parse(regionList)
-					_(regionList).forEach(function(n){
-						const area =$("<a>")
-								.attr("href","#")
+					const regionL = JSON.parse(regionList)
+					_(regionL).forEach(function(n){
+						const li =$("<li>")
+								.attr("class","regionTitle")
+								.attr("value",n.region_code)
 								.text(n.region_name)
-						li.append(area)	
-						
+							
+						$("#regionList"+cityCode).append(li)	
+					
+						$(".regionTitle").on('click',function(){
+							const regionNum = $(this).val()
+							console.log("지역번호   "+regionNum)
+						})
 					})
 				},
 				error:function(){
@@ -88,20 +55,25 @@
 				}
 				
 		})//  $(".cityName") click close
-	})
+		//$(".regionThis").append(ul)	
 		
-			ul.append(li)
-			div.append(ul)
-			li1.append(div)		
-		$("#city-list").append(li1)
-})
+		}
+	
+	
+	
+		
+	
 
 </script>
 
 <style type="text/css">
-.cityCss {
-	display: flex;
-}
+
+	.cityCss{
+		display: flex;
+	}
+	.regionTitle{
+		color:white;
+  }
 </style>
 </head>
 <body class="block">
@@ -116,12 +88,22 @@
 					<div class="sect-favorite">
 						<h4>
 							<img
-								src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/dgvOften-removebg-preview.png"
-								alt="dgv있는지역 찾기">
+								src= "https://dgvworld.s3.ap-northeast-2.amazonaws.com/dgvOften-removebg-preview.png"
+								style="width: 200px;">
 						</h4>
 					</div>
 					<div class="sect-city">
-						<ul id="city-list"></ul>
+						<ul id="city-list">
+							<c:forEach var="cityList" items="${cityList}">
+								<li class="selected">
+									<a class="city-title" onclick="thisCityCode(${cityList.city_code })">${cityList.city_name }</a>							
+									<div class="regionThis" >
+										<ul class="region-list" id="regionList${cityList.city_code }" ></ul>
+									</div>
+								</li>								
+							
+							</c:forEach>
+						</ul>
 					</div>
 				</div>
 			</div>

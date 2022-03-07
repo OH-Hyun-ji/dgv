@@ -3,13 +3,17 @@ package com.dgv.web.admin.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +26,17 @@ import org.springframework.web.multipart.MultipartFile;
 import com.dgv.web.admin.common.AwsS3;
 import com.dgv.web.admin.config.AWSConfiguration;
 import com.dgv.web.admin.service.AdminMovieService;
+import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
+import com.dgv.web.admin.vo.TimeDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -47,6 +56,36 @@ public class AdminMovieController {
 	@Autowired
 	private FileUploadService fileUploadService;
 	
+	@Autowired
+	private AdminTheaterService adminTheaterService;
+	
+	
+	//상영시간 등록 
+	@PostMapping("/timeInsert.mdo")
+	@ResponseBody
+	public CommonResultDto timeInsert(@RequestBody AdminTimeVO timeVo) {	
+		int num = adminMovieService.insertTime(timeVo);
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
+	//상영관 시간 설정
+	@RequestMapping("adminTime.mdo")
+	public String theaterTime(@RequestParam("theater_code") int num, Model model) {
+		AdminTheaterVO theaterVo = adminMovieService.theaterListInfo(num);
+		List<AdminRegionVO> regionVo = adminTheaterService.selectRegionList();
+		
+		for(AdminRegionVO regionL : regionVo) {
+			if(regionL.getRegion_code()==theaterVo.getRegion_code()) {
+				theaterVo.setRegion_name(regionL.getRegion_name());
+			}
+		}
+		System.out.println("지역 이름 :" + theaterVo.getRegion_name());
+		model.addAttribute("theaterList",theaterVo);
+		return "/movie/admin_time_register";
+	}
 
 	//admin 장르/연령 관리페이지이동
 	@RequestMapping("/adminManageMent.mdo")
@@ -106,10 +145,66 @@ public class AdminMovieController {
 		private final boolean isSuccess;
 	}
 	
+	@RequestMapping("/genreUpdate.mdo")
+	public String updateGenrePage(@RequestParam("movie_genre_code") int num,Model model) {
+		AdminGenreVO genreVo = adminMovieService.genreListInfo(num);
+		model.addAttribute("genreList",genreVo);
+		return "/movie/admin_genre_update";
+	}
+	@PostMapping("/genreUpdate.mdo")
+	@ResponseBody
+	public CommonResultDto  updateGenre(@RequestBody AdminGenreVO vo) {
+		int num = adminMovieService.updateGenre(vo);
+		
+		if(num ==0) {
+			System.out.println("장르 수정 실패");
+			return CommonResultDto.fail();
+		}else {
+			System.out.println("장르 수정 성공");
+		}
+		return CommonResultDto.success();
+	}
+	
 	//admin 연령등록 페이지
 	@RequestMapping("/adminAge.mdo")
 	public String adminAge() {
-		return "/movie/admin_movie_age_register";
+		return "/movie/admin_age_register";
+	}
+	//연령 수정페이지
+	@RequestMapping("/updateAge.mdo")
+	public String updateAge(@RequestParam("movie_age_num") int num,Model model) {
+		AdminAgeVO ageVo = adminMovieService.ageListInfo(num);
+		model.addAttribute("ageList",ageVo);
+		return "/movie/admin_age_update";
+	}
+	
+	@PostMapping("/updateAge.mdo")
+	@ResponseBody
+	public CommonResultDto updateAge(@RequestPart("ageVo") AdminAgeVO ageVo,@RequestPart("imgFile") MultipartFile multipartFile) {
+	
+		final UUID uuid = UUID.randomUUID();
+		final String url = "age/"+uuid.toString()+ageVo.getMovie_age_img();
+		final String path = AWSConfiguration.S3_URL;
+		ageVo.setMovie_age_img(path+url);
+		final int num = adminMovieService.updateAge(ageVo);
+		
+		
+		
+		if(num==0) {
+			return CommonResultDto.fail();
+		}else {
+			InputStream is;
+			try {
+				is = multipartFile.getInputStream();
+				String contentType = multipartFile.getContentType();
+				long contentSize = multipartFile.getSize();
+				awsS3.upload(is, path, contentType, contentSize);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			return CommonResultDto.success();
+		}
 	}
 	
 	//admin 연령등록 후 처리
@@ -165,6 +260,35 @@ public class AdminMovieController {
 			return CommonResultDto.fail();
 		return CommonResultDto.success();
 	}
+	
+	@GetMapping("/groupUpdate.mdo")
+	public String groupView(@RequestParam("movie_group_code") int num ,Model model) {
+		AdminGroupVO groupVO= adminMovieService.groupView(num);
+		model.addAttribute("groupList",groupVO);
+		System.out.println("dedd"+num);
+		return "/movie/admin_group_update";
+	}
+	
+	
+	//그룹 수정
+	@PostMapping("/groupUpdate.mdo")
+	@ResponseBody
+	public CommonResultDto updateGroup(@RequestBody AdminGroupVO vo,Model model,HttpSession session) {
+		System.out.println("post닷");
+		String regId = (String) session.getAttribute("adminID");
+		vo.setReg_id(regId);
+		int num = adminMovieService.updateGroup(vo);
+		if(num==0) {
+			System.out.println("실패");
+			return CommonResultDto.fail();
+		}else {
+			System.out.println("성공");
+			return CommonResultDto.success();
+		}
+	}
+	
+	
+	
 	//그룹 삭제
 	@PostMapping("deleteGroup.mdo")
 	@ResponseBody
@@ -215,6 +339,51 @@ public class AdminMovieController {
 	public String adminActor(AdminGroupVO vo, Model model) {
 		model.addAttribute("groupList",adminMovieService.groupList());
 		return "/movie/admin_movie_actor_register";
+	}
+	
+	@RequestMapping("/actorUpdate.mdo")
+	public String actorUpdate(@RequestParam("movie_actor_code")int num,Model model) {
+		AdminActorVO actorVo = adminMovieService.actorListInfo(num);
+		List<AdminGroupVO> groupVo =adminMovieService.groupList();
+		for(AdminGroupVO group:groupVo ) {
+			if(actorVo.getMovie_group_code()==group.getMovie_group_code()) {
+				actorVo.setMovie_group_name(group.getMovie_group_name());
+			}
+		}
+		model.addAttribute("groupList",groupVo);
+		model.addAttribute("actorList", actorVo);
+		return "/movie/admin_actor_update";
+	}
+	@PostMapping("/actorUpdate.mdo")
+	@ResponseBody
+	public CommonResultDto actorUpdate(@RequestPart("actorVo") AdminActorVO actorVo, @RequestPart("imgFile") MultipartFile imgFile, HttpSession session) {
+	
+		final UUID uuid = UUID.randomUUID();
+		final String url = "parpeople/"+uuid.toString()+actorVo.getMovie_actor_img();
+		final String path = AWSConfiguration.S3_URL;
+		actorVo.setMovie_actor_img(path+url);
+		actorVo.setReg_id((String)session.getAttribute("adminID"));
+		
+		final int num = adminMovieService.updateActor(actorVo);
+		
+		if(num == 0) {
+			return CommonResultDto.fail();
+			
+		}else {
+			try {
+				InputStream is = imgFile.getInputStream();
+				String ContentType = imgFile.getContentType();
+				long contentLength = imgFile.getSize();
+				awsS3.upload(is, path, ContentType, contentLength);
+				
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		return CommonResultDto.success();
+		
 	}
 		
 	@PostMapping("/adminInsertActor.mdo")

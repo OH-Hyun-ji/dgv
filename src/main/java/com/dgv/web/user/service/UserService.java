@@ -27,4 +27,7 @@ public interface UserService {
 
 	// 회원 탈퇴
 	int deleteUser(UserVO userVO);
+	
+	UserVO kakaoLogin(UserVO userVO);
+	
 }

@@ -11,6 +11,111 @@
  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 			  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script type="text/javascript">
+  	function actorUpdate(){
+  		alert("정말로 수정하시겠습니까??")
+  		toastr.options = {
+ 					  "closeButton": true,
+ 					  "debug": false,
+ 					  "newestOnTop": false,
+ 					  "progressBar": true,
+ 					  "positionClass": "toast-top-right",
+ 					  "preventDuplicates": true,
+ 					  "onclick": null,
+ 					  "showDuration": "300",
+ 					  "hideDuration": "1000",
+ 					  "timeOut": "5000000",
+ 					  "extendedTimeOut": "1000",
+ 					  "showEasing": "swing",
+ 					  "hideEasing": "linear",
+ 					  "showMethod": "fadeIn",
+ 					  "hideMethod": "fadeOut"
+ 					}
+  		let actorBirth = $("#actorBirth").val();
+  	
+  		if(!actorBirth.match("-")){
+  			toastr.warning("생일에 '-'을 입력해주세요")
+  			
+  		}else{
+  			
+  			let regId = $("#regId").val();
+    		let actorN = $("#actorName").val();
+    		let actorEn = $("#actorEName").val();
+    		let actorNation = $("#actorNation").val();	
+    		let actorInfo =$("#actorInfo").val();
+    		let actorImgSample = $("#actorImg").val();
+    		let groupCode =$("#groupN").val();
+    		let actorCode =$("#actorCode").val();
+    		const imgFile = $('#actorImg')[0].files[0];
+    		    		
+    		 if(actorImgSample==""){
+    			 toastr.warning("이미지파일을 선택해주세요!!")
+    			 
+    		 }	
+    		console.log("groupCode"+groupCode)
+    		console.log(regId)
+    		console.log(actorN)
+    		console.log("생일 : " +actorBirth)
+    		console.log("이미지 넣기전 : " +actorImgSample)
+    		
+    		const arr = actorImgSample.split('\\');
+    		console.log(arr.length);
+    		for(let i =0;i<arr.length;i++){
+	    		console.log("arr("+i+")"+arr[i]);
+    			
+    		}
+     		let actorImg = arr[arr.length-1];
+     		console.log("??? "+arr[arr.length-1])
+     		console.log(" send img name : "+ actorImg)
+     		var formData = new FormData();
+     		
+//      		formData.append('movie_actor_name',actorN)
+//      		formData.append('movie_actor_ename',actorEn)
+//      		formData.append('movie_actor_birth',actorB)
+//      		formData.append('movie_actor_nation',actorNation)
+//      		formData.append('movie_actor_info',actorInfo)
+//      		formData.append('movie_actor_img',actorImg)
+	      		formData.append('imgFile', imgFile)
+    		
+    		const formJson = {
+    			"movie_actor_name" : actorN,
+    			"movie_actor_ename" :actorEn,
+    			"movie_actor_birth" : actorBirth,
+    			"movie_actor_nation" :actorNation,
+    			"movie_actor_info":actorInfo,
+    			"movie_actor_img":actorImg,
+    			"movie_group_code":groupCode,
+    			"movie_actor_code":actorCode
+    		}    		
+    		
+    		formData.append('actorVo', new Blob([JSON.stringify(formJson)], { type: "application/json" }));
+    		
+    		$.ajax({
+    			method:"POST",
+    			url:"/actorUpdate.mdo",
+    			enctype:"multipart/form-data",
+    			processData: false,
+    			data:formData,
+    			contentType: false,
+    			success:function(result){
+    				if(result.msg=="SUCCESS"){    					
+    				alert("수정성공!!")
+					window.opener.location.reload();
+					window.close();
+    				}else{
+    					alert("수정실패");
+    				}
+    			},
+    			error:function(){
+    				console.log("통신실패 ");
+
+    				
+    			}
+    		});//ajax close
+  		}
+  		
+  	}
+  </script>
     <style>
         .mt-4{
             text-align: center;
@@ -48,108 +153,7 @@
         
 
     </style>
-    <script type="text/javascript">
-    
    
-    	function actorCheck() {
-    		toastr.options = {
- 					  "closeButton": true,
- 					  "debug": false,
- 					  "newestOnTop": false,
- 					//  "progressBar": true,
- 					  "positionClass": "toast-top-right",
- 					  "preventDuplicates": true,
- 					  "onclick": null,
- 					  "showDuration": "300",
- 					  "hideDuration": "1000",
- 					  "timeOut": "5000000",
- 					  "extendedTimeOut": "1000",
- 					  "showEasing": "swing",
- 					  "hideEasing": "linear",
- 					  "showMethod": "fadeIn",
- 					  "hideMethod": "fadeOut"
- 					}
-    		
-    		let regId = $("#regId").val();
-    		let actorN = $("#actorName").val();
-    		let actorEn = $("#actorEName").val();
-    		let actorYY = $("#actorYY").val();
-    		let actorMM = $("#actorMM").val();
-    		let actorDD = $("#actorDD").val();
-    		let actorB = actorYY+""+actorMM+"-"+actorDD;
-    		let actorNation = $("#actorNation").val();	
-    		let actorInfo =$("#actorInfo").val();
-    		let actorImgSample = $("#actorImg").val();
-    		let groupCode =$("#groupN").val();
-    		const imgFile = $('#actorImg')[0].files[0];
-    		    		
-    		 if(actorImgSample==""){
-    			 toastr.warning("이미지파일을 선택해주세요!!")
-    			 
-    		 }	
-    		console.log("groupCode"+groupCode)
-    		console.log(regId)
-    		console.log(actorN)
-    		console.log("생일 : " +actorB)
-    		console.log("이미지 넣기전 : " +actorImgSample)
-    		
-    		const arr = actorImgSample.split('\\');
-    		console.log(arr.length);
-    		for(let i =0;i<arr.length;i++){
-	    		console.log("arr("+i+")"+arr[i]);
-    			
-    		}
-     		let actorImg = arr[arr.length-1];
-     		console.log("??? "+arr[arr.length-1])
-     		console.log(" send img name : "+ actorImg)
-     		var formData = new FormData();
-     		
-//      		formData.append('movie_actor_name',actorN)
-//      		formData.append('movie_actor_ename',actorEn)
-//      		formData.append('movie_actor_birth',actorB)
-//      		formData.append('movie_actor_nation',actorNation)
-//      		formData.append('movie_actor_info',actorInfo)
-//      		formData.append('movie_actor_img',actorImg)
-	      		formData.append('imgFile', imgFile)
-    		
-    		const formJson = {
-    			"movie_actor_name" : actorN,
-    			"movie_actor_ename" :actorEn,
-    			"movie_actor_birth" : actorB,
-    			"movie_actor_nation" :actorNation,
-    			"movie_actor_info":actorInfo,
-    			"movie_actor_img":actorImg,
-    			"movie_group_code":groupCode
-    		}    		
-    		
-    		formData.append('actorVo', new Blob([JSON.stringify(formJson)], { type: "application/json" }));
-    		
-    		$.ajax({
-    			method:"POST",
-    			url:"/adminInsertActor.mdo",
-    			enctype:"multipart/form-data",
-    			processData: false,
-    			data:formData,
-    			contentType: false,
-    			success:function(result){
-    				if(result.msg=="SUCCESS"){    					
-    				alert("등록성공!!")
-					window.opener.location.reload();
-					window.close();
-    				}else{
-    					alert("등록실패");
-    				}
-    			},
-    			error:function(){
-    				console.log("통신실패 ");
-
-    				
-    			}
-    		});//ajax close
-			
-    		
-		}
-    </script>       
 </head>
 <body style="color: aliceblue;">
     <div id="layoutSidenav_content">
@@ -164,21 +168,22 @@
                         </h3>
 					</div>
 					<div class="card-body">
+					
                             <div id="table-container">
-                            	<input type="hidden" id="regId" name="reg_id" value="${adminID}">                            
 								<table class="type02">		
+                            	<input type="hidden" id="actorCode" name="movie_actor_code" value='${actorList.movie_actor_code}'">                            
 									<tr>
 										<th scope="row" style="font-size:18px;">Actor Name</th>
-										<td><input type="text" id="actorName" name="movie_actor_name" style="border-radius: 7px;line-height: 25px;"/></td>
+										<td><input type="text" id="actorName" name="movie_actor_name" value="${actorList.movie_actor_name }" style="border-radius: 7px;line-height: 25px;"/></td>
 									</tr>	
 									<tr>
 										<th scope="row" style="font-size:18px;">Actor Eng Name</th>
-										<td><input type="text" id="actorEName" name="movie_actor_ename" style="border-radius: 7px;line-height: 25px;"/></td>
+										<td><input type="text" id="actorEName" name="movie_actor_ename" value="${actorList.movie_actor_ename }" style="border-radius: 7px;line-height: 25px;"/></td>
 									</tr>	
 									<th scope="row" style="font-size:18px;">Actor Group</th>
 										<td>
-											<select id="groupN" name="movie_group_code" style="border-radius: 7px; width: 22%; height: 27px;">
-												<option class="groupName">그룹</option>
+											<select id="groupN" name="movie_group_code"  style="border-radius: 7px; width: 22%; height: 27px;">
+												<option  class="groupName" value='${actorList.movie_group_code}'>${actorList.movie_group_name}</option>
 												<c:forEach var="groupList" items="${groupList}">
 													<option value="${groupList.movie_group_code }">${groupList.movie_group_name}</option>
 												</c:forEach>
@@ -188,36 +193,16 @@
 									<tr>
 										<th scope="row" style="font-size:18px;">Actor Birth</th>
 										<td>
-											<input type="hidden" id="actorBirth" name="movie_actor_birth" style="border-radius: 7px; height: 27px;width: 20%;"">
-											<select class="actorYear" id="actorYY"  style="border-radius: 7px; width: 22%; height: 27px;">
-												<option class="optionYY" >년</option>
-												<c:forEach var="i" begin="1880" end="2022">
-												<option value="${i}">${i}년</option>
-												</c:forEach>
-											</select>
-											<select class="actorMonth" id="actorMM" style="border-radius: 7px; width: 17%; height: 27px;">
-												<option>월</option>
-												<c:forEach var="i" begin="1" end="12">
-													<c:choose>
-													<c:when test="${i <10 }">
-														<option value="0${i}">0${i}월</option>
-													</c:when>
-													<c:otherwise >
-														<option value="0${i}">${i}월</option>
-													</c:otherwise>
-													</c:choose>
-												</c:forEach>
-											</select>
-											<input type="text" id="actorDD" style="border-radius: 7px;line-height: 22px;width: 16%;" placeholder="  일">
+											<input type="text" id="actorBirth" name="movie_actor_birth" value='${actorList.movie_actor_birth}' style="border-radius: 7px; height: 27px;width: 67%;">
 										</td>				
 									</tr>	
 									<tr>
 										<th scope="row" style="font-size:18px;"">Actor Nation</th>
-										<td><input type="text" id="actorNation" name="movie_actor_nation" style="margin-bottom: 2%;border-radius: 7px;line-height: 25px;"/></td>
+										<td><input type="text" id="actorNation" name="movie_actor_nation" value='${actorList.movie_actor_nation}' style="margin-bottom: 2%;border-radius: 7px;line-height: 25px;"/></td>
 									</tr>	
 									<tr>
 										<th scope="row" style="font-size:18px;"">Actor Info</th>
-										<td><textarea id="actorInfo" name="movie_actor_info" placeholder="참여자 소개" style=" margin-bottom: 3%; border-radius: 7px;line-height: 25px;"></textarea></td>
+										<td><textarea id="actorInfo" name="movie_actor_info" placeholder="참여자 소개"  style=" margin-bottom: 3%; border-radius: 7px;line-height: 25px; overflow-y:scroll; ">${actorList.movie_actor_info}</textarea></td>
 									</tr>	
 									<tr>
 										<th scope="row" style="font-size:18px;"">Actor Img</th>
@@ -227,8 +212,9 @@
 								</table>
                             </div>
                             <div class="bottomBar">
-                                <input type="submit" value="Register" multiple="multiple" onclick="actorCheck()" style="margin-left: 10px;"/>
+                                <input type="button" value="Register"multiple="multiple"   onclick="actorUpdate()" style="margin-left: 10px;"/>
                             </div>
+                           
 					</div>
 				</div>
 				<!-- 여기만 수정해서 사용하세요!! -->

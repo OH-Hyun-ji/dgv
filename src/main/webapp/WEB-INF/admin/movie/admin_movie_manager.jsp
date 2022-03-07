@@ -59,7 +59,12 @@
 						}
 					});//ajax close 		
 				}
-		}	
+		}
+		
+	
+		
+		   
+	
 	</script>
 <style>
 #userLankAdd {
@@ -96,6 +101,13 @@
                             
                                     window.open('/adminGroup.mdo','','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
                                     }
+                             	   function groupUpdate(groupCode){
+                           			
+                                       var popupX =(window.screen.width/2)-(300/2);
+                                       var popupY =(window.screen.height/2)-(500/2);	
+                                       window.open('/groupUpdate.mdo?movie_group_code='+groupCode,'','width=500,height=280,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+                                    
+                             	   }
                                 </script>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -120,7 +132,7 @@
                                             <td>${groupList.movie_group_name}</td>
                                             <td>${groupList.reg_id}</td>
                                             <td>${groupList.reg_date}</td>
-                                            <td><button id="delBtGroup"  onclick="deleteAction('${groupList.movie_group_code}')"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button></td>
+                                            <td><button id="delBtGroup"  onclick="deleteAction('${groupList.movie_group_code}')"><i class="fas fa-trash-alt"></i></button> <button id="updateGroup" onclick="groupUpdate('${groupList.movie_group_code}')"><i class="fas fa-pencil-alt"></i></button></td>
                                         </tr>
                                         </c:forEach>                            
                                     </tbody>
@@ -134,6 +146,12 @@
                             
                                     window.open('/adminActor.mdo','','width=500,height=500,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
                                     }
+                                    function actorUpdate(actorCode){
+                                        var popupX =(window.screen.width/2)-(200/2);
+                                        var popupY =(window.screen.height/2)-(300/2);
+                                
+                                        window.open('/actorUpdate.mdo?movie_actor_code='+actorCode,'','width=500,height=500,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
+                                        }
                                 </script>
                             <div class="card-body-one">
                                 <div
@@ -165,7 +183,7 @@
                                                     <td>${actorList.movie_actor_nation}</td>                                          
                                                     <td>${actorList.reg_id}</td>
                                                     <td>${actorList.reg_date}</td>
-                                                    <td><button id="delBtActor"  onclick="deleteActor('${actorList.movie_actor_code}')"><i class="fas fa-trash-alt"></i></button><button ><i class="fas fa-pencil-alt"></i></button></td>
+                                                    <td><button id="delBtActor"  onclick="deleteActor('${actorList.movie_actor_code}')"><i class="fas fa-trash-alt"></i></button><button onclick="actorUpdate('${actorList.movie_actor_code}')" ><i class="fas fa-pencil-alt"></i></button></td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>

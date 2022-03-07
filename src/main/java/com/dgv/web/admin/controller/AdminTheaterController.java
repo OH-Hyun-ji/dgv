@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +23,15 @@ import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminActorVO;
+import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityTheaterVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTotalTheaterDto;
 import com.dgv.web.admin.vo.BuilderTest;
@@ -50,7 +54,27 @@ public class AdminTheaterController {
 	private FileUploadService fileUploadService;
 	
 	@RequestMapping("/movieList.mdo")
-	public String movieList() {
+	public String movieList(AdminMovieVO vo,Model model,AdminGenreVO genreVo) {
+		List<AdminGenreVO> genreList =adminMovieService.genreList();
+		List<AdminMovieVO> movieList =adminMovieService.movieList();
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		for(AdminMovieVO movieInfo : movieList) {
+			for(AdminGenreVO genreInfo : genreList) {
+				if(movieInfo.getMovie_genre_code()==genreInfo.getMovie_genre_code()) {
+					movieInfo.setMovie_genre(genreInfo.getMovie_genre_name());
+				}
+			}
+		}
+		for(AdminMovieVO movieInfo : movieList) {
+			for(AdminAgeVO ageInfo : ageList) {
+				if(movieInfo.getMovie_age_code()==ageInfo.getMovie_age_num()) {
+					movieInfo.setAge_img(ageInfo.getMovie_age_img());
+				}
+			}
+		}
+		model.addAttribute("movieList",movieList);
+		model.addAttribute("movieListCount",adminMovieService.movieList().size());
+		
 		return "/movie/admin_movie_list";
 	}
 	//영화등록 
@@ -167,12 +191,27 @@ public class AdminTheaterController {
 	
 	//admin극장관리로 이동 
 	@RequestMapping("/adminTheater.mdo")
-	public String movieTheater(AdminCityVO vo, Model model,AdminRegionVO regionVo) {
-		System.out.println("TEST : 1");
+	public String movieTheater(AdminCityVO vo, Model model,AdminRegionVO regionVo ,AdminTheaterVO theaterVo) {
+		System.out.println("TEST 1 : ");
+		List<AdminTheaterVO> TheaterList = adminMovieService.selectTheater();
+		List<AdminRegionVO>  RegionList =adminTheaterService.selectRegionList();
+		for(AdminTheaterVO tvo : TheaterList) {
+			for(AdminRegionVO rvo: RegionList) {
+				if(tvo.getRegion_code()==rvo.getRegion_code()) {
+					System.out.println("tvo region_code: "+tvo.getRegion_code() );
+					System.out.println("rvo region_code: "+rvo.getRegion_code() );
+					tvo.setRegion_name(rvo.getRegion_name());
+				}
+			}
+		}
+	
+		
+		
 		model.addAttribute("adminCity", adminTheaterService.selectCityList());
 		// 시티에 해당하는 극장 query
 		model.addAttribute("adminRegion", adminTheaterService.selectRegionList());
-		
+		model.addAttribute("adminTheater",TheaterList);
+		model.addAttribute("adminTheaterCount",adminMovieService.selectTheater().size());
 		final List<AdminCityVO> testList =  adminTheaterService.adminTotalList();
 		
 		final Gson gson = new Gson();
@@ -186,13 +225,20 @@ public class AdminTheaterController {
 	}
 	@PostMapping("/insertTheater.mdo")
 	@ResponseBody
-	public CommonResultDto insertTheater(@RequestBody AdminTheaterVO vo,AdminRegionVO regionVo) {
+	public CommonResultDto insertTheater(@RequestBody AdminTheaterVO vo,AdminRegionVO regionVo,AdminSeatVO seatVo) {
 		//지역이름을 지역코드로 불러오고 
 		AdminRegionVO regionCode= adminMovieService.regionList(vo.getRegion_name());
 		System.out.println("지역코드 : " +regionCode.getRegion_code());
 		//다시 코드 넣어주기
 		vo.setRegion_code(regionCode.getRegion_code());
 		int result = adminMovieService.insertTheater(vo);
+		
+		//좌석 활성화 insert
+		seatVo.setRegion_code(vo.getRegion_code());
+		seatVo.setTheater_code(vo.getTheater_code());
+		seatVo.setSeat_status(vo.getSeat_status());
+		int num = adminMovieService.insertSeat(seatVo);
+		result += num;
 		if(result !=0 ) {
 			return CommonResultDto.success();
 		}else {			

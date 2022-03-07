@@ -15,7 +15,9 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 
 import lombok.RequiredArgsConstructor;
@@ -181,6 +183,91 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		
 		return adminMovieDAO.deleteGenre(vo) ;
 	}
+
+	@Override
+	public List<AdminTheaterVO> selectTheater() {
+		
+		return adminMovieDAO.selectTheater();
+	}
+
+	@Override
+	public List<AdminMovieVO> movieList() {
+		
+		return adminMovieDAO.movieList();
+	}
+
+	@Override
+	public int updateGroup(AdminGroupVO vo) {
+		
+		return adminMovieDAO.updateGroup(vo);
+	}
+
+	@Override
+	public AdminGroupVO groupView(int num) {
+		
+		return adminMovieDAO.groupView(num);
+	}
+
+	@Override
+	public AdminActorVO actorListInfo(int num) {
+		
+		return adminMovieDAO.actorListInfo(num);
+	}
+
+	@Override
+	public int updateActor(AdminActorVO vo) {
+	
+		return adminMovieDAO.updateActor(vo);
+	}
+
+	@Override
+	public AdminGenreVO genreListInfo(int num) {
+		
+		return adminMovieDAO.genreListInfo(num);
+	}
+
+	@Override
+	public AdminAgeVO ageListInfo(int num) {
+		
+		return adminMovieDAO.ageListInfo(num);
+	}
+
+	@Override
+	public int updateGenre(AdminGenreVO vo) {
+	
+		return adminMovieDAO.genreUpdate(vo);
+	}
+
+	@Override
+	public int updateAge(AdminAgeVO vo) {
+	
+		return adminMovieDAO.updateAge(vo);
+	}
+
+	@Override
+	public AdminTheaterVO theaterListInfo(int num) {
+		
+		return adminMovieDAO.theaterListInfo(num);
+	}
+
+	@Override
+	public int insertTime(AdminTimeVO vo) {
+		
+		return adminMovieDAO.insertTime(vo);
+	}
+
+	@Override
+	public int insertSeat(AdminSeatVO vo) {
+		
+		return adminMovieDAO.insertSeat(vo);
+	}
+
+	@Override
+	public List<AdminTimeVO> timeList(int num) {
+	
+		return adminMovieDAO.timeList(num);
+	}
+
 
 	
 
