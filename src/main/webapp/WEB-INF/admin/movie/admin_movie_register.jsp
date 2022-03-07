@@ -305,10 +305,6 @@
 					}
 				});
 				
-				
-				
-				
-				D
 				const movieVo = {
 						"movie_title":movieTitle,
 						"movie_title_en":movieTitleEn,
@@ -323,6 +319,7 @@
 						"reg_id": regId
 				}
 				test = parList;
+				const formData = new FormData()
 				formData.append("imgFile",imgFile);
 				formData.append("theaterInfoList",new Blob([JSON.stringify(theaterInfoList)],{type:"application/json"}));
 				formData.append("parList", new Blob([JSON.stringify(parList)], {type:"application/json"}));

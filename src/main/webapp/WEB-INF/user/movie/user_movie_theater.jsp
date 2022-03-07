@@ -44,7 +44,7 @@
 								.attr("value",n.region_code)
 								.text(n.region_name)
 							
-						$("#regionList"+cityCode).append(li)	
+						$(".region-list").append(li)	
 					
 						$(".regionTitle").on('click',function(){
 							const regionNum = $(this).val()
@@ -95,14 +95,15 @@
 					<div class="sect-city">
 						<ul id="city-list">
 							<c:forEach var="cityList" items="${cityList}">
+							<!--  <a class="city-title">${cityList.city_name }</a> -->
 								<li class="selected">
 									<a class="city-title" onclick="thisCityCode(${cityList.city_code })">${cityList.city_name }</a>							
-									<div class="regionThis" >
+							<!-- 		<div class="regionThis" >
 										<ul class="region-list" id="regionList${cityList.city_code }" ></ul>
-									</div>
-								</li>								
-							
+									</div> -->
+								</li>						
 							</c:forEach>
+								<li class="region-list" style="width: 861px;"></li>
 						</ul>
 					</div>
 				</div>
