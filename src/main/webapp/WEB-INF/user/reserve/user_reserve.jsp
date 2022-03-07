@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<style type="text/css">
 		.onBtn{
-			background-color: rgb(42 45 41 / 54%);
+			background-color: #9e9d9ba1;
   			color: white;
   			border-radius: 5px;
 		}
@@ -28,6 +28,7 @@
 		}
 		button.regionBtn {
     		line-height: 36px;
+    		
     		z-index: 10;
 		}
 		button.regionBtn:hover {
@@ -244,11 +245,12 @@
 	$(function(){
 		$(".movieTitleBtn").on('click',function(){
 			
-			if($(".movieTitleBtn").hasClass("onBtn")){
-				$(".movieTitleBtn").removeClass("onBtn")
-			}else{
-				$(".movieTitleBtn").addClass("onBtn")
-			}
+			$(".movieTitleBtn").css("background-color","#9e9d9ba1")
+// 			if($(".movieTitleBtn").hasClass("onBtn")){
+// 				$(".movieTitleBtn").removeClass("onBtn")
+// 			}else{
+// 				$(".movieTitleBtn").addClass("onBtn")
+// 			}
 			console.log("sksk"+$(this).val())
 			//$("#hiddenTitle").val()
 		})
@@ -262,7 +264,7 @@
 // 		})
 		$(".regionBtn").on('click',function(){
 			alert("¿????3333?")
-				$(".regionBtn").css("background-color","red")
+					$(".movieTitleBtn").css("background-color","#9e9d9ba1")
 // 			if($('.regionBtn').hasClass("onBtn")){
 // 				$(".regionBtn").removeClass("onBtn")
 // 			}else{
@@ -274,6 +276,11 @@
 		alert("movie code :" +n)
 		$("#hiddenTitle").val(n)
 	}
+	
+	
+	function init(){
+		$(".selected").css("background-color","")
+	}
 	function independence(n){
 		alert("Ddd")
 // 		if($("#selectBtn"+n).hasClass(".onBtn")){
@@ -281,16 +288,15 @@
 			
 // 		}else{
 // 			$("#selectBtn"+n).addClass(".onBtn")
-// 		}
+// 		}		
 		$("#selectBtn"+n).on('click',function(){
-			$("#selectBtn"+n).css("background-color","red")
+			$("#selectBtn"+n).css("background-color","#9e9d9ba1")
 		})
 	}
 
-
-	
 	function choiceCity(cityCode){
 	//	alert(cityCode)
+	init()
 	independence(cityCode)
 	$("#hiddenCity").val(cityCode)		
 // 	const li =$("<li>")
@@ -315,6 +321,8 @@
 					
 					$(".regionBtn").on('click',function(){
 						console.log($(this).val())
+						$(".regionBtn").css("background-color","")
+						$(this).css("background-color","#9e9d9ba1")
 						$("#hiddenRegion").val($(this).val())
 						const regionClick = $(this).val()
 						$("#timeChoice").empty();
