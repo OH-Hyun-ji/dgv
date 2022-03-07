@@ -144,7 +144,7 @@
 				str_html = str_html + '<br>';
  				for(let j=1;j<=(parseInt(seatCol));j++){
  					
- 					var seat_btn = '<input type="button" value={}>';			
+ 					var seat_btn = '<input type="button" class="seat-status" value={}>';			
  					var a1 = String.fromCharCode(i);
  					console.log("total =" +a1+j);
  		            seat_btn = seat_btn.replace('{}', a1+j);
@@ -152,8 +152,32 @@
 			
  				}
  				str_html = str_html + '<br>';
- 			}	
+ 			}
+ 			
  			$('.adminSeatSite').html(str_html);	
+ 			const clickSeat = new Array();
+ 	
+ 			$(".seat-status").on('click',function(){
+ 				alert($(this).val())
+ 				
+ 				
+ 				
+ 				if($(this).hasClass("onBtn")){
+ 					$(this).removeClass("onBtn")
+ 					for(let i =0;i<clickSeat.length;i++){
+ 						if(clickSeat[i]==$(this).val()){
+ 							clickSeat.splice(i,1)
+ 						}
+ 					}
+ 					
+ 				}else{
+ 					$(this).addClass("onBtn")
+	 				clickSeat.push($(this).val())
+ 				}
+ 				console.log("클릭한 좌석 "+clickSeat)
+ 				$("#seatStatus").val(clickSeat)
+ 				
+ 			})
 	}
 	
 	function registerAll(){
@@ -164,6 +188,7 @@
 		const city = $("#cityChoice").val();
 		const region =$("#regionChoice").val();
 		const seatCount=maxR*maxC
+		const seatStatus =$("#seatStatus").val();
 		if(city ==""){
 			toastr.warning("도시를 선택해주세요")
 		}
@@ -178,7 +203,8 @@
 			"theater_name" :theaterN,
 			"theater_max_row" : maxR,
 			"theater_max_column" :maxC,
-			"theater_seat_count":seatCount
+			"theater_seat_count":seatCount,
+			"seat_status":seatStatus
 		}
 		$.ajax ({
 			method:"POST",
@@ -206,9 +232,14 @@
 		var popupX =(window.screen.width/2)-(200/2);
         var popupY =(window.screen.height/2)-(300/2);
 
-        window.open('/adminTime.mdo?theater_code='+theaterCode,'','width=500,height=280');
+        window.open('/adminTime.mdo?theater_code='+theaterCode,'','width=500,height=400');
 	}
-	</script>	
+	</script>
+	<style type="text/css">
+		.onBtn{
+			background-color: #00000099;
+		}
+	</style>	
 </head>
 <body class="sb-nav-fixed">
 	<div id="layoutSidenav">
@@ -265,14 +296,18 @@
 						</div>-->
 							<button id="registerCity"  style="background: linear-gradient(#f3e057 -32%, #ffc800f0);color: slategray;" onclick="registerAll()">Register</button>
 						</div>
-						<div class="seat_count_total" style="display: inline-flex;margin-top: 2%;height: 37px; margin-bottom: 3%;">
+						<div class="seat_count_total" style="display: inline-flex;margin-top: 2%;height: 37px; margin-bottom: 1%;">
 							<label class="btn btn-danger max_title" style="margin-top: 0%;margin-left: 1%;">상영관 이름 : </label>
 							<input id="theaterName" name="theater_name" type="text"  placeholder="상영관 입력">
 							<label class="max_title btn btn-danger" style="margin-top: 0%;">최대 열수 : </label>
 							<input id="maxRow" name="theater_max_row" type="text" placeholder="열 입력">
 							<label class="max_title btn btn-danger" style="margin-top: 0%;">최대 행수 : </label>
 							<input id="maxColumn" name="theater_max_column" type="text" placeholder="행 입력">
-							<button class="theater_seat_making btn btn-danger" style="margin: 0;background: linear-gradient(#f3e057 -32%, #ffc800f0);color: slategray;" onclick="createSeat()">Create</button>
+							<button class="theater_seat_making btn btn-danger" style="margin: 0;width: 132px;background: linear-gradient(#f3e057 -32%, #ffc800f0);color: slategray;" onclick="createSeat()">Create</button>
+						</div>
+						<div style="display: flex;">
+							<label id="seatTitle" class="btn btn-danger " style="margin-top: 0%;margin-left: 1%; width: 160px;margin-right: 1%;">비활성화 좌석 => </label>
+							<input id="seatStatus" name="theater_name" type="text" style="width: 1000px;border: none;" readonly="readonly" >
 						</div>
 						</div>
 					

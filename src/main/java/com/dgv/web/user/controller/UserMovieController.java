@@ -52,9 +52,9 @@ public class UserMovieController {
 		Gson gson = new Gson();
 		final List<AdminCityVO> cityL = userBoardService.cityTheater();
 		
-		final String cityList = gson.toJson(cityL);
+	//	final String cityList = gson.toJson(cityL);
 		
-		model.addAttribute("cityList",cityList);
+		model.addAttribute("cityList",cityL);
 		return "/movie/user_movie_theater";
 	}
 	

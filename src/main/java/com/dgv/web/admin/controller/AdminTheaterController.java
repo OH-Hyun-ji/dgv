@@ -31,6 +31,7 @@ import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTotalTheaterDto;
 import com.dgv.web.admin.vo.BuilderTest;
@@ -224,13 +225,20 @@ public class AdminTheaterController {
 	}
 	@PostMapping("/insertTheater.mdo")
 	@ResponseBody
-	public CommonResultDto insertTheater(@RequestBody AdminTheaterVO vo,AdminRegionVO regionVo) {
+	public CommonResultDto insertTheater(@RequestBody AdminTheaterVO vo,AdminRegionVO regionVo,AdminSeatVO seatVo) {
 		//지역이름을 지역코드로 불러오고 
 		AdminRegionVO regionCode= adminMovieService.regionList(vo.getRegion_name());
 		System.out.println("지역코드 : " +regionCode.getRegion_code());
 		//다시 코드 넣어주기
 		vo.setRegion_code(regionCode.getRegion_code());
 		int result = adminMovieService.insertTheater(vo);
+		
+		//좌석 활성화 insert
+		seatVo.setRegion_code(vo.getRegion_code());
+		seatVo.setTheater_code(vo.getTheater_code());
+		seatVo.setSeat_status(vo.getSeat_status());
+		int num = adminMovieService.insertSeat(seatVo);
+		result += num;
 		if(result !=0 ) {
 			return CommonResultDto.success();
 		}else {			

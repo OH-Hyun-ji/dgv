@@ -26,12 +26,17 @@ import org.springframework.web.multipart.MultipartFile;
 import com.dgv.web.admin.common.AwsS3;
 import com.dgv.web.admin.config.AWSConfiguration;
 import com.dgv.web.admin.service.AdminMovieService;
+import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
+import com.dgv.web.admin.vo.TimeDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -51,10 +56,34 @@ public class AdminMovieController {
 	@Autowired
 	private FileUploadService fileUploadService;
 	
+	@Autowired
+	private AdminTheaterService adminTheaterService;
+	
+	
+	//상영시간 등록 
+	@PostMapping("/timeInsert.mdo")
+	@ResponseBody
+	public CommonResultDto timeInsert(@RequestBody AdminTimeVO timeVo) {	
+		int num = adminMovieService.insertTime(timeVo);
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
 	
 	//상영관 시간 설정
 	@RequestMapping("adminTime.mdo")
-	public String theaterTime(@RequestParam("theater_code") int num) {
+	public String theaterTime(@RequestParam("theater_code") int num, Model model) {
+		AdminTheaterVO theaterVo = adminMovieService.theaterListInfo(num);
+		List<AdminRegionVO> regionVo = adminTheaterService.selectRegionList();
+		
+		for(AdminRegionVO regionL : regionVo) {
+			if(regionL.getRegion_code()==theaterVo.getRegion_code()) {
+				theaterVo.setRegion_name(regionL.getRegion_name());
+			}
+		}
+		System.out.println("지역 이름 :" + theaterVo.getRegion_name());
+		model.addAttribute("theaterList",theaterVo);
 		return "/movie/admin_time_register";
 	}
 

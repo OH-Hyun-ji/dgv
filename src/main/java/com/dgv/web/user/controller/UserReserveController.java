@@ -1,5 +1,6 @@
 package com.dgv.web.user.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.google.gson.Gson;
 
@@ -45,6 +48,30 @@ public class UserReserveController {
 		model.addAttribute("cityList",adminTheaterService.selectCityList());
 		return "/reserve/user_reserve";
 	}
+	@PostMapping("/theaterTimeList.do")
+	@ResponseBody
+	public String theaterTimeList(@RequestBody AdminTimeVO vo,AdminTheaterVO theaterVo) {
+		String[] time = null;
+		List<AdminTimeVO> timeList= adminMovieService.timeList(vo.getRegion_code());
+		for(AdminTimeVO timeL :timeList) {
+			time = (timeL.getMovie_time_start()).split("/");
+			System.out.println("배열 나누고 난후 "+time.toString());
+			System.out.println(time[0]);
+			System.out.println(time[1]);
+		}
+		System.out.println("이건 나와서  :" + time);
+		List<String> time_list = new ArrayList<String>();
+		
+		time_list.add(time[0]);
+		
+		
+		Gson gson = new Gson();
+		String timeTheaterList = gson.toJson(time);
+		return timeTheaterList;
+		
+		
+	}
+	
 	@PostMapping("/regionList.do")
 	@ResponseBody
 	public String regionListInfo(@RequestBody AdminRegionVO vo) {

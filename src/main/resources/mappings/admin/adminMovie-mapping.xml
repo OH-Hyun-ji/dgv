@@ -39,13 +39,17 @@
 	</resultMap>
 <!--close 참여자테이블 매핑   -->
 	
-	<insert id="InsertTheater" parameterType="AdminTheaterVO">
+	<insert id="InsertTheater" useGeneratedKeys="true" keyProperty="theater_code"  parameterType="AdminTheaterVO">
 		INSERT INTO movie_theater(theater_code,theater_name,theater_seat_count,region_code,theater_max_row,theater_max_column)
 		VALUES(DEFAULT,#{theater_name},#{theater_seat_count},#{region_code},#{theater_max_row},#{theater_max_column})
 	</insert>
 	<select id="SelectTheater" resultMap="AdminTheaterVO">
 		SELECT * FROM movie_theater
 	</select>
+	<select id="theaterListInfo" resultType="AdminTheaterVO" parameterType="int">
+		SELECT * FROM movie_theater WHERE theater_code=#{theater_code}
+	</select>
+	
 	<select id="regionList" resultType="AdminRegionVO">
 		SELECT * FROM dgv_region_info WHERE region_name =#{region_name}
 	</select>
@@ -70,6 +74,17 @@
 		VALUES(DEFAULT,#{movie_num},#{city_code},#{region_code},#{theater_code})
 	</insert>
 
+	<insert id="InsertTime" parameterType="AdminTimeVO">
+		INSERT INTO movie_time(movie_time_code,region_code,theather_code,movie_time_start)
+		VALUES(DEFAULT,#{region_code},#{theather_code},#{movie_time_start})
+	</insert>
+	<insert id="InsertSeat" parameterType="AdminSeatVO">
+		INSERT INTO movie_seat(seat_code,region_code,seat_status,theater_code,seat_reservation)
+		VALUES(DEFAULT,#{region_code},#{seat_status},#{theater_code},#{seat_reservation})
+	</insert>
+	<select id="TimeList" resultType="AdminTimeVO">
+		SELECT * FROM movie_time WHERE region_code =#{region_code}		
+	</select>
 	
 	
 </mapper>

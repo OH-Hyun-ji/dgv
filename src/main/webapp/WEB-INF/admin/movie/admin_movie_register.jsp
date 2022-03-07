@@ -194,7 +194,6 @@
 							contentType:"application/json",
 							dataType:"json",
 							data:JSON.stringify({"movie_group_code": movieJoinGroup}),
-
 							success:function(parList){		
 								const arr1 = JSON.parse(parList)
 								_(arr1).forEach(function(n){
@@ -309,7 +308,7 @@
 				
 				
 				
-				const formData = new FormData();
+				D
 				const movieVo = {
 						"movie_title":movieTitle,
 						"movie_title_en":movieTitleEn,

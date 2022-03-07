@@ -16,7 +16,9 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 
 @Repository
@@ -24,6 +26,22 @@ public class AdminMovieDAO {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
+	
+	public List<AdminTimeVO> timeList(int num){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.TimeList", num);
+	}
+	
+	public int insertSeat(AdminSeatVO vo) {
+		return sqlSessionTemplate.insert("AdminMovieDAO.InsertSeat", vo);
+	}
+	
+	public int insertTime(AdminTimeVO vo) {
+		return sqlSessionTemplate.insert("AdminMovieDAO.InsertTime", vo);
+	}
+	
+	public AdminTheaterVO theaterListInfo(int num) {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.theaterListInfo", num);
+	}
 	
 	public int insertGenre(AdminGenreVO vo) {
 		System.out.println("TEST :4");
