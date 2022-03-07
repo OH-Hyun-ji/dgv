@@ -13,9 +13,41 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-	<script type="text/javascript">
-		
-	</script>
+	<style type="text/css">
+		.onBtn{
+			background-color: rgb(42 45 41 / 54%);
+  			color: white;
+  			border-radius: 5px;
+		}
+		li.cityName {
+  			display: inline-grid;
+		}
+		li.selected:hover {
+  			background-color: gray;
+			color:white;
+		}
+		button.regionBtn {
+    		line-height: 36px;
+    		z-index: 10;
+		}
+		button.regionBtn:hover {
+			background-color: gray;
+			color:white;
+    		
+		}
+		button.timeList {
+		    border: 1px solid #80808075;
+		    width: 66px;
+		    height: 30px;
+		    margin-left: 2%;
+		    border-radius: 3px;
+		    font-weight: bolder;
+		}
+		button.timeList:hover {
+			background-color: gray;
+			color:white;
+		}
+	</style>
 </head>
 <body class="block" >
 <jsp:include page="../default/user_header.jsp"></jsp:include>
@@ -91,13 +123,13 @@
                                         <ul class="content scroll-y" onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;padding: 0px;">
                                            <c:forEach var="movieList" items="${movieList}" varStatus="status">
                                             <li class="rating-15" data-index="${status.index}" >
-                                                <a href="#" onclick="return false;" title="${movieList.movie_title }">
+                                                <button href="#" onclick="movieCode(${movieList.movie_num })" title="${movieList.movie_title }"  value="${movieList.movie_num }">
                                                 	<div class="movie-info" style="display: flex;">
 	                                                    <span class="age-icon">&nbsp;<img src="${movieList.age_img}" style="height: 33px; box-sizing: border-box; padding-top: 11%;"></span>
-	                                                    <span class="title-text" style="box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
+	                                                    <span class="movieTitleBtn" class="title-text" style="background-color: #f2f0e5;box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
                                                     </div>
                                                     <span class="sreader"></span>
-                                                </a>
+                                                </button>
                                             </li>
                                             </c:forEach>
                                         </ul>
@@ -129,12 +161,12 @@
                                         <div class="theater-area-list" id="theater_area_list" style="font-size: 13px;height: 388px;text-align-last: center;width: 89px;">
                                             <ul style="padding-left: 0px;">
                                            		 <c:forEach var="cityList" items="${cityList}" varStatus="status">
-                                              		  <li class="selected" >
-	                                                    <a href="#" onclick="choiceCity(${cityList.city_code})">
-	                                                        <span class="name">${cityList.city_name}</span>
+                                              		  <li class="selected" id="selectBtn${cityList.city_code}"  >
+	                                                    <a href="#" class="cityNameBtn"  onclick="choiceCity(${cityList.city_code})">
+	                                                        <span class="name" >${cityList.city_name}</span>
 	                                                    </a>
-	                                                    <div class="">
-	                                                        <ul class="region-list"></ul>                                                       
+	                                                    <div class="" style="z-index: 1;height: 0px;">
+	                                                        <ul class="region-list" id="btn${cityList.city_code}" style="display: grid;"></ul>                                                       
 	                                                    </div>
                                                		  </li>
                                                 </c:forEach>
@@ -173,11 +205,18 @@
                             <div class="col-body" style="height: 560px;">
                                 <!-- 시간선택 -->
                                 <div class="placeholder hidden">영화, 극장, 날짜를 선택해주세요.</div>
+               					<input type="text" id="hiddenTitle">
+               					<input type="text" id="hiddenCity">
+               					<input type="text" id="hiddenRegion">
+               					<input type="text" id="hiddenDate">
+               					<input type="text" id="hiddenTheater">
+               					<input type="text" id="hiddenTime">
+               					
                                 <div class="time-list nano has-scrollbar">
                                     <div class="content scroll-y" tabindex="-1" style="right: -17px;">
                                         <div class="theater" screen_cd="001" movie_cd="20024619" style="border: none;"><span class="title"><span
                                                     class="name">2D</span><span class="floor">1관 5층</span><span class="seatcount">(총130석)</span></span>
-                                            <ul>
+                                            <ul id="timeChoice">
                                                 <li data-index="0" data-remain_seat="130" play_start_tm="1400" screen_cd="001" movie_cd="20024619"
                                                     play_num="2"><a class="button" href="#" onclick="screenTimeClickListener(event);return false;"
                                                         title=""><span class="time"><span>14:00</span></span><span class="count">60석</span>
@@ -202,10 +241,60 @@
     </div>
     <jsp:include page="../default/user_footer.jsp"></jsp:include>
 	<script>
+	$(function(){
+		$(".movieTitleBtn").on('click',function(){
+			
+			if($(".movieTitleBtn").hasClass("onBtn")){
+				$(".movieTitleBtn").removeClass("onBtn")
+			}else{
+				$(".movieTitleBtn").addClass("onBtn")
+			}
+			console.log("sksk"+$(this).val())
+			//$("#hiddenTitle").val()
+		})
+// 		$(".cityNameBtn").on('click',function(){
+// 			alert("¿?????")
+// 			if($(".cityNameBtn").hasClass("onBtn")){
+// 				$(".cityNameBtn").removeClass("onBtn")
+// 			}else{
+// 				$(".cityNameBtn").addClass("onBtn")
+// 			}
+// 		})
+		$(".regionBtn").on('click',function(){
+			alert("¿????3333?")
+				$(".regionBtn").css("background-color","red")
+// 			if($('.regionBtn').hasClass("onBtn")){
+// 				$(".regionBtn").removeClass("onBtn")
+// 			}else{
+// 				$(".regionBtn").addClass("onBtn")
+// 			}
+		})
+	})
+	function movieCode(n){
+		alert("movie code :" +n)
+		$("#hiddenTitle").val(n)
+	}
+	function independence(n){
+		alert("Ddd")
+// 		if($("#selectBtn"+n).hasClass(".onBtn")){
+// 			$("#selectBtn"+n).removeClass(".onBtn")
+			
+// 		}else{
+// 			$("#selectBtn"+n).addClass(".onBtn")
+// 		}
+		$("#selectBtn"+n).on('click',function(){
+			$("#selectBtn"+n).css("background-color","red")
+		})
+	}
+
+
+	
 	function choiceCity(cityCode){
-		alert(cityCode)
-		const li =$("<li>")
-				.attr("class","cityName")
+	//	alert(cityCode)
+	independence(cityCode)
+	$("#hiddenCity").val(cityCode)		
+// 	const li =$("<li>")
+//  		.attr("class","cityName")
 		$(".region-list").empty();
 		$.ajax({
 			method:"POST",
@@ -215,18 +304,55 @@
 			data:JSON.stringify({"city_code":cityCode}),
 			success:function(regionListInfo){
 				const regionList =JSON.parse(regionListInfo)
-				
 				_(regionList).forEach(function(n){
-					const li =$("<li>")
-					.attr("class","regionChoice")
-					.attr("title",n.region_code)
+					const button =$("<button>")
+					.attr("class","regionBtn")
+				//	.attr("onclick","choiceRegion()")
+					.attr("value",n.region_code)
 					.text(n.region_name)	
 					console.log(n.region_name)
-					$(".region-list").append(li)
+					$("#btn"+cityCode).append(button)
+					
+					$(".regionBtn").on('click',function(){
+						console.log($(this).val())
+						$("#hiddenRegion").val($(this).val())
+						const regionClick = $(this).val()
+						$("#timeChoice").empty();
+						$.ajax({
+							method:"POST",
+							url:"/theaterTimeList.do",
+							contentType:"application/json",
+							dataType:"json",
+							data:JSON.stringify({"region_code":regionClick}),
+							success:function(TimeListInfo){
+								const TimeList = JSON.parse(TimeListInfo)
+								_(TimeList).forEach(function(i){	
+								
+								console.log("time = "+ i)
+									const button1 =$("<button>")
+												.attr("class","timeList")
+												.attr("value",i)
+												.text(i)
+												$("#timeChoice").append(button1)
+												
+												$(".timeList").on('click',function(){
+													$("#hiddenTime").val($(this).val())
+												})
+								})
+							},
+							error:function(e){
+								console.log("통신실패" + e)
+							}
+						})	
+					})
 				})
 				
+			},
+			error:function(){
+				console.log("통신실패")
 			}
 		})
+		//$(".region-list").append(li)
 				
 	}
 	
@@ -241,6 +367,7 @@
              
              for (i = date.getDate(); i <= lastDay.getDate(); i++) {                          
                    const button = document.createElement("button");
+               
                    const spanWeekOfDay = document.createElement("span");
                    const spanDay = document.createElement("span");
                    
@@ -275,13 +402,18 @@
  
                     function dayClickEvent(button) {
                           button.addEventListener("click", function() {
+                        	  console.log("날짜 : "+$(this).text())
+                        		$("#hiddenDate").val($(this).text())
+                        	  
                           const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
                           movieDateWrapperActive.forEach((list) => {
                           list.classList.remove("movie-date-wrapper-active");
-                      })
-                     button.classList.add("movie-date-wrapper-active");
-                     })
+                     	 })
+                    		 button.classList.add("movie-date-wrapper-active");
+                     	})
                      }
+                    
+                    
 </script>
 </body>
 </html>

@@ -14,6 +14,7 @@ public class AdminTheaterVO {
 	private Integer region_code;
 	private Integer theater_max_row;
 	private Integer theater_max_column;
+	private String seat_status;
 	//hidden처리
 	private String region_name;
 	private List<AdminRegionVO> regionList;

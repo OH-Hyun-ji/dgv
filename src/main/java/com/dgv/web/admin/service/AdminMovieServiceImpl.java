@@ -15,7 +15,9 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 
 import lombok.RequiredArgsConstructor;
@@ -240,6 +242,30 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 	public int updateAge(AdminAgeVO vo) {
 	
 		return adminMovieDAO.updateAge(vo);
+	}
+
+	@Override
+	public AdminTheaterVO theaterListInfo(int num) {
+		
+		return adminMovieDAO.theaterListInfo(num);
+	}
+
+	@Override
+	public int insertTime(AdminTimeVO vo) {
+		
+		return adminMovieDAO.insertTime(vo);
+	}
+
+	@Override
+	public int insertSeat(AdminSeatVO vo) {
+		
+		return adminMovieDAO.insertSeat(vo);
+	}
+
+	@Override
+	public List<AdminTimeVO> timeList(int num) {
+	
+		return adminMovieDAO.timeList(num);
 	}
 
 

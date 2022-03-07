@@ -12,10 +12,14 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 
 public interface AdminMovieService {
+	
+	
 
 	//장르 등록 
 	int insertGenre(AdminGenreVO vo);
@@ -101,4 +105,12 @@ public interface AdminMovieService {
 	int updateGenre(AdminGenreVO vo);
 	
 	int updateAge(AdminAgeVO vo);
+	
+	AdminTheaterVO theaterListInfo(int num);
+	
+	int insertTime(AdminTimeVO vo);
+
+	int insertSeat(AdminSeatVO vo);
+	
+	List<AdminTimeVO> timeList(int num);
 }
