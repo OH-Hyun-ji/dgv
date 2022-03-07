@@ -27,7 +27,7 @@
 	                </c:if>
 	                <c:if test="${!empty userID}">
 	                  		
-	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;" href="/logout.do">${userID}님 Logout</a></span>
+	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;" href="/logout.do">${userID}님<br> Logout</a></span>
 	                </c:if>
                 </li>
 <!-- ///////////////////////////////////////////// -->
