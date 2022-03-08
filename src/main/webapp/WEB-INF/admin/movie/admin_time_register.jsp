@@ -14,6 +14,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		$(function(){
+			
 			$("#plus-button").on('click',function(){
 				
 				const tr = $("<tr>")
@@ -79,75 +80,79 @@
 				console.log(aa1)
 			})
 	
-			
-			$("#timeRegister").click(function(){
-				const aa= $(".timeMM").val()
-				const aa1= $(".timeHH").val()
-				const regionName =${theaterList.region_code }
-				const theaterName = ${theaterList.theater_code} 
-				const timeList = $("#TimeTable").children();
-				_($("#TimeTable").children()).forEach(function(n){
-					const timeT = $(n).children().eq(0).children().first().val();	
-					const timeM = $(n).children().eq(2).children().first().val();	
-			
-					
-					console.log("TimeT : "+timeT+":"+timeM)
-					console.log("TimeM : "+timeM)
-				})
-				
-			
-				console.log("현재 코드 :"+regionName)
-				console.log("현재 코드1 :"+theaterName)
-				var arr= ""
-				
-				const timeListInfo = _.map(timeList, function(n){
-					const timeT = $(n).children().eq(0).children().first().val();	
-					const timeM = $(n).children().eq(2).children().first().val();
-					arr+=(timeT+":"+timeM+"/")
-				
-					return arr;
-					
-				})
-				const timeListLast =timeListInfo[timeListInfo.length-1]
-				console.log("bbb" +timeListLast)
-				var dataArr=[];
-				const timeVo = {
-					"region_code":regionName,
-					"theather_code":theaterName,
-					"movie_time_start":timeListLast
-					
-				}
-				
-				console.log("배열 :" +timeListInfo)
-			
-				console.log("timeList length : "+ timeListLast.length)
-				console.log("선택한 시간은"+ aa+"선택한 분은 "+aa1)
-				
-				$.ajax({
-					method:"POST",
-					url:"/timeInsert.mdo",
-					contentType:"application/json",
-					dataType:"json",
-					data:JSON.stringify(timeVo),
-					success:function(result){
-						if(result.msg=="SUCCESS"){
-							alert("등록 완료!!")
-							window.opener.location.reload();
-	    					window.close();
-						}else{
-							alert("등록 실패!!")
-						}
-					},
-					error:function(){
-						console.log("통신실패")
-					}
-				})//close ajax 
-			})
 				
 		})
-			$(document).on('click', '.delRow',function(){
-				$(this).closest("tr").remove();
+		
+		$("#timeRegister").click(function(){
+			const aa= $(".timeMM").val()
+			const aa1= $(".timeHH").val()
+			const regionName =${theaterList.region_code }
+			const theaterName = ${theaterList.theater_code} 
+			const timeList = $("#TimeTable").children();
+			_($("#TimeTable").children()).forEach(function(n){
+				const timeT = $(n).children().eq(0).children().first().val();	
+				const timeM = $(n).children().eq(2).children().first().val();	
+		
+				
+				console.log("TimeT : "+timeT+":"+timeM)
+				console.log("TimeM : "+timeM)
 			})
+			
+		
+			console.log("현재 코드 :"+regionName)
+			console.log("현재 코드1 :"+theaterName)
+			var arr= ""
+			
+			const timeListInfo = _.map(timeList, function(n){
+				const timeT = $(n).children().eq(0).children().first().val();	
+				const timeM = $(n).children().eq(2).children().first().val();
+				arr+=(timeT+":"+timeM+"/")
+			
+				return arr;
+				
+			})
+			const timeListLast =timeListInfo[timeListInfo.length-1]
+			console.log("bbb" +timeListLast)
+			var dataArr=[];
+			const timeVo = {
+				"region_code":regionName,
+				"theater_code":theaterName,
+				"movie_time_start":timeListLast
+				
+			}
+			
+			console.log("배열 :" +timeListInfo)
+		
+			console.log("timeList length : "+ timeListLast.length)
+			console.log("선택한 시간은"+ aa+"선택한 분은 "+aa1)
+			
+			$.ajax({
+				method:"POST",
+				url:"/timeInsert.mdo",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify(timeVo),
+				success:function(result){
+					if(result.msg=="SUCCESS"){
+						alert("등록 완료!!")
+						window.opener.location.reload();
+    					window.close();
+					}else(result.msg="EXIST"){
+						alert("이미 등록된 데이터 입니다.")
+					}
+					else{
+						alert("등록 실패!!")
+					}
+				},
+				error:function(){
+					console.log("통신실패")
+				}
+			})//close ajax 
+		})
+		
+		$(document).on('click', '.delRow',function(){
+			$(this).closest("tr").remove();
+		})
 			
 		
 		
@@ -255,7 +260,7 @@
 								</div>
 							</div>
 							<div class="bottomBar">
-								<input type="submit" value="Register" id="timeRegister" onclick="timeCheck()" style="margin-left: 10px;"/>
+								<input type="button" value="Register" id="timeRegister" style="margin-left: 10px;"/>
 							</div>
 
 						</div>

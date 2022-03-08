@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dgv.web.admin.service.AdminMovieService;
@@ -16,9 +18,13 @@ import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
+import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.UserMapVO;
+import com.dgv.web.user.vo.UserReserveVO;
 import com.google.gson.Gson;
 
 @Controller
@@ -29,6 +35,13 @@ public class UserReserveController {
 	
 	@Autowired
 	private AdminTheaterService adminTheaterService;
+	
+	@Autowired
+	private UserBoardService userBoardService;
+	
+	
+	
+	
 	
 	@RequestMapping("/movieReserve.do")
 	public String movieReserveView(Model model) {
@@ -42,35 +55,91 @@ public class UserReserveController {
 				}
 			}
 		}
-		
-		
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("cityList",adminTheaterService.selectCityList());
 		return "/reserve/user_reserve";
 	}
-	@PostMapping("/theaterTimeList.do")
+	
+	@PostMapping("/reserveSeat.do")
+	public String reserveSeat(@ModelAttribute("reserveVO") UserReserveVO vo ,Model model) {
+			AdminMovieVO movieVo = userBoardService.movieList(vo.getMovie_num());
+			model.addAttribute("movieName",movieVo.getMovie_title());
+			
+			UserMapVO mapVo = userBoardService.mapList(vo.getRegion_code());
+			model.addAttribute("mapName",mapVo.getMap_name());
+			
+			AdminTheaterVO theaterVo = userBoardService.theaterListInfo(vo.getTheater_code());
+			model.addAttribute("theaterName",theaterVo.getTheater_name());
+			
+			AdminSeatVO seatVo = userBoardService.seatListInfo(vo.getTheater_code());
+			int row = theaterVo.getTheater_max_row();
+			int col = theaterVo.getTheater_max_column();
+			model.addAttribute("seatAll",row*col);
+			List<String> seatL = new ArrayList<String>();
+			String[] seatStatus = (seatVo.getSeat_status()).split(",");
+			for(int i=0; i<seatStatus.length;i++) {
+				seatL.add(seatStatus[i]);
+			}
+			Gson gson =new Gson();
+			
+			model.addAttribute("seatStatus",gson.toJson(seatL));
+			model.addAttribute("seatRemain",(row*col)-seatStatus.length);
+			System.out.println("남은 좌석"+((row*col)-seatStatus.length));
+			System.out.println("날짜 : "+vo.getReserve_date());
+			System.out.println("시간 : "+vo.getMovie_time_start());
+			model.addAttribute("date",vo.getReserve_date());
+			model.addAttribute("time",vo.getMovie_time_start());
+			model.addAttribute("row",row);
+			model.addAttribute("col",col);
+			
+			
+			System.out.println("/// : " +vo.toString());			
+		return "/seat/user_seat";
+	}
+	@PostMapping("/theaterList.do")
 	@ResponseBody
-	public String theaterTimeList(@RequestBody AdminTimeVO vo,AdminTheaterVO theaterVo) {
-		String[] time = null;
-		List<AdminTimeVO> timeList= adminMovieService.timeList(vo.getRegion_code());
-		for(AdminTimeVO timeL :timeList) {
-			time = (timeL.getMovie_time_start()).split("/");
-			System.out.println("배열 나누고 난후 "+time.toString());
-			System.out.println(time[0]);
-			System.out.println(time[1]);
+	public String theaterList(@RequestBody AdminTheaterVO theaterVo) {
+		List<AdminTheaterVO> theaterList = userBoardService.theaterCodeList(theaterVo.getRegion_code());
+		List<AdminTheaterVO> theaterL = new ArrayList<AdminTheaterVO>();
+		List<AdminTimeVO> timeList = new ArrayList<AdminTimeVO>();
+		
+		
+		for(AdminTheaterVO thVo : theaterList) {
+			System.out.println("현재 상영관  "+ thVo.getTheater_name());
+			AdminTimeVO  timeVo= userBoardService.timeStatusList(thVo.getTheater_code());
+			System.out.println("bbb ");
+			AdminSeatVO seatVo = userBoardService.seatListInfo(thVo.getTheater_code());
+			thVo.setMovie_time_code(timeVo.getMovie_time_code());
+			thVo.setMovie_time_start(timeVo.getMovie_time_start());
+			thVo.setSeat_status(seatVo.getSeat_status());
+		
 		}
-		System.out.println("이건 나와서  :" + time);
-		List<String> time_list = new ArrayList<String>();
-		
-		time_list.add(time[0]);
-		
 		
 		Gson gson = new Gson();
-		String timeTheaterList = gson.toJson(time);
-		return timeTheaterList;
-		
-		
+		String tList =gson.toJson(theaterList);
+		System.out.println("/?????");
+		return tList;
 	}
+	
+//	@PostMapping("/theaterTimeList.do")
+//	@ResponseBody
+//	public String theaterTimeList(@RequestBody AdminTimeVO vo,AdminTheaterVO theaterVo) {
+//		String[] time = null;
+//		List<AdminTimeVO> timeList= adminMovieService.timeList(vo.getRegion_code());
+//		for(AdminTimeVO timeL :timeList) {
+//			System.out.println("배열 나누고 난후 "+timeL.getTheater_code());
+//			System.out.println(time[0]);
+//			System.out.println(time[1]);
+//			
+//		}
+//
+//		
+//		Gson gson = new Gson();
+//		String timeTheaterList = gson.toJson(timeList);
+//		return timeTheaterList;
+//		
+//		
+//	}
 	
 	@PostMapping("/regionList.do")
 	@ResponseBody

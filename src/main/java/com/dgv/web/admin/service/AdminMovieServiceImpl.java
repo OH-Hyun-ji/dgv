@@ -19,6 +19,7 @@ import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
+import com.dgv.web.user.vo.UserMapVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -42,6 +43,7 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		
 		return adminMovieDAO.insertAge(vo) ;
 	}
+	
 	@Override
 	public int insertGroup(AdminGroupVO vo) {
 		
@@ -266,6 +268,24 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 	public List<AdminTimeVO> timeList(int num) {
 	
 		return adminMovieDAO.timeList(num);
+	}
+
+	@Override
+	public int deleteTheater(int num) {
+		
+		return adminMovieDAO.deleteTheater(num);
+	}
+
+	@Override
+	public int selectMap(String name) {
+		
+		return adminMovieDAO.selectMap(name);
+	}
+
+	@Override
+	public int timeCheckList(int num) {
+	
+		return adminMovieDAO.TimecheckList(num);
 	}
 
 

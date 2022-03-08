@@ -14,13 +14,16 @@ public class AdminTheaterVO {
 	private Integer region_code;
 	private Integer theater_max_row;
 	private Integer theater_max_column;
-	private String seat_status;
+	
 	//hidden처리
+	private String seat_status;
 	private Double map_x;
 	private Double map_y;
 	private String map_address;
 	private String map_name;
 	private String region_name;
+	private String movie_time_start;
+	private Integer movie_time_code;
 	private List<AdminRegionVO> regionList;
 	
 	

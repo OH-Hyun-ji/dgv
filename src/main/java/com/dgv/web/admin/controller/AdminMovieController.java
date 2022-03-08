@@ -64,17 +64,25 @@ public class AdminMovieController {
 	@PostMapping("/timeInsert.mdo")
 	@ResponseBody
 	public CommonResultDto timeInsert(@RequestBody AdminTimeVO timeVo) {	
+		int result = adminMovieService.timeCheckList(timeVo.getTheater_code());
+		
+		if(result ==0) {
 		int num = adminMovieService.insertTime(timeVo);
 		
 		if(num==0)
 			return CommonResultDto.fail();
 		return CommonResultDto.success();
+		}else 
+			return CommonResultDto.exist();
+		
+		
 	}
 	
 	//상영관 시간 설정
 	@RequestMapping("adminTime.mdo")
 	public String theaterTime(@RequestParam("theater_code") int num, Model model) {
 		AdminTheaterVO theaterVo = adminMovieService.theaterListInfo(num);
+		
 		List<AdminRegionVO> regionVo = adminTheaterService.selectRegionList();
 		
 		for(AdminRegionVO regionL : regionVo) {

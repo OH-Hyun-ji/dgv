@@ -14,58 +14,86 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<style type="text/css">
-.onBtn {
-	background-color: #9e9d9ba1;
-	color: white;
-	border-radius: 5px;
-}
-
-li.cityName {
-	display: inline-grid;
-}
-
-li.selected:hover {
-	background-color: #9e9d9ba1;
-	color: white;
-	z-index: 10;
-}
-
-button.regionBtn {
-	line-height: 36px;
-	z-index: 10;
-	background-color: #f2f0e5;
-}
-
-button.regionBtn:hover {
-	background-color: gray;
-	color: white;
-}
-
-button.timeList {
-	border: 1px solid #80808075;
-	width: 66px;
-	height: 30px;
-	margin-left: 2%;
-	border-radius: 3px;
-	font-weight: bolder;
-}
-
-button.timeList:hover {
-	background-color: gray;
-	color: white;
-}
-
-.movieStyle {
-	background-color: #f2f0e5;
-}
-
-.movieStyle:hover {
-	background-color: gray;
-	color: white;
-}
-</style>
+		.onBtn{
+			background-color: rgb(42 45 41 / 54%);
+  			color: white;
+  			border-radius: 5px;
+		}
+		li.cityName {
+  			display: inline-grid;
+		}
+		li.selected:hover {
+  			background-color: #9e9d9ba1;
+			color:white;
+		}
+		button.regionBtn {
+    		line-height: 36px;
+    		z-index: 10;
+    		background-color: #f2f0e5;
+		}
+		button.regionBtn:hover {
+			background-color: #9e9d9ba1;
+			
+    		
+		}
+		button.timeList {
+		    border: 1px solid #80808075;
+		    width: 66px;
+		    height: 30px;
+		    margin-left: 2%;
+		    border-radius: 3px;
+		    font-weight: bolder;
+		}
+		button.timeList:hover {
+			background-color: gray;
+			color:white;
+		}
+		.movieStyle{
+			background-color: #f2f0e5;
+		}
+		.CheckHiddenBtn {
+		    display: flex;
+		    justify-content: end;
+		}
+		input#next-page1 {
+		    width: 150px;
+		    height: 93px;
+		    border-radius: 9px;
+		    font-size: 18px;
+		    color: white;
+		    background-color: gray;
+		    margin-right: 2%;
+		}
+		input.dgvR{
+		background-color: green;
+		}
+		ul.theater-name{
+			display: flex;
+		}
+		li.timeList {
+		    margin-right: 13px;
+		    border: 1px solid #8080809e;
+		    font-size: 18px;
+		    border-radius: 4px;
+		    width: 60px;
+		    text-align: center;
+		    margin-bottom: 9px;
+		    margin-top: 6px;
+		    margin-left: 12px;
+		    background-color: #f0f8ff80;
+		    height: 28px;
+		}
+		li.timeList:hover {
+			background-color: gray;
+			color: white;
+		}
+		span.theaterName {
+		    font-weight: bolder;
+		    color: #482416;
+		}
+	</style>
 </head>
-<body class="block" >
+<body class="seatPage" >
 <jsp:include page="../default/user_header.jsp"></jsp:include>
     <!--본격 콘텐츠-->
     <a name="t"></a>
@@ -139,10 +167,10 @@ button.timeList:hover {
                                         <ul class="content scroll-y" onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;padding: 0px;">
                                            <c:forEach var="movieList" items="${movieList}" varStatus="status">
                                             <li class="rating-15" data-index="${status.index}" >
-                                                <button href="#" class="movieStyle" onclick="movieCode(${movieList.movie_num })"id="movieTT${movieList.movie_num }" title="${movieList.movie_title }"  value="${movieList.movie_num }">
+                                                <button href="#" class="movieStyle" onclick="movieCode(${movieList.movie_num })" id="movieTT${movieList.movie_num }" title="${movieList.movie_title }"  value="${movieList.movie_num }">
                                                 	<div class="movie-info" style="display: flex;">
 	                                                    <span class="age-icon">&nbsp;<img src="${movieList.age_img}" style="height: 33px; box-sizing: border-box; padding-top: 11%;"></span>
-	                                                    <span id="movieTitleBtn${movieList.movie_num }" class="title-text" style="box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
+	                                                    <span class="movieTitleBtn" class="title-text" style="box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
                                                     </div>
                                                     <span class="sreader"></span>
                                                 </button>
@@ -221,29 +249,11 @@ button.timeList:hover {
                             <div class="col-body" style="height: 560px;">
                                 <!-- 시간선택 -->
                                 <div class="placeholder hidden">영화, 극장, 날짜를 선택해주세요.</div>
-               					<input type="text" id="hiddenTitle">
-               					<input type="text" id="hiddenCity">
-               					<input type="text" id="hiddenRegion">
-               					<input type="text" id="hiddenDate">
-               					<input type="text" id="hiddenTheater">
-               					<input type="text" id="hiddenTime">
-               					
+               				
                                 <div class="time-list nano has-scrollbar">
                                     <div class="content scroll-y" tabindex="-1" style="right: -17px;">
-                                        <div class="theater" screen_cd="001" movie_cd="20024619" style="border: none;"><span class="title"><span
-                                                    class="name">2D</span><span class="floor">1관 5층</span><span class="seatcount">(총130석)</span></span>
-                                            <ul id="timeChoice">
-                                                <li data-index="0" data-remain_seat="130" play_start_tm="1400" screen_cd="001" movie_cd="20024619"
-                                                    play_num="2"><a class="button" href="#" onclick="screenTimeClickListener(event);return false;"
-                                                        title=""><span class="time"><span>14:00</span></span><span class="count">60석</span>
-                                                        <div class="sreader">종료시간 16:17</div><span class="sreader mod"></span>
-                                                    </a></li>
-                                                <li data-index="1" data-remain_seat="130" play_start_tm="1910" screen_cd="001" movie_cd="20024619"
-                                                    play_num="4"><a class="button" href="#" onclick="screenTimeClickListener(event);return false;"
-                                                        title=""><span class="time"><span>19:10</span></span><span class="count">60석</span>
-                                                        <div class="sreader">종료시간 21:27</div><span class="sreader mod"></span>
-                                                    </a></li>
-                                            </ul>
+                                        <div id="theater"  screen_cd="001" movie_cd="20024619" style="border: none;"><span class="title">
+                                        	
                                         </div>
                                     </div>
                                 </div>
@@ -255,6 +265,17 @@ button.timeList:hover {
             </div>
         </div>
     </div>
+ <div class="CheckHiddenBtn">
+	 <form action="reserveSeat.do" method="post">
+		<input class="dgvR" type="text" id="hiddenTitle" name="movie_num">
+		<input class="dgvR" type="text" id="hiddenCity" name="city_code">
+		<input class="dgvR" type="text" id="hiddenRegion" name="region_code">
+		<input class="dgvR" type="text" id="hiddenDate" name="reserve_date">
+		<input class="dgvR" type="text" id="hiddenTheater" name="theater_code">
+		<input class="dgvR" type="text" id="hiddenTime" name="movie_time_start">
+        <input type="submit" id="next-page1"  value="좌석선택=>" >
+	</form>	
+   </div>
     <jsp:include page="../default/user_footer.jsp"></jsp:include>
 	<script>
 	function movieCode(n){
@@ -270,17 +291,19 @@ button.timeList:hover {
 		$(".selected").css("background-color","")
 	}
 	function independence(n){
-		alert("Ddd")
 		$("#selectBtn"+n).on('click',function(){
 			$("#selectBtn"+n).css("background-color","#9e9d9ba1")
 		})
 	}
 
+
+
+	
 	function choiceCity(cityCode){
 	//	alert(cityCode)
-		init()
-		independence(cityCode)
-		$("#hiddenCity").val(cityCode)		
+	init()
+	independence(cityCode)
+	$("#hiddenCity").val(cityCode)		
 		$(".region-list").empty();
 		$.ajax({
 			method:"POST",
@@ -293,55 +316,148 @@ button.timeList:hover {
 				_(regionList).forEach(function(n){
 					const button =$("<button>")
 					.attr("class","regionBtn")
+					.click(regionChoicBtn)
 					.attr("value",n.region_code)
 					.text(n.region_name)	
 					console.log(n.region_name)
 					$("#btn"+cityCode).append(button)
 					
-					$(".regionBtn").on('click',function(){
-						console.log($(this).val())
-						$(".regionBtn").css("background-color","")
-						$(this).css("background-color","#9e9d9ba1")
-						$("#hiddenRegion").val($(this).val())
-						const regionClick = $(this).val()
-						$("#timeChoice").empty();
-						$.ajax({
-							method:"POST",
-							url:"/theaterTimeList.do",
-							contentType:"application/json",
-							dataType:"json",
-							data:JSON.stringify({"region_code":regionClick}),
-							success:function(TimeListInfo){
-								const TimeList = JSON.parse(TimeListInfo)
-								_(TimeList).forEach(function(i){	
-								
-								console.log("time = "+ i)
-									const button1 =$("<button>")
-												.attr("class","timeList")
-												.attr("value",i)
-												.text(i)
-												$("#timeChoice").append(button1)
-												
-												$(".timeList").on('click',function(){
-													$("#hiddenTime").val($(this).val())
-												})
-								})
-							},
-							error:function(e){
-								console.log("통신실패" + e)
-							}
-						})	
-					})
+				
 				})
 				
 			},
 			error:function(){
 				console.log("통신실패")
 			}
-		})
+		})//ajax close
 		//$(".region-list").append(li)
 				
 	}
+
+	
+		 	
+	
+	
+	function regionChoicBtn(){
+		
+		
+		$(this).on('click',function(){
+			$(".regionBtn").css("background-color","")
+			console.log($(this).val())
+			$(this).css("background-color","#9e9d9ba1")
+			$("#hiddenRegion").val($(this).val())
+			const regionClick = $(this).val()
+			
+		
+			$.ajax({
+				method:"POST",
+				url:"/theaterList.do",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify({"region_code":regionClick}),
+				success:function(TheaterInfo){
+					const TheaterL = JSON.parse(TheaterInfo)
+						$("#theater").empty();
+					_(TheaterL).forEach(function(i){	
+					
+					console.log("theater11 = "+i.theater_name)
+					console.log("theater = "+ i.theater_code)
+						const div =$("<div>")
+								.attr("id","theater-title")
+						const ul =$("<ul>")
+								.attr("class","theater-name")
+								.attr("id","theater"+i.theater_code)
+						const totalSeat = i.theater_max_row * i.theater_max_column
+						const seat = (i.seat_status).split(",")
+						const seatLength = seat.length
+						const remainSeat = totalSeat-seatLength
+						const span = $("<span>")
+								.attr("class","theaterName")
+								.text(i.theater_name+" 상영관 ("+remainSeat +"/"+ totalSeat+ "석 )" )
+						
+						const timeSplit = (i.movie_time_start).split("/")
+						const timeSplitLength = timeSplit.length
+							console.log("timeSplitLength : "+timeSplitLength)
+							div.append(span)
+						const div1 = $("<div>")
+								.attr("class","fixed")
+						for(let j=0;j<timeSplitLength-1;j++){
+						const li =$("<li>")
+								.attr("class","timeList")
+								.attr("value",i.theater_code)
+					//			.click(timeChoice)
+								.text(timeSplit[j])
+								console.log("timeSplit[j]"+timeSplit[j])
+								ul.append(li)
+						}							
+								console.log("/.////" + i.movie_time_code)
+								div.append(ul)
+								$("#theater").append(div)	
+								
+					})
+									$(".timeList").on('click',function(){
+									//	console.log($(this).val())
+							 			alert($(this).val())
+							 			$("#hiddenTheater").val($(this).val())
+							 			$("#hiddenTime").val($(this).text())
+									})
+				},
+				error:function(e){
+					console.log("통신실패" + e)
+				}
+			})	//ajax close
+							
+			
+		}) 
+		
+	}
+	//////////////////////////////////////////////////////////////////////////////
+
+	
+	$("#next-page1").on('click',function(){
+		alert("////")
+		
+		const title = $("#hiddenTitle").val()
+		const city =$("#hiddenCity").val()
+		const region = $("#hiddenRegion").val()
+		const date =$("#hiddenDate").val()
+		const theater =$("#hiddenTheater").val()
+		const time =$("#hiddenTime").val()
+		
+		console.log(title)
+		console.log(city)
+		console.log(region)
+		console.log(date)
+		console.log(time)
+		console.log("////")
+		
+		if(title != ""&& city !=""&& region != ""&&date != "" &&time != "" &&theater != ""){
+			let result = confirm("좌석선택하시겠습니까??")
+			if(result){
+				const reserveVo ={
+						"movie_num":title,
+						"city_code":city,
+						"region_code":region,
+						"reserve_date":date,
+						"movie_time_start":time,
+						"theater_code":theater
+				}
+			
+			
+			}else{
+					
+			}
+			const target = document.getElementById('next-page1');
+			$("#next-page1").css("background-color","red")
+ 			
+		}else{
+			alert("선택안한 항목이 있습니다, 다시 확인해 주세요 ")
+			const target = document.getElementById('next-page1');
+ 			
+		}
+	})
+
+
 	
           var test
         	 const date = new Date();

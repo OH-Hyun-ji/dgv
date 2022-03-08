@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
+import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 
@@ -43,4 +47,23 @@ public class UserBoardDAO {
 	public int insertMap(UserMapVO vo) {
 		return sqlSessionTemplate.insert("UserMovieDAO.InsertMap",vo);
 	}
+	
+	public List<AdminTheaterVO> theaterCodeList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.TheaterCodeList", num);
+	}
+	public AdminTimeVO timeStatusList(int num) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.timeStatusList",num);
+	}
+	
+	public AdminSeatVO seatListInfo(int num) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.seatListInfo", num);
+	}
+	
+	public AdminMovieVO movieList(int num) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.MovieList", num);
+	}
+	public AdminTheaterVO theaterListInfo(int num) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.theaterListInfo",num);
+	}
+
 }

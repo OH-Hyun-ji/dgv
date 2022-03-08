@@ -7,6 +7,10 @@
 		SELECT * FROM dgv_city_info 
 	</select>
 	
+	<select id="TheaterCodeList" resultType="AdminTheaterVO" parameterType="int">
+		SELECT * FROM movie_theater WHERE region_code =#{region_code}
+	</select>
+	
 	<select id="RegionList" resultType="AdminRegionVO" parameterType="int">
 		SELECT * FROM dgv_region_info WHERE city_code=#{city_code}
 	</select>
@@ -14,9 +18,25 @@
 	<select id="MapList" resultType="UserMapVO" parameterType="int">
 		SELECT * FROM movie_map WHERE region_code=#{region_code}
 	</select>
+	
 	<insert id="InsertMap" parameterType="UserMapVO">
 		INSERT INTO movie_map(map_code,map_x,map_y,map_address,map_name,region_code)
 		VALUES(DEFAULT,#{map_x},#{map_y},#{map_address},#{map_name},#{region_code})
 	</insert>
 	
+	<select id="timeStatusList" resultType="AdminTimeVO" parameterType="int">
+		SELECT * FROM movie_time WHERE theater_code =#{theater_code}
+	</select>
+	
+	<select id="seatListInfo" resultType="AdminSeatVO" parameterType="int">
+		SELECT * FROM movie_seat WHERE theater_code =#{theater_code}	
+	</select>
+	
+	<select id="MovieList" resultType="AdminMovieVO">
+		SELECT * FROM movie_info WHERE movie_num=#{movie_num}
+	</select>
+	
+	<select id="theaterListInfo" resultType="AdminTheaterVO">
+		SELECT * FROM movie_theater WHERE theater_code =#{theater_code}
+	</select>
 </mapper>

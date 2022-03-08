@@ -60,6 +60,7 @@
 	<select id="MovieList" resultType="AdminMovieVO">
 		SELECT * FROM movie_info
 	</select>
+	
 	<insert id="InsertMovie" useGeneratedKeys="true" keyProperty="movie_num" parameterType="AdminMovieVO">
 		INSERT INTO movie_info(movie_num,movie_genre_code,movie_img,movie_running_time,movie_open_date,movie_text,movie_title,movie_title_en,movie_age_code,reg_id,movie_time,reg_date,movie_real_img)
 		VALUES(DEFAULT,#{movie_genre_code},#{movie_img},#{movie_running_time},#{movie_open_date},#{movie_text},#{movie_title},#{movie_title_en},#{movie_age_code},#{reg_id},#{movie_time},current_date,#{movie_real_img})
@@ -75,8 +76,8 @@
 	</insert>
 
 	<insert id="InsertTime" parameterType="AdminTimeVO">
-		INSERT INTO movie_time(movie_time_code,region_code,theather_code,movie_time_start)
-		VALUES(DEFAULT,#{region_code},#{theather_code},#{movie_time_start})
+		INSERT INTO movie_time(movie_time_code,region_code,theater_code,movie_time_start)
+		VALUES(DEFAULT,#{region_code},#{theater_code},#{movie_time_start})
 	</insert>
 	<insert id="InsertSeat" parameterType="AdminSeatVO">
 		INSERT INTO movie_seat(seat_code,region_code,seat_status,theater_code,seat_reservation)
@@ -84,6 +85,17 @@
 	</insert>
 	<select id="TimeList" resultType="AdminTimeVO">
 		SELECT * FROM movie_time WHERE region_code =#{region_code}		
+	</select>
+	<select id="TimecheckList" resultType="int">
+		SELECT COUNT(*) FROM movie_time WHERE theater_code =#{theater_code}		
+	</select>
+	
+	<delete id="deleteTheater" parameterType="AdminTheaterVO">
+		DELETE FROM movie_theater WHERE theater_code =#{theater_code}
+	</delete>
+	
+	<select id="selectMap" resultType="int">
+		SELECT COUNT(*) FROM movie_map WHERE map_name=#{map_name}
 	</select>
 	
 	

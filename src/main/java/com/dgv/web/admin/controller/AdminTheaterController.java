@@ -193,6 +193,15 @@ public class AdminTheaterController {
 								
 	}
 	
+	@PostMapping("deleteTheater.mdo")
+	@ResponseBody
+	public CommonResultDto deleteTheater(@RequestBody AdminTheaterVO theaterVo) {
+		int num = adminMovieService.deleteTheater(theaterVo.getTheater_code());
+		
+		if(num ==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
 	
 	//admin극장관리로 이동 
 	@RequestMapping("/adminTheater.mdo")
@@ -252,13 +261,20 @@ public class AdminTheaterController {
 		mapVo.setMap_name(vo.getMap_name());
 		mapVo.setRegion_code(regionCode.getRegion_code());
 		mapVo.setMap_address(vo.getMap_address());
-		int num1 = userBoardService.insertMap(mapVo);
-		result += num1;
-		if(result !=0 ) {
+		int mapInfo = adminMovieService.selectMap(mapVo.getMap_name());
+		
+		if(mapInfo == 0){
+			int num1 = userBoardService.insertMap(mapVo);
+			result += num1;
+			if(result !=0 ) {
+				return CommonResultDto.success();
+			}else {			
+				return CommonResultDto.fail();
+			}
+		}else {
 			return CommonResultDto.success();
-		}else {			
-			return CommonResultDto.fail();
 		}
+		
 	}
 	
 	

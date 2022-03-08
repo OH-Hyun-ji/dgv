@@ -232,6 +232,7 @@
 			success:function(result){
 				if(result.msg=="SUCCESS"){
 					alert("상영관 등록 완료!")
+					location.reload();
 				}else{
 					alert("상영관 등록 실패")
 					
@@ -250,6 +251,23 @@
         var popupY =(window.screen.height/2)-(300/2);
 
         window.open('/adminTime.mdo?theater_code='+theaterCode,'','width=500,height=400');
+	}
+	function deleteAction(deleteCode){
+		const result = confirm("정말로 삭제하시겠습니까?")
+		if(result){
+			$.ajax({
+				method:"POST",
+				url:"deleteTheater.mdo",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify({"theater_code":deleteCode}),
+				success:function(result){	
+					location.reload();
+				},error:function(){
+					console.log("통신실패")
+				}
+			})//ajax close
+		}
 	}
 	</script>
 	<style type="text/css">

@@ -128,7 +128,7 @@
 			<ul class="nav-item">
 				<li>
 					<h2>
-						<a class="btn-fix" href="#">영화</a>
+						<a class="btn-fix" href="/movieChart.do">영화</a>
 					</h2>
 					<dl class="nav_overMenu">
 						<dt>

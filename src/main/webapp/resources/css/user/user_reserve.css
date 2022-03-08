@@ -1775,8 +1775,13 @@ background-repeat: repeat-x; */
   justify-content: center;
   align-items: center;
   padding: 5px 2px;
+  background-color: #f2f0e5;
 }
 
+.movie-date-wrapper:hover {
+	background-color: #9e9d9ba1;
+	color: white;
+}	
 .movie-week-of-day {
   margin-left: 5px;
   font-size: 10px;
@@ -1804,7 +1809,7 @@ background-repeat: repeat-x; */
 }
 
 .movie-date-wrapper-active {
-  background-color: #333333;
+  background-color:#9e9d9ba1;
 }
 
 .movie-date-wrapper-active>* {

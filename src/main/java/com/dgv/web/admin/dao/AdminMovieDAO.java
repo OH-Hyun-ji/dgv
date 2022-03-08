@@ -27,6 +27,17 @@ public class AdminMovieDAO {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
+	public int TimecheckList(int num) {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.TimecheckList", num);
+	}
+	
+	public int selectMap(String name) {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.selectMap", name);
+	}
+	
+	public int deleteTheater(int num) {
+		return sqlSessionTemplate.delete("AdminMovieDAO.deleteTheater",num);
+	}
 	public List<AdminTimeVO> timeList(int num){
 		return sqlSessionTemplate.selectList("AdminMovieDAO.TimeList", num);
 	}
@@ -190,4 +201,5 @@ public class AdminMovieDAO {
 	public int updateAge(AdminAgeVO vo) {
 		return sqlSessionTemplate.update("AdminGenreDAO.AgeUpdate",vo);
 	}
+
 }

@@ -14,6 +14,7 @@ public class CommonResultDto {
 	
 	private static final String SUCCESS = "SUCCESS";
 	private static final String FAIL = "FAIL";
+	private static final String EXIST = "EXIST";
 	
 	public static CommonResultDto success() {
 		return new CommonResultDto(SUCCESS, true);
@@ -21,6 +22,10 @@ public class CommonResultDto {
 	
 	public static CommonResultDto fail() {
 		return new CommonResultDto(FAIL, false);
+	}
+	
+	public static CommonResultDto exist() {
+		return new CommonResultDto(EXIST, false);
 	}
 
 }

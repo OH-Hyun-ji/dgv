@@ -137,12 +137,16 @@ li.select-theater-local.selected-theater-local-info {
 }
 
 /*좌석쪽 css*/
-
+.user-seat-view {
+	    padding: 30px;
+	       
+}
 .seat-wrapper {
     width: 700px;
     height: 400px;
     background-color: black;
     opacity: 0.7;
+    text-align: center;
 }
 .seat-container {
     margin-top: 38px;
@@ -174,4 +178,23 @@ li.select-theater-local.selected-theater-local-info {
 .choicPrev a {
     line-height: 270px;
     font-size: 20px;
+}
+button.seat-status {
+    height: 27px;
+    width: 41px;
+    border-radius: 11px;
+    font-weight: bolder;
+}
+button.seat-status:hover{
+	background-color: #ff5722;
+	color:white;
+}
+.choiceBtnStyle{
+	background-color: #ff5722;
+	color:white;
+}
+input#seatStatus {
+    height: 20px;
+    background-color: beige;
+    border: none;
 }

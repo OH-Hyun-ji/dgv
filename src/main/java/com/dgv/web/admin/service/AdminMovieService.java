@@ -16,6 +16,7 @@ import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
+import com.dgv.web.user.vo.UserMapVO;
 
 public interface AdminMovieService {
 	
@@ -113,4 +114,10 @@ public interface AdminMovieService {
 	int insertSeat(AdminSeatVO vo);
 	
 	List<AdminTimeVO> timeList(int num);
+	
+	int deleteTheater(int num);
+	
+	int selectMap(String name);
+	
+	int timeCheckList(int num);
 }

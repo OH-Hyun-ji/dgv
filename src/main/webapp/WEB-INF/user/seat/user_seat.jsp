@@ -13,13 +13,18 @@
 	<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
 	<script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js' ></script>
+	<style type="text/css">
 	
+	
+	</style>
 </head>
+
 <body>
 <jsp:include page="../default/user_header.jsp" />
 <div class="total-container">
@@ -89,26 +94,28 @@
                         <div class="selected-number">0</div>
                     </div>
                     <div class="select-people-info">
-                        <div class="select-people-movie-title">영화제목</div>
+                        <div class="select-people-movie-title">${movieName}</div>
                         <div class="select-people-movie-detail">
                             <ul class="select-people-movie-info-list">
-                                <li class="select-theater-local selected-theater-local-info">DGV까치산</li>
-                                <li class="select-theater-local selected-theater-local-info">1관 3층</li>
+                                <li class="select-theater-local selected-theater-local-info">${mapName}</li>
+                                <li class="select-theater-local selected-theater-local-info">${theaterName}</li>
                                 <li>
                                     <span>남은좌석</span> 
-                                    <span class="remain-seats">150</span>
+                                    <span class="remain-seats">${seatRemain}</span>
                                     /
-                                    <span class="total-seats">150</span> 
+                                    <span class="total-seats">${seatAll}</span> 
                                 </li>
                             </ul>
                         </div>
                         <div class="select-movie-time-info">
-                           <div class="select-movie-date">영화상영날짜</div>
-                           <div class="select-movie-start-time">영화상영시간</div>
+                           <div class="select-movie-date">${date}</div>
+                           <div class="select-movie-start-time">${time}</div>
                         </div>
                         <div class="selected-seat-list">
                             <div class="selected-seats-number">좌석번호 :</div>
-                            <div class="selected-seats-view">선택한 좌석없음</div>
+                            <div class="selected-seats-view" >
+                            	<input id="seatStatus" readonly="readonly" >
+                            </div>
                         </div>
                         <div class="selected-price-info">
                             <div class="selected-price-title">가격 <i class="fa-solid fa-greater-than"></i></div>
@@ -123,6 +130,7 @@
                     <div class="screen-site-wrapper">
                         <div class="screen-site">SCREEN</div>
                     </div>
+                    <div class="user-seat-view"></div>
                 </div>
             </div>
             <div class="reservation-container">
@@ -135,7 +143,7 @@
                         <span class="movie-poster">
                            
                         </span>
-                        <div>
+                        <div><button disabled="disabled"> </button>
                             <span class="movie-title">
                                 <a href="#">영화제목</a>
                             </span>
@@ -153,8 +161,77 @@
 
     </div>
       <jsp:include page="../default/user_footer.jsp"></jsp:include>
-      <script type="text/javascript">
-	/** 원하는 인원클릭 변수 선언  */
+<script type="text/javascript">
+      $(function(){
+    	const row = ${row}
+    	const col = ${col}
+    	const alphabetNumber = parseInt(col)+64
+    	var seatStatus = ${seatStatus}
+    	
+    	_
+    
+    //	const alphabet = String.fromCharCode(alphabetNumber)
+    	
+    	var str_html = "";
+    	for(let i =65; i<=(parseInt(row)+64);i++){
+    		str_html = str_html+'<br>'
+    		for(let j=1;j<=col;j++){
+    			var alphabet = String.fromCharCode(i)    			
+    			var seat_btn = '<button class="seat-status" value="()" disabled1="abled">{}</button>';
+    														///????? 참나..
+    
+    			seat_btn = seat_btn.replace('{}', alphabet+j)
+    			seat_btn = seat_btn.replace('()', alphabet+j)
+    			
+    			_(seatStatus).forEach(function(n){
+    				
+					if(n===alphabet+j){
+						console.log(n)				
+ 						seat_btn =	seat_btn.replace("disabled1","disabled")	
+ 						console.log("??? : "+$(".seat-status"+n))		
+					}
+						seat_btn =	seat_btn.replace("abled","abled")	
+						
+					
+					
+    			})
+    			
+    				
+    			str_html = str_html+seat_btn;
+    		}
+    		str_html = str_html+'<br>'
+    	}
+    	$(".user-seat-view").html(str_html);
+    	 
+    	const seatArr = new Array();
+    	$(".seat-status").on('click',function(){
+    		alert($(this).val())
+    		
+    		if($(this).hasClass("choiceBtnStyle")){
+    			$(this).removeClass("choiceBtnStyle")
+ 		   		for(let i=0;i<seatArr.length;i++){
+ 		   			if(seatArr[i]==$(this).val()){
+ 		   				seatArr.splice(i,1)
+ 		   			}
+ 		   		}
+    		}else{
+ 		   		$(this).addClass("choiceBtnStyle")
+    			seatArr.push($(this).val())
+    		}
+    		
+    		console.log("배열 : "+seatArr)
+    		$("#seatStatus").val(seatArr)
+    	})
+    	
+    	
+    	
+    
+    	
+      })
+      
+      
+      
+	/**상단 표기  원하는 인원클릭 변수 선언  */
 	let totalNum = 0;
 	let basicNum = 0;
 	let studentNum = 0;

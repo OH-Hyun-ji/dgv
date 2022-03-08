@@ -3,9 +3,12 @@ package com.dgv.web.user.service;
 import java.util.List;
 
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 
@@ -26,4 +29,15 @@ public interface UserBoardService {
 	UserMapVO mapList(int num);
 	
 	int insertMap(UserMapVO vo);
+	
+	List<AdminTheaterVO> theaterCodeList(int num);
+	
+	AdminTimeVO timeStatusList(int num);
+	
+	AdminSeatVO seatListInfo(int num);
+	
+	AdminMovieVO movieList(int num);
+	
+	AdminTheaterVO theaterListInfo(int num);
+	
 }

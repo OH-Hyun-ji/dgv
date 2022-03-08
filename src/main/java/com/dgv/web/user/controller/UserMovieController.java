@@ -53,8 +53,7 @@ public class UserMovieController {
 	public String theater(AdminCityVO vo , Model model) {
 		Gson gson = new Gson();
 		final List<AdminCityVO> cityL = userBoardService.cityTheater();
-		
-		
+			
 	//	final String cityList = gson.toJson(cityL);
 		
 		model.addAttribute("cityList",cityL);

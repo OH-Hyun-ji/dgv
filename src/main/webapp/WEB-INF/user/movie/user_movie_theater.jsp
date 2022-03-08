@@ -25,14 +25,79 @@
 				center: new kakao.maps.LatLng(37.57097949310122, 126.99264220428894),
 				level: 3
 			};
-
-			const map = new kakao.maps.Map(container, options);
-			
+			const map = new kakao.maps.Map(container, options);			
 		})
+		
+		function regionTitleClick() {
+			const regionNum = $(this).val()
+			console.log("지역번호   "+regionNum)
+			$("#theater-title").empty();
+			$(".theater-info").empty();
+			$.ajax({
+				method:"POST",
+				url:"/mapRegion.do",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify({"region_code":regionNum}),
+				success:function(result){
+					const mapVo = JSON.parse(result)
+					console.log("map_name : "+mapVo.map_name)
+							const span =$("<span>")
+								.text(mapVo.map_name)
+					$("#theater-title").append(span)
+					
+						const strong=$("<strong>")
+							.text(mapVo.map_address)
+					
+					$(".theater-info").append(strong)		
+					$("#map").empty();
+					console.log("map : "+ mapVo.map_x)
+					 const markers = [
+					    {
+					        position: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y)
+					    },
+					    {
+					        position: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y), 
+					        text: mapVo.map_name // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다     
+					    }
+					];
+					const staticMapContainer  = document.getElementById('map'), // 이미지 지도를 표시할 div  
+					    staticMapOption = { 
+					        center: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y), // 이미지 지도의 중심좌표
+					        level: 3,       // 이미지 지도의 확대 레벨
+					        marker: markers // 이미지 지도에 표시할 마커 
+					    };    					
+					console.log(" TEST 1 : " + staticMapContainer + " TEST 2 : " + staticMapOption)
+					// 이미지 지도를 생성합니다
+					const staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);					
+					//!!! 지도 하단 항목
+				
+							
+				},
+				error:function(){
+					console.log("통신실패")
+				}
+				
+			})
+		}
+		
+		function appendRegionTitle(regionList){
+			const regionL = JSON.parse(regionList)
+			_(regionL).forEach(function(n){
+				const li =$("<li>")
+						.attr("class","regionTitle")
+						.attr("value",n.region_code)
+						.click(regionTitleClick)
+						.text(n.region_name)
+					
+				$(".region-list").append(li)	
+			
+			});
+		}
 	
 		function thisCityCode(cityCode){
 	//		var cityCode =$(this).val()// $(this).children().val();
-		test=this	
+			test=this	
 			console.log("cityCode :" +cityCode)
 			alert(cityCode)
 			const  ul = $("<ul>")
@@ -44,64 +109,12 @@
 				contentType:"application/json",
 				dataType:"json",
 				data:JSON.stringify({"city_code":cityCode}),
-				success:function(regionList){
-					const regionL = JSON.parse(regionList)
-					_(regionL).forEach(function(n){
-						const li =$("<li>")
-								.attr("class","regionTitle")
-								.attr("value",n.region_code)
-								.text(n.region_name)
-							
-						$(".region-list").append(li)	
-					
-						$(".regionTitle").on('click',function(){
-							const regionNum = $(this).val()
-							console.log("지역번호   "+regionNum)
-							$.ajax({
-								method:"POST",
-								url:"/mapRegion.do",
-								contentType:"application/json",
-								dataType:"json",
-								data:JSON.stringify({"region_code":regionNum}),
-								success:function(result){
-									const mapVo = JSON.parse(result)
-									$("#map").empty();
-									console.log("map : "+ mapVo.map_x)
-									 const markers = [
-									    {
-									        position: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y)
-									    },
-									    {
-									        position: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y), 
-									        text: mapVo.map_name // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다     
-									    }
-									];
-
-									const staticMapContainer  = document.getElementById('map'), // 이미지 지도를 표시할 div  
-									    staticMapOption = { 
-									        center: new kakao.maps.LatLng(mapVo.map_x, mapVo.map_y), // 이미지 지도의 중심좌표
-									        level: 3,       // 이미지 지도의 확대 레벨
-									        marker: markers // 이미지 지도에 표시할 마커 
-									    };    
-									
-									console.log(" CHECK 1 : " + staticMapContainer + " CHECK 2 : " + staticMapOption)
-
-									// 이미지 지도를 생성합니다
-									const staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
-								},
-								error:function(){
-									console.log("통신실패")
-								}
-								
-							})
-						})
-					})
-				},
+				success:appendRegionTitle,
 				error:function(){
 					console.log("통신실패")
 				}
 				
-		})//  $(".cityName") click close
+			})//  $(".cityName") click close
 		//$(".regionThis").append(ul)	
 		
 		}
@@ -113,7 +126,10 @@
 	}
 	.regionTitle{
 		color:white;
-  }
+ 	}
+  .theater-info {
+  		width: 400px;
+	}
 </style>
 </head>
 <body class="block">
@@ -151,15 +167,14 @@
 			<!-- 실컨텐츠 시작 -->
 			<div class="wrap-theater">
 				<div id="map" style="width: 980px; height: 400px;"></div>
-					<h3>
+					<h3 class="theater-wrapping">
 						<img
 							src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/theater.png"
 							alt="THEATER">
 					</h3>
 					<div class="sect-theater ">
-						<h4 class="theater-tit">
-						
-							<span></span>
+						<h4 id="theater-title">						
+						<!--  <span>제목</span>-->
 						</h4>
 						<a href="/support/lease/default.aspx" class="round inred btn_lease"><span
 							style="padding: 0 14px; font-weight: bold; color: white;">단체/대관문의</span></a>
@@ -167,22 +182,11 @@
 						<div class="wrap-theaterinfo">
 							<div class="box-image">
 								<div id="theater_img_container" class="thumb-image">
-									<img
-										src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg"
-										alt="CGV강남 극장이미지">
+									<img src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg">
 								</div>
 							</div>
 							<div class="box-contents">
-								<div class="theater-info">
-									<strong class="title">서울특별시 강남구 역삼동 814-6 스타플렉스<br>서울특별시
-										강남구 강남대로 438 (역삼동)<a
-										href="./?page=location&amp;theaterCode=0056#menu">위치/주차 안내
-											&gt;</a></strong> <span class="txt-info"> <em>1544-1122</em> <em>6관
-											/ 874석</em> <span></span>
-									</span>
-									<!-- 최대 10개까지만 보여집니다 -->
-	
-								</div>
+								<div class="theater-info"></div>
 								<div class="noti-theater">
 									<h5>공지사항</h5>
 									<ul>
@@ -212,24 +216,13 @@
 						marginwidth="0" marginheight="0" name="SponsorBar_980"
 						id="SponsorBar_980"></iframe>
 				</div>
-				<ul class="tab-menu" id="menu">
-					<li class="on"><a
-						href="./?areacode=01&amp;theaterCode=0056&amp;date=20220207#menu"
-						title="현재 선택됨">상영시간표</a></li>
-					<li class="last"><a
-						href="./?page=location&amp;theaterCode=0056#menu">위치/주차안내</a></li>
-				</ul>
 			</div>
 
 		</div>
 	</div>
 	<!-- /Contents Area -->
-	<div class="fixedBtn_wrap">
-		<a href="/ticket/" class="btn_fixedTicketing">예매하기</a> <a href="#none"
-			class="btn_gotoTop"><img
-			src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png"
-			alt="최상단으로 이동" /></a>
-	</div>
+	<jsp:include page="../default/user_bottom_reserve.jsp"></jsp:include>
+	
 	<!--footer!!!!!!!!!!-->
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>
 

@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
+import com.dgv.web.admin.vo.AdminSeatVO;
+import com.dgv.web.admin.vo.AdminTheaterVO;
+import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.dao.UserBoardDAO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
@@ -67,6 +71,41 @@ public class UserBoardServiceImpl implements UserBoardService {
 	public int insertMap(UserMapVO vo) {
 		
 		return userBoardDAO.insertMap(vo);
+	}
+
+
+	@Override
+	public List<AdminTheaterVO> theaterCodeList(int num) {
+		
+		return userBoardDAO.theaterCodeList(num);
+	}
+
+
+	@Override
+	public AdminTimeVO timeStatusList(int num) {
+		
+		return userBoardDAO.timeStatusList(num);
+	}
+
+
+	@Override
+	public AdminSeatVO seatListInfo(int num) {
+		
+		return userBoardDAO.seatListInfo(num);
+	}
+
+
+	@Override
+	public AdminMovieVO movieList(int num) {
+		
+		return userBoardDAO.movieList(num);
+	}
+
+
+	@Override
+	public AdminTheaterVO theaterListInfo(int num) {
+		
+		return userBoardDAO.theaterListInfo(num);
 	}
 
 
