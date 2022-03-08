@@ -3,6 +3,7 @@ package com.dgv.web.user.service;
 import java.util.List;
 
 import com.dgv.web.admin.common.S3KeyVO;
+import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserVO;
 
 public interface UserService {
@@ -30,4 +31,6 @@ public interface UserService {
 	
 	UserVO kakaoLogin(UserVO userVO);
 	
+	//마이페이지 나의문의사항
+	List<UserInquiryVO> MyPageQnaOneList(String id);
 }

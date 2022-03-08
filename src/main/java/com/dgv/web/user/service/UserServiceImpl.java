@@ -66,5 +66,11 @@ public class UserServiceImpl implements UserService {
 		
 		return userDAO.kakaoLogin(userVO);
 	}
+	
+	@Override
+	public List<UserInquiryVO> MyPageQnaOneList(String id) {
+		
+		return userDAO.MyPageQnaOneList(id);
+	}
 
 }
