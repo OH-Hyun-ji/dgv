@@ -44,6 +44,9 @@
          SELECT * FROM user_info WHERE user_email = #{user_email}     
        </select>
        
+       <select id="MyPageQnaOneList" resultType="UserInquiryVO">
+		 SELECT * FROM dgv_qna_wait where dgv_inquiry_user = #{userID}
+		</select>
        
 	</mapper>
       

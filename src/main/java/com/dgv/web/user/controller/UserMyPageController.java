@@ -27,12 +27,17 @@ public class UserMyPageController {
    @Autowired
    private UserService userService;
 
- 
+   //마이페이지 나의 문의 내역
    @RequestMapping("/myPage.do")
    public String myPage(Model model,HttpServletRequest request) {
-      
+	   HttpSession session = request.getSession();
+		System.out.println("session.getId() =" + session.getAttribute("userID"));
+		System.out.println("session.getId() =" +session.getAttributeNames());
+		String id = (String) session.getAttribute("userID");
+		System.out.println("id "+id);
+		model.addAttribute("MyPageQnaOneList", userService.MyPageQnaOneList(id));
+		model.addAttribute("MyPageQnaCount",userService.MyPageQnaOneList(id).size());
   
-
       return "/myPage/user_myPage";
    }
    

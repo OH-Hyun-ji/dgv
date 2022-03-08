@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,23 +89,17 @@
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="MyPageQnaOneList" items="${MyPageQnaOneList}" varStatus="status">
 									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">나의문의</a></td>
-										<td>나 자신</td>
-										<td>2022-02-09</td>
-										<td>0</td>
-									</tr>		
-									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">나의문의</a></td>
-										<td>나 자신</td>
-										<td>2022-02-09</td>
-										<td>0</td>
-									</tr>							
+<!-- 번호 -->								<td>${MyPageQnaCount-status.index}</td>
+<!-- 내용 -->								<td><a id="myPage-title" href="/myQna.do">${MyPageQnaOneList.dgv_inquiry_title}</a></td>
+<!-- MyPage - 작성자 -->					<td>${userID}</td>
+<!-- MyPage - 날짜, MyQna - 작성일 -->		<td>${MyPageQnaOneList.dgv_inquiry_date}</td>
+<!-- MyPage - 조회수 있는것 -->				<td>0</td>
+									</tr>
+									</c:forEach>							
 								</tbody>
 							</table>
-                  	
                   </div>
                   </div>
                </div> 
