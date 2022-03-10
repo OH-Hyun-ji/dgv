@@ -16,6 +16,9 @@ public interface UserService {
 
 	// 회원가입 ID중복체크
 	int checkId(String id);
+	
+	// 회원가입 Email중복체크
+	int checkEmail(String email);
 
 	// 마이페이지 상단 페이지
 	UserVO MyUserList(String id);
