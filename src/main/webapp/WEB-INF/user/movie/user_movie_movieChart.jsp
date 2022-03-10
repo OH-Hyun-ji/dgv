@@ -15,6 +15,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
   
 </head>
+<script type="text/javascript">
+	function reservePage(movieNum){
+		location.href="/movieReserve.do?movie_num="+movieNum
+		
+	}
+</script>
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
     <!--본격 콘텐츠-->
@@ -42,7 +48,7 @@
                         <li>
                             <div class="box-image">
                                 <strong class="rank">No.${status.index+1}</strong>
-                                <a href="/movieDetail.do?movie_num="${movieList.movie_num}>
+                                <a href="/movieDetail.do?movie_num=${movieList.movie_num}">
                                     <span class="thumb-image">
                                         <img src="${movieList.movie_img}" >
                                         <span class="ico-grade grade-12">${movieList.age_name }</span>
@@ -63,9 +69,8 @@
                                         <span>개봉</span>
                                     </strong>
                                 </span>
-                                <span class="like" style=" text-align-last: center;">
-                                   <button class="w-btn w-btn-gra3 w-btn-gra-anim"
-											style="padding: 9px 8px; box-shadow: none;" type="button" >예매하기</button>
+	                               <span class="like" style=" text-align-last: center;">
+										<button class="w-btn w-btn-gra3 w-btn-gra-anim"style="padding: 9px 8px; box-shadow: none;" onclick="reservePage(${movieList.movie_num})">예매하기</button>
                                 </span>
                             </div>
                         </li>

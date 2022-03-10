@@ -137,7 +137,7 @@
 						alert("등록 완료!!")
 						window.opener.location.reload();
     					window.close();
-					}else(result.msg="EXIST"){
+					}else if(result.msg="EXIST"){
 						alert("이미 등록된 데이터 입니다.")
 					}
 					else{

@@ -397,35 +397,22 @@ public class AdminMovieController {
 	@PostMapping("/adminInsertActor.mdo")
 	@ResponseBody
 	public CommonResultDto adminInsertActor(@RequestPart("actorVo") AdminActorVO actorVo, @RequestPart("imgFile") MultipartFile imgFile, HttpSession session) {
-
 		
-		final UUID uuid= UUID.randomUUID();
-		final String url = "parPeople/"+uuid.toString()+actorVo.getMovie_actor_img();
-		final String path = AWSConfiguration.S3_URL;
-		actorVo.setMovie_actor_img(path+url);
+		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "parPeople/", actorVo.getMovie_actor_img());
+		
+	
 		actorVo.setReg_id((String)session.getAttribute("adminID")); 
-		System.out.println("url : "+url);
-		
+
 		final int num =adminMovieService.insertActor(actorVo);
 		System.out.println(actorVo.getMovie_actor_name());
 		System.out.println(actorVo.getReg_id());
 	
 		
-		if(num==0) {
-	
+		if(num==0) 
 			return CommonResultDto.fail();
-		}else {
-			try {
-				InputStream is = imgFile.getInputStream();
-				String contentType = imgFile.getContentType();
-				long contentLength = imgFile.getSize();
-				awsS3.upload(is, url, contentType, contentLength);
-			
-				}catch(IOException e) {
-					e.printStackTrace();
-				}
-		}
-		
 		return CommonResultDto.success();
-}
+		
+		
+		
+	}
 }

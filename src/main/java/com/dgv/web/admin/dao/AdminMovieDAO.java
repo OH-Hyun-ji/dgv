@@ -201,5 +201,6 @@ public class AdminMovieDAO {
 	public int updateAge(AdminAgeVO vo) {
 		return sqlSessionTemplate.update("AdminGenreDAO.AgeUpdate",vo);
 	}
+	
 
 }

@@ -16,20 +16,21 @@
 			<!-- 상단 우측 아이콘 메뉴 -->
 			<ul class="memberInfo_wrap">
 <!-- ///////////////////////////////////////////// -->
-				<li>
-					<c:if test="${empty userID}">
+				<c:if test="${empty userID}">
+					<li>
 	                     <span>
 	                     	<a href="/loginForm.do" title="로그인">
 							  <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
 							  <span id="main1" class="modiImg1">로그인</span>
 							</a>
 	                     </span>
-	                </c:if>
+               		 </li>
+	               </c:if>	               
 	                <c:if test="${!empty userID}">
-	                  		
+	                  	<li style="width: 107px;padding-right: 35px;">	
 	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;" href="/logout.do">${userID}님<br> Logout</a></span>
+		                </li>
 	                </c:if>
-                </li>
 <!-- ///////////////////////////////////////////// -->
 				<li>
 					<a href="/join.do"> 

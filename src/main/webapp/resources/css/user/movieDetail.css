@@ -208,12 +208,7 @@ dl {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.spec dt {
-    float: left;
-}
-dt {
-    display: block;
-}
+
 [class|="sect-base"][class*="movie"] .spec dd {
     white-space: normal;
     text-overflow: clip;
@@ -247,12 +242,6 @@ dt {
     overflow: visible;
 }
 
-.spec dt {
-    float: left;
-}
-dt {
-    display: block;
-}
 [class|="sect-base"][class*="movie"] .spec dd {
     white-space: normal;
     text-overflow: clip;
@@ -263,6 +252,9 @@ dt {
 }
 .spec dt {
     float: left;
+    display: block;
+    font-weight: bold;
+    color: #351e1e;
 }
 [class|="sect-base"][class$="movie"] .spec .on {
     float: none;
@@ -714,8 +706,8 @@ div[class^="sect-"] {
     margin-left: 16px;
     line-height: 39px;
     color: #333333;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: bolder;
     letter-spacing: -1px;
 }
 .heading .count {
@@ -826,9 +818,7 @@ button, input[type='submit'], input[type='reset'] {
     background-color: transparent;
     vertical-align: middle;
 }
-body, input, textarea, select, button, table {
-    color: #666;
-}
+
 button {
     letter-spacing: normal;
     word-spacing: normal;
@@ -888,4 +878,8 @@ footer .company_info_wrap {
 }
 .company_info .company_info_list dd a {
     text-decoration: underline;
+}
+.swiper-slide > img {
+    width: 727px;
+    height: 400px;
 }

@@ -2,15 +2,21 @@ package com.dgv.web.user.service;
 
 import java.util.List;
 
+import com.dgv.web.admin.vo.AdminActorVO;
+import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminGenreVO;
+import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
+import com.dgv.web.user.vo.UserMoiveImgVO;
 
 public interface UserBoardService {
 
@@ -40,4 +46,21 @@ public interface UserBoardService {
 	
 	AdminTheaterVO theaterListInfo(int num);
 	
+	List<AdminParVO> parList(int num);
+	
+	List<AdminParVO> distinctGroupList(int num);
+	
+	List<AdminActorVO> actorList(int num);
+	
+	List<AdminGroupVO> groupList(int num);
+	
+	UserMoiveImgVO imgList(int num);
+	
+	List<AdminParVO> actorMovieList(int num);
+	
+	List<AdminMovieVO> actorParMovieList(int num);
+	
+	List<AdminGenreVO> actorGenreList(int num);
+	
+	List<AdminAgeVO> actorAgeList(int num);
 }

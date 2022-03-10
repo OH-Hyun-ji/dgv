@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,28 +48,19 @@
                             <div class="select-people-age">일반</div>
                             <div class="select-people-number">
                                 <ul class="select-people-ul select-people-ul-adult">
-                                    <li class="select-people-basic">0</li>
-                                    <li class="select-people-basic">1</li>
-                                    <li class="select-people-basic">2</li>
-                                    <li class="select-people-basic">3</li>
-                                    <li class="select-people-basic">4</li>
-                                    <li class="select-people-basic">5</li>
-                                    <li class="select-people-basic">6</li>
+                                	<c:forEach var="i" begin="0" end="6" step="1">
+                                    	<li class="select-people-basic" value="${i}">${i}</li>                                	
+                                	</c:forEach>
                                 </ul>
-                            </div>
-
+                            </div>                        
                         </div>
                         <div class="select-people">
                             <div class="select-people-age">청소년</div>
                             <div class="select-people-number">
                                 <ul class="select-people-ul select-people-ul-student">
-                                    <li class="select-people-student">0</li>
-                                    <li class="select-people-student">1</li>
-                                    <li class="select-people-student">2</li>
-                                    <li class="select-people-student">3</li>
-                                    <li class="select-people-student">4</li>
-                                    <li class="select-people-student">5</li>
-                                    <li class="select-people-student">6</li>
+                                    <c:forEach var="i" begin="0" end="6" step="1">
+                                    	<li class="select-people-student" value="${i}">${i}</li>                                	
+                                	</c:forEach>
                                 </ul>
                             </div>
 
@@ -77,13 +69,9 @@
                             <div class="select-people-age">경로</div>
                             <div class="select-people-number">
                                 <ul class="select-people-ul select-people-ul-old">
-                                    <li class="select-people-old">0</li>
-                                    <li class="select-people-old">1</li>
-                                    <li class="select-people-old">2</li>
-                                    <li class="select-people-old">3</li>
-                                    <li class="select-people-old">4</li>
-                                    <li class="select-people-old">5</li>
-                                    <li class="select-people-old">6</li>
+                                    <c:forEach var="i" begin="0" end="6" step="1">
+                                    	<li class="select-people-old" value="${i}">${i}</li>                                	
+                                	</c:forEach>
                                 </ul>
                             </div>
 
@@ -91,34 +79,37 @@
                     </div>
                     <div class="selected-number-wrap">
                         <div class="selected-number-title">선택된 좌석수</div>
-                        <div class="selected-number">0</div>
+                        <input type="hidden" id="totalCheckCount" >
+                        <div class="selected-number">
+                        	<input id="selected-count" type="text" readonly="readonly" value="0">
+                        </div>
                     </div>
                     <div class="select-people-info">
                         <div class="select-people-movie-title">${movieName}</div>
                         <div class="select-people-movie-detail">
                             <ul class="select-people-movie-info-list">
-                                <li class="select-theater-local selected-theater-local-info">${mapName}</li>
-                                <li class="select-theater-local selected-theater-local-info">${theaterName}</li>
+                                <li class="select-theater-local selected-theater-local-info"><span class="selected-date">위치 :</span>  ${mapName}</li>
+                                <li class="select-theater-local selected-theater-local-info"><span class="selected-date">상영관 :</span>  ${theaterName}</li>
                                 <li>
-                                    <span>남은좌석</span> 
-                                    <span class="remain-seats">${seatRemain}</span>
+                                    <span class="selected-date"">남은좌석 </span> 
+                                    <span class="remain-seats"> ${seatRemain}</span>
                                     /
                                     <span class="total-seats">${seatAll}</span> 
                                 </li>
                             </ul>
                         </div>
                         <div class="select-movie-time-info">
-                           <div class="select-movie-date">${date}</div>
-                           <div class="select-movie-start-time">${time}</div>
+                           <div class="select-movie-date"><span class="selected-date">상영날짜 :</span> ${date}</div>
+                           <div class="select-movie-start-time"><span class="selected-date">상영시간 :</span> ${time}</div>
                         </div>
                         <div class="selected-seat-list">
-                            <div class="selected-seats-number">좌석번호 :</div>
+                            <div class="selected-seats-number"><span class="selected-date">좌석번호 :</span></div>
                             <div class="selected-seats-view" >
                             	<input id="seatStatus" readonly="readonly" >
                             </div>
                         </div>
                         <div class="selected-price-info">
-                            <div class="selected-price-title">가격 <i class="fa-solid fa-greater-than"></i></div>
+                            <div class="selected-price-title"><span class="selected-date">가격</span> <i class="fa-solid fa-greater-than"></i></div>
                             <div class="selected-price-total">0</div>
                         </div>
                     </div>
@@ -136,22 +127,44 @@
             <div class="reservation-container">
             	<div class="reservation-wrapper">
                     <div class="choicPrev">
-                        <img src="/images/preview.png">
-            		   
+                        <a href="#"><img style="border: 1px solid white; border-radius: 11px" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/choiceBtn.png"></a>       		   
                     </div>
             		<div class="movie-info">
                         <span class="movie-poster">
-                           
+                           <img id="movie-poster-img" src="${movieList.movie_img}">
                         </span>
-                        <div><button disabled="disabled"> </button>
-                            <span class="movie-title">
-                                <a href="#">영화제목</a>
-                            </span>
+                        <div class="movie-title-style">
+                        	<div class="movie-title-wrap">
+	                            <span class="movie-title">
+	                                <a href="#">${movieList.movie_title}</a>
+	                            </span>
+	                            <span class="movie-title-en">
+	                                <a href="#">${movieList.movie_title_en}</a>
+	                            </span>
+	                            <div class="movie-age-style">
+	                            	<span><img src="${ageList.movie_age_img}"></span>
+	                            	<span class="movie-genre-style">${genreList.movie_genre_name}</span>
+	                            </div>
+                            </div>
                         </div>
-                        <div>
-                            <span class="movie-age">
-                                <a href="#">관람나이</a>
-                            </span>
+                        <div class="movie-theater-container">
+	                        <div class="movie-thearter-wrapping">
+		                        <div class="movie-theater-style">
+		                            <span class="movie-map-name">${mapName}</span>
+		                            <span class="movie-theater-name">${theaterList.theater_name } 상영관</span>
+		                        </div>
+		                        <div class="movie-date-style">
+		                        	<span class="movie-date-name">상영날짜 : ${date}</span>
+		                        	<span class="movie-time-name">상영시간 : ${time}</span>
+		                        </div>
+	                        </div>
+	                        <div class="movie-seat-style">
+	                        	<span class="movie-seat-name">좌석 :</span>
+	                        	<input type="text" readonly="readonly" id="userChoiceSeat">
+	                        </div>
+                        </div>
+                        <div class="next-choice-style">
+                        	<a href="#"><img id="next-choice" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/choiceNext.png"></a>
                         </div>
                     </div>
             	</div>
@@ -162,76 +175,7 @@
     </div>
       <jsp:include page="../default/user_footer.jsp"></jsp:include>
 <script type="text/javascript">
-      $(function(){
-    	const row = ${row}
-    	const col = ${col}
-    	const alphabetNumber = parseInt(col)+64
-    	var seatStatus = ${seatStatus}
-    	
-    	_
-    
-    //	const alphabet = String.fromCharCode(alphabetNumber)
-    	
-    	var str_html = "";
-    	for(let i =65; i<=(parseInt(row)+64);i++){
-    		str_html = str_html+'<br>'
-    		for(let j=1;j<=col;j++){
-    			var alphabet = String.fromCharCode(i)    			
-    			var seat_btn = '<button class="seat-status" value="()" disabled1="abled">{}</button>';
-    														///????? 참나..
-    
-    			seat_btn = seat_btn.replace('{}', alphabet+j)
-    			seat_btn = seat_btn.replace('()', alphabet+j)
-    			
-    			_(seatStatus).forEach(function(n){
-    				
-					if(n===alphabet+j){
-						console.log(n)				
- 						seat_btn =	seat_btn.replace("disabled1","disabled")	
- 						console.log("??? : "+$(".seat-status"+n))		
-					}
-						seat_btn =	seat_btn.replace("abled","abled")	
-						
-					
-					
-    			})
-    			
-    				
-    			str_html = str_html+seat_btn;
-    		}
-    		str_html = str_html+'<br>'
-    	}
-    	$(".user-seat-view").html(str_html);
-    	 
-    	const seatArr = new Array();
-    	$(".seat-status").on('click',function(){
-    		alert($(this).val())
-    		
-    		if($(this).hasClass("choiceBtnStyle")){
-    			$(this).removeClass("choiceBtnStyle")
- 		   		for(let i=0;i<seatArr.length;i++){
- 		   			if(seatArr[i]==$(this).val()){
- 		   				seatArr.splice(i,1)
- 		   			}
- 		   		}
-    		}else{
- 		   		$(this).addClass("choiceBtnStyle")
-    			seatArr.push($(this).val())
-    		}
-    		
-    		console.log("배열 : "+seatArr)
-    		$("#seatStatus").val(seatArr)
-    	})
-    	
-    	
-    	
-    
-    	
-      })
-      
-      
-      
-	/**상단 표기  원하는 인원클릭 변수 선언  */
+/**상단 표기  원하는 인원클릭 변수 선언  */
 	let totalNum = 0;
 	let basicNum = 0;
 	let studentNum = 0;
@@ -241,21 +185,21 @@
 	let studentMoney = 0;
 	let oldMoney = 0;
 	let selectedUlAction = '';
-
+	
 	/** class로 선언된 값 */
 	const totalResultPrice = document.querySelector('.selected-price-total');
 	const totalSelectedNum = document.querySelector('.selected-number');
-
+	
 	/** 각각의 li 목록들 가져오기*/
 	const selectPeopleBasicList = document.querySelectorAll('.select-people-ul-adult li');
 	const selectPeopleStudentList = document.querySelectorAll('.select-people-ul-student li');
 	const selectPeopleOldList = document.querySelectorAll('.select-people-ul-old li');
-
+	
 	/** 전체 클릭가능한수 36을 초과시 0으로 돌리기위한 선언 */
 	const selectPeopleBasic = document.querySelectorAll('.select-people-basic');
 	const selectPeopleStudent = document.querySelectorAll('.select-people-student');
 	const selectPeopleOld = document.querySelectorAll('.select-people-old');
-
+	
 	/**토스트 옵션 설정 */
 	toastr.options = {
 	    positionClass: 'toast-top-right',
@@ -265,6 +209,7 @@
 	    newestOnTop: true
 	};
 
+   
 	/**클래스 초기화 , 클래스 추가 */
 	function classAction(list){
 	    console.log('TEST 1:')
@@ -302,7 +247,7 @@
 	            totalNum = basicNum + studentNum + oldNum;
 	            totalResultPrice.innerHTML = '17000 X '+basicNum+' = '+ basicMoney +'원'+'<br>';
 
-	            if(totalNum > 37){
+	            if(totalNum > 18){
 	                li.classList.remove('select-people-ul-action');
 	                totalMoney -= basicMoney;
 	                totalNum -= basicNum;
@@ -317,7 +262,7 @@
 	            totalNum = basicNum + studentNum + oldNum;
 	            totalResultPrice.innerHTML = '11000 X '+studentNum+' = '+studentMoney +'원'+'<br>';
 
-	            if(totalNum > 37){
+	            if(totalNum > 18){
 	                li.classList.remove('select-people-ul-action');
 	                totalMoney -= studentMoney;
 	                totalNum -= studentNum;
@@ -331,7 +276,7 @@
 	            totalNum = basicNum + studentNum + oldNum;
 	            totalResultPrice.innerHTML = '11000 X '+oldNum+' = '+oldMoney +'원'+'<br>';
 
-	            if(totalNum > 37){
+	            if(totalNum > 18){
 	                li.classList.remove('select-people-ul-action');
 	                totalMoney -= oldMoney;
 	                totalNum -= oldNum;
@@ -344,22 +289,150 @@
 	                                     ' 경로 11000 X '+oldNum+' = '+oldMoney +'원'+'<br>'+'전체금액 :'+totalMoney + ' 원';
 	        
 
-	        if(totalNum > 16){
+	        if(totalNum > 18){
 	            li.classList.remove('select-people-ul-action');
 	            toastr.error(
 	                '<div>인원수 선택을 초과하였습니다. *최대6명~!</div>',
 	                '<div>인원수 확인해주세요.</div>',
 	                {timeOut: 4000}
 	            );
+	            basicNum =0;
+	            studentNum = 0;
+	            oldNum =0;
+	            basicMoney=0;
+	            studentMoney=0;
+	            oldMoney=0;
+	            totalMoney=0;
+	            totalResultPrice.innerHTML = ' 일반 17000 X <input type="text" value='+basicNum+'> = '+ basicMoney +'원'+'<br>'+
+							                 ' 청소년 11000 X <input type="text" value='+studentNum+' >= '+studentMoney +'원'+'<br>'+
+							                 ' 경로 11000 X <input type="text" value='+oldNum+'> = '+oldMoney +'원'+'<br>'+'전체금액 :'+totalMoney + ' 원';
 	        }
-	    
+	    	
+	       
 
 	    });
 	}
 	classAction(selectPeopleBasicList);
 	classAction(selectPeopleStudentList);
 	classAction(selectPeopleOldList);
-	
+	   $(function(){
+	    	  console.log(basicNum)
+	    	const row = ${row}
+	    	const col = ${col}
+	    	const alphabetNumber = parseInt(col)+64
+	    	var seatStatus = ${seatStatus}
+	    
+	    	
+	    //	const alphabet = String.fromCharCode(alphabetNumber)
+	    	
+	    	var str_html = "";
+	    	for(let i =65; i<=(parseInt(row)+64);i++){
+	    		str_html = str_html+'<br>'
+	    		for(let j=1;j<=col;j++){
+	    			var alphabet = String.fromCharCode(i)    			
+	    			var seat_btn = '<button class="seat-status" value="()" disabled1="abled">{}</button>';
+	    														///????? 참나..
+	    
+	    			seat_btn = seat_btn.replace('{}', alphabet+j)
+	    			seat_btn = seat_btn.replace('()', alphabet+j)
+	    			
+	    			_(seatStatus).forEach(function(n){
+	    				
+						if(n===alphabet+j){
+							console.log(n)				
+	 						seat_btn =	seat_btn.replace("disabled1","disabled")	
+	 						console.log("??? : "+$(".seat-status"+n))		
+						}
+							seat_btn =	seat_btn.replace("abled","abled")	
+							
+						
+						
+	    			})
+	    			
+	    				
+	    			str_html = str_html+seat_btn;
+	    		}
+	    		str_html = str_html+'<br>'
+	    	}
+	    	$(".user-seat-view").html(str_html);
+	    	
+	    	var adultP =0;
+	    	var studentP=0;
+	    	var oldP=0;
+	    	var totalP=0;
+	    	$(".select-people-ul").children().on('click',function(){
+	    	
+	    //		console.log("1212121212 : "+ $(".select-people-ul").children().hasClass("select-people-ul-action").text)
+	    		if($(this).hasClass("select-people-ul-action")&&$(this).hasClass("select-people-basic")){
+	    			adultP = 0;
+	    			console.log("qqqqqqqqqqq"+$(this).val())
+	    			var adultCount = $(this).val()
+	    			adultP +=adultCount
+	    			console.log("성인 : "+ adultP)
+	    			// 변환  끝
+	    			//return adultP;
+	    		}
+	    		if($(this).hasClass("select-people-ul-action")&&$(this).hasClass("select-people-student")){
+	    			studentP =0;
+	    			var studentCount = $(this).val()
+	    			studentP +=studentCount
+	    			console.log("학생 : "+studentCount)
+
+	    		}
+	    		if($(this).hasClass("select-people-ul-action")&&$(this).hasClass("select-people-old")){
+	    			oldP =0;
+	    			var oldCount = $(this).val()
+	    			oldP +=oldCount
+	    			console.log("경로 : "+oldCount)
+
+	    		}
+	    		totalP = parseInt(parseInt(adultP)+parseInt(studentP)+parseInt(oldP))
+	    		console.log("totalP : "+ totalP)
+	    		
+	    		$("#totalCheckCount").val(totalP)
+	    	})	
+	    	
+	    	const seatArr = new Array();
+	    	$(".seat-status").on('click',function(){
+	    		alert($(this).val())
+	    		console.log("totalCheckCount" + $("#totalCheckCount").val())
+	    			
+		    		
+	    	
+	    		if($(this).hasClass("choiceBtnStyle")){
+	    			$(this).removeClass("choiceBtnStyle")  			 		
+		    			for(let i=0;i<seatArr.length;i++){
+		 		   			if(seatArr[i]==$(this).val()){
+		 		   				seatArr.splice(i,1)
+		 		   			}
+		 		   		}
+	    		}else{
+	 		   		$(this).addClass("choiceBtnStyle")
+		    			seatArr.push($(this).val())
+		    		//	$("#selected-count").val(selectedCount++)
+		    			if(seatArr.length >$("#totalCheckCount").val()){			
+		    				$(this).removeClass("choiceBtnStyle") 
+		    				for(let i=0;i<seatArr.length;i++){
+			 		   			if(seatArr[i]==$(this).val()){
+			 		   				seatArr.splice(i,1)
+			 		   			}
+			 		   		}
+			    		
+			    			alert("좌석선택수를 초과하였습니다. ")
+			    			
+			    		}
+	    		}
+	    		
+	    		$("#selected-count").val(seatArr.length)    		
+	    		console.log("선택 좌석수  : "+seatArr.length)
+	    		console.log("배열 : "+seatArr)
+	    		$("#seatStatus").val(seatArr)
+	    		$("#userChoiceSeat").val(seatArr)
+	    	
+	    	})
+	      })
+	     
+
 	</script>
     </body> 
     </html>

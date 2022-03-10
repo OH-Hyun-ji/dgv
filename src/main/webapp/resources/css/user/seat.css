@@ -143,7 +143,7 @@ li.select-theater-local.selected-theater-local-info {
 }
 .seat-wrapper {
     width: 700px;
-    height: 400px;
+    height: 470px;
     background-color: black;
     opacity: 0.7;
     text-align: center;
@@ -167,12 +167,12 @@ li.select-theater-local.selected-theater-local-info {
 
 /*검정바탕 예매 최종 확인버튼 */
 .reservation-wrapper {
-    background-color: currentcolor;
-    opacity: 0.8;
+    background-color: #343433;
     height: 165px;
     margin-bottom: 28px;
     padding-left: 11px;
     padding-top: 11px;
+    display: flex;
 }
 
 .choicPrev a {
@@ -186,15 +186,120 @@ button.seat-status {
     font-weight: bolder;
 }
 button.seat-status:hover{
-	background-color: #ff5722;
+	background: linear-gradient( 90deg, rgb(264 -11 -84) 0%, rgb(391 443 -6) 245% );
 	color:white;
 }
 .choiceBtnStyle{
-	background-color: #ff5722;
+	background: linear-gradient( 90deg, rgb(264 -11 -84) 0%, rgb(391 443 -6) 245% );
 	color:white;
 }
 input#seatStatus {
     height: 20px;
     background-color: beige;
     border: none;
+}
+
+element.style {
+}
+input#selected-count {
+    background-color: beige;
+    border: 0;
+    height: 29px;
+    font-size: 30px;
+    text-align: center;
+    width: 100px;
+}
+span.selected-date {
+    border-bottom: 1px solid;
+    color: #342b2b;
+}
+.choicPrev {
+    box-sizing: border-box;
+    padding-top: 65px;
+    padding-left: 15px;
+    align-self: center;
+}
+img#movie-poster-img{
+	width: 100px;
+    height: 129px;
+    padding-left: 14px;
+    padding-top: 13px;
+}
+.movie-info {
+    display: flex;
+}
+.movie-title-style {
+    padding-left: 13px;
+    padding-top: 19px;
+    font-size: 18px;
+    color: white;
+    font-weight: bolder;
+}
+.movie-title-wrap {
+    display: grid;
+    border-right: 1px solid #9d9797;
+    padding-right: 14px;
+}
+span.movie-title-en {
+    font-weight: 100;
+ 	color: #ced0d1;
+}
+.movie-age-style {
+    display: flex;
+    padding-top: 22px;
+    padding-left: 2px;
+}
+span.movie-genre-style {
+    padding-left: 14px;
+    padding-top: 9px;
+    color: #fff;
+}
+.movie-theater-style {
+    display: grid;
+    padding-right: 13px;
+    border-right: 1px solid #9d9797;
+}
+.movie-thearter-wrapping {
+    display: flex;
+}
+.movie-date-style {
+    display: grid;
+    padding-left: 8px;
+}
+.movie-theater-container {
+    display: grid;
+    padding-top: 19px;
+    padding-left: 20px;
+    width: 355px;
+}
+span.movie-map-name {
+    font-size: 18px;
+    color: white;
+}
+span.movie-theater-name {
+	font-size: 17px;
+    color: white;
+}
+span.movie-date-name {
+    font-size: 16px;
+    color: white;
+}
+span.movie-time-name ,span.movie-seat-name {
+	font-size: 16px;
+    color: white;
+}
+input#userChoiceSeat {
+    background-color: #343433;
+    color: white;
+    height: 25px;
+    width: 247px;
+}
+.next-choice-style {
+    padding-top: 28px;
+    padding-left: 15px;
+}
+img#next-choice {
+    height: 94px;
+    border: 1px solid white;
+    border-radius: 12px;
 }

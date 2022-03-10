@@ -90,6 +90,8 @@ public class UserLoginController {
 			System.out.println(userVo.getUser_email()+" 와 "+vo.getUser_email()+"는 같다.");
 			//session.setAttribute("userID", userVo.getUser_id());
 			RequestUtils.setUserId(userVo.getUser_id());
+			RequestUtils.getUserId("userID");
+			
 			return CommonResultDto.success();
 		}else {
 			return CommonResultDto.fail();

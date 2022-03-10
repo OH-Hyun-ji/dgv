@@ -6,15 +6,21 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dgv.web.admin.vo.AdminActorVO;
+import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminGenreVO;
+import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
+import com.dgv.web.user.vo.UserMoiveImgVO;
 
 @Repository
 public class UserBoardDAO {
@@ -65,5 +71,43 @@ public class UserBoardDAO {
 	public AdminTheaterVO theaterListInfo(int num) {
 		return sqlSessionTemplate.selectOne("UserMovieDAO.theaterListInfo",num);
 	}
+	
+	public List<AdminParVO> parList(int num) {
+		return sqlSessionTemplate.selectList("UserMovieDAO.parList",num);
+	}
 
+	public List<AdminParVO> distinctGroupList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.distinctGroupList",num);
+	}
+	
+	public List<AdminActorVO> actorList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.actorList", num);
+	}
+	
+	public List<AdminGroupVO> groupList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.groupList", num);
+	}
+	public UserMoiveImgVO imgList(int num) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.imgList",num);
+	}
+	
+	public AdminGroupVO actorGroup(int num) {
+		return sqlSessionTemplate.selectOne("AdminGroupDAO.actorGroup",num);
+	}
+	
+	public List<AdminParVO> actorMovieList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.actorMovieList", num);
+	}
+	
+	public List<AdminMovieVO> actorParMovieList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.actorParMovieList", num);
+	}
+	
+	public List<AdminGenreVO> actorGenreList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.actorGenreList", num);
+	}
+	
+	public List<AdminAgeVO> actorAgeList(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.actorAgeList", num);
+	}
 }

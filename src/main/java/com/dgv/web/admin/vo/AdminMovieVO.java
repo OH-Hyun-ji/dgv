@@ -34,5 +34,5 @@ public class AdminMovieVO {
 	private List<AdminCityVO> cityList;
 	private List<AdminRegionVO> regionList;
 	private List<AdminParVO> parList;
-	
+	private List<AdminGroupVO> groupList;
 }

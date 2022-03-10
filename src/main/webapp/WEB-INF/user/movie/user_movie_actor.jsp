@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,26 +29,26 @@
         <div class="sect-base-people">
           <div class="sect-base">
             <h3>
-              <strong>로버트 패틴슨</strong>
+              <strong>${actorVo.movie_actor_name}</strong>
               기본정보
             </h3>
             <div class="box-image">
-              <a href="http://image.cine21.com/resize/cine21/still/2018/1217/14_44_09__5c1737a9d793c[X120,150].jpg" target="_blank">
+              <a href="${actorVo.movie_actor_img }" target="_blank">
                 <span class="thumb-image">
-                  <img src="http://image.cine21.com/resize/cine21/still/2018/1217/14_44_09__5c1737a9d793c[X120,150].jpg" alt="로버트 패틴슨" onerror="errorImage(this, {'type':'peoplelarge'})">
+                  <img src="${actorVo.movie_actor_img }" alt="${actorVo.movie_actor_name}" >
                 </span>
               </a>
             </div>
             <div class="box-contents">
               <div class="title">
-                <strong>로버트 패틴슨</strong>
-                <p>Robert Pattinson</p>
+                <strong>${actorVo.movie_actor_name}</strong>
+                <p>${actorVo.movie_actor_ename}</p>
               </div>
               <div class="spec">
                 <dl>
-                  <dt>출생</dt><dd>1986.05.13</dd>
-                  <dt>국적</dt><dd>영국</dd>
-                  <dt>직업</dt><dd>배우</dd>
+                  <dt>출생</dt><dd>${actorVo.movie_actor_birth}</dd>
+                  <dt>국적</dt><dd>${actorVo.movie_actor_nation}</dd>
+                  <dt>직업</dt><dd>${actorVo.movie_group_name}</dd>
                 </dl>
               </div>
             </div>
@@ -56,11 +57,8 @@
         <!-- .sect-base-people -->
         <div class="sect-story-people">
           <strong>바이오그래피</strong>
-          <p>국내에서는 [해리포터와 불의잔]에서 캐드릭 디고리 역을 맡아 가장 눈에 띄는 연기를 보였던 ‘로버트 패틴슨’은 1986년 생 영국 출신 배우이다.<br>
-            못하는 스포츠가 없을 정도로 만능 스포츠맨인 그는 풋볼, 스키, 스노우보드 등 각종 스포츠 경기에 참가하여 취미 활동이라고는 생각할 수 없을 정도로 완벽한 실력을 선보여 주변인을 깜짝 놀라게 했다.<br>
-            [트와일라잇]의 절대매력 뱀파이어 ‘에드워드’ 역으로 전세계 소녀 팬들의 사랑을 한 몸에 받은 그는19살때 [해리포터와 불의 잔]의 출연으로 영화 관계자들의 관심을 끌었다. 또한 음악적으로도 남다른 재능을 갖고 있어, 
-            기타와 키보드 연주를 통해 음악에 대한 열정을 드러냈으며 영화 [트와일라잇]의 O.S.T.에도 참여하여 큰 이슈가 되기도 하였다. [트와일라잇] 단 한편으로 전세계 하이틴 스타로 군림한 그는 최근에는 연극 무대에 참여하는 등 
-            다양한 방면으로 자신의 경력을 쌓고 있는 욕심 많은 연기자이다.
+          <p>
+          	${actorVo.movie_actor_info}
           </p>
         </div>
         <!-- .sect-story-people -->
@@ -81,114 +79,26 @@
             </ul>
             <div class="sect-movielist-filmo">
               <ul>
+              <c:forEach var="movieList" items="${movieList}">
                 <li>
                   <div class="box-image">
                     <a href="#">
                       <span class="thumb-image">
-                        <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.jpg" alt="더 배트맨 포스터">
-                        <span class="ico-grade grade-15">15세 이상</span>
+                        <img src="${movieList.movie_img}" alt="${movieList.movie_title}">
+                        <span class="ico-grade grade${movieList.age_name}">${movieList.age_name} 이상</span>
                       </span>
                     </a>
                   </div>
                   <div class="box-contents">
                     <a href="">
                       <strong>
-                        더 배트맨
-                        <span>2021    </span>
+                        ${movieList.movie_title}
+                        <span>${movieList.movie_open_date}    </span>
                       </strong>
                     </a>
                   </div>
                 </li>
-                <li>
-                  <div class="box-image">
-                    <a href="#">
-                      <span class="thumb-image">
-                        <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.jpg" alt="더 배트맨 포스터">
-                        <span class="ico-grade grade-15">15세 이상</span>
-                      </span>
-                    </a>
-                  </div>
-                  <div class="box-contents">
-                    <a href="">
-                      <strong>
-                        더 배트맨
-                        <span>2021    </span>
-                      </strong>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="box-image">
-                    <a href="#">
-                      <span class="thumb-image">
-                        <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.jpg" alt="더 배트맨 포스터">
-                        <span class="ico-grade grade-15">15세 이상</span>
-                      </span>
-                    </a>
-                  </div>
-                  <div class="box-contents">
-                    <a href="">
-                      <strong>
-                        더 배트맨
-                        <span>2021    </span>
-                      </strong>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="box-image">
-                    <a href="#">
-                      <span class="thumb-image">
-                        <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.jpg" alt="더 배트맨 포스터">
-                        <span class="ico-grade grade-15">15세 이상</span>
-                      </span>
-                    </a>
-                  </div>
-                  <div class="box-contents">
-                    <a href="">
-                      <strong>
-                        더 배트맨
-                        <span>2021    </span>
-                      </strong>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="box-image">
-                    <a href="#">
-                      <span class="thumb-image">
-                        <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.jpg" alt="더 배트맨 포스터">
-                        <span class="ico-grade grade-15">15세 이상</span>
-                      </span>
-                    </a>
-                  </div>
-                  <div class="box-contents">
-                    <a href="">
-                      <strong>
-                        더 배트맨
-                        <span>2021    </span>
-                      </strong>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="box-image">
-                    <a href="#">
-                      <span class="thumb-image">
-                        <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.jpg" alt="더 배트맨 포스터">
-                        <span class="ico-grade grade-15">15세 이상</span>
-                      </span>
-                    </a>
-                  </div>
-                  <div class="box-contents">
-                    <a href="">
-                      <strong>
-                        더 배트맨
-                        <span>2021    </span>
-                      </strong>
-                    </a>
-                  </div>
-                </li>
+                </c:forEach>
               </ul>
             </div>
           </div>

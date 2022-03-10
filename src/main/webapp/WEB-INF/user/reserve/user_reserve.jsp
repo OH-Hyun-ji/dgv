@@ -13,6 +13,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    
 	<style type="text/css">
 		.onBtn{
 			background-color: rgb(42 45 41 / 54%);
@@ -278,6 +279,16 @@
    </div>
     <jsp:include page="../default/user_footer.jsp"></jsp:include>
 	<script>
+	
+	$(function(){
+		console.log("num : "+${movieInfo.movie_num})
+		const movieNumber = ${movieInfo.movie_num}
+		if(movieNumber != null){
+			alert("ㅇㅇㅇㅇ")
+			movieCode(movieNumber)
+		}
+		
+	})
 	function movieCode(n){
 		alert("movie code :" +n)
 		$(".movieStyle").css("background-color","")	

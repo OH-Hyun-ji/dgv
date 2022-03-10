@@ -44,4 +44,7 @@
 		SELECT * FROM movie_group WHERE movie_group_code =#{movie_group_code}
 	</select>
 	
+	
+	
+	
 </mapper>

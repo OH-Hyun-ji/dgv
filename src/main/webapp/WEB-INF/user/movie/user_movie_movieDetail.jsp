@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +11,9 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
-    
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>   
+    <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/button.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -189,7 +191,12 @@
                 $('.pop_wrap').removeClass('active');
                 $('.popup').fadeOut();
             };
+            
+
+            
         });
+       
+            
     </script>
 </head>
 <body class="block">
@@ -204,25 +211,24 @@
                 </div>
                 <div class="sect-base-movie">
                     <h3>
-                        <strong>극장판 주술회전 0</strong>
+                        <strong>${movieList.movie_title}</strong>
                         "기본정보"
                     </h3>
                     <div class="box-image">
                         <a href="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_1000.jpg" title="포스터 크게 보기 새창" target="_blank">
                             <span class="thumb-image"> 
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_320.jpg" alt="극장판 주술회전 0 포스터 새창" onerror="errorImage(this)">
-                                <span class="ico-posterdetail">포스터 크게 보기</span>
-                                <span class="ico-grade grade-15"> 15세 이상</span>
+                                <img src="${movieList.movie_img}" alt="${movieList.movie_title }" onerror="errorImage(this)">
+                                <span class="ico-posterdetail">포스터 크게 보기</span>                             
                             </span>
                         </a>
                     </div>
                     <div class="box-contents">
                         <div class="title">
-                            <strong>극장판 주술회전 0</strong>
+                            <strong>${movieList.movie_title}</strong>
                             <em class="round brown">
                                 <span>예매중</span>
                             </em>
-                            <p>Jujutsu Kaisen: Zero</p>
+                            <p>${movieList.movie_title_en}</p>
                         </div>
                         <div class="score">
                             <strong class="percent">
@@ -232,37 +238,32 @@
                         </div>
                         <div class="spec">
                             <dl>
-                                <dt>감독 :&nbsp;</dt>
-                                <dd>
-                                    <a>박성후</a>
-                                </dd>
-                                <dd> </dd>
-                                <dt>&nbsp;/ 배우 :&nbsp;</dt>
-                                <dd class="on">
-                                    <a>오가타 메구미</a>                                    
-                                    ,&nbsp;
-                                    <a>하나자와 카나</a>                                                       
-                                    ,&nbsp;
-                                    <a>코마츠 미카코</a>                                                      
-                                    ,&nbsp;
-                                    <a>우치야마 코우키</a>                                                       
-                                    ,&nbsp;
-                                    <a>세키 토모카즈</a>                                                       
-                                    ,&nbsp;
-                                    <a>나카무라 유이치</a>                                                        
-                                    ,&nbsp;
-                                    <a>사쿠라이 타카히로</a>
-                                </dd>
-                                <dt>장르 :&nbsp;애니메이션</dt>
-                                <dd></dd>
-                                <dt>&nbsp;/ 기본 :&nbsp;</dt>
-                                <dd class="on">15세 이상,&nbsp;105분,&nbsp;일본</dd>
-                                <dt>개봉 :&nbsp;</dt>
-                                <dd class="on">2022.02.17</dd>
-                            </dl>
+                            <c:forEach var="i" begin="1" end="${groupListCount}">
+                            	<c:forEach var="groupList" items="${groupList}">
+                            		<c:if test="${groupList.movie_group_code == i }">
+                            			<dt>${groupList.movie_group_name } : &nbsp;</dt>
+                            		</c:if>
+                            	</c:forEach>
+                            	<c:forEach var="actorList" items="${actorList}">
+                            		<c:if test="${actorList.movie_group_code == i}">
+                            			<dd><a href="/movieActor.do?movie_actor_code=${actorList.movie_actor_code}">${actorList.movie_actor_name}</a>, &nbsp;</dd>
+                            		</c:if>
+                            	</c:forEach>
+                            </c:forEach>                              
+                               		 <dt>장르 :&nbsp;</dt>
+                              		  	<dd>${genreList.movie_genre_name}</dd>
+                              		 <dt>&nbsp; 시청연령 :&nbsp;</dt>
+                               			 <dd class="on">${ageList.movie_age_name } 이상,&nbsp;</dd>
+                               		 <dt>총 :&nbsp;</dt>
+                               		 	<dd>${movieList.movie_running_time}분,&nbsp;</dd>
+                               		 <dt>개봉 :&nbsp;</dt>
+                               			 <dd class="on">${movieList.movie_open_date }</dd>
+                           </dl>
                         </div>
                         <span class="like">
-                            <a class="link-reservation" href="#">예매</a>
+                            <button class="w-btn w-btn-gra3 w-btn-gra-anim"
+									 style="padding: 9px 8px; box-shadow: none;" 
+									 onclick="location.href='/movieReserve.do?movie_num=${movieList.movie_num}'">예매하기</button>
                         </span>
                     </div>
                 </div>
@@ -286,24 +287,15 @@
                             </li>
                         </ul>
                         <div class="sect-story-movie">
-                            어릴 적 소꿉친구인 오리모토 리카를 교통사고로 눈앞에서 잃은 옷코츠 유타.<br>
-                            <br>
-                            <strong>“약속해, 리카와 유타는 어른이 되면 결혼하기로”</strong><br>
-                            옷코츠는 원령으로 변한 리카의 저주에 괴로워한 나머지, 자신도 죽기를 바라지만 최강의 주술사인 고죠 사토루에 의해 주술고전에 들어가게 된다. 그리고 동급생인 젠인마키, 이누마키 토게, 판다를 만나면서 굳은 결심을 한다.<br>
-                            <br>
-                            <strong>“살아도 된다는 자신감이 필요해”<br>
-                            “나는 주술고전에서 리카의 저주를 풀겠습니다”</strong><br>
-                            한편, 옷코츠와 친구들 앞에 과거에 일반인을 대량으로 학살해서 고전에서 추방된 최악의 주저사인 게토 스구루가 나타난다.<br>
-                            <br>
-                            <strong>“12월 24일, 우리는 백귀야행을 결행한다”</strong><br>
-                            주술사만의 낙원을 만들려는 게토는 비술사를 섬멸하겠다면서, 신주쿠와 교토에 천의 저주를 내리는데…과연 옷코츠는 게토를 막을 수 있을까? 그리고리카의 저주를 풀 수 있을까?
+                           ${movieList.movie_text}
                         </div>
                         <!-- 연령별예매분포 -->
                         <div id="ctl00_PlaceHolderContent_Section_Chart" class="sect-graph sect-graph-emotion">
                             <ul class="graph">
                                 <li>
                                     <strong>연령별 예매 분포</strong>
-                                    <div id="jqplot_age" class="chart jqplot-target" style="position: relative;"><canvas width="401" height="192" class="jqplot-base-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="jqplot-title" style="height: 0px; width: 0px;">
+                                    <div id="jqplot_age" class="chart jqplot-target" style="position: relative;"><canvas width="401" height="192" class="jqplot-base-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas>
+                                    <div class="jqplot-title" style="height: 0px; width: 0px;">
                                         <canvas width="401" height="192" class="jqplot-base-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas>
                                         <div class="jqplot-title" style="height: 0px; width: 0px;"></div>
                                         <div class="jqplot-axis jqplot-xaxis" style="position: absolute; width: 401px; height: 15px; left: 0px; bottom: 0px;">
@@ -324,73 +316,84 @@
                                         <div class="jqplot-point-label jqplot-series-0 jqplot-point-0" style="position: absolute; left: 38.1px; top: 93.265px; display: block;">21.3</div>
                                         <canvas width="381" height="157" class="jqplot-barRenderer-highlight-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas>
                                         <canvas width="381" height="157" class="jqplot-event-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas>
-                                    </div>
+                                   </div>
+                                   </div>
                                 </li>
                             </ul>
                         </div>
                         <div id="ctl00_PlaceHolderContent_Section_Trailer" class="sect-trailer">
                             <div class="heading">
-                                <h4>트레일러</h4>
-                                <span id="ctl00_PlaceHolderContent_TrailerTotalCount" class="count">3건</span>
+                                <h4>트레일러</h4>                            
                                 <a class="link-more" href="####">더보기</a>
                             </div>
                             <ul>
-                                <!-- 사진 동영상 조회 -->
+                                <!-- 사진 동영상 조회 -->                           
+	                                <li>
+	                                    <div class="box-image">
+	                                        <script type="text/javascript">
+	                                        function MovieVideo(video,num){
+	                                			var popupX = (window.screen.width+100) - (200 / 2);
+	                                			
+	                                			var popupY= (window.screen.height/2)-(800/2) ;
+	                                			
+	                                			window.open('/movieVideo.do?movie_video='+video+'&&movie_num='+num, '', 'status=no, height=800, width=1100, left='+ popupX + ', bottom='+ popupY);
+	                                		}
+	                                        </script>
+			                                        <a onclick="MovieVideo('${imgList.movie_play1}',${movieList.movie_num })" title="새창" class="movie_player_popup">
+			                                            <span class="thumb-image">
+			                                                <img src="${imgList.movie_img1}" alt="">
+			                                                <span class="ico-play">영상보기</span>
+			                                            </span>
+			                                        </a>
+	                                       
+	                                    </div>
+	                                    <div class="box-contents">
+	                                        <a onclick="MovieVideo('${imgList.movie_play1}',${movieList.movie_num })" title="새창" class="movie_player_popup" >
+	                                            <strong class="title">
+	                                                <span class="ico-trailer hd">HD</span>
+	                                                2차 예고편
+	                                            </strong>
+	                                        </a>
+	                                        <span class="txt-info">${movieList.movie_open_date }</span>
+	                                    </div>
+	                                
+	                                </li>                 
                                 <li>
                                     <div class="box-image">
-                                        <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="200013">
+                                        <a onclick="MovieVideo('${imgList.movie_play2}',${movieList.movie_num })"  title="새창" class="movie_player_popup">
                                             <span class="thumb-image">
-                                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Trailer/85603/85603200013_1024.jpg" alt="[극장판 주술회전 0]2차 예고편" onerror="errorImage(this, {'type':'landscape'})">
+                                                <img src="${imgList.movie_img2}" >
                                                 <span class="ico-play">영상보기</span>
                                             </span>
                                         </a>
                                     </div>
                                     <div class="box-contents">
-                                        <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="200013">
-                                            <strong class="title">
-                                                <span class="ico-trailer hd">HD</span>
-                                                2차 예고편
-                                            </strong>
-                                        </a>
-                                        <span class="txt-info">2022.02.03</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box-image">
-                                        <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="200013">
-                                            <span class="thumb-image">
-                                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Trailer/85603/85603199812_1024.jpg" alt="[극장판 주술회전 0]런칭 예고편" onerror="errorImage(this, {'type':'landscape'})">
-                                                <span class="ico-play">영상보기</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="box-contents">
-                                        <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="200013">
+                                        <a onclick="MovieVideo('${imgList.movie_play2}',${movieList.movie_num })"  title="새창" class="movie_player_popup" >
                                             <strong class="title">
                                                 <span class="ico-trailer hd">HD</span>
                                                 런칭 예고편
                                             </strong>
                                         </a>
-                                        <span class="txt-info">2022.01.24</span>
+                                        <span class="txt-info">${movieList.movie_open_date }</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="box-image">
-                                        <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="200013">
+                                        <a onclick="MovieVideo('${imgList.movie_play3}',${movieList.movie_num })"  title="새창" class="movie_player_popup">
                                             <span class="thumb-image">
-                                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Trailer/85603/85603199777_1024.jpg" alt="[극장판 주술회전 0]1차 예고편" onerror="errorImage(this, {'type':'landscape'})">
+                                                <img src="${imgList.movie_img3}" >
                                                 <span class="ico-play">영상보기</span>
                                             </span>
                                         </a>
                                     </div>
                                     <div class="box-contents">
-                                        <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="200013">
+                                        <a onclick="MovieVideo('${imgList.movie_play3}',${movieList.movie_num })"  title="새창" class="movie_player_popup" >
                                             <strong class="title">
                                                 <span class="ico-trailer hd">HD</span>
                                                 1차 예고편
                                             </strong>
                                         </a>
-                                        <span class="txt-info">2022.01.21</span>
+                                        <span class="txt-info">${movieList.movie_open_date }</span>
                                     </div>
                                 </li>
                             </ul>
@@ -410,19 +413,19 @@
                                 <div id="slider-wrap"  style="overflow: hidden;" class="swiper-container">
                                     <div class="swiper-wrapper" style=" margin-left: 37px;">
                                         <div class="swiper-slide">
-                                            <img data-src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200094_727.jpg" alt="극장판 주술회전 0" onerror="errorImage(this)" src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200094_727.jpg" style="margin-top: 23px;">
+                                            <img src="${imgList.movie_img4}" style="margin-top: 23px;">
                                         </div>
                                         <div class="swiper-slide">
-                                            <img data-src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200093_727.jpg" alt="극장판 주술회전 0" onerror="errorImage(this)" src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200093_727.jpg" style="margin-top: 23px;">
+                                            <img src="${imgList.movie_img5}" style="margin-top: 23px;">
                                         </div>
                                         <div class="swiper-slide">
-                                            <img data-src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200092_727.jpg" alt="극장판 주술회전 0" onerror="errorImage(this)" src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200092_727.jpg" style="margin-top: 23px;">
+                                            <img src="${imgList.movie_img6}" style="margin-top: 23px;">
                                         </div>
                                         <div class="swiper-slide">
-                                            <img data-src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200091_727.jpg" alt="극장판 주술회전 0" onerror="errorImage(this)" src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200091_727.jpg" style="margin-top: 23px;">
+                                            <img src="${imgList.movie_img7}" style="margin-top: 23px;">
                                         </div>
                                         <div class="swiper-slide">
-                                            <img data-src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200090_727.jpg" alt="극장판 주술회전 0" onerror="errorImage(this)" src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85603/85603200090_727.jpg" style="margin-top: 23px;">
+                                            <img src="${imgList.movie_img3}" style="margin-top: 23px;">
                                         </div>
 
                                         <!-- div class="swiper-slide" 갯수를 세는 js -->
