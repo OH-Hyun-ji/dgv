@@ -209,8 +209,43 @@
               $("#email").addClass("nonesetUser");
               $("#emailCK").html('<b style="color:aquamarine; font-size: smaller;">[ 확인되었습니다. ]');    
               chk6 = true;
-           }                   
+           }     
+          
+          //이메일 중복검사 
+          let userEmail = $('#email').val(); //input에 사용자가 입력한값 받아오고 
+               
+          console.log("userEmail : " + userEmail)     
+          
+          if($("#email").val() != ""){
+             $.ajax({
+                method:"POST", //서버전송
+                url:"/join_email.do", //controller쪽 url
+                contentType: "application/json", // 서버에 보내는 데이터 형식
+                dataType:"json", //서버응답!
+                data: JSON.stringify({"user_email":userEmail}),
+                success:function(result){
+             	   console.log("result.msg"+result.msg)
+                   if(result.msg == "FAIL"){                   
+                         $("#email").removeClass("nonesetUser");
+                         $("#email").addClass("issetUser");
+                         $("#emailCK").html('<b style="color:orangered; font-size: smaller;">[ 이미 사용중인 이메일입니다. ]');
+                         chk6=false;
+                   } else {
+                         $("#email").removeClass("issetUser");
+                         $("#email").addClass("nonesetUser");
+                         $("#emailCK").html('<b style="color:aquamarine; font-size: smaller;">[ 사용가능한 이메일입니다. ]');
+                         chk6 = true;
+                      }
+                   
+                },//success function
+                error:function(){
+                   console.log("통신실패");
+                }
+             });// 이메일 중복검사 끝
+          }
+       
        });//이메일 확인 메서드 끝
+       
 
        
      //생년월일중 "년" 확인 메서드

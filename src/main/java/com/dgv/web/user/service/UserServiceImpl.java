@@ -36,6 +36,12 @@ public class UserServiceImpl implements UserService {
 	public int checkId(String id) {
 		return userDAO.checkId(id);
 	}
+	
+	// Email 중복 체크
+	@Override
+	public int checkEmail(String email) {
+		return userDAO.checkEmail(email);
+	}
 
 	// 마이페이지 상단 페이지
 	@Override

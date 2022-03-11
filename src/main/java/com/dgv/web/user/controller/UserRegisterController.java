@@ -54,13 +54,11 @@ public class UserRegisterController {
 		}
 		
 		return"/login/user_loginForm";
-		
-		
+			
 		
 	}
 	
-	 //회원가입 ID중복체크 
-	//회원가입 ID중복체크 
+	   //회원가입 ID중복체크 
 	   @PostMapping("/join.do")
 	   @ResponseBody
 	   public CommonResultDto checkId(@RequestBody UserVO vo) {
@@ -79,4 +77,28 @@ public class UserRegisterController {
 	      }
 	  
 	   }
+	   
+	   
+	   //회원가입 이메일 중복체크 
+	   @PostMapping("/join_email.do")
+	   @ResponseBody
+	   public CommonResultDto checkEmail(@RequestBody UserVO vo) {
+	      int checkNum = userService.checkEmail(vo.getUser_email());
+	      System.out.println("id :" + vo.getUser_email());
+	      System.out.println("checkNum : "+ checkNum);
+	      Gson gson = new Gson();
+	   
+	      
+	      if(checkNum > 0) {
+	         System.out.println("존재하는 이메일");
+	         return CommonResultDto.fail(); //ret = N
+	      }else {
+	         System.out.println("존재하지 않는 이메일 이므로 회원가입 가능!!");
+	         return CommonResultDto.success();
+	      }
+	  
+	   }
+	   
+	   
+	   
 }

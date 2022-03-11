@@ -31,6 +31,11 @@ public class UserDAO {
 		return sqlSessionTemplate.selectOne("UserDAO.checkId", id);
 	}
 
+	// 회원가입 Email 중복체크
+	public int checkEmail(String email) {
+		return sqlSessionTemplate.selectOne("UserDAO.checkEmail", email);
+	}
+
 	// 마이페이지 상단 정보
 	public UserVO MyUserList(String id) {
 		return sqlSessionTemplate.selectOne("UserDAO.userList", id);
@@ -43,24 +48,24 @@ public class UserDAO {
 
 	// 회원 정보 수정
 	public int updateUser(UserVO userVO) {
-		int daoNum=sqlSessionTemplate.update("UserDAO.updateUser", userVO);
+		int daoNum = sqlSessionTemplate.update("UserDAO.updateUser", userVO);
 		System.out.println(daoNum);
 		return daoNum;
 	}
-	
+
 	// 회원 탈퇴
 	public int deleteUser(UserVO userVO) {
 		return sqlSessionTemplate.delete("UserDAO.deleteUser", userVO);
 	}
-	
-	//카카오 로그인
+
+	// 카카오 로그인
 	public UserVO kakaoLogin(UserVO userVO) {
-		return sqlSessionTemplate.selectOne("UserDAO.kakaoUserList",userVO);
+		return sqlSessionTemplate.selectOne("UserDAO.kakaoUserList", userVO);
 	}
-	
-	//마이페이지 나의 문의 내역
-	public List<UserInquiryVO> MyPageQnaOneList(String id){
-		return sqlSessionTemplate.selectList("UserDAO.MyPageQnaOneList",id);
+
+	// 마이페이지 나의 문의 내역
+	public List<UserInquiryVO> MyPageQnaOneList(String id) {
+		return sqlSessionTemplate.selectList("UserDAO.MyPageQnaOneList", id);
 	}
 
 }

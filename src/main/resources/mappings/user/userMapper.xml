@@ -19,6 +19,12 @@
          FROM user_info
          WHERE user_id=#{user_id}
       </select>
+      
+      <select id="checkEmail" resultType="int" parameterType="UserVO">
+         SELECT COUNT(*)
+         FROM user_info
+         WHERE user_email=#{user_email}
+      </select>
 
       <select id="userList" resultType="UserVO">
          SELECT * FROM user_info WHERE user_id = #{user_id}
