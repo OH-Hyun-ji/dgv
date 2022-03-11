@@ -17,6 +17,9 @@ import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.dao.UserBoardDAO;
+import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserFAQKindVO;
+import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
@@ -167,7 +170,70 @@ public class UserBoardServiceImpl implements UserBoardService {
 	@Override
 	public List<AdminAgeVO> actorAgeList(int num) {
 		// TODO Auto-generated method stub
-		return null;
+		return userBoardDAO.actorAgeList(num);
+	}
+
+
+	@Override
+	public void viewCount(int num) {
+		
+		userBoardDAO.viewCount(num);
+	}
+
+
+	@Override
+	public AdminNoticeVO noticeView(int num) {
+		
+		return userBoardDAO.noticeView(num);
+	}
+
+
+	@Override
+	public List<UserFAQVO> faqList(int num) {
+	
+		return userBoardDAO.faqList(num);
+	}
+
+
+	@Override
+	public UserFAQKindVO faqKindList(int num) {
+		
+		return userBoardDAO.faqKindList(num);
+	}
+
+
+	@Override
+	public void faqCount(int num) {
+		userBoardDAO.faqCount(num);
+		
+	}
+
+
+	@Override
+	public UserFAQVO faqVoSelect(int num) {
+		
+		return userBoardDAO.faqVoSelect(num);
+	}
+
+
+	@Override
+	public int communityInsert(UserCommunityVO vo) {
+		
+		return userBoardDAO.communityInsert(vo);
+	}
+
+
+	@Override
+	public List<UserCommunityVO> communitySelect() {
+		
+		return userBoardDAO.communitySelect();
+	}
+
+
+	@Override
+	public UserCommunityVO communityChoiceNum(int num) {
+		
+		return userBoardDAO.communityChoiceNum(num);
 	}
 
 	

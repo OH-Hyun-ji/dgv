@@ -176,13 +176,10 @@
 						<h4 id="theater-title">						
 						<!--  <span>제목</span>-->
 						</h4>
-						<a href="/support/lease/default.aspx" class="round inred btn_lease"><span
-							style="padding: 0 14px; font-weight: bold; color: white;">단체/대관문의</span></a>
-	
 						<div class="wrap-theaterinfo">
 							<div class="box-image">
 								<div id="theater_img_container" class="thumb-image">
-									<img src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg">
+									<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/TheatherBackImg.jpg">
 								</div>
 							</div>
 							<div class="box-contents">

@@ -279,13 +279,17 @@
    </div>
     <jsp:include page="../default/user_footer.jsp"></jsp:include>
 	<script>
-	
+	var test;
 	$(function(){
-		console.log("num : "+${movieInfo.movie_num})
-		const movieNumber = ${movieInfo.movie_num}
-		if(movieNumber != null){
-			alert("ㅇㅇㅇㅇ")
+		test = this;
+ 		console.log("num : "+${movieInfo.movie_num})
+ 		const movieNumber = ${movieInfo.movie_num}
+		
+		if(movieNumber != -1 ){
+			alert("post방식이닷 ")
 			movieCode(movieNumber)
+		}else{
+			alert("get방식이닷!!!")
 		}
 		
 	})

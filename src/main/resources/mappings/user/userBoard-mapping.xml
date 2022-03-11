@@ -16,6 +16,41 @@
 		VALUES(DEFAULT,#{dgv_inquiry_tag},#{dgv_inquiry_title},#{dgv_inquiry_text},#{dgv_inquiry_user},current_date,DEFAULT)
 	</insert>
 	
+	<update id="viewCount" parameterType="int">
+		UPDATE dgv_notice SET notice_count = notice_count+1 WHERE notice_num =#{notice_num}
+	</update>
+	
+	<select id="noticeView" resultType="AdminNoticeVO">
+		SELECT * FROM dgv_notice WHERE notice_num =#{notice_num}
+	</select>
+	
+	<select id="faqList" resultType="UserFAQVO" parameterType="int">
+		SELECT * FROM dgv_faq WHERE faq_kind_num=#{faq_kind_num}
+	</select>
+	<select id="faqKindList" resultType="UserFAQKindVO">
+		SELECT * FROM faq_kind WHERE faq_kind_num =#{faq_kind_num}
+	</select>
+	<update id="faqCount" parameterType="int">
+		UPDATE dgv_faq SET faq_count = faq_count+1 WHERE faq_num=#{faq_num}
+	</update>
+	
+	<select id="faqVoSelect" resultType="UserFAQVO">
+		SELECT * FROM dgv_faq WHERE faq_num=#{faq_num}
+	</select>
+	
+	<insert id="communityInsert" parameterType="UserCommunityVO">
+		INSERT INTO dgv_community(community_code,community_title,community_kind,community_text,commuity_img,user_id,write_date,write_time)
+		VALUES(DEFAULT,#{community_title},#{community_kind},#{community_text},#{commuity_img},#{user_id},current_date,current_time)
+	</insert>
+	
+	<select id="communitySelect" resultType="UserCommunityVO">
+		SELECT * FROM dgv_community
+	</select>
+	
+	<select id="communityChoiceNum" resultType="UserCommunityVO">
+		SELECT * FROM dgv_community WHERE community_code =#{community_code}
+	</select>
+	
 	
 	
 </mapper>

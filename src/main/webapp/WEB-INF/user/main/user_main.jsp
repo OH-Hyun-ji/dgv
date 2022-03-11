@@ -149,6 +149,21 @@
 							const imageDiv = $("<div>").attr("class","img-wrap").attr("data-scale","false")
 							const titleImg = $("<img>").attr("src", "${pageContext.request.contextPath }/resources/images/")						
 						});
+		
+
+						function reservePage(movieNum){
+							var form = document.createElement('form');
+							var objs;
+							objs =document.createElement('input')
+							objs.setAttribute('type','text')
+							objs.setAttribute('name','movie_num')
+							objs.setAttribute('value',movieNum)
+							form.appendChild(objs)
+							form.setAttribute('method','post')
+							form.setAttribute('action','/movieReserve.do')
+							document.body.appendChild(form)
+							form.submit()	
+						}
 	</script>
 	<style type="text/css">
 		video {
@@ -213,8 +228,8 @@
 											alt="12세">
 									</div>
 									<div class="movie-hidden-btn">
-										<a href="/movieDetail.do?movie_num=${movieList.movie_num}" class="movie-detail">"상세보기"</a> 
-										<a href="/movieReserve.do?movie_num=${movieList.movie_num}" class="movie-ticketing">예매하기</a>
+										<a href="/movieDetail.do?movie_num=${movieList.movie_num}"${movieList.movie_num})" class="movie-detail">"상세보기"</a> 
+										<a onclick="reservePage(${movieList.movie_num})" class="movie-ticketing">예매하기</a>
 									</div>
 								</div>
 								<div class="movie-info-wrap">
@@ -306,7 +321,7 @@
 				<div class="noticeClient_container">
 					<div class="noticeClient_content">
 						<div id="ctl00_PlaceHolderContent_notice_wrap" class="notice_wrap">
-							<strong>공지사항</strong> <a href="#" class="btn_more">더보기</a>
+							<strong>공지사항</strong> <a href="/notice.do" class="btn_more">더보기</a>
 						</div>
 						<div class="client_wrap">
 							<dl class="client_list">
@@ -321,7 +336,7 @@
 								</dd>
 							</dl>
 							<div class="client_btn_wrap">
-								<a href="#">FAQ</a> <a href="#">1:1 문의</a>
+								<a href="/oftenQna.do">FAQ</a> <a href="/myQna.do">1:1 문의</a>
 							</div>
 						</div>
 					</div>
@@ -348,12 +363,11 @@
 									src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/banner1.jpg">
 								</a>
 							</div>
-							<div></div>
+
 						</div>
 						<span class="swiper-notification" aria-live="assertive"
 							aria-atomic="true"></span>
 					</div>
-					<a href="#" class="btn_noticeClientBannerControl">playStop</a>
 				</div>
 			</div>
 		</div>

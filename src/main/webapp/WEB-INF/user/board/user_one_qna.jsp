@@ -16,14 +16,6 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		
-// 	$.ajax({
-// 		method:"POST",
-// 		url:"/answerCheck",
-// 		contentType:"application/json",
-// 		dataType:"json",
-// 		data:
-// 	});//ajax close
 	</script>
 	<style type="text/css">
 table.myPage-table {
@@ -97,10 +89,7 @@ input#waitingAnswer {
                 <jsp:include page="../default/user_notice_side.jsp"></jsp:include>
                   <div class="myPage-content-wrap">
                   <div class="button-wrapping">
-                  <span class="service-center-text">나의 문의내역</span>                 
-              		 <button class="w-btn-outline w-btn-red-outline qna-button" type="button" onclick="location.href='/qnaRegister.do'">
-                      문의하기
-                      </button>
+                  <span class="service-center-text">자주찾는 질문</span>                 
                     </div>
                     <div class="myPage-table-wrap" >
                   	<span><i class="fas fa-table me-1" style=" margin-right: 1%;"></i>1:1문의내역 </span>
@@ -145,7 +134,7 @@ input#waitingAnswer {
 									<div class="qna-often-wrapping">
 									<div class="qna-often-title">
 										<span>자주하시는 질문</span>
-										<input type="button" id="qna-btn" value="바로가기">
+										<input type="button" id="qna-btn" onclick="location.href='/oftenQna.do'" value="바로가기">
 									</div >
 									<div class="qna-often-text">
 										<span>고객님들께서 주로 하시는 질문에 대한 답변을 한곳에 모아두었습니다.</span>
@@ -159,7 +148,7 @@ input#waitingAnswer {
 									<div class="qna-often-wrapping">
 										<div class="qna-often-title"style="margin-top: 18%;">
 											<span>고객의 말씀</span>
-											<input type="button" id="qna-often-btn" value="바로가기">
+											<input type="button" id="qna-often-btn" onclick="location.href='/qnaRegister.do'" value="바로가기">
 										</div >
 										<div class="qna-often-text" style="margin-top: 4%;">
 											<span>불편사항과 문의사항을 남겨주시면 <br>친절히 답변드리겠습니다.</span>

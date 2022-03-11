@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,17 +44,33 @@ public class UserReserveController {
 	@Autowired
 	private UserBoardService userBoardService;
 	
-	
-	
-	
-	
-	@RequestMapping("/movieReserve.do")
+	@GetMapping("/movieReserve.do")
+	public String movieReserve(Model model,AdminMovieVO vo) {
+		List<AdminMovieVO> movieList =adminMovieService.movieList();
+			
+			List<AdminAgeVO> ageList = adminMovieService.ageList();
+			for(AdminMovieVO movieVo: movieList) {
+				for(AdminAgeVO ageVo:ageList) {
+					if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
+						movieVo.setAge_img(ageVo.getMovie_age_img());
+					}
+				}
+			}
+		vo.setMovie_num(-1);
+		model.addAttribute("movieInfo", vo);
+		model.addAttribute("movieList", movieList);
+		model.addAttribute("cityList",adminTheaterService.selectCityList());
+		
+		return "/reserve/user_reserve";
+	}
+	@PostMapping("/movieReserve.do")
 	public String movieReserveView(Model model, @RequestParam("movie_num") int num) {
 		List<AdminMovieVO> movieList =adminMovieService.movieList();
 		System.out.println("num = "+num);
 		AdminMovieVO movieInfo = userBoardService.movieList(num);
 		model.addAttribute("movieInfo",movieInfo);
 		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		
 		for(AdminMovieVO movieVo: movieList) {
 			for(AdminAgeVO ageVo:ageList) {
 				if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
@@ -63,6 +80,7 @@ public class UserReserveController {
 		}
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("cityList",adminTheaterService.selectCityList());
+		
 		return "/reserve/user_reserve";
 	}
 	

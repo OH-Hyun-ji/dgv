@@ -17,8 +17,17 @@
 </head>
 <script type="text/javascript">
 	function reservePage(movieNum){
-		location.href="/movieReserve.do?movie_num="+movieNum
-		
+		var form = document.createElement('form');
+		var objs;
+		objs =document.createElement('input')
+		objs.setAttribute('type','text')
+		objs.setAttribute('name','movie_num')
+		objs.setAttribute('value',movieNum)
+		form.appendChild(objs)
+		form.setAttribute('method','post')
+		form.setAttribute('action','/movieReserve.do')
+		document.body.appendChild(form)
+		form.submit()	
 	}
 </script>
 <body class="block">
@@ -46,6 +55,7 @@
                     <ol>
                     	<c:forEach var="movieList" items="${movieList}" varStatus="status">
                         <li>
+                        <input type="hidden" id="movieNum" value="${movieList.movie_num }">
                             <div class="box-image">
                                 <strong class="rank">No.${status.index+1}</strong>
                                 <a href="/movieDetail.do?movie_num=${movieList.movie_num}">
@@ -73,7 +83,9 @@
 										<button class="w-btn w-btn-gra3 w-btn-gra-anim"style="padding: 9px 8px; box-shadow: none;" onclick="reservePage(${movieList.movie_num})">예매하기</button>
                                 </span>
                             </div>
+                            
                         </li>
+                        
                         </c:forEach>                 
                     </ol>
                 </div>

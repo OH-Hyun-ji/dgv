@@ -18,6 +18,9 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
+import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserFAQKindVO;
+import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
@@ -109,5 +112,38 @@ public class UserBoardDAO {
 	
 	public List<AdminAgeVO> actorAgeList(int num){
 		return sqlSessionTemplate.selectList("UserMovieDAO.actorAgeList", num);
+	}
+	
+	public void viewCount(int num) {
+		sqlSessionTemplate.update("UserBoardDAO.viewCount",num);
+	}
+	
+	public AdminNoticeVO noticeView(int num) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.noticeView",num);
+	}
+	
+	public List<UserFAQVO> faqList(int num){
+		return sqlSessionTemplate.selectList("UserBoardDAO.faqList",num);
+	}
+	public UserFAQKindVO faqKindList(int num) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.faqKindList",num);
+	}
+	
+	public void faqCount(int num) {
+		sqlSessionTemplate.update("UserBoardDAO.faqCount",num);
+	}
+	
+	public UserFAQVO faqVoSelect(int num) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.faqVoSelect", num);
+	}
+	public int communityInsert(UserCommunityVO vo) {
+		return sqlSessionTemplate.insert("UserBoardDAO.communityInsert",vo);
+	}
+	
+	public List<UserCommunityVO> communitySelect(){
+		return sqlSessionTemplate.selectList("UserBoardDAO.communitySelect");
+	}
+	public UserCommunityVO communityChoiceNum(int num) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.communityChoiceNum",num);
 	}
 }

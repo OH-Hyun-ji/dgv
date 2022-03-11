@@ -196,7 +196,20 @@
             
         });
        
-            
+         function reserve(result){
+        	 alert("@@@@@@@@@@@@@")
+        	var form = document.createElement('form');
+			var objs;
+			objs =document.createElement('input')
+			objs.setAttribute('type','text')
+			objs.setAttribute('name','movie_num')
+			objs.setAttribute('value',result)
+			form.appendChild(objs)
+			form.setAttribute('method','post')
+			form.setAttribute('action','/movieReserve.do')
+			document.body.appendChild(form)
+			form.submit()
+         }   
     </script>
 </head>
 <body class="block">
@@ -263,8 +276,9 @@
                         <span class="like">
                             <button class="w-btn w-btn-gra3 w-btn-gra-anim"
 									 style="padding: 9px 8px; box-shadow: none;" 
-									 onclick="location.href='/movieReserve.do?movie_num=${movieList.movie_num}'">예매하기</button>
-                        </span>
+									 onclick="reserve('${movieList.movie_num}')">예매하기</button>
+                        </span>				
+                        						<!-- location.href='/movieReserve.do?movie_num=${movieList.movie_num} -->
                     </div>
                 </div>
                 <div class="cols-content" id="menu">

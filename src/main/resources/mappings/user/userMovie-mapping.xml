@@ -71,4 +71,6 @@
 	<select id="actorAgeList" resultType="AdminAgeVO">
 		SELECT * FROM movie_age_info WHERE movie_age_num=#{movie_age_num}
 	</select>
+	
+	
 </mapper>

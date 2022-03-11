@@ -587,7 +587,7 @@ input.myPage-button-wrap02:hover{
 .service-center-01 {
     height: 170px;
     width: 24%;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgb(0 0 0 / 38%);
     border-radius: 9px;
     color: white;
     font-size: 20px;
@@ -603,7 +603,7 @@ a.service-sub-01 {
 .service-center-02 {
     height: 170px;
     width: 24%;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgb(0 0 0 / 38%);
     border-radius: 9px;
     color: white;
     font-size: 20px;
@@ -619,7 +619,7 @@ a.service-sub-02 {
 .service-center-03 {
     height: 170px;
     width: 24%;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgb(0 0 0 / 38%);
     border-radius: 9px;
     color: white;
     font-size: 20px;
@@ -695,4 +695,46 @@ qna-often-wrapping {
 	display: flex;
     width: 380px;
     height: 174px;
+}
+.btn-style{
+	background-color: #fb4b43e0;
+    color: white;
+    height: 50px;
+    box-sizing: border-box;
+    padding-left: 41px;
+    border-radius: 5px;
+}
+.oftenStyleText{
+	position: absolute; 
+	box-sizing: border-box; 
+	 padding-top: 85px;
+}
+#faqTitle{
+	color: #6c5944; 
+	font-weight: 700; 
+	border-color: lightgray; 
+	text-align: center;
+	width: 592px;
+    height: 30px;
+    background-color: #f8f8f1;
+    border-radius: 5px;
+}
+.faqTextArea {
+    border-radius: 6px;
+    background-color: #f8f8f1;
+    box-sizing: border-box;
+    padding-left: 13px;
+    padding-top: 19px;
+    padding-right: 8px;
+    border: 0;
+}
+#faqWriter{
+	color: #6c5944; 
+	font-weight: 700; 
+	border-color: lightgray; 
+	padding-left: 60px;
+	width: 100px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: #f8f8f1;
 }

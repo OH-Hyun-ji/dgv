@@ -14,6 +14,9 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
+import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserFAQKindVO;
+import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
@@ -63,4 +66,22 @@ public interface UserBoardService {
 	List<AdminGenreVO> actorGenreList(int num);
 	
 	List<AdminAgeVO> actorAgeList(int num);
+	
+	void viewCount(int num);
+	
+	AdminNoticeVO noticeView(int num);
+	
+	List<UserFAQVO> faqList(int num);
+	
+	UserFAQKindVO faqKindList(int num);
+	
+	void faqCount(int num);
+	
+	UserFAQVO faqVoSelect(int num);
+	
+	int communityInsert(UserCommunityVO vo);
+	
+	List<UserCommunityVO> communitySelect();
+	
+	UserCommunityVO communityChoiceNum(int num);
 }

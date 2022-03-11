@@ -1,0 +1,64 @@
+.shortcu_area {
+	overflow: hidden;
+	margin-top: 60px;
+	padding: 30px 0px 35px 0px;
+	color: #222;
+	border-top: solid 1px #cacac1;
+	border-bottom: solid 1px #cacac1;
+}
+
+.shortcu_area li:first-child {
+	margin-left: 0;
+}
+
+.shortcu_area li {
+	float: left;
+    width: 25%;
+    margin-right: 4px;
+    padding-left: 58px;
+}
+
+.shortcu_area .tit_shortcut {
+	display: inline-block;
+	height: 33px;
+	line-height: 33px;
+	font-size: 16px;
+	background: url(../images/sub/customer/bg_c_main.png) no-repeat;
+}
+
+.shortcu_area .ico_lost {
+	padding-left: 48px;
+	background-position: -3px -88px;
+}
+
+.shortcu_area .ico_general {
+	padding-left: 53px;
+	background-position: -158px -88px;
+}
+
+.shortcu_area .ico_vipinfo {
+	padding-left: 49px;
+	background-position: -361px -88px;
+}
+
+.shortcu_area .ico_vipcustomer {
+	padding-left: 38px;
+	background-position: -513px -88px;
+}
+
+.shortcu_area .txt {
+	display: block;
+	margin: 10px 30px 13px 0px;
+	line-height: 150%;
+	font-size: 16px;
+}
+
+.shortcu_area .round.on.gray {
+	height: 20px;
+}
+
+.round.on.gray {
+	border: 2px solid #7b7b7b;
+	background-color: #7b7b7b;
+	color: #ffffff;
+}

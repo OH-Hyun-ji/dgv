@@ -136,3 +136,353 @@ table.type10 td {
     margin-left: 2%;
     margin-top: 5%;
 }
+span.sokdak-name {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    font-weight: bolder;
+    color: #343236;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+span.sokdak-star-img {
+    vertical-align: middle;
+ /*   margin-right: .7rem;*/
+}
+.sokdak-dgv {
+    padding: 2rem 0 2.5rem;
+    border-bottom: .1rem solid #dde0ea;
+}
+*, :after, :before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    background-color: transparent;
+}
+a.sokdak-title {
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    font-weight: 500;
+    color: #343236;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.sokdak-info {
+    margin-left: .5rem;
+    min-width: 0;
+    width: 100%;
+    grid-area: contents;
+   margin-top: 0.5rem;
+}
+.sokdak-any{
+	 font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: #6a666e;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sokdak-cogo{
+	width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sokdak-kind {
+    margin-left: .5rem;
+    min-width: 0;
+    width: 100%;
+    grid-area: breadcrumbs;
+}
+.board-sok-container {
+    grid-template-areas:
+        "breadcrumbs profile"
+        "contents profile"
+        "contents counters";
+    display: grid;
+}
+span.sokdak-view-info {
+    display: -webkit-box;
+    max-width: 67rem;
+    margin-top: .5rem;
+    font-size: 1.0rem;
+    line-height: 2.4rem;
+    color: #6a666e;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    cursor: pointer;
+}
+img {
+    vertical-align: middle;
+}
+.sokdak-user-img {
+    grid-area: avatar;
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 70%;
+    overflow: hidden;
+}
+p.sokdak-time-view {
+    grid-area: time;
+    padding-right: .1rem;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #888893;
+}
+p.sokdak-user-id {
+    max-width: 12rem;
+    grid-area: name;
+    align-self: end;
+    text-align: right;
+    font-size: 1rem;
+    line-height: 1.9rem;
+    font-weight: bolder;
+    color: #4d4c51;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.sokdak-user-info {
+    display: inline-grid;
+    grid-template-areas:
+        "name avatar"
+        "time avatar";
+    grid-row-gap: .6rem;
+    row-gap: .6rem;
+    grid-column-gap: 1rem;
+    -moz-column-gap: 1rem;
+    column-gap: 1rem;
+}
+button.sokdak-profile-wrapping {
+    letter-spacing: -.03rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+}
+.sokdak-profile-wrap {
+    display: block;
+    grid-area: profile;
+    margin-top: 1.5rem;
+    justify-self: end;
+}
+.sokdak-answerCount {
+    margin-left: 1.8rem;
+}
+.sokdak-submenu {
+    margin-left: 1.8rem;
+    padding: .6rem 1rem .6rem 0;
+    display: flex;
+}
+.sokdak-submenu-wrap {
+    justify-self: end;
+    margin-top: 2.4rem;
+    margin-left: 1rem;
+}
+.sokdak-dgv-total {
+    padding: 0 0 2.5rem;
+    background: #fff;
+    border: .1rem solid #dde0ea;
+    border-radius: .5rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+}
+.sokdak-dgv {
+    padding: 1rem 0 1rem;
+    border-bottom: .1rem solid #dde0ea;
+    padding-left: 5rem;
+    padding-right: 4rem;
+}
+span.sokdak-header-title {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+.sokdak-search-wrap {
+    width: 370px;
+    height: 2.8rem;
+    border-radius: 4rem;
+    background-color: #f6f6f7;
+    border: .1rem solid #dde0ea;
+    display: flex;
+    align-items: center;
+    padding-left: 1.6rem;
+    margin-bottom: 1rem;
+    margin-left: 4rem;
+}
+.sokdak-sokdak {
+    margin-left: 5rem;
+    margin-top: 6rem;
+    margin-bottom: 1rem;
+    color: #606060;
+    font-style: oblique;
+    display: flex;
+    justify-content: space-between;
+}
+label.sokdak-search-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .2rem;
+    margin-right: 1rem;
+    color: #744bd7bf;
+    width: 21px;
+}
+input.sokdak-search {
+    flex-grow: 1;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    letter-spacing: -.04rem;
+    border: none;
+}
+button.sokdak-writer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 1.1rem;
+    box-shadow: 0 0.8rem 1.6rem 0 rgb(143 0 255 / 13%);
+    background-image: linear-gradient(309deg,#f52d37,#ff9425);
+    color: #fff;
+    margin-right: 3rem;
+    width: 137px;
+    font-weight: bolder;
+}
+span.buttonName {
+    font-size: 20px;
+}
+.sokdak-header {
+    margin-left: 11rem;
+    margin-right: 15rem;
+}
+input:focus {
+	outline:none;
+}
+.sokdak-write-wrap {
+    width: 193px;
+    height: 2.8rem;
+    border-radius: 4rem;
+    background-color: #f6f6f7;
+    border: 0.1rem solid #dde0ea;
+    display: flex;
+    align-items: center;
+    padding-left: 2.6rem;
+    margin-bottom: 1rem;
+    margin-left: 4rem;
+    font-size: 21px;
+    font-weight: bolder;   
+    color: #787878;
+    
+}
+.sokdak-checkbox {
+    margin-left: 5rem;
+    margin-top: 1rem;
+}
+p.sokdak-any-one {
+    font-weight: bolder;
+    border: 0.1rem solid #dde0ea;
+    width: 188px;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    line-height: 36px;
+    border-radius: 10px;
+    background-color: #f9f0e454;
+    color: #696c6e;
+}
+
+label.sokdak-writer-title1 {
+    font-weight: bolder;
+    border: 0.1rem solid #dde0ea;
+    width: 67px;
+    box-sizing: border-box;
+    padding-left: 72px;
+    line-height: 36px;
+    border-radius: 10px;
+    background-color: #f9f0e454;
+    color: #696c6e;
+    margin-bottom: 6rem;
+    padding-right: 75px;
+    font-size: 17px;
+    padding-top: 6px;
+    padding-bottom: 4px
+}
+label.sokdak-writer-text1 {
+    font-weight: bolder;
+    border: 0.1rem solid #dde0ea;
+    width: 67px;
+    box-sizing: border-box;
+    padding-left: 72px;
+    line-height: 36px;
+    border-radius: 10px;
+    background-color: #f9f0e454;
+    color: #696c6e;
+    margin-bottom: 6rem;
+    padding-right: 75px;
+    font-size: 17px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+.sokdak-write-info {
+    display: grid;
+}
+.sokdak-write-wrapper {
+    margin-top: 2rem;
+}
+
+input.sokdak-writer-title {
+    margin-bottom: 4rem;
+    border: 0;
+    border-bottom: 0.1rem solid #dde0ea;
+    width: 488px;
+    height: 39px;
+    box-sizing: border-box;
+    padding-top: 13px;
+    font-size: 19px;
+    padding-left: 35px;
+}
+textarea.sokdak-writer-text {
+    border: 0.1rem solid #dde0ea;
+    height: 14rem;
+    width: 44rem;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 2rem 2rem 0 2rem;
+}
+.sokdak-write-textarea {
+    margin-top: 1rem;
+}
+img#thumbnail {
+    width: 127px;
+    border: 4px solid #dde0ea;
+    margin-top: 1rem;
+    margin-left: 3rem;
+}
+label.sokdak-download {
+    font-weight: bolder;
+    border: 0.1rem solid #dde0ea;
+    width: 67px;
+    box-sizing: border-box;
+    padding-left: 72px;
+    line-height: 36px;
+    border-radius: 10px;
+    background-color: #f9f0e454;
+    color: #696c6e;
+    margin-bottom: 6rem;
+    padding-right: 75px;
+    font-size: 17px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+input[type="file"] {
+    margin-top: 1rem;
+}
+.sokdak-date-wrap {
+    text-align: center;
+}
