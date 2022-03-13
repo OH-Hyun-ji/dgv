@@ -49,7 +49,12 @@
 					<div class="myPage-info-box"
 						style="display: grid; text-align: center;">
 						<div class="userRank-img">
-							<img style="width: 66px;" src="${rankImg}" />
+							<c:if test="${rankImg  !='0'}">
+								<img style="width: 66px;" src="${rankImg}" />
+							</c:if>
+							<c:if test="${rankImg == '0' }">
+								<p>등급이 없습니다.</p>
+							</c:if>
 						</div>
 						<div class="userRank-name" style="text-align: -webkit-center;">
 							<p
