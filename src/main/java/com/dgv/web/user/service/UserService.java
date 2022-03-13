@@ -39,4 +39,10 @@ public interface UserService {
 	List<UserInquiryVO> MyPageQnaOneList(String id);
 	
 	UserDetailVO userDetailVo(int num);
+	
+	int userProfileImg(UserDetailVO vo);
+	
+	int userDetail(UserDetailVO vo);
+	
+
 }

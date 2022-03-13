@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserVO;
 
 @Repository
@@ -43,5 +44,16 @@ public class AdminUserDAO {
 	}
 	public int rankInsert(AdminRankVO vo) {
 		return sqlSessionTemplate.insert("AdminUserDAO.rankInsert", vo);
+	}
+	
+	public int userRankUpdate(UserDetailVO vo) {
+		return sqlSessionTemplate.update("AdminUserDAO.userRankUpdate", vo);
+	}
+	public AdminRankVO rankOneSelect(int num) {
+		return sqlSessionTemplate.selectOne("AdminUserDAO.rankOneSelect",num);
+	}
+	
+	public AdminRankVO rankNameSelect(String name) {
+		return sqlSessionTemplate.selectOne("AdminUserDAO.rankNameSelect", name);
 	}
 }

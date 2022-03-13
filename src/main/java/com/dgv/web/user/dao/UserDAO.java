@@ -73,4 +73,10 @@ public class UserDAO {
 		return sqlSessionTemplate.selectOne("UserDAO.userDetailVo",num);
 	}
 
+	public int userProfileImg(UserDetailVO vo) {
+		return sqlSessionTemplate.update("UserDAO.userProfileImg",vo);
+	}
+	public int userDetail(UserDetailVO vo) {
+		return sqlSessionTemplate.insert("UserDAO.userDetail", vo);
+	}
 }

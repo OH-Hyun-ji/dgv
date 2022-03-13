@@ -9,6 +9,7 @@ import com.dgv.web.admin.dao.AdminUserDAO;
 import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserVO;
 
 import lombok.RequiredArgsConstructor;
@@ -65,6 +66,24 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public int rankInsert(AdminRankVO vo) {
 	
 		return adminUserDAO.rankInsert(vo);
+	}
+
+	@Override
+	public int userRankUpdate(UserDetailVO vo) {
+		
+		return adminUserDAO.userRankUpdate(vo);
+	}
+
+	@Override
+	public AdminRankVO rankOneSelect(int num) {
+		
+		return adminUserDAO.rankOneSelect(num);
+	}
+
+	@Override
+	public AdminRankVO rankNameSelect(String name) {
+		
+		return adminUserDAO.rankNameSelect(name);
 	}
 	
 	

@@ -7,6 +7,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserVO;
 
 public interface AdminUserService {
@@ -26,4 +27,10 @@ public interface AdminUserService {
 	List<AdminRankVO> rankList();
 	
 	int rankInsert(AdminRankVO vo);
+	
+	int userRankUpdate(UserDetailVO vo);
+	
+	AdminRankVO rankOneSelect(int num);
+	
+	AdminRankVO rankNameSelect(String name);
 }

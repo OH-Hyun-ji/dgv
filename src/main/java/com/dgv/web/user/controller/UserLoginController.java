@@ -21,6 +21,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.dgv.web.admin.config.RequestUtils;
+import com.dgv.web.admin.service.AdminUserService;
+import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserDetailVO;
@@ -35,17 +37,10 @@ import lombok.extern.slf4j.Slf4j;
 public class UserLoginController {
 
 	@Autowired
-	private final UserService userService;
+	private UserService userService;
 
-
-	// @RequestMapping("/login.do")
-//	public String login() {
-//		return "/login/user_login";
-//	}
-	@Inject
-	public UserLoginController(UserService userService) {
-		this.userService = userService;
-	}
+	@Autowired
+	private AdminUserService adminUserService; 
 
 	// 로그인 페이지
 	@RequestMapping(value = "/loginForm.do", method = RequestMethod.GET)
@@ -68,12 +63,25 @@ public class UserLoginController {
 		if(userVO.getUser_id().equals(vo.getUser_id())&&BCrypt.checkpw(userVO.getUser_pw(), vo.getUser_pw())) {
 			System.out.println("로그인 성공!!");
 			jsonObject.addProperty("msg", "SUCCESS");
+			
 			UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
 			RequestUtils.setUserId(vo.getUser_id());
 			RequestUtils.setUserEmail(vo.getUser_email());
 			
-			if(detailVo.getUser_img() !="0") {
-				RequestUtils.setUserImg(detailVo.getUser_img());
+			if(detailVo.getUser_img().length() > 3 ) {
+				RequestUtils.setUserImg(detailVo.getUser_img());		
+			}else {
+				RequestUtils.setUserImg("0");
+			}
+			if(detailVo.getUser_rank().length() >2) {
+				AdminRankVO rankVo = adminUserService.rankNameSelect(detailVo.getUser_rank());
+				detailVo.setRank_img(rankVo.getRank_img());
+				RequestUtils.setRankImg(detailVo.getRank_img());
+				RequestUtils.setRankName(detailVo.getUser_rank());
+				System.out.println(detailVo.getRank_img());
+				System.out.println(detailVo.getUser_rank());
+			}else {
+				
 			}
 		
 			//session.setAttribute("userID",vo.getUser_id());

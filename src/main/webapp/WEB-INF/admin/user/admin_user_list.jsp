@@ -33,6 +33,9 @@
 
 		}
 	}
+	function updateRank(num){
+		 window.open('/rankChoice.mdo?user_num='+num,'','width=500,height=280');
+	}
 	</script>
 </head>
 <body class="sb-nav-fixed">
@@ -71,7 +74,7 @@
 										<td>${userList.user_email}</td>
 										<td>${userList.detailVO.user_rank}</td>
 										<td>${userList.detailVO.user_point}</td>
-										<td style="text-align: center;"><button id="delBt"  onclick="deleteAction('${userList.user_id}')"><i class="fas fa-trash-alt"></i></button></td>
+										<td style="text-align: center;"><button id="delBt"  onclick="deleteAction('${userList.user_id}')"><i class="fas fa-trash-alt"></i></button> <button  onclick="updateRank('${userList.user_num}')"><i class="fas fa-pencil-alt"></i></button></td>
 									</tr>		
 								</c:forEach>						
 								</tbody>

@@ -1,0 +1,78 @@
+@charset "UTF-8";
+th {
+    padding: 15px 0 15px 10px !important;
+    border-top: 1px solid #dfded7 !important;
+    color: #222 !important;
+}
+.myProfile-sub-contain > h2 {
+    font-size: 17px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.myProfile-container > h2{
+	font-size: 20px;
+}
+table#myProfile-tableN {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+    line-height: 1.2;
+    color: #666;
+    font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+    font-weight: 400;
+    border-bottom: 1px solid #999;
+}
+.myPage-content-wrap {
+    padding-left: 3rem;
+    padding-top: 32px;
+    height: 632px !important;
+}
+td {
+    padding: 15px 0 15px 10px !important;
+    border-top: 1px solid #dfded7 !important;
+    color: #222 !important;
+    font-weight: 300;
+    line-height: 1.5em;
+    text-align: center;
+    vertical-align: middle;
+}
+p.profile-text-info {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #d1cdc4;
+}
+.user-box-img {
+    float: left;
+}
+#myProfile-hwe{
+	display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 88px;
+    height: 88px;
+    border-radius: 50px;
+}
+span.thumb-box-img {
+    position: absolute;
+}
+.profile-box-contents {
+    height: 90px;
+}
+#userAgree-info thead th {
+    padding: 0 !important;
+    height: 34px;
+    color: #666;
+    background-color: #e2e2e0;
+    font-size: 11px;
+    line-height: 34px;
+    border-bottom: 1px dotted #b8b6aa;
+    text-align: center;
+}
+form {
+    padding-right: 2rem !important;
+}
+.profile-agree-status {
+    margin-top: 1rem;
+}

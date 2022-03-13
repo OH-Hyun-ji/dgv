@@ -112,10 +112,10 @@ public class AdminBoardController {
 
 			if (paymentResponse != null) { // 이미 취소된 거래건은 response == null
 				Payment payment = paymentResponse.getResponse();
-				
-				if (payment != null) {
-					// 비즈니스 로직
-				}
+//				
+//				if (payment != null) {
+//					
+//				}
 			}
 
 		} catch (IamportResponseException e) {

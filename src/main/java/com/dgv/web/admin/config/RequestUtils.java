@@ -31,6 +31,13 @@ public class RequestUtils {
 	public static String getUserImg(final String userImg) {
 		return (String) RequestUtils.getSession().getAttribute("userImg");
 	}
+	public static String getRankName(final String rankName) {
+		return (String) RequestUtils.getSession().getAttribute("rankName");
+	}
+	public static String getRankImg(final String rankImg) {
+		return (String) RequestUtils.getSession().getAttribute("rankImg");
+	}
+	
 	
 	public static void setUserId(final String userId) {
 		RequestUtils.getSession().setAttribute("userID", userId);
@@ -41,6 +48,14 @@ public class RequestUtils {
 	}
 	public static void setUserImg(final String userImg) {
 		RequestUtils.getSession().setAttribute("userImg", userImg);
+	}
+	
+	public static void setRankName(final String rankName) {
+		RequestUtils.getSession().setAttribute("rankName",rankName);
+	}
+
+	public static void setRankImg(final String rankImg) {
+		RequestUtils.getSession().setAttribute("rankImg",rankImg);
 	}
 	
 }

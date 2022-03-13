@@ -38,7 +38,7 @@
                                         </ul>
                                     </li>
                                     <li >
-                                        <a href="#">프로필 관리<i></i>
+                                        <a href="/myProfile.do">프로필 관리<i></i>
                                         </a>
                                     </li>
                                     <li >

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 
@@ -35,17 +36,20 @@ public class UserRegisterController {
 	
 	// 회원가입 처리
 	@PostMapping("/register.do")
-	public String registerPOST(UserVO userVO, RedirectAttributes redirectAttributes){
+	public String registerPOST(UserVO userVO, UserDetailVO detailVo ,RedirectAttributes redirectAttributes){
 		System.out.println("??????");
 		String hashedPw = BCrypt.hashpw(userVO.getUser_pw(), BCrypt.gensalt());
 		userVO.setUser_pw(hashedPw);
 		
 		int num =userService.register(userVO);
+		detailVo.setUser_num(userVO.getUser_num());
+		int detailNum = userService.userDetail(detailVo);
+		
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		
 	
-		 
-		if(num ==0 ) {
+		 num += detailNum;
+		if(num ==0 || num ==1 ) {
 			System.out.println("회원가입 실패!!");
 			
 		}else {

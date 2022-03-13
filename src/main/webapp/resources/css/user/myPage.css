@@ -39,7 +39,7 @@ h2.myPage-top {
     font-size: 18px;
     display: inline-grid;
     height: 63%;
-    width: 88%;
+    width: 35%;
 }
 
 
@@ -48,11 +48,12 @@ h2.myPage-top {
 }
 
 button#myPage-change-info {
-    font-size: 18px;
-    height: 73%;
-    border-radius: 33px;
+   font-size: 18px;
+    height: 160%;
     border: 3px solid darkgray;
     width: 71%;
+    border-radius: 7px;
+
 }
 button#myPage-change-info:hover{
 	background-color: gray;
@@ -66,17 +67,16 @@ button#myPage-change-info:hover{
 }
 
 .myPage-grade-info {
-    margin-top: 7%;
-    width: 61%;
+  	margin-top: 7%;
+    width: 39%;
     height: 76%;
-    background-color: rgba(255,255,255,0.3);
     border-radius: 12px;
 }
 
 button#myPage-view_usergrade {
     margin-top: 2%;
     line-height: 27px;
-    margin-left: 22%;
+    margin-left: 16%;
     border-radius: 6px;
     border: 2px solid darkgrey;
 }
@@ -104,7 +104,7 @@ button#myPage-view_usergrade:hover {
 .myPage-title-box {
     margin-left: 6%;
     margin-top: 4%;
-    margin-right: 5%;
+    margin-right: 2%;
     height: 222px;
     margin-bottom: 6%;
     border-right: 1px solid;
@@ -117,6 +117,7 @@ button#myPage-view_usergrade:hover {
     font-size: 22px;
     margin-top: 5%;
     margin-bottom: 11%;
+    border-radius: 10px;
 }
 
 .myPage-grade-title {
@@ -124,6 +125,7 @@ button#myPage-view_usergrade:hover {
     text-align: center;
     font-size: 22px;
     margin-top: 5%;
+    border-radius: 12px;
 }
 .myPage-coupon-count > strong{
 	font-size: 17px;
@@ -737,4 +739,23 @@ qna-often-wrapping {
     height: 20px;
     border-radius: 5px;
     background-color: #f8f8f1;
+}
+
+button#myCouponList {
+    font-size: 18px;
+    height: 160%;
+    border: 3px solid darkgray;
+    width: 71%;
+    border-radius: 7px;
+}
+button#myCouponList:hover {
+	background-color: gray;
+	color:white;
+}
+.myPage-coupon-count {
+    margin-bottom: 76px;
+}
+.page-style {
+    display: flex;
+    width: 300px;
 }

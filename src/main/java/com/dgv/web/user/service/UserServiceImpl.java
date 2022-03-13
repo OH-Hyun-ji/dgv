@@ -86,4 +86,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.userDetailVo(num);
 	}
 
+	@Override
+	public int userProfileImg(UserDetailVO vo) {
+		
+		return userDAO.userProfileImg(vo);
+	}
+
+	@Override
+	public int userDetail(UserDetailVO vo) {
+		
+		return userDAO.userDetail(vo);
+	}
+
 }

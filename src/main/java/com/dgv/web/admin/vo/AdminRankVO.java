@@ -12,4 +12,7 @@ public class AdminRankVO {
 	private String rank_img;
 	private String reg_id;
 	private String reg_date;
+	
+	
+	
 }

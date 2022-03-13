@@ -12,14 +12,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.dgv.web.admin.config.RequestUtils;
+import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import retrofit2.http.Multipart;
 
 @Controller
 public class UserMyPageController {
@@ -27,6 +34,8 @@ public class UserMyPageController {
    @Autowired
    private UserService userService;
 
+   @Autowired
+   private FileUploadService fileUploadService;
    
    @PostMapping("/userMyPageTopInfo.do")
    @ResponseBody
@@ -36,6 +45,30 @@ public class UserMyPageController {
 	   Gson gson = new Gson();
 	   String userInfo = gson.toJson(userVo);
 	   return userInfo;
+   }
+   @PostMapping("/profileImgInsert.do")
+   @ResponseBody
+   public CommonResultDto profileImgInsert(@RequestPart("profileImg") UserDetailVO vo,@RequestPart("imgFile") MultipartFile imgFile) {
+	   final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "profile/", vo.getUser_img());
+	   
+	   if(!fileResult.isSuccess()) {
+		   return CommonResultDto.fail();
+	   }
+	   vo.setUser_img(fileResult.getUrl());
+	   String userId =RequestUtils.getUserId("userID");
+	   UserVO userVo = userService.MyUserList(userId);
+	   vo.setUser_num(userVo.getUser_num());
+	   int num = userService.userProfileImg(vo);
+	   
+	   if(num ==0)
+		   return CommonResultDto.fail();
+	   return CommonResultDto.success();
+   }
+   
+   //마이페이지 프로필 수정
+   @RequestMapping("/myProfile.do")
+   public String myProfile() {
+	   return "/myPage/user_myPage_profile";
    }
    //마이페이지 나의 문의 내역
    @RequestMapping("/myPage.do")

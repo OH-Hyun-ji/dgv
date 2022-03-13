@@ -5,7 +5,7 @@
 
    <mapper namespace="UserDAO">
       
-      <insert id="register" parameterType="UserVO">
+      <insert id="register" useGeneratedKeys="true" keyProperty="user_num"  parameterType="UserVO">
          INSERT INTO user_info(user_num,user_id,user_pw,user_name,user_phone,user_email,user_year,user_month,user_day,user_term)
          VALUES(nextval('seq_user'),#{user_id},#{user_pw},#{user_name},#{user_phone},#{user_email},#{user_year},#{user_month},#{user_day},#{user_term})
       </insert>
@@ -58,6 +58,14 @@
 		<select id="userDetailVo" resultType="UserDetailVO">
 			SELECT * FROM user_info_detail WHERE user_num =#{user_num}
 		</select>
+		
+		<update id="userProfileImg" >
+			UPDATE user_info_detail SET user_img = #{user_img} WHERE user_num=#{user_num}
+		</update>
        
+       <insert id="userDetail" parameterType="UserDetailVO">
+       		INSERT INTO user_info_detail(user_num,user_rank,user_point,user_img,user_agree)
+       		VALUES(#{user_num},DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+       </insert>
 	</mapper>
       
