@@ -59,6 +59,7 @@ public class UserMyPageController {
 	   UserVO userVo = userService.MyUserList(userId);
 	   vo.setUser_num(userVo.getUser_num());
 	   int num = userService.userProfileImg(vo);
+	   RequestUtils.getSession().setAttribute("rankImg", vo.getRank_img());
 	   
 	   if(num ==0)
 		   return CommonResultDto.fail();

@@ -81,7 +81,8 @@ public class UserLoginController {
 				System.out.println(detailVo.getRank_img());
 				System.out.println(detailVo.getUser_rank());
 			}else {
-				
+				RequestUtils.setRankImg("0");
+				RequestUtils.setRankName("0");
 			}
 		
 			//session.setAttribute("userID",vo.getUser_id());
