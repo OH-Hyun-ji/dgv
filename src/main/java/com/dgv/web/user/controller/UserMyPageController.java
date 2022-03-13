@@ -48,19 +48,22 @@ public class UserMyPageController {
    }
    @PostMapping("/profileImgInsert.do")
    @ResponseBody
-   public CommonResultDto profileImgInsert(@RequestPart("profileImg") UserDetailVO vo,@RequestPart("imgFile") MultipartFile imgFile) {
+   public CommonResultDto profileImgInsert(HttpSession session,@RequestPart("profileImg") UserDetailVO vo,@RequestPart("imgFile") MultipartFile imgFile) {
 	   final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "profile/", vo.getUser_img());
 	   
 	   if(!fileResult.isSuccess()) {
 		   return CommonResultDto.fail();
 	   }
+	   String img = (String) session.getAttribute("userImg");
+	   System.out.println("img before: "+img);
 	   vo.setUser_img(fileResult.getUrl());
 	   String userId =RequestUtils.getUserId("userID");
 	   UserVO userVo = userService.MyUserList(userId);
 	   vo.setUser_num(userVo.getUser_num());
 	   int num = userService.userProfileImg(vo);
-	   RequestUtils.getSession().setAttribute("rankImg", vo.getRank_img());
-	   
+	   RequestUtils.setUserImg(vo.getUser_img());
+	   String img1 = (String) session.getAttribute("userImg");
+	   System.out.println("img after : "+img);
 	   if(num ==0)
 		   return CommonResultDto.fail();
 	   return CommonResultDto.success();
