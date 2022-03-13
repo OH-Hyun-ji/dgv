@@ -63,6 +63,7 @@
                                <div class="collapse" id="collapsePages2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion1">
                                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages1">
                                        <a class="nav-link" href="/adminChart.mdo">매출통계관리</a>
+                                       <a class="nav-link" href="/adminpaymentDetails.mdo">결제 내역 관리</a>
                                        <a class="nav-link" href="/adminBest.mdo">베스트 영화</a>
                                    </nav>
                                </div>

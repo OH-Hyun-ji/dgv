@@ -20,6 +20,7 @@ import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
+import com.dgv.web.user.vo.UserReserveVO;
 
 @Repository
 public class AdminMovieDAO {
@@ -200,6 +201,14 @@ public class AdminMovieDAO {
 	
 	public int updateAge(AdminAgeVO vo) {
 		return sqlSessionTemplate.update("AdminGenreDAO.AgeUpdate",vo);
+	}
+	
+	public List<UserReserveVO> SelectReserveInfo(){
+		return sqlSessionTemplate.selectList("AdminBoardDAO.SelectReserveInfo");
+	}
+	
+	public int updateReserveStatus(UserReserveVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.updateReserveStatus",vo);
 	}
 	
 

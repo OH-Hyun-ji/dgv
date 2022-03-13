@@ -23,6 +23,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -67,7 +68,15 @@ public class UserLoginController {
 		if(userVO.getUser_id().equals(vo.getUser_id())&&BCrypt.checkpw(userVO.getUser_pw(), vo.getUser_pw())) {
 			System.out.println("로그인 성공!!");
 			jsonObject.addProperty("msg", "SUCCESS");
-			session.setAttribute("userID",vo.getUser_id());
+			UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
+			RequestUtils.setUserId(vo.getUser_id());
+			RequestUtils.setUserEmail(vo.getUser_email());
+			
+			if(detailVo.getUser_img() !="0") {
+				RequestUtils.setUserImg(detailVo.getUser_img());
+			}
+		
+			//session.setAttribute("userID",vo.getUser_id());
 			System.out.println(jsonObject);		
 		}else { 
 			System.out.println("로그인 실패");
@@ -88,6 +97,8 @@ public class UserLoginController {
 	
 		if(userVo.getUser_email().equals(vo.getUser_email())) {
 			System.out.println(userVo.getUser_email()+" 와 "+vo.getUser_email()+"는 같다.");
+			UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
+			
 			//session.setAttribute("userID", userVo.getUser_id());
 			RequestUtils.setUserId(userVo.getUser_id());
 			RequestUtils.getUserId("userID");

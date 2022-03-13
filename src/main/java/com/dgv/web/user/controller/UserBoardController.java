@@ -25,6 +25,8 @@ import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.commons.interceptor.TimeCalc;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.PageVO;
+import com.dgv.web.user.vo.PaginationVO;
 import com.dgv.web.user.vo.UserCommunityVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
@@ -70,7 +72,7 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping("/board.do")
-	public String userBoard(Model model) {
+	public String userBoard(Model model,PageVO pageVo) {
 		List<UserCommunityVO> communityList = userBoardService.communitySelect();
 		model.addAttribute("communityList",communityList);
 		
@@ -83,6 +85,14 @@ public class UserBoardController {
 			long writeCurrent = TimeCalc.timeMillis(formatted);
 			communityVo.setWrite_time(TimeCalc.compareTime(writeTime, writeCurrent));
 		}
+		
+		PaginationVO paginationVO = new PaginationVO();
+		paginationVO.setCurrentPageNo(pageVo.getPageIndex());
+		paginationVO.setRecordCountPage(pageVo.getPageUnit());
+		paginationVO.setPageSize(pageVo.getPageSize());
+		
+		pageVo.setFirstIndex(paginationVO.getFirstRecordIndex());
+	//	pageVo.setRecordCountPerPage();
 		
 		
 		return "/board/user_board_community";

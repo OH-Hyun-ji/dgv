@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserVO;
 
@@ -66,6 +67,10 @@ public class UserDAO {
 	// 마이페이지 나의 문의 내역
 	public List<UserInquiryVO> MyPageQnaOneList(String id) {
 		return sqlSessionTemplate.selectList("UserDAO.MyPageQnaOneList", id);
+	}
+	
+	public UserDetailVO userDetailVo(int num) {
+		return sqlSessionTemplate.selectOne("UserDAO.userDetailVo",num);
 	}
 
 }

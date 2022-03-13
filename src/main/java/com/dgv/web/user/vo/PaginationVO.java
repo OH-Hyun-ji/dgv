@@ -56,30 +56,42 @@ public class PaginationVO {
 		this.firstPageNoOnPageList = firstPageNoOnPageList;
 	}
 	public int getLastPageNoOnPageList() {
+		lastPageNoOnPageList = (int)(Math.ceil(getCurrentPageNo()/10.0))*10;
+		
+		int realEnd =(int)(Math.ceil((getTotalRecordCount() *1.0)/ getRecordCountPage()));
+		
+		if(realEnd < lastPageNoOnPageList) {
+			lastPageNoOnPageList = realEnd;
+		}
 		return lastPageNoOnPageList;
 	}
 	public void setLastPageNoOnPageList(int lastPageNoOnPageList) {
 		this.lastPageNoOnPageList = lastPageNoOnPageList;
 	}
 	public int getFirstRecordIndex() {
+		firstRecordIndex = (getCurrentPageNo() -1 )*getRecordCountPage();
 		return firstRecordIndex;
 	}
 	public void setFirstRecordIndex(int firstRecordIndex) {
 		this.firstRecordIndex = firstRecordIndex;
 	}
 	public boolean isXprev() {
+		xprev = getFirstPageNoOnPageList() > 1;
 		return xprev;
 	}
 	public void setXprev(boolean xprev) {
 		this.xprev = xprev;
 	}
 	public boolean isXnext() {
+		int realEnd =(int)((Math.ceil(getTotalRecordCount()*10)/getRecordCountPage()));
+		xnext = getLastPageNoOnPageList() < realEnd;
 		return xnext;
 	}
 	public void setXnext(boolean xnext) {
 		this.xnext = xnext;
 	}
 	public int getRealEnd() {
+		realEnd = (int)(Math.ceil((getTotalRecordCount() *1.0)/getRecordCountPage()));
 		return realEnd;
 	}
 	public void setRealEnd(int realEnd) {

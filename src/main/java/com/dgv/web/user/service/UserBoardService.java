@@ -20,6 +20,7 @@ import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
+import com.dgv.web.user.vo.UserReserveVO;
 
 public interface UserBoardService {
 
@@ -84,4 +85,6 @@ public interface UserBoardService {
 	List<UserCommunityVO> communitySelect();
 	
 	UserCommunityVO communityChoiceNum(int num);
+	
+	int userReserveInsert(UserReserveVO reserveVo);
 }

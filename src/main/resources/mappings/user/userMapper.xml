@@ -53,6 +53,11 @@
        <select id="MyPageQnaOneList" resultType="UserInquiryVO">
 		 SELECT * FROM dgv_qna_wait where dgv_inquiry_user = #{userID}
 		</select>
+		
+	
+		<select id="userDetailVo" resultType="UserDetailVO">
+			SELECT * FROM user_info_detail WHERE user_num =#{user_num}
+		</select>
        
 	</mapper>
       

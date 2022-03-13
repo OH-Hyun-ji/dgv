@@ -23,6 +23,7 @@ import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
+import com.dgv.web.user.vo.UserReserveVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -234,6 +235,13 @@ public class UserBoardServiceImpl implements UserBoardService {
 	public UserCommunityVO communityChoiceNum(int num) {
 		
 		return userBoardDAO.communityChoiceNum(num);
+	}
+
+
+	@Override
+	public int userReserveInsert(UserReserveVO reserveVo) {
+		
+		return userBoardDAO.userReserveInsert(reserveVo);
 	}
 
 	

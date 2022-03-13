@@ -54,6 +54,12 @@
 		WHERE dgv_inquiry_code = #{dgv_inquiry_code}
 	</update>
 	
+	<select id="SelectReserveInfo" resultType="UserReserveVO">
+		SELECT * FROM movie_reserve
+	</select>
 	
+	<update id="updateReserveStatus" >
+		UPDATE movie_reserve SET reserve_status = 1 WHERE reserve_merchant_uid =#{reserve_merchant_uid}
+	</update>
 
 </mapper>

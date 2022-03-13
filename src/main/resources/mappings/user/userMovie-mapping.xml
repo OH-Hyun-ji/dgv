@@ -72,5 +72,12 @@
 		SELECT * FROM movie_age_info WHERE movie_age_num=#{movie_age_num}
 	</select>
 	
+	<insert id="userReserveInsert" parameterType="UserReserveVO" >
+		INSERT INTO movie_reserve(reserve_code,movie_num,region_code,reserve_date,movie_time_start,theater_code,seat_reservation,
+		reserve_basic,reserve_student,reserve_old,reserve_price,user_id,reserve_imp_uid,reserve_apply_num,reserve_merchant_uid,reserve_method)
+		VALUES(DEFAULT,#{movie_num},#{region_code},current_date,#{movie_time_start},#{theater_code},#{seat_reservation},
+		#{reserve_basic},#{reserve_student},#{reserve_old},#{reserve_price},#{user_id},#{reserve_imp_uid},#{reserve_apply_num},#{reserve_merchant_uid},#{reserve_method})
+		
+	</insert>
 	
 </mapper>

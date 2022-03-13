@@ -24,6 +24,7 @@ import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
+import com.dgv.web.user.vo.UserReserveVO;
 
 @Repository
 public class UserBoardDAO {
@@ -145,5 +146,9 @@ public class UserBoardDAO {
 	}
 	public UserCommunityVO communityChoiceNum(int num) {
 		return sqlSessionTemplate.selectOne("UserBoardDAO.communityChoiceNum",num);
+	}
+	
+	public int userReserveInsert(UserReserveVO reserveVo) {
+		return sqlSessionTemplate.insert("UserMovieDAO.userReserveInsert", reserveVo);
 	}
 }

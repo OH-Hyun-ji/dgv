@@ -20,6 +20,7 @@ import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
+import com.dgv.web.user.vo.UserReserveVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -286,6 +287,18 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 	public int timeCheckList(int num) {
 	
 		return adminMovieDAO.TimecheckList(num);
+	}
+
+	@Override
+	public List<UserReserveVO> SelectReserveInfo() {
+		
+		return adminMovieDAO.SelectReserveInfo();
+	}
+
+	@Override
+	public int updateReserveStatus(UserReserveVO vo) {
+		
+		return adminMovieDAO.updateReserveStatus(vo);
 	}
 
 

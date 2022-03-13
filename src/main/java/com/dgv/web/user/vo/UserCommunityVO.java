@@ -3,7 +3,7 @@ package com.dgv.web.user.vo;
 import lombok.Data;
 
 @Data
-public class UserCommunityVO {
+public class UserCommunityVO extends PageVO  {
 	private Integer community_code;
 	private String community_title;
 	private String community_kind;

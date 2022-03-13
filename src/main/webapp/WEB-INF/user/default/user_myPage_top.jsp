@@ -1,5 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+	var userId = "${userEmail}"
+	$(function(){
+		console.log("아이디 : "+ userId)
+		
+		$.ajax({
+			method:"POST",
+			url:"/userMyPageTopInfo.do",
+			contentType:"application/json",
+			dataType:"json",
+			data:JSON.stringify({"user_id":userId}),
+			success:function(result){
+				console.log(result)
+				var userVo = JSON.parse(result)
+				console.log(userVo.user_email)
+
+				$("#userEmail").val(userVo.user_email)
+			}
+		})
+	})
+</script>
 <!DOCTYPE html>
 <div class="myPage-sect-common">    
                         <div class="mydgv-info-wrap">
@@ -10,8 +34,8 @@
                             </div >
                                 <div class="myPage-box-contents  newtype">
                                     <div class="person-info">
-                                        <strong>${userList.user_name}님</strong>
-                                        <em>${userList.user_email}</em>
+                                        <strong>${userID}님</strong>
+                                       	<em>${userEmail}</em>
                                         <span>닉네임 :
                                             <i>닉네임을 설정해주세요.</i>
                                         </span>

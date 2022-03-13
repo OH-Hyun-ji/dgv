@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.vo.AdminAgeVO;
@@ -27,9 +28,11 @@ import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
+import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 
 @Controller
@@ -43,6 +46,9 @@ public class UserReserveController {
 	
 	@Autowired
 	private UserBoardService userBoardService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("/movieReserve.do")
 	public String movieReserve(Model model,AdminMovieVO vo) {
@@ -63,6 +69,7 @@ public class UserReserveController {
 		
 		return "/reserve/user_reserve";
 	}
+	
 	@PostMapping("/movieReserve.do")
 	public String movieReserveView(Model model, @RequestParam("movie_num") int num) {
 		List<AdminMovieVO> movieList =adminMovieService.movieList();
@@ -86,6 +93,12 @@ public class UserReserveController {
 	
 	@PostMapping("/reserveSeat.do")
 	public String reserveSeat(@ModelAttribute("reserveVO") UserReserveVO vo ,Model model) {
+			//유저정보 
+			String userId =RequestUtils.getUserId("userID");
+			UserVO userVo = userService.MyUserList(userId);
+			model.addAttribute("userVo",userVo);
+			
+		
 			//영화정보
 			AdminMovieVO movieVo = userBoardService.movieList(vo.getMovie_num());
 			model.addAttribute("movieName",movieVo.getMovie_title());
@@ -133,6 +146,19 @@ public class UserReserveController {
 			System.out.println("/// : " +vo.toString());			
 		return "/seat/user_seat";
 	}
+	
+	@PostMapping("/userReservation.do")
+	@ResponseBody
+	public CommonResultDto userReservation(@RequestBody UserReserveVO reserveVo) {
+		int num = userBoardService.userReserveInsert(reserveVo);
+		
+		if(num ==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
+
+	
 	@PostMapping("/theaterList.do")
 	@ResponseBody
 	public String theaterList(@RequestBody AdminTheaterVO theaterVo) {

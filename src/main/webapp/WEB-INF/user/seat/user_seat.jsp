@@ -14,16 +14,20 @@
 	<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	 <!-- iamport.payment.js -->
+ 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
 	<script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js' ></script>
-	<style type="text/css">
+	<script type="text/javascript">
 	
 	
-	</style>
+	 	
+	 	
+	</script>
 </head>
 
 <body>
@@ -63,7 +67,6 @@
                                 	</c:forEach>
                                 </ul>
                             </div>
-
                         </div>
                         <div class="select-people">
                             <div class="select-people-age">경로</div>
@@ -113,8 +116,7 @@
                             <div class="selected-price-total">0</div>
                         </div>
                     </div>
-                </div>
-             
+                </div>            
             </div>
             <div class="seat-container">
                 <div class="seat-wrapper">
@@ -164,17 +166,122 @@
 	                        </div>
                         </div>
                         <div class="next-choice-style">
-                        	<a href="#"><img id="next-choice" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/choiceNext.png"></a>
+                        	<a href="#" ><img id="next-choice" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/choiceNext.png"></a>
                         </div>
                     </div>
             	</div>
             </div>
 
         </div>
-
+		<form action="/ReservationInfo.do" method="post">
+			<input type="hidden" name="movie_num", id="movieNum" value="${movieList.movie_num }">		
+			<input type="hidden" name="movie_title", id="movieTitle" value="${movieList.movie_title }">		
+			<input type="hidden" name="region_code" id="regionCode" value="${theaterList.region_code }">
+			<input type="hidden" name="movie_time_start" id="movieStartTime" value=" ${time}">
+			<input type="hidden" name="theater_code" id="theaterCode" value="${theaterList.theater_code }">
+			<input type="hidden" name="seat_reservation" id="reserveSeat" >
+			<input type="hidden" name="reserve_basic" id="reserveBasic">
+			<input type="hidden" name="reserve_student" id="reserveStudent">
+			<input type="hidden" name="reserve_old" id="reserveOld"> 
+			<input type="hidden" name="reserve_price" id="reservePrice">
+			<input type="hidden" name="user_id" id="userId" value="${userVo.user_id }"> 
+			<input type="hidden" name="user_name" id="userName" value="${userVo.user_name }"> 
+			<input type="hidden" name="user_email" id="userEmail" value="${userVo.user_email }"> 
+			<input type="hidden" name="user_phone" id="userPhone" value="${userVo.user_phone }"> 
+		</form>
     </div>
       <jsp:include page="../default/user_footer.jsp"></jsp:include>
+<%--       <% --%>
+<!-- // 			String id = (String)session.getAttribute("userID"); -->
+<%--       %> --%>
 <script type="text/javascript">
+	$(function(){
+
+		$("#next-choice").click(function(){
+			var movieTitle = $("#movieTitle").val()			
+			var movieNum = $("#movieNum").val()			
+			var regionCode = $("#regionCode").val()			
+			var movieStartTime = $("#movieStartTime").val()			
+			var theaterCode = $("#theaterCode").val()			
+			var reserveSeat = $("#reserveSeat").val()			
+			var reserveBasic =$("#reserveBasic").val()
+			var reserveStudent =$("#reserveStudent").val()
+			var reserveOld =$("#reserveOld").val()
+			var userId = $("#userId").val()
+			var userName = $("#userName").val()
+			var userEamil = $("#userEmail").val()
+			var userPhone = $("#userPhone").val()			
+			var reservePrice = $("#reservePrice").val()
+			console.log("reservePrice  =>  "+reservePrice)
+			<%-- var userId = '<%=id%>'; --%>
+			
+			alert("결제버튼 클릭")
+			console.log("userId " +userId)
+				//결제 아임포트 
+				 var IMP = window.IMP; // 생략가능	 
+				 IMP.init('imp31303840');
+				 IMP.request_pay({
+	            	pg: 'html5_inicis', //version 1.1.0부터 지원.
+	            	pay_method: "card",
+	            	merchant_uid:'merchant_' + new Date().getTime(),
+	            	name:movieTitle,
+	            	amount: 1000,
+	            	buyer_email: userEamil,
+	                buyer_name: userName,
+	                buyer_tel: userPhone
+	                
+	        	}, function (rsp) {
+	           	 	console.log(rsp);
+		            if (rsp.success) {
+		                var msg = '결제가 완료되었습니다.';
+			                msg += '고유ID : ' + rsp.imp_uid;
+			                msg += '상점 거래ID : ' + rsp.merchant_uid;
+			                msg += '결제 금액 : ' + rsp.paid_amount;
+			                msg += '카드 승인번호 : ' + rsp.apply_num;
+			                msg += '결제수단 : ' + rsp.pay_method;
+			                console.log('결제수단 : ' + rsp.pay_method)
+			                const reserveVo={
+			                	"movie_num" : movieNum,
+			                	"region_code" : regionCode,
+			                	"movie_time_start":movieStartTime,
+			                	"theater_code":theaterCode,
+			                	"user_id":userId,
+			                	"seat_reservation" :reserveSeat,
+			                	"reserve_basic":reserveBasic,
+			                	"reserve_student":reserveStudent,
+			                	"reserve_old" :reserveOld,
+			                	"reserve_price":reservePrice ,
+			                	"reserve_imp_uid":rsp.imp_uid ,
+			                	"reserve_apply_num": rsp.apply_num,
+			                	"reserve_merchant_uid":rsp.merchant_uid,
+			                	"reserve_method":rsp.pay_method       	
+			                }
+				            	$.ajax({
+				            		method:"POST",
+				            		url:"/userReservation.do",
+				            		contentType:"application/json",
+				            		dataType:"json",
+				            		data:JSON.stringify(reserveVo),
+				            		success:function(result){
+				            			if(result.msg=="SUCCESS"){
+				            				location.href="/movieReserve.do"
+				            			}
+				            		},
+				            		error:function(){
+				            			console.log("통신실패")
+				            		}
+				            		
+				            	}) //close ajax
+		            	console.log(rsp)
+		            } else {
+		                var msg = '결제에 실패하였습니다.';
+		                msg += '에러내용 : ' + rsp.error_msg;
+		            }
+		            alert(msg);
+	        });
+		}) // close click function
+	})
+////////////////////////////////////////////////////////////////////
 /**상단 표기  원하는 인원클릭 변수 선언  */
 	let totalNum = 0;
 	let basicNum = 0;
@@ -282,13 +389,19 @@
 	                totalNum -= oldNum;
 	                selectPeopleOld[0].classList.add('select-people-ul-action');
 	                totalResultPrice.innerHTML = totalMoney + ' 원';
+	               
 	            }
 	        }
 	        totalResultPrice.innerHTML = ' 일반 17000 X '+basicNum+' = '+ basicMoney +'원'+'<br>'+
 	                                     ' 청소년 11000 X '+studentNum+' = '+studentMoney +'원'+'<br>'+
 	                                     ' 경로 11000 X '+oldNum+' = '+oldMoney +'원'+'<br>'+'전체금액 :'+totalMoney + ' 원';
-	        
-
+	                                    
+	                                     $("#reservePrice").val(totalMoney)
+	                      	        	console.log("전체금액 1  : "+totalMoney)
+	                      	        	console.log("전체성인  : "+basicNum)
+	                      	        	$("#reserveBasic").val(basicNum)
+	                      	        	$("#reserveStudent").val()
+										$("#reserveOld").val()
 	        if(totalNum > 18){
 	            li.classList.remove('select-people-ul-action');
 	            toastr.error(
@@ -306,9 +419,9 @@
 	            totalResultPrice.innerHTML = ' 일반 17000 X <input type="text" value='+basicNum+'> = '+ basicMoney +'원'+'<br>'+
 							                 ' 청소년 11000 X <input type="text" value='+studentNum+' >= '+studentMoney +'원'+'<br>'+
 							                 ' 경로 11000 X <input type="text" value='+oldNum+'> = '+oldMoney +'원'+'<br>'+'전체금액 :'+totalMoney + ' 원';
+	        	
 	        }
 	    	
-	       
 
 	    });
 	}
@@ -389,7 +502,14 @@
 	    		totalP = parseInt(parseInt(adultP)+parseInt(studentP)+parseInt(oldP))
 	    		console.log("totalP : "+ totalP)
 	    		
+	    		//결제 테이블 정보를 넣기위한 hidden처리 
+	    		$("#reserveBasic").val(parseInt(adultP))
+	    		$("#reserveStudent").val(parseInt(studentP))
+	    		$("#reserveOld").val(parseInt(oldP))
+	    		
+	    		
 	    		$("#totalCheckCount").val(totalP)
+	    		
 	    	})	
 	    	
 	    	const seatArr = new Array();
@@ -426,8 +546,10 @@
 	    		$("#selected-count").val(seatArr.length)    		
 	    		console.log("선택 좌석수  : "+seatArr.length)
 	    		console.log("배열 : "+seatArr)
+	    	
 	    		$("#seatStatus").val(seatArr)
 	    		$("#userChoiceSeat").val(seatArr)
+	    		$("#reserveSeat").val(seatArr)
 	    	
 	    	})
 	      })

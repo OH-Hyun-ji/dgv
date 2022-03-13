@@ -27,6 +27,16 @@ public class UserMyPageController {
    @Autowired
    private UserService userService;
 
+   
+   @PostMapping("/userMyPageTopInfo.do")
+   @ResponseBody
+   public String userMyPageTopInfo(@RequestBody UserVO vo,Model model) {
+	   UserVO userVo = userService.MyUserList(vo.getUser_id());
+	   model.addAttribute("userVo",userVo);
+	   Gson gson = new Gson();
+	   String userInfo = gson.toJson(userVo);
+	   return userInfo;
+   }
    //마이페이지 나의 문의 내역
    @RequestMapping("/myPage.do")
    public String myPage(Model model,HttpServletRequest request) {

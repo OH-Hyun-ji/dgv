@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dgv.web.admin.common.S3KeyVO;
 import com.dgv.web.user.dao.UserDAO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserVO;
 
@@ -77,6 +78,12 @@ public class UserServiceImpl implements UserService {
 	public List<UserInquiryVO> MyPageQnaOneList(String id) {
 		
 		return userDAO.MyPageQnaOneList(id);
+	}
+
+	@Override
+	public UserDetailVO userDetailVo(int num) {
+		
+		return userDAO.userDetailVo(num);
 	}
 
 }

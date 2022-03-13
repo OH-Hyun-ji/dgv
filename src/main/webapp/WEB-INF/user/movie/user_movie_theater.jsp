@@ -126,6 +126,7 @@
 	}
 	.regionTitle{
 		color:white;
+		cursor: pointer;
  	}
   .theater-info {
   		width: 400px;

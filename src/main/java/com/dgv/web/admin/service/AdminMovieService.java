@@ -17,6 +17,7 @@ import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
+import com.dgv.web.user.vo.UserReserveVO;
 
 public interface AdminMovieService {
 	
@@ -120,4 +121,8 @@ public interface AdminMovieService {
 	int selectMap(String name);
 	
 	int timeCheckList(int num);
+	
+	List<UserReserveVO> SelectReserveInfo();
+	
+	int updateReserveStatus(UserReserveVO vo);
 }
