@@ -106,8 +106,23 @@ public class UserLoginController {
 	
 		if(userVo.getUser_email().equals(vo.getUser_email())) {
 			System.out.println(userVo.getUser_email()+" 와 "+vo.getUser_email()+"는 같다.");
-			UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
-			
+			UserDetailVO detailVo = userService.userDetailVo(userVo.getUser_num());
+			if(detailVo.getUser_img().length() > 3 ) {
+				RequestUtils.setUserImg(detailVo.getUser_img());		
+			}else {
+				RequestUtils.setUserImg("0");
+			}
+			if(detailVo.getUser_rank().length() >2) {
+				AdminRankVO rankVo = adminUserService.rankNameSelect(detailVo.getUser_rank());
+				detailVo.setRank_img(rankVo.getRank_img());
+				RequestUtils.setRankImg(detailVo.getRank_img());
+				RequestUtils.setRankName(detailVo.getUser_rank());
+				System.out.println(detailVo.getRank_img());
+				System.out.println(detailVo.getUser_rank());
+			}else {
+				RequestUtils.setRankImg("0");
+				RequestUtils.setRankName("0");
+			}
 			//session.setAttribute("userID", userVo.getUser_id());
 			RequestUtils.setUserId(userVo.getUser_id());
 			RequestUtils.getUserId("userID");

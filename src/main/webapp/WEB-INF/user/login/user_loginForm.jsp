@@ -52,7 +52,8 @@ function loginWithKakao() {
 						}
 					},
 					error: function(e) {
-						console.log(e);
+						alert("등록되지 않은 아이디입니다. 회원가입을 먼저 진행해주세요.")
+						location.href='/join.do';
 					}
 				})//ajax close
 
