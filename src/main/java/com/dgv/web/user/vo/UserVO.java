@@ -17,7 +17,8 @@ public class UserVO {
 	private String user_month;
 	private String user_day;
 	private String user_term; // 약관동의여부
-	private UserDetailVO detailVO;
+	
+	private List<UserDetailVO> detailVO;
 	
 	
 	

@@ -25,6 +25,7 @@ import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
+import com.dgv.web.user.vo.UserVO;
 
 @Repository
 public class UserBoardDAO {
@@ -150,5 +151,23 @@ public class UserBoardDAO {
 	
 	public int userReserveInsert(UserReserveVO reserveVo) {
 		return sqlSessionTemplate.insert("UserMovieDAO.userReserveInsert", reserveVo);
+	}
+	
+	public List<UserReserveVO> userReserveMyPage(String id){
+		return sqlSessionTemplate.selectList("UserMovieDAO.userReserveMyPage", id);
+	}
+	public List<UserReserveVO> userReserveSeatStatus(UserReserveVO vo) {
+		return sqlSessionTemplate.selectList("UserMovieDAO.userReserveSeatStatus", vo);
+	}
+	
+	public int UpdateReserveStatus(UserReserveVO vo) {
+		return sqlSessionTemplate.update("UserMovieDAO.UpdateReserveStatus", vo);
+	}
+	
+	public List<AdminMovieVO> userArtHouseList(){
+		return sqlSessionTemplate.selectList("UserMovieDAO.userArtHouseList");
+	}
+	public UserVO communityUserInfo(String id) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.communityUserInfo",id);
 	}
 }

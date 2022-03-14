@@ -1,5 +1,7 @@
 package com.dgv.web.user.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,9 +30,11 @@ import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.vo.PageVO;
 import com.dgv.web.user.vo.PaginationVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
+import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 
 @Controller
@@ -74,7 +78,15 @@ public class UserBoardController {
 	@RequestMapping("/board.do")
 	public String userBoard(Model model,PageVO pageVo) {
 		List<UserCommunityVO> communityList = userBoardService.communitySelect();
+		
+		for(UserCommunityVO comVo :communityList) {
+			UserVO userVo = userBoardService.communityUserInfo(comVo.getUser_id());
+			for(UserDetailVO detailVo :userVo.getDetailVO()) {
+				comVo.setUser_img(detailVo.getUser_img());
+			}
+		}
 		model.addAttribute("communityList",communityList);
+		
 		
 		//시간시간//
 		LocalDateTime now = LocalDateTime.now();
@@ -109,6 +121,12 @@ public class UserBoardController {
 		long currentTime =TimeCalc.timeMillis(formatted);
 		
 		communityVo.setWrite_time(TimeCalc.compareTime(writeTime, currentTime));
+		
+		UserVO userVo = userBoardService.communityUserInfo(communityVo.getUser_id());
+		for(UserDetailVO detailVo : userVo.getDetailVO()) {
+			communityVo.setUser_img(detailVo.getUser_img());
+		}
+		
 		
 		model.addAttribute("communityVo",communityVo);
 		

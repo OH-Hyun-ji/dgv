@@ -50,6 +50,10 @@ public class UserReserveController {
 	@Autowired
 	private UserService userService;
 	
+	
+	
+	
+	
 	@GetMapping("/movieReserve.do")
 	public String movieReserve(Model model,AdminMovieVO vo) {
 		List<AdminMovieVO> movieList =adminMovieService.movieList();
@@ -92,7 +96,7 @@ public class UserReserveController {
 	}
 	
 	@PostMapping("/reserveSeat.do")
-	public String reserveSeat(@ModelAttribute("reserveVO") UserReserveVO vo ,Model model) {
+	public String reserveSeat(@ModelAttribute("reserveVO") UserReserveVO vo ,Model model,UserReserveVO reserveVO) {
 			//유저정보 
 			String userId =RequestUtils.getUserId("userID");
 			UserVO userVo = userService.MyUserList(userId);
@@ -142,7 +146,21 @@ public class UserReserveController {
 			model.addAttribute("time",vo.getMovie_time_start());
 			model.addAttribute("row",row);
 			model.addAttribute("col",col);
-						
+			//예약된좌석 
+			reserveVO.setRegion_code(theaterVo.getRegion_code());
+			reserveVO.setTheater_code(theaterVo.getTheater_code());
+			
+			List<String> reserveL = new ArrayList<String>();
+			List<UserReserveVO> reserveVo = userBoardService.userReserveSeatStatus(reserveVO);
+			for(UserReserveVO reser: reserveVo) {
+				String[] reserveArr=(reser.getSeat_reservation()).split(",");
+				for(int i=0;i<reserveArr.length;i++) {
+					System.out.println("reserveArr : "+reserveArr[i]);
+					reserveL.add(reserveArr[i]);
+				}
+				
+			}
+			model.addAttribute("reserveVo",gson.toJson(reserveL));
 			System.out.println("/// : " +vo.toString());			
 		return "/seat/user_seat";
 	}

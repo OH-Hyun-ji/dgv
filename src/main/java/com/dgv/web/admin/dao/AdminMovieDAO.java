@@ -210,6 +210,11 @@ public class AdminMovieDAO {
 	public int updateReserveStatus(UserReserveVO vo) {
 		return sqlSessionTemplate.update("AdminBoardDAO.updateReserveStatus",vo);
 	}
-	
+	public int areaChart(UserReserveVO vo) {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.areaChart",vo);
+	}
+	public int areaBarChart(UserReserveVO vo) {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.areaBarChart",vo);
+	}
 
 }

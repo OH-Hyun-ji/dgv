@@ -185,9 +185,18 @@ button.seat-status {
     border-radius: 11px;
     font-weight: bolder;
 }
-button.seat-status:hover{
+button:disabled {
+	background-color: -internal-light-dark(rgba(239, 239, 239, 0.2), rgba(19, 1, 1, 0.1));	
+}
+button.seat-status:hover:enabled{
 	background: linear-gradient( 90deg, rgb(264 -11 -84) 0%, rgb(391 443 -6) 245% );
 	color:white;
+	
+}
+
+button#reservationSeat {
+    background-color: rgb(70 223 70 / 80%);
+
 }
 .choiceBtnStyle{
 	background: linear-gradient( 90deg, rgb(264 -11 -84) 0%, rgb(391 443 -6) 245% );

@@ -178,14 +178,9 @@
 						</dt>
 						<dd>
 							<h2>
-								<a href="/seatReservation.do">빠른예매</a>
+								<a href="/movieReserve.do">빠른예매</a>
 							</h2>
-						</dd>
-						<dd>
-							<h2>
-								<a href="#">상영스케줄</a>
-							</h2>
-						</dd>
+						</dd>					
 					</dl>
 				</li>
 				<li>

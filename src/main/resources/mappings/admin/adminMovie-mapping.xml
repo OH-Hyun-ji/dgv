@@ -98,5 +98,12 @@
 		SELECT COUNT(*) FROM movie_map WHERE map_name=#{map_name}
 	</select>
 	
+	<select id="areaChart" resultType="int">
+		SELECT sum(reserve_price) FROM movie_reserve WHERE reserve_date=#{reserve_date}
+	</select>
+	<select id="areaBarChart" resultType="int">
+		SELECT sum(reserve_price) FROM movie_reserve WHERE reserve_date between #{start_day} AND #{end_day}
+	</select>
+	
 	
 </mapper>

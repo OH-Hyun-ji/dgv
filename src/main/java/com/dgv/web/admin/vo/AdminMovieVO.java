@@ -2,10 +2,12 @@ package com.dgv.web.admin.vo;
 
 import java.util.List;
 
+import com.dgv.web.user.vo.PageVO;
+
 import lombok.Data;
 
 @Data
-public class AdminMovieVO {
+public class AdminMovieVO extends PageVO{
 
 	private Integer movie_num;
 	private Integer movie_genre_code;

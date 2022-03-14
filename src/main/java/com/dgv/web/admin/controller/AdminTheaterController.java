@@ -38,7 +38,10 @@ import com.dgv.web.admin.vo.BuilderTest;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.admin.vo.ParticipantDto;
 import com.dgv.web.admin.vo.TheaterInfoDto;
+import com.dgv.web.user.controller.Pagination;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.PageVO;
+import com.dgv.web.user.vo.PaginationVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -59,7 +62,7 @@ public class AdminTheaterController {
 	private FileUploadService fileUploadService;
 	
 	@RequestMapping("/movieList.mdo")
-	public String movieList(AdminMovieVO vo,Model model,AdminGenreVO genreVo) {
+	public String movieList(AdminMovieVO vo,Model model,AdminGenreVO genreVo,PageVO pageVo) {
 		List<AdminGenreVO> genreList =adminMovieService.genreList();
 		List<AdminMovieVO> movieList =adminMovieService.movieList();
 		List<AdminAgeVO> ageList = adminMovieService.ageList();
@@ -77,6 +80,18 @@ public class AdminTheaterController {
 				}
 			}
 		}
+		//페이징
+		PaginationVO pagination = new PaginationVO();
+		pagination.setCurrentPageNo(pageVo.getPageIndex());
+		pagination.setRecordCountPage(pageVo.getPageUnit());
+		pagination.setPageSize(pageVo.getPageSize());
+		
+		pageVo.setFirstIndex(pagination.getRecordCountPage());
+		pageVo.setRecordCountPerPage(pagination.getRecordCountPage());
+		
+		int movieCount = adminMovieService.movieList().size();
+		
+		
 		model.addAttribute("movieList",movieList);
 		model.addAttribute("movieListCount",adminMovieService.movieList().size());
 		

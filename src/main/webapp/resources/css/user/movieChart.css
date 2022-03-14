@@ -531,3 +531,11 @@ strong {
     text-align: center;
     line-height: 28px;
 }
+.pagination>li>a, .pagination>li>span{
+	border: 0 !important;
+	font-size: 20px;
+    margin-left: 1rem;
+}
+ul.pagination {
+    display: inline-flex;
+}

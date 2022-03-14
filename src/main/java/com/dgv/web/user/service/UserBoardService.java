@@ -21,6 +21,7 @@ import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
+import com.dgv.web.user.vo.UserVO;
 
 public interface UserBoardService {
 
@@ -87,4 +88,14 @@ public interface UserBoardService {
 	UserCommunityVO communityChoiceNum(int num);
 	
 	int userReserveInsert(UserReserveVO reserveVo);
+	
+	List<UserReserveVO> userReserveMyPage(String id);
+	
+	List<UserReserveVO> userReserveSeatStatus(UserReserveVO vo);
+	
+	int UpdateReserveStatus(UserReserveVO vo);
+	
+	List<AdminMovieVO> userArtHouseList();
+	
+	UserVO communityUserInfo(String id);
 }

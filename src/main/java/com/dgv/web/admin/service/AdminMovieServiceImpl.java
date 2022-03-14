@@ -301,6 +301,18 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.updateReserveStatus(vo);
 	}
 
+	@Override
+	public int areaChart(UserReserveVO vo) {
+		
+		return adminMovieDAO.areaChart(vo);
+	}
+
+	@Override
+	public int areaBarChart(UserReserveVO vo) {
+		
+		return adminMovieDAO.areaBarChart(vo);
+	}
+
 
 	
 

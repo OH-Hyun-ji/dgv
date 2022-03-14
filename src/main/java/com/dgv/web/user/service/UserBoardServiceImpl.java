@@ -24,6 +24,7 @@ import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
+import com.dgv.web.user.vo.UserVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -243,6 +244,43 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.userReserveInsert(reserveVo);
 	}
+
+
+	@Override
+	public List<UserReserveVO> userReserveMyPage(String id) {
+		
+		return userBoardDAO.userReserveMyPage(id);
+	}
+
+
+	@Override
+	public List<UserReserveVO> userReserveSeatStatus(UserReserveVO vo) {
+		
+		return userBoardDAO.userReserveSeatStatus(vo);
+	}
+
+
+	@Override
+	public int UpdateReserveStatus(UserReserveVO vo) {
+		
+		return userBoardDAO.UpdateReserveStatus(vo);
+	}
+
+
+	@Override
+	public List<AdminMovieVO> userArtHouseList() {
+		return userBoardDAO.userArtHouseList();
+	
+	}
+
+
+	@Override
+	public UserVO communityUserInfo(String id) {
+		
+		return userBoardDAO.communityUserInfo(id);
+	}
+	
+	
 
 	
 

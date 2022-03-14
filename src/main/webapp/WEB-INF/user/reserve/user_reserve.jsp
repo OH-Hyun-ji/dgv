@@ -31,6 +31,7 @@
     		line-height: 36px;
     		z-index: 10;
     		background-color: #f2f0e5;
+    		cursor: pointer;
 		}
 		button.regionBtn:hover {
 			background-color: #9e9d9ba1;
@@ -92,6 +93,9 @@
 		span.theaterName {
 		    font-weight: bolder;
 		    color: #482416;
+		}
+		span.movieTitleBtn {
+		    cursor: pointer;
 		}
 	</style>
 </head>

@@ -125,4 +125,8 @@ public interface AdminMovieService {
 	List<UserReserveVO> SelectReserveInfo();
 	
 	int updateReserveStatus(UserReserveVO vo);
+	
+	int areaChart(UserReserveVO vo);
+	
+	int areaBarChart(UserReserveVO vo);
 }

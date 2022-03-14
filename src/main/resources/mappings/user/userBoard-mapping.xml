@@ -2,6 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="UserBoardDAO">
+<resultMap type="UserDetailVO" id="UserDetailVO">
+	<result column="user_num" property="user_num" jdbcType="INTEGER"/>
+	<result column="user_point" property="user_point" jdbcType="INTEGER"/>
+	<result column="user_rank" property="user_rank" jdbcType="VARCHAR"/>
+	<result column="user_img" property="user_img" jdbcType="VARCHAR" />
+	<result column="user_agree" property="user_agree" jdbcType="VARCHAR"/>
+</resultMap>
+<resultMap type="UserVO" id="UserVO">
+	<result column="user_num" property="user_num" jdbcType="INTEGER"/>
+	<result column="user_id" property="user_id" jdbcType="VARCHAR"/>
+	<result column="user_pw" property="user_pw" jdbcType="VARCHAR"/>
+	<result column="user_name" property="user_name" jdbcType="VARCHAR"/>
+	<result column="user_phone" property="user_phone" jdbcType="VARCHAR"/>
+	<result column="user_email" property="user_email" jdbcType="VARCHAR"/>
+	<result column="user_year" property="user_year" jdbcType="VARCHAR"/>
+	<result column="user_term" property="user_term" jdbcType="VARCHAR"/>
+	<result column="user_month" property="user_month" jdbcType="VARCHAR"/>
+	<result column="user_day" property="user_day" jdbcType="VARCHAR"/>
+	<collection property="detailVO" resultMap="UserDetailVO"></collection>
+</resultMap>
 
 	<select id="NoticeList" resultType="AdminNoticeVO">
 		SELECT * FROM dgv_notice
@@ -49,6 +69,10 @@
 	
 	<select id="communityChoiceNum" resultType="UserCommunityVO">
 		SELECT * FROM dgv_community WHERE community_code =#{community_code}
+	</select>
+	
+	<select id="communityUserInfo" resultMap="UserVO">
+		SELECT * FROM user_info ui FULL JOIN user_info_detail uid ON ui.user_num = uid.user_num WHERE ui.user_id=#{user_id}
 	</select>
 	
 	

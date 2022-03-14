@@ -66,9 +66,16 @@
 									<div class="sokdak-date">${communityList.write_date}</div>		
 								</c:if>
 								<div class="sokdak-user-img">
-									<img
-										style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;"
-										src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg">
+									<c:if test="${communityList.user_img == '0' }">
+										<img
+											style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;"
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg">
+									</c:if>
+									<c:if test="${communityList.user_img != '0' }">
+										<img 
+											style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;"
+											src="${communityList.user_img}">
+									</c:if>							
 								</div>
 							</div>
 						</button>

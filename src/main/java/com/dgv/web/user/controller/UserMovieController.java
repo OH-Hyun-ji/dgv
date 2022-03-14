@@ -37,7 +37,10 @@ public class UserMovieController {
 	private AdminMovieService adminMovieService;
 	
 	@RequestMapping("/artHouse.do")
-	public String artHouse() {
+	public String artHouse(Model model) {
+		List<AdminMovieVO> artHouseList = userBoardService.userArtHouseList();
+		
+		model.addAttribute("artHouseList",artHouseList);
 		return "/movie/user_movie_artHouse";
 	}
 	

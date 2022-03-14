@@ -14,4 +14,7 @@ public class UserCommunityVO extends PageVO  {
 	private Integer community_answerCount;
 	private String write_date;
 	private String write_time;
+	
+	//
+	private String user_img;
 }

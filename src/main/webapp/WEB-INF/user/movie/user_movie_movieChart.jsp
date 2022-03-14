@@ -13,8 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
  	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-  
-</head>
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+
 <script type="text/javascript">
 	function reservePage(movieNum){
 		var form = document.createElement('form');
@@ -30,6 +30,8 @@
 		form.submit()	
 	}
 </script>
+</head>
+
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
     <!--본격 콘텐츠-->
@@ -90,7 +92,25 @@
                     </ol>
                 </div>
             </div>
-        </div>
+            <!-- 페이징 -->
+			<nav style="text-align: center;" >
+				<ul class="pagination">
+					<li>
+						<a href="#" aria-label="Previous"> 
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<c:forEach var="i" begin="1" end="5" step="1">
+						 <li><a href="#">${i}</a></li>
+					</c:forEach>
+					<li>
+						<a href="#" aria-label="Next"> 
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
     </div>
    <jsp:include page="../default/user_footer.jsp"></jsp:include>
 </body>

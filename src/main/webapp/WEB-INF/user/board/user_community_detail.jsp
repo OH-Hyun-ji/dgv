@@ -41,7 +41,16 @@
 									<div class="user-img-wrapper">
 										<div class="user-img-wrapping">
 											<div class="user-img-profile">
-												<img class="user-beautiful" src="${communityVo.commuity_img }">
+												<c:if test="${communityVo.user_img == '0' }">
+													<img
+														class="user-beautiful"
+														src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg">
+												</c:if>
+												<c:if test="${communityVo.user_img != '0' }">
+													<img
+														class="user-beautiful"
+														src="${communityVo.user_img}">
+												</c:if>
 												<span class="user-rank">
 													<img class="user-rank-img">
 												</span>
@@ -56,31 +65,34 @@
 						<div	class="community-real-wrap">
 							<div class="community-mini-btn bookmark"></div>
 							<div class="community-talk-wrap">
-								<div class="community-talk-wrapper">
-									<div class="community-talk">
-										<p>${communityVo.community_text}</p>
-									</div>
+								<div class=user-saved-img>
+									<img src="${communityVo.commuity_img} " >
 								</div>
-								<div class="community-footer">
-									<div class="community-vote">
-										<div class="community-vote-wrapper">
-											<span class="community-vote-btn">
-												<i class="fas fa-thumbs-up" style="color: orange;"></i>
-											</span>
-											<span class="detail-recommend">추천 0</span>
-										</div>
-										<div class="community-vote-wrapper">
-											<span class="community-vote-btn">
-												<i class="fas fa-thumbs-down" style="color: orange;"></i>
-											</span>
-											<span  class="detail-no-recommend"> 비추천 </span>
+									<div class="community-talk-wrapper">
+										<div class="community-talk">
+											<p>${communityVo.community_text}</p>
 										</div>
 									</div>
-									<div class="community-subMenu">
-										<span class="community-count">조회수 ${communityVo.community_count }</span>
-										<span class="community-any-text">댓글수 ${communityVo.community_answerCount }</span>								
-									</div>								
-								</div>
+									<div class="community-footer">
+										<div class="community-vote">
+											<div class="community-vote-wrapper">
+												<span class="community-vote-btn">
+													<i class="fas fa-thumbs-up" style="color: orange;"></i>
+												</span>
+												<span class="detail-recommend">추천 0</span>
+											</div>
+											<div class="community-vote-wrapper">
+												<span class="community-vote-btn">
+													<i class="fas fa-thumbs-down" style="color: orange;"></i>
+												</span>
+												<span  class="detail-no-recommend"> 비추천 </span>
+											</div>
+										</div>
+										<div class="community-subMenu">
+											<span class="community-count">조회수 ${communityVo.community_count }</span>
+											<span class="community-any-text">댓글수 ${communityVo.community_answerCount }</span>								
+										</div>								
+									</div>
 							</div>	
 							<div class="community-body-conatainer">
 								<div class="community-template">
