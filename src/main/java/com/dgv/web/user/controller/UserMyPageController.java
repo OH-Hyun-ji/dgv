@@ -143,6 +143,11 @@ public class UserMyPageController {
       return "/myPage/user_myPage_checkData";
    }
    
+   @RequestMapping("/myPage_userMovie.do")
+   public String myPage_userMovie() {
+      return "/myPage/user_myPage_userMovie";
+   }
+   
    // 객체 생성, 주입
    @Inject
 	public UserMyPageController(UserService userService) {

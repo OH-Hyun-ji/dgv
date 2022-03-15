@@ -51,7 +51,7 @@
                                         </ul>
                                     </li>
                                     <li class="my-event">
-                                        <a href="#">내가 본 영화</a>
+                                        <a href="myPage_userMovie.do">내가 본 영화</a>
                                     </li>
                                 </ul>
                             </div>
