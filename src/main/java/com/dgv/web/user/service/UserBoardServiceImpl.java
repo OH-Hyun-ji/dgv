@@ -17,6 +17,9 @@ import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.dao.UserBoardDAO;
+import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.SearchVO;
+import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
@@ -279,6 +282,56 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.communityUserInfo(id);
 	}
+
+
+	@Override
+	public List<UserCommunityVO> getCommunityList(SearchVO vo) throws Exception {
+		
+		return userBoardDAO.getCommunityList(vo);
+	}
+
+
+	@Override
+	public int getCommunityCnt(SearchVO vo) throws Exception {
+	
+		return userBoardDAO.getCommunityCnt(vo);
+	}
+
+
+	@Override
+	public List<AdminMovieVO> getListPaging(Criteria cri) {
+		
+		return userBoardDAO.myPaging(cri);
+	}
+
+
+	@Override
+	public int getTotal() {
+		
+		return userBoardDAO.getTotal();
+	}
+
+
+	@Override
+	public int communityCountView(int num) {
+		
+		return userBoardDAO.communityCountView(num);
+	}
+
+
+	@Override
+	public int CommentInsert(UserCommentVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public List<UserCommentVO> commentSelect(int num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 

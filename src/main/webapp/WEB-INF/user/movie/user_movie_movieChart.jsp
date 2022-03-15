@@ -11,9 +11,10 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/movieChart.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">    
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery.twbsPagination.js"></script>
  	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-	<!-- 합쳐지고 최소화된 최신 CSS -->
+
 
 <script type="text/javascript">
 	function reservePage(movieNum){
@@ -29,6 +30,16 @@
 		document.body.appendChild(form)
 		form.submit()	
 	}
+	$(function(){
+// 		$(".pageInfo a").on("click",function(e){
+// 			alert("fg")
+// 			alert($("input[name='amount']").val())
+// 			e.preventDefault();
+// 		//	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+// 			moveForm.attr("action","/movie/user_movie_movieChart");
+// 			moveForm.submit();
+// 		});
+	})
 </script>
 </head>
 
@@ -93,25 +104,34 @@
                 </div>
             </div>
             <!-- 페이징 -->
-			<nav style="text-align: center;" >
-				<ul class="pagination">
-					<li>
-						<a href="#" aria-label="Previous"> 
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<c:forEach var="i" begin="1" end="5" step="1">
-						 <li><a href="#">${i}</a></li>
+<!-- 			<nav style="text-align: center;" > -->
+<!-- 				<ul class="pagination"  id="pagination"> -->
+
+<!-- 				</ul> -->
+<!-- 			</nav> -->
+		
+		<div class="page-info-wrap">
+			<div class="page-info-area" >
+				<ul id="pageInfo" class="pageInfo">
+					<c:if test="${pageMake.prev}">
+							<li class="pageInfo-btn previous" ><a href="${pageMake.startPage-1}">Previous</a></li>
+					</c:if>
+					<c:forEach var="num" begin="${pageMake.startPage}" end="${pageMake.endPage}">
+						<li class="pageInfo_btn ${pageMake.cri.pageNum == num ? "active":""}"><a href="/movieChart.do?pageNum=${num }&amount=${pageMake.cri.amount }">${num}</a></li>
 					</c:forEach>
-					<li>
-						<a href="#" aria-label="Next"> 
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
+					<c:if test="${pageMake.next}">
+						<li class="pageInfo_btn next"><a href="${pageMake.endPage + 1}">Next</a></li>
+					</c:if>
 				</ul>
-			</nav>
+			</div>		
+		</div>
 		</div>
     </div>
+		<form id="movieForm" method="get">
+			<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">
+			<input type="hidden" name="amount" value="${pageMake.cri.amount }">
+		</form>
    <jsp:include page="../default/user_footer.jsp"></jsp:include>
+
 </body>
 </html>

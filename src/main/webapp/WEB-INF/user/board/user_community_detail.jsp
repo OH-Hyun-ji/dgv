@@ -55,8 +55,8 @@
 													<img class="user-rank-img">
 												</span>
 											</div>
-											<span class="user-id-umm">${communityVo.user_id }</span>
-											<span class="user-rank-name">userRankName</span>
+											<span class="user-id-umm">${communityVo.user_id }</span>									
+												<span class="user-rank-name" style="color: #ff9f4c; font-weight: 700;">${communityVo.rank_name}</span>
 										</div>
 									</div>
 								</div>
@@ -90,15 +90,55 @@
 										</div>
 										<div class="community-subMenu">
 											<span class="community-count">조회수 ${communityVo.community_count }</span>
-											<span class="community-any-text">댓글수 ${communityVo.community_answerCount }</span>								
+											<span class="community-any-text">의견수 ${communityVo.community_answerCount }</span>								
 										</div>								
 									</div>
 							</div>	
-							<div class="community-body-conatainer">
-								<div class="community-template">
-									<button class="community-ctrl">
-										<span class="any-text">댓글없음</span>
-									</button>
+							<div class="community-all-wrapping">
+								<div class="community-body-conatainer">
+									<div class="community-template">
+										<button class="community-ctrl">
+											<span class="any-text">Comment</span>
+										</button>
+									</div>
+								</div>
+								<div class="community-insert-comment">
+									<div class="comment-box-wrap">
+										<div class="community-write-comment">
+											<input type="text" id="writeComment" placeholder="제목입력">
+										</div>
+										<div class="comment-textarea">
+											<textarea class="comment-textarea-style" rows="10" cols="20"></textarea>
+										</div>
+									</div>
+									<div class="comment-resBtn-style">
+										<button class="comment-register">등록하기</button>
+									</div>
+								</div>
+							</div>
+							<div class="comment-allList-container">
+								<div class="comment-list-wrap">
+									<div class="comment-title">
+										<input type="text" id="commemtTitle" >
+									</div>
+									<div class="comment-textarea">
+										<textarea class="comment-textarea-styleOn" readonly="readonly" rows="10" cols="20"></textarea>
+									</div>
+								</div>
+								<div class="user-img-wrap img-wrap-style">
+									<div class="user-img-wrapper">
+										<div class="user-img-wrapping">
+											<div class="user-img-profile" style="flex-direction: unset;">		
+													<img class="user-beautiful beauty-style" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/profile/87c29e16-4276-4e0b-90ca-085fc3ca4fb9bananananan.png">
+												
+												<span class="user-rank">
+													<img class="user-rank-img">
+												</span>
+											</div>
+											<span class="user-id-umm user-umm">banana11</span>									
+												<span class="user-rank-name rank-style" style="color: #ff9f4c; font-weight: 700;">다이아</span>
+										</div>
+									</div>
 								</div>
 							</div>				
 						</div>

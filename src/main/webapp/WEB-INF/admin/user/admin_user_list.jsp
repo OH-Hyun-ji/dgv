@@ -66,14 +66,14 @@
 								</thead>
 								<tbody>
 								<c:forEach var="userList" items="${userList}" varStatus="status">
-									<ZStr id="trWrap">
+									<tr id="trWrap">
 										<td>${userListCount - status.index}</td>
 										<td>${userList.user_id}</td>
 										<td>${userList.user_name}</td>
 										<td>${userList.user_phone}</td>
-										<td>${userList.user_email}</td>
-										<td>${userList.detailVO.user_rank}</td>
-										<td>${userList.detailVO.user_point}</td>
+										<td>${userList.user_email}</td>										
+									 	<td>${userList.user_rank}</td>
+										<td>${userList.user_point}</td>
 										<td style="text-align: center;"><button id="delBt"  onclick="deleteAction('${userList.user_id}')"><i class="fas fa-trash-alt"></i></button> <button  onclick="updateRank('${userList.user_num}')"><i class="fas fa-pencil-alt"></i></button></td>
 									</tr>		
 								</c:forEach>						

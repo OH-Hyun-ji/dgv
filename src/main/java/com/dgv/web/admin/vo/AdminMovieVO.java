@@ -7,7 +7,7 @@ import com.dgv.web.user.vo.PageVO;
 import lombok.Data;
 
 @Data
-public class AdminMovieVO extends PageVO{
+public class AdminMovieVO {
 
 	private Integer movie_num;
 	private Integer movie_genre_code;

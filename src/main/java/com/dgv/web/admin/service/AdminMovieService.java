@@ -5,6 +5,7 @@ import java.util.List;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityTheaterVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
@@ -129,4 +130,9 @@ public interface AdminMovieService {
 	int areaChart(UserReserveVO vo);
 	
 	int areaBarChart(UserReserveVO vo);
+	
+	int EventInsert(AdminEventVO vo);
+	
+	List<AdminEventVO> EventSelect();
+	
 }

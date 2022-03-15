@@ -1979,8 +1979,11 @@ footer .company_info_wrap {
 .company_info .company_info_list dd a {
   text-decoration: underline;
 }
-
-
-
-
+span.title-text {
+    cursor: pointer;
+}
+span.title-text:hover {
+	background-color: #9e9d9ba1;
+	
+}
 

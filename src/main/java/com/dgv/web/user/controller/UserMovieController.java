@@ -22,6 +22,8 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.PageVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserVO;
@@ -93,8 +95,8 @@ public class UserMovieController {
 	}
 	
 	@RequestMapping("/movieChart.do")
-	public String movieChart(Model model) {
-		List<AdminMovieVO> movieList = adminMovieService.movieList();
+	public String movieChart(Model model,Criteria cri) {
+		List<AdminMovieVO> movieList =  userBoardService.getListPaging(cri); // adminMovieService.movieList();
 		List<AdminAgeVO> ageList = adminMovieService.ageList();
 		for(AdminMovieVO movieVo: movieList) {
 			for(AdminAgeVO ageVo:ageList) {
@@ -103,7 +105,12 @@ public class UserMovieController {
 				}
 			}
 		}
+		int total = userBoardService.getTotal();
+		PageVO pageMake = new PageVO(total, cri);
+		model.addAttribute("pageMake",pageMake);
+		
 		model.addAttribute("movieList",movieList);
+
 		return "/movie/user_movie_movieChart";
 	}
 	@RequestMapping("/movieDetail.do")

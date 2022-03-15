@@ -486,3 +486,13 @@ input[type="file"] {
 .sokdak-date-wrap {
     text-align: center;
 }
+select:focus {
+	outline: none;
+}
+select#searchType {
+    border: 0;
+}
+img.user-beautiful.beauty-style {
+    height: 54px;
+    width: 50px;
+}

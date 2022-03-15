@@ -8,6 +8,7 @@ import com.dgv.web.admin.dao.AdminMovieDAO;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityTheaterVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
@@ -311,6 +312,18 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 	public int areaBarChart(UserReserveVO vo) {
 		
 		return adminMovieDAO.areaBarChart(vo);
+	}
+
+	@Override
+	public int EventInsert(AdminEventVO vo) {
+		
+		return adminMovieDAO.EventInsert(vo);
+	}
+
+	@Override
+	public List<AdminEventVO> EventSelect() {
+		
+		return adminMovieDAO.EventSelect();
 	}
 
 

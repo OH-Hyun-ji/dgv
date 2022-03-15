@@ -2,6 +2,7 @@ package com.dgv.web.user.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
+import java.io.Writer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +30,7 @@ import com.dgv.web.commons.interceptor.TimeCalc;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.vo.PageVO;
 import com.dgv.web.user.vo.PaginationVO;
+import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommunityVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
@@ -76,7 +78,17 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping("/board.do")
-	public String userBoard(Model model,PageVO pageVo) {
+	public String userBoard(Model model, @RequestParam(required = false, defaultValue = "community_title")String searchType,
+			@RequestParam(required = false) String keyword )throws Exception {
+		
+		SearchVO search = new SearchVO();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		
+		//전체 게시글수 
+		int listCnt = userBoardService.getCommunityCnt(search);
+		
+		
 		List<UserCommunityVO> communityList = userBoardService.communitySelect();
 		
 		for(UserCommunityVO comVo :communityList) {
@@ -98,14 +110,7 @@ public class UserBoardController {
 			communityVo.setWrite_time(TimeCalc.compareTime(writeTime, writeCurrent));
 		}
 		
-		PaginationVO paginationVO = new PaginationVO();
-		paginationVO.setCurrentPageNo(pageVo.getPageIndex());
-		paginationVO.setRecordCountPage(pageVo.getPageUnit());
-		paginationVO.setPageSize(pageVo.getPageSize());
-		
-		pageVo.setFirstIndex(paginationVO.getFirstRecordIndex());
-	//	pageVo.setRecordCountPerPage();
-		
+
 		
 		return "/board/user_board_community";
 	}
@@ -116,7 +121,7 @@ public class UserBoardController {
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
 		String formatted = now.format(formatter);
-		
+		userBoardService.communityCountView(communityCode);
 		long writeTime=TimeCalc.timeMillis(communityVo.getWrite_time());
 		long currentTime =TimeCalc.timeMillis(formatted);
 		
@@ -125,6 +130,7 @@ public class UserBoardController {
 		UserVO userVo = userBoardService.communityUserInfo(communityVo.getUser_id());
 		for(UserDetailVO detailVo : userVo.getDetailVO()) {
 			communityVo.setUser_img(detailVo.getUser_img());
+			communityVo.setRank_name(detailVo.getUser_rank());
 		}
 		
 		

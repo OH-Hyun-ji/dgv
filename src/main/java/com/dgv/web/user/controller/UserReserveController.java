@@ -94,6 +94,46 @@ public class UserReserveController {
 		
 		return "/reserve/user_reserve";
 	}
+	//전체 눌렀을때
+	@PostMapping("/movieAllChartView.do")
+	@ResponseBody
+	public String movieAllChartView(@RequestBody AdminMovieVO vo) {
+		List<AdminMovieVO> movieList =adminMovieService.movieList();
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		for(AdminMovieVO movieVo: movieList) {
+			for(AdminAgeVO ageVo:ageList) {
+				if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
+					movieVo.setAge_img(ageVo.getMovie_age_img());
+				}
+			}
+		}
+		Gson gson = new Gson();
+		String movieTotalList = gson.toJson(movieList);
+		
+		return movieTotalList;
+	}
+	
+	//아트 하우스 눌렀을때
+	@PostMapping("/artChatList.do")
+	@ResponseBody
+	public String userArtHouseList(@RequestBody AdminMovieVO vo) {
+		
+		
+		List<AdminMovieVO> userArtHouseList = userBoardService.userArtHouseList();
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		
+		for(AdminMovieVO movieVo :userArtHouseList) {
+			for(AdminAgeVO ageVo:ageList) {
+				if(movieVo.getMovie_age_code()==ageVo.getMovie_age_num()) {
+					movieVo.setAge_img(ageVo.getMovie_age_img());
+				}
+			}
+		}
+		Gson gson = new Gson();
+		String artList = gson.toJson(userArtHouseList);
+		
+		return artList;
+	}
 	
 	@PostMapping("/reserveSeat.do")
 	public String reserveSeat(@ModelAttribute("reserveVO") UserReserveVO vo ,Model model,UserReserveVO reserveVO) {

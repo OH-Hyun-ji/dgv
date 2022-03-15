@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityTheaterVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
@@ -216,5 +217,11 @@ public class AdminMovieDAO {
 	public int areaBarChart(UserReserveVO vo) {
 		return sqlSessionTemplate.selectOne("AdminMovieDAO.areaBarChart",vo);
 	}
-
+	
+	public int EventInsert(AdminEventVO vo) {
+		return sqlSessionTemplate.insert("AdminBoardDAO.EventInsert",vo);
+	}
+	public List<AdminEventVO> EventSelect(){
+		return sqlSessionTemplate.selectList("AdminBoardDAO.EventSelect");
+	}
 }

@@ -19,7 +19,8 @@ public class UserVO {
 	private String user_term; // 약관동의여부
 	
 	private List<UserDetailVO> detailVO;
-	
+	private String user_rank;
+	private Integer user_point;
 	
 	
 

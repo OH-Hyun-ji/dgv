@@ -14,6 +14,9 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
+import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.SearchVO;
+import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
@@ -98,4 +101,18 @@ public interface UserBoardService {
 	List<AdminMovieVO> userArtHouseList();
 	
 	UserVO communityUserInfo(String id);
+	
+	List<UserCommunityVO> getCommunityList(SearchVO vo) throws Exception;
+	
+	int getCommunityCnt(SearchVO vo) throws Exception;
+	
+	List<AdminMovieVO> getListPaging(Criteria cri);
+	
+	int getTotal();
+	
+	int communityCountView(int num);
+	
+	int CommentInsert(UserCommentVO vo);
+	
+	List<UserCommentVO> commentSelect(int num);
 }

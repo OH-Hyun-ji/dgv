@@ -62,7 +62,7 @@ public class AdminTheaterController {
 	private FileUploadService fileUploadService;
 	
 	@RequestMapping("/movieList.mdo")
-	public String movieList(AdminMovieVO vo,Model model,AdminGenreVO genreVo,PageVO pageVo) {
+	public String movieList(AdminMovieVO vo,Model model,AdminGenreVO genreVo) {
 		List<AdminGenreVO> genreList =adminMovieService.genreList();
 		List<AdminMovieVO> movieList =adminMovieService.movieList();
 		List<AdminAgeVO> ageList = adminMovieService.ageList();
@@ -80,15 +80,7 @@ public class AdminTheaterController {
 				}
 			}
 		}
-		//페이징
-		PaginationVO pagination = new PaginationVO();
-		pagination.setCurrentPageNo(pageVo.getPageIndex());
-		pagination.setRecordCountPage(pageVo.getPageUnit());
-		pagination.setPageSize(pageVo.getPageSize());
-		
-		pageVo.setFirstIndex(pagination.getRecordCountPage());
-		pageVo.setRecordCountPerPage(pagination.getRecordCountPage());
-		
+	
 		int movieCount = adminMovieService.movieList().size();
 		
 		
