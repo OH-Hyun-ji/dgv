@@ -194,9 +194,7 @@
 		</form>
     </div>
       <jsp:include page="../default/user_footer.jsp"></jsp:include>
-<%--       <% --%>
-<!-- // 			String id = (String)session.getAttribute("userID"); -->
-<%--       %> --%>
+
 <script type="text/javascript">
 	$(function(){
 
@@ -216,7 +214,6 @@
 			var userPhone = $("#userPhone").val()			
 			var reservePrice = $("#reservePrice").val()
 			console.log("reservePrice  =>  "+reservePrice)
-			<%-- var userId = '<%=id%>'; --%>
 			
 			alert("결제버튼 클릭")
 			console.log("userId " +userId)

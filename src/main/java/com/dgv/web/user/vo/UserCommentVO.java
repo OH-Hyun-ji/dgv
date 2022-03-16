@@ -13,4 +13,9 @@ public class UserCommentVO {
 	private String write_date;
 	private String write_time;
 	
+	////
+	private String user_rank;
+	private String user_img;
+	
+	
 }

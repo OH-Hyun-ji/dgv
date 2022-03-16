@@ -19,6 +19,7 @@ import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
@@ -119,4 +120,10 @@ public interface UserBoardService {
 	int CommentInsert(UserCommentVO vo);
 	
 	List<UserCommentVO> commentSelect(int num);
+	
+	UserVO userNumSelect(String id);
+
+	List<UserReserveVO> userIdMovieReserveList(String id);
+	
+
 }

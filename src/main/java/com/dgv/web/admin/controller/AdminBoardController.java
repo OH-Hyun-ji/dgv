@@ -200,37 +200,37 @@ public class AdminBoardController {
 		String format= "yyyy-MM-dd";
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 	
-		String date = sdf.format(cal.getTime());
-		Date d= Date.valueOf(date);
-		System.out.println(d);	
-		vo.setReserve_date(d);
-		int today1 = adminMovieService.areaChart(vo);
-		model.addAttribute("today1",today1);
-		
-		cal.add(cal.DATE, -1);
-		String date2 = sdf.format(cal.getTime());
-		Date d2 =Date.valueOf(date2);
-		System.out.println(d2);
-		vo.setReserve_date(d2);
-		int today2 = adminMovieService.areaChart(vo);
-		model.addAttribute("today2",today2);
-		
-		cal.add(cal.DATE, -1);
-		String date3 = sdf.format(cal.getTime());
-		Date d3 =Date.valueOf(date3);
-		System.out.println(d3);
-		vo.setReserve_date(d3);
-		int today3 = adminMovieService.areaChart(vo);
-		model.addAttribute("today3",today3);
-		
-		cal.add(cal.DATE, -1);
-		String date4 = sdf.format(cal.getTime());
-		Date d4 =Date.valueOf(date4);
-		System.out.println(d4);
-		vo.setReserve_date(d4);
-		int today4 = adminMovieService.areaChart(vo);
-		model.addAttribute("today4",today4);
-		
+//		String date = sdf.format(cal.getTime());
+//		Date d= Date.valueOf(date);
+//		System.out.println(d);	
+//		vo.setReserve_date(d);
+//		int today1 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today1",today1);
+//		
+//		cal.add(cal.DATE, -1);
+//		String date2 = sdf.format(cal.getTime());
+//		Date d2 =Date.valueOf(date2);
+//		System.out.println(d2);
+//		vo.setReserve_date(d2);
+//		int today2 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today2",today2);
+//		
+//		cal.add(cal.DATE, -1);
+//		String date3 = sdf.format(cal.getTime());
+//		Date d3 =Date.valueOf(date3);
+//		System.out.println(d3);
+//		vo.setReserve_date(d3);
+//		int today3 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today3",today3);
+//		
+//		cal.add(cal.DATE, -1);
+//		String date4 = sdf.format(cal.getTime());
+//		Date d4 =Date.valueOf(date4);
+//		System.out.println(d4);
+//		vo.setReserve_date(d4);
+//		int today4 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today4",today4);
+//		
 //		cal.add(cal.DATE, -1);
 //		String date5 = sdf.format(cal.getTime());
 //		Date d5 =Date.valueOf(date5);
@@ -256,7 +256,7 @@ public class AdminBoardController {
 		String mon1 = sd.format(month.getTime());
 		Date m1 =Date.valueOf(mon1);
 		System.out.println(m1);
-		vo.setStart_day(d);
+	//	vo.setStart_day(d);
 	//	int month1 = adminMovieService.areaChart(vo);
 		System.out.println(m1);
 	//	model.addAttribute("month1",month1);
@@ -265,7 +265,7 @@ public class AdminBoardController {
 		String mon2 = sd.format(month.getTime());
 		Date m2 =Date.valueOf(mon2);
 		System.out.println("ddd :"+ m2);
-		vo.setReserve_date(m2);
+	//	vo.setReserve_date(m2);
 		month.add(month.DATE, 30);
 	//	int month2 = adminMovieService.areaChart(vo);
 	//	model.addAttribute("month2",month2);

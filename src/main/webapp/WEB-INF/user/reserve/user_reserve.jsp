@@ -387,14 +387,14 @@
         </div>
     </div>
  <div class="CheckHiddenBtn">
-	 <form  method="post" name="reserveInfo" action="reserveSeat.do">
-		<input class="dgvR" type="hidden" id="hiddenTitle" name="movie_num">
-		<input class="dgvR" type="hidden" id="hiddenCity" name="city_code">
-		<input class="dgvR" type="hidden" id="hiddenRegion" name="region_code">
-		<input class="dgvR" type="hidden" id="hiddenDate" name="reserve_date">
-		<input class="dgvR" type="hidden" id="hiddenTheater" name="theater_code">
-		<input class="dgvR" type="hidden" id="hiddenTime" name="movie_time_start">
-        <input type="button" id="next-page1"  value="좌석선택=>" >
+	 <form  method="post" name="reserveInfo" action="/reserveSeat.do">
+		<input class="dgvR" type=text id="hiddenTitle" name="movie_num">
+		<input class="dgvR" type="text" id="hiddenCity" name="city_code">
+		<input class="dgvR" type="text" id="hiddenRegion" name="region_code">
+		<input class="dgvR" type="text" id="hiddenDate" name="reserve_date">
+		<input class="dgvR" type="text" id="hiddenTheater" name="theater_code">
+		<input class="dgvR" type="text" id="hiddenTime" name="movie_time_start">
+        <input type="submit" id="next-page1"  value="좌석선택=>" >
 	</form>	
    </div>
     <jsp:include page="../default/user_footer.jsp"></jsp:include>
@@ -579,18 +579,19 @@
 						"movie_time_start":time,
 						"theater_code":theater
 				}
-			
+				const target = document.getElementById('next-page1');
+				$("#next-page1").css("background-color","red")
+					alert("???ㅇㅇㄹㅇㄹㅇㄹㅇㄹ")
+	 			//	document.reserveInfo.submit();
 			
 			}else{
 					
 			}
-			const target = document.getElementById('next-page1');
-			$("#next-page1").css("background-color","red")
- 			document.reserveInfo.submit();
+		
 		}else{
 			alert("선택안한 항목이 있습니다, 다시 확인해 주세요 ")
 			const target = document.getElementById('next-page1');
-			location.reload();
+				location.reload();
 		}
 	})
 

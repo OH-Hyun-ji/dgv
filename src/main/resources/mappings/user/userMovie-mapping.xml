@@ -94,6 +94,9 @@
 		SELECT * FROM movie_info WHERE movie_genre_code = 10
 	</select>
 	
+	<select id="userIdMovieReserveList" resultType="UserReserveVO">
+		SELECT * FROM movie_reserve WHERE user_id =#{user_id}
+	</select>
 	
 	
 </mapper>

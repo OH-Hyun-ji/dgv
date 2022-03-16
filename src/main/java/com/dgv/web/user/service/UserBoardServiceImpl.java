@@ -22,6 +22,7 @@ import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
@@ -322,15 +323,15 @@ public class UserBoardServiceImpl implements UserBoardService {
 
 	@Override
 	public int CommentInsert(UserCommentVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return userBoardDAO.CommentInsert(vo);
 	}
 
 
 	@Override
 	public List<UserCommentVO> commentSelect(int num) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return userBoardDAO.commentSelect(num);
 	}
 	
 	@Override
@@ -338,6 +339,24 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.eventList();
 	}
+
+	@Override
+	public UserVO userNumSelect(String id) {
+	
+		return userBoardDAO.userNumSelect(id);
+	}
+
+
+	@Override
+	public List<UserReserveVO> userIdMovieReserveList(String id) {
+		
+		return userBoardDAO.userIdMovieReserveList(id);
+	}
+
+
+
+	
+
 	
 
 	

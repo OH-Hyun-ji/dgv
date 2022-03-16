@@ -79,13 +79,16 @@
 		INSERT INTO movie_time(movie_time_code,region_code,theater_code,movie_time_start)
 		VALUES(DEFAULT,#{region_code},#{theater_code},#{movie_time_start})
 	</insert>
+	
 	<insert id="InsertSeat" parameterType="AdminSeatVO">
 		INSERT INTO movie_seat(seat_code,region_code,seat_status,theater_code,seat_reservation)
 		VALUES(DEFAULT,#{region_code},#{seat_status},#{theater_code},#{seat_reservation})
 	</insert>
+	
 	<select id="TimeList" resultType="AdminTimeVO">
 		SELECT * FROM movie_time WHERE region_code =#{region_code}		
 	</select>
+	
 	<select id="TimecheckList" resultType="int">
 		SELECT COUNT(*) FROM movie_time WHERE theater_code =#{theater_code}		
 	</select>
@@ -101,6 +104,7 @@
 	<select id="areaChart" resultType="int">
 		SELECT sum(reserve_price) FROM movie_reserve WHERE reserve_date=#{reserve_date}
 	</select>
+	
 	<select id="areaBarChart" resultType="int">
 		SELECT sum(reserve_price) FROM movie_reserve WHERE reserve_date between #{start_day} AND #{end_day}
 	</select>

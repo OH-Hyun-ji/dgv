@@ -67,7 +67,7 @@ public class UserLoginController {
 			UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
 			RequestUtils.setUserId(vo.getUser_id());
 			RequestUtils.setUserEmail(vo.getUser_email());
-			
+			RequestUtils.getUserId("userID");
 			if(detailVo.getUser_img().length() > 3 ) {
 				RequestUtils.setUserImg(detailVo.getUser_img());		
 			}else {
