@@ -28,9 +28,11 @@ import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.commons.interceptor.TimeCalc;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.PageVO;
 import com.dgv.web.user.vo.PaginationVO;
 import com.dgv.web.user.vo.SearchVO;
+import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
@@ -48,6 +50,8 @@ public class UserBoardController {
 	@Autowired
 	private FileUploadService fileUploadService;
 
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping("/review.do")
 	public String userReview() {
@@ -84,6 +88,8 @@ public class UserBoardController {
 		SearchVO search = new SearchVO();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
+		
+		
 		
 		//전체 게시글수 
 		int listCnt = userBoardService.getCommunityCnt(search);
@@ -124,20 +130,51 @@ public class UserBoardController {
 		userBoardService.communityCountView(communityCode);
 		long writeTime=TimeCalc.timeMillis(communityVo.getWrite_time());
 		long currentTime =TimeCalc.timeMillis(formatted);
-		
 		communityVo.setWrite_time(TimeCalc.compareTime(writeTime, currentTime));
-		
+
+		List<UserCommentVO> commentList =  userBoardService.commentSelect(communityCode);
+			for(UserCommentVO comment:commentList ) {
+				UserVO userVo = userBoardService.userNumSelect(comment.getUser_id());
+				UserDetailVO detailVo = userService.userDetailVo(userVo.getUser_num());
+				comment.setUser_rank(detailVo.getUser_rank());
+				comment.setUser_img(detailVo.getUser_img());	
+			}
+			
 		UserVO userVo = userBoardService.communityUserInfo(communityVo.getUser_id());
-		for(UserDetailVO detailVo : userVo.getDetailVO()) {
-			communityVo.setUser_img(detailVo.getUser_img());
-			communityVo.setRank_name(detailVo.getUser_rank());
-		}
-		
-		
+			for(UserDetailVO detailVo : userVo.getDetailVO()) {
+				communityVo.setUser_img(detailVo.getUser_img());
+				communityVo.setRank_name(detailVo.getUser_rank());
+			}
+		model.addAttribute("commentList",commentList);
 		model.addAttribute("communityVo",communityVo);
 		
 		return "/board/user_community_detail";
 	}
+	
+	@PostMapping("/commentInsert.do")
+	@ResponseBody
+	public CommonResultDto commentInsert(@RequestBody UserCommentVO commentVo,Model model) {
+		
+		String userId = RequestUtils.getUserId("userID");
+		commentVo.setUser_id(userId);
+		
+		int num = userBoardService.CommentInsert(commentVo);
+				
+		List<UserCommentVO> commentList = userBoardService.commentSelect(commentVo.getCommunity_code());
+		for(UserCommentVO comment : commentList) {
+			UserVO userVo = userBoardService.userNumSelect(comment.getUser_id());
+			UserDetailVO detailVo =userService.userDetailVo(userVo.getUser_num());
+			comment.setUser_rank(detailVo.getUser_rank());
+			comment.setUser_img(detailVo.getUser_img());
+		}
+		
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();	
+	}
+	
+	
 	/////고객센터 //////
 	@RequestMapping("/serviceCenter.do")
 	public String serviceCenter(Model model) {
@@ -149,7 +186,6 @@ public class UserBoardController {
 	@RequestMapping("/notice.do")
 	public String userNotice(Model model) {
 		List<AdminNoticeVO> noticeVo = userBoardService.noticeList();
-	
 		model.addAttribute("noticeList",  noticeVo);
 		return "/board/user_board_notice";
 	}

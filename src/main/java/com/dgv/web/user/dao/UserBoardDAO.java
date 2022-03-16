@@ -23,6 +23,7 @@ import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
@@ -197,4 +198,13 @@ public class UserBoardDAO {
 	public List<UserCommentVO> commentSelect(int num){
 		return sqlSessionTemplate.selectList("UserBoardDAO.commentSelect",num);
 	}
+	
+	public UserVO userNumSelect(String id) {
+		return sqlSessionTemplate.selectOne("UserDAO.userNumSelect",id);
+	}
+
+	public List<UserReserveVO> userIdMovieReserveList(String id){
+		return sqlSessionTemplate.selectList("UserMovieDAO.userIdMovieReserveList", id);
+	}
+	
 }

@@ -135,8 +135,15 @@ public class UserReserveController {
 		return artList;
 	}
 	
+	@PostMapping("/seat.do")
+	public String serat(@ModelAttribute UserReserveVO vo ,Model model) {
+		
+		System.out.println("post 방식");
+		return "/seat/user_seat";
+	}
+	
 	@PostMapping("/reserveSeat.do")
-	public String reserveSeat(@ModelAttribute("reserveVO") UserReserveVO vo ,Model model,UserReserveVO reserveVO) {
+	public String reserveSeat(@ModelAttribute("reserveVo") UserReserveVO vo ,Model model,UserReserveVO reserveVO) {
 			//유저정보 
 			String userId =RequestUtils.getUserId("userID");
 			UserVO userVo = userService.MyUserList(userId);
@@ -223,7 +230,7 @@ public class UserReserveController {
 		List<AdminTheaterVO> theaterList = userBoardService.theaterCodeList(theaterVo.getRegion_code());
 		List<AdminTheaterVO> theaterL = new ArrayList<AdminTheaterVO>();
 		List<AdminTimeVO> timeList = new ArrayList<AdminTimeVO>();
-		
+		System.out.println("이건 나오나요");
 		
 		for(AdminTheaterVO thVo : theaterList) {
 			System.out.println("현재 상영관  "+ thVo.getTheater_name());
@@ -232,10 +239,11 @@ public class UserReserveController {
 			AdminSeatVO seatVo = userBoardService.seatListInfo(thVo.getTheater_code());
 			thVo.setMovie_time_code(timeVo.getMovie_time_code());
 			thVo.setMovie_time_start(timeVo.getMovie_time_start());
+			
 			thVo.setSeat_status(seatVo.getSeat_status());
+			System.out.println("영화 시간 : "+thVo.getMovie_time_start());
 		
 		}
-		
 		Gson gson = new Gson();
 		String tList =gson.toJson(theaterList);
 		System.out.println("/?????");

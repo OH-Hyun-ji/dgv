@@ -99,6 +99,15 @@ img.user-beautiful {
     border-radius: 50%;
     box-shadow: 0 0.5rem 0.8rem 0 rgb(0 0 0 / 15%);
 }
+img#user-beautiful {
+    -o-object-fit: cover;
+    object-fit: cover;
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    box-shadow: 0 0.5rem 0.8rem 0 rgb(0 0 0 / 15%);
+}
 span.user-rank {
     box-shadow: 0 0.3rem 0.5rem 0 rgb(146 144 142 / 22%);
 }
@@ -321,9 +330,7 @@ button.comment-register {
 	color:white;
 	font-weight: bold;
 }
-.comment-allList-container {
-    display: flex;
-}
+
 input#commemtTitle {
     width: 1023px;
     height: 40px;
@@ -354,4 +361,7 @@ span.user-rank-name.rank-style {
     padding-right: 8rem;
     padding-top: 42px;
     width: 100px;
+}
+.comment-wrapping {
+    display: flex;
 }

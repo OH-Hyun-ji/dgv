@@ -10,7 +10,7 @@ public class UserReserveVO {
 	private Integer reserve_code;
 	private Integer movie_num;
 	private Integer region_code;
-	private Date  reserve_date;
+	private String  reserve_date;
 	private String movie_time_start;
 	private Integer theater_code;
 	private String seat_reservation;
@@ -27,8 +27,15 @@ public class UserReserveVO {
 	private String reserve_movie_date;
 	
 	///////
+	private Integer city_code;
 	private String  city_name;
 	private String  movie_title;
+	private String  movie_title_en;
+	private String  movie_img;
+	private String  theater_name;
+	private String  region_name;
+	private String age_name;
+	private Integer total_people;
 	private String fomatter_price;
 	private Date start_day;
 	private Date end_day;

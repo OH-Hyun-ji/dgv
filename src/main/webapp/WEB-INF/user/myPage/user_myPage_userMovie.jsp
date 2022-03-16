@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>내가 본 영화</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/layout.css">
+  <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/myPage.css">
+  <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css"/>
+  <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/userModule.css"/>
   <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css" />
   <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user_myPage_userMovie.css" />
+  <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -20,11 +25,9 @@
     <!-- Contents Area -->
     <div id="contents" class="">
       <!-- Contents Start -->
-      <input type="hidden" id="isIPIN" name="isIPIN" value="noxK/LjPTJnWBhukxlDDeXOQHKqEc9kPhFOzZEcTD7FNw/rihnlu/7MQFLJW4gHsCFWpuwyol2yszuCsnPkf0A==">
       <div id="dev2014">
         <div class="cols-content" style="width: auto;">
           <div class="col-aside">
-            <h2>프로필 및 서브메뉴</h2>
             <div class="box-round-dgray">
               <div class="box-round-inner">
                 <div class="inner-contents-profile">
@@ -42,36 +45,7 @@
                 </div>
               </div>
             </div>
-            <div class="box-round-wgray">
-              <div class="box-round-inner">
-                <div class="inner-contents-log">
-                  <a href="/user/movielog/default.aspx">
-                    <em>1</em>
-                    <strong>기대되는 영화</strong>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="box-round-on">
-              <div class="box-round-inner">
-                <div class="inner-contents-log">
-                  <a href="/user/movielog/default.aspx">
-                    <em>30</em>
-                    <strong>내가 본 영화</strong>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="box-round-wgray">
-              <div class="box-round-inner">
-                  <div class="inner-contents-log">
-                      <a href="/movies/point/my-list.aspx">
-                          <em>0</em>
-                          <strong>내가 쓴 평점</strong>
-                      </a>
-                  </div>
-              </div>
-            </div>
+           <jsp:include page="../default/user_myPage_side.jsp"></jsp:include>
           </div>
 
           <div class="col-detail">
@@ -80,7 +54,7 @@
               <form id="form1" method="get" novalidate="novalidate">
                 <div class="tit-mycgv">
                   <h3>내가 본 영화</h3>
-                  <p><em>30건</em></p>
+                  <p><em>${myMovieListCount}건</em></p>
                   <div class="set-combo">
                     <label for="year">내가 본 영화 년도별 정렬</label>
                     <select id="year" name="year">      
@@ -100,40 +74,42 @@
               </form>
               <!-- 내가 본 영화 리스트 -->
               <div class="sect-movielog-lst">
-                <ul id="watched_list_container">
-                  <li class="movie_info_82012">
-                    <div class="article-movie-info">
-                      <div class="box-image">
-                        <a id="phototicket_popup_82012" title="포스터 크게 보기" href="#">
-                          <span class="thumb-image"> 
-                            <img alt="엑시트 포스터" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000082/82012/82012_185.jpg" onerror="errorImage(this)">
-                            <span class="ico-grade grade-12">12세 이상</span>
-                            <i></i>
-                          </span>
-                        </a>
-                      </div>
-                      <div class="box-contents">
-                        <div class="title">
-                          <a href="#">
-                            <strong id="strong_82012">엑시트</strong>
-                          </a>
-                          <p>EXIT</p>
-                        </div>
-                        <p class="date">2019.08.11 (일) 13:00 ~ 14:53</p>
-                        <p class="theater">CGV수유 6관 6층 / 2명</p>
-                        <ul class="writerinfo" id="wid_390047546">
-                          <li class="writer-opinion">
-                            <a class="link-gradewrite" id="wIdx_390047546" href="javascript:void(0);" data-movieidx="82012" data-movietitle="엑시트">이 영화를 평가해주세요</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <button type="button" data="390047546" class="btn-del">
-                      	<img src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif" alt="엑시트 삭제">
-                      </button>
-                    </div>
-                  </li>
-                  
-                </ul>
+           		  <c:forEach var="myMovieList" items="${myMovieList}">
+	                <ul id="watched_list_container">
+	                  <li class="movie_info_82012">
+	                    <div class="article-movie-info">
+	                      <div class="box-image">
+	                        <a id="phototicket_popup_82012" title="포스터 크게 보기" href="#">
+	                          <span class="thumb-image"> 
+	                            <img src="${myMovieList.movie_img }">
+	                            <span class="ico-grade grade-12">${myMovieList.age_name }</span>
+	                            <i></i>
+	                          </span>
+	                        </a>
+	                      </div>
+	                      <div class="box-contents">
+	                        <div class="title">
+	                          <a href="#">
+	                            <strong id="strong_82012">${myMovieList.movie_title }</strong>
+	                          </a>
+	                          <p>${myMovieList.movie_title_en }</p>
+	                        </div>
+	                        <p class="date">${myMovieList.reserve_date }</p>
+	                        <p class="theater">${myMovieList.region_name} ${myMovieList.theater_name } / ${myMovieList.total_people} 명</p>
+	                        <ul class="writerinfo" id="wid_390047546">
+	                          <li class="writer-opinion">
+	                            <a class="link-gradewrite" id="wIdx_390047546" href="javascript:void(0);" data-movieidx="82012" data-movietitle="엑시트">이 영화를 평가해주세요</a>
+	                          </li>
+	                        </ul>
+	                      </div>
+	                      <button type="button" data="390047546" class="btn-del">
+	                      	<img src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif" >
+	                      </button>
+	                    </div>
+	                  </li>
+	                  
+	                </ul>
+                </c:forEach>
               </div>
 
             </div>
