@@ -132,5 +132,9 @@
 		SELECT * FROM dgv_comment WHERE community_code=#{community_code}
 	</select>
 	
+	<select id="eventList" resultType="AdminEventVO">
+		select * from dgv_event 
+	</select>
+	
 	
 </mapper>

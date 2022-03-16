@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
@@ -332,7 +333,11 @@ public class UserBoardServiceImpl implements UserBoardService {
 		return null;
 	}
 	
-	
+	@Override
+	public List<AdminEventVO> eventList() {
+		
+		return userBoardDAO.eventList();
+	}
 	
 
 	

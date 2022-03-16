@@ -232,7 +232,7 @@ input, select, img {
 ul.event-ul {
     display: flex;
     padding-top: 1%;
-    font-size: 18px;
+    font-size: 17px;
     padding-left: 7%;
 }
 ul.event-ul > li {

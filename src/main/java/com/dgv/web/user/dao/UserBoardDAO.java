@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
@@ -197,4 +198,9 @@ public class UserBoardDAO {
 	public List<UserCommentVO> commentSelect(int num){
 		return sqlSessionTemplate.selectList("UserBoardDAO.commentSelect",num);
 	}
+	
+	public List<AdminEventVO> eventList(){
+		return sqlSessionTemplate.selectList("UserBoardDAO.eventList");
+	}
+	
 }
