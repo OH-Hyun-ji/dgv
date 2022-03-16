@@ -20,6 +20,7 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
+import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserReserveVO;
 
@@ -223,5 +224,21 @@ public class AdminMovieDAO {
 	}
 	public List<AdminEventVO> EventSelect(){
 		return sqlSessionTemplate.selectList("AdminBoardDAO.EventSelect");
+	}
+	public int StatusChange(AdminMovieVO vo) {
+		return sqlSessionTemplate.update("AdminMovieDAO.StatusChange",vo);
+	}
+	public List<AdminMovieVO> continueMovie(Criteria cri){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.continueMovie",cri);
+	}
+	public List<AdminMovieVO> endMovie(Criteria cri){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.endMovie",cri);
+	}
+	public List<AdminMovieVO> yetMovie(Criteria cri){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.yetMovie",cri);
+	}
+	
+	public int deleteMovie(AdminMovieVO vo) {
+		return sqlSessionTemplate.delete("AdminMovieDAO.deleteMovie",vo);
 	}
 }

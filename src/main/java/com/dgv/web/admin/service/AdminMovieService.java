@@ -16,6 +16,7 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
+import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserReserveVO;
@@ -135,4 +136,13 @@ public interface AdminMovieService {
 	
 	List<AdminEventVO> EventSelect();
 	
+	int StatusChange(AdminMovieVO vo);
+	
+	List<AdminMovieVO> continueMovie(Criteria cri);
+	
+	List<AdminMovieVO> endMovie(Criteria cri);
+	
+	List<AdminMovieVO> yetMovie(Criteria cri);
+	
+	int deleteMovie(AdminMovieVO vo);
 }

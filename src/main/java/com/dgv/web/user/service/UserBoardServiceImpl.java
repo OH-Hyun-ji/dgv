@@ -354,6 +354,27 @@ public class UserBoardServiceImpl implements UserBoardService {
 	}
 
 
+	@Override
+	public int continueTotal() {
+		
+		return userBoardDAO.continueTotal();
+	}
+
+
+	@Override
+	public int endTotal() {
+	
+		return userBoardDAO.endTotal();
+	}
+
+
+	@Override
+	public int yetTotal() {
+		
+		return userBoardDAO.yetTotal();
+	}
+
+
 
 	
 

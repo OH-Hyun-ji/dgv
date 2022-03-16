@@ -32,6 +32,7 @@ import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
@@ -392,6 +393,16 @@ public class AdminMovieController {
 		}
 		return CommonResultDto.success();
 		
+	}
+	
+	@PostMapping("/statusChange.mdo")
+	@ResponseBody
+	public CommonResultDto statusChange(@RequestBody AdminMovieVO vo) {
+		int num = adminMovieService.StatusChange(vo);
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
 	}
 		
 	@PostMapping("/adminInsertActor.mdo")

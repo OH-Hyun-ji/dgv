@@ -125,5 +125,10 @@ public interface UserBoardService {
 
 	List<UserReserveVO> userIdMovieReserveList(String id);
 	
+	int continueTotal();
+	
+	int endTotal();
+	
+	int yetTotal();
 
 }

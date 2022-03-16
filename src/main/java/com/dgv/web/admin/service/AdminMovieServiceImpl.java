@@ -19,6 +19,7 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
+import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserReserveVO;
@@ -324,6 +325,36 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 	public List<AdminEventVO> EventSelect() {
 		
 		return adminMovieDAO.EventSelect();
+	}
+
+	@Override
+	public int StatusChange(AdminMovieVO vo) {
+		
+		return adminMovieDAO.StatusChange(vo);
+	}
+
+	@Override
+	public List<AdminMovieVO> continueMovie(Criteria cri) {
+		
+		return adminMovieDAO.continueMovie(cri);
+	}
+
+	@Override
+	public List<AdminMovieVO> endMovie(Criteria cri) {
+	
+		return adminMovieDAO.endMovie(cri);
+	}
+
+	@Override
+	public List<AdminMovieVO> yetMovie(Criteria cri) {
+	
+		return adminMovieDAO.yetMovie(cri);
+	}
+
+	@Override
+	public int deleteMovie(AdminMovieVO vo) {
+		
+		return adminMovieDAO.deleteMovie(vo);
 	}
 
 

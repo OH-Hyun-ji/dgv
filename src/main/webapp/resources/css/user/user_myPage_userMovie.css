@@ -44,13 +44,8 @@ div {
   visibility: hidden;
   zoom: 1;
 }
-[class^='box-round'][class$='dgray'] {
-  border-color: #bab8ae;
-}
-[class^='box-round'][class$='dgray'], [class^='box-round'][class$='gray'], [class^='box-round'][class$='on'] {
-  border-width: 1px;
-  border-style: solid;
-}
+
+
 [class^='box-round'] {
   position: relative;
   margin-top: 10px;
@@ -68,9 +63,7 @@ div {
   height: 6px;
   background: #fdfcf0 url(../images/1.png) no-repeat 0 0;
 }
-[class^='box-round']:first-child {
-  margin-top: 0;
-}
+
 [class^='box-round'] {
   position: relative;
   margin-top: 10px;
@@ -161,14 +154,8 @@ strong {
 [class^='box-round'][class$='wgray'] {
   border-color: #d8d6ca;
 }
-[class^='box-round'][class$='dgray'], [class^='box-round'][class$='gray'], [class^='box-round'][class$='on'] {
-  border-width: 1px;
-  border-style: solid;
-}
-[class^='box-round'] {
-  position: relative;
-  margin-top: 10px;
-}
+
+
 [class^='box-round'][class$='wgray']:before {
   top: -1px;
   left: -1px;
@@ -177,10 +164,7 @@ strong {
 [class^='box-round']:first-child {
   margin-top: 0;
 }
-[class^='box-round'] {
-  position: relative;
-  margin-top: 10px;
-}
+
 [class^='box-round'][class$='wgray'] > [class$='inner']:before {
   top: -1px;
   right: -1px;
@@ -239,14 +223,8 @@ em {
 [class^='box-round'][class$='on'] {
   background-color: #fb4357;
 }
-[class^='box-round'][class$='dgray'], [class^='box-round'][class$='gray'], [class^='box-round'][class$='on'] {
-  border-width: 1px;
-  border-style: solid;
-}
-[class^='box-round'] {
-  position: relative;
-  margin-top: 10px;
-}
+
+
 
 /* 메인 영역///////////////////////////////////////////////////////////////////////////////////////////*/
 .cols-content .col-aside + .col-detail {
@@ -267,15 +245,21 @@ em {
   line-height: 34px;
 }
 .cols-content .tit-mycgv > h3, .cols-content .tit-mycgv > h4 {
-  float: left;
-  height: 34px;
-  margin: 0;
-  background-image: none;
-  color: #222;
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 34px;
-  text-align: left;
+    float: left;
+    height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 34px;
+    text-align: left;
+    border: 1px solid #a0a0a0;
+    border-radius: 15px;
+    padding: 1px 28px 2px 24px;
+    box-sizing: border-box;
+    background-color: #9b9b9b;
+    margin-right: 14px;
 }
 .cols-content .tit-mycgv p {
   float: left;
@@ -502,9 +486,21 @@ button, input {
   clear: both;
 }
 
+.inner-contents-profile {
+    border: 2px solid #a3a1a1;
+    border-radius: 32px;
+    background-color: whitesmoke;
+}
 
-
-
-
+#count-em-style{
+	font-size: 17px;
+    background-color: #f17811;
+    border: 1px solid orange;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 4px;
+    width: 50px;
+    color: white;
+}
 
 

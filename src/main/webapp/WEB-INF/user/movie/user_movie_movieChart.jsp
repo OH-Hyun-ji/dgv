@@ -55,10 +55,13 @@
                     <div class="submenu">
                         <ul>
                             <li class="on">
-                                <a href="movieChart.do" title="선택">무비차트</a>
+                                <a href="movieChart.do" >무비차트</a>
                             </li>
                             <li>
-                                <a href="#">상영예정작</a>
+                                <a href="/yetMovie.do">상영예정작</a>
+                            </li>
+                            <li>
+                                <a href="/endMovie.do">상영종료작</a>
                             </li>
                         </ul>
                     </div>
@@ -93,7 +96,12 @@
                                     </strong>
                                 </span>
 	                               <span class="like" style=" text-align-last: center;">
-										<button class="w-btn w-btn-gra3 w-btn-gra-anim"style="padding: 9px 8px; box-shadow: none;" onclick="reservePage(${movieList.movie_num})">예매하기</button>
+	                               		<c:if test="${movieList.movie_status != 'true'}">	                               			
+											<button disabled="disabled" id="disable" onclick="reservePage(${movieList.movie_num})">예매하기</button>
+                                		</c:if>
+                                		<c:if test="${movieList.movie_status == 'true'}">
+											<button class="w-btn w-btn-gra3 w-btn-gra-anim"style="padding: 9px 8px; box-shadow: none;" onclick="reservePage(${movieList.movie_num})">예매하기</button>
+                                		</c:if>
                                 </span>
                             </div>
                             
@@ -117,7 +125,7 @@
 							<li class="pageInfo-btn previous" ><a href="${pageMake.startPage-1}">Previous</a></li>
 					</c:if>
 					<c:forEach var="num" begin="${pageMake.startPage}" end="${pageMake.endPage}">
-						<li class="pageInfo_btn ${pageMake.cri.pageNum == num ? "active":""}"><a href="/movieChart.do?pageNum=${num }&amount=${pageMake.cri.amount }">${num}</a></li>
+						<li class="pageInfo_btn ${pageMake.cri.pageNum == num ? "active":""}"><a href="${url}?pageNum=${num }&amount=${pageMake.cri.amount }">${num}</a></li>
 					</c:forEach>
 					<c:if test="${pageMake.next}">
 						<li class="pageInfo_btn next"><a href="${pageMake.endPage + 1}">Next</a></li>

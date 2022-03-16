@@ -214,4 +214,15 @@ public class UserBoardDAO {
 
 	}
 	
+	public int continueTotal() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.continueTotal");
+	}
+	
+	public int endTotal() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.endTotal");
+	}
+	
+	public int yetTotal() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.yetTotal");
+	}
 }

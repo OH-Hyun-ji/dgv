@@ -94,9 +94,11 @@ public class UserMovieController {
 		
 	}
 	
-	@RequestMapping("/movieChart.do")
-	public String movieChart(Model model,Criteria cri) {
-		List<AdminMovieVO> movieList =  userBoardService.getListPaging(cri); // adminMovieService.movieList();
+	@RequestMapping("/endMovie.do")
+	public String endMovie(Model model,Criteria cri) {
+		int total = userBoardService.endTotal();
+		cri.setAmount(userBoardService.getTotal());
+		List<AdminMovieVO> movieList =  adminMovieService.endMovie(cri); 
 		List<AdminAgeVO> ageList = adminMovieService.ageList();
 		for(AdminMovieVO movieVo: movieList) {
 			for(AdminAgeVO ageVo:ageList) {
@@ -105,10 +107,52 @@ public class UserMovieController {
 				}
 			}
 		}
-		int total = userBoardService.getTotal();
 		PageVO pageMake = new PageVO(total, cri);
 		model.addAttribute("pageMake",pageMake);
+		model.addAttribute("url","/yetMovie.do");
+		model.addAttribute("movieList",movieList);
+
+		return "/movie/user_movie_movieChart";
+	}
+	
+	@RequestMapping("/yetMovie.do")
+	public String yetMovie(Model model,Criteria cri) {
+		int total = userBoardService.yetTotal();
+		cri.setAmount(userBoardService.getTotal());
+		List<AdminMovieVO> movieList =  adminMovieService.yetMovie(cri); 
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		for(AdminMovieVO movieVo: movieList) {
+			for(AdminAgeVO ageVo:ageList) {
+				if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
+					movieVo.setAge_name(ageVo.getMovie_age_name());
+				}
+			}
+		}
+		PageVO pageMake = new PageVO(total, cri);
+		model.addAttribute("pageMake",pageMake);
+		model.addAttribute("url","/yetMovie.do");
+		model.addAttribute("movieList",movieList);
 		
+		return "/movie/user_movie_movieChart";
+	}
+	
+	
+	@RequestMapping("/movieChart.do")
+	public String movieChart(Model model,Criteria cri) {
+		List<AdminMovieVO> movieList =  adminMovieService.continueMovie(cri); 
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		for(AdminMovieVO movieVo: movieList) {
+			
+			for(AdminAgeVO ageVo:ageList) {
+				if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
+					movieVo.setAge_name(ageVo.getMovie_age_name());
+				}
+			}
+		}
+		int total = userBoardService.continueTotal();
+		PageVO pageMake = new PageVO(total, cri);
+		model.addAttribute("pageMake",pageMake);
+		model.addAttribute("url","/movieChart.do");
 		model.addAttribute("movieList",movieList);
 
 		return "/movie/user_movie_movieChart";

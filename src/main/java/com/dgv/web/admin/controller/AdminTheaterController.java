@@ -61,6 +61,17 @@ public class AdminTheaterController {
 	@Autowired
 	private FileUploadService fileUploadService;
 	
+	
+	@PostMapping("deleteMovie.mdo")
+	@ResponseBody
+	public CommonResultDto deleteMovie(@RequestBody AdminMovieVO vo) {
+		int num = adminMovieService.deleteMovie(vo);
+		
+		if(num ==0 )
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
 	@RequestMapping("/movieList.mdo")
 	public String movieList(AdminMovieVO vo,Model model,AdminGenreVO genreVo) {
 		List<AdminGenreVO> genreList =adminMovieService.genreList();
@@ -80,7 +91,7 @@ public class AdminTheaterController {
 				}
 			}
 		}
-	
+		
 		int movieCount = adminMovieService.movieList().size();
 		
 		

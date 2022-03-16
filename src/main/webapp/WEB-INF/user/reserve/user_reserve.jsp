@@ -183,11 +183,12 @@
 		.CheckHiddenBtn {
 		    display: flex;
 		    justify-content: end;
+		    margin-right: 112px;
 		}
 		input#next-page1 {
 		    width: 150px;
 		    height: 93px;
-		    border-radius: 9px;
+		    border-radius: 3px;
 		    font-size: 18px;
 		    color: white;
 		    background-color: gray;
@@ -287,15 +288,17 @@
                                     <div class="movie-list nano has-scrollbar has-scrollbar-y" id="movie_list">
                                         <ul class="content scroll-y" id="artHouseCome"onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;padding: 0px;">
                                            <c:forEach var="movieList" items="${movieList}" varStatus="status">
-                                            <li class="rating-15" data-index="${status.index}" >
-                                                <button href="#" class="movieStyle" onclick="movieCode(${movieList.movie_num })" id="movieTT${movieList.movie_num }" title="${movieList.movie_title }"  value="${movieList.movie_num }">
-                                                	<div class="movie-info" style="display: flex;">
-	                                                    <span class="age-icon">&nbsp;<img src="${movieList.age_img}" style="height: 33px; box-sizing: border-box; padding-top: 11%;"></span>
-	                                                    <span class="movieTitleBtn" class="title-text" style="box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
-                                                    </div>
-                                                    <span class="sreader"></span>
-                                                </button>
-                                            </li>
+	                                           <c:if test="${movieList.movie_status=='true' }">
+		                                            <li class="rating-15" data-index="${status.index}" >
+		                                                <button href="#" class="movieStyle" onclick="movieCode(${movieList.movie_num })" id="movieTT${movieList.movie_num }" title="${movieList.movie_title }"  value="${movieList.movie_num }">
+		                                                	<div class="movie-info" style="display: flex;">
+			                                                    <span class="age-icon">&nbsp;<img src="${movieList.age_img}" style="height: 33px; box-sizing: border-box; padding-top: 11%;"></span>
+			                                                    <span class="movieTitleBtn" class="title-text" style="box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
+		                                                    </div>
+		                                                    <span class="sreader"></span>
+		                                                </button>
+		                                            </li>
+	                                            </c:if>
                                             </c:forEach>
                                         </ul>
                                         
@@ -387,13 +390,14 @@
         </div>
     </div>
  <div class="CheckHiddenBtn">
+ 	<img style="width: 996px;" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/banner0007.png">
 	 <form  method="post" name="reserveInfo" action="/reserveSeat.do">
-		<input class="dgvR" type=text id="hiddenTitle" name="movie_num">
-		<input class="dgvR" type="text" id="hiddenCity" name="city_code">
-		<input class="dgvR" type="text" id="hiddenRegion" name="region_code">
-		<input class="dgvR" type="text" id="hiddenDate" name="reserve_date">
-		<input class="dgvR" type="text" id="hiddenTheater" name="theater_code">
-		<input class="dgvR" type="text" id="hiddenTime" name="movie_time_start">
+		<input class="dgvR" type="hidden" id="hiddenTitle" name="movie_num">
+		<input class="dgvR" type="hidden" id="hiddenCity" name="city_code">
+		<input class="dgvR" type="hidden" id="hiddenRegion" name="region_code">
+		<input class="dgvR" type="hidden" id="hiddenDate" name="reserve_date">
+		<input class="dgvR" type="hidden" id="hiddenTheater" name="theater_code">
+		<input class="dgvR" type="hidden" id="hiddenTime" name="movie_time_start">
         <input type="submit" id="next-page1"  value="좌석선택=>" >
 	</form>	
    </div>

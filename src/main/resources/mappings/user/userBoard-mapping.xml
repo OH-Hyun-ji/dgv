@@ -136,5 +136,16 @@
 		select * from dgv_event 
 	</select>
 	
+	<select id="continueTotal" resultType="int">
+		SELECT COUNT(*) FROM movie_info WHERE movie_status ='true'
+	</select>
+	
+	<select id="endTotal" resultType="int">
+		SELECT COUNT(*) FROM movie_info WHERE movie_status ='false'
+	</select>
+	
+	<select id="yetTotal" resultType="int">
+		SELECT COUNT(*) FROM movie_info WHERE movie_status ='yet'
+	</select>
 	
 </mapper>

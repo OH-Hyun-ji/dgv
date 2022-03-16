@@ -15,7 +15,14 @@
   <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user_myPage_userMovie.css" />
   <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+  <style type="text/css">
+  	div#menu {
+	    float: none;
+	    margin: 0;
+	    padding: 3px;
+	}
 
+  </style>
 </head>
 
 <body class="block">
@@ -33,13 +40,14 @@
                 <div class="inner-contents-profile">
                   <div class="box-image">
                     <div class="thumb-image">
-                      <img src="http://img.cgv.co.kr/R2014/images/common/default_profile.gif" alt="윤호영님 프로필 사진" onerror="errorImage(this, {type:'profile'})">
+                      <img src="${userImg }" style="border: 2px solid #cecece; border-radius: 41px;">
                       <span class="profile-mask"></span>
                     </div>
                   </div>
                   <div class="box-contents">
-                    <strong>윤호영님</strong>
-                    <a id="go_edit_page" href="#" class="edit" target="_blank" title="새창열림">나의 정보 변경</a>
+                  <div class="user-name-style">
+                    <strong>${userID } 님</strong>
+          		  </div>
                     <em></em>
                   </div>
                 </div>
@@ -54,7 +62,7 @@
               <form id="form1" method="get" novalidate="novalidate">
                 <div class="tit-mycgv">
                   <h3>내가 본 영화</h3>
-                  <p><em>${myMovieListCount}건</em></p>
+                  <p><em id="count-em-style">${myMovieListCount}건</em></p>
                   <div class="set-combo">
                     <label for="year">내가 본 영화 년도별 정렬</label>
                     <select id="year" name="year">      
@@ -96,11 +104,6 @@
 	                        </div>
 	                        <p class="date">${myMovieList.reserve_date }</p>
 	                        <p class="theater">${myMovieList.region_name} ${myMovieList.theater_name } / ${myMovieList.total_people} 명</p>
-	                        <ul class="writerinfo" id="wid_390047546">
-	                          <li class="writer-opinion">
-	                            <a class="link-gradewrite" id="wIdx_390047546" href="javascript:void(0);" data-movieidx="82012" data-movietitle="엑시트">이 영화를 평가해주세요</a>
-	                          </li>
-	                        </ul>
 	                      </div>
 	                      <button type="button" data="390047546" class="btn-del">
 	                      	<img src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif" >

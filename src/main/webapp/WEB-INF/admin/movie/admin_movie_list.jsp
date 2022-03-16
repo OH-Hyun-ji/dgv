@@ -9,14 +9,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath }/resources/css/user/button.css" rel="stylesheet"  />
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-	<script>
-           function adminTerms(){
-                 var popupX =(window.screen.width/2)-(300/2);
-                 var popupY =(window.screen.height/2)-(300/2);                            
-                 window.open('/movieRegister.mdo','','width=1200,height=700,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
-            }
-    </script>
+	
 <style>
 #delBT {
 	border: none;
@@ -36,20 +31,8 @@
     margin-top: 19px;
     font-size: 23px;
 }
-}
-input#statusContinue {
-    background-color: #80808042;
-    width: 73px;
-    height: 21px;
-    border: 1px solid #8080807a;
-    border-radius: 4px;
-    text-align: center;
-}
-#statusEnd {
-    width: 79px;
-    height: 28px;
-    padding: 0;
-    border-radius: 6px;
+button#statusEnd {
+    background: black;
 }
 </style>
 
@@ -103,17 +86,18 @@ input#statusContinue {
 									<td style="box-sizing: border-box; padding-top: 70px;">${movieList.movie_title}</td>
 									<td style="box-sizing: border-box; padding-top: 60px;"><img src="${movieList.age_img}"></td>
 									<td style="box-sizing: border-box; padding-top: 70px;">${movieList.movie_open_date}</td>
-									<td style="box-sizing: border-box; padding-top: 60px;">
-									<c:choose>
-												<c:when test="${movieList.movie_status == 'true'}">
-													<button id="statusEnd" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button">상영중</button>																	
-												</c:when>
-												<c:otherwise>
-													<input id="statusContinue" type="text" value="상영종료" readonly="readonly">													
-												</c:otherwise>											
-											</c:choose>
+									<td style="box-sizing: border-box; padding-top: 60px;">									
+												<c:if test="${movieList.movie_status == 'true'}">
+													<button id="statusContinue" onclick="continueChange(${movieList.movie_num })" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" value="${movieList.movie_num }" style="width: 112px;">상영중</button>																	
+												</c:if >
+												<c:if test="${movieList.movie_status == 'false'}">
+													<button id="statusEnd" onclick="endChange(${movieList.movie_num })" class="w-btn w-btn-gra3 w-btn-gra-anim" value="${movieList.movie_num }" >상영종료</button>												
+												</c:if>
+												<c:if test="${movieList.movie_status == 'yet'}">
+													<button id="statusYet" onclick="yetChange(${movieList.movie_num })"  class="w-btn w-btn-gra3 w-btn-gra-anim" value="${movieList.movie_num }" type="button" style="background: linear-gradient( 45deg, #2feb4a, #5bf06b, #76ff02, #06a916, #086b09 );color: white">상영예정</button>	
+												</c:if>										
 									</td>
- 									<td style="box-sizing: border-box; padding-top: 70px;"><button id="deleteMovie"  onclick="deleteMovie'${movieList.movie_num}')"><i class="fas fa-trash-alt"></i></button> <button ><i class="fas fa-pencil-alt"></i></button></td>
+ 									<td style="box-sizing: border-box; padding-top: 70px;"><button id="deleteMovie"  onclick="deleteMovie('${movieList.movie_num}')" value="${movieList.movie_num }" ><i class="fas fa-trash-alt"></i></button> <button ><i class="fas fa-pencil-alt"></i></button></td>
 								</tr>
 							</c:forEach>
 							</tbody>
@@ -134,7 +118,113 @@ input#statusContinue {
 		crossorigin="anonymous"></script>
 	<script
 		src="${pageContext.request.contextPath }/resources/js/admin/datatables-simple-demo.js"></script>
+	<script type="text/javascript">
+			 function deleteMovie(e){
+				 const ms = confirm("정말로 삭제하시겠습니까?")
+				 if(ms){
 
+					$.ajax({
+						method:"POST",
+						url:"deleteMovie.mdo",
+						contentType:"application/json",
+						dataType:"json",
+						data:JSON.stringify({"movie_num":e}),
+						success:function(result){
+							if(result.msg=="SUCCESS"){
+								alert("삭제 완료!")
+								location.reload()
+							}
+						},
+						error:function(){
+							console.log("통신실패")
+						}
+					}) //close ajax
+				 }
+			 }
+			 
+		   	 function adminTerms(){
+			          var popupX =(window.screen.width/2)-(300/2);
+			          var popupY =(window.screen.height/2)-(300/2);                            
+			          window.open('/movieRegister.mdo','','width=1200,height=700');
+		     }
+		   	 
+			  function continueChange(e) {
+					console.log("ddd : "+ e)						
+	       		    
+	       		    
+	       		    const movieStatus ={
+						"movie_status":"false",
+						"movie_num":e
+					}
+	       		    
+	       		    console.log("this : " + status)
+	       		    $.ajax({
+	       			   method:"POST",
+	       			   url:"/statusChange.mdo",
+	       			   contentType:"application/json",
+	       			   dataType:"json",
+	       			   data:JSON.stringify(movieStatus),
+	       			   success:function(result){
+	       				   if(result.msg=="SUCCESS"){
+	       					 location.reload()
+	       	
+	       				   }
+	       			   },
+	       			   error:function(n){
+	       				   console.log("통신 실패 "+n)
+	       			   }
+	       		   })//close ajax
+				}
+			  
+        		function endChange(e){
+        			  const movieStatus ={
+      						"movie_status":"yet",
+      						"movie_num":e
+      					}
+      	       		    
+      	       		    console.log("this : " + status)
+      	       		    $.ajax({
+      	       			   method:"POST",
+      	       			   url:"/statusChange.mdo",
+      	       			   contentType:"application/json",
+      	       			   dataType:"json",
+      	       			   data:JSON.stringify(movieStatus),
+      	       			   success:function(result){
+      	       				   if(result.msg=="SUCCESS"){
+      	       					 location.reload()
+      	       	
+      	       				   }
+      	       			   },
+      	       			   error:function(n){
+      	       				   console.log("통신 실패 "+n)
+      	       			   }
+      	       		   })//close ajax
+        		}
+        		function yetChange(e){
+        			  const movieStatus ={
+        						"movie_status":"true",
+        						"movie_num":e
+        					}
+        	       		    
+        	       		    console.log("this : " + status)
+        	       		    $.ajax({
+        	       			   method:"POST",
+        	       			   url:"/statusChange.mdo",
+        	       			   contentType:"application/json",
+        	       			   dataType:"json",
+        	       			   data:JSON.stringify(movieStatus),
+        	       			   success:function(result){
+        	       				   if(result.msg=="SUCCESS"){
+        	       					 location.reload()
+        	       	
+        	       				   }
+        	       			   },
+        	       			   error:function(n){
+        	       				   console.log("통신 실패 "+n)
+        	       			   }
+        	       		   })//close ajax
+        		}	           	                  	 
+      
+    </script>
 </body>
-
 </html>
