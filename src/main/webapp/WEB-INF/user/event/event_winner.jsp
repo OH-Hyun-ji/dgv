@@ -26,26 +26,27 @@
 		<jsp:include page="../default/user_event_header.jsp"></jsp:include>
 		<div class="cols-content" style="width: 100%;margin-top: -29px;margin-left: 0%;">
 			<div class="col-detail event" style=" width: 98%; padding-left: 2%;">
+			<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/112233.png">
 				<div class="sect-evt-item-list">
 				<div class="dgv_board_table">
 				<table class="type10">
 					<thead>
 						<tr>
-							<th scope="cols">NO.1</th>
-							<th scope="cols">제목</th>
+							<th scope="cols">번호</th>
+							<th scope="cols">카테고리</th>
+							<th scope="cols">이벤트 당첨자</th>
 							<th scope="cols">작성자</th>
-							<th scope="cols">날짜</th>
-							<th scope="cols">조회수</th>
+							<th scope="cols">게시 날짜</th>
 
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<th scope="row">1</th>
-							<td><a href="#">내용.</a></td>
-							<td>내용이다.</td>
-							<td>내용이다.</td>
-							<td>내용이다.</td>
+							<td><a href="#">애니메이션</a></td>
+							<td>주술회전 무료보기 당첨자</td>
+							<td>관리자</td>
+							<td>2022-03-04</td>
 
 						</tr>
 						<tr>

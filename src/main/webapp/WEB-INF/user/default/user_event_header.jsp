@@ -4,7 +4,7 @@
 <div id="contents" class="">
 	<!-- Contents Start -->
 	<div class="tit-heading-wrap tit-evt">
-		<h3>EVENT</h3>
+		<h3 class="">EVENT</h3>
 	</div>
 	<!--이벤트 컨텐츠 메뉴/////////////////////////////////////////////////////////////////////////////////////////////-->
 	<div class="evt-nav-area">
