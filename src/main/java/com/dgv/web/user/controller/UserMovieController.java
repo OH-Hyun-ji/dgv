@@ -113,6 +113,7 @@ public class UserMovieController {
 
 		return "/movie/user_movie_movieChart";
 	}
+	
 	@RequestMapping("/movieDetail.do")
 	public String movieDetail(@RequestParam("movie_num") int num,Model model) {
 		
