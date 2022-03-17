@@ -25,84 +25,18 @@
     border: 1px solid #d1d0ce;
     border-top: 2px solid #333;
     padding: 15px 20px;
-    position: relative;
+  
     }
     </style>
 <body>
 <jsp:include page="../default/user_header.jsp"></jsp:include>
   <!--본격 콘텐츠-->
-	<div id="contaniner" style="height: 1100px" class="">
+	<div id="contaniner" class="">
 		<!-- Contents Area -->
 		<div class="event-board-wrap"> 
 		<jsp:include page="../default/user_event_header.jsp"></jsp:include>
 		<div class="cols-content" style="width: 100%;margin-top: -29px;margin-left: 0%;">
-			<div class="col-detail event" style=" width: 98%; padding-left: 2%;">
-		
-		<div class ="finishbox" style="position: relative;">
-		<strong class = "conti">
-		<a href="http://blog.naver.com/storyphoto/viewer.jsp?src=https%3A%2F%2Fblogfiles.pstatic.net%2F20110929_258%2Fkhel3d2oat_1317222188760qaSKl_JPEG%2F165311_37352951_900.jpg">배트맨 </a>
-		</strong>
-		<dl class="eventList">
-		<dt><a href="https://dgvworld.s3.ap-northeast-2.amazonaws.com/%ED%95%9C%ED%9A%A8%EC%A3%BC.jpg" style= "font-size: 14px;">이벤트기간 : 2022-03-01~2022-03-20</a></dt>
-		<dt><a href="#" style= "font-size: 14px;">당첨자발표일 : 2022-04-01</a></dt>
-		<dt style= "font-size: 14px;">당첨자확인 : -</dt>
-		</dl>
-	<dl>
-	</dl>
-		</div>
-		
-			<div class ="finishbox" >
-		<strong class = "conti">
-		<a href="#">주술회전 무료보기</a>
-		</strong>
-		<dl class="eventList">
-		<dt><a href="#" style= "font-size: 14px;">이벤트기간 : 2022-03-01~2022-03-20</a></dt>
-		<dt><a href="#" style= "font-size: 14px;">당첨자발표일 : 2022-04-01</a></dt>
-		<dt style= "font-size: 14px;">당첨자확인 : -</dt>
-		</dl>
-	<dl>
-	</dl>
-		</div>
-		
-			<div class ="finishbox">
-		<strong class = "conti">
-		<a href="#">주술회전 무료보기</a>
-		</strong>
-		<dl class="eventList">
-		<dt><a href="#" style= "font-size: 14px;">이벤트기간 : 2022-03-01~2022-03-20</a></dt>
-		<dt><a href="#" style= "font-size: 14px;">당첨자발표일 : 2022-04-01</a></dt>
-		<dt style= "font-size: 14px;">당첨자확인 : -</dt>
-		</dl>
-	<dl>
-	</dl>
-		</div>
-		
-			<div class ="finishbox" >
-		<strong class = "conti">
-		<a href="#">주술회전 무료보기</a>
-		</strong>
-		<dl class="eventList">
-		<dt><a href="" style= "font-size: 14px;">이벤트기간 : 2022-03-01~2022-03-20</a></dt>
-		<dt><a href="#" style= "font-size: 14px;">당첨자발표일 : 2022-04-01</a></dt>
-		<dt style= "font-size: 14px;">당첨자확인 : -</dt>
-		</dl>
-	<dl>
-	</dl>
-		</div>
-		
-		<div class ="finishbox" >
-		<strong class = "conti">
-		<a href="#">주술회전 무료보기</a>
-		</strong>
-		<dl class="eventList">
-		<dt><a href="#" style= "font-size: 14px;">이벤트기간 : 2022-03-01~2022-03-20</a></dt>
-		<dt><a href="#" style= "font-size: 14px;">당첨자발표일 : 2022-04-01</a></dt>
-		<dt style= "font-size: 14px;">당첨자확인 : -</dt>
-		</dl>
-	<dl>
-	</dl>
-		</div>
-		
+			<div class="col-detail event" style=" width: 100%;">
 		
 			</div>
 		</div>

@@ -16,7 +16,7 @@
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
   <!--본격 콘텐츠-->
-  <div id="contaniner" style="height: 1100px" class="">
+  <div id="contaniner" class="">
     <!-- Contents Area -->
     <div class="event-board-wrap"> 
     <jsp:include page="../default/user_event_header.jsp"></jsp:include>
@@ -30,7 +30,7 @@
                   </div>
                   <div class="evt-desc">
                     <p class="txt1">개봉작 사용설명서</p>
-                    <p class="txt2"></p>
+                    <p class="txt2">2022.02.18~2022.03.06</p>
                   </div>
                 </a>
               </li>
