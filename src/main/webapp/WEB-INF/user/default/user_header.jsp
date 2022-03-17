@@ -222,7 +222,12 @@
 						</dt>
 						<dd>
 							<h2>
-								<a href="#">DGV 극장별</a>
+								<a href="/">DGV 극장별</a>
+							</h2>
+						</dd>
+						<dd>
+							<h2>
+								<a href="/event.do">SPECIAL</a>
 							</h2>
 						</dd>
 						<dd>

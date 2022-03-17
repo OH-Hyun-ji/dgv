@@ -17,6 +17,7 @@
   <script src="js/datatables-simple-demo.js"></script>
 </head>
 
+
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
   <!--본격 콘텐츠-->
@@ -28,7 +29,6 @@
 			<div class="col-detail event" style=" width: 100%;">
 			<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/112233.png">
 				<div class="sect-evt-item-list">
-				<div class="dgv_board_table">
 				<table class="type10">
 					<thead>
 						<tr>
@@ -43,7 +43,7 @@
 					<tbody>
 						<tr>
 							<th scope="row">1</th>
-							<td><a href="#">애니메이션</a></td>
+							<td>사전투표</th>
 							<td>주술회전 무료보기 당첨자</td>
 							<td>관리자</td>
 							<td>2022-03-04</td>
