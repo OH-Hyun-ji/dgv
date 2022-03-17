@@ -3,6 +3,7 @@ package com.dgv.web.user.service;
 import java.util.List;
 
 import com.dgv.web.admin.common.S3KeyVO;
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserVO;
@@ -43,9 +44,12 @@ public interface UserService {
 	int userProfileImg(UserDetailVO vo);
 	
 	int userDetail(UserDetailVO vo);
-	
+
 	//아이디 찾기
 	UserVO findId(UserVO userVO);
 	
+	List<AdminTermVO> userTermList();
+	
+	AdminTermVO userTermInfo(AdminTermVO vo);
 
 }

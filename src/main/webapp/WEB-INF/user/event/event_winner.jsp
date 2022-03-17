@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Event Winnder</title>
+<title>Event Winner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user_event.css">
   <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
@@ -20,12 +20,12 @@
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
   <!--본격 콘텐츠-->
-	<div id="contaniner" style="height: 1100px" class="">
+	<div id="contaniner" class="">
 		<!-- Contents Area -->
 		<div class="event-board-wrap"> 
 		<jsp:include page="../default/user_event_header.jsp"></jsp:include>
 		<div class="cols-content" style="width: 100%;margin-top: -29px;margin-left: 0%;">
-			<div class="col-detail event" style=" width: 98%; padding-left: 2%;">
+			<div class="col-detail event" style=" width: 100%;">
 			<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/112233.png">
 				<div class="sect-evt-item-list">
 				<div class="dgv_board_table">

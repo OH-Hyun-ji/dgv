@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dgv.web.admin.common.S3KeyVO;
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.user.dao.UserDAO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserInquiryVO;
@@ -102,6 +103,18 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO findId(UserVO vo) {		
 		return userDAO.findId(vo);
+	}
+
+	@Override
+	public List<AdminTermVO> userTermList() {
+		
+		return userDAO.userTermList();
+	}
+
+	@Override
+	public AdminTermVO userTermInfo(AdminTermVO vo) {
+		
+		return userDAO.userTermInfo(vo);
 	}
 
 }

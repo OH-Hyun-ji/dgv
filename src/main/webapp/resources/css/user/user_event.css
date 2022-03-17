@@ -144,21 +144,15 @@ i {
 
 /* 이벤트 컨텐츠 내용 시작///////////////////////////////////////////////////////////////*/
 .cols-content {
-  padding-top: 25px;
-}
-.cols-content {
-    margin-top: 25px;
-    margin-right: 11%;
-}
-.cols-content .col-detail:first-child {
-  float: left;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 980px;
 }
 .cols-content .col-detail {
   	position: relative;
-    width: 113%;
-    padding-left: 8%;
     box-sizing: border-box;
-    padding-right: 20%;
 }
 .sect-evt-item-list {
   display: flex;
@@ -172,7 +166,7 @@ ol, ul {
   margin: 0 0 13px 0;
 }
 .sect-evt-item-list li {
-  width: 32%;
+ flex: 1;
   /* border: 1px solid #dddfe2; */
   margin: 0 0 13px 2%;
   background: #fff;
@@ -191,12 +185,13 @@ a {
   text-decoration: none;
 }
 .sect-evt-item-list li .evt-thumb {
-  width: 256px;
-  height: 170px;
+  width: 100%;
+  min-width: 256px;
+  aspect-ratio: 256 / 170
 }
 .sect-evt-item-list li img {
-  width: 256px;
-  height: 170px;
+  width: 100%;
+  height: 100%;
 }
 input, select, img {
   vertical-align: middle;
@@ -206,7 +201,7 @@ input, select, img {
     padding-bottom: 17px;
     border: 1px solid #dddfe2;
     border-top: 0;
-    width: 255px;
+    width: 100%;
 }
 .sect-evt-item-list li .txt1 {
   padding: 18px 11px 0 11px;
@@ -245,8 +240,10 @@ ul.event-ul > li:hover {
     font-weight: bold;
 }
 .event-board-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
     height: 66%;
-    position: absolute;
-    margin-left: 18%;
-    margin-right: 29%;
+    width: 100%;
+    justify-content: center;
 }

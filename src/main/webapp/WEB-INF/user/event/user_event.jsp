@@ -17,14 +17,14 @@
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
   <!--본격 콘텐츠-->
-  <div id="contaniner" style="height: 1100px" class="">
+  <div id="contaniner" class="">
     <!-- Contents Area -->
     <div class="event-board-wrap"> 
     <jsp:include page="../default/user_event_header.jsp"></jsp:include>
         <div class="cols-content" style="width: 100%;">
           <div class="col-detail event">
             <ul class="sect-evt-item-list">
-            
+
             	<c:forEach var="eventList" items="${eventList}" >
 	              <li>
 	              	<input type="hidden" id="eventCode" value="${eventList.event_code }">
@@ -39,7 +39,7 @@
 	                </a>
 	              </li>
               	</c:forEach>
-              
+
             </ul>
           </div>
         </div>
