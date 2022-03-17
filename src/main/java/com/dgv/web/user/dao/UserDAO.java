@@ -85,7 +85,7 @@ public class UserDAO {
 	// 아이디 찾기
 	public UserVO findId(UserVO vo) {
 		return sqlSessionTemplate.selectOne("UserDAO.findId", vo);
-
+	}
 	public List<AdminTermVO> userTermList(){
 		return sqlSessionTemplate.selectList("UserDAO.userTermCheck");
 	}
