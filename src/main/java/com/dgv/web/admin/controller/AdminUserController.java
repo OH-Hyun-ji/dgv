@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.CommonResultDto;
+import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserVO;
+import com.google.gson.Gson;
 
 @Controller
 public class AdminUserController {
@@ -30,10 +32,20 @@ public class AdminUserController {
 	@Autowired
 	private AdminUserService adminUserService;
 	
+	@Autowired
+	private UserBoardService userBoardService;
 	
 	@RequestMapping("/userList.mdo")
-	public String userList(UserVO vo, Model model, HttpSession session) {
-		model.addAttribute("userList" ,adminUserService.userList());
+	public String userList(UserVO vo, Model model) {
+		List<UserVO> userList =adminUserService.userList();
+		for(UserVO user :userList ) {
+			for(UserDetailVO detailVo : user.getDetailVO()) {
+				user.setUser_rank(detailVo.getUser_rank());
+				user.setUser_point(detailVo.getUser_point());
+			}
+		}
+		
+		model.addAttribute("userList" ,userList);
 		model.addAttribute("userListCount", adminUserService.userList().size());
 		return "/user/admin_user_list";
 	}

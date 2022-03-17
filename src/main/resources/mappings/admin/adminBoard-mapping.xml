@@ -61,5 +61,13 @@
 	<update id="updateReserveStatus" >
 		UPDATE movie_reserve SET reserve_status = 1 WHERE reserve_merchant_uid =#{reserve_merchant_uid}
 	</update>
+	
+	<insert id="EventInsert" parameterType="AdminEventVO">
+		INSERT INTO dgv_event(event_code,event_title,event_text,start_date,end_date,reg_id,reg_date,event_status,event_winner,event_img)
+		VALUES(DEFAULT,#{event_title},#{event_text},#{start_date},#{end_date},#{reg_id},current_date,DEFAULT,DEFAULT,#{event_img})
+	</insert>
+	<select id="EventSelect" resultType="AdminEventVO">
+		SELECT * FROM dgv_event
+	</select>
 
 </mapper>

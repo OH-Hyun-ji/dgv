@@ -13,7 +13,134 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    
+	<script type="text/javascript">
+		function ticketRestart() {
+			location.reload();
+		}
+		$(function(){
+			const num =10
+			$("#changeArtChart").on('click',function(){
+				$("#changeAllChart").css("background-color","")		
+				$("#changeArtChart").css("background-color","")					
+				$("#changeArtChart").css("background-color","#adadadb8")
+				
+				$("#artHouseCome").empty();
+				$.ajax({
+					method:"POST",
+					url:"/artChatList.do",
+					contentType:"application/json",
+					dataType:"json",
+					data:JSON.stringify({"movie_genre_code":num}),
+					success:function(result){
+						var artList=JSON.parse(result)
+						
+						_(artList).forEach(function(n){
+							const li = $("<li>")
+									.attr("class","rating-15")
+							const btn = $("<button>")
+									.attr("href","#")
+									.attr("class","movieStyle")
+									.attr("onclick","movieCode("+n.movie_num+")")
+									.attr("id","movieTT"+n.movie_num)
+									.attr("value",n.movie_num)
+									
+							const div = $("<div>")
+									.attr("class","movie-info")
+									.css("display","flex")
+							const span1 = $("<span>")
+									.attr("class","age-icon")
+							const img =$("<img>")
+									.attr("src",n.age_img)
+									.css("height","33px")
+									.css("box-sizing","border-box")
+									.css("padding-top","11%")
+							const span2 =$("<span>")
+									.attr("class","movieTitleBtn")
+									.attr("class", "title-text")
+									.css("box-sizing","border-box")
+									.css("padding-top","4%")
+									.text(n.movie_title)
+							const span3 =$("<span>")
+									.attr("class","sreader")
+							
+									div.append(span1)
+									span1.append(img)
+									div.append(span2)
+									btn.append(span3)
+									btn.append(div)
+									li.append(btn)
+															
+						$("#artHouseCome").append(li)
+						}) //lodash close
+						
+					},
+					error:function(e){
+						console.log("통신실패"+e)
+					}
+				})// ajax close
+			})//click artHouse
+			$("#changeAllChart").on('click',function(){
+				$("#changeArtChart").css("background-color","")			
+				$("#changeAllChart").css("background-color","")					
+				$("#changeAllChart").css("background-color","#adadadb8")
+				
+				
+				$("#artHouseCome").empty();
+				$.ajax({
+					method:"POST",
+					url:"movieAllChartView.do",
+					contentType:"application/json",
+					dataType:"json",
+					data:JSON.stringify({"movie_num":1}),
+					success:function(result){
+						var allChart = JSON.parse(result)
+						
+						_(allChart).forEach(function(n){
+							const li = $("<li>")
+							.attr("class","rating-15")
+					const btn = $("<button>")
+							.attr("href","#")
+							.attr("class","movieStyle")
+							.attr("onclick","movieCode("+n.movie_num+")")
+							.attr("id","movieTT"+n.movie_num)
+							.attr("value",n.movie_num)
+							
+					const div = $("<div>")
+							.attr("class","movie-info")
+							.css("display","flex")
+					const span1 = $("<span>")
+							.attr("class","age-icon")
+					const img =$("<img>")
+							.attr("src",n.age_img)
+							.css("height","33px")
+							.css("box-sizing","border-box")
+							.css("padding-top","11%")
+					const span2 =$("<span>")
+							.attr("class","movieTitleBtn")
+							.attr("class", "title-text")
+							.css("box-sizing","border-box")
+							.css("padding-top","4%")
+							.text(n.movie_title)
+					const span3 =$("<span>")
+							.attr("class","sreader")
+					
+							div.append(span1)
+							span1.append(img)
+							div.append(span2)
+							btn.append(span3)
+							btn.append(div)
+							li.append(btn)
+							$("#artHouseCome").append(li)
+						});//lodash close
+					},
+					error:function(e){
+						console.log("통신실패"+e)
+					}
+				})//ajax close
+				
+			})
+		})
+	</script>
 	<style type="text/css">
 		.onBtn{
 			background-color: rgb(42 45 41 / 54%);
@@ -31,6 +158,7 @@
     		line-height: 36px;
     		z-index: 10;
     		background-color: #f2f0e5;
+    		cursor: pointer;
 		}
 		button.regionBtn:hover {
 			background-color: #9e9d9ba1;
@@ -55,11 +183,12 @@
 		.CheckHiddenBtn {
 		    display: flex;
 		    justify-content: end;
+		    margin-right: 112px;
 		}
 		input#next-page1 {
 		    width: 150px;
 		    height: 93px;
-		    border-radius: 9px;
+		    border-radius: 3px;
 		    font-size: 18px;
 		    color: white;
 		    background-color: gray;
@@ -93,6 +222,9 @@
 		    font-weight: bolder;
 		    color: #482416;
 		}
+		span.movieTitleBtn {
+		    cursor: pointer;
+		}
 	</style>
 </head>
 <body class="seatPage" >
@@ -106,19 +238,7 @@
                 <!-- 타이틀 -->
                 <div class="navi">
                     <span class="right">
-                        <a class="button button-english" href="#" onmousedown="javascript:logClick('옵션/ENGLISH');" onclick="switchLanguage(); return false;">
-                            <span>ENGLISH</span>
-                        </a>
-                        <a class="button button-guide" href="#" onmousedown="javascript:logClick('옵션/예매가이드');" onclick="ticketPopupShow('popup_guide'); return false;">
-                            <span>예매가이드 - 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
-                        </a>
-                        <a class="button button-discount" href="#" onmousedown="javascript:logClick('옵션/제휴할인혜택');" onclick="ticketNewWindow('http://www.cgv.co.kr/discount/discountlist.aspx');return false;" title="새창열기">
-                            <span>제휴할인혜택</span>
-                        </a>
-                        <a class="button button-schedule" href="#" onmousedown="javascript:logClick('옵션/상영시간표');" onclick="openSchedulePopup();return false;" title="새창열기">
-                            <span>상영시간표</span>
-                        </a>
-                        <a class="button button-reservation-restart" href="#" onmousedown="javascript:logClick('옵션/예매다시하기');" onclick="ticketRestart(); return false;">
+                        <a class="button button-reservation-restart" href="#" onclick="ticketRestart()">
                             <span>예매 다시하기</span>
                         </a>
                     </span>
@@ -141,9 +261,9 @@
                                 <div class="movie-select">
                                     <div class="tabmenu">
                                         <span class="side on"></span>
-                                        <a href="#" class="button menu1 selected">전체</a>
+                                        <a href="#" id="changeAllChart" class="button menu1 selected">전체</a>
                                         <span class="side on"></span>
-                                        <a href="#" class="button menu2">
+                                        <a href="#" id="changeArtChart" class="button menu2">
                                             아트하우스
                                             <span class="arrow"></span>
                                         </a>
@@ -166,17 +286,19 @@
                                         </a>
                                     </div>
                                     <div class="movie-list nano has-scrollbar has-scrollbar-y" id="movie_list">
-                                        <ul class="content scroll-y" onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;padding: 0px;">
+                                        <ul class="content scroll-y" id="artHouseCome"onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;padding: 0px;">
                                            <c:forEach var="movieList" items="${movieList}" varStatus="status">
-                                            <li class="rating-15" data-index="${status.index}" >
-                                                <button href="#" class="movieStyle" onclick="movieCode(${movieList.movie_num })" id="movieTT${movieList.movie_num }" title="${movieList.movie_title }"  value="${movieList.movie_num }">
-                                                	<div class="movie-info" style="display: flex;">
-	                                                    <span class="age-icon">&nbsp;<img src="${movieList.age_img}" style="height: 33px; box-sizing: border-box; padding-top: 11%;"></span>
-	                                                    <span class="movieTitleBtn" class="title-text" style="box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
-                                                    </div>
-                                                    <span class="sreader"></span>
-                                                </button>
-                                            </li>
+	                                           <c:if test="${movieList.movie_status=='true' }">
+		                                            <li class="rating-15" data-index="${status.index}" >
+		                                                <button href="#" class="movieStyle" onclick="movieCode(${movieList.movie_num })" id="movieTT${movieList.movie_num }" title="${movieList.movie_title }"  value="${movieList.movie_num }">
+		                                                	<div class="movie-info" style="display: flex;">
+			                                                    <span class="age-icon">&nbsp;<img src="${movieList.age_img}" style="height: 33px; box-sizing: border-box; padding-top: 11%;"></span>
+			                                                    <span class="movieTitleBtn" class="title-text" style="box-sizing: border-box; padding-top: 4%;">${movieList.movie_title }</span>
+		                                                    </div>
+		                                                    <span class="sreader"></span>
+		                                                </button>
+		                                            </li>
+	                                            </c:if>
                                             </c:forEach>
                                         </ul>
                                         
@@ -200,7 +322,7 @@
                                         <span class="side on"></span>
                                         <a href="#" onclick="return false;" class="button menu1 selected">전체</a>
                                         <span class="side on"></span>
-                                        <a href="#" onclick="return false;" class="button menu2">아트하우스</a>
+                                      
                                         <span class="side"></span>
                                     </div>
                                     <div class="theater-list" style="height: 388px;">
@@ -268,14 +390,15 @@
         </div>
     </div>
  <div class="CheckHiddenBtn">
-	 <form  method="post" name="reserveInfo" action="reserveSeat.do">
+ 	<img style="width: 996px;" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/banner0007.png">
+	 <form  method="post" name="reserveInfo" action="/reserveSeat.do">
 		<input class="dgvR" type="hidden" id="hiddenTitle" name="movie_num">
 		<input class="dgvR" type="hidden" id="hiddenCity" name="city_code">
 		<input class="dgvR" type="hidden" id="hiddenRegion" name="region_code">
 		<input class="dgvR" type="hidden" id="hiddenDate" name="reserve_date">
 		<input class="dgvR" type="hidden" id="hiddenTheater" name="theater_code">
 		<input class="dgvR" type="hidden" id="hiddenTime" name="movie_time_start">
-        <input type="button" id="next-page1"  value="좌석선택=>" >
+        <input type="submit" id="next-page1"  value="좌석선택=>" >
 	</form>	
    </div>
     <jsp:include page="../default/user_footer.jsp"></jsp:include>
@@ -460,18 +583,19 @@
 						"movie_time_start":time,
 						"theater_code":theater
 				}
-			
+				const target = document.getElementById('next-page1');
+				$("#next-page1").css("background-color","red")
+					alert("???ㅇㅇㄹㅇㄹㅇㄹㅇㄹ")
+	 			//	document.reserveInfo.submit();
 			
 			}else{
 					
 			}
-			const target = document.getElementById('next-page1');
-			$("#next-page1").css("background-color","red")
- 			document.reserveInfo.submit();
+		
 		}else{
 			alert("선택안한 항목이 있습니다, 다시 확인해 주세요 ")
 			const target = document.getElementById('next-page1');
-			location.reload();
+				location.reload();
 		}
 	})
 

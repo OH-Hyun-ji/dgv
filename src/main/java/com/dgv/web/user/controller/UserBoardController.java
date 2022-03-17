@@ -1,5 +1,8 @@
 package com.dgv.web.user.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
+import java.io.Writer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,12 +28,17 @@ import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.commons.interceptor.TimeCalc;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.PageVO;
 import com.dgv.web.user.vo.PaginationVO;
+import com.dgv.web.user.vo.SearchVO;
+import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
+import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 
 @Controller
@@ -42,6 +50,8 @@ public class UserBoardController {
 	@Autowired
 	private FileUploadService fileUploadService;
 
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping("/review.do")
 	public String userReview() {
@@ -72,9 +82,29 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping("/board.do")
-	public String userBoard(Model model,PageVO pageVo) {
+	public String userBoard(Model model, @RequestParam(required = false, defaultValue = "community_title")String searchType,
+			@RequestParam(required = false) String keyword )throws Exception {
+		
+		SearchVO search = new SearchVO();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		
+		
+		
+		//전체 게시글수 
+		int listCnt = userBoardService.getCommunityCnt(search);
+		
+		
 		List<UserCommunityVO> communityList = userBoardService.communitySelect();
+		
+		for(UserCommunityVO comVo :communityList) {
+			UserVO userVo = userBoardService.communityUserInfo(comVo.getUser_id());
+			for(UserDetailVO detailVo :userVo.getDetailVO()) {
+				comVo.setUser_img(detailVo.getUser_img());
+			}
+		}
 		model.addAttribute("communityList",communityList);
+		
 		
 		//시간시간//
 		LocalDateTime now = LocalDateTime.now();
@@ -86,14 +116,7 @@ public class UserBoardController {
 			communityVo.setWrite_time(TimeCalc.compareTime(writeTime, writeCurrent));
 		}
 		
-		PaginationVO paginationVO = new PaginationVO();
-		paginationVO.setCurrentPageNo(pageVo.getPageIndex());
-		paginationVO.setRecordCountPage(pageVo.getPageUnit());
-		paginationVO.setPageSize(pageVo.getPageSize());
-		
-		pageVo.setFirstIndex(paginationVO.getFirstRecordIndex());
-	//	pageVo.setRecordCountPerPage();
-		
+
 		
 		return "/board/user_board_community";
 	}
@@ -104,16 +127,54 @@ public class UserBoardController {
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
 		String formatted = now.format(formatter);
-		
+		userBoardService.communityCountView(communityCode);
 		long writeTime=TimeCalc.timeMillis(communityVo.getWrite_time());
 		long currentTime =TimeCalc.timeMillis(formatted);
-		
 		communityVo.setWrite_time(TimeCalc.compareTime(writeTime, currentTime));
-		
+
+		List<UserCommentVO> commentList =  userBoardService.commentSelect(communityCode);
+			for(UserCommentVO comment:commentList ) {
+				UserVO userVo = userBoardService.userNumSelect(comment.getUser_id());
+				UserDetailVO detailVo = userService.userDetailVo(userVo.getUser_num());
+				comment.setUser_rank(detailVo.getUser_rank());
+				comment.setUser_img(detailVo.getUser_img());	
+			}
+			
+		UserVO userVo = userBoardService.communityUserInfo(communityVo.getUser_id());
+			for(UserDetailVO detailVo : userVo.getDetailVO()) {
+				communityVo.setUser_img(detailVo.getUser_img());
+				communityVo.setRank_name(detailVo.getUser_rank());
+			}
+		model.addAttribute("commentList",commentList);
 		model.addAttribute("communityVo",communityVo);
 		
 		return "/board/user_community_detail";
 	}
+	
+	@PostMapping("/commentInsert.do")
+	@ResponseBody
+	public CommonResultDto commentInsert(@RequestBody UserCommentVO commentVo,Model model) {
+		
+		String userId = RequestUtils.getUserId("userID");
+		commentVo.setUser_id(userId);
+		
+		int num = userBoardService.CommentInsert(commentVo);
+				
+		List<UserCommentVO> commentList = userBoardService.commentSelect(commentVo.getCommunity_code());
+		for(UserCommentVO comment : commentList) {
+			UserVO userVo = userBoardService.userNumSelect(comment.getUser_id());
+			UserDetailVO detailVo =userService.userDetailVo(userVo.getUser_num());
+			comment.setUser_rank(detailVo.getUser_rank());
+			comment.setUser_img(detailVo.getUser_img());
+		}
+		
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();	
+	}
+	
+	
 	/////고객센터 //////
 	@RequestMapping("/serviceCenter.do")
 	public String serviceCenter(Model model) {
@@ -125,7 +186,6 @@ public class UserBoardController {
 	@RequestMapping("/notice.do")
 	public String userNotice(Model model) {
 		List<AdminNoticeVO> noticeVo = userBoardService.noticeList();
-	
 		model.addAttribute("noticeList",  noticeVo);
 		return "/board/user_board_notice";
 	}

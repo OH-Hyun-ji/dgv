@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,109 +24,22 @@
         <div class="cols-content" style="width: 100%;">
           <div class="col-detail event">
             <ul class="sect-evt-item-list">
-              <li>
-                <a id="tile_0" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34022/16450753700990.jpg" alt="개봉작 사용설명서">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">개봉작 사용설명서</p>
-                    <p class="txt2">2022.02.18~2022.03.06</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a id="tile_1" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34046/16451515365430.jpg" alt="[극장판 주술회전 0]CGV 필름마크">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">[극장판 주술회전 0]CGV 필름마크</p>
-                    <p class="txt2">2022.02.18~2022.03.06</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a id="tile_2" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33839/16425473374760.jpg"
-                      alt="[CGV NFT 플레이 포스터] No.1 킹메이커">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">[CGV NFT 플레이 포스터] No.1 킹메이커</p>
-                    <p class="txt2">2022.01.19~2022.02.27
-                      <span> . </span>
-                      <em>D-7</em>
-                    </p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a id="tile_1" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34046/16451515365430.jpg" alt="[극장판 주술회전 0]CGV 필름마크">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">[극장판 주술회전 0]CGV 필름마크</p>
-                    <p class="txt2">2022.02.18~2022.03.06</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a id="tile_1" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34046/16451515365430.jpg" alt="[극장판 주술회전 0]CGV 필름마크">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">[극장판 주술회전 0]CGV 필름마크</p>
-                    <p class="txt2">2022.02.18~2022.03.06</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a id="tile_1" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34046/16451515365430.jpg" alt="[극장판 주술회전 0]CGV 필름마크">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">[극장판 주술회전 0]CGV 필름마크</p>
-                    <p class="txt2">2022.02.18~2022.03.06</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a id="tile_1" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34046/16451515365430.jpg" alt="[극장판 주술회전 0]CGV 필름마크">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">[극장판 주술회전 0]CGV 필름마크</p>
-                    <p class="txt2">2022.02.18~2022.03.06</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a id="tile_1" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34046/16451515365430.jpg" alt="[극장판 주술회전 0]CGV 필름마크">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">[극장판 주술회전 0]CGV 필름마크</p>
-                    <p class="txt2">2022.02.18~2022.03.06</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a id="tile_1" href="#">
-                  <div class="evt-thumb">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34046/16451515365430.jpg" alt="[극장판 주술회전 0]CGV 필름마크">
-                  </div>
-                  <div class="evt-desc">
-                    <p class="txt1">[극장판 주술회전 0]CGV 필름마크</p>
-                    <p class="txt2">2022.02.18~2022.03.06</p>
-                  </div>
-                </a>
-              </li>
+
+            	<c:forEach var="eventList" items="${eventList}" >
+	              <li>
+	              	<input type="hidden" id="eventCode" value="${eventList.event_code }">
+	                <a href="/eventDetail.do?event_code=${eventList.event_code}">
+	                  <span class="thumb-image">
+                      	<img src="${eventList.event_img}" >
+                      </span>
+	                  <div class="event-desc">
+	                    <p class="txt1">${eventList.event_title}</p>
+	                    <p class="txt2">${eventList.start_date }~${eventList.end_date }</p>
+	                  </div>
+	                </a>
+	              </li>
+              	</c:forEach>
+
             </ul>
           </div>
         </div>

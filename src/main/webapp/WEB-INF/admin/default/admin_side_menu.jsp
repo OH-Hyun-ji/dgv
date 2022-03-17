@@ -51,6 +51,7 @@
                                        <a class="nav-link" href="/adminNotice.mdo">공지사항</a>
                                        <a class="nav-link" href="/adminEnquriy.mdo">고객문의(답변대기)</a>
                                        <a class="nav-link" href="/adminAnswerOk.mdo">고객문의(답변완료)</a>
+                                       <a class="nav-link" href="/adminEventList.mdo">이벤트 관리</a>
                                    </nav>
                                </div>
 

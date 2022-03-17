@@ -16,6 +16,175 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
 	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+							$("#btnMovie").click(function() {
+								$("#movie-list").show();
+								$("#movie-list-reser").hide();
+								$(".movie-all-view").attr("href", "#");
+							});
+							$("#btnReserMovie").click(function() {
+								$("#movie-list").hide();
+								$("#movie-list-reser").show();
+								$(".movie-all-view").attr("href", "#");
+							});
+							var movieChartSwiper = new Swiper(
+									"#movie-list",
+									{
+										slidesPerView : 5,
+										spaceBetween : 32,
+										slidesPerGroup : 5,
+										loopFillGroupWithBlank : true,
+										navigation : {
+											nextEl : ".swiper-button-next",
+											prevEl : ".swiper-button-prev",
+										},
+										a11y : {
+											prevSlideMessage : '이전 슬라이드',
+											nextSlideMessage : '다음 슬라이드',
+											slideLabelMessage : '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
+										},
+									});
+							var movieChartSwiper2 = new Swiper(
+									"#movie-list-reser",
+									{
+										slidesPerView : 5,
+										spaceBetween : 32,
+										slidesPerGroup : 5,
+										loopFillGroupWithBlank : true,
+										navigation : {
+											nextEl : ".swiper-button-next",
+											prevEl : ".swiper-button-prev",
+										},
+										a11y : {
+											prevSlideMessage : '이전 슬라이드',
+											nextSlideMessage : '다음 슬라이드',
+											slideLabelMessopenPopupage : '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
+										},
+									});
+							$("#movie-list-reser").hide(); //swiper 랜더링 완료 후 숨기기해야함
+							var eventSwiper = new Swiper(
+									".event_list",
+									{
+										autoplay : {
+											delay : 2500,
+											disableOnInteraction : false,
+										},
+										slidesPerView : 3,
+										spaceBetween : 24,
+										slidesPerGroup : 3,
+										loopFillGroupWithBlank : true,
+										navigation : {
+											nextEl : ".swiper-button-next",
+											prevEl : ".swiper-button-prev",
+										},
+										a11y : {
+											prevSlideMessage : '이전 슬라이드',
+											nextSlideMessage : '다음 슬라이드',
+											slideLabelMessage : '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
+										},
+									});
+							if (eventSwiper.autoplay.running) {
+								$('.btn_eventControl').addClass('active');
+							}
+							$('.btn_eventControl').on({click : function(e) {
+									if (eventSwiper.autoplay.running) {
+										$(this).removeClass('active');
+										eventSwiper.autoplay.stop();
+									} else {
+										$(this).addClass('active');
+										eventSwiper.autoplay.start();
+									}
+								}
+							});
+							$('.movie-chart-btn-wrap a').on({click : function(e) {
+								var target = e.target;
+								$(target).addClass('active').parent('h3').siblings().children('a').removeClass('active');
+							 	}
+							});
+						
+						
+							
+							var noticeClientBannerSwiper = new Swiper(
+									".noticeClient_banner_list", {
+											autoplay : {
+											delay : 2500,
+											disableOnInteraction : false,
+										},
+										slidesPerView : 1,
+										spaceBetween : 0,
+										loopFillGroupWithBlank : true,
+									});
+							if (noticeClientBannerSwiper.autoplay.running) {
+								$('.btn_noticeClientBannerControl').addClass('active');
+							}
+							$('.btn_noticeClientBannerControl').on({click : function(e) {
+									if (noticeClientBannerSwiper.autoplay.running) {
+										$(this).removeClass('active');
+										noticeClientBannerSwiper.autoplay.stop();
+									} else {
+										$(this).addClass('active');
+										noticeClientBannerSwiper.autoplay.start();
+									}
+								}
+							});
+							$.fn.openPopup = function(id) {
+								var popObj = $('#' + id);
+								popObj.parent('.pop_wrap').addClass('active');
+								popObj.fadeIn();
+								popObj.parent('.pop_wrap').on({click : function(e) {
+										if (e.target === e.currentTarget) {
+											$.fn.closePopup();
+										}
+									}
+								});
+								popObj.find('.btn_close').on({click : function(e) {
+										$.fn.closePopup();
+										}
+								});
+							};
+							$.fn.closePopup = function() {
+								$('.pop_wrap').removeClass('active');
+								$('.popup').fadeOut();
+							};
+							const div = $("<div>").attr("class", "swiper-slide swiper-slide-movie swiper-slide-active")
+							const imageDiv = $("<div>").attr("class","img-wrap").attr("data-scale","false")
+							const titleImg = $("<img>").attr("src", "${pageContext.request.contextPath }/resources/images/")						
+						});
+		
+
+						function reservePage(movieNum){
+							var form = document.createElement('form');
+							var objs;
+							objs =document.createElement('input')
+							objs.setAttribute('type','text')
+							objs.setAttribute('name','movie_num')
+							objs.setAttribute('value',movieNum)
+							form.appendChild(objs)
+							form.setAttribute('method','post')
+							form.setAttribute('action','/movieReserve.do')
+							document.body.appendChild(form)
+							form.submit()	
+						}
+	</script>
+	<style type="text/css">
+		.swiper-button-next {
+		    right: -13px !important;
+		}
+		.swiper-button-prev {
+		    left: -12px !important;
+		}
+		.w-btn:hover {
+		   transform: none!important;
+		}
+		.img-wrap:before {
+   			background-image: none!important;
+   			 border-radius: none!important;
+		}	
+		.img-wrap > img {
+			height: 100%!important;
+		}
+	</style>
 </head>
 <body class="block">
 	<jsp:include page="../default/user_header.jsp"/>	
@@ -45,120 +214,43 @@
 					</h3>
 					<div class="sect-collage-chart">
 						<h4 class="hidden"></h4>
-						<ol>
-							<c:forEach var="movieList" items="${movieList}">
-							<li>
-								<div class="box-image">
-									<a href="#"><span class="thumb-image"><img
-											src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85633/85633_320.jpg"
-											alt="굿 보스" onerror="errorImage(this)"><span
-											class="ico-grade grade-15">15세 이상</span></span></a><span
-										class="screentype"> <a class="arthouse" href="#"
-										title="아트하우스 상세정보 바로가기" data-regioncode="MovieCollage">아트하우스</a>
-									</span>
-								</div>
-								<div class="box-contents">
-									<a href="#"> <strong class="title">굿 보스</strong>
-									</a>
-									<div class="score">
-										<strong class="percent">예매율<span>55.4%</span></strong>
-										<!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 -->
-										<div class="egg-gage small"></div>
+							<div
+					class="swiper swiper-container-initialized swiper-container-horizontal movie-list"
+					id="movie-list">
+					<div class="swiper-wrapper">
+						<c:forEach var="artHouseList" items="${artHouseList}">
+							<div class="swiper-slide swiper-slide-movie swiper-slide-active"
+								style="width: 170px; margin-right: 32px;">
+								<div class="img-wrap" data-scale="false" style="border-radius: none;">
+									<img
+										src="${artHouseList.movie_img}"
+										alt="제목란인데ㅠ">
+						
+									<div class="movie-hidden-btn">
+										<a href="/movieDetail.do?movie_num=${artHouseList.movie_num}"${artHouseList.movie_num})" class="movie-detail">"상세보기"</a> 
+										<a onclick="reservePage(${artHouseList.movie_num})" class="movie-ticketing">예매하기</a>
 									</div>
-									<span class="txt-info"> <i>2022.02.10</i> <strong>개봉</strong>
-										<em class="dday">D-3</em>
-									</span> <span class="like">
-										<button class="w-btn w-btn-gra3 w-btn-gra-anim"
-											style="padding: 9px 8px;" type="button">예매하기</button>
-									</span>
 								</div>
-							</li>
-							</c:forEach>
-							<li>
-								<div class="box-image">
-									<a href="#"><span class="thumb-image"><img
-											src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000078/78723/78723_320.jpg"
-											alt="캐롤" onerror="errorImage(this)"><span
-											class="ico-grade grade-19">청소년 관람불가</span></span></a><span
-										class="screentype"> <a class="arthouse" href="#"
-										title="아트하우스 상세정보 바로가기" data-regioncode="MovieCollage">아트하우스</a>
-
-									</span>
+								<div class="movie-info-wrap">
+									<strong class="movie-name">${artHouseList.movie_title }</strong> 
+									<span> <img class="star-style"
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/starpreview.png">
+											10%
+									</span> <span> 예매율 2.4% </span>
 								</div>
-								<div class="box-contents">
-									<a href="#"> <strong class="title">캐롤</strong>
-									</a>
-									<div class="score">
-										<strong class="percent">예매율<span>17.6%</span></strong>
-										<!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 -->
-										<div class="egg-gage small"></div>
-									</div>
-									<span class="txt-info"> <i>2022.02.04</i> <strong>재개봉</strong>
-
-									</span> <span class="like">
-										<button class="w-btn w-btn-gra3 w-btn-gra-anim"
-											style="padding: 9px 8px;" type="button">예매하기</button>
-									</span>
-								</div>
-							</li>
-							
-							<li>
-								<div class="box-image">
-									<a href="#"><span class="thumb-image"><img
-											src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000082/82987/82987_320.jpg"
-											alt="타오르는 여인의 초상" onerror="errorImage(this)"><span
-											class="ico-grade grade-15">15세 이상</span></span></a><span
-										class="screentype"> <a class="arthouse" href="#"
-										title="아트하우스 상세정보 바로가기" data-regioncode="MovieCollage">아트하우스</a>
-
-									</span>
-								</div>
-								<div class="box-contents">
-									<a href="#"> <strong class="title">타오르는 여인의 초상</strong>
-									</a>
-									<div class="score">
-										<strong class="percent">예매율<span>14.7%</span></strong>
-										<!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 -->
-										<div class="egg-gage small"></div>
-									</div>
-									<span class="txt-info"> <i>2022.02.03</i> <strong>재개봉</strong>
-
-									</span> <span class="like">
-										<button class="w-btn w-btn-gra3 w-btn-gra-anim"
-											style="padding: 9px 8px;" type="button">예매하기</button>
-									</span>
-								</div>
-							</li>
-
-							<li>
-								<div class="box-image">
-									<a href="#"><span class="thumb-image"><img
-											src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85607/85607_320.jpg"
-											alt="더 마더" onerror="errorImage(this)"><span
-											class="ico-grade grade-15">15세 이상</span></span></a><span
-										class="screentype"> <a class="arthouse" href="#"
-										title="아트하우스 상세정보 바로가기" data-regioncode="MovieCollage">아트하우스</a>
-
-									</span>
-								</div>
-								<div class="box-contents">
-									<a href="#"> <strong class="title">더 마더</strong>
-									</a>
-									<div class="score">
-										<strong class="percent">예매율<span>7.6%</span></strong>
-										<!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 -->
-										<div class="egg-gage small"></div>
-									</div>
-									<span class="txt-info"> <i>2022.02.10</i> <strong>개봉</strong>
-										<em class="dday">D-3</em>
-									</span> <span class="like">
-										<button class="w-btn w-btn-gra3 w-btn-gra-anim"
-											style="padding: 9px 8px;" type="button">예매하기</button>
-									</span>
-								</div>
-							</li>
-
-						</ol>
+								 <span class="like" style=" text-align-last: center;">
+										<button class="w-btn w-btn-gra3 w-btn-gra-anim"style="padding: 9px 8px; box-shadow: none;" onclick="reservePage(${artHouseList.movie_num})">예매하기</button>
+                                </span>
+							</div>
+						</c:forEach>
+					</div>
+					<div class="swiper-button-next" tabindex="0" role="button"
+						aria-label="다음 슬라이드" aria-disabled="false"></div>
+					<div class="swiper-button-prev swiper-button-disabled" tabindex="0"
+						role="button" aria-label="이전 슬라이드" aria-disabled="true"></div>
+					<span class="swiper-notification" aria-live="assertive"
+						aria-atomic="true"></span>
+				</div>				
 					</div>
 					<!-- .sect-collage-chart -->
 					<a class="link-more" href="./movies.aspx">영화 차트 자세히보기</a>
@@ -210,13 +302,13 @@
 								<dl>
 									<dt>
 										<img
-											src="https://img.cgv.co.kr/R2014/images/arthouse/dt_talk_program1.jpg"
-											alt="CINEMA TALK - 시네마톡">
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk1.jpg"
+											>
 									</dt>
 									<dd>
 										<img
-											src="https://img.cgv.co.kr/R2014/images/arthouse/dd_talk_program1.jpg"
-											alt="감독, 배우, 평론가, 다양한 분야의 전문가와 함께 하는 진짜 영화 이야기">
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk4.jpg"
+											>
 									</dd>
 								</dl>
 							</li>
@@ -225,13 +317,13 @@
 								<dl>
 									<dt>
 										<img
-											src="https://img.cgv.co.kr/R2014/images/arthouse/dt_talk_program2.jpg"
-											alt="LIVE TALK - 라이브톡">
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk2.jpg"
+											>
 									</dt>
 									<dd>
 										<img
-											src="https://img.cgv.co.kr/R2014/images/arthouse/dd_talk_program2.jpg"
-											alt="전국 주요 CGV아트하우스 전용관에서 생중계되는 이동진 평론가의 섬세하고 풍부한 ‘라이브’ 평론  프로그램">
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk5.jpg"
+											>
 									</dd>
 								</dl>
 							</li>
@@ -240,13 +332,13 @@
 								<dl>
 									<dt>
 										<img
-											src="https://img.cgv.co.kr/R2014/images/arthouse/dt_talk_program5_re.jpg"
-											alt="CURATOR - 큐레이터">
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk3.jpg"
+											>
 									</dt>
 									<dd>
 										<img
-											src="https://img.cgv.co.kr/R2014/images/arthouse/dd_talk_program5.jpg"
-											alt="영화 상영 후 신진영화 평론가가 진행하는 짧지만 알찬 관계밀착형 영화 해설">
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk6.jpg"
+											>
 									</dd>
 								</dl>
 							</li>

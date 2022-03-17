@@ -50,6 +50,10 @@ public class UserReserveController {
 	@Autowired
 	private UserService userService;
 	
+	
+	
+	
+	
 	@GetMapping("/movieReserve.do")
 	public String movieReserve(Model model,AdminMovieVO vo) {
 		List<AdminMovieVO> movieList =adminMovieService.movieList();
@@ -90,9 +94,56 @@ public class UserReserveController {
 		
 		return "/reserve/user_reserve";
 	}
+	//전체 눌렀을때
+	@PostMapping("/movieAllChartView.do")
+	@ResponseBody
+	public String movieAllChartView(@RequestBody AdminMovieVO vo) {
+		List<AdminMovieVO> movieList =adminMovieService.movieList();
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		for(AdminMovieVO movieVo: movieList) {
+			for(AdminAgeVO ageVo:ageList) {
+				if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
+					movieVo.setAge_img(ageVo.getMovie_age_img());
+				}
+			}
+		}
+		Gson gson = new Gson();
+		String movieTotalList = gson.toJson(movieList);
+		
+		return movieTotalList;
+	}
+	
+	//아트 하우스 눌렀을때
+	@PostMapping("/artChatList.do")
+	@ResponseBody
+	public String userArtHouseList(@RequestBody AdminMovieVO vo) {
+		
+		
+		List<AdminMovieVO> userArtHouseList = userBoardService.userArtHouseList();
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		
+		for(AdminMovieVO movieVo :userArtHouseList) {
+			for(AdminAgeVO ageVo:ageList) {
+				if(movieVo.getMovie_age_code()==ageVo.getMovie_age_num()) {
+					movieVo.setAge_img(ageVo.getMovie_age_img());
+				}
+			}
+		}
+		Gson gson = new Gson();
+		String artList = gson.toJson(userArtHouseList);
+		
+		return artList;
+	}
+	
+	@PostMapping("/seat.do")
+	public String serat(@ModelAttribute UserReserveVO vo ,Model model) {
+		
+		System.out.println("post 방식");
+		return "/seat/user_seat";
+	}
 	
 	@PostMapping("/reserveSeat.do")
-	public String reserveSeat(@ModelAttribute("reserveVO") UserReserveVO vo ,Model model) {
+	public String reserveSeat(@ModelAttribute("reserveVo") UserReserveVO vo ,Model model,UserReserveVO reserveVO) {
 			//유저정보 
 			String userId =RequestUtils.getUserId("userID");
 			UserVO userVo = userService.MyUserList(userId);
@@ -142,7 +193,21 @@ public class UserReserveController {
 			model.addAttribute("time",vo.getMovie_time_start());
 			model.addAttribute("row",row);
 			model.addAttribute("col",col);
-						
+			//예약된좌석 
+			reserveVO.setRegion_code(theaterVo.getRegion_code());
+			reserveVO.setTheater_code(theaterVo.getTheater_code());
+			
+			List<String> reserveL = new ArrayList<String>();
+			List<UserReserveVO> reserveVo = userBoardService.userReserveSeatStatus(reserveVO);
+			for(UserReserveVO reser: reserveVo) {
+				String[] reserveArr=(reser.getSeat_reservation()).split(",");
+				for(int i=0;i<reserveArr.length;i++) {
+					System.out.println("reserveArr : "+reserveArr[i]);
+					reserveL.add(reserveArr[i]);
+				}
+				
+			}
+			model.addAttribute("reserveVo",gson.toJson(reserveL));
 			System.out.println("/// : " +vo.toString());			
 		return "/seat/user_seat";
 	}
@@ -165,7 +230,7 @@ public class UserReserveController {
 		List<AdminTheaterVO> theaterList = userBoardService.theaterCodeList(theaterVo.getRegion_code());
 		List<AdminTheaterVO> theaterL = new ArrayList<AdminTheaterVO>();
 		List<AdminTimeVO> timeList = new ArrayList<AdminTimeVO>();
-		
+		System.out.println("이건 나오나요");
 		
 		for(AdminTheaterVO thVo : theaterList) {
 			System.out.println("현재 상영관  "+ thVo.getTheater_name());
@@ -174,10 +239,11 @@ public class UserReserveController {
 			AdminSeatVO seatVo = userBoardService.seatListInfo(thVo.getTheater_code());
 			thVo.setMovie_time_code(timeVo.getMovie_time_code());
 			thVo.setMovie_time_start(timeVo.getMovie_time_start());
+			
 			thVo.setSeat_status(seatVo.getSeat_status());
+			System.out.println("영화 시간 : "+thVo.getMovie_time_start());
 		
 		}
-		
 		Gson gson = new Gson();
 		String tList =gson.toJson(theaterList);
 		System.out.println("/?????");

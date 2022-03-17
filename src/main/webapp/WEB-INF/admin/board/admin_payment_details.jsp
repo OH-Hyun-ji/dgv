@@ -29,6 +29,7 @@
 			      })		     	
 			    }).done(function(result){
 			    	alert("환불 성공")
+			    	window.reload()
 			    }).fail(function(error){
 			    	alert("환불 실패")
 			    }) //close ajax
@@ -76,7 +77,20 @@
 										<td>${paymentList.reserve_method}</td>
 										<td>${paymentList.reserve_apply_num}</td>
 										<td>${paymentList.reserve_date}</td>
-										<td style="text-align: center;"><button id="delBt"  onclick="cancelAction('${paymentList.reserve_code}','${paymentList.reserve_imp_uid}','${paymentList.reserve_merchant_uid}','${paymentList.reserve_price}')"><i class="fas fa-trash-alt"></i></button></td>
+										<td style="text-align: center;">
+											<c:choose>
+												<c:when test="${paymentList.reserve_status == 1 }">
+													<button id="delBt"  disabled="disabled" onclick="cancelAction('${paymentList.reserve_code}','${paymentList.reserve_imp_uid}','${paymentList.reserve_merchant_uid}','${paymentList.reserve_price}')">
+														결제취소완료
+													</button>
+												</c:when>
+												<c:otherwise>
+													<button id="delBt" onclick="cancelAction('${paymentList.reserve_code}','${paymentList.reserve_imp_uid}','${paymentList.reserve_merchant_uid}','${paymentList.reserve_price}')">
+														<i class="fas fa-trash-alt"></i>
+													</button>
+												</c:otherwise>
+											</c:choose>
+										</td>
 									</tr>		
 								</c:forEach>						
 								</tbody>

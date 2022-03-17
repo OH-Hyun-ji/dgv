@@ -2,6 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="UserBoardDAO">
+<resultMap type="UserDetailVO" id="UserDetailVO">
+	<result column="user_num" property="user_num" jdbcType="INTEGER"/>
+	<result column="user_point" property="user_point" jdbcType="INTEGER"/>
+	<result column="user_rank" property="user_rank" jdbcType="VARCHAR"/>
+	<result column="user_img" property="user_img" jdbcType="VARCHAR" />
+	<result column="user_agree" property="user_agree" jdbcType="VARCHAR"/>
+</resultMap>
+<resultMap type="UserVO" id="UserVO">
+	<result column="user_num" property="user_num" jdbcType="INTEGER"/>
+	<result column="user_id" property="user_id" jdbcType="VARCHAR"/>
+	<result column="user_pw" property="user_pw" jdbcType="VARCHAR"/>
+	<result column="user_name" property="user_name" jdbcType="VARCHAR"/>
+	<result column="user_phone" property="user_phone" jdbcType="VARCHAR"/>
+	<result column="user_email" property="user_email" jdbcType="VARCHAR"/>
+	<result column="user_year" property="user_year" jdbcType="VARCHAR"/>
+	<result column="user_term" property="user_term" jdbcType="VARCHAR"/>
+	<result column="user_month" property="user_month" jdbcType="VARCHAR"/>
+	<result column="user_day" property="user_day" jdbcType="VARCHAR"/>
+	<collection property="detailVO" resultMap="UserDetailVO"></collection>
+</resultMap>
 
 	<select id="NoticeList" resultType="AdminNoticeVO">
 		SELECT * FROM dgv_notice
@@ -43,14 +63,89 @@
 		VALUES(DEFAULT,#{community_title},#{community_kind},#{community_text},#{commuity_img},#{user_id},current_date,current_time)
 	</insert>
 	
+	<update id="communityCountView" parameterType="int">
+		UPDATE dgv_community SET community_count = community_count+1 WHERE community_code=#{community_code}
+	</update>
+	
 	<select id="communitySelect" resultType="UserCommunityVO">
 		SELECT * FROM dgv_community
+			<trim prefix="WHERE" prefixOverrides="AND|OP">
+			<if test="searchType=='community_title' and keyword != null and keyword !=''">
+				WHERE community_title like '%#{keyword}%')
+			</if>
+		</trim>
+		
 	</select>
 	
 	<select id="communityChoiceNum" resultType="UserCommunityVO">
 		SELECT * FROM dgv_community WHERE community_code =#{community_code}
 	</select>
 	
+	<select id="communityUserInfo" resultMap="UserVO">
+		SELECT * FROM user_info ui FULL JOIN user_info_detail uid ON ui.user_num = uid.user_num WHERE ui.user_id=#{user_id}
+	</select>
 	
+	<select id="getSearchList" resultType="UserCommunityVO">
+		SELECT * FROM dgv_community 
+		<trim prefix="WHERE" prefixOverrides="AND|OP">
+			<if test="searchType=='community_title' and keyword != null and keyword !=''">
+				WHERE community_title like '%#{keyword}%')
+			</if>
+			<if test="searchType=='community_text' and keyword != null and keyword != ''">
+				AND community_text like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="searchType=='user_id' and keyword != null and keyword != ''">
+				AND user_id like CONCAT('%',#{keyword},'%')
+			</if>
+		</trim>
+		
+	</select>
+	
+	<select id="getCommunityCnt" resultType="int">
+		SELECT count(*) as listCnt FROM dgv_community
+		
+	</select>
+	
+	<select id="myPagingMovie" resultType="AdminMovieVO">
+		<![CDATA[
+			select*from(
+					select *,(row_number() over()) as rn1 from (
+								select *,(row_number() over()) as rn from movie_info)as foo where rn <= #{pageNum} * #{amount})
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="myPaging" resultType="AdminMovieVO">
+		select * from(
+				select * from movie_info order by movie_num desc) as foo limit #{skip} offset #{amount};
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM movie_info
+	</select>
+	
+	<insert id="CommentInsert" parameterType="UserCommentVO">
+		INSERT INTO dgv_comment(comment_num,community_code,comment_title,comment_text,user_id,write_date,write_time)
+		VALUES(DEFAULT,#{community_code},#{comment_title},#{comment_text},#{user_id},current_date,DEFAULT)
+	</insert>
+	<select id="commentSelect" resultType="UserCommentVO">
+		SELECT * FROM dgv_comment WHERE community_code=#{community_code}
+	</select>
+	
+	<select id="eventList" resultType="AdminEventVO">
+		select * from dgv_event 
+	</select>
+	
+	<select id="continueTotal" resultType="int">
+		SELECT COUNT(*) FROM movie_info WHERE movie_status ='true'
+	</select>
+	
+	<select id="endTotal" resultType="int">
+		SELECT COUNT(*) FROM movie_info WHERE movie_status ='false'
+	</select>
+	
+	<select id="yetTotal" resultType="int">
+		SELECT COUNT(*) FROM movie_info WHERE movie_status ='yet'
+	</select>
 	
 </mapper>

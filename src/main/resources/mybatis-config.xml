@@ -25,6 +25,7 @@
 			<typeAlias alias="AdminRankVO"   type="com.dgv.web.admin.vo.AdminRankVO"/>
 			<typeAlias alias="AdminTimeVO"   type="com.dgv.web.admin.vo.AdminTimeVO"/>
 			<typeAlias alias="AdminSeatVO"   type="com.dgv.web.admin.vo.AdminSeatVO"/>
+			<typeAlias alias="AdminEventVO"   type="com.dgv.web.admin.vo.AdminEventVO"/>
 			<typeAlias alias="S3keyVO"   type="com.dgv.web.admin.common.S3KeyVO"/>
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>
@@ -35,6 +36,7 @@
 			<typeAlias alias="UserFAQKindVO" type="com.dgv.web.user.vo.UserFAQKindVO"/>
 			<typeAlias alias="UserCommunityVO" type="com.dgv.web.user.vo.UserCommunityVO"/>
 			<typeAlias alias="UserReserveVO" type="com.dgv.web.user.vo.UserReserveVO"/>
+			<typeAlias alias="UserCommentVO" type="com.dgv.web.user.vo.UserCommentVO"/>
 		</typeAliases>
 			<mappers>
 				<mapper resource="mappings/admin/movieInfo-mapping.xml"/>

@@ -2,6 +2,8 @@ package com.dgv.web.admin.vo;
 
 import java.util.List;
 
+import com.dgv.web.user.vo.PageVO;
+
 import lombok.Data;
 
 @Data
@@ -25,10 +27,11 @@ public class AdminMovieVO {
 	private String movie_date;
 	private Integer city_code;
 	private String movie_genre;
-	private boolean movie_status;
+	private String movie_status;
 	private String age_img;
 	private String age_name;
 	
+	private String url;
 	private List<AdminGenreVO> genreList;
 	private List<AdminAgeVO> ageList;
 	private List<AdminCityVO> cityList;

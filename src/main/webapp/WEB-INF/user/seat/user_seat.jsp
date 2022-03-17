@@ -118,6 +118,9 @@
                     </div>
                 </div>            
             </div>
+            <div class="seat_introduce">
+            	<img alt="" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/seat_introduce.png">
+            </div>
             <div class="seat-container">
                 <div class="seat-wrapper">
                     <div class="screen-site-wrapper">
@@ -129,7 +132,7 @@
             <div class="reservation-container">
             	<div class="reservation-wrapper">
                     <div class="choicPrev">
-                        <a href="#"><img style="border: 1px solid white; border-radius: 11px" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/choiceBtn.png"></a>       		   
+                        <a href="./../"><img style="border: 1px solid white; border-radius: 11px"; src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/choiceBtn.png"></a>       		   
                     </div>
             		<div class="movie-info">
                         <span class="movie-poster">
@@ -191,9 +194,7 @@
 		</form>
     </div>
       <jsp:include page="../default/user_footer.jsp"></jsp:include>
-<%--       <% --%>
-<!-- // 			String id = (String)session.getAttribute("userID"); -->
-<%--       %> --%>
+
 <script type="text/javascript">
 	$(function(){
 
@@ -213,7 +214,6 @@
 			var userPhone = $("#userPhone").val()			
 			var reservePrice = $("#reservePrice").val()
 			console.log("reservePrice  =>  "+reservePrice)
-			<%-- var userId = '<%=id%>'; --%>
 			
 			alert("결제버튼 클릭")
 			console.log("userId " +userId)
@@ -434,6 +434,7 @@
 	    	const col = ${col}
 	    	const alphabetNumber = parseInt(col)+64
 	    	var seatStatus = ${seatStatus}
+	    	var reserveStatus = ${reserveVo}
 	    
 	    	
 	    //	const alphabet = String.fromCharCode(alphabetNumber)
@@ -443,7 +444,7 @@
 	    		str_html = str_html+'<br>'
 	    		for(let j=1;j<=col;j++){
 	    			var alphabet = String.fromCharCode(i)    			
-	    			var seat_btn = '<button class="seat-status" value="()" disabled1="abled">{}</button>';
+	    			var seat_btn = '<button class="seat-status" id="??" value="()" disabled1="abled">{}</button>';
 	    														///????? 참나..
 	    
 	    			seat_btn = seat_btn.replace('{}', alphabet+j)
@@ -457,9 +458,14 @@
 	 						console.log("??? : "+$(".seat-status"+n))		
 						}
 							seat_btn =	seat_btn.replace("abled","abled")	
-							
-						
-						
+	    			})
+	    			
+	    			_(reserveStatus).forEach(function(e){
+	    				if(e === alphabet+j){
+	    					console.log(e)
+	    					seat_btn = seat_btn.replace("disabled1","disabled")    					
+	    					seat_btn = seat_btn.replace("??","reservationSeat")    					
+	    				}
 	    			})
 	    			
 	    				

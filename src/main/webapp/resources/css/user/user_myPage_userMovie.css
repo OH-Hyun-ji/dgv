@@ -1,0 +1,506 @@
+/* 본격 컨텐츠 부터 /////////////////////////////////////////////////////////////////////////////////////////////////*/
+#contaniner {
+  /* overflow: hidden; */
+  position: relative;
+  width: 100%;
+  z-index: 7;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  word-break: break-all;
+}
+#contents {
+  clear: both;
+  padding-bottom: 50px;
+}
+#cgvwrap .cgv-ad-wrap .sect-head-ad, .head, .im-wrap, #contents, .foot, .sect-smuse, .sect-cinfo {
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+}
+div {
+  display: block;
+}
+.cols-content {
+  padding-top: 25px;
+}
+.cols-content {
+  margin-top: 25px;
+}
+.cols-content .col-aside:first-child {
+  float: left;
+}
+.cols-content .col-aside {
+  width: 160px;
+  float: right;
+}
+.cols-content .col-aside h2 {
+  font: 0/0 a;
+  visibility: hidden;
+  zoom: 1;
+}
+
+
+[class^='box-round'] {
+  position: relative;
+  margin-top: 10px;
+}
+[class^='box-round'][class$='dgray']:before {
+  top: -1px;
+  left: -1px;
+  background-position: 0 -142px;
+}
+[class^='box-round']:before, [class^='box-round']:after, [class^='box-round'][class$='inner']:before, [class^='box-round'][class$='inner']:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fdfcf0 url(../images/1.png) no-repeat 0 0;
+}
+
+[class^='box-round'] {
+  position: relative;
+  margin-top: 10px;
+}
+[class^='box-round'][class$='inner']:before {
+  top: -1px;
+  right: -1px;
+  background-position: -6px -142px;
+}
+[class^='box-round'][class$='dgray']:after {
+  left: -1px;
+  bottom: -1px;
+  background-position: 0 -148px;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] {
+  padding: 12px 12px 20px 12px;
+  color: #222;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-image {
+  position: relative;
+  width: 135px;
+  height: 164px;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-image .thumb-image {
+  width: 135px;
+  height: 135px;
+}
+.thumb-image {
+  display: block;
+  position: relative;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+input, select, img {
+  vertical-align: middle;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-image .thumb-image .profile-mask {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 135px;
+  height: 135px;
+  background: url(../images/common/bg/bg_photocircle04.png) 0 0 no-repeat;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-contents {
+  text-align: center;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-contents > strong {
+  font-size: 15px;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-contents > strong, [class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-contents > button {
+  display: inline-block;
+}
+strong {
+  font-weight: 500;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='profile'] > .box-contents > .edit {
+  display: inline-block;
+  width: 12px;
+  height: 14px;
+  margin: 0 0 0 5px;
+  background: url(../images/1.png) no-repeat -50px -218px;
+  font: 0px/0 a;
+  vertical-align: top;
+}
+[class^='box-round'][class$='inner']:after {
+  right: -1px;
+  bottom: -1px;
+  background-position: -6px -148px;
+}
+[class^='box-round'][class$='on']:after {
+  left: -1px;
+  bottom: -3px;
+  background-position: 0 -178px;
+}
+[class^='box-round']:before, [class^='box-round']:after, [class^='box-round'][class$='inner']:before, [class^='box-round'][class$='inner']:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fdfcf0 url(../images/1.png) no-repeat 0 0;
+}
+[class^='box-round'][class$='wgray'] {
+  border-color: #d8d6ca;
+}
+
+
+[class^='box-round'][class$='wgray']:before {
+  top: -1px;
+  left: -1px;
+  background-position: 0 -156px;
+}
+[class^='box-round']:first-child {
+  margin-top: 0;
+}
+
+[class^='box-round'][class$='wgray'] > [class$='inner']:before {
+  top: -1px;
+  right: -1px;
+  background-position: -6px -156px;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='log'] {
+  text-align: center;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='log'] > a {
+  padding: 18px 0;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='log'] * {
+  display: block;
+  color: #222;
+  font-weight: 500;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='log'] > a > em {
+  font-size: 26px;
+  line-height: 26px;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='log'] * {
+  display: block;
+  color: #222;
+  font-weight: 500;
+}
+em {
+  font-style: normal;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='log'] > a > strong {
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 13px;
+}
+[class^='box-round'] > [class^='inner-contents'][class$='log'] * {
+  display: block;
+  color: #222;
+  font-weight: 500;
+}
+[class^='box-round'][class$='wgray'] > [class$='inner']:after {
+  right: -1px;
+  bottom: -3px;
+  background-position: -6px -164px;
+}
+[class^='box-round'][class$='wgray']:after {
+  left: -1px;
+  bottom: -3px;
+  background-position: 0 -164px;
+}
+[class^='box-round'][class$='on'] {
+  border-color: #fb4357;
+}
+[class^='box-round'][class$='on'] {
+  background-color: #fb4357;
+}
+
+
+
+/* 메인 영역///////////////////////////////////////////////////////////////////////////////////////////*/
+.cols-content .col-aside + .col-detail {
+  float: right;
+}
+.cols-content .col-detail {
+  position: relative;
+  width: 800px;
+
+}
+.movielog-detail-wrap {
+  width: 720px;
+  margin: 0 auto;
+}
+.cols-content .tit-mycgv {
+  overflow: hidden;
+  position: relative;
+  line-height: 34px;
+}
+.cols-content .tit-mycgv > h3, .cols-content .tit-mycgv > h4 {
+    float: left;
+    height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 34px;
+    text-align: left;
+    border: 1px solid #a0a0a0;
+    border-radius: 15px;
+    padding: 1px 28px 2px 24px;
+    box-sizing: border-box;
+    background-color: #9b9b9b;
+    margin-right: 14px;
+}
+.cols-content .tit-mycgv p {
+  float: left;
+  margin-left: 5px;
+}
+em {
+  font-style: normal;
+}
+.cols-content .tit-mycgv > span, .cols-content .tit-mycgv > .set-combo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  color: #666;
+  text-align: left;
+  line-height: 1.2;
+}
+.cols-content .tit-mycgv > .set-combo > label {
+  font: 0/0 a;
+  zoom: 1;
+}
+.cols-content .tit-mycgv > .set-combo > select {
+  margin-right: 5px;
+}
+select {
+  line-height: 27px;
+  height: 29px;
+  padding: 3px 5px;
+  border: 1px solid #b4b3aa;
+}
+body, input, textarea, select, button, table {
+  font-size: 13px;
+  line-height: 1.2;
+  color: black;
+  font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+  font-weight: 400;
+}
+input, select, img {
+  vertical-align: middle;
+}
+select:not(:-internal-list-box) {
+  overflow: visible !important;
+}
+.cols-content .tit-mycgv > .set-combo > select + button {
+  margin-right: 10px;
+}
+.round.gray {
+  border: 2px solid #7b7b7b;
+  color: #7b7b7b;
+}
+.round {
+  line-height: 23px;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+.round, .round > * {
+  display: inline-block;
+  position: relative;
+}
+button, input[type='submit'], input[type='button'] {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+.cols-content .tit-mycgv:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+.movielog-detail-wrap > .sect-movielog-lst, .movielog-detail-wrap > .sect-wishlist-lst {
+  margin-top: 25px;
+}
+div[class^="sect-"] {
+  clear: both;
+  zoom: 1;
+}
+ol, ul {
+  list-style: none;
+}
+.movielog-detail-wrap > .sect-movielog-lst > ul > li:first-child {
+  margin-top: 0;
+}
+.movielog-detail-wrap > .sect-movielog-lst > ul > li {
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d6d4ca;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+#dev2014 .movielog-detail-wrap .article-movie-info {
+  overflow: visible;
+}
+.movielog-detail-wrap .article-movie-info > .box-image {
+  float: left;
+  width: 110px;
+  height: 158px;
+  margin-right: 22px;
+}
+.box-image a {
+  display: block;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.thumb-image {
+  display: block;
+  position: relative;
+}
+.box-image img {
+  width: 100%;
+}
+input, select, img {
+  vertical-align: middle;
+}
+.ico-grade.grade-12 {
+  background-position: -51px 0;
+}
+.ico-grade {
+  display: block;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 21px;
+  height: 21px;
+  background: url(../images/1.png) no-repeat;
+  font: 0/0 a;
+  zoom: 1;
+}
+i {
+  font-style: normal;
+}
+.movielog-detail-wrap .article-movie-info > .box-contents {
+  float: left;
+}
+.movielog-detail-wrap .article-movie-info > .box-contents > .title {
+  width: 550px;
+  height: 45px;
+  margin: 14px 0;
+}
+.title {
+  display: block;
+  color: #333333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.movielog-detail-wrap .article-movie-info > .box-contents > .title strong {
+  margin-bottom: 8px;
+  color: #222;
+  font-weight: 500;
+  font-size: 22px;
+}
+.movielog-detail-wrap .article-movie-info > .box-contents > .title > p {
+  color: #666;
+  font-family: verdana, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+}
+.movielog-detail-wrap .article-movie-info > .box-contents > .date {
+  margin-bottom: 9px;
+}
+.movielog-detail-wrap .article-movie-info > .box-contents > .date, .movielog-detail-wrap .article-movie-info > .box-contents > .theater {
+  color: #222;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+.movielog-detail-wrap .article-movie-info > .box-contents > .theater {
+  margin-bottom: 15px;
+}
+.movielog-detail-wrap .article-movie-info > .box-contents > .date, .movielog-detail-wrap .article-movie-info > .box-contents > .theater {
+  color: #222;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+.writerinfo li:first-child {
+  background: none;
+  padding-left: 0;
+}
+.writerinfo .writer-opinion {
+  font-size: 12px;
+  color: #000000;
+}
+div[class^="sect-"] .box-contents li a {
+  display: block;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.movielog-detail-wrap .article-movie-info > .btn-del {
+  position: absolute;
+  top: 6px;
+  right: 1px;
+}
+button, input[type='submit'], input[type='button'] {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+button, input[type='submit'], input[type='reset'] {
+  padding: 0;
+  border: 0 none;
+  background-color: transparent;
+  vertical-align: middle;
+}
+
+button, input {
+  overflow: visible;
+}
+#dev2014 .movielog-detail-wrap .article-movie-info:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.inner-contents-profile {
+    border: 2px solid #a3a1a1;
+    border-radius: 32px;
+    background-color: whitesmoke;
+}
+
+#count-em-style{
+	font-size: 17px;
+    background-color: #f17811;
+    border: 1px solid orange;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 4px;
+    width: 50px;
+    color: white;
+}
+
+

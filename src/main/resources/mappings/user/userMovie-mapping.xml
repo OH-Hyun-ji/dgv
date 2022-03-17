@@ -79,5 +79,24 @@
 		#{reserve_basic},#{reserve_student},#{reserve_old},#{reserve_price},#{user_id},#{reserve_imp_uid},#{reserve_apply_num},#{reserve_merchant_uid},#{reserve_method})
 		
 	</insert>
+	<select id="userReserveMyPage" resultType="UserReserveVO">
+		SELECT * FROM movie_reserve WHERE user_id=#{user_id}
+	</select>
+	
+	<select id="userReserveSeatStatus" resultType="UserReserveVO">
+		SELECT seat_reservation FROM movie_reserve WHERE theater_code=#{theater_code} and region_code=#{region_code} AND reserve_status = 0
+	</select>
+	<update id="UpdateReserveStatus" >
+		UPDATE movie_reserve SET reserve_status =#{reserve_status} WHERE reserve_code=#{reserve_code}
+	</update>
+	
+	<select id="userArtHouseList" resultType="AdminMovieVO">
+		SELECT * FROM movie_info WHERE movie_genre_code = 10
+	</select>
+	
+	<select id="userIdMovieReserveList" resultType="UserReserveVO">
+		SELECT * FROM movie_reserve WHERE user_id =#{user_id}
+	</select>
+	
 	
 </mapper>

@@ -5,6 +5,7 @@ import java.util.List;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
@@ -14,15 +15,23 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
+import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.SearchVO;
+import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
+import com.dgv.web.user.vo.UserVO;
 
 public interface UserBoardService {
+	
+	// 이벤트페이지
+	List<AdminEventVO> eventList();
 
 	List<AdminNoticeVO> noticeList();
 	
@@ -87,4 +96,39 @@ public interface UserBoardService {
 	UserCommunityVO communityChoiceNum(int num);
 	
 	int userReserveInsert(UserReserveVO reserveVo);
+	
+	List<UserReserveVO> userReserveMyPage(String id);
+	
+	List<UserReserveVO> userReserveSeatStatus(UserReserveVO vo);
+	
+	int UpdateReserveStatus(UserReserveVO vo);
+	
+	List<AdminMovieVO> userArtHouseList();
+	
+	UserVO communityUserInfo(String id);
+	
+	List<UserCommunityVO> getCommunityList(SearchVO vo) throws Exception;
+	
+	int getCommunityCnt(SearchVO vo) throws Exception;
+	
+	List<AdminMovieVO> getListPaging(Criteria cri);
+	
+	int getTotal();
+	
+	int communityCountView(int num);
+	
+	int CommentInsert(UserCommentVO vo);
+	
+	List<UserCommentVO> commentSelect(int num);
+	
+	UserVO userNumSelect(String id);
+
+	List<UserReserveVO> userIdMovieReserveList(String id);
+	
+	int continueTotal();
+	
+	int endTotal();
+	
+	int yetTotal();
+
 }

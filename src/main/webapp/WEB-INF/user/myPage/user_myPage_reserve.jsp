@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -209,21 +210,25 @@
                   	<table class="myPage-table">
 								<thead class="myPage-table-wrapping">
 									<tr>
-										<th>No</th>
-										<th>Movie Title</th>
-										<th>Writer</th>
-										<th>Date</th>
-										<th>Count</th>
+										<th>번호</th>
+										<th>예매번호</th>
+										<th>영화제목</th>
+										<th>상영날짜</th>
+										<th>가격</th>
+										<th>구매날짜</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">내가본영화제목</a></td>
-										<td>나 자신</td>
-										<td>2022-02-09</td>
-										<td>0</td>
-									</tr>							
+									<c:forEach var="userReserveList" items="${userReserveList}" varStatus="status">
+										<tr>
+											<td>${status.index +1 }</td>
+											<td>${userReserveList.reserve_merchant_uid }</td>
+											<td><a id="myPage-title" href="#">${userReserveList.movie_title}</a></td>
+											<td>${userReserveList.reserve_movie_date }</td>
+											<td>${userReserveList.fomatter_price }</td>
+											<td>${userReserveList.reserve_date }</td>
+										</tr>
+									</c:forEach>						
 								</tbody>
 							</table>
                   </div>
@@ -233,174 +238,27 @@
 					class="swiper swiper-container-initialized swiper-container-horizontal myPage-movie-list"
 					id="myPage-movie-list">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide swiper-slide-movie swiper-slide-active"
-							style="width: 170px; margin-right: 32px;">
-							<div class="img-wrap" data-scale="false">
-								<img
-									src="${pageContext.request.contextPath }/resources/images/84949_320.jpg"
-									alt="제목란인데ㅠ">
-								<div class="movie-age-limit">
-									<img
-										src="${pageContext.request.contextPath }/resources/images/grade-12.png"
-										alt="12세">
+						<c:forEach var="movieList" items="${movieList}">
+							<div class="swiper-slide swiper-slide-movie swiper-slide-active"
+								style="width: 170px; margin-right: 32px;">
+								<div class="img-wrap" data-scale="false">
+									<img src="${movieList.movie_img }">
+									<div class="movie-age-limit">
+										<img
+											src="${movieList.age_img }"
+											alt="12세">
+									</div>
+									<div class="movie-hidden-btn">
+										<a href="/movieDetail.do" class="movie-detail">"상세보기"</a> <a href="#"
+											class="movie-ticketing">예매하기</a>
+									</div>
 								</div>
-								<div class="movie-hidden-btn">
-									<a href="/movieDetail.do" class="movie-detail">"상세보기"</a> <a href="#"
-										class="movie-ticketing">예매하기</a>
-								</div>
-							</div>
-							<div class="movie-info-wrap">
-								<strong class="movie-name">바나나나</strong> <span> <img
-									src="${pageContext.request.contextPath }/resources/images/star.png">
-									10%
-								</span> <span> 예매율 2.4% </span>
-							</div>
-						</div>
-						<!-- 2번 -->
-						<div class="swiper-slide swiper-slide-movie swiper-slide-active"
-							style="width: 170px; margin-right: 32px;">
-							<div class="img-wrap" data-scale="false">
-								<img
-									src="${pageContext.request.contextPath }/resources/images/85229_320.jpg"
-									alt="제목란인데ㅠ">
-								<div class="movie-age-limit">
-									<img
-										src="${pageContext.request.contextPath }/resources/images/grade-15.png"
-										alt="12세">
-								</div>
-								<div class="movie-hidden-btn">
-									<a href="#" class="movie-detail">"상세보기"</a> <a href--="#"
-										class="movie-ticketing">예매하기</a>
+								<div class="movie-info-wrap">
+									<strong class="movie-name">${movieList.movie_title }</strong>
+									<span> 예매율 2.4% </span>
 								</div>
 							</div>
-							<div class="movie-info-wrap">
-								<strong class="movie-name">바나나나</strong> <span> <img
-									src="${pageContext.request.contextPath }/resources/images/star.png">
-									10%
-								</span> <span> 예매율 2.4% </span>
-							</div>
-						</div>
-						<!-- 3번 -->
-						<div class="swiper-slide swiper-slide-movie swiper-slide-active"
-							style="width: 170px; margin-right: 32px;">
-							<div class="img-wrap" data-scale="false">
-								<img
-									src="${pageContext.request.contextPath }/resources/images/85229_320.jpg"
-									alt="제목란인데ㅠ">
-								<div class="movie-age-limit">
-									<img
-										src="${pageContext.request.contextPath }/resources/images/grade-15.png"
-										alt="12세">
-								</div>
-								<div class="movie-hidden-btn">
-									<a href="#" class="movie-detail">"상세보기"</a> <a href="#"
-										class="movie-ticketing">예매하기</a>
-								</div>
-							</div>
-							<div class="movie-info-wrap">
-								<strong class="movie-name">바나나나</strong> <span> <img
-									src="${pageContext.request.contextPath }/resources/images/star.png">
-									10%
-								</span> <span> 예매율 2.4% </span>
-							</div>
-						</div>
-						<!-- 4번 -->
-						<div class="swiper-slide swiper-slide-movie swiper-slide-active"
-							style="width: 170px; margin-right: 32px;">
-							<div class="img-wrap" data-scale="false">
-								<img
-									src="${pageContext.request.contextPath }/resources/images/84949_320.jpg"
-									alt="제목란인데ㅠ">
-								<div class="movie-age-limit">
-									<img
-										src="${pageContext.request.contextPath }/resources/images/grade-all.png"
-										alt="12세">
-								</div>
-								<div class="movie-hidden-btn">
-									<a href="#" class="movie-detail">"상세보기"</a> <a href--="#"
-										class="movie-ticketing">예매하기</a>
-								</div>
-							</div>
-							<div class="movie-info-wrap">
-								<strong class="movie-name">바나나나</strong> <span> <img
-									src="${pageContext.request.contextPath }/resources/images/star.png">
-									10%
-								</span> <span> 예매율 2.4% </span>
-							</div>
-						</div>
-						<!-- 5번 -->
-						<div class="swiper-slide swiper-slide-movie swiper-slide-active"
-							style="width: 170px; margin-right: 32px;">
-							<div class="img-wrap" data-scale="false">
-								<img
-									src="${pageContext.request.contextPath }/resources/images/84949_320.jpg"
-									alt="제목란인데ㅠ">
-								<div class="movie-age-limit">
-									<img
-										src="${pageContext.request.contextPath }/resources/images/grade-all.png"
-										alt="12세">
-								</div>
-								<div class="movie-hidden-btn">
-									<a href="#" class="movie-detail">"상세보기"</a> <a href--="#"
-										class="movie-ticketing">예매하기</a>
-								</div>
-							</div>
-							<div class="movie-info-wrap">
-								<strong class="movie-name">바나나나</strong> <span> <img
-									src="${pageContext.request.contextPath }/resources/images/star.png">
-									10%
-								</span> <span> 예매율 2.4% </span>
-							</div>
-						</div>
-						<!-- 6번 -->
-						<div class="swiper-slide swiper-slide-movie swiper-slide-active"
-							style="width: 170px; margin-right: 32px;">
-							<div class="img-wrap" data-scale="false">
-								<img
-									src="${pageContext.request.contextPath }/resources/images/1.png"
-									alt="제목란인데ㅠ">
-								<div class="movie-age-limit">
-									<img
-										src="${pageContext.request.contextPath }/resources/images/grade-12.png"
-										alt="12세">
-								</div>
-								<div class="movie-hidden-btn">
-									<a href="#" class="movie-detail">"상세보기"</a> <a href--="#"
-										class="movie-ticketing">예매하기</a>
-								</div>
-							</div>
-							<div class="movie-info-wrap">
-								<strong class="movie-name">바나나나12</strong> <span> <img
-									src="${pageContext.request.contextPath }/resources/images/star.png">
-									10%
-								</span> <span> 예매율 2.4% </span>
-							</div>
-						</div>
-						<!-- 7번 -->
-						<div class="swiper-slide swiper-slide-movie swiper-slide-active"
-							style="width: 170px; margin-right: 32px;">
-							<div class="img-wrap" data-scale="false">
-								<img src="${pageContext.request.contextPath }/resources/images/1.png"
-									alt="제목란인데ㅠ">
-								<div class="movie-age-limit">
-									<img
-										src="${pageContext.request.contextPath }/resources/images/grade-15.png"
-										alt="12세">
-								</div>
-								<div class="movie-hidden-btn">
-									<a href="#" class="movie-detail">"상세보기"</a> <a href--="#"
-										class="movie-ticketing">예매하기</a>
-								</div>
-
-							</div>
-
-							<div class="movie-info-wrap">
-								<strong class="movie-name">바나나나11</strong> <span> <img
-									src="${pageContext.request.contextPath }/resources/images/star.png">
-									10%
-								</span> <span> 예매율 2.4% </span>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 					<div class="swiper-button-next" tabindex="0" role="button"
 						aria-label="다음 슬라이드" aria-disabled="false"></div>

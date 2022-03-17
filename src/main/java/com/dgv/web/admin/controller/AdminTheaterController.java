@@ -38,7 +38,10 @@ import com.dgv.web.admin.vo.BuilderTest;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.admin.vo.ParticipantDto;
 import com.dgv.web.admin.vo.TheaterInfoDto;
+import com.dgv.web.user.controller.Pagination;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.PageVO;
+import com.dgv.web.user.vo.PaginationVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -57,6 +60,17 @@ public class AdminTheaterController {
 	
 	@Autowired
 	private FileUploadService fileUploadService;
+	
+	
+	@PostMapping("deleteMovie.mdo")
+	@ResponseBody
+	public CommonResultDto deleteMovie(@RequestBody AdminMovieVO vo) {
+		int num = adminMovieService.deleteMovie(vo);
+		
+		if(num ==0 )
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
 	
 	@RequestMapping("/movieList.mdo")
 	public String movieList(AdminMovieVO vo,Model model,AdminGenreVO genreVo) {
@@ -77,6 +91,10 @@ public class AdminTheaterController {
 				}
 			}
 		}
+		
+		int movieCount = adminMovieService.movieList().size();
+		
+		
 		model.addAttribute("movieList",movieList);
 		model.addAttribute("movieListCount",adminMovieService.movieList().size());
 		

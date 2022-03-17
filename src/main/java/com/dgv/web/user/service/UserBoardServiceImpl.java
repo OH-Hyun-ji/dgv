@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
@@ -17,13 +18,18 @@ import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.dao.UserBoardDAO;
+import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.SearchVO;
+import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
+import com.dgv.web.user.vo.UserVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -243,6 +249,136 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.userReserveInsert(reserveVo);
 	}
+
+
+	@Override
+	public List<UserReserveVO> userReserveMyPage(String id) {
+		
+		return userBoardDAO.userReserveMyPage(id);
+	}
+
+
+	@Override
+	public List<UserReserveVO> userReserveSeatStatus(UserReserveVO vo) {
+		
+		return userBoardDAO.userReserveSeatStatus(vo);
+	}
+
+
+	@Override
+	public int UpdateReserveStatus(UserReserveVO vo) {
+		
+		return userBoardDAO.UpdateReserveStatus(vo);
+	}
+
+
+	@Override
+	public List<AdminMovieVO> userArtHouseList() {
+		return userBoardDAO.userArtHouseList();
+	
+	}
+
+
+	@Override
+	public UserVO communityUserInfo(String id) {
+		
+		return userBoardDAO.communityUserInfo(id);
+	}
+
+
+	@Override
+	public List<UserCommunityVO> getCommunityList(SearchVO vo) throws Exception {
+		
+		return userBoardDAO.getCommunityList(vo);
+	}
+
+
+	@Override
+	public int getCommunityCnt(SearchVO vo) throws Exception {
+	
+		return userBoardDAO.getCommunityCnt(vo);
+	}
+
+
+	@Override
+	public List<AdminMovieVO> getListPaging(Criteria cri) {
+		
+		return userBoardDAO.myPaging(cri);
+	}
+
+
+	@Override
+	public int getTotal() {
+		
+		return userBoardDAO.getTotal();
+	}
+
+
+	@Override
+	public int communityCountView(int num) {
+		
+		return userBoardDAO.communityCountView(num);
+	}
+
+
+	@Override
+	public int CommentInsert(UserCommentVO vo) {
+
+		return userBoardDAO.CommentInsert(vo);
+	}
+
+
+	@Override
+	public List<UserCommentVO> commentSelect(int num) {
+	
+		return userBoardDAO.commentSelect(num);
+	}
+	
+	@Override
+	public List<AdminEventVO> eventList() {
+		
+		return userBoardDAO.eventList();
+	}
+
+	@Override
+	public UserVO userNumSelect(String id) {
+	
+		return userBoardDAO.userNumSelect(id);
+	}
+
+
+	@Override
+	public List<UserReserveVO> userIdMovieReserveList(String id) {
+		
+		return userBoardDAO.userIdMovieReserveList(id);
+	}
+
+
+	@Override
+	public int continueTotal() {
+		
+		return userBoardDAO.continueTotal();
+	}
+
+
+	@Override
+	public int endTotal() {
+	
+		return userBoardDAO.endTotal();
+	}
+
+
+	@Override
+	public int yetTotal() {
+		
+		return userBoardDAO.yetTotal();
+	}
+
+
+
+	
+
+	
 
 	
 

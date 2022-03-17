@@ -4,10 +4,27 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
+var to1 = document.getElementById("today1").value;
+var to2 = document.getElementById("today2").value;
+var to3 = document.getElementById("today3").value;
+var to4 = document.getElementById("today4").value;
+var to5 = document.getElementById("today5").value;
+var to6 = document.getElementById("today6").value;
+
+function convertDateFormat(date) {
+          return date.toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
+      }
+        var now = new Date();
+        var today1 = convertDateFormat(new Date());
+        var today2 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        var today3 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        var today4 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        var today5 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        var today6 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["2022-01-01","2022-01-02","2022-01-03","2022-01-04","2022-01-05","2022-01-06",],
+    labels: [today6,today5,today4,today3,today2,today1],
     datasets: [{
       label: "day",
       lineTension: 0.3,
@@ -20,7 +37,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBackgroundColor: "rgba(2,117,216,1)",
       pointHitRadius: 50,
       pointBorderWidth: 2,
-      data: [10000, 30162, 26263, 18394, 18287, 28682],
+      data: [to4, to3, to2, to1, 18287, 28682],
     }],
   },
   options: {
@@ -39,7 +56,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 40000,
+          max: 200000,
           maxTicksLimit: 5
         },
         gridLines: {

@@ -188,7 +188,7 @@
 									<tr>
 										<th scope="row" style="font-size:18px;">Actor Birth</th>
 										<td>
-											<input type="hidden" id="actorBirth" name="movie_actor_birth" style="border-radius: 7px; height: 27px;width: 20%;"">
+											<input type="hidden" id="actorBirth" name="movie_actor_birth" style="border-radius: 7px; height: 27px;width: 20%;">
 											<select class="actorYear" id="actorYY"  style="border-radius: 7px; width: 22%; height: 27px;">
 												<option class="optionYY" >년</option>
 												<c:forEach var="i" begin="1880" end="2022">

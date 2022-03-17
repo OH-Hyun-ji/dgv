@@ -11,10 +11,11 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/movieChart.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">    
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery.twbsPagination.js"></script>
  	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-  
-</head>
+
+
 <script type="text/javascript">
 	function reservePage(movieNum){
 		var form = document.createElement('form');
@@ -29,7 +30,19 @@
 		document.body.appendChild(form)
 		form.submit()	
 	}
+	$(function(){
+// 		$(".pageInfo a").on("click",function(e){
+// 			alert("fg")
+// 			alert($("input[name='amount']").val())
+// 			e.preventDefault();
+// 		//	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+// 			moveForm.attr("action","/movie/user_movie_movieChart");
+// 			moveForm.submit();
+// 		});
+	})
 </script>
+</head>
+
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
     <!--본격 콘텐츠-->
@@ -42,10 +55,13 @@
                     <div class="submenu">
                         <ul>
                             <li class="on">
-                                <a href="movieChart.do" title="선택">무비차트</a>
+                                <a href="movieChart.do" >무비차트</a>
                             </li>
                             <li>
-                                <a href="#">상영예정작</a>
+                                <a href="/yetMovie.do">상영예정작</a>
+                            </li>
+                            <li>
+                                <a href="/endMovie.do">상영종료작</a>
                             </li>
                         </ul>
                     </div>
@@ -80,7 +96,12 @@
                                     </strong>
                                 </span>
 	                               <span class="like" style=" text-align-last: center;">
-										<button class="w-btn w-btn-gra3 w-btn-gra-anim"style="padding: 9px 8px; box-shadow: none;" onclick="reservePage(${movieList.movie_num})">예매하기</button>
+	                               		<c:if test="${movieList.movie_status != 'true'}">	                               			
+											<button disabled="disabled" id="disable" onclick="reservePage(${movieList.movie_num})">예매하기</button>
+                                		</c:if>
+                                		<c:if test="${movieList.movie_status == 'true'}">
+											<button class="w-btn w-btn-gra3 w-btn-gra-anim"style="padding: 9px 8px; box-shadow: none;" onclick="reservePage(${movieList.movie_num})">예매하기</button>
+                                		</c:if>
                                 </span>
                             </div>
                             
@@ -90,8 +111,35 @@
                     </ol>
                 </div>
             </div>
-        </div>
+            <!-- 페이징 -->
+<!-- 			<nav style="text-align: center;" > -->
+<!-- 				<ul class="pagination"  id="pagination"> -->
+
+<!-- 				</ul> -->
+<!-- 			</nav> -->
+		
+		<div class="page-info-wrap">
+			<div class="page-info-area" >
+				<ul id="pageInfo" class="pageInfo">
+					<c:if test="${pageMake.prev}">
+							<li class="pageInfo-btn previous" ><a href="${pageMake.startPage-1}">Previous</a></li>
+					</c:if>
+					<c:forEach var="num" begin="${pageMake.startPage}" end="${pageMake.endPage}">
+						<li class="pageInfo_btn ${pageMake.cri.pageNum == num ? "active":""}"><a href="${url}?pageNum=${num }&amount=${pageMake.cri.amount }">${num}</a></li>
+					</c:forEach>
+					<c:if test="${pageMake.next}">
+						<li class="pageInfo_btn next"><a href="${pageMake.endPage + 1}">Next</a></li>
+					</c:if>
+				</ul>
+			</div>		
+		</div>
+		</div>
     </div>
+		<form id="movieForm" method="get">
+			<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">
+			<input type="hidden" name="amount" value="${pageMake.cri.amount }">
+		</form>
    <jsp:include page="../default/user_footer.jsp"></jsp:include>
+
 </body>
 </html>

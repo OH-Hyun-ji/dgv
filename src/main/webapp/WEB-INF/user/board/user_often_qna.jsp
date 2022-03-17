@@ -32,7 +32,9 @@
 							const faqList = JSON.parse(result)
 							test =this
 							console.log("길이 : "+faqList.length)
+							var count =0;
 							_(faqList).forEach(function(n){
+								
 								const td = $("<td>")
 								const td1 =$("<td>")
 								const td2 =$("<td>")									
@@ -43,7 +45,8 @@
 								const td3 =$("<td>")
 								const tr =$("<tr>")
 								console.log("faq_num : "+n.faq_num)
-								td.text(n.faq_num)
+								console.log("count : "+count)
+								td.text(count+1)
 								console.log("td :" + td.text() )
 								td1.text(n.kind_name)
 								a.text(n.faq_title)
@@ -53,7 +56,7 @@
 								tr.append(td1)
 								tr.append(td2)
 								tr.append(td3)
-														
+								count++;						
 								$(".clean-list").append(tr)
 							})			
 						}
