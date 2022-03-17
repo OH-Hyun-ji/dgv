@@ -44,5 +44,8 @@ public interface UserService {
 	
 	int userDetail(UserDetailVO vo);
 	
+	//아이디 찾기
+	UserVO findId(UserVO userVO);
+	
 
 }

@@ -79,4 +79,9 @@ public class UserDAO {
 	public int userDetail(UserDetailVO vo) {
 		return sqlSessionTemplate.insert("UserDAO.userDetail", vo);
 	}
+	
+	// 아이디 찾기
+	public UserVO findId(UserVO vo) {
+		return sqlSessionTemplate.selectOne("UserDAO.findId", vo);
+	}
 }

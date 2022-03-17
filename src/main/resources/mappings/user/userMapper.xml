@@ -67,8 +67,13 @@
        		INSERT INTO user_info_detail(user_num,user_rank,user_point,user_img,user_agree)
        		VALUES(#{user_num},DEFAULT,DEFAULT,DEFAULT,DEFAULT)
        </insert>
+       
        <select id="userNumSelect" resultType="UserVO">
        		SELECT * FROM user_info WHERE user_id = #{user_id}
+       </select>
+       
+       <select id="findId" resultType="UserVO" parameterType="UserVO">
+       		SELECT user_id FROM user_info WHERE user_email = #{user_email}
        </select>
     
 	</mapper>
