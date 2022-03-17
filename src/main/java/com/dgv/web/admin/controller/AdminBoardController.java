@@ -1,32 +1,15 @@
 package com.dgv.web.admin.controller;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
+import java.sql.Date;
 import java.text.DecimalFormat;
-import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
-
-
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,11 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import com.amazonaws.http.HttpResponse;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
@@ -47,7 +25,7 @@ import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserReserveVO;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.format.DataFormatDetector;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.siot.IamportRestClient.IamportClient;
@@ -86,6 +64,7 @@ public class AdminBoardController {
 				reserveVo.setMovie_title(movieVo.getMovie_title());
 				String price = formatter.format(reserveVo.getReserve_price());
 				reserveVo.setFomatter_price(price);
+				
 			}
 		model.addAttribute("paymentList",paymentList);
 		return "/board/admin_payment_details";
@@ -215,7 +194,85 @@ public class AdminBoardController {
 	}
 	
 	@RequestMapping("/adminChart.mdo")
-	public String adminChart() {
+	public String adminChart(UserReserveVO vo,Model model) {
+		// 일별 매출 통계
+		Calendar cal = Calendar.getInstance();
+		String format= "yyyy-MM-dd";
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+	
+//		String date = sdf.format(cal.getTime());
+//		Date d= Date.valueOf(date);
+//		System.out.println(d);	
+//		vo.setReserve_date(d);
+//		int today1 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today1",today1);
+//		
+//		cal.add(cal.DATE, -1);
+//		String date2 = sdf.format(cal.getTime());
+//		Date d2 =Date.valueOf(date2);
+//		System.out.println(d2);
+//		vo.setReserve_date(d2);
+//		int today2 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today2",today2);
+//		
+//		cal.add(cal.DATE, -1);
+//		String date3 = sdf.format(cal.getTime());
+//		Date d3 =Date.valueOf(date3);
+//		System.out.println(d3);
+//		vo.setReserve_date(d3);
+//		int today3 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today3",today3);
+//		
+//		cal.add(cal.DATE, -1);
+//		String date4 = sdf.format(cal.getTime());
+//		Date d4 =Date.valueOf(date4);
+//		System.out.println(d4);
+//		vo.setReserve_date(d4);
+//		int today4 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today4",today4);
+//		
+//		cal.add(cal.DATE, -1);
+//		String date5 = sdf.format(cal.getTime());
+//		Date d5 =Date.valueOf(date5);
+//		System.out.println(d5);
+//		vo.setReserve_date(d5);
+//		int today5 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today5",today5);
+		
+//		cal.add(cal.DATE, -1);
+//		String date6 = sdf.format(cal.getTime());
+//		Date d6 =Date.valueOf(date6);
+//		System.out.println(d6);
+//		vo.setReserve_date(d6);
+//		int today6 = adminMovieService.areaChart(vo);
+//		model.addAttribute("today6",today6);
+//////////////////////////////////////////////////////////////////////
+		//월별 매출 통계
+		
+		Calendar month =Calendar.getInstance();
+		String fot = "yyyy-MM-dd";
+		SimpleDateFormat sd = new SimpleDateFormat(fot);
+		
+		String mon1 = sd.format(month.getTime());
+		Date m1 =Date.valueOf(mon1);
+		System.out.println(m1);
+	//	vo.setStart_day(d);
+	//	int month1 = adminMovieService.areaChart(vo);
+		System.out.println(m1);
+	//	model.addAttribute("month1",month1);
+		
+		month.add(month.MONTH, -1);
+		String mon2 = sd.format(month.getTime());
+		Date m2 =Date.valueOf(mon2);
+		System.out.println("ddd :"+ m2);
+	//	vo.setReserve_date(m2);
+		month.add(month.DATE, 30);
+	//	int month2 = adminMovieService.areaChart(vo);
+	//	model.addAttribute("month2",month2);
+		System.out.println("ddd k :"+ m2);
+		
+		
+		
 		return "/movie/admin_movie_chart";
 	}
 	

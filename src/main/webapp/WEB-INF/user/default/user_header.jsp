@@ -27,8 +27,8 @@
                		 </li>
 	               </c:if>	               
 	                <c:if test="${!empty userID}">
-	                  	<li style="width: 107px;padding-right: 35px;">	
-	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;" href="/logout.do">${userID}님<br> Logout</a></span>
+	                  	<li id="user-id-style" style="width: 107px;padding-right: 35px;">	
+	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;font-size: 18px;" href="/logout.do">${userID}님<br> Logout</a></span>
 		                </li>
 	                </c:if>
 <!-- ///////////////////////////////////////////// -->
@@ -178,14 +178,9 @@
 						</dt>
 						<dd>
 							<h2>
-								<a href="/seatReservation.do">빠른예매</a>
+								<a href="/movieReserve.do">빠른예매</a>
 							</h2>
-						</dd>
-						<dd>
-							<h2>
-								<a href="#">상영스케줄</a>
-							</h2>
-						</dd>
+						</dd>					
 					</dl>
 				</li>
 				<li>

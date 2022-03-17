@@ -269,19 +269,31 @@
          });//생년월일 "년" 확인 메서드 끝  
          
         
-  
+  	$("#termCheckInfo").on('click',function(){
+  		window.name ="parentForm"
+  		window.open('termPage.do','childForm','width=600 height=800')
+  	})
+  	
       
-   
    });
    
    // 회원가입 최종조건 검증
    // 약관동의 체크 여부
+		console.log("dddsss : " +	$("#userRealCheck").val())
+  	if($("#userRealCheck").val() === 'true'){
+  		alert("오나요 ")
+  		$('input:checkbox[id="userTerm"]').removeAttr('disabled')
+  		$('input:checkbox[id="userTerm"]').prop("checked",true)
+  	}
    function checkAll(){
+
       const termCheck = $('input:checkbox[id="userTerm"]').is(":checked") ==true;
       console.log("동의 :? " +termCheck)
       
       if(termCheck != true ){
-         alert('약관동의 체크해주세요')
+         alert('약관확인을 클릭해주세요')
+         
+         
       }else{
         if(chk1 && chk2 && chk3 && chk4 && chk5 && chk6 && chk7 &&termCheck){
           alert("회원가입 성공!!")
@@ -400,12 +412,11 @@
                      <div style="text-align: center;"><span id="emailCK"></span></div>
             </div>
             <div style=" text-align: center;">
-                <input type="checkbox" id="userTerm" name="user_term" value="OK">
+            	<input type="hidden" id="userRealCheck"  >
+                <input type="checkbox" id="userTerm" disabled="disabled" name="user_term" value="OK">
                 <span style="color: orange;">약관동의여부</span>
-            </div>
-            <div style="display: flex; justify-content: space-evenly;">
-               <a id="findId" href="#">ID 찾기 ></a>
-               <a id="findPw" href="#">PW 찾기 ></a>
+                <span id="termCheckInfo" style="color: orange;cursor: pointer;" >[약관확인]</span>>
+            	<span id=""term-CK"></span>
             </div>
             <input class="w-btn w-btn-gra3 w-btn-gra-anim sign-up-font"  id="joinBtn" onclick="checkAll()" value="Register" >            
                 </div>

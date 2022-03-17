@@ -22,6 +22,8 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.PageVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserVO;
@@ -37,7 +39,10 @@ public class UserMovieController {
 	private AdminMovieService adminMovieService;
 	
 	@RequestMapping("/artHouse.do")
-	public String artHouse() {
+	public String artHouse(Model model) {
+		List<AdminMovieVO> artHouseList = userBoardService.userArtHouseList();
+		
+		model.addAttribute("artHouseList",artHouseList);
 		return "/movie/user_movie_artHouse";
 	}
 	
@@ -89,9 +94,11 @@ public class UserMovieController {
 		
 	}
 	
-	@RequestMapping("/movieChart.do")
-	public String movieChart(Model model) {
-		List<AdminMovieVO> movieList = adminMovieService.movieList();
+	@RequestMapping("/endMovie.do")
+	public String endMovie(Model model,Criteria cri) {
+		int total = userBoardService.endTotal();
+		cri.setAmount(userBoardService.getTotal());
+		List<AdminMovieVO> movieList =  adminMovieService.endMovie(cri); 
 		List<AdminAgeVO> ageList = adminMovieService.ageList();
 		for(AdminMovieVO movieVo: movieList) {
 			for(AdminAgeVO ageVo:ageList) {
@@ -100,9 +107,57 @@ public class UserMovieController {
 				}
 			}
 		}
+		PageVO pageMake = new PageVO(total, cri);
+		model.addAttribute("pageMake",pageMake);
+		model.addAttribute("url","/yetMovie.do");
 		model.addAttribute("movieList",movieList);
+
 		return "/movie/user_movie_movieChart";
 	}
+	
+	@RequestMapping("/yetMovie.do")
+	public String yetMovie(Model model,Criteria cri) {
+		int total = userBoardService.yetTotal();
+		cri.setAmount(userBoardService.getTotal());
+		List<AdminMovieVO> movieList =  adminMovieService.yetMovie(cri); 
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		for(AdminMovieVO movieVo: movieList) {
+			for(AdminAgeVO ageVo:ageList) {
+				if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
+					movieVo.setAge_name(ageVo.getMovie_age_name());
+				}
+			}
+		}
+		PageVO pageMake = new PageVO(total, cri);
+		model.addAttribute("pageMake",pageMake);
+		model.addAttribute("url","/yetMovie.do");
+		model.addAttribute("movieList",movieList);
+		
+		return "/movie/user_movie_movieChart";
+	}
+	
+	
+	@RequestMapping("/movieChart.do")
+	public String movieChart(Model model,Criteria cri) {
+		List<AdminMovieVO> movieList =  adminMovieService.continueMovie(cri); 
+		List<AdminAgeVO> ageList = adminMovieService.ageList();
+		for(AdminMovieVO movieVo: movieList) {
+			
+			for(AdminAgeVO ageVo:ageList) {
+				if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
+					movieVo.setAge_name(ageVo.getMovie_age_name());
+				}
+			}
+		}
+		int total = userBoardService.continueTotal();
+		PageVO pageMake = new PageVO(total, cri);
+		model.addAttribute("pageMake",pageMake);
+		model.addAttribute("url","/movieChart.do");
+		model.addAttribute("movieList",movieList);
+
+		return "/movie/user_movie_movieChart";
+	}
+	
 	@RequestMapping("/movieDetail.do")
 	public String movieDetail(@RequestParam("movie_num") int num,Model model) {
 		

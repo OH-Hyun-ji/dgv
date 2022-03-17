@@ -388,9 +388,11 @@ div#myPage-movie-list {
 }
 
 .myPage-movie-list .swiper-wrapper .swiper-slide .movie-info-wrap {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
+    justify-content: center;
 }
+ 
 .myPage-movie-list .swiper-wrapper .swiper-slide .movie-info-wrap .movie-name {
     display: block;
     flex-basis: 100%;

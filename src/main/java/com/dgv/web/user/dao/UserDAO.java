@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserVO;
@@ -78,5 +79,18 @@ public class UserDAO {
 	}
 	public int userDetail(UserDetailVO vo) {
 		return sqlSessionTemplate.insert("UserDAO.userDetail", vo);
+	}
+
+	
+	// 아이디 찾기
+	public UserVO findId(UserVO vo) {
+		return sqlSessionTemplate.selectOne("UserDAO.findId", vo);
+
+	public List<AdminTermVO> userTermList(){
+		return sqlSessionTemplate.selectList("UserDAO.userTermCheck");
+	}
+	public AdminTermVO userTermInfo(AdminTermVO vo) {
+		return sqlSessionTemplate.selectOne("UserDAO.userTermInfo",vo);
+
 	}
 }

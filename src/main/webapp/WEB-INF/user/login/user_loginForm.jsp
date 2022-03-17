@@ -52,7 +52,8 @@ function loginWithKakao() {
 						}
 					},
 					error: function(e) {
-						console.log(e);
+						alert("등록되지 않은 아이디입니다. 회원가입을 먼저 진행해주세요.")
+						location.href='/join.do';
 					}
 				})//ajax close
 
@@ -94,7 +95,11 @@ function loginWithKakao() {
 			}
 		}); //ajax close()
 		
-		
+			
+	}
+	
+	function findId() {
+		window.open('/find_id.do','','width=600 height=500')
 	}
 </script>
 <style type="text/css">
@@ -145,6 +150,8 @@ input#thisLogin {
 				<div class="sort1">
 					<input type="checkbox" id="checkSaveId" name="useCookie"> <span
 						style="color: white;">아이디 저장</span>
+					<a onclick="findId()" style="color: white; cursor: pointer;" >/ 아이디 찾기</a>
+					<a href="/#" style="color: white; cursor: pointer;">/ 비밀번호 찾기</a>
 				</div>
 				</div>
 				<div class="action-button"  style="display: flex;">

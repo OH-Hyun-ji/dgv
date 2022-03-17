@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
@@ -18,13 +19,19 @@ import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
+import com.dgv.web.user.controller.Pagination;
+import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.SearchVO;
+import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
+import com.dgv.web.user.vo.UserVO;
 
 @Repository
 public class UserBoardDAO {
@@ -150,5 +157,72 @@ public class UserBoardDAO {
 	
 	public int userReserveInsert(UserReserveVO reserveVo) {
 		return sqlSessionTemplate.insert("UserMovieDAO.userReserveInsert", reserveVo);
+	}
+	
+	public List<UserReserveVO> userReserveMyPage(String id){
+		return sqlSessionTemplate.selectList("UserMovieDAO.userReserveMyPage", id);
+	}
+	public List<UserReserveVO> userReserveSeatStatus(UserReserveVO vo) {
+		return sqlSessionTemplate.selectList("UserMovieDAO.userReserveSeatStatus", vo);
+	}
+	
+	public int UpdateReserveStatus(UserReserveVO vo) {
+		return sqlSessionTemplate.update("UserMovieDAO.UpdateReserveStatus", vo);
+	}
+	
+	public List<AdminMovieVO> userArtHouseList(){
+		return sqlSessionTemplate.selectList("UserMovieDAO.userArtHouseList");
+	}
+	public UserVO communityUserInfo(String id) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.communityUserInfo",id);
+	}
+	
+	public List<UserCommunityVO> getCommunityList(SearchVO vo) throws Exception{
+		return sqlSessionTemplate.selectList("UserBoardDAO.getSearchList", vo);
+	}
+	
+	public int getCommunityCnt(SearchVO vo) throws Exception{
+		return sqlSessionTemplate.selectOne("UserBoardDAO.getCommunityCnt",vo);
+	}
+	public List<AdminMovieVO> myPaging(Criteria cri){
+		return sqlSessionTemplate.selectList("UserBoardDAO.myPagingMovie", cri);
+	}
+	public int getTotal() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.getTotal");
+	}
+	public int communityCountView(int num) {
+		return sqlSessionTemplate.update("UserBoardDAO.communityCountView",num);
+	}
+	public int CommentInsert(UserCommentVO vo) {
+		return sqlSessionTemplate.insert("UserBoardDAO.CommentInsert",vo);
+	}
+	public List<UserCommentVO> commentSelect(int num){
+		return sqlSessionTemplate.selectList("UserBoardDAO.commentSelect",num);
+	}
+	
+
+	public List<AdminEventVO> eventList(){
+		return sqlSessionTemplate.selectList("UserBoardDAO.eventList");
+
+	}
+	public UserVO userNumSelect(String id) {
+		return sqlSessionTemplate.selectOne("UserDAO.userNumSelect",id);
+	}
+
+	public List<UserReserveVO> userIdMovieReserveList(String id){
+		return sqlSessionTemplate.selectList("UserMovieDAO.userIdMovieReserveList", id);
+
+	}
+	
+	public int continueTotal() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.continueTotal");
+	}
+	
+	public int endTotal() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.endTotal");
+	}
+	
+	public int yetTotal() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.yetTotal");
 	}
 }

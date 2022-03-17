@@ -2,8 +2,11 @@ package com.dgv.web.user.controller;
 
 import static org.junit.Assert.assertThat;
 
+import java.awt.Window;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
@@ -67,7 +70,7 @@ public class UserLoginController {
 			UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
 			RequestUtils.setUserId(vo.getUser_id());
 			RequestUtils.setUserEmail(vo.getUser_email());
-			
+			RequestUtils.getUserId("userID");
 			if(detailVo.getUser_img().length() > 3 ) {
 				RequestUtils.setUserImg(detailVo.getUser_img());		
 			}else {
@@ -106,10 +109,26 @@ public class UserLoginController {
 	
 		if(userVo.getUser_email().equals(vo.getUser_email())) {
 			System.out.println(userVo.getUser_email()+" 와 "+vo.getUser_email()+"는 같다.");
-			UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
-			
+			UserDetailVO detailVo = userService.userDetailVo(userVo.getUser_num());
+			if(detailVo.getUser_img().length() > 3 ) {
+				RequestUtils.setUserImg(detailVo.getUser_img());		
+			}else {
+				RequestUtils.setUserImg("0");
+			}
+			if(detailVo.getUser_rank().length() >2) {
+				AdminRankVO rankVo = adminUserService.rankNameSelect(detailVo.getUser_rank());
+				detailVo.setRank_img(rankVo.getRank_img());
+				RequestUtils.setRankImg(detailVo.getRank_img());
+				RequestUtils.setRankName(detailVo.getUser_rank());
+				System.out.println(detailVo.getRank_img());
+				System.out.println(detailVo.getUser_rank());
+			}else {
+				RequestUtils.setRankImg("0");
+				RequestUtils.setRankName("0");
+			}
 			//session.setAttribute("userID", userVo.getUser_id());
 			RequestUtils.setUserId(userVo.getUser_id());
+			RequestUtils.setUserEmail(userVo.getUser_email());
 			RequestUtils.getUserId("userID");
 			
 			return CommonResultDto.success();
@@ -125,6 +144,26 @@ public class UserLoginController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return"redirect:loginForm.do";
+	}
+	
+	
+	// 아이디 찾기
+	@PostMapping("/find_userId.do")
+	@ResponseBody
+	public String findId(@RequestBody UserVO userVO) {
+		System.out.println("email :" + userVO.getUser_email());
+		UserVO vo = userService.findId(userVO);
+		Gson gson = new Gson();
+		
+		String userId = gson.toJson(vo);
+		
+		return userId;
+	}
+	
+	@RequestMapping("/find_id.do")
+	public String findId() {
+		
+		return "/login/user_find_id";
 	}
 	
 }

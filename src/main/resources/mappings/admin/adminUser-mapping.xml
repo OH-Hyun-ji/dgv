@@ -4,9 +4,10 @@
 
 <resultMap type="UserDetailVO" id="UserDetailVO">
 		<result column="user_num" property="user_num" jdbcType="INTEGER"/>
-		<result column="user_id" property="user_id" jdbcType="VARCHAR"/>		
-		<result column="user_rank" property="user_rank" jdbcType="VARCHAR"/>		
-		<result column="user_point" property="user_point" jdbcType="VARCHAR"/>		
+		<result column="user_point" property="user_point" jdbcType="INTEGER"/>
+		<result column="user_rank" property="user_rank" jdbcType="VARCHAR"/>
+		<result column="user_img" property="user_img" jdbcType="VARCHAR" />
+		<result column="user_agree" property="user_agree" jdbcType="VARCHAR"/>	
 </resultMap>
 <resultMap type="UserVO" id="UserVO">
 	<result column="user_num" property="user_num" jdbcType="INTEGER"/>
@@ -23,8 +24,7 @@
 </resultMap>
 
 	<select id="UserList" resultMap="UserVO">
-		SELECT u.user_num, u.user_id, u.user_name, u.user_phone, u.user_email,d.user_rank,d.user_point
-		FROM user_info u  FULL JOIN user_info_detail d ON u.user_num = d.user_num;
+		SELECT * FROM user_info ui FULL JOIN user_info_detail uid ON ui.user_num = uid.user_num
 	</select>
 	
 	<delete id="UserDelete" parameterType="UserVO">

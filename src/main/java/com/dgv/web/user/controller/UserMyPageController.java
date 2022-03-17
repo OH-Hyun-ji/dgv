@@ -1,5 +1,7 @@
 package com.dgv.web.user.controller;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +20,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dgv.web.admin.config.RequestUtils;
+import com.dgv.web.admin.service.AdminMovieService;
+import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.service.FileUploadService;
+import com.dgv.web.admin.vo.AdminAgeVO;
+import com.dgv.web.admin.vo.AdminMovieVO;
+import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.CommonResultDto;
+import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserDetailVO;
+import com.dgv.web.user.vo.UserMapVO;
+import com.dgv.web.user.vo.UserReserveVO;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -33,10 +43,16 @@ public class UserMyPageController {
    
    @Autowired
    private UserService userService;
-
+   @Autowired
+   private UserBoardService userBoardService;
+   
+   @Autowired
+   private AdminMovieService adminMovieService;
+   
    @Autowired
    private FileUploadService fileUploadService;
    
+  
    @PostMapping("/userMyPageTopInfo.do")
    @ResponseBody
    public String userMyPageTopInfo(@RequestBody UserVO vo,Model model) {
@@ -89,7 +105,27 @@ public class UserMyPageController {
    }
    
    @RequestMapping("/myPage_reserve.do")
-   public String myPage_reserve(Model model,HttpServletRequest request) {
+   public String myPage_reserve(Model model) {
+	   	String userId=RequestUtils.getUserId("userID");
+	     List<UserReserveVO> userReserveList = userBoardService.userReserveMyPage(userId);
+	  
+	     DecimalFormat formatter =new DecimalFormat("###,###,###");
+	     
+	     for(UserReserveVO userReserveVO :userReserveList) {
+	    	 AdminMovieVO movieVo = userBoardService.movieList(userReserveVO.getMovie_num());
+	    	 userReserveVO.setMovie_title(movieVo.getMovie_title());
+	    	 String price = formatter.format(userReserveVO.getReserve_price());
+	    	 userReserveVO.setFomatter_price(price);
+	     }
+	     model.addAttribute("userReserveList",userReserveList);
+	     
+	     List<AdminMovieVO> movieList = adminMovieService.movieList();
+	  
+	     for(AdminMovieVO movieVo:movieList) {
+	    	 AdminAgeVO ageVO = adminMovieService.ageListInfo(movieVo.getMovie_age_code());
+	    	 movieVo.setAge_img(ageVO.getMovie_age_img());
+	     }
+	     model.addAttribute("movieList",movieList);
 	     
       return "/myPage/user_myPage_reserve";
    }
@@ -108,6 +144,41 @@ public class UserMyPageController {
    @RequestMapping("/myPage_checkData.do")
    public String myPage_checkData() {
       return "/myPage/user_myPage_checkData";
+   }
+   
+   @RequestMapping("/myPage_userMovie.do")
+   public String myPage_userMovie(Model model) {
+	   String userId = RequestUtils.getUserId("userID");
+	   
+	   List<UserReserveVO> myMovieList = userBoardService.userIdMovieReserveList(userId);
+	   
+	   for(UserReserveVO reserveVo : myMovieList) {
+		   AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
+		   reserveVo.setMovie_title(movieVo.getMovie_title());
+		   reserveVo.setMovie_title_en(movieVo.getMovie_title_en());
+		   reserveVo.setMovie_img(movieVo.getMovie_img()); 
+		   
+		   AdminTheaterVO theaterVo = userBoardService.theaterListInfo(reserveVo.getTheater_code());
+		   reserveVo.setTheater_name(theaterVo.getTheater_name());
+		   
+		   UserMapVO mapVo = userBoardService.mapList(theaterVo.getRegion_code());
+		   reserveVo.setRegion_name(mapVo.getMap_name());
+		   
+		   int total = reserveVo.getReserve_basic()+reserveVo.getReserve_student()+reserveVo.getReserve_old();
+		   reserveVo.setTotal_people(total);
+		    
+		   AdminAgeVO ageVo = adminMovieService.ageListInfo(movieVo.getMovie_age_code());
+		   reserveVo.setAge_name(ageVo.getMovie_age_name());
+	   }
+	   
+	  
+	   
+	   
+	   
+	   model.addAttribute("myMovieList",myMovieList);
+	   model.addAttribute("myMovieListCount",myMovieList.size());
+	   
+      return "/myPage/user_myPage_userMovie";
    }
    
    // 객체 생성, 주입

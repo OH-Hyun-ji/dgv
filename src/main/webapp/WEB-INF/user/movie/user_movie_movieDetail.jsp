@@ -228,7 +228,7 @@
                         "기본정보"
                     </h3>
                     <div class="box-image">
-                        <a href="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_1000.jpg" title="포스터 크게 보기 새창" target="_blank">
+                        <a href="${movieList.movie_img}" title="포스터 크게 보기 새창" target="_blank">
                             <span class="thumb-image"> 
                                 <img src="${movieList.movie_img}" alt="${movieList.movie_title }" onerror="errorImage(this)">
                                 <span class="ico-posterdetail">포스터 크게 보기</span>                             

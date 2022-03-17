@@ -58,7 +58,7 @@
 		VALUES(DEFAULT,#{movie_num},#{movie_group_code},#{movie_actor_code},#{reg_id},current_date)
 	</insert>
 	<select id="MovieList" resultType="AdminMovieVO">
-		SELECT * FROM movie_info
+		SELECT * FROM movie_info order by movie_num asc
 	</select>
 	
 	<insert id="InsertMovie" useGeneratedKeys="true" keyProperty="movie_num" parameterType="AdminMovieVO">
@@ -79,13 +79,16 @@
 		INSERT INTO movie_time(movie_time_code,region_code,theater_code,movie_time_start)
 		VALUES(DEFAULT,#{region_code},#{theater_code},#{movie_time_start})
 	</insert>
+	
 	<insert id="InsertSeat" parameterType="AdminSeatVO">
 		INSERT INTO movie_seat(seat_code,region_code,seat_status,theater_code,seat_reservation)
 		VALUES(DEFAULT,#{region_code},#{seat_status},#{theater_code},#{seat_reservation})
 	</insert>
+	
 	<select id="TimeList" resultType="AdminTimeVO">
 		SELECT * FROM movie_time WHERE region_code =#{region_code}		
 	</select>
+	
 	<select id="TimecheckList" resultType="int">
 		SELECT COUNT(*) FROM movie_time WHERE theater_code =#{theater_code}		
 	</select>
@@ -98,5 +101,41 @@
 		SELECT COUNT(*) FROM movie_map WHERE map_name=#{map_name}
 	</select>
 	
+	<select id="areaChart" resultType="int">
+		SELECT sum(reserve_price) FROM movie_reserve WHERE reserve_date=#{reserve_date}
+	</select>
 	
+	<select id="areaBarChart" resultType="int">
+		SELECT sum(reserve_price) FROM movie_reserve WHERE reserve_date between #{start_day} AND #{end_day}
+	</select>
+	<update id="StatusChange">
+		UPDATE movie_info SET movie_status = #{movie_status} WHERE movie_num = #{movie_num}  
+	</update>
+	<select id="continueMovie" resultType="AdminMovieVO">
+		<![CDATA[
+			select*from(
+					select *,(row_number() over()) as rn1 from (
+								select *,(row_number() over()) as rn from movie_info)as foo where rn <= #{pageNum} * #{amount})
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='true' ORDER BY movie_num asc
+		]]>
+	</select>
+	<select id="endMovie" resultType="AdminMovieVO">
+		<![CDATA[
+			select*from(
+					select *,(row_number() over()) as rn1 from (
+								select *,(row_number() over()) as rn from movie_info)as foo where rn <= #{pageNum} * #{amount})
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='false' ORDER BY movie_num asc
+		]]>
+	</select>
+	<select id="yetMovie" resultType="AdminMovieVO">
+		<![CDATA[
+			select*from(
+					select *,(row_number() over()) as rn1 from (
+								select *,(row_number() over()) as rn from movie_info)as foo where rn <= #{pageNum} * #{amount})
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='yet' ORDER BY movie_num asc
+		]]>
+	</select>
+	<delete id="deleteMovie" parameterType="AdminMovieVO">
+		DELETE FROM movie_info WHERE movie_num =#{movie_num}
+	</delete>
 </mapper>

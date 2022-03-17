@@ -17,7 +17,13 @@
 			                    
 		       location.href='/sokdakRegister.do'
 			})
+			$("#noClick").on('click',function(){
+				alert("로그인후 이용해주세요")
+				location.href='loginForm.do'
+			})
+		
 		})
+		
 	</script>
 </head>
 <body>
@@ -26,13 +32,23 @@
 		<div class="sokdak-header">
 			<div class="sokdak-sokdak">
 				<h1><span class="sokdak-header-title">커뮤니티</span></h1>
-				<button class="sokdak-writer" id="writePage"><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i><span class="buttonName">작성하기</span></button>
+				<c:if test="${!empty userID }">
+					<button class="sokdak-writer" id="writePage"><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i><span class="buttonName">작성하기</span></button>
+				</c:if>			
+				<c:if  test="${empty userID }">
+					<button class="sokdak-writer" id="noClick" ><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i><span class="buttonName">작성하기</span></button>
+				</c:if>
 			</div>
 			<div class="sokdak-search-wrap">
 				<label class="sokdak-search-img">
 					<i class="fas fa-search"></i>
 				</label>
-				<input class="sokdak-search" placeholder="궁금한 내용을 찾아보세요">
+				<select name="searchType" id="searchType">
+					<option value="community_title">제목</option>
+					<option value="community_text">본문</option>
+					<option value="user_id" >작성자</option>
+				</select>
+				<input class="sokdak-search" onkeypress="enterKey(event)" name="keyword" id="keyword" placeholder="궁금한 내용을 찾아보세요">
 			</div>
 		</div>
 		<div class="sokdak-dgv-total">
@@ -66,9 +82,16 @@
 									<div class="sokdak-date">${communityList.write_date}</div>		
 								</c:if>
 								<div class="sokdak-user-img">
-									<img
-										style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;"
-										src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg">
+									<c:if test="${communityList.user_img == '0' }">
+										<img
+											style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;"
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg">
+									</c:if>
+									<c:if test="${communityList.user_img != '0' }">
+										<img 
+											style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;"
+											src="${communityList.user_img}">
+									</c:if>							
 								</div>
 							</div>
 						</button>
@@ -88,5 +111,19 @@
 		</div>
 	</div>
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>
+	<script type="text/javascript">
+	function enterKey(e){
+		if(e.keyCode == 13){
+			console.log("ddd : "+$("#searchType").val() )
+			e.preventDefault();
+			var url = "/board.do";
+			url =url+"?searchType="+$("#searchType").val();
+			url= url+"&keyword="+$("#keyword").val();
+			location.href = url;
+			console.log("url : "+url);
+		}
+		console.log("111 : "+$("#keyword").val())
+	}
+	</script>
 </body>
 </html>
