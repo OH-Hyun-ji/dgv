@@ -2,8 +2,11 @@ package com.dgv.web.user.controller;
 
 import static org.junit.Assert.assertThat;
 
+import java.awt.Window;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
@@ -141,6 +144,26 @@ public class UserLoginController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return"redirect:loginForm.do";
+	}
+	
+	
+	// 아이디 찾기
+	@PostMapping("/find_userId.do")
+	@ResponseBody
+	public String findId(@RequestBody UserVO userVO) {
+		System.out.println("email :" + userVO.getUser_email());
+		UserVO vo = userService.findId(userVO);
+		Gson gson = new Gson();
+		
+		String userId = gson.toJson(vo);
+		
+		return userId;
+	}
+	
+	@RequestMapping("/find_id.do")
+	public String findId() {
+		
+		return "/login/user_find_id";
 	}
 	
 }

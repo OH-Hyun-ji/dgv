@@ -98,6 +98,12 @@ public class UserServiceImpl implements UserService {
 		
 		return userDAO.userDetail(vo);
 	}
+	
+	// 아이디 찾기
+	@Override
+	public UserVO findId(UserVO vo) {		
+		return userDAO.findId(vo);
+	}
 
 	@Override
 	public List<AdminTermVO> userTermList() {
