@@ -196,14 +196,14 @@ a {
 input, select, img {
   vertical-align: middle;
 }
-.sect-evt-item-list li .evt-desc {
+.t li .evt-desc {
     min-height: 90px;
     padding-bottom: 17px;
     border: 1px solid #dddfe2;
     border-top: 0;
     width: 100%;
 }
-.sect-evt-item-list li .txt1 {
+.t li .txt1 {
   padding: 18px 11px 0 11px;
   height: 38px;
   vertical-align: top;
@@ -218,7 +218,7 @@ input, select, img {
   white-space: normal;
   letter-spacing: -1px;
 }
-.sect-evt-item-list li .txt2 {
+.t li .txt2 {
   color: #6a6f77;
   font-size: 13px;
   padding: 17px 11px 0 11px;

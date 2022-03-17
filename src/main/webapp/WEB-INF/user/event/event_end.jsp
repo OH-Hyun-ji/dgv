@@ -16,18 +16,7 @@
   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
   <script src="js/datatables-simple-demo.js"></script>
 </head>
-<style>
 
-.finishbox {
-    float: left;
-    width: 298px;
-    margin: 0 0 20px 20px;
-    border: 1px solid #d1d0ce;
-    border-top: 2px solid #333;
-    padding: 15px 20px;
-  
-    }
-    </style>
 <body>
 <jsp:include page="../default/user_header.jsp"></jsp:include>
   <!--본격 콘텐츠-->
@@ -35,10 +24,8 @@
 		<!-- Contents Area -->
 		<div class="event-board-wrap"> 
 		<jsp:include page="../default/user_event_header.jsp"></jsp:include>
-		<div class="cols-content" style="width: 100%;margin-top: -29px;margin-left: 0%;">
-			<div class="col-detail event" style=" width: 100%;">
 		
-			</div>
+			
 		</div>
 	</div>
 	</div>
