@@ -3,6 +3,7 @@ package com.dgv.web.user.service;
 import java.util.List;
 
 import com.dgv.web.admin.common.S3KeyVO;
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserVO;
@@ -44,5 +45,7 @@ public interface UserService {
 	
 	int userDetail(UserDetailVO vo);
 	
-
+	List<AdminTermVO> userTermList();
+	
+	AdminTermVO userTermInfo(AdminTermVO vo);
 }

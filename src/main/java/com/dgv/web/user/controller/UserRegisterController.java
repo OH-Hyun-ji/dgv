@@ -1,15 +1,20 @@
 package com.dgv.web.user.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserDetailVO;
@@ -103,6 +108,23 @@ public class UserRegisterController {
 	  
 	   }
 	   
+	   
+	   @RequestMapping("termPage.do")
+	   public String termPage(Model model) {
+		   List<AdminTermVO> termList = userService.userTermList();
+		   model.addAttribute("termList",termList);
+		   return "/join/user_term";
+	   }
+	   
+	   @PostMapping("termCheck.do")
+	   @ResponseBody
+	   public String termCheck(@RequestBody AdminTermVO vo) {
+		   AdminTermVO termVo = userService.userTermInfo(vo);
+		   
+		   Gson gson = new Gson();
+		   String termV = gson.toJson(termVo);
+		   return termV;
+	   }
 	   
 	   
 }

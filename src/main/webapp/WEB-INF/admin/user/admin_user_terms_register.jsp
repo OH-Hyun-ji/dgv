@@ -34,6 +34,8 @@
 					success:function(result){
 						if(result.msg=="SUCCESS"){
 							alert("약관 등록 완료^^");
+							window.opener.location.reload();
+							window.close()
 						}else{
 							alert("등록실패!! 다시 등록해주세요!!")
 						}					

@@ -71,5 +71,14 @@
        		SELECT * FROM user_info WHERE user_id = #{user_id}
        </select>
     
+    	<select id="userTermCheck" resultType="AdminTermVO">
+    		SELECT * FROM term_info WHERE term_status ='true';
+    	</select>
+    	
+    	<select id="userTermInfo" resultType="AdminTermVO">
+    		SELECT * FROM term_info WHERE term_status ='true' AND term_num = #{term_num};
+    	</select>
+    	
+    	
 	</mapper>
       
