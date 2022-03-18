@@ -21,7 +21,7 @@ public class UserVO {
 	private List<UserDetailVO> detailVO;
 	private String user_rank;
 	private Integer user_point;
-	
+	private String user_auth;
 	
 
 	

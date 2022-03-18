@@ -116,5 +116,17 @@ public class UserServiceImpl implements UserService {
 		
 		return userDAO.userTermInfo(vo);
 	}
+	
+	// 비밀번호 찾기
+	@Override
+	public UserVO selectMember(String userVO) {		
+		return userDAO.selectMember(userVO);
+	}
+	
+	// 새 비밀번호 설정
+	@Override
+	public int newPassword(UserVO vo) {
+		return userDAO.newPassword(vo);
+	}
 
 }

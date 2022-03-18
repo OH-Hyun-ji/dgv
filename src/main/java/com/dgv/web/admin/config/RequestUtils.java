@@ -37,6 +37,7 @@ public class RequestUtils {
 	public static String getRankImg(final String rankImg) {
 		return (String) RequestUtils.getSession().getAttribute("rankImg");
 	}
+
 	
 	
 	public static void setUserId(final String userId) {
@@ -57,5 +58,5 @@ public class RequestUtils {
 	public static void setRankImg(final String rankImg) {
 		RequestUtils.getSession().setAttribute("rankImg",rankImg);
 	}
-	
+
 }
