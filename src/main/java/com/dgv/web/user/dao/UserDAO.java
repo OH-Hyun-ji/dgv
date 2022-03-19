@@ -93,4 +93,15 @@ public class UserDAO {
 		return sqlSessionTemplate.selectOne("UserDAO.userTermInfo",vo);
 
 	}
+	
+	// 비밀번호 찾기(이메일 확인)
+	public UserVO selectMember(String userVO) {
+		return sqlSessionTemplate.selectOne("UserDAO.selectMember", userVO);
+	}
+	
+	// 새 비밀번호 설정
+	public int newPassword(UserVO vo) {
+		return sqlSessionTemplate.update("UserDAO.newPassword", vo);
+	}
+	
 }
