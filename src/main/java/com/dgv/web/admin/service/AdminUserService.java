@@ -33,4 +33,8 @@ public interface AdminUserService {
 	AdminRankVO rankOneSelect(int num);
 	
 	AdminRankVO rankNameSelect(String name);
+	
+	UserVO userNumList(int num);
+	
+	AdminTermVO userTermNumVo (int num);
 }

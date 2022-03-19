@@ -78,6 +78,10 @@
 	border-radius: 2px;
 	font-weight: bold;
 }
+a#actorDetail {
+    color: black;
+    text-decoration: none;
+}
 </style>
 <body class="sb-nav-fixed">
 	<div id="layoutSidenav">
@@ -178,7 +182,7 @@
                                             <c:forEach var="actorList" items="${actorList}" varStatus="status">
                                                 <tr>
                                                     <td>${actorListCount - status.index}</td>
-                                                    <td>${actorList.movie_actor_name}</td>
+                                                    <td><a id="actorDetail" href="adminActortUpdate.mdo?movie_actor_code=${actorList.movie_actor_code }">${actorList.movie_actor_name}</a></td>
                                                     <td>${actorList.movie_actor_birth}</td>
                                                     <td>${actorList.movie_actor_nation}</td>                                          
                                                     <td>${actorList.reg_id}</td>

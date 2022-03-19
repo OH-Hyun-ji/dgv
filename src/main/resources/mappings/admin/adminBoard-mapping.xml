@@ -69,5 +69,15 @@
 	<select id="EventSelect" resultType="AdminEventVO">
 		SELECT * FROM dgv_event
 	</select>
+	
+	<select id="userReserveList" resultType="UserReserveVO">
+		SELECT * FROM movie_reserve WHERE user_id = #{user_id}
+	</select>
 
+	<update id="TermUpdate" >
+		UPDATE term_info SET term_name=#{term_name},term_status=#{term_status},term_text=#{term_text},reg_date=current_date WHERE term_num=#{term_num}
+	</update>
+	<delete id="TermDelete"  parameterType="AdminTermVO">
+		DELETE FROM term_info WHERE term_num=#{term_num}
+	</delete>
 </mapper>

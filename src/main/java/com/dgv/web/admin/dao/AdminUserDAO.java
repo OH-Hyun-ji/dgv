@@ -56,4 +56,12 @@ public class AdminUserDAO {
 	public AdminRankVO rankNameSelect(String name) {
 		return sqlSessionTemplate.selectOne("AdminUserDAO.rankNameSelect", name);
 	}
+	public UserVO userNumList(int num) {
+		return sqlSessionTemplate.selectOne("AdminUserDAO.userNumList",num);
+	}
+	
+	public AdminTermVO userTermNumVo(int num) {
+		return sqlSessionTemplate.selectOne("UserDAO.userTermNumVo",num);
+	}
+	
 }

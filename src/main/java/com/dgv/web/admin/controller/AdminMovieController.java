@@ -28,6 +28,7 @@ import com.dgv.web.admin.config.AWSConfiguration;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.service.FileUploadService;
+import com.dgv.web.admin.service.FileUploadService.FileUploadResult;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
@@ -349,9 +350,9 @@ public class AdminMovieController {
 		model.addAttribute("groupList",adminMovieService.groupList());
 		return "/movie/admin_movie_actor_register";
 	}
-	
-	@RequestMapping("/actorUpdate.mdo")
-	public String actorUpdate(@RequestParam("movie_actor_code")int num,Model model) {
+	//배우 상세보기 
+	@RequestMapping("adminActortUpdate.mdo")
+	public String adminActortUpdate(@RequestParam("movie_actor_code")int num, Model model ) {
 		AdminActorVO actorVo = adminMovieService.actorListInfo(num);
 		List<AdminGroupVO> groupVo =adminMovieService.groupList();
 		for(AdminGroupVO group:groupVo ) {
@@ -361,39 +362,43 @@ public class AdminMovieController {
 		}
 		model.addAttribute("groupList",groupVo);
 		model.addAttribute("actorList", actorVo);
-		return "/movie/admin_actor_update";
+		return "/movie/admin_actor_detail";
 	}
+	
+//	@RequestMapping("/actorUpdate.mdo")
+//	public String actorUpdate(@RequestParam("movie_actor_code")int num,Model model) {
+//		AdminActorVO actorVo = adminMovieService.actorListInfo(num);
+//		List<AdminGroupVO> groupVo =adminMovieService.groupList();
+//		for(AdminGroupVO group:groupVo ) {
+//			if(actorVo.getMovie_group_code()==group.getMovie_group_code()) {
+//				actorVo.setMovie_group_name(group.getMovie_group_name());
+//			}
+//		}
+//		model.addAttribute("groupList",groupVo);
+//		model.addAttribute("actorList", actorVo);
+//		return "/movie/admin_actor_update";
+//	}
+//	
+	
 	@PostMapping("/actorUpdate.mdo")
 	@ResponseBody
 	public CommonResultDto actorUpdate(@RequestPart("actorVo") AdminActorVO actorVo, @RequestPart("imgFile") MultipartFile imgFile, HttpSession session) {
-	
-		final UUID uuid = UUID.randomUUID();
-		final String url = "parpeople/"+uuid.toString()+actorVo.getMovie_actor_img();
-		final String path = AWSConfiguration.S3_URL;
-		actorVo.setMovie_actor_img(path+url);
+		//이미지
+		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "actor/", actorVo.getMovie_actor_img());
+		if(!fileResult.isSuccess())
+			return CommonResultDto.fail();
+		
+		actorVo.setMovie_actor_img(fileResult.getUrl());
 		actorVo.setReg_id((String)session.getAttribute("adminID"));
 		
 		final int num = adminMovieService.updateActor(actorVo);
 		
-		if(num == 0) {
+		if(num == 0) 
 			return CommonResultDto.fail();
-			
-		}else {
-			try {
-				InputStream is = imgFile.getInputStream();
-				String ContentType = imgFile.getContentType();
-				long contentLength = imgFile.getSize();
-				awsS3.upload(is, path, ContentType, contentLength);
-				
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-			
-		}
 		return CommonResultDto.success();
 		
 	}
+	
 	
 	@PostMapping("/statusChange.mdo")
 	@ResponseBody

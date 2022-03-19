@@ -139,6 +139,7 @@
 			<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">
 			<input type="hidden" name="amount" value="${pageMake.cri.amount }">
 		</form>
+   <jsp:include page="../default/user_bottom_reserve.jsp"></jsp:include>	
    <jsp:include page="../default/user_footer.jsp"></jsp:include>
 
 </body>

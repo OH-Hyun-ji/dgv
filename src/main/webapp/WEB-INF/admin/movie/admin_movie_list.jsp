@@ -81,7 +81,7 @@ button#statusEnd {
 							<c:forEach var="movieList" items="${movieList }" varStatus="status">
 								<tr>
 									<td style="box-sizing: border-box; padding-top: 70px;">${movieListCount - status.index}</td>
-									<td> <img style="width: 100px;" src="${movieList.movie_img }"></td>
+									<td><a href="${movieList.movie_img }"><img style="width: 100px;" src="${movieList.movie_img }"></a></td>
 									<td style="box-sizing: border-box; padding-top: 70px;">${movieList.movie_genre }</td>
 									<td style="box-sizing: border-box; padding-top: 70px;">${movieList.movie_title}</td>
 									<td style="box-sizing: border-box; padding-top: 60px;"><img src="${movieList.age_img}"></td>

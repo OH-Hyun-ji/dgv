@@ -17,6 +17,7 @@ import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.Criteria;
@@ -357,6 +358,55 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.deleteMovie(vo);
 	}
 
+	@Override
+	public List<UserReserveVO> bestMovieList() {
+		
+		return adminMovieDAO.bestMovieList();
+	}
+
+	@Override
+	public List<UserReserveVO> totalPeopleCount() {
+		
+		return adminMovieDAO.totalPeopleCount();
+	}
+
+	@Override
+	public int beforeChartCheck(UserReserveVO vo) {
+		
+		return adminMovieDAO.beforeChartCheck(vo);
+	}
+
+	@Override
+	public List<AdminMovieVO> BarChartGenreInfo() {
+		
+		return adminMovieDAO.BarChartGenreInfo();
+	}
+
+	@Override
+	public UserReserveVO totalMyMoney() {
+		
+		return adminMovieDAO.totalMyMoney();
+	}
+
+	@Override
+	public List<UserReserveVO> userReserveList(String id) {
+		
+		return adminMovieDAO.userReserveList(id);
+	}
+
+	@Override
+	public int TermUpdate(AdminTermVO vo) {
+		
+		return adminMovieDAO.TermUpdate(vo);
+	}
+
+	@Override
+	public int TermDelete(AdminTermVO vo) {
+		
+		return adminMovieDAO.TermDelete(vo);
+	}
+
+	
 
 	
 

@@ -85,6 +85,18 @@ public class AdminUserServiceImpl implements AdminUserService {
 		
 		return adminUserDAO.rankNameSelect(name);
 	}
+
+	@Override
+	public UserVO userNumList(int num) {
+		
+		return adminUserDAO.userNumList(num);
+	}
+
+	@Override
+	public AdminTermVO userTermNumVo(int num) {
+		
+		return adminUserDAO.userTermNumVo(num);
+	}
 	
 	
 }

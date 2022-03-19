@@ -14,6 +14,7 @@ import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.Criteria;
@@ -145,4 +146,20 @@ public interface AdminMovieService {
 	List<AdminMovieVO> yetMovie(Criteria cri);
 	
 	int deleteMovie(AdminMovieVO vo);
+	
+	List<UserReserveVO> bestMovieList();
+	
+	List<UserReserveVO> totalPeopleCount();
+	
+	int beforeChartCheck(UserReserveVO vo);
+	
+	List<AdminMovieVO> BarChartGenreInfo();
+	
+	UserReserveVO totalMyMoney();
+	
+	List<UserReserveVO> userReserveList(String id);
+	
+	int TermUpdate(AdminTermVO vo);
+	
+	int TermDelete(AdminTermVO vo);
 }

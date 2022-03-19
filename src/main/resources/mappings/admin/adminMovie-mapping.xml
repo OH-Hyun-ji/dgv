@@ -44,7 +44,7 @@
 		VALUES(DEFAULT,#{theater_name},#{theater_seat_count},#{region_code},#{theater_max_row},#{theater_max_column})
 	</insert>
 	<select id="SelectTheater" resultMap="AdminTheaterVO">
-		SELECT * FROM movie_theater
+		SELECT * FROM movie_theater ORDER BY theater_code ASC;
 	</select>
 	<select id="theaterListInfo" resultType="AdminTheaterVO" parameterType="int">
 		SELECT * FROM movie_theater WHERE theater_code=#{theater_code}
@@ -101,8 +101,12 @@
 		SELECT COUNT(*) FROM movie_map WHERE map_name=#{map_name}
 	</select>
 	
-	<select id="areaChart" resultType="int">
-		SELECT sum(reserve_price) FROM movie_reserve WHERE reserve_date=#{reserve_date}
+	<select id="beforeChartCheck" resultType="Integer" parameterType="UserReserveVO">
+		SELECT COUNT(reserve_date) FROM movie_reserve WHERE reserve_date=#{rese_date}
+	</select>
+	
+	<select id="areaChart" resultType="Integer">
+		SELECT sum(reserve_price) FROM movie_reserve WHERE reserve_date=#{rese_date}
 	</select>
 	
 	<select id="areaBarChart" resultType="int">
@@ -138,4 +142,42 @@
 	<delete id="deleteMovie" parameterType="AdminMovieVO">
 		DELETE FROM movie_info WHERE movie_num =#{movie_num}
 	</delete>
+	
+	<select id="bestMovieList" resultType="UserReserveVO">
+		select movie_num, TO_CHAR(trunc(AVG(reserve_price)),'$999,999,999')as fomatter_price
+				from movie_reserve
+						group by movie_num
+								order by 2 desc;
+	</select>
+	
+	<select id="totalPeopleCount" resultType="UserReserveVO">
+		select movie_num ,a1 +a2 +a3 as total_people from(
+				select movie_num , sum(reserve_basic) as a1, sum(reserve_old) as a2, sum(reserve_student) as a3
+				from movie_reserve
+				group by movie_num
+				having movie_num = movie_num)as foo;
+	</select>
+	
+	<select id="BarChartGenreInfo" resultType="AdminMovieVO">
+		select foo.movie_genre_code, count(*) as genre_count from(
+		select mi.movie_num ,dgi.movie_genre_code 
+			from movie_info mi 
+				inner join movie_reserve ms 
+				on mi.movie_num = ms.movie_num 
+				inner join movie_genre_info dgi
+				on mi.movie_genre_code = dgi.movie_genre_code)as foo
+																	group by foo.movie_genre_code
+																	order by foo.movie_genre_code asc; 
+		
+	</select>
+	
+	<select id="beforeGenreCount"  resultType="Integer" parameterType="AdminGenreVO">
+		SELECT COUNT(movie_genre_name)
+		
+	</select>
+	
+	<select id="totalMyMoney" resultType="UserReserveVO">			
+			SELECT to_char(SUM(reserve_price),'$999,999,999') as fomatter_price
+			FROM movie_reserve;				
+	</select>
 </mapper>

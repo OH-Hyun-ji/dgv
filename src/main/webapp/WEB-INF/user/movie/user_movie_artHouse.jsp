@@ -184,6 +184,10 @@
 		.img-wrap > img {
 			height: 100%!important;
 		}
+		.fixedBtn_wrap.topBtn {
+		    display: block!important;
+		}
+		
 	</style>
 </head>
 <body class="block">
@@ -390,6 +394,7 @@
 		</div>
 		<!-- /Contents Area -->
 	</div>
+	<jsp:include page="../default/user_bottom_reserve.jsp"></jsp:include>
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>
 </body>
 </html>

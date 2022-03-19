@@ -182,8 +182,8 @@
 		}
 		.CheckHiddenBtn {
 		    display: flex;
-		    justify-content: end;
-		    margin-right: 112px;
+		    justify-self: center;
+   			margin-left: 149px;
 		}
 		input#next-page1 {
 		    width: 150px;
@@ -225,12 +225,16 @@
 		span.movieTitleBtn {
 		    cursor: pointer;
 		}
+		.lay-style{
+			display: grid;
+		}
 	</style>
 </head>
 <body class="seatPage" >
 <jsp:include page="../default/user_header.jsp"></jsp:include>
     <!--본격 콘텐츠-->
     <a name="t"></a>
+    <div class="lay-style">
     <div id="wrap" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
         <div id="container">
             <!-- 빠른예매 -->
@@ -400,6 +404,7 @@
 		<input class="dgvR" type="hidden" id="hiddenTime" name="movie_time_start">
         <input type="submit" id="next-page1"  value="좌석선택=>" >
 	</form>	
+   </div>
    </div>
     <jsp:include page="../default/user_footer.jsp"></jsp:include>
 	<script>

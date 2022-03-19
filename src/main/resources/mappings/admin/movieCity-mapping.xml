@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="theaterRegion" resultType="AdminRegionVO" parameterType="AdminRegionVO">
-		SELECT * FROM dgv_region_info
+		SELECT * FROM dgv_region_info ORDER BY region_code ASC
 	</select>
 	
 	<select id="choiceRegion" resultType="AdminRegionVO" parameterType="int">

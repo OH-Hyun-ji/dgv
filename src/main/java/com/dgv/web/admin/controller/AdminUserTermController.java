@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.CommonResultDto;
@@ -20,10 +22,42 @@ public class AdminUserTermController {
 	@Autowired
 	private AdminUserService adminUserService;
 	
+	@Autowired
+	private AdminMovieService adminMovieService;
+	
+	@PostMapping("deleteTerm.mdo")
+	@ResponseBody
+	public CommonResultDto deleteTerm(@RequestBody AdminTermVO termVo) {
+		int num = adminMovieService.TermDelete(termVo);
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
+	@PostMapping("termUpdate.mdo")
+	@ResponseBody
+	public CommonResultDto termUpdate(@RequestBody AdminTermVO termVo) {
+		int num = adminMovieService.TermUpdate(termVo);
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
+	@RequestMapping("TermDetail.mdo")
+	public String TermDetail(@RequestParam("term_num")int num, Model model ) {
+		AdminTermVO termVo = adminUserService.userTermNumVo(num);
+		model.addAttribute("termVo",termVo);
+		
+		return"/user/admin_term_detail";
+	}
+	
 	@RequestMapping("/userTermList.mdo")
 	public String userTermList(AdminTermVO vo,Model model) {
 		model.addAttribute("termList", adminUserService.termList());
 		model.addAttribute("termListCount", adminUserService.termList().size());
+		
 		return"/user/admin_user_terms";
 	}
 	

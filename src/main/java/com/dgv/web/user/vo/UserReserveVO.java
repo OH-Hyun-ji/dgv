@@ -39,4 +39,8 @@ public class UserReserveVO {
 	private String fomatter_price;
 	private Date start_day;
 	private Date end_day;
+	private Date rese_date;
+	private Integer genre_count;
+
+	
 }

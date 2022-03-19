@@ -268,23 +268,28 @@
              }                 
          });//생년월일 "년" 확인 메서드 끝  
          
-        
-  	$("#termCheckInfo").on('click',function(){
-  		window.name ="parentForm"
-  		window.open('termPage.do','childForm','width=600 height=800')
-  	})
+         
+         $("#term-CK").on('click', function(){
+        	 
+        		console.log("dddsss : " +	$("#userRealCheck").val())
+        	  	if($("#userRealCheck").val() === 'true'){
+        	  		alert("오나요 ")
+        	  		$('input:checkbox[id="userTerm"]').removeAttr('disabled')
+        	  		$('input:checkbox[id="userTerm"]').prop("checked",true)
+        	  	}
+         })
+      
+	  	$("#termCheckInfo").on('click',function(){
+	  		window.name ="parentForm"
+	  		window.open('termPage.do','childForm','width=600 height=800')
+	  	})
   	
       
    });
    
    // 회원가입 최종조건 검증
    // 약관동의 체크 여부
-		console.log("dddsss : " +	$("#userRealCheck").val())
-  	if($("#userRealCheck").val() === 'true'){
-  		alert("오나요 ")
-  		$('input:checkbox[id="userTerm"]').removeAttr('disabled')
-  		$('input:checkbox[id="userTerm"]').prop("checked",true)
-  	}
+	
    function checkAll(){
 
       const termCheck = $('input:checkbox[id="userTerm"]').is(":checked") ==true;
@@ -415,8 +420,10 @@
             	<input type="hidden" id="userRealCheck"  >
                 <input type="checkbox" id="userTerm" disabled="disabled" name="user_term" value="OK">
                 <span style="color: orange;">약관동의여부</span>
-                <span id="termCheckInfo" style="color: orange;cursor: pointer;" >[약관확인]</span>>
-            	<span id=""term-CK"></span>
+                <span id="termCheckInfo" style="color: orange;cursor: pointer;" >[약관확인]</span>
+                <div>
+            		<span id="term-CK" style="color: orange;cursor: pointer;" >약관확인 후 클릭해주세요</span>
+            	</div>
             </div>
             <input class="w-btn w-btn-gra3 w-btn-gra-anim sign-up-font"  id="joinBtn" onclick="checkAll()" value="Register" >            
                 </div>

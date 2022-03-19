@@ -51,10 +51,6 @@
 #dgvwrap #header > .head h1 > a {display:block;}
 
 
-@media only screen and (min-width: 1116px) {
-	.fixedBtn_wrap{right:50%; margin-right:-548px}
-}
-
 /* Header AD Area */
 #dgvwrap .dgv-ad-wrap {width:100%; height:80px; z-index:101} /* 20140620 position:absolute; top:0; left:0; Del */
 #dgvwrap .dgv-ad-wrap .sect-head-ad {width:100%; height:80px; margin:0 auto; text-align:center;}

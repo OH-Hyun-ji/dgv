@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        월별 매출
+                                        장르별 선호도
                                     </div>
                                     <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
                                     <div class="card-footer small text-muted"></div>
@@ -49,12 +50,20 @@
                         </div>
                     </div>
                 </main>
-   				<input type="hidden" value="${today1 }" id="today1">
-   				<input type="hidden" value="${today2 }" id="today2">
-   				<input type="hidden" value="${today3 }" id="today3">
-   				<input type="hidden" value="${today4 }" id="today4">
-   				<input type="hidden" value="${today5 }" id="today5">
-   				<input type="hidden" value="${today6 }" id="today6">
+                <c:forEach var="dataList" items="${dataList}" varStatus="status">
+   					<input type="hidden" value="${dataList }" id="today${status.index+1}">
+   				</c:forEach>
+   				
+   				<c:forEach var="totalMovieList" items="${totalMovieList }" varStatus="status">
+   					<c:if test="${empty totalMovieList.movie_genre_name}">
+   						<input type="hidden" value="${0}" id="genre${status.index+1 }">
+   					</c:if>
+   					<c:if test="${!empty totalMovieList.movie_genre_name }">
+	   					<input type="hidden" value="${totalMovieList.movie_genre_name }" id="genre${status.index+1 }">
+	   					<input type="hidden" value="${totalMovieList.genre_count }" id="genreCount${status.index+1 }">
+   					</c:if>
+   				</c:forEach>
+			
              	<jsp:include page="../default/admin_footer.jsp" />
             </div>
         </div> 
@@ -66,13 +75,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/admin/chart-area-demo.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/admin/chart-bar-demo.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/admin/chart-pie-demo.js"></script>
-    <div class="col-lg-6">
 
-
-        <!-- Code injected by live-server -->
-        
-
-    </div>
 </body>
 
 </html>

@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.dgv.web.admin.service.AdminMovieService;
+import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
@@ -196,88 +198,74 @@ public class AdminBoardController {
 	@RequestMapping("/adminChart.mdo")
 	public String adminChart(UserReserveVO vo,Model model) {
 		// 일별 매출 통계
+		int today =0;
 		Calendar cal = Calendar.getInstance();
 		String format= "yyyy-MM-dd";
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
-	
-//		String date = sdf.format(cal.getTime());
-//		Date d= Date.valueOf(date);
-//		System.out.println(d);	
-//		vo.setReserve_date(d);
-//		int today1 = adminMovieService.areaChart(vo);
-//		model.addAttribute("today1",today1);
-//		
-//		cal.add(cal.DATE, -1);
-//		String date2 = sdf.format(cal.getTime());
-//		Date d2 =Date.valueOf(date2);
-//		System.out.println(d2);
-//		vo.setReserve_date(d2);
-//		int today2 = adminMovieService.areaChart(vo);
-//		model.addAttribute("today2",today2);
-//		
-//		cal.add(cal.DATE, -1);
-//		String date3 = sdf.format(cal.getTime());
-//		Date d3 =Date.valueOf(date3);
-//		System.out.println(d3);
-//		vo.setReserve_date(d3);
-//		int today3 = adminMovieService.areaChart(vo);
-//		model.addAttribute("today3",today3);
-//		
-//		cal.add(cal.DATE, -1);
-//		String date4 = sdf.format(cal.getTime());
-//		Date d4 =Date.valueOf(date4);
-//		System.out.println(d4);
-//		vo.setReserve_date(d4);
-//		int today4 = adminMovieService.areaChart(vo);
-//		model.addAttribute("today4",today4);
-//		
-//		cal.add(cal.DATE, -1);
-//		String date5 = sdf.format(cal.getTime());
-//		Date d5 =Date.valueOf(date5);
-//		System.out.println(d5);
-//		vo.setReserve_date(d5);
-//		int today5 = adminMovieService.areaChart(vo);
-//		model.addAttribute("today5",today5);
+		List<Integer> dataList = new ArrayList<Integer>();
+
+		System.out.println("//////////////////////////////////////");
+		int j=-1;
+		for(int i =0 ; i<6 ; i++) {
+			cal.add(cal.DATE, i+j);
+			String date = sdf.format(cal.getTime());
+			Date sqlDate =Date.valueOf(date);
+			System.out.println(sqlDate);
+			vo.setRese_date(sqlDate);
+			int count = adminMovieService.beforeChartCheck(vo);
+			
+			if(count != 0) {
+				today = adminMovieService.areaChart(vo);
+				
+			}else {
+				today=0;
+			}
+			dataList.add(i, today);
+			j--;
+		}
+		model.addAttribute("dataList",dataList);
 		
-//		cal.add(cal.DATE, -1);
-//		String date6 = sdf.format(cal.getTime());
-//		Date d6 =Date.valueOf(date6);
-//		System.out.println(d6);
-//		vo.setReserve_date(d6);
-//		int today6 = adminMovieService.areaChart(vo);
-//		model.addAttribute("today6",today6);
-//////////////////////////////////////////////////////////////////////
-		//월별 매출 통계
+		//영화 장르별 통계
+		List<AdminMovieVO> totalMovieList = adminMovieService.BarChartGenreInfo();
 		
-		Calendar month =Calendar.getInstance();
-		String fot = "yyyy-MM-dd";
-		SimpleDateFormat sd = new SimpleDateFormat(fot);
+		for(AdminMovieVO movieVo : totalMovieList) {
+			AdminGenreVO genreVo = adminMovieService.genreListInfo(movieVo.getMovie_genre_code());
+			movieVo.setMovie_genre_name(genreVo.getMovie_genre_name());
+		}
 		
-		String mon1 = sd.format(month.getTime());
-		Date m1 =Date.valueOf(mon1);
-		System.out.println(m1);
-	//	vo.setStart_day(d);
-	//	int month1 = adminMovieService.areaChart(vo);
-		System.out.println(m1);
-	//	model.addAttribute("month1",month1);
-		
-		month.add(month.MONTH, -1);
-		String mon2 = sd.format(month.getTime());
-		Date m2 =Date.valueOf(mon2);
-		System.out.println("ddd :"+ m2);
-	//	vo.setReserve_date(m2);
-		month.add(month.DATE, 30);
-	//	int month2 = adminMovieService.areaChart(vo);
-	//	model.addAttribute("month2",month2);
-		System.out.println("ddd k :"+ m2);
+		System.out.println("");
 		
 		
+		model.addAttribute("totalMovieList",totalMovieList);
 		
+
 		return "/movie/admin_movie_chart";
 	}
 	
+	//베스트 ...진짜 와나 아나
 	@RequestMapping("/adminBest.mdo")
-	public String adminBest() {
+	public String adminBest(Model model) {
+		List<UserReserveVO> bestMovieList = adminMovieService.bestMovieList();
+		List<UserReserveVO> totalPeopleCount = adminMovieService.totalPeopleCount();
+		List<AdminMovieVO> movieList =adminMovieService.movieList();
+		
+		for(UserReserveVO bestVo : bestMovieList) {
+			for(AdminMovieVO movieVo : movieList) {
+				if(bestVo.getMovie_num() == movieVo.getMovie_num()) {
+					bestVo.setMovie_title(movieVo.getMovie_title());
+					bestVo.setMovie_img(movieVo.getMovie_img());
+
+				}
+			}
+		}
+		for(UserReserveVO bestVo :bestMovieList) {
+			for(UserReserveVO peopleVo : totalPeopleCount) {
+				if(bestVo.getMovie_num()==peopleVo.getMovie_num()) {
+					bestVo.setTotal_people(peopleVo.getTotal_people());
+				}
+			}
+		}
+		model.addAttribute("bestMovieList",bestMovieList);
 		return "/movie/admin_movie_best";
 	}
 }

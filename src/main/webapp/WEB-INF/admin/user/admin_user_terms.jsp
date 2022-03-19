@@ -10,6 +10,38 @@
 	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	function termDetail(e){	
+	    window.open('TermDetail.mdo?term_num='+e,'','width=650,height=800');
+	 }
+	function deleteTerm(e){
+		const message = confirm("정말로 삭제하시겠습니까?")
+		
+		if(message){
+			
+			$.ajax({
+				method:"POST",
+				url:"deleteTerm.mdo",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify({"term_num":e}),
+				success:function(result){
+					if(result.msg=="SUCCESS"){
+						alert("삭제가 완료되었습니다.")
+						window.opener.location.reload()
+						window.close()
+					}
+					else{
+						alert("오류발생! 삭제를 다시 시도해주세요!!")
+					}
+				},
+				error:function(){
+					console.log("통신실패")
+				}
+			})//ajax close
+		}
+	}
+	</script>
 	<style>
 #delBT {
 	border: none;
@@ -28,6 +60,11 @@
 	box-shadow: 0px 0px 20px #000;
 	border-radius: 2px;
 	font-weight: bold;
+}
+a#termStyle {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 </style>
 </head>
@@ -75,12 +112,12 @@
 								<c:forEach var="termList" items="${termList}" varStatus="status" >
 									<tr>
 										<td>${termListCount - status.index }</td>
-										<td>${termList.term_name }</td>
+										<td><a id="termStyle"  onclick="termDetail(${termList.term_num })">${termList.term_name }</a></td>
 										<td>${termList.term_status }</td>
 										<td>${termList.user_term }</td>
 										<td>${termList.reg_id }</td>
 										<td>${termList.reg_date }</td>
-										<td><button id="delBt"  onclick="deleteTerm('${termList.term_num }')"><i class="fas fa-trash-alt"></i></button> <button ><i class="fas fa-pencil-alt"></i></button></td>
+										<td><button id="delBt"  onclick="deleteTerm('${termList.term_num }')"><i class="fas fa-trash-alt"></i></button></td>
 									</tr>
 								</c:forEach>
 								</tbody>

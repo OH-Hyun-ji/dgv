@@ -10,33 +10,14 @@
 	 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		function deleteAction(id){
-			
-		let result = confirm("정말 삭제하시겠습니까??");
-			console.log(id)
-		if(result == true){
-			console.log("쿄쿄");
-			$.ajax({
-				method:"POST",
-				url:"/userDelete.mdo",
-				contentType:"application/json",
-				dataType:"json",
-				data:JSON.stringify({"user_id":id}),
-				success:function(num){
-					
-					location.replace("/userList.mdo");
-				},
-				error:function(){
-					console.log("통신실패")
-				}
-			});//ajax close 
 
-		}
-	}
-	function updateRank(num){
-		 window.open('/rankChoice.mdo?user_num='+num,'','width=500,height=280');
-	}
 	</script>
+	<style type="text/css">
+		a#idDetail {
+		    text-decoration: none;
+		    color: black;
+		}
+	</style>
 </head>
 <body class="sb-nav-fixed">
 	<div id="layoutSidenav">
@@ -68,11 +49,11 @@
 								<c:forEach var="userList" items="${userList}" varStatus="status">
 									<tr id="trWrap">
 										<td>${userListCount - status.index}</td>
-										<td>${userList.user_id}</td>
-										<td>${userList.user_name}</td>
-										<td>${userList.user_phone}</td>
-										<td>${userList.user_email}</td>										
-									 	<td>${userList.user_rank}</td>
+										<td><a id="idDetail" href="userDetail.mdo?user_num=${userList.user_num}">${userList.user_id}</a></td>
+										<td><a id="idDetail" href="userDetail.mdo?user_num=${userList.user_num}">${userList.user_name}</a></td>
+										<td><a id="idDetail" href="userDetail.mdo?user_num=${userList.user_num}">${userList.user_phone}</a></td>
+										<td><a id="idDetail" href="userDetail.mdo?user_num=${userList.user_num}">${userList.user_email}</a></td>										
+									 	<td><a id="idDetail" href="userDetail.mdo?user_num=${userList.user_num}">${userList.user_rank}</a></td>
 										<td>${userList.user_point}</td>
 										<td style="text-align: center;"><button id="delBt"  onclick="deleteAction('${userList.user_id}')"><i class="fas fa-trash-alt"></i></button> <button  onclick="updateRank('${userList.user_num}')"><i class="fas fa-pencil-alt"></i></button></td>
 									</tr>		

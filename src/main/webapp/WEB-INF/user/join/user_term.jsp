@@ -21,6 +21,9 @@
 			
 			
 			$(".termTR").empty()
+			$(".thisTd").remove()
+			$(".otherTd").empty()
+			
 			$.ajax({
 				method:"POST",
 				url:"termCheck.do",
@@ -38,7 +41,9 @@
 								.attr("class", "termTR")
 						const td =$("<td>")
 								.attr("id","termTd"+termText.term_num)
+								.attr("class","thisTd")
 						const td1 =$("<td>")
+								.attr("class","otherTd")
 						
 								
 						const textarea =$("<textarea>")

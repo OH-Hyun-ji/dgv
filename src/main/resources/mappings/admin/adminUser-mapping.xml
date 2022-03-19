@@ -37,7 +37,7 @@
 	</select>
 	
 	<select id="termList" resultType="AdminTermVO">
-		SELECT * FROM term_info;
+		SELECT * FROM term_info order by term_num asc ;
 	</select>
 	
 	<insert id="termInsert" parameterType="AdminTermVO">
@@ -63,5 +63,9 @@
 	
 	<select id="rankNameSelect" resultType="AdminRankVO">
 		SELECT * FROM rank_info WHERE rank_name =#{rank_name}
+	</select>
+	
+	<select id="userNumList" resultType="UserVO">
+		SELECT * FROM user_info WHERE user_num=#{user_num}
 	</select>
 </mapper>

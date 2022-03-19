@@ -18,6 +18,7 @@ import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
+import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.Criteria;
@@ -240,5 +241,31 @@ public class AdminMovieDAO {
 	
 	public int deleteMovie(AdminMovieVO vo) {
 		return sqlSessionTemplate.delete("AdminMovieDAO.deleteMovie",vo);
+	}
+	
+	public List<UserReserveVO> bestMovieList(){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.bestMovieList");
+	}
+	public List<UserReserveVO> totalPeopleCount(){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.totalPeopleCount");
+	}
+	public int beforeChartCheck(UserReserveVO vo) {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.beforeChartCheck",vo);
+	}
+	public List<AdminMovieVO> BarChartGenreInfo(){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.BarChartGenreInfo");
+	}
+	
+	public UserReserveVO totalMyMoney() {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.totalMyMoney");
+	}
+	public List<UserReserveVO> userReserveList(String id){
+		return sqlSessionTemplate.selectList("AdminBoardDAO.userReserveList", id);
+	}
+	public int TermUpdate(AdminTermVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.TermUpdate",vo);
+	}
+	public int TermDelete(AdminTermVO vo) {
+		return sqlSessionTemplate.delete("AdminBoardDAO.TermDelete",vo);
 	}
 }

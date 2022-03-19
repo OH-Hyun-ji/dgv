@@ -11732,3 +11732,16 @@ button#registerCity {
     height: 42px;
     font-size: 16px;
 }
+img#bestImg {
+    width: 100px;
+    height: 130px;
+}
+td#img-tool {
+    text-align: -webkit-center;
+}
+#card-body-style{
+	text-align-last: center;
+}
+td#status-tool {
+    padding-top: 62px;
+}

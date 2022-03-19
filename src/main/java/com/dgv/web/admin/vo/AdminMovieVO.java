@@ -38,4 +38,7 @@ public class AdminMovieVO {
 	private List<AdminRegionVO> regionList;
 	private List<AdminParVO> parList;
 	private List<AdminGroupVO> groupList;
+	private String movie_genre_name;
+	private Integer genre_count;
+	
 }
