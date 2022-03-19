@@ -1,11 +1,13 @@
 package com.dgv.web.admin.controller;
 
+import java.awt.print.Book;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,14 +41,30 @@ public class AdminEventController {
 		return "/board/admin_event_register";
 	}
 	
+	@PostMapping("/changeEventStatus.mdo")
+	@ResponseBody
+	public CommonResultDto changeEventStatus(@RequestBody AdminEventVO vo) {
+		
+		int num = adminMovieService.eventAdminUpdate(vo);
+		
+		
+		if(num ==0 )
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
 	@PostMapping("/insertEvent.mdo")
 	@ResponseBody
-	public CommonResultDto insertEvent(@RequestPart("eventVo")AdminEventVO eventVo,@RequestPart MultipartFile imgFile ) {
+	public CommonResultDto insertEvent(@RequestPart("eventVo")AdminEventVO eventVo,@RequestPart MultipartFile imgFile ,@RequestPart MultipartFile imgFile1) {
 		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "event/", eventVo.getEvent_img());
+		final FileUploadService.FileUploadResult fileResult1 = fileUploadService.fileUpload(imgFile1, "event/", eventVo.getEvent_text_img());
 		
 		eventVo.setEvent_img(fileResult.getUrl());
+		eventVo.setEvent_text_img(fileResult1.getUrl());
+		
 		if(!fileResult.isSuccess())
 			return CommonResultDto.fail();
+		
 		
 		int num = adminMovieService.EventInsert(eventVo);
 		

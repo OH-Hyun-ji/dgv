@@ -15,4 +15,5 @@ public class AdminEventVO {
 	private String event_status;
 	private String event_winner;
 	private String event_img;
+	private String event_text_img;
 }

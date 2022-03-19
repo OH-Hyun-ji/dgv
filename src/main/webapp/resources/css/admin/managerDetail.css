@@ -93,3 +93,27 @@ textarea#actorInfo {
 input#actorImg {
     margin-top: 1rem;
 }
+img#thImg1-style ,img#thImg2-style {
+    width: 134px;
+    height: 143px;
+    border-radius: 10px;
+}
+
+.thImg-container {
+    display: flex;
+}
+.thImg-wrap {
+    margin-left: 176px;
+    margin-right: 121px;
+}
+.excelConvert-wrap {
+    display: flex;
+    justify-content: end;
+}
+button#excelConvert {
+    width: 160px;
+    height: 38px;
+    font-size: 17px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}

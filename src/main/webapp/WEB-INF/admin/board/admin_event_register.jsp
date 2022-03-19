@@ -9,6 +9,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+ <link href="${pageContext.request.contextPath }/resources/css/admin/managerDetail.css" rel="stylesheet" />
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
@@ -16,6 +17,25 @@
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 			  
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  <script type="text/javascript">
+  		
+  		function thumbNail(event) {
+  			alert("Ddd")
+			var reader = new FileReader();
+			$("#thImg1-style").empty()
+			reader.onload= function(event){
+				document.getElementById("thImg1-style").src=event.target.result;
+			}
+			reader.readAsDataURL(event.target.files[0])
+		}
+  		function thumbNail1(event) {
+  			alert("Ddd")
+			var reader = new FileReader();
+			$("#thImg2-style").empty()
+			reader.onload= function(event){
+				document.getElementById("thImg2-style").src=event.target.result;
+			}
+			reader.readAsDataURL(event.target.files[0])
+		}
   	$(function(){
   		$("input[name='start_date']").datepicker();
   		$("input[name='end_date']").datepicker();
@@ -25,20 +45,25 @@
 		});
   		
   		
-  		
   		$("#eventRegister").click(function(){
   			alert("이벤트 등록 ")
   			const eventTitle =$("#eventTitle").val()
   			const startDate =$("#startDate").val()
   			const endDate = $("#endDate").val()
   			const eventText =$("#eventText").val()
-  			const eventImg =$("#eventImg").val()
   			const regId =$("#regId").val()
   			
+  			const eventTextImg =$("#eventTextImg").val()
+  			const eventImg =$("#eventImg").val()
+  			
   			const Img =eventImg.split("\\")
+  			const textImg = eventTextImg.split("\\")
+  			
   			const eventImgName=Img[Img.length-1]
+  			const eventTextImgName = textImg[textImg.length-1]
   			
   			const imgFile = $("#eventImg")[0].files[0];
+  			const imgFile1 = $("#eventTextImg")[0].files[0];
   			
   			const eventVo ={
   					"event_title":eventTitle,
@@ -46,10 +71,12 @@
   					"end_date":endDate,
   					"event_text":eventText,
   					"event_img":eventImgName,
+  					"event_text_img":eventTextImgName,
   					"reg_id":regId
   			}
   			const form = new FormData();
   			form.append("imgFile",imgFile)
+  			form.append("imgFile1",imgFile1)
   			form.append("eventVo",new Blob([JSON.stringify(eventVo)],{type:"application/json"}));
   			
   			$.ajax({
@@ -137,18 +164,18 @@
 								<table class="type02">		
 									<tr>
 										<th scope="row" style="font-size:18px;">Event Title</th>
-										<td><input type="text" id="eventTitle" name="event_title" style="border-radius: 7px;line-height: 25px;"/></td>
+										<td><input type="text" id="eventTitle" name="event_title" style="border-radius: 7px;line-height: 25px;width: 250px;"/></td>
 									</tr>	
 									<tr>
 										<th scope="row" style="font-size:18px;">Start Date</th>
 										<td>
-											<input type="text" id="startDate" name="start_date" style="border-radius: 7px;line-height: 25px;"/>
+											<input type="text" id="startDate" name="start_date" style="border-radius: 7px;line-height: 25px;width: 250px;"/>
 										</td>
 									</tr>	
 									<tr>
 										<th scope="row" style="font-size:18px;">End Date</th>
 										<td>
-											<input type="text" id="endDate" name="end_date" style="border-radius: 7px;line-height: 25px;"/>
+											<input type="text" id="endDate" name="end_date" style="border-radius: 7px;line-height: 25px;width: 250px;"/>
 										</td>
 									</tr>
 									<tr>
@@ -160,13 +187,23 @@
 									
 									<tr>
 										<th scope="row" style="font-size:18px;"">Event Img</th>
-										<td><input type="file" multiple="multiple" id="eventImg" name="even_img" style=" border-radius: 7px;line-height: 25px;"/></td>
+										<td><input type="file" multiple="multiple" id="eventImg"  onchange="thumbNail(event)"  name="event_img" style=" border-radius: 7px;line-height: 25px;"/></td>
+										<th scope="row" style="font-size:18px;"">Event TextImg</th>
+										<td><input type="file" multiple="multiple" id="eventTextImg"  onchange="thumbNail1(event)"  name="event_text_img" style=" border-radius: 7px;line-height: 25px;"/></td>
 									</tr>	
 									
 								</table>
                             </div>
+                            <div class="thImg-container">
+								<div class="thImg-wrap">
+									<img id="thImg1-style" >
+								</div>
+								<div>
+									<img id="thImg2-style" >
+								</div>
+							</div>
                             <div class="bottomBar">
-                                <input type="button" value="Register" multiple="multiple" id="eventRegister" style="margin-left: 10px;"/>
+                                <input type="button" value="Register" multiple="multiple"id="eventRegister" style="margin-left: 10px;"/>
                             </div>
 					</div>
 				</div>

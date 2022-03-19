@@ -63,11 +63,11 @@
 	</update>
 	
 	<insert id="EventInsert" parameterType="AdminEventVO">
-		INSERT INTO dgv_event(event_code,event_title,event_text,start_date,end_date,reg_id,reg_date,event_status,event_winner,event_img)
-		VALUES(DEFAULT,#{event_title},#{event_text},#{start_date},#{end_date},#{reg_id},current_date,DEFAULT,DEFAULT,#{event_img})
+		INSERT INTO dgv_event(event_code,event_title,event_text,start_date,end_date,reg_id,reg_date,event_status,event_winner,event_img,event_text_img)
+		VALUES(DEFAULT,#{event_title},#{event_text},#{start_date},#{end_date},#{reg_id},current_date,DEFAULT,DEFAULT,#{event_img},#{event_text_img})
 	</insert>
 	<select id="EventSelect" resultType="AdminEventVO">
-		SELECT * FROM dgv_event
+		SELECT * FROM dgv_event order by event_code asc
 	</select>
 	
 	<select id="userReserveList" resultType="UserReserveVO">
@@ -80,4 +80,8 @@
 	<delete id="TermDelete"  parameterType="AdminTermVO">
 		DELETE FROM term_info WHERE term_num=#{term_num}
 	</delete>
+	
+	<update id="eventAdminUpdate">
+		UPDATE dgv_event SET event_status=#{event_status} WHERE event_code= #{event_code} 
+	</update>
 </mapper>

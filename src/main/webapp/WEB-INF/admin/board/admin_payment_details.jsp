@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 	<title>Admin payment details</title>
 	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/resources/css/admin/managerDetail.css" rel="stylesheet" />
 <%-- 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script> --%>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- jQuery CDN --->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
@@ -35,6 +36,12 @@
 			    }) //close ajax
 			}
 		}
+	function excelConverts() {
+		var formData = $("#ExcelForm")
+		formData.attr('action', 'excelConvert.mdo');
+		formData.attr('method', 'post');
+		formData.submit();
+	}
 	</script>
 </head>
 <body class="sb-nav-fixed">
@@ -49,7 +56,10 @@
 						<div class="card-header">
 							<i class="fas fa-table me-1"></i> 결제목록
 						</div>
-						<div class="card-body">
+						<div class="card-body">	
+							<div class="excelConvert-wrap">
+								<button id="excelConvert" onclick="excelConverts()">excel 출력</button>	
+							</div>
 							<table id="datatablesSimple" name="paymentDetails">
 								<thead>
 									<tr>
@@ -100,6 +110,9 @@
 				</div>
 			</main>
 			<jsp:include page="../default/admin_footer.jsp" />
+			<form id="ExcelForm">
+				<input type="hidden">
+			</form>
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

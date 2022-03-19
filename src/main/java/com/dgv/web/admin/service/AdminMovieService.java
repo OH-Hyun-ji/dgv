@@ -162,4 +162,6 @@ public interface AdminMovieService {
 	int TermUpdate(AdminTermVO vo);
 	
 	int TermDelete(AdminTermVO vo);
+	
+	int eventAdminUpdate(AdminEventVO vo);
 }

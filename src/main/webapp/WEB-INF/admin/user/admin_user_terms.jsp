@@ -8,6 +8,7 @@
 <title>Admin User Terms</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="${pageContext.request.contextPath }/resources/css/admin/styles.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/resources/css/user/button.css" rel="stylesheet"  />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
@@ -113,7 +114,12 @@ a#termStyle {
 									<tr>
 										<td>${termListCount - status.index }</td>
 										<td><a id="termStyle"  onclick="termDetail(${termList.term_num })">${termList.term_name }</a></td>
-										<td>${termList.term_status }</td>
+										<c:if test="${termList.term_status ==true }">
+											<td style="text-align: center;"><button id="statusTrue"  class="w-btn w-btn-gra3 w-btn-gra-anim" type="button"  style="width: 70px;height: 25px;padding: 0;">활성</button></td>
+										</c:if>
+										<c:if test="${termList.term_status ==false }">
+											<td style="text-align: center;"><button id="statusFalse"  class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 70px;height: 25px;padding: 0; background:#777777;">비활성</button></td>
+										</c:if>
 										<td>${termList.user_term }</td>
 										<td>${termList.reg_id }</td>
 										<td>${termList.reg_date }</td>

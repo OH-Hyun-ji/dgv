@@ -268,4 +268,7 @@ public class AdminMovieDAO {
 	public int TermDelete(AdminTermVO vo) {
 		return sqlSessionTemplate.delete("AdminBoardDAO.TermDelete",vo);
 	}
+	public int eventAdminUpdate(AdminEventVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.eventAdminUpdate",vo);
+	}
 }

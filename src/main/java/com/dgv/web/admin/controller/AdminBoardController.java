@@ -1,6 +1,7 @@
 package com.dgv.web.admin.controller;
 
 
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -9,6 +10,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -19,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.dgv.web.admin.service.AdminMovieService;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
@@ -52,6 +66,128 @@ public class AdminBoardController {
 
 	public AdminBoardController() {
 		this.api = new IamportClient("0009476751745942", "2d858bdbfe3239265e6abec99ce5e3b90509980494c0ea7981c685a19da948c32b5159a584da4a57");
+	}
+	
+	//excel 변환 
+	@PostMapping("excelConvert.mdo")
+	public void excelConvert(HttpServletResponse response, HttpServletRequest request) throws IOException {
+		List<UserReserveVO> paymentList = adminMovieService.SelectReserveInfo();
+		DecimalFormat formatter = new DecimalFormat("###,###,###");
+		PaymentCancelDetail dd =new PaymentCancelDetail();
+		System.out.println("dddd엑셀");
+		for(UserReserveVO reserveVo : paymentList) {
+			AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
+			reserveVo.setMovie_title(movieVo.getMovie_title());
+			String price = formatter.format(reserveVo.getReserve_price());
+			reserveVo.setFomatter_price(price);
+			
+		}
+		
+		
+		Workbook wb = new HSSFWorkbook();//엑셀 파일 객체 생성
+		Sheet sheet = wb.createSheet("결제내역 목록");
+		
+		CellStyle style = wb.createCellStyle();//셀 스타일 생성 
+		Font font =wb.createFont();//폰트 스타일 생성
+		
+		
+		font.setFontHeight((short) 560); // 글자 크기 왜 적용안돼??
+		font.setFontName("맑은 고딕"); // 글씨체
+		sheet.setDefaultColumnWidth(30); // sheet 전체 기본 너비설정
+		sheet.setDefaultRowHeightInPoints(30); // sheet 전체 기본 너비설정
+		//sheet.setColumnWidth(4, 2100); // 특정 cell 설정 => 5번째(e) cell 2100=7.63
+		//sheet.setColumnWidth(7, 3400); // 7번째(h) cell 3400=12.63
+		Row titleRow = sheet.createRow(0); //타이틀 행 생성
+		int titleColNum =0;//첫번째 열이기때문에 0으로
+		
+		Cell titleCell = titleRow.createCell(titleColNum); //첫 번째행의 첫번째 열을 지정
+		titleCell.setCellValue("결제 내역 전체 목록"); 
+		
+		Row headRow = sheet.createRow(2);
+		int headerCol =0;
+		
+		CellStyle dataStyle = wb.createCellStyle(); //셀 스타일!
+		
+		dataStyle.setBorderRight(BorderStyle.DOUBLE);
+		dataStyle.setBorderLeft(BorderStyle.DOUBLE);
+		dataStyle.setBorderBottom(BorderStyle.DOUBLE);
+		dataStyle.setBorderTop(BorderStyle.DOUBLE);
+		
+		Cell headerCell = headRow.createCell(headerCol++);
+		headerCell.setCellValue("순번");
+		headerCell.setCellStyle(dataStyle);
+		
+		headerCell=headRow.createCell(headerCol++);
+		headerCell.setCellValue("예매번호");
+		headerCell.setCellStyle(dataStyle);
+		
+		headerCell=headRow.createCell(headerCol++);
+		headerCell.setCellValue("결제고유 ID");
+		headerCell.setCellStyle(dataStyle);
+		
+		headerCell=headRow.createCell(headerCol++);
+		headerCell.setCellValue("회원 ID");
+		headerCell.setCellStyle(dataStyle);
+		
+		headerCell=headRow.createCell(headerCol++);
+		headerCell.setCellValue("영화제목");
+		headerCell.setCellStyle(dataStyle);
+		
+		headerCell=headRow.createCell(headerCol++);
+		headerCell.setCellValue("결제금액");
+		headerCell.setCellStyle(dataStyle);
+		
+		headerCell=headRow.createCell(headerCol++);
+		headerCell.setCellValue("결제 일");
+		headerCell.setCellStyle(dataStyle);
+	
+		
+
+		
+		//데이터 삽입
+		int rowNum =3;
+		int cellNum=0;
+		Row dataRow =null; //반복문으로 돌릴거양
+		Cell dataCell =null;
+		
+		for(UserReserveVO reserveVo :paymentList) {
+			cellNum =0;
+			dataRow = sheet.createRow(rowNum++);
+			
+			dataCell = dataRow.createCell(cellNum++); // 열 한줄씩 추가
+			dataCell.setCellValue(reserveVo.getReserve_code());
+			dataCell.setCellStyle(dataStyle);
+			
+			dataCell = dataRow.createCell(cellNum++);
+			dataCell.setCellValue(reserveVo.getReserve_merchant_uid());
+			dataCell.setCellStyle(dataStyle);
+			
+			dataCell = dataRow.createCell(cellNum++);
+			dataCell.setCellValue(reserveVo.getReserve_imp_uid());
+			dataCell.setCellStyle(dataStyle);
+			
+			dataCell = dataRow.createCell(cellNum++);
+			dataCell.setCellValue(reserveVo.getUser_id());
+			dataCell.setCellStyle(dataStyle);
+			
+			dataCell = dataRow.createCell(cellNum++);
+			dataCell.setCellValue(reserveVo.getMovie_title());
+			dataCell.setCellStyle(dataStyle);
+			
+			dataCell = dataRow.createCell(cellNum++);
+			dataCell.setCellValue(reserveVo.getFomatter_price());
+			dataCell.setCellStyle(dataStyle);
+			
+			dataCell = dataRow.createCell(cellNum++);
+			dataCell.setCellValue(reserveVo.getReserve_date());
+			dataCell.setCellStyle(dataStyle);
+		}
+		
+		response.setContentType("ms-vnd/excel");
+		response.setHeader("Content-Disposition", "attachment;filename=paymentTotal.xls");
+		wb.write(response.getOutputStream());
+	
+		System.out.println("dddd엑셀121212");
 	}
 	
 	//결제내역 관리창으로 이동 

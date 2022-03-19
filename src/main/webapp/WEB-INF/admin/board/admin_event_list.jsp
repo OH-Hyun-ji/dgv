@@ -15,9 +15,50 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		function adminEvent(){
-			  window.open('/eventRegisterPage.mdo','','width=500,height=500')
+			  window.open('/eventRegisterPage.mdo','','width=700,height=700')
+		}
+		function eventStatusCheck(e){
+			
+			const eventT = $("#eventStatusNum").val()
+			console.log("eventT : "+eventT)
+			var eventStatus;
+			if(eventT == '1'){
+				eventStatus = '0'
+			}else{
+				eventStatus = '1'
+			}
+			
+			console.log("현재 value : " + eventStatus)
+			const eventVo ={
+				"event_code": e,
+				"event_status": eventStatus
+			}
+			
+			$.ajax({
+				method:"POST",
+				url:"/changeEventStatus.mdo",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify(eventVo),
+				success:function(result){
+					alert("비활성모드입니다. ")
+					location.reload()
+				
+				},
+				error:function(){
+					console.log("통신 실패")
+				}
+			})//ajax close
 		}
 	</script>
+	<style type="text/css">
+.w-btn:hover {
+    letter-spacing: 0;
+    transform: 0;
+    cursor: pointer;
+}
+
+	</style>
 </head>
 <body class="sb-nav-fixed">
 	<div id="layoutSidenav">
@@ -54,19 +95,26 @@
 									<c:forEach var="eventList" items="${eventList}" varStatus="status">
 										<tr id="trWrap" style="text-align-last: center;">
 											<td style="padding-top: 4%;">${status.index+1}</td>
-											<td><img src="${eventList.event_img }" style="width: 192px;box-sizing: border-box;"></td>
+											<td><a href="#"><img src="${eventList.event_img }" style="width: 192px;box-sizing: border-box;"></a></td>
 											<td style="padding-top: 4%;">${eventList.event_title }</td>
 											<td style="padding-top: 4%;">${eventList.start_date }</td>
 											<td style="padding-top: 4%;">${eventList.end_date }</td>
 											<c:if test="${eventList.event_status == '0' }">
-												<td style="padding-top: 4%;"><button>비활성(종료)</button></td>
+												<td style="padding-top: 4%;">
+													<button id="eventStatusNum" onclick="eventStatusCheck(${eventList.event_code})" value="0" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 83px;height: 25px;padding: 0; background:#777777;">비활성(종료)</button>
+												</td>
 											</c:if>
 											<c:if test="${eventList.event_status == '1' }">
-												<td style="padding-top: 4%;"><button>활성(진행중)</button></td>
+												<td style="padding-top: 4%;">
+													<button id="eventStatusNum"  onclick="eventStatusCheck(${eventList.event_code})" value="1" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button"  style="width: 83px;height: 25px;padding: 0;">활성(진행중)</button>
+												</td>
 											</c:if>											
-											<td style="padding-top: 4%;">${eventList.event_winner }</td>
-											<td style="padding-top: 4%;">${eventList.reg_id }</td>										
-											<td style="text-align: center;padding-top: 4%;"><button id="delBt"  onclick="deleteAction('')"><i class="fas fa-trash-alt"></i></button> <button  onclick="updateRank('')"><i class="fas fa-pencil-alt"></i></button></td>
+												<td style="padding-top: 4%;">${eventList.event_winner }</td>
+												<td style="padding-top: 4%;">${eventList.reg_id }</td>										
+												<td style="text-align: center;padding-top: 4%;">
+													<button id="delBt" onclick="deleteAction()"><i class="fas fa-trash-alt"></i></button>
+													<button  onclick="updateRank()"><i class="fas fa-pencil-alt"></i></button>
+												</td>
 										</tr>		
 									</c:forEach>		
 								</tbody>

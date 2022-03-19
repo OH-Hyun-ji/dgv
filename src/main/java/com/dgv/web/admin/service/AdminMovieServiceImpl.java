@@ -406,6 +406,11 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.TermDelete(vo);
 	}
 
+	@Override
+	public int eventAdminUpdate(AdminEventVO vo) {
+		
+		return adminMovieDAO.eventAdminUpdate(vo);
+	}
 	
 
 	
