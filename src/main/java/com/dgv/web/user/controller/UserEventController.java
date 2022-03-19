@@ -12,24 +12,29 @@ import com.dgv.web.user.service.UserBoardService;
 
 @Controller
 public class UserEventController {
-	
+
 	@Autowired
 	private UserBoardService userBoardService;
-	
+
 	@RequestMapping("/event.do")
 	public String event(Model model) {
-		 List<AdminEventVO> eventList = userBoardService.eventList();
-		 model.addAttribute("eventList",eventList);
+		List<AdminEventVO> eventList = userBoardService.eventList();
+		model.addAttribute("eventList", eventList);
 		return "/event/user_event";
 	}
-	
+
 	@RequestMapping("/eventWinner.do")
 	public String eventWinner() {
 		return "/event/event_winner";
 	}
-	
+
 	@RequestMapping("/eventEnd.do")
 	public String eventEnd() {
 		return "/event/event_end";
+	}
+
+	@RequestMapping("/eventP1.do")
+	public String eventP1() {
+		return "/event/eventP1";
 	}
 }

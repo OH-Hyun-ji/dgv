@@ -265,13 +265,13 @@
 						<div class="swiper-wrapper"
 							style="transition-duration: 300ms; transform: translate3d(-1004px, 0px, 0px);">
 							<div class="swiper-slide"
-								style="width: 310.667px; margin-right: 24px;">
+								style="width: 310.667px; margin-right: 24px; ">
 								<a href="#">
 									<div class="img_wrap">
 										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/event3.jpg"
-											alt="신년맞이??" onerror="errorImage(this)">
-									</div> <strong>신년맞이!! dgv챌린지</strong> <span>2022.01.25~2022.02.13</span>
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/%EC%BA%A1%EC%B2%98.JPG"
+											alt="주술회전 극장판 0" style="border-radius: inherit;" onerror="errorImage(this)">
+									</div> <strong>주술회전 극장판0</strong> <span>2022.01.25~2022.02.13</span>
 								</a>
 							</div>
 							<div class="swiper-slide"
@@ -341,7 +341,7 @@
 						</div>
 					</div>
 					<div class="qr_wrap">
-						<strong>앱 다운로드</strong> <span>dgv앱 </span>
+						<strong>앱 다운로드</strong> <span>DGV앱 </span>
 						<div class="img_wrap" data-scale="false">
 							<img
 								src="${pageContext.request.contextPath }/resources/images/mainQr.png"
