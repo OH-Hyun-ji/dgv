@@ -29,12 +29,26 @@ public class AdminEventController {
 	private FileUploadService fileUploadService;
 
 	//종료된이벤트
-	@RequestMapping("/adminEndEvent.mdo")
-	public String endEventSelect() {
-		return 
+	@RequestMapping("endEventList.mdo")
+	public String endEventSelect(Model model) {
+		List<AdminEventVO> eventList = adminMovieService.endEventSelect();
+		for(AdminEventVO eventVo : eventList) {
+			adminMovieService.eventCheck(eventVo);
+			System.out.println("상태 ㅣ: "+ eventVo.getEvent_check());
+			
+		}
+		model.addAttribute("eventList",eventList);
+		return "/board/admin_event_list";
+	}
+	//진행중인 이벤트 
+	@RequestMapping("continueList.mdo")
+	public String continueList(Model model) {
+		List<AdminEventVO> eventList = adminMovieService.continueEventSelect();
+		model.addAttribute("eventList",eventList);
+		return "/board/admin_event_list";
 	}
 	
-	
+	//전체 이벤트 목록 
 	@RequestMapping("/adminEventList.mdo")
 	public String adminEventList(Model model) {
 		List<AdminEventVO> eventList = adminMovieService.EventSelect();

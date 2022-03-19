@@ -11760,3 +11760,8 @@ button#continueEventList {
     height: 38px;
     width: 109px;
 }
+button#currentEventList {
+    padding: 0;
+    width: 114px;
+    margin-right: 14px;
+}

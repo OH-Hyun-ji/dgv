@@ -90,4 +90,16 @@
 		select * from dgv_event where cast(end_date as date) < current_date;
 	]]>
 	</select>
+	<update id="eventCheck" >
+		UPDATE dgv_event SET event_check ='1' where  event_code= #{event_code} 
+	</update>
+	
+	<select id="continueEventSelect" resultType="AdminEventVO">
+	<![CDATA[
+		select * from (
+				select * from dgv_event 
+				where cast(end_date as date) > current_date ) as foo where event_status='1';
+	]]>
+	</select>
+	
 </mapper>

@@ -166,4 +166,8 @@ public interface AdminMovieService {
 	int eventAdminUpdate(AdminEventVO vo);
 	
 	List<AdminEventVO> endEventSelect();
+	
+	int eventCheck(AdminEventVO vo);
+	
+	List<AdminEventVO> continueEventSelect();
 }

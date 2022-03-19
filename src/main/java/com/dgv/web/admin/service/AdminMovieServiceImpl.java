@@ -418,7 +418,16 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.endEventSelect();
 	}
 		
-
+	@Override
+	public int eventCheck(AdminEventVO vo) {
+		
+		return adminMovieDAO.eventCheck(vo);
+	}
 	
+	@Override
+	public List<AdminEventVO> continueEventSelect() {
+		
+		return adminMovieDAO.continueEventSelect();
+	}
 
 }

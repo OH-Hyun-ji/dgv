@@ -275,4 +275,12 @@ public class AdminMovieDAO {
 	public List<AdminEventVO> endEventSelect(){
 		return sqlSessionTemplate.selectList("AdminBoardDAO.endEventSelect");
 	}
+	
+	public int eventCheck(AdminEventVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.eventCheck",vo);
+	}
+	
+	public List<AdminEventVO> continueEventSelect(){
+		return sqlSessionTemplate.selectList("AdminBoardDAO.continueEventSelect");
+	}
 }
