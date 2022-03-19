@@ -402,7 +402,7 @@
 		<input class="dgvR" type="hidden" id="hiddenDate" name="reserve_date">
 		<input class="dgvR" type="hidden" id="hiddenTheater" name="theater_code">
 		<input class="dgvR" type="hidden" id="hiddenTime" name="movie_time_start">
-        <input type="submit" id="next-page1"  value="좌석선택=>" >
+        <input type="button" id="next-page1"  value="좌석선택=>" >
 	</form>	
    </div>
    </div>
@@ -590,9 +590,9 @@
 				}
 				const target = document.getElementById('next-page1');
 				$("#next-page1").css("background-color","red")
-					alert("???ㅇㅇㄹㅇㄹㅇㄹㅇㄹ")
-	 			//	document.reserveInfo.submit();
-			
+				
+	 				document.reserveInfo.submit();
+				
 			}else{
 					
 			}

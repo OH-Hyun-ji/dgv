@@ -199,86 +199,98 @@
 	$(function(){
 
 		$("#next-choice").click(function(){
-			var movieTitle = $("#movieTitle").val()			
-			var movieNum = $("#movieNum").val()			
-			var regionCode = $("#regionCode").val()			
-			var movieStartTime = $("#movieStartTime").val()			
-			var theaterCode = $("#theaterCode").val()			
-			var reserveSeat = $("#reserveSeat").val()			
-			var reserveBasic =$("#reserveBasic").val()
-			var reserveStudent =$("#reserveStudent").val()
-			var reserveOld =$("#reserveOld").val()
-			var userId = $("#userId").val()
-			var userName = $("#userName").val()
-			var userEamil = $("#userEmail").val()
-			var userPhone = $("#userPhone").val()			
-			var reservePrice = $("#reservePrice").val()
-			console.log("reservePrice  =>  "+reservePrice)
 			
-			alert("결제버튼 클릭")
-			console.log("userId " +userId)
-				//결제 아임포트 
-				 var IMP = window.IMP; // 생략가능	 
-				 IMP.init('imp31303840');
-				 IMP.request_pay({
-	            	pg: 'html5_inicis', //version 1.1.0부터 지원.
-	            	pay_method: "card",
-	            	merchant_uid:'merchant_' + new Date().getTime(),
-	            	name:movieTitle,
-	            	amount: 1000,
-	            	buyer_email: userEamil,
-	                buyer_name: userName,
-	                buyer_tel: userPhone
-	                
-	        	}, function (rsp) {
-	           	 	console.log(rsp);
-		            if (rsp.success) {
-		                var msg = '결제가 완료되었습니다.';
-			                msg += '고유ID : ' + rsp.imp_uid;
-			                msg += '상점 거래ID : ' + rsp.merchant_uid;
-			                msg += '결제 금액 : ' + rsp.paid_amount;
-			                msg += '카드 승인번호 : ' + rsp.apply_num;
-			                msg += '결제수단 : ' + rsp.pay_method;
-			                console.log('결제수단 : ' + rsp.pay_method)
-			                const reserveVo={
-			                	"movie_num" : movieNum,
-			                	"region_code" : regionCode,
-			                	"movie_time_start":movieStartTime,
-			                	"theater_code":theaterCode,
-			                	"user_id":userId,
-			                	"seat_reservation" :reserveSeat,
-			                	"reserve_basic":reserveBasic,
-			                	"reserve_student":reserveStudent,
-			                	"reserve_old" :reserveOld,
-			                	"reserve_price":reservePrice ,
-			                	"reserve_imp_uid":rsp.imp_uid ,
-			                	"reserve_apply_num": rsp.apply_num,
-			                	"reserve_merchant_uid":rsp.merchant_uid,
-			                	"reserve_method":rsp.pay_method       	
-			                }
-				            	$.ajax({
-				            		method:"POST",
-				            		url:"/userReservation.do",
-				            		contentType:"application/json",
-				            		dataType:"json",
-				            		data:JSON.stringify(reserveVo),
-				            		success:function(result){
-				            			if(result.msg=="SUCCESS"){
-				            				location.href="/movieReserve.do"
-				            			}
-				            		},
-				            		error:function(){
-				            			console.log("통신실패")
-				            		}
-				            		
-				            	}) //close ajax
-		            	console.log(rsp)
-		            } else {
-		                var msg = '결제에 실패하였습니다.';
-		                msg += '에러내용 : ' + rsp.error_msg;
-		            }
-		            alert(msg);
-	        });
+			const selectedCount = $("#selected-count").val();
+			console.log("selectedCount : "+selectedCount)
+			const booking = $("#reserveSeat").val().split(",")
+			console.log("booking : "+booking)
+			console.log("길이 : "+booking.length)
+			
+			if(selectedCount == booking.length && selectedCount !=0 ){
+			
+				var movieTitle = $("#movieTitle").val()			
+				var movieNum = $("#movieNum").val()			
+				var regionCode = $("#regionCode").val()			
+				var movieStartTime = $("#movieStartTime").val()			
+				var theaterCode = $("#theaterCode").val()			
+				var reserveSeat = $("#reserveSeat").val()			
+				var reserveBasic =$("#reserveBasic").val()
+				var reserveStudent =$("#reserveStudent").val()
+				var reserveOld =$("#reserveOld").val()
+				var userId = $("#userId").val()
+				var userName = $("#userName").val()
+				var userEamil = $("#userEmail").val()
+				var userPhone = $("#userPhone").val()			
+				var reservePrice = $("#reservePrice").val()
+				console.log("reservePrice  =>  "+reservePrice)
+				
+				alert("결제버튼 클릭")
+				console.log("userId " +userId)
+					//결제 아임포트 
+					 var IMP = window.IMP; // 생략가능	 
+					 IMP.init('imp31303840');
+					 IMP.request_pay({
+		            	pg: 'html5_inicis', //version 1.1.0부터 지원.
+		            	pay_method: "card",
+		            	merchant_uid:'merchant_' + new Date().getTime(),
+		            	name:movieTitle,
+		            	amount: 1000,
+		            	buyer_email: userEamil,
+		                buyer_name: userName,
+		                buyer_tel: userPhone
+		                
+		        	}, function (rsp) {
+		           	 	console.log(rsp);
+			            if (rsp.success) {
+			                var msg = '결제가 완료되었습니다.';
+				                msg += '고유ID : ' + rsp.imp_uid;
+				                msg += '상점 거래ID : ' + rsp.merchant_uid;
+				                msg += '결제 금액 : ' + rsp.paid_amount;
+				                msg += '카드 승인번호 : ' + rsp.apply_num;
+				                msg += '결제수단 : ' + rsp.pay_method;
+				                console.log('결제수단 : ' + rsp.pay_method)
+				                const reserveVo={
+				                	"movie_num" : movieNum,
+				                	"region_code" : regionCode,
+				                	"movie_time_start":movieStartTime,
+				                	"theater_code":theaterCode,
+				                	"user_id":userId,
+				                	"seat_reservation" :reserveSeat,
+				                	"reserve_basic":reserveBasic,
+				                	"reserve_student":reserveStudent,
+				                	"reserve_old" :reserveOld,
+				                	"reserve_price":reservePrice ,
+				                	"reserve_imp_uid":rsp.imp_uid ,
+				                	"reserve_apply_num": rsp.apply_num,
+				                	"reserve_merchant_uid":rsp.merchant_uid,
+				                	"reserve_method":rsp.pay_method       	
+				                }
+					            	$.ajax({
+					            		method:"POST",
+					            		url:"/userReservation.do",
+					            		contentType:"application/json",
+					            		dataType:"json",
+					            		data:JSON.stringify(reserveVo),
+					            		success:function(result){
+					            			if(result.msg=="SUCCESS"){
+					            				location.href="/movieReserve.do"
+					            			}
+					            		},
+					            		error:function(){
+					            			console.log("통신실패")
+					            		}
+					            		
+					            	}) //close ajax
+			            	console.log(rsp)
+			            } else {
+			                var msg = '결제에 실패하였습니다.';
+			                msg += '에러내용 : ' + rsp.error_msg;
+			            }
+			            alert(msg);
+		        });
+			}else{
+				alert("인원에 맞게 좌석수를 선택해주세요")
+			}
 		}) // close click function
 	})
 ////////////////////////////////////////////////////////////////////

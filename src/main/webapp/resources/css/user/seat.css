@@ -252,6 +252,7 @@ img#movie-poster-img{
 span.movie-title-en {
     font-weight: 100;
  	color: #ced0d1;
+ 	width: 250px;
 }
 .movie-age-style {
     display: flex;
@@ -267,6 +268,7 @@ span.movie-genre-style {
     display: grid;
     padding-right: 13px;
     border-right: 1px solid #9d9797;
+	height: 80px;
 }
 .movie-thearter-wrapping {
     display: flex;
@@ -279,15 +281,17 @@ span.movie-genre-style {
     display: grid;
     padding-top: 19px;
     padding-left: 20px;
-    width: 355px;
+    width: 330px;
 }
+
 span.movie-map-name {
     font-size: 18px;
-    color: white;
+    color: #ff8141;
+    
 }
 span.movie-theater-name {
 	font-size: 17px;
-    color: white;
+    color: #f8ff5a;
 }
 span.movie-date-name {
     font-size: 16px;
@@ -302,13 +306,19 @@ input#userChoiceSeat {
     color: white;
     height: 25px;
     width: 247px;
+    border: 0;
+    border-bottom: 1px solid white;
 }
 .next-choice-style {
     padding-top: 28px;
     padding-left: 15px;
+    padding-right:  25px;
 }
 img#next-choice {
     height: 94px;
     border: 1px solid white;
     border-radius: 12px;
+}
+.reservation-container {
+    width: 1000px;
 }
