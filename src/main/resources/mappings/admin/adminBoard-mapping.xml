@@ -84,4 +84,10 @@
 	<update id="eventAdminUpdate">
 		UPDATE dgv_event SET event_status=#{event_status} WHERE event_code= #{event_code} 
 	</update>
+	
+	<select id="endEventSelect" resultType="AdminEventVO">
+	<![CDATA[
+		select * from dgv_event where cast(end_date as date) < current_date;
+	]]>
+	</select>
 </mapper>

@@ -17,16 +17,10 @@
 		function adminEvent(){
 			  window.open('/eventRegisterPage.mdo','','width=700,height=700')
 		}
-		function eventStatusCheck(e){
+		function eventContinueCheck(e){
 			
-			const eventT = $("#eventStatusNum").val()
-			console.log("eventT : "+eventT)
-			var eventStatus;
-			if(eventT == '1'){
-				eventStatus = '0'
-			}else{
-				eventStatus = '1'
-			}
+			const eventT = $("#eventContinueNum").val()
+			var eventStatus ="0"
 			
 			console.log("현재 value : " + eventStatus)
 			const eventVo ={
@@ -49,6 +43,35 @@
 					console.log("통신 실패")
 				}
 			})//ajax close
+			
+		}
+		function eventEndCheck(e){
+			
+			const eventT = $("#eventEndNum").val()
+			var eventStatus ="1"
+			
+			console.log("현재 value : " + eventStatus)
+			const eventVo ={
+				"event_code": e,
+				"event_status": eventStatus
+			}
+			
+			$.ajax({
+				method:"POST",
+				url:"/changeEventStatus.mdo",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify(eventVo),
+				success:function(result){
+					alert("비활성모드입니다. ")
+					location.reload()
+				
+				},
+				error:function(){
+					console.log("통신 실패")
+				}
+			})//ajax close
+			
 		}
 	</script>
 	<style type="text/css">
@@ -73,12 +96,21 @@
 							<i class="fas fa-table me-1"></i> 이벤트목록
 						</div>
 						<div class="card-body">
+							
 							<table id="datatablesSimple" name="userTable">
 								<thead>
-										<button class="w-btn-outline w-btn-red-outline" style="margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; left:500; top:400; margin-bottom: 10px; margin-bottom: 1%;" 
-                                        type="button" onclick="adminEvent()">
-                                            Register
-                                        </button>	
+									<div class="eventListBtn-container">
+										<div class="eventListBtn-wrap">
+											<button class="w-btn-outline w-btn-red-outline" style="margin-top: 1%; box-shadow: none; padding: 10px; width: 13%; left:500; top:400; margin-bottom: 10px; margin-bottom: 1%;" 
+	                                        type="button" onclick="adminEvent()">
+	                                            Register
+	                                        </button>
+	                                    </div>
+										<div class="eventStatusBtn">
+											<button id="endEventList" class="w-btn w-btn-red">종료된이벤트</button>
+											<button id="continueEventList" class="w-btn w-btn-red">진행중인이벤트</button>
+										</div>
+									</div>
 									<tr>
 										<th>번호</th>
 										<th>이벤트 배너</th>
@@ -101,12 +133,12 @@
 											<td style="padding-top: 4%;">${eventList.end_date }</td>
 											<c:if test="${eventList.event_status == '0' }">
 												<td style="padding-top: 4%;">
-													<button id="eventStatusNum" onclick="eventStatusCheck(${eventList.event_code})" value="0" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 83px;height: 25px;padding: 0; background:#777777;">비활성(종료)</button>
+													<button id="eventEndNum" onclick="eventEndCheck(${eventList.event_code})" value="0" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 83px;height: 25px;padding: 0; background:#777777;">비활성(종료)</button>
 												</td>
 											</c:if>
 											<c:if test="${eventList.event_status == '1' }">
 												<td style="padding-top: 4%;">
-													<button id="eventStatusNum"  onclick="eventStatusCheck(${eventList.event_code})" value="1" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button"  style="width: 83px;height: 25px;padding: 0;">활성(진행중)</button>
+													<button id="eventContinueNum"  onclick="eventContinueCheck(${eventList.event_code})" value="1" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button"  style="width: 83px;height: 25px;padding: 0;">활성(진행중)</button>
 												</td>
 											</c:if>											
 												<td style="padding-top: 4%;">${eventList.event_winner }</td>

@@ -11745,3 +11745,18 @@ td#img-tool {
 td#status-tool {
     padding-top: 62px;
 }
+.eventStatusBtn {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 1rem;
+}
+button#endEventList {
+    margin-right: 12px;
+    width: 100px;
+    padding: 0;
+}
+button#continueEventList {
+    padding: 0;
+    height: 38px;
+    width: 109px;
+}

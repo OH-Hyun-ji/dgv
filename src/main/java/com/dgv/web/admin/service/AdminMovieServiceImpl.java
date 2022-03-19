@@ -411,9 +411,13 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		
 		return adminMovieDAO.eventAdminUpdate(vo);
 	}
+		
+	@Override
+	public List<AdminEventVO> endEventSelect() {
 	
-
-	
+		return adminMovieDAO.endEventSelect();
+	}
+		
 
 	
 

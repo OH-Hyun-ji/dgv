@@ -28,6 +28,13 @@ public class AdminEventController {
 	@Autowired
 	private FileUploadService fileUploadService;
 
+	//종료된이벤트
+	@RequestMapping("/adminEndEvent.mdo")
+	public String endEventSelect() {
+		return 
+	}
+	
+	
 	@RequestMapping("/adminEventList.mdo")
 	public String adminEventList(Model model) {
 		List<AdminEventVO> eventList = adminMovieService.EventSelect();
