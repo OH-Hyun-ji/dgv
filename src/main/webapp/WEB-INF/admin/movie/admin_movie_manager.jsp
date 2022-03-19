@@ -175,7 +175,7 @@ a#actorDetail {
                                                     <th>Actor Nation</th>
                                                     <th>Writer</th>
                                                     <th>Writer Date</th>
-                                                    <th>삭제/수정</th>
+                                                    <th>삭제</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -187,7 +187,7 @@ a#actorDetail {
                                                     <td>${actorList.movie_actor_nation}</td>                                          
                                                     <td>${actorList.reg_id}</td>
                                                     <td>${actorList.reg_date}</td>
-                                                    <td><button id="delBtActor"  onclick="deleteActor('${actorList.movie_actor_code}')"><i class="fas fa-trash-alt"></i></button><button onclick="actorUpdate('${actorList.movie_actor_code}')" ><i class="fas fa-pencil-alt"></i></button></td>
+                                                    <td><button id="delBtActor"  onclick="deleteActor('${actorList.movie_actor_code}')"><i class="fas fa-trash-alt"></i></button>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
