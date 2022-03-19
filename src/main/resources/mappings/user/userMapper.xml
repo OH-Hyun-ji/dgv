@@ -3,87 +3,117 @@
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-   <mapper namespace="UserDAO">
-      
-      <insert id="register" useGeneratedKeys="true" keyProperty="user_num"  parameterType="UserVO">
-         INSERT INTO user_info(user_num,user_id,user_pw,user_name,user_phone,user_email,user_year,user_month,user_day,user_term)
-         VALUES(nextval('seq_user'),#{user_id},#{user_pw},#{user_name},#{user_phone},#{user_email},#{user_year},#{user_month},#{user_day},#{user_term})
-      </insert>
-       
-      <select id="login" resultType="UserVO" parameterType="UserVO" >
-         SELECT * FROM user_info WHERE user_id = #{user_id}
-      </select>
-      
-      <select id="checkId" resultType="int" parameterType="UserVO">
-         SELECT COUNT(*)
-         FROM user_info
-         WHERE user_id=#{user_id}
-      </select>
-      
-      <select id="checkEmail" resultType="int" parameterType="UserVO">
-         SELECT COUNT(*)
-         FROM user_info
-         WHERE user_email=#{user_email}
-      </select>
+<mapper namespace="UserDAO">
 
-      <select id="userList" resultType="UserVO">
-         SELECT * FROM user_info WHERE user_id = #{user_id}
-       </select>
-       
-       <select id="userData" resultType="UserVO">
-         SELECT * FROM user_info WHERE user_id = #{user_id}
-       </select>
-       
-       <update id="updateUser" parameterType="UserVO">
-       	 UPDATE user_info SET
-       	 user_pw = #{user_pw},
-       	 user_phone = #{user_phone}
-       	 WHERE user_id = #{user_id}
-       </update>
-       
-       <delete id="deleteUser">
-       	 DELETE FROM user_info
-			WHERE user_id = #{user_id}
-       </delete>
-       
-       <select id="kakaoUserList" resultType="UserVO">
-         SELECT * FROM user_info WHERE user_email = #{user_email}     
-       </select>
-       
-       <select id="MyPageQnaOneList" resultType="UserInquiryVO">
-		 SELECT * FROM dgv_qna_wait where dgv_inquiry_user = #{userID}
-		</select>
-		
+	<insert id="register" useGeneratedKeys="true"
+		keyProperty="user_num" parameterType="UserVO">
+		INSERT INTO
+		user_info(user_num,user_id,user_pw,user_name,user_phone,user_email,user_year,user_month,user_day,user_term)
+		VALUES(nextval('seq_user'),#{user_id},#{user_pw},#{user_name},#{user_phone},#{user_email},#{user_year},#{user_month},#{user_day},#{user_term})
+	</insert>
+
+	<select id="login" resultType="UserVO" parameterType="UserVO">
+		SELECT *
+		FROM user_info WHERE user_id = #{user_id}
+	</select>
+
+	<select id="checkId" resultType="int" parameterType="UserVO">
+		SELECT
+		COUNT(*)
+		FROM user_info
+		WHERE user_id=#{user_id}
+	</select>
+
+	<select id="checkEmail" resultType="int" parameterType="UserVO">
+		SELECT
+		COUNT(*)
+		FROM user_info
+		WHERE user_email=#{user_email}
+	</select>
+
+	<select id="userList" resultType="UserVO">
+		SELECT * FROM user_info WHERE
+		user_id = #{user_id}
+	</select>
+
+	<select id="userData" resultType="UserVO">
+		SELECT * FROM user_info WHERE
+		user_id = #{user_id}
+	</select>
+
+	<update id="updateUser" parameterType="UserVO">
+		UPDATE user_info SET
+		user_pw = #{user_pw},
+		user_phone = #{user_phone}
+		WHERE user_id =
+		#{user_id}
+	</update>
+
+	<delete id="deleteUser">
+		DELETE FROM user_info
+		WHERE user_id = #{user_id}
+	</delete>
+
+	<select id="kakaoUserList" resultType="UserVO">
+		SELECT * FROM user_info
+		WHERE user_email = #{user_email}
+	</select>
+
+	<select id="MyPageQnaOneList" resultType="UserInquiryVO">
+		SELECT * FROM
+		dgv_qna_wait where dgv_inquiry_user = #{userID}
+	</select>
+
+
+	<select id="userDetailVo" resultType="UserDetailVO">
+		SELECT * FROM
+		user_info_detail WHERE user_num =#{user_num}
+	</select>
+
+	<update id="userProfileImg">
+		UPDATE user_info_detail SET user_img = #{user_img}
+		WHERE
+		user_num=#{user_num}
+	</update>
+
+	<insert id="userDetail" parameterType="UserDetailVO">
+		INSERT INTO
+		user_info_detail(user_num,user_rank,user_point,user_img,user_agree)
+		VALUES(#{user_num},DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+	</insert>
+
+	<select id="userNumSelect" resultType="UserVO">
+		SELECT * FROM user_info
+		WHERE user_id = #{user_id}
+	</select>
+
+	<select id="findId" resultType="UserVO" parameterType="UserVO">
+		SELECT
+		user_id FROM user_info WHERE user_email = #{user_email}
+	</select>
+
+	<select id="userTermCheck" resultType="AdminTermVO">
+		SELECT * FROM term_info
+		WHERE term_status ='true';
+	</select>
+
+	<select id="userTermInfo" resultType="AdminTermVO">
+		SELECT * FROM term_info
+		WHERE term_status ='true' AND term_num =
+		#{term_num};
+	</select>
 	
-		<select id="userDetailVo" resultType="UserDetailVO">
-			SELECT * FROM user_info_detail WHERE user_num =#{user_num}
-		</select>
-		
-		<update id="userProfileImg" >
-			UPDATE user_info_detail SET user_img = #{user_img} WHERE user_num=#{user_num}
-		</update>
-       
-       <insert id="userDetail" parameterType="UserDetailVO">
-       		INSERT INTO user_info_detail(user_num,user_rank,user_point,user_img,user_agree)
-       		VALUES(#{user_num},DEFAULT,DEFAULT,DEFAULT,DEFAULT)
-       </insert>
-       
-       <select id="userNumSelect" resultType="UserVO">
-       		SELECT * FROM user_info WHERE user_id = #{user_id}
-       </select>
-       
-       <select id="findId" resultType="UserVO" parameterType="UserVO">
-       		SELECT user_id FROM user_info WHERE user_email = #{user_email}
-       </select>
-    
-    	<select id="userTermCheck" resultType="AdminTermVO">
-    		SELECT * FROM term_info WHERE term_status ='true';
-    	</select>
-    	
-    	<select id="userTermInfo" resultType="AdminTermVO">
-    		SELECT * FROM term_info WHERE term_status ='true' AND term_num = #{term_num};
-    	</select>
-    	
-    	
-	</mapper>
+	<select id="selectMember" parameterType="String" resultType="UserVO">
+		select * from user_info where user_email = #{user_email}
+	</select>
+
+	<update id="newPassword" parameterType="UserVO">
+		update user_info set user_pw = #{user_pw} where user_email= #{user_email}
+	</update>
+	
+	
+	
+
+
+</mapper>
       

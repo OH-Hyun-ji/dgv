@@ -51,5 +51,10 @@ public interface UserService {
 	List<AdminTermVO> userTermList();
 	
 	AdminTermVO userTermInfo(AdminTermVO vo);
-
+	
+	//비밀번호 찾기
+	UserVO selectMember(String email);
+	
+	//새 비밀번호 설정
+	int newPassword(UserVO vo);
 }
