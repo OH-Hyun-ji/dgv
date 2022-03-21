@@ -102,4 +102,30 @@
 	]]>
 	</select>
 	
+	<select id="EventDetailSelect" resultType="AdminEventVO">
+		SELECT * FROM dgv_event WHERE event_code= #{event_code} 
+	</select>
+	
+	<update id="eventUpdate">
+		UPDATE dgv_event SET event_title=#{event_title}, event_text=#{event_text}, start_date=#{start_date}, end_date=#{end_date}, reg_id=#{reg_id},
+				reg_date=current_date, event_winner=#{event_winner},event_img=#{event_img},event_text_img=#{event_text_img} WHERE event_code=#{event_code}
+	</update>
+	
+	<insert id="CouponInsert" parameterType="AdminCouponVO">
+		INSERT INTO dgv_coupon(coupon_num,coupon_code,coupon_name,coupon_discount,coupon_date,reg_id,reg_date,coupon_img)
+		VALUES(DEFAULT,#{coupon_code},#{coupon_name},#{coupon_discount},#{coupon_date},#{reg_id},current_date,#{coupon_img})
+	</insert>
+	
+	<select id="CouponSelect" resultType="AdminCouponVO">
+		SELECT * FROM dgv_coupon ORDER BY coupon_num ASC;
+	</select>
+	
+	<update id="CouponUpdate">
+		UPDATE dgv_coupon SET coupon_name=#{coupon_name}, coupon_discount=#{coupon_discount}, reg_id=#{reg_id}, reg_date=#{reg_date}, coupon_img=#{coupon_img}
+		WHERE coupon_num =#{coupon_num}
+	</update>
+	
+	<select id="CouponNumSelect" resultType="AdminCouponVO">
+		SELECT * FROM dgv_coupon WHERE coupon_num =#{coupon_num}
+	</select>
 </mapper>

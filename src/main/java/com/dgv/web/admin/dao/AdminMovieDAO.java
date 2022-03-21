@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityTheaterVO;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
@@ -282,5 +283,28 @@ public class AdminMovieDAO {
 	
 	public List<AdminEventVO> continueEventSelect(){
 		return sqlSessionTemplate.selectList("AdminBoardDAO.continueEventSelect");
+	}
+	public AdminEventVO EventDetailSelect(int num) {
+		return sqlSessionTemplate.selectOne("AdminBoardDAO.EventDetailSelect",num);
+	}
+	
+	public int eventUpdate(AdminEventVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.eventUpdate",vo);
+	}
+	
+	public int CouponInsert(AdminCouponVO vo) {
+		return sqlSessionTemplate.insert("AdminBoardDAO.CouponInsert",vo);
+	}
+	
+	public List<AdminCouponVO> CouponSelect(){
+		return sqlSessionTemplate.selectList("AdminBoardDAO.CouponSelect");
+	}
+	
+	public int CouponUpdate(AdminCouponVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.CouponUpdate",vo);
+	}
+	
+	public AdminCouponVO CouponNumSelect(int num) {
+		return sqlSessionTemplate.selectOne("AdminBoardDAO.CouponNumSelect",num);
 	}
 }

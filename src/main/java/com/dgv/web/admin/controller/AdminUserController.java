@@ -71,6 +71,15 @@ public class AdminUserController {
 		
 		return "/user/admin_user_details";
 	}
+	@PostMapping("/userStatusChange.mdo")
+	@ResponseBody
+	public CommonResultDto userStatusChange(@RequestBody UserVO vo) {
+		int num = adminUserService.userStatus(vo);
+		
+		if(num==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
 	
 	@RequestMapping("/userList.mdo")
 	public String userList(UserVO vo, Model model) {

@@ -1,9 +1,7 @@
 package com.dgv.web.user.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
@@ -19,6 +17,7 @@ import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.dao.UserBoardDAO;
 import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.CriteriaBoard;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
@@ -231,9 +230,9 @@ public class UserBoardServiceImpl implements UserBoardService {
 
 
 	@Override
-	public List<UserCommunityVO> communitySelect() {
+	public List<UserCommunityVO> communitySelect(CriteriaBoard cri) {
 		
-		return userBoardDAO.communitySelect();
+		return userBoardDAO.communitySelect(cri);
 	}
 
 
@@ -294,9 +293,9 @@ public class UserBoardServiceImpl implements UserBoardService {
 
 
 	@Override
-	public int getCommunityCnt(SearchVO vo) throws Exception {
+	public int getCommunityCnt()  {
 	
-		return userBoardDAO.getCommunityCnt(vo);
+		return userBoardDAO.getCommunityCnt();
 	}
 
 
@@ -373,6 +372,14 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.yetTotal();
 	}
+	
+	@Override
+	public List<UserVO> userIdList() {
+		
+		return userBoardDAO.userIdList();
+	}
+
+
 
 
 

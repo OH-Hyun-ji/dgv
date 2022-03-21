@@ -23,6 +23,7 @@
 	<collection property="detailVO" resultMap="UserDetailVO"></collection>
 </resultMap>
 
+
 	<select id="NoticeList" resultType="AdminNoticeVO">
 		SELECT * FROM dgv_notice
 	</select>
@@ -67,13 +68,17 @@
 		UPDATE dgv_community SET community_count = community_count+1 WHERE community_code=#{community_code}
 	</update>
 	
-	<select id="communitySelect" resultType="UserCommunityVO">
-		SELECT * FROM dgv_community
-			<trim prefix="WHERE" prefixOverrides="AND|OP">
-			<if test="searchType=='community_title' and keyword != null and keyword !=''">
-				WHERE community_title like '%#{keyword}%')
-			</if>
-		</trim>
+	<select id="communitySelect" resultType="UserCommunityVO" parameterType="CriteriaBoard">
+		<![CDATA[
+			select*from(
+					select *,(row_number() over()) as rn1 from (
+								select *,(row_number() over()) as rn from dgv_community)as foo where rn <= #{pageNum} * #{amount})
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}  
+		]]>								
+												<if test="searchType=='community_title' and keyword != null and keyword !=''">
+													AND community_title like '%'||#{keyword}||'%' ORDER BY community_code asc
+												</if>
+											
 		
 	</select>
 	
@@ -147,5 +152,7 @@
 	<select id="yetTotal" resultType="int">
 		SELECT COUNT(*) FROM movie_info WHERE movie_status ='yet'
 	</select>
+	
+	
 	
 </mapper>

@@ -41,7 +41,6 @@ import com.dgv.web.admin.vo.TheaterInfoDto;
 import com.dgv.web.user.controller.Pagination;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.vo.PageVO;
-import com.dgv.web.user.vo.PaginationVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;

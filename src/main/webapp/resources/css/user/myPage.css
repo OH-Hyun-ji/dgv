@@ -58,6 +58,7 @@ button#myPage-change-info {
 button#myPage-change-info:hover{
 	background-color: gray;
 	color:white;
+	cursor: pointer;
 }
 .myPage-info-box > p{
 	font-size: 24px;
@@ -753,6 +754,7 @@ button#myCouponList {
 button#myCouponList:hover {
 	background-color: gray;
 	color:white;
+	cursor: pointer;
 }
 .myPage-coupon-count {
     margin-bottom: 76px;

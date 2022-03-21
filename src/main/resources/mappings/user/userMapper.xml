@@ -115,5 +115,13 @@
 		update user_info set
 		user_pw = #{user_pw} where user_email= #{user_email}
 	</update>
+	
+	<select id="userIdList" resultType="UserVO">
+		SELECT * FROM user_info
+	</select>
+	
+	<update id="userStatus" >
+		UPDATE user_info SET user_status='false' WHERE user_id =#{user_id}
+	</update>
 </mapper>
       

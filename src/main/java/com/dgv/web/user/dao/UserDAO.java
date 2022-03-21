@@ -104,4 +104,8 @@ public class UserDAO {
 		return sqlSessionTemplate.update("UserDAO.newPassword", vo);
 	}
 	
+	//유저 활성화 여부
+	public int userStatus(UserVO vo) {
+		return sqlSessionTemplate.update("UserDAO.userStatus",vo);
+	}
 }

@@ -97,6 +97,10 @@ public class AdminUserServiceImpl implements AdminUserService {
 		
 		return adminUserDAO.userTermNumVo(num);
 	}
-	
+	@Override
+	public int userStatus(UserVO vo) {
+		
+		return adminUserDAO.userStatus(vo);
+	}
 	
 }

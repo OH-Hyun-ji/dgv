@@ -37,6 +37,9 @@ public class RequestUtils {
 	public static String getRankImg(final String rankImg) {
 		return (String) RequestUtils.getSession().getAttribute("rankImg");
 	}
+	public static String getAdminId(final String adminId) {
+		return (String) RequestUtils.getSession().getAttribute("adminId");
+	}
 
 	
 	
@@ -57,6 +60,9 @@ public class RequestUtils {
 
 	public static void setRankImg(final String rankImg) {
 		RequestUtils.getSession().setAttribute("rankImg",rankImg);
+	}
+	public static void setAdminId(final String adminId) {
+		RequestUtils.getSession().setAttribute("adminId",adminId);
 	}
 
 }

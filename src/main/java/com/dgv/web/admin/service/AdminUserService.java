@@ -37,4 +37,6 @@ public interface AdminUserService {
 	UserVO userNumList(int num);
 	
 	AdminTermVO userTermNumVo (int num);
+	
+	int userStatus(UserVO vo);
 }

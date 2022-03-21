@@ -128,5 +128,11 @@ public class UserServiceImpl implements UserService {
 	public int newPassword(UserVO vo) {
 		return userDAO.newPassword(vo);
 	}
+	
+	@Override
+	public int userStatus(UserVO vo) {
+		
+		return userDAO.userStatus(vo);
+	}
 
 }

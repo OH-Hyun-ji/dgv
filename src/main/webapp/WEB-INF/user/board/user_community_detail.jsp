@@ -164,7 +164,7 @@
 							<div class="community-mini-btn bookmark"></div>
 							<div class="community-talk-wrap">
 								<div class=user-saved-img>
-									<img src="${communityVo.commuity_img} " >
+									<img id="myImgView" src="${communityVo.commuity_img} " >
 								</div>
 									<div class="community-talk-wrapper">
 										<div class="community-talk">
@@ -206,11 +206,13 @@
 											<input type="text" id="writeComment" name="comment_title" placeholder="제목입력">
 										</div>
 										<div class="comment-textarea">
+										<div>
 											<textarea class="comment-textarea-style" id="commentText" name="comment_text" rows="10" cols="20"></textarea>
+											</div>
+											<div class="comment-resBtn-style">
+												<button class="comment-register" id="commentRegister">등록하기</button>
+											</div>
 										</div>
-									</div>
-									<div class="comment-resBtn-style">
-										<button class="comment-register" id="commentRegister">등록하기</button>
 									</div>
 								</div>
 							</div>

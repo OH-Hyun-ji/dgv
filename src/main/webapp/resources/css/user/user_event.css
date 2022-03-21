@@ -4,6 +4,8 @@
   position: relative;
   width: 100%;
   z-index: 7;
+  display: flex;
+  justify-content: center;
 }
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
   font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
@@ -25,6 +27,7 @@ div {
   position: relative;
   width: 980px;
   margin: 0 auto;
+  padding: 0;
 }
 .tit-evt {
   position: relative;
@@ -36,13 +39,13 @@ div {
   border-bottom: 3px solid #241d1e;
 }
 .tit-heading-wrap > h3 {
+  font-weight: bold;
   display: inline-block;
   position: relative;
   height: inherit;
   margin: 0;
   background-image: none;
   color: #222;
-  font-weight: 500;
   font-size: 36px;
   text-align: left;
   vertical-align: middle;
@@ -156,14 +159,14 @@ i {
 .cols-content .col-detail {
   	position: relative;
     width: 113%;
-    padding-left: 8%;
     box-sizing: border-box;
-    padding-right: 20%;
+    padding-right: 4%;
 }
 .sect-evt-item-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  width: 980px;
 }
 ol, ul {
   list-style: none;
@@ -195,8 +198,8 @@ a {
   height: 170px;
 }
 .sect-evt-item-list li img {
-  width: 256px;
-  height: 170px;
+  width: 100%;
+  height: 200px;
 }
 input, select, img {
   vertical-align: middle;
@@ -209,7 +212,6 @@ input, select, img {
     width: 255px;
 }
 .sect-evt-item-list li .txt1 {
-  padding: 18px 11px 0 11px;
   height: 38px;
   vertical-align: top;
   font-size: 16px;
@@ -222,12 +224,12 @@ input, select, img {
   text-overflow: ellipsis;
   white-space: normal;
   letter-spacing: -1px;
+  font-weight: 700;
 }
 .sect-evt-item-list li .txt2 {
   color: #6a6f77;
-  font-size: 13px;
-  padding: 17px 11px 0 11px;
   letter-spacing: -0.5px;
+  font-size: 15px;
 }
 ul.event-ul {
     display: flex;
@@ -238,6 +240,7 @@ ul.event-ul {
 ul.event-ul > li {
     margin-left: 8%;
     margin-right: 15%;
+    font-size: 17px;
 }
 
 ul.event-ul > li:hover {
@@ -247,6 +250,65 @@ ul.event-ul > li:hover {
 .event-board-wrap {
     height: 66%;
     position: absolute;
-    margin-left: 18%;
-    margin-right: 29%;
+    margin: 0 auto;
+}
+.event-desc {
+    border: 1px solid #dddfe2;
+    box-sizing: border-box;
+    padding: 9px 0 13px 14px;
+}
+.thumb-image {
+    height: 200px;
+}
+img.endEventImg {
+    filter: brightness(0.5);
+}
+li.finishEvent {
+    background: #99999914;
+}
+span.dateFinish {
+    padding-left: 1rem;
+    font-weight: bold;
+    color: red;
+}
+span.user-eventT {
+    font-size: 31px;
+    background-color: #634848;
+    color: white;
+    border-radius: 11px;
+}
+.user-eventT-wrap {
+    box-sizing: border-box;
+    padding-left: 1rem;
+    margin-bottom: 1px;
+}
+button.w-btn.w-btn-gra3.w-btn-gra-anim.event-list-btn {
+    width: 152px;
+    margin-left: 7rem;
+}
+.event-winner-wrap {
+    width: 980px;
+}
+.event-winner-img {
+    width: 980px;
+    height: 660px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: url(https://dgvworld.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20220320_235932917.png)no-repeat;
+    background-position-x: center;
+    background-size: 748px 662px;
+}
+.winner-user-wrap {
+    text-align: center;
+    height: 50px;
+    box-sizing: border-box;
+    padding-top: 13rem;
+}
+input.winner-user-id {
+    border: 0;
+    background-color: #f2ede7;
+    height: 32px;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #9e6846;
 }

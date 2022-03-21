@@ -117,3 +117,8 @@ button#excelConvert {
     border-radius: 10px;
     margin-bottom: 1rem;
 }
+button#excelConvert:hover {
+	background-color: gray;
+	color: white;
+	border: 0;
+}

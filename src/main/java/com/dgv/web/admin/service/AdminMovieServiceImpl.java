@@ -8,6 +8,7 @@ import com.dgv.web.admin.dao.AdminMovieDAO;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityTheaterVO;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
@@ -430,4 +431,35 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		return adminMovieDAO.continueEventSelect();
 	}
 
+	@Override
+	public AdminEventVO EventDetailSelect(int num) {
+		
+		return adminMovieDAO.EventDetailSelect(num);
+	}
+	@Override
+	public int eventUpdate(AdminEventVO vo) {
+		
+		return adminMovieDAO.eventUpdate(vo);
+	}
+	
+	@Override
+	public int CouponInsert(AdminCouponVO vo) {
+		
+		return adminMovieDAO.CouponInsert(vo);
+	}
+	@Override
+	public List<AdminCouponVO> CouponSelect() {
+		
+		return adminMovieDAO.CouponSelect();
+	}
+	@Override
+	public int CouponUpdate(AdminCouponVO vo) {
+		
+		return adminMovieDAO.CouponUpdate(vo);
+	}
+	@Override
+	public AdminCouponVO CouponNumSelect(int num) {
+		
+		return adminMovieDAO.CouponNumSelect(num);
+	}
 }

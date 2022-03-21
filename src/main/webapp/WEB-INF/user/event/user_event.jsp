@@ -22,11 +22,11 @@
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
   <!--본격 콘텐츠-->
-  <div id="contaniner" class="">
+  <div id="contaniner" class="" style="height: 1000px;">
     <!-- Contents Area -->
     <div class="event-board-wrap"> 
     <jsp:include page="../default/user_event_header.jsp"></jsp:include>
-        <div class="cols-content" style="width: 100%;">
+        <div class="cols-content" style="width: 980px;">
           <div class="col-detail event">
             <ul class="sect-evt-item-list">
 
@@ -34,9 +34,9 @@
 	              <li>
 	              	<input type="hidden" id="eventCode" value="${eventList.event_code }">
 	                <a href="/eventDetail.do?event_code=${eventList.event_code}">
-	                  <span class="thumb-image">
+	                  <div class="thumb-image">
                       	<img src="${eventList.event_img}" >
-                      </span>
+                      </div>
 	                  <div class="event-desc">
 	                    <p class="txt1">${eventList.event_title}</p>
 	                    <p class="txt2">${eventList.start_date }~${eventList.end_date }</p>

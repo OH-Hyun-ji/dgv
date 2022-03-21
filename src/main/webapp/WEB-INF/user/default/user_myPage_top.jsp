@@ -63,7 +63,7 @@
 					</div>
 					<button type="button" id="myPage-view_usergrade"
 						class="myPage-round black">
-						<span>MY 지난등급이력 보기</span>
+						<span style="cursor: pointer;">MY 지난등급이력 보기</span>
 					</button>
 
 				</div>

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,16 +19,52 @@ import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.CommonResultDto;
+import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.UserVO;
 
 @Controller
 public class AdminEventController {
 	
 	@Autowired
 	private AdminMovieService adminMovieService;
+
+	@Autowired
+	private UserBoardService userBoardService;
 	
 	@Autowired
 	private FileUploadService fileUploadService;
 
+	
+	//이벤트 수정
+	@PostMapping("/eventUpdate.mdo")
+	@ResponseBody
+	public CommonResultDto eventUpdate(@RequestPart("eventVo") AdminEventVO eventVo, @RequestPart MultipartFile imgFile, @RequestPart MultipartFile imgFile1) {
+		
+		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "event/", eventVo.getEvent_img());
+		final FileUploadService.FileUploadResult filrResult1 = fileUploadService.fileUpload(imgFile1, "event/", eventVo.getEvent_text_img());
+		if(!fileResult.isSuccess() || !filrResult1.isSuccess())
+			return CommonResultDto.fail();
+		
+		eventVo.setEvent_img(fileResult.getUrl());
+		eventVo.setEvent_text_img(filrResult1.getUrl());	
+		eventVo.setReg_id(RequestUtils.getAdminId("adminId"));
+		int num = adminMovieService.eventUpdate(eventVo);
+		
+		if(num == 0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
+	//이벤트 상세페이지
+	@RequestMapping("/eventDetail.mdo")
+	public String eventUpdate(@RequestParam("event_code") int num, Model model) {
+		AdminEventVO eventVo = adminMovieService.EventDetailSelect(num);
+		List<UserVO> userList = userBoardService.userIdList();
+		model.addAttribute("userList",userList);
+		model.addAttribute("eventVo",eventVo);
+		return "/board/admin_event_update";
+	}
+	
 	//종료된이벤트
 	@RequestMapping("endEventList.mdo")
 	public String endEventSelect(Model model) {
@@ -83,7 +120,7 @@ public class AdminEventController {
 		eventVo.setEvent_img(fileResult.getUrl());
 		eventVo.setEvent_text_img(fileResult1.getUrl());
 		
-		if(!fileResult.isSuccess())
+		if(!fileResult.isSuccess() || !fileResult1.isSuccess())
 			return CommonResultDto.fail();
 		
 		

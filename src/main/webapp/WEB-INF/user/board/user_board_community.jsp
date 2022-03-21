@@ -8,6 +8,7 @@
 <title>DGV Community Board</title>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/board.css">
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/movieChart.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -109,6 +110,23 @@
 			</div>
 		</c:forEach>
 		</div>
+			<div class="page-info-wrap">
+			<div class="page-info-area" >
+				<ul id="pageInfo" class="pageInfo">
+					<c:if test="${pageMake.prev}">
+							<li class="pageInfo-btn previous" ><a href="${pageMake.startPage-1}">Previous</a></li>
+					</c:if>
+					<c:forEach var="num" begin="${pageMake.startPage}" end="${pageMake.endPage}">
+						<li class="pageInfo_btn ${pageMake.cri.pageNum == num ? 'active' : ''}"><a href="${url}?pageNum=${num }&amount=${pageMake.cri.amount }">${num}</a></li>
+						<input type="hidden" id="numVal" value="${num }">
+						<input type="hidden" id="amountVal" value="${pageMake.cri.amount }">
+					</c:forEach>
+					<c:if test="${pageMake.next}">
+						<li class="pageInfo_btn next"><a href="${pageMake.endPage + 1}">Next</a></li>
+					</c:if>
+				</ul>
+			</div>		
+		</div>
 	</div>
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>
 	<script type="text/javascript">
@@ -116,8 +134,9 @@
 		if(e.keyCode == 13){
 			console.log("ddd : "+$("#searchType").val() )
 			e.preventDefault();
-			var url = "/board.do";
-			url =url+"?searchType="+$("#searchType").val();
+			var url = "/board.do?pageNum="+$("#numVal").val();
+			url = url+"&amountVal="+$("#amountVal").val();			
+			url =url+"&searchType="+$("#searchType").val();
 			url= url+"&keyword="+$("#keyword").val();
 			location.href = url;
 			console.log("url : "+url);

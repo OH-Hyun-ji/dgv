@@ -30,7 +30,7 @@
 			      })		     	
 			    }).done(function(result){
 			    	alert("환불 성공")
-			    	window.reload()
+			    	location.reload()
 			    }).fail(function(error){
 			    	alert("환불 실패")
 			    }) //close ajax
@@ -96,7 +96,7 @@
 												</c:when>
 												<c:otherwise>
 													<button id="delBt" onclick="cancelAction('${paymentList.reserve_code}','${paymentList.reserve_imp_uid}','${paymentList.reserve_merchant_uid}','${paymentList.reserve_price}')">
-														<i class="fas fa-trash-alt"></i>
+														결제취소
 													</button>
 												</c:otherwise>
 											</c:choose>

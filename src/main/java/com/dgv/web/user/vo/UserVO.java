@@ -17,6 +17,7 @@ public class UserVO {
 	private String user_month;
 	private String user_day;
 	private String user_term; // 약관동의여부
+	private Boolean user_status; //유저 활성화여부
 	
 	private List<UserDetailVO> detailVO;
 	private String user_rank;

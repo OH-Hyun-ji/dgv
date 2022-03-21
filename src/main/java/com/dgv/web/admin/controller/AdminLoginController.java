@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.vo.AdminVO;
 import com.google.gson.Gson;
@@ -43,7 +44,8 @@ public class AdminLoginController {
 		if(vo.getAdmin_id().equals(adminId.getAdmin_id())&&vo.getAdmin_passwd().equals(adminId.getAdmin_passwd())) {
 			System.out.println("로그인 성공!!");
 			jsonObject.addProperty("msg", "SUCCESS");
-			session.setAttribute("adminID", adminId.getAdmin_name());
+			//session.setAttribute("adminID", adminId.getAdmin_name());
+			RequestUtils.setAdminId(adminId.getAdmin_name());
 			System.out.println(jsonObject);		
 		}else { 
 			System.out.println("로그인 실패");

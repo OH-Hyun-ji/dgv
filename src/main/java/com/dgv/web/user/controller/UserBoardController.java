@@ -1,19 +1,17 @@
 package com.dgv.web.user.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.io.Writer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminNoticeVO;
@@ -29,8 +26,10 @@ import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.commons.interceptor.TimeCalc;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.CriteriaBoard;
+import com.dgv.web.user.vo.PageBoardVO;
 import com.dgv.web.user.vo.PageVO;
-import com.dgv.web.user.vo.PaginationVO;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
@@ -82,20 +81,19 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping("/board.do")
-	public String userBoard(Model model, @RequestParam(required = false, defaultValue = "community_title")String searchType,
-			@RequestParam(required = false) String keyword )throws Exception {
+	public String userBoard(Model model,@ModelAttribute CriteriaBoard cri)throws Exception {
 		
-		SearchVO search = new SearchVO();
-		search.setSearchType(searchType);
-		search.setKeyword(keyword);
-		
+//		SearchVO search = new SearchVO();
+//		search.setSearchType(searchType);
+//		search.setKeyword(keyword);
+//http://localhost/board.do?pageNum=1&amount=5&searchType=community_title&keyword=%EB%82%98%EB%82%98
 		
 		
 		//전체 게시글수 
-		int listCnt = userBoardService.getCommunityCnt(search);
+		int listCnt = userBoardService.getCommunityCnt();
+		PageBoardVO pageMake = new PageBoardVO(listCnt, cri);
 		
-		
-		List<UserCommunityVO> communityList = userBoardService.communitySelect();
+		List<UserCommunityVO> communityList = userBoardService.communitySelect(cri);
 		
 		for(UserCommunityVO comVo :communityList) {
 			UserVO userVo = userBoardService.communityUserInfo(comVo.getUser_id());
@@ -103,6 +101,7 @@ public class UserBoardController {
 				comVo.setUser_img(detailVo.getUser_img());
 			}
 		}
+		model.addAttribute("pageMake",pageMake);
 		model.addAttribute("communityList",communityList);
 		
 		

@@ -16,6 +16,7 @@ import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.CriteriaBoard;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
@@ -91,7 +92,7 @@ public interface UserBoardService {
 	
 	int communityInsert(UserCommunityVO vo);
 	
-	List<UserCommunityVO> communitySelect();
+	List<UserCommunityVO> communitySelect(CriteriaBoard cri);
 	
 	UserCommunityVO communityChoiceNum(int num);
 	
@@ -109,7 +110,7 @@ public interface UserBoardService {
 	
 	List<UserCommunityVO> getCommunityList(SearchVO vo) throws Exception;
 	
-	int getCommunityCnt(SearchVO vo) throws Exception;
+	int getCommunityCnt();
 	
 	List<AdminMovieVO> getListPaging(Criteria cri);
 	
@@ -130,5 +131,7 @@ public interface UserBoardService {
 	int endTotal();
 	
 	int yetTotal();
+	
+	List<UserVO> userIdList();
 
 }

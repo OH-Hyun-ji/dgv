@@ -21,6 +21,7 @@ import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.controller.Pagination;
 import com.dgv.web.user.vo.Criteria;
+import com.dgv.web.user.vo.CriteriaBoard;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
@@ -148,8 +149,8 @@ public class UserBoardDAO {
 		return sqlSessionTemplate.insert("UserBoardDAO.communityInsert",vo);
 	}
 	
-	public List<UserCommunityVO> communitySelect(){
-		return sqlSessionTemplate.selectList("UserBoardDAO.communitySelect");
+	public List<UserCommunityVO> communitySelect(CriteriaBoard cri){
+		return sqlSessionTemplate.selectList("UserBoardDAO.communitySelect",cri);
 	}
 	public UserCommunityVO communityChoiceNum(int num) {
 		return sqlSessionTemplate.selectOne("UserBoardDAO.communityChoiceNum",num);
@@ -181,8 +182,8 @@ public class UserBoardDAO {
 		return sqlSessionTemplate.selectList("UserBoardDAO.getSearchList", vo);
 	}
 	
-	public int getCommunityCnt(SearchVO vo) throws Exception{
-		return sqlSessionTemplate.selectOne("UserBoardDAO.getCommunityCnt",vo);
+	public int getCommunityCnt(){
+		return sqlSessionTemplate.selectOne("UserBoardDAO.getCommunityCnt");
 	}
 	public List<AdminMovieVO> myPaging(Criteria cri){
 		return sqlSessionTemplate.selectList("UserBoardDAO.myPagingMovie", cri);
@@ -224,5 +225,9 @@ public class UserBoardDAO {
 	
 	public int yetTotal() {
 		return sqlSessionTemplate.selectOne("UserBoardDAO.yetTotal");
+	}
+	
+	public List<UserVO> userIdList(){
+		return sqlSessionTemplate.selectList("UserDAO.userIdList");
 	}
 }

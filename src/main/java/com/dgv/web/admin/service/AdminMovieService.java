@@ -5,6 +5,7 @@ import java.util.List;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityTheaterVO;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
@@ -170,4 +171,17 @@ public interface AdminMovieService {
 	int eventCheck(AdminEventVO vo);
 	
 	List<AdminEventVO> continueEventSelect();
+	
+	AdminEventVO EventDetailSelect(int num);
+	
+	int eventUpdate(AdminEventVO vo);
+	
+	int CouponInsert(AdminCouponVO vo);
+	
+	List<AdminCouponVO> CouponSelect();
+	
+	int CouponUpdate(AdminCouponVO vo);
+	
+	AdminCouponVO CouponNumSelect(int num);
+	
 }

@@ -68,10 +68,10 @@ function loginWithKakao() {
 }
 
 
+		var count=0;
 	function loginCheck(){
 		const id = $('#id').val()
 		const pw = $('#password').val()
-		
 // 		console.log("내가입력한 id : "+ id)
 // 		console.log("내가입력한 pw : "+ pw)
 		$.ajax({
@@ -86,8 +86,12 @@ function loginWithKakao() {
 				if(reT.msg == "SUCCESS"){
 					alert("로그인 성공!!")
 					location.href='/dgvMain.do';
+				}else if(reT.msg=="STATUS"){
+					alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")	
+					alert("고객센터에 문의바랍니다.")	
 				}else{
-					alert("실패")
+					alert("실패!! 남은횟수 :"+count+"/5")
+					count++;
 				}
 			},
 			error:function(){
@@ -118,6 +122,9 @@ function loginWithKakao() {
 input#thisLogin {
     height: 51px;
     margin-right: 2px;
+}
+.sort1 {
+    text-align: -webkit-center;
 }
 </style>
 </head>
@@ -152,10 +159,10 @@ input#thisLogin {
 				</div>
 
 				<div class="sort1">
-					<input type="checkbox" id="checkSaveId" name="useCookie"> <span
-						style="color: white;">아이디 저장</span>
-					<a onclick="findId()" style="color: white; cursor: pointer;" >/ 아이디 찾기</a>
-					<a onclick="findPassword()" style="color: white; cursor: pointer;">/ 비밀번호 찾기</a>
+			<!--		<input type="checkbox" id="checkSaveId" name="useCookie"> 
+ 					<span style="color: white;">아이디 저장</span> -->
+					<a onclick="findId()" style="color: white; cursor: pointer;" >[ 아이디 찾기 ]</a>
+					<a onclick="findPassword()" style="color: white; cursor: pointer;">[ 비밀번호 찾기 ]</a>
 				</div>
 				</div>
 				<div class="action-button"  style="display: flex;">

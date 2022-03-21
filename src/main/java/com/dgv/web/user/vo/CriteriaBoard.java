@@ -1,6 +1,6 @@
 package com.dgv.web.user.vo;
 
-public class Criteria {
+public class CriteriaBoard {
 
 	private int pageNum;
 	private int amount;
@@ -8,13 +8,13 @@ public class Criteria {
 	private String searchType;
 	private String keyword;
 		
-	public Criteria() {
-		this(1,13);
+	public CriteriaBoard() {
+		this(1,5);
 		this.skip = 0;
 				
 	}
 
-	public Criteria(int pageNum, int amount) {
+	public CriteriaBoard(int pageNum, int amount) {
 		this.pageNum = pageNum;
 		this.amount = amount;
 		this.skip =(pageNum-1)* amount;

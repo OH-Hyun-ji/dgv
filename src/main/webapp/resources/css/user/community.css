@@ -294,7 +294,7 @@ input#writeComment {
     padding-left: 1rem;
 }
 textarea.comment-textarea-style {
-    width: 64rem;
+    width: 50rem;
     height: 100px;
     border: 1px solid #c7c7c7;
     border-radius: 9px;
@@ -309,6 +309,7 @@ textarea.comment-textarea-style {
 }
 .comment-textarea {
     margin-bottom: 2rem;
+    display: flex;
 }
 button.comment-register {
     width: 154px;
@@ -320,7 +321,7 @@ button.comment-register {
 }
 .comment-resBtn-style {
     padding-left: 2rem;
-    padding-top: 57px;
+    padding-top: 12px;
 }
 .comment-textarea-style:focus {
 	outline: none;
@@ -340,7 +341,7 @@ input#commemtTitle {
     border-top: 2px solid #cfcaca;
 }
 textarea.comment-textarea-styleOn {
-    width: 64rem;
+    width: 50rem;
     height: 100px;
     border: 1px solid #c7c7c7;
     border-radius: 9px;
@@ -358,10 +359,17 @@ span.user-rank-name.rank-style {
     font-size: 13px;
 }
 .user-img-wrap.img-wrap-style {
-    padding-right: 8rem;
+    padding-right: 5rem;
     padding-top: 42px;
     width: 100px;
 }
 .comment-wrapping {
     display: flex;
+}
+.user-saved-img {
+    display: flex;
+    justify-content: center;
+}
+#myImgView{
+	width: 398px;
 }

@@ -51,6 +51,7 @@ public class UserLoginController {
 	@Autowired
 	private JavaMailSenderImpl mailSender;
 
+	private int count;
 	// 로그인 페이지
 	@RequestMapping(value = "/loginForm.do", method = RequestMethod.GET)
 	public String loginGET(@ModelAttribute("userVo") UserVO userVo) {
@@ -60,7 +61,7 @@ public class UserLoginController {
 	// 로그인 처리
 	@PostMapping("/login.do")
 	@ResponseBody
-	public String loginPOST(@RequestBody UserVO userVO, HttpSession session, Model model) {
+	public String loginPOST(@RequestBody UserVO userVO, Model model) {
 		System.out.println("id : " + userVO.getUser_id());
 		System.out.println("pw : " + userVO.getUser_pw());
 		UserVO vo = userService.login(userVO);
@@ -69,41 +70,62 @@ public class UserLoginController {
 		System.out.println("TEST 1 : " + vo.getUser_pw());
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
-		if (userVO.getUser_id().equals(vo.getUser_id()) && BCrypt.checkpw(userVO.getUser_pw(), vo.getUser_pw())) {
-			System.out.println("로그인 성공!!");
-			jsonObject.addProperty("msg", "SUCCESS");
-
-			UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
-			RequestUtils.setUserId(vo.getUser_id());
-			RequestUtils.setUserEmail(vo.getUser_email());
-			RequestUtils.getUserId("userID");
-			if (detailVo.getUser_img().length() > 3) {
-				RequestUtils.setUserImg(detailVo.getUser_img());
+		if(vo.getUser_status()) {
+			if (userVO.getUser_id().equals(vo.getUser_id()) && BCrypt.checkpw(userVO.getUser_pw(), vo.getUser_pw())) {
+				System.out.println("로그인 성공!!");
+				jsonObject.addProperty("msg", "SUCCESS");
+	
+				UserDetailVO detailVo = userService.userDetailVo(vo.getUser_num());
+				RequestUtils.setUserId(vo.getUser_id());
+				RequestUtils.setUserEmail(vo.getUser_email());
+				RequestUtils.getUserId("userID");
+				if (detailVo.getUser_img().length() > 3) {
+					RequestUtils.setUserImg(detailVo.getUser_img());
+				} else {
+					RequestUtils.setUserImg("0");
+				}
+				if (detailVo.getUser_rank().length() > 2) {
+					AdminRankVO rankVo = adminUserService.rankNameSelect(detailVo.getUser_rank());
+					detailVo.setRank_img(rankVo.getRank_img());
+					RequestUtils.setRankImg(detailVo.getRank_img());
+					RequestUtils.setRankName(detailVo.getUser_rank());
+					System.out.println(detailVo.getRank_img());
+					System.out.println(detailVo.getUser_rank());
+				}else {
+					RequestUtils.setRankImg("0");
+					RequestUtils.setRankName("0");
+				}
+				
+	
+				// session.setAttribute("userID",vo.getUser_id());
+				System.out.println(jsonObject);
 			} else {
-				RequestUtils.setUserImg("0");
+					
+					System.out.println("inner count "+ count);
+					if(count == 5){
+						int num = userService.userStatus(vo);
+						if(num == 0)
+						System.out.println("비활성 실패");
+						System.out.println("계정이 비활성화 되었습니다.");
+						jsonObject.addProperty("msg", "STATUS");
+						String jResult=gson.toJson(jsonObject);
+						return jResult;
+					}
+				System.out.println("count : "+count);
+				System.out.println("로그인 실패");
+				jsonObject.addProperty("msg", "FAIL");
+				System.out.println(jsonObject);
+				count++;
 			}
-			if (detailVo.getUser_rank().length() > 2) {
-				AdminRankVO rankVo = adminUserService.rankNameSelect(detailVo.getUser_rank());
-				detailVo.setRank_img(rankVo.getRank_img());
-				RequestUtils.setRankImg(detailVo.getRank_img());
-				RequestUtils.setRankName(detailVo.getUser_rank());
-				System.out.println(detailVo.getRank_img());
-				System.out.println(detailVo.getUser_rank());
-			} else {
-				RequestUtils.setRankImg("0");
-				RequestUtils.setRankName("0");
-			}
-
-			// session.setAttribute("userID",vo.getUser_id());
-			System.out.println(jsonObject);
-		} else {
-			System.out.println("로그인 실패");
-			jsonObject.addProperty("msg", "FAIL");
-			System.out.println(jsonObject);
+			String jsonResult = gson.toJson(jsonObject);
+	
+			return jsonResult;
+		}else {
+			System.out.println("비활성화 계정입니다. ");
+			jsonObject.addProperty("msg", "STATUS");
+			String jResult=gson.toJson(jsonObject);
+			return jResult;
 		}
-		String jsonResult = gson.toJson(jsonObject);
-
-		return jsonResult;
 	}
 
 	@PostMapping("/kakaoLogin.do")

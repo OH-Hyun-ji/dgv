@@ -17,4 +17,5 @@ public class AdminEventVO {
 	private String event_img;
 	private String event_text_img;
 	private String event_check;
+	private Integer coupon_num;
 }

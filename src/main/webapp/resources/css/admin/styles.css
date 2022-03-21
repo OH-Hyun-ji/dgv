@@ -11765,3 +11765,40 @@ button#currentEventList {
     width: 114px;
     margin-right: 14px;
 }
+.update-style-area {
+    display: flex;
+}
+.eventImg-wrapper1 {
+    margin-left: 2rem;
+    height: 254px;
+}
+.eventImg-wrapper2 {
+    margin-left: 4rem;
+ 
+}
+img#thImg1-style {
+    width: 300px;
+    height: 200px;
+    margin-top: 22px;
+}
+img#thImg2-style {
+   width: 241px;
+    height: 424px;
+    margin-top: 22px;
+}
+.event-label-wrapping1 {
+    margin-top: 1rem;
+}
+.event-label-wrapping{
+    margin-top: 1rem;
+}
+.sameInput{
+	border-radius: 7px;
+    line-height: 25px;
+    width: 250px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin-left: 1rem;
+    outline: none;
+}

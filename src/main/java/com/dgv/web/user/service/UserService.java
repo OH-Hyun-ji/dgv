@@ -57,4 +57,7 @@ public interface UserService {
 	
 	//새 비밀번호 설정
 	int newPassword(UserVO vo);
+	
+	//유저 활성화여부
+	int userStatus(UserVO vo);
 }

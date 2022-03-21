@@ -141,10 +141,7 @@
 		    border-radius: 7px;
 		    overflow-y: scroll;
 		}
-    </style>
-    <script type="text/javascript">
-    	
-    </script>       
+    </style>   
 </head>
 <body style="color: aliceblue;">
     <div id="layoutSidenav_content">

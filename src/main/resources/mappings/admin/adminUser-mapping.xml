@@ -20,11 +20,12 @@
 	<result column="user_month" property="user_month" jdbcType="VARCHAR"/>
 	<result column="user_day" property="user_day" jdbcType="VARCHAR"/>
 	<result column="user_term" property="user_term" jdbcType="VARCHAR"/>
+	<result column="user_status" property="user_status" jdbcType="BOOLEAN"/>
 	<collection property="detailVO" resultMap="UserDetailVO"></collection>
 </resultMap>
 
 	<select id="UserList" resultMap="UserVO">
-		SELECT * FROM user_info ui FULL JOIN user_info_detail uid ON ui.user_num = uid.user_num
+		SELECT * FROM user_info ui FULL JOIN user_info_detail uid ON ui.user_num = uid.user_num ORDER BY ui.user_num asc
 	</select>
 	
 	<delete id="UserDelete" parameterType="UserVO">
@@ -68,4 +69,7 @@
 	<select id="userNumList" resultType="UserVO">
 		SELECT * FROM user_info WHERE user_num=#{user_num}
 	</select>
+	<update id="userStatus">
+		UPDATE user_info SET user_status=#{user_status} WHERE user_num=#{user_num}
+	</update>
 </mapper>

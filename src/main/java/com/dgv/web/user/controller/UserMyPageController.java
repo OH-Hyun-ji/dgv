@@ -24,6 +24,7 @@ import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminAgeVO;
+import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.CommonResultDto;
@@ -51,6 +52,8 @@ public class UserMyPageController {
    
    @Autowired
    private FileUploadService fileUploadService;
+   
+   
    
   
    @PostMapping("/userMyPageTopInfo.do")
@@ -130,8 +133,24 @@ public class UserMyPageController {
       return "/myPage/user_myPage_reserve";
    }
    
+   //나의 쿠폰 목록
    @RequestMapping("/myPage_coupon.do")
-   public String myPage_coupon() {
+   public String myPage_coupon(Model model) {
+	   List<AdminEventVO> endEventList = adminMovieService.endEventSelect();
+	   List<AdminEventVO> winnerList = new ArrayList<AdminEventVO>();
+	   for(AdminEventVO eventVo : endEventList) {
+		   if(eventVo.getEvent_winner().length()>0) {
+			   String[] arr = eventVo.getEvent_winner().split(",");
+			   String userId = RequestUtils.getUserId("userID");
+			   for(String user : arr) {
+				   if(user == userId ) {
+					   
+				   }
+			   }
+			   winnerList.add(eventVo);
+			}
+		}
+		model.addAttribute("winnerList",winnerList);
       return "/myPage/user_myPage_coupon";
    }
    

@@ -64,4 +64,8 @@ public class AdminUserDAO {
 		return sqlSessionTemplate.selectOne("UserDAO.userTermNumVo",num);
 	}
 	
+	public int userStatus(UserVO vo) {
+		return sqlSessionTemplate.update("AdminUserDAO.userStatus",vo);
+	}
+	
 }
