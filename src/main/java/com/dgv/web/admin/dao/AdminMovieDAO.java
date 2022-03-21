@@ -291,6 +291,9 @@ public class AdminMovieDAO {
 	public int eventUpdate(AdminEventVO vo) {
 		return sqlSessionTemplate.update("AdminBoardDAO.eventUpdate",vo);
 	}
+	public int eventUpdateNoImg(AdminEventVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.eventUpdateNoImg",vo);
+	}
 	
 	public int CouponInsert(AdminCouponVO vo) {
 		return sqlSessionTemplate.insert("AdminBoardDAO.CouponInsert",vo);
@@ -307,4 +310,5 @@ public class AdminMovieDAO {
 	public AdminCouponVO CouponNumSelect(int num) {
 		return sqlSessionTemplate.selectOne("AdminBoardDAO.CouponNumSelect",num);
 	}
+	
 }

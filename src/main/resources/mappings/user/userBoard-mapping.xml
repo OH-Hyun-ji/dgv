@@ -153,6 +153,13 @@
 		SELECT COUNT(*) FROM movie_info WHERE movie_status ='yet'
 	</select>
 	
+	<select id="myCouponList" resultType="AdminCouponVO">
+		SELECT * FROM dgv_coupon WHERE coupon_num = #{coupon_num}
+	</select>
+	
+	<select id="myCouponVo" resultType="AdminCouponVO">
+		SELECT * FROM dgv_coupon WHERE coupon_num = #{coupon_num}
+	</select>
 	
 	
 </mapper>

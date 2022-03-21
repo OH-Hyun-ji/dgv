@@ -60,6 +60,7 @@ public class AdminCouponController {
 		couponVo.setCoupon_img(fileResult.getUrl());
 		couponVo.setReg_id(RequestUtils.getAdminId("adminId"));
 		
+		//쿠폰코드 난수 
 		int min =10000000;
 		int max =100000000;
 		Random random = new  Random();

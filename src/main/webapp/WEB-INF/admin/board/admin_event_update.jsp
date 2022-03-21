@@ -70,7 +70,6 @@
   			const startDate =$("#startDate").val()
   			const endDate = $("#endDate").val()
   			const eventText =$("#eventText").val()
-  			const regId =$("#regId").val()
   			const winner = $("#winnerUserId").val()
   			const eventTextImg =$("#event-updateImg2").val()
   			const eventImg =$("#event-updateImg1").val()
@@ -114,8 +113,8 @@
   						
   					}
   				},
-  				error:function(){
-  					console.log("통신실패")
+  				error:function(e){
+  					console.log("통신실패"+e)
   				}
   			})//close ajax
   			

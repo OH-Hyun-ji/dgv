@@ -79,6 +79,7 @@ public class UserLoginController {
 				RequestUtils.setUserId(vo.getUser_id());
 				RequestUtils.setUserEmail(vo.getUser_email());
 				RequestUtils.getUserId("userID");
+				System.out.println("세션 : "+RequestUtils.getUserId("userID"));
 				if (detailVo.getUser_img().length() > 3) {
 					RequestUtils.setUserImg(detailVo.getUser_img());
 				} else {

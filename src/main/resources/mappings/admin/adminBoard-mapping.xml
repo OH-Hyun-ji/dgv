@@ -107,8 +107,12 @@
 	</select>
 	
 	<update id="eventUpdate">
-		UPDATE dgv_event SET event_title=#{event_title}, event_text=#{event_text}, start_date=#{start_date}, end_date=#{end_date}, reg_id=#{reg_id},
+			UPDATE dgv_event SET event_title=#{event_title}, event_text=#{event_text}, start_date=#{start_date}, end_date=#{end_date}, reg_id=#{reg_id},
 				reg_date=current_date, event_winner=#{event_winner},event_img=#{event_img},event_text_img=#{event_text_img} WHERE event_code=#{event_code}
+	</update>
+	<update id="eventUpdateNoImg">
+			UPDATE dgv_event SET event_title=#{event_title}, event_text=#{event_text}, start_date=#{start_date}, end_date=#{end_date}, reg_id=#{reg_id},
+				reg_date=current_date, event_winner=#{event_winner} WHERE event_code=#{event_code}
 	</update>
 	
 	<insert id="CouponInsert" parameterType="AdminCouponVO">

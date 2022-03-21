@@ -40,19 +40,28 @@ public class AdminEventController {
 	@ResponseBody
 	public CommonResultDto eventUpdate(@RequestPart("eventVo") AdminEventVO eventVo, @RequestPart MultipartFile imgFile, @RequestPart MultipartFile imgFile1) {
 		
-		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "event/", eventVo.getEvent_img());
-		final FileUploadService.FileUploadResult filrResult1 = fileUploadService.fileUpload(imgFile1, "event/", eventVo.getEvent_text_img());
-		if(!fileResult.isSuccess() || !filrResult1.isSuccess())
-			return CommonResultDto.fail();
-		
-		eventVo.setEvent_img(fileResult.getUrl());
-		eventVo.setEvent_text_img(filrResult1.getUrl());	
-		eventVo.setReg_id(RequestUtils.getAdminId("adminId"));
-		int num = adminMovieService.eventUpdate(eventVo);
-		
-		if(num == 0)
-			return CommonResultDto.fail();
-		return CommonResultDto.success();
+		if(eventVo.getEvent_img() == null || eventVo.getEvent_text_img() == null) {
+			int numResult = adminMovieService.eventUpdateNoImg(eventVo);
+			
+			if(numResult ==0)
+				return CommonResultDto.fail();
+			return CommonResultDto.success();
+		}else {
+			
+			final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "event/", eventVo.getEvent_img());
+			final FileUploadService.FileUploadResult filrResult1 = fileUploadService.fileUpload(imgFile1, "event/", eventVo.getEvent_text_img());
+			if(!fileResult.isSuccess() || !filrResult1.isSuccess())
+				return CommonResultDto.fail();
+			
+			eventVo.setEvent_img(fileResult.getUrl());
+			eventVo.setEvent_text_img(filrResult1.getUrl());	
+			eventVo.setReg_id(RequestUtils.getAdminId("adminId"));
+			int num = adminMovieService.eventUpdate(eventVo);
+			
+			if(num == 0)
+				return CommonResultDto.fail();
+			return CommonResultDto.success();
+		}
 	}
 	
 	//이벤트 상세페이지

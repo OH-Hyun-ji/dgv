@@ -5,6 +5,7 @@ import java.util.List;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
@@ -133,5 +134,9 @@ public interface UserBoardService {
 	int yetTotal();
 	
 	List<UserVO> userIdList();
+	
+	List<AdminCouponVO> myCouponList(int num);
+	
+	AdminCouponVO myCouponVo(int num);
 
 }

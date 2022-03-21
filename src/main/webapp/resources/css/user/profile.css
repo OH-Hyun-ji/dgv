@@ -21,7 +21,8 @@ table#myProfile-tableN {
     color: #666;
     font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
     font-weight: 400;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #9999994a;
+    padding-right: 2rem;
 }
 .myPage-content-wrap {
     padding-left: 3rem;
@@ -75,4 +76,11 @@ form {
 }
 .profile-agree-status {
     margin-top: 1rem;
+}
+.select-coupon-img {
+    height: 163px;
+}
+img#coupon-img {
+    width: 290px;
+    height: 132px;
 }

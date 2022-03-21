@@ -443,6 +443,12 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 	}
 	
 	@Override
+	public int eventUpdateNoImg(AdminEventVO vo) {
+		
+		return adminMovieDAO.eventUpdateNoImg(vo);
+	}
+	
+	@Override
 	public int CouponInsert(AdminCouponVO vo) {
 		
 		return adminMovieDAO.CouponInsert(vo);

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCityVO;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
@@ -379,8 +380,16 @@ public class UserBoardServiceImpl implements UserBoardService {
 		return userBoardDAO.userIdList();
 	}
 
-
-
+	@Override
+	public List<AdminCouponVO> myCouponList(int num) {
+		
+		return userBoardDAO.myCouponList(num);
+	}
+	@Override
+	public AdminCouponVO myCouponVo(int num) {
+		
+		return userBoardDAO.myCouponVo(num);
+	}
 
 
 	

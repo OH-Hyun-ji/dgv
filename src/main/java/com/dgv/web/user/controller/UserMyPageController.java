@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +25,7 @@ import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminAgeVO;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
@@ -132,25 +134,41 @@ public class UserMyPageController {
 	     
       return "/myPage/user_myPage_reserve";
    }
+   //나의 쿠폰 상세보기 
+   @RequestMapping("/userMyCouponDetail.do")
+   public String userMyCouponDetail(@RequestParam("coupon_num") int num,Model model) {
+	   AdminCouponVO couponVo = userBoardService.myCouponVo(num);
+	   
+	   model.addAttribute("couponVo",couponVo);
+	   
+	   return "/myPage/user_myPage_couponDetail";
+   }
+   
    
    //나의 쿠폰 목록
    @RequestMapping("/myPage_coupon.do")
    public String myPage_coupon(Model model) {
 	   List<AdminEventVO> endEventList = adminMovieService.endEventSelect();
 	   List<AdminEventVO> winnerList = new ArrayList<AdminEventVO>();
+	   List<AdminCouponVO> myCouponList =new ArrayList<AdminCouponVO>();
+	   System.out.println("세션11 : "+RequestUtils.getUserId("userID"));
 	   for(AdminEventVO eventVo : endEventList) {
 		   if(eventVo.getEvent_winner().length()>0) {
 			   String[] arr = eventVo.getEvent_winner().split(",");
 			   String userId = RequestUtils.getUserId("userID");
+			   System.out.println("userId : "+ userId);
 			   for(String user : arr) {
-				   if(user == userId ) {
-					   
+				   System.out.println("user : "+ user);
+				   if(user.equals(userId)) {
+					 myCouponList = userBoardService.myCouponList(eventVo.getCoupon_num());
+					 
 				   }
 			   }
 			   winnerList.add(eventVo);
 			}
 		}
-		model.addAttribute("winnerList",winnerList);
+	   	model.addAttribute("myCouponList",myCouponList);
+	//	model.addAttribute("winnerList",winnerList);
       return "/myPage/user_myPage_coupon";
    }
    

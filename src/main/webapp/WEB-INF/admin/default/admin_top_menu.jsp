@@ -10,11 +10,11 @@
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             	
                 <div class="input-group">
-                	 <c:if test="${empty adminID}">
+                	 <c:if test="${empty adminId}">
                         <span><a class="dropdown-item" style="background-color: #e7e5e5;border-radius: 5px;" href="/login.mdo">Login</a></span>
                      </c:if>
-                     <c:if test="${!empty adminID}">
-                        <span><a style="color:white"  href="/logout.mdo">${adminID}님 Logout</a></span>
+                     <c:if test="${!empty adminId}">
+                        <span><a style="color:white"  href="/logout.mdo">${adminId}님 Logout</a></span>
                      </c:if>
                 </div>
             </form>

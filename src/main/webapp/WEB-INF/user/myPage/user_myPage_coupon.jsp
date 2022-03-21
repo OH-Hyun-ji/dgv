@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,21 +34,21 @@
 							<table class="myPage-table">
 								<thead class="myPage-table-wrapping">
 									<tr>
-										<th>NO</th>
-										<th>Coupon</th>
-										<th>Witer</th>
-										<th>Date</th>
-										<th>Count</th>
+										<th>번호</th>
+										<th>쿠폰 코드</th>
+										<th>쿠폰 명</th>
+										<th>사용기한</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">보유쿠폰이름</a></td>
-										<td>나 자신</td>
-										<td>2022-02-09</td>
-										<td>0</td>
-									</tr>
+									<c:forEach var="myCouponList" items="${myCouponList}" varStatus="status">
+										<tr>
+											<td>${status.index+1 }</td>
+											<td><a id="myPage-title" href="/userMyCouponDetail.do?coupon_num=${myCouponList.coupon_num }">${myCouponList.coupon_code }</a></td>
+											<td><a href="/userMyCouponDetail.do?coupon_num=${myCouponList.coupon_num }">${myCouponList.coupon_name }</a></td>
+											<td>${myCouponList.coupon_date }</td>										
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 

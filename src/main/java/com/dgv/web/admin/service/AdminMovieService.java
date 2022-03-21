@@ -176,6 +176,8 @@ public interface AdminMovieService {
 	
 	int eventUpdate(AdminEventVO vo);
 	
+	int eventUpdateNoImg(AdminEventVO vo);
+	
 	int CouponInsert(AdminCouponVO vo);
 	
 	List<AdminCouponVO> CouponSelect();
