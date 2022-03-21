@@ -229,11 +229,11 @@ public class UserLoginController {
 			if (vo.getUser_name().equals(userVo.getUser_name())) {
 				session.setAttribute("auth", authNum);
 				RequestUtils.setUserEmail(userVo.getUser_email());
-				String setfrom = "ghdud1122@naver.com"; // naver
+				String setfrom = "dgv220401@gmail.com"; // gmail
 				String tomail = userVo.getUser_email(); // 받는사람
 				String title = "[DGV] 비밀번호변경 인증 이메일 입니다";
 				String content = System.getProperty("line.separator") + "안녕하세요 회원님"
-						+ System.getProperty("line.separator") + "삼삼하개 비밀번호찾기(변경) 인증번호는 " + num + " 입니다."
+						+ System.getProperty("line.separator") + "DGV 회원님 비밀번호 변경을 위한 인증번호는 " + num + " 입니다."
 						+ System.getProperty("line.separator"); //
 
 				try {

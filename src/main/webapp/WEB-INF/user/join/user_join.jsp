@@ -37,7 +37,7 @@
       var getBirth= new RegExp(/^(19[0-9][0-9]|20\d{2})$/);
 
 
-    //가입중재 참거짓판별을 위한 논리변수 
+      //가입중재 참거짓판별을 위한 논리변수 
       var chk1 =false, chk2 = false, ch3 = false, chk4 = false, chk5 =false, chk6 =false, chk7 =false;
       
    $(function(){
@@ -115,7 +115,8 @@
              $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호를 입력해주세요. ]');    
               chk2 = false;
              
-          }else if(!getPwCheck.test($("#password").val())){            
+          }else if(!getPwCheck.test($("#password").val())){
+        	  $("#password").removeClass("nonesetUser");
               $("#password").addClass("issetUser"); 
               $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호는 문자, 숫자, 특수문자의 조합으로<br> 8~16자리로 입력해주세요! ]');    
               chk2 = false;
@@ -136,7 +137,13 @@
              $("#passwordRepeat").addClass("issetUser");
              $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호를 확인해주세요. ]');    
               chk3 = false;
+         }else if(!getPwCheck.test($("#passwordRepeat").val())){
+       	  $("#passwordRepeat").removeClass("nonesetUser");
+             $("#passwordRepeat").addClass("issetUser"); 
+             $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호는 문자, 숫자, 특수문자의 조합으로<br> 8~16자리로 입력해주세요! ]');    
+             chk2 = false;
          }else if($(this).val() != $("#password").val()){
+        	 $("#passwordRepeat").removeClass("nonesetUser");
             $("#passwordRepeat").addClass("issetUser");
              $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호가 다릅니다. 다시 확인해 주세요. ]');    
               chk3 = false;
