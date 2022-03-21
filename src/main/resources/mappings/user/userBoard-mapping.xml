@@ -78,6 +78,12 @@
 												<if test="searchType=='community_title' and keyword != null and keyword !=''">
 													AND community_title like '%'||#{keyword}||'%' ORDER BY community_code asc
 												</if>
+												<if test="searchType=='community_text' and keyword != null and keyword !=''">
+													AND community_text like '%'||#{keyword}||'%' ORDER BY community_code asc
+												</if>
+												<if test="searchType=='user_id' and keyword != null and keyword !=''">
+													AND user_id like '%'||#{keyword}||'%' ORDER BY community_code asc
+												</if>
 											
 		
 	</select>
