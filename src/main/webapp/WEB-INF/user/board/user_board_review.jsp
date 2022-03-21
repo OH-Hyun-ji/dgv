@@ -18,7 +18,7 @@
 				<span>모두의 Review</span>
 			</div>
 			<div class="dgv_board_img">
-				<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/banner3.PNG">
+				<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/reviewStory2.JPG.png">
 			</div>
 			<div class="dgv_board_table">
 				<table class="type09">

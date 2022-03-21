@@ -302,50 +302,7 @@
 					</h3>
 					<div class="program_list type3">
 						<ul>
-							<li>
-								<dl>
-									<dt>
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk1.jpg"
-											>
-									</dt>
-									<dd>
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk4.jpg"
-											>
-									</dd>
-								</dl>
-							</li>
-
-							<li>
-								<dl>
-									<dt>
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk2.jpg"
-											>
-									</dt>
-									<dd>
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk5.jpg"
-											>
-									</dd>
-								</dl>
-							</li>
-
-							<li>
-								<dl>
-									<dt>
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk3.jpg"
-											>
-									</dt>
-									<dd>
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/talk6.jpg"
-											>
-									</dd>
-								</dl>
-							</li>
+							<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/12313123312.png">
 						</ul>
 					</div>
 					<div class="program_desc def cf">
