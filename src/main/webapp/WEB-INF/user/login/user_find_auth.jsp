@@ -54,11 +54,11 @@
     <script>
 	$(function(){
 		alert("인증번호를 입력해주세요")
-		var authNumber = $("#userAuth").val();
-		console.log("authNumber" +authNumber)
-		
+
 		
 		$("#authCheck").click(function(){		
+		const authNumber = $("#userAuth").val();
+		console.log("authNumber" + authNumber)
 				$.ajax({
 					method:"POST",
 					url:"authNumberCheck.do",

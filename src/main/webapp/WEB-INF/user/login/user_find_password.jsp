@@ -12,11 +12,11 @@
   
  	$(function(){
  		$("#check").click(function(){
- 			const name = $("#name").val()
+ 		//	const name = $("#name").val()
  			const email =$("#email").val()
  			
  			const userVo = {
- 				"user_name":name,
+ 			//	"user_name":name,
  				"user_email":email
  			}
  			
@@ -108,10 +108,10 @@
 					
                             <div id="table-container">
 								<table class="type02">				
-									<tr >
-										<th scope="row" style="font-size:18px;">이름을 입력해 주세요 : </th>
-										<td><input type="text" class="name_input" id="name" name="user_name" style="border-radius: 7px;line-height: 25px; "/></td>
-									</tr>
+<!-- 									<tr > -->
+<!-- 										<th scope="row" style="font-size:18px;">이름을 입력해 주세요 : </th> -->
+<!-- 										<td><input type="text" class="name_input" id="name" name="user_name" style="border-radius: 7px;line-height: 25px; "/></td> -->
+<!-- 									</tr> -->
 									<tr>
 										<th scope="row" style="font-size:18px;">이메일을 입력해 주세요 : </th>
 										<td><input type="text" class="mail_input" id="email" name="user_email" style="border-radius: 7px;line-height: 25px;"/></td>
