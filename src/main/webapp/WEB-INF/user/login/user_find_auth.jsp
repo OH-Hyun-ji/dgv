@@ -55,8 +55,9 @@
 	$(function(){
 		alert("인증번호를 입력해주세요")
 		var authNumber = $("#userAuth").val();
-	console.log("sksk")
 		console.log("authNumber" +authNumber)
+		
+		
 		$("#authCheck").click(function(){		
 				$.ajax({
 					method:"POST",
@@ -73,10 +74,9 @@
 					},error:function(e){
 						console.log("통신실패"+e)
 					}
-				})
-			
-			
+				})	
 		})
+		
 		
 	})
 
