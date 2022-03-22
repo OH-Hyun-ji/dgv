@@ -19,13 +19,15 @@
 
 	</script>
 	<style type="text/css">
-	h3{
-	    width: 95px;
-	    text-align: center;
-	    border: 1px solid #a7a7a7;
-	    border-radius: 12px;
-	    background: #e1e1e170;
-	}
+	h3 {
+	    border-bottom: 1px solid #b6b6b6;
+	    border-top: 1px solid #b6b6b6;
+	    padding-top: 1rem;
+	    padding-bottom: 1rem;
+	    background-color: antiquewhite;
+	    margin-bottom: 45px;
+    	font-weight: bolder;
+		}
 	.myProfile-sub-contain > h2 {
 	    font-size: 17px;
 	    margin-top: 1rem;
@@ -48,11 +50,8 @@
 				<div class="myPage-cols-container">
 					<jsp:include page="../default/user_myPage_side.jsp"></jsp:include>
 					<div class="myPage-content-wrap">
-						<div class="myProfile-container">
-							<h3>쿠폰</h3>
-						</div>
 						<div class="myProfile-sub-contain">
-							<h2>나의 쿠폰 상세보기</h2>
+							<h3>나의 쿠폰 상세보기</h3>
 						</div>						
 							<div class="select-coupon-img">
 												<div class="user-box-img" style="height: 133px;text-align: center;">
@@ -62,7 +61,7 @@
 													</span>
 												</div>
 											</div>
-						<table id="myProfile-tableN" style="margin-top: 3rem;">
+						<table id="myProfile-tableN" style="margin-top: 1rem;">
 							<colgroup>
 								<col width="19%">
 								<col width="*">

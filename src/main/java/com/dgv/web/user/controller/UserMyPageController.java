@@ -32,6 +32,7 @@ import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.UserCouponUseVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserReserveVO;
@@ -147,28 +148,18 @@ public class UserMyPageController {
    
    //나의 쿠폰 목록
    @RequestMapping("/myPage_coupon.do")
-   public String myPage_coupon(Model model) {
-	   List<AdminEventVO> endEventList = adminMovieService.endEventSelect();
-	   List<AdminEventVO> winnerList = new ArrayList<AdminEventVO>();
-	   List<AdminCouponVO> myCouponList =new ArrayList<AdminCouponVO>();
-	   System.out.println("세션11 : "+RequestUtils.getUserId("userID"));
-	   for(AdminEventVO eventVo : endEventList) {
-		   if(eventVo.getEvent_winner().length()>0) {
-			   String[] arr = eventVo.getEvent_winner().split(",");
-			   String userId = RequestUtils.getUserId("userID");
-			   System.out.println("userId : "+ userId);
-			   for(String user : arr) {
-				   System.out.println("user : "+ user);
-				   if(user.equals(userId)) {
-					 myCouponList = userBoardService.myCouponList(eventVo.getCoupon_num());
-					 
-				   }
-			   }
-			   winnerList.add(eventVo);
-			}
-		}
-	   	model.addAttribute("myCouponList",myCouponList);
-	//	model.addAttribute("winnerList",winnerList);
+   public String myPage_coupon(Model model, UserCouponUseVO cuVo) {
+	  String userId = RequestUtils.getUserId("userID");
+	  cuVo.setUser_id(userId);
+	  List<UserCouponUseVO> CouponUseSelect = userBoardService.CouponUseSelect(cuVo);
+	  for(UserCouponUseVO couUseVo:CouponUseSelect ) {
+		  AdminCouponVO couponVo = userBoardService.myCouponVo(couUseVo.getCoupon_num()); 
+		  couUseVo.setCoupon_name(couponVo.getCoupon_name());
+		  couUseVo.setCoupon_date(couponVo.getCoupon_date());
+	  }
+	  
+	  model.addAttribute("CouponUseSelect",CouponUseSelect);
+	   
       return "/myPage/user_myPage_coupon";
    }
    

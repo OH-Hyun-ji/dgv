@@ -17,9 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.FileUploadService;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.vo.UserCouponUseVO;
 import com.dgv.web.user.vo.UserVO;
 
 @Controller
@@ -35,10 +37,11 @@ public class AdminEventController {
 	private FileUploadService fileUploadService;
 
 	
+	
 	//이벤트 수정
 	@PostMapping("/eventUpdate.mdo")
 	@ResponseBody
-	public CommonResultDto eventUpdate(@RequestPart("eventVo") AdminEventVO eventVo, @RequestPart MultipartFile imgFile, @RequestPart MultipartFile imgFile1) {
+	public CommonResultDto eventUpdate(@RequestPart("eventVo") AdminEventVO eventVo, @RequestPart MultipartFile imgFile, @RequestPart MultipartFile imgFile1,UserCouponUseVO cuVo) {
 		
 		if(eventVo.getEvent_img() == null || eventVo.getEvent_text_img() == null) {
 			int numResult = adminMovieService.eventUpdateNoImg(eventVo);
@@ -47,18 +50,30 @@ public class AdminEventController {
 				return CommonResultDto.fail();
 			return CommonResultDto.success();
 		}else {
+			AdminEventVO event = adminMovieService.EventDetailSelect(eventVo.getEvent_code());
 			
 			final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "event/", eventVo.getEvent_img());
 			final FileUploadService.FileUploadResult filrResult1 = fileUploadService.fileUpload(imgFile1, "event/", eventVo.getEvent_text_img());
 			if(!fileResult.isSuccess() || !filrResult1.isSuccess())
 				return CommonResultDto.fail();
-			
+			AdminCouponVO couVo = adminMovieService.CouponNumSelect(eventVo.getCoupon_num());
+						
 			eventVo.setEvent_img(fileResult.getUrl());
 			eventVo.setEvent_text_img(filrResult1.getUrl());	
 			eventVo.setReg_id(RequestUtils.getAdminId("adminId"));
 			int num = adminMovieService.eventUpdate(eventVo);
-			
-			if(num == 0)
+			String[] arr = eventVo.getEvent_winner().split(",");
+			int count =0;
+			for(String winner : arr) {
+				cuVo.setUser_id(winner);
+				cuVo.setCoupon_num(eventVo.getCoupon_num());
+				cuVo.setCu_status(true);
+				cuVo.setCoupon_code(couVo.getCoupon_code());
+				cuVo.setCoupon_name(couVo.getCoupon_name());
+				cuVo.setCoupon_date(couVo.getCoupon_date());
+				count = userBoardService.CouponUseInsert(cuVo);	
+			}
+			if(num == 0 || count != arr.length)
 				return CommonResultDto.fail();
 			return CommonResultDto.success();
 		}
@@ -69,6 +84,9 @@ public class AdminEventController {
 	public String eventUpdate(@RequestParam("event_code") int num, Model model) {
 		AdminEventVO eventVo = adminMovieService.EventDetailSelect(num);
 		List<UserVO> userList = userBoardService.userIdList();
+		List<AdminCouponVO> couponList = adminMovieService.CouponSelect();
+		
+		model.addAttribute("couponList",couponList);
 		model.addAttribute("userList",userList);
 		model.addAttribute("eventVo",eventVo);
 		return "/board/admin_event_update";

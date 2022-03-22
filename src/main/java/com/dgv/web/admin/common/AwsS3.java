@@ -63,6 +63,7 @@ public class AwsS3 {
 					
 	}
 	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	//file upload
 	public void upload(File file, String key) {
 		uploadToS3(new PutObjectRequest(this.bucket, key, file));

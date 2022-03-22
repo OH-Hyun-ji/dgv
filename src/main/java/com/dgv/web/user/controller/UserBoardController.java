@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.FileUploadService;
+import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.commons.interceptor.TimeCalc;
@@ -178,6 +179,10 @@ public class UserBoardController {
 	@RequestMapping("/serviceCenter.do")
 	public String serviceCenter(Model model) {
 		List<AdminNoticeVO> noticeList = userBoardService.noticeList();		
+		String userId = RequestUtils.getUserId("userID");
+		List<UserInquiryVO> inquiryList = userBoardService.userQnaOneList(userId);
+		
+		model.addAttribute("inquiryList",inquiryList);
 		model.addAttribute("noticeList",noticeList);
 		return "/board/user_service_center";
 	}
@@ -240,6 +245,15 @@ public class UserBoardController {
 		model.addAttribute("userQnaCount",userBoardService.userQnaOneList(id).size());
 		
 		return "/board/user_one_qna";
+	}
+	
+	@RequestMapping("/adminAnswer.do")
+	public String adminAnswer(@RequestParam("dgv_inquiry_code")int num, Model model) {
+		AdminInquiryVO answerVo = userBoardService.adminAnswer(num);
+		UserInquiryVO inquiryVo =userBoardService.userQnaVO(num);
+		model.addAttribute("inquiryVo",inquiryVo);
+		model.addAttribute("answerVo",answerVo);
+		return "/board/user_answer_detail";
 	}
 	
 	@RequestMapping("/qnaRegister.do")

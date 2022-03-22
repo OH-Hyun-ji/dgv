@@ -107,7 +107,7 @@ input#waitingAnswer {
 								<tbody>	
 								<c:forEach var="userQnaOneList" items="${userQnaOneList}" varStatus="status">
 									<tr>
-										<td>${userQnaCount-status.index}</td>
+										<td>${status.index+1}</td>
 										<td>${userQnaOneList.dgv_inquiry_tag}</td>
 										<td><a id="myPage-title" href="#">${userQnaOneList.dgv_inquiry_title}</a></td>
 										<td><a id="myPage-text" href="#">${userQnaOneList.dgv_inquiry_text}</a></td>																		
@@ -115,7 +115,7 @@ input#waitingAnswer {
 										<td>
 											<c:choose>
 												<c:when test="${userQnaOneList.dgv_inquiry_status == 1}">
-													<button id="finishAnswer" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button">답변완료</button>																	
+													<button id="finishAnswer" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" onclick="location.href='/adminAnswer.do?dgv_inquiry_code=${userQnaOneList.dgv_inquiry_code}'">답변완료</button>																	
 												</c:when>
 												<c:otherwise>
 													<input id="waitingAnswer" type="text" value="답변대기중" readonly="readonly">													

@@ -12,6 +12,32 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+	<script type="text/javascript">
+		function eventAction(event){
+			const eventCode = event;
+			
+			$.ajax({
+				method:"POST",
+				url:"/userParEvent.do",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify({"event_code": eventCode}),
+				success:function(result){
+					if(result.msg=="SUCCESS"){
+						alert("이벤트 참여 완료!")
+						location.href='myPage_event.do';
+					}else if(result.msg=="EXIST"){
+						alert("이미 참여한 이벤트 입니다. ")
+						location.href='myPage_event.do'
+					}
+				},
+				error:function(){
+					
+					console.log("통신실패")
+				}
+,			})
+		}
+	</script>
 </head>
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
@@ -29,7 +55,8 @@
          	   <img class="event-text-img" src="${eventVo.event_text_img}">          
           </div>
           <div class="event-list">
-          		<button class="w-btn w-btn-gra3 w-btn-gra-anim event-list-btn" onclick="location.href='/event.do'">목록으로</button>
+          		<button class="w-btn w-btn-gra3 w-btn-gra-anim event-list-btn" onclick="location.href='/event.do'" style="margin-left: 1rem;">목록으로</button>
+          		<button class="w-btn w-btn-gra3 w-btn-gra-anim event-list-btn" onclick="eventAction(${eventVo.event_code})" style="width: 200px;margin-left: 37rem;">이벤트 참여하기</button>
           </div>
         </div>
       </div>

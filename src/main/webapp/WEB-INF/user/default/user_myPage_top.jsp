@@ -31,7 +31,7 @@
 					<div class="page-style">
 						<button id="myPage-change-info" type="button"
 							onclick="location.href='/myPage_checkData.do'" title="새창열림">나의 정보 변경</button>							
-						<button id="myCouponList">나의 쿠폰 목록</button>	
+						<button id="myCouponList" onclick="location.href='/myPage_coupon.do'">나의 쿠폰 목록</button>	
 					</div>
 				</div>
 				<div class="myPage-benefit-info"  style="width: 188px; padding-top: 141px;">

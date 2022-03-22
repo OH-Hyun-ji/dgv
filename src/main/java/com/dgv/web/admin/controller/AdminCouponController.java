@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -83,6 +84,26 @@ public class AdminCouponController {
 		System.out.println("???");
 		model.addAttribute("couponVo",couponVo);
 		return "/board/admin_coupon_detail";
+	}
+	
+	// 쿠폰 수정 
+	@PostMapping("/CouponUpdate.mdo")
+	@ResponseBody
+	public CommonResultDto CouponUpdate(@RequestPart("couponVo") AdminCouponVO couponVo,@RequestPart MultipartFile imgFile) {
+		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "coupon/", couponVo.getCoupon_img());
+			if(!fileResult.isSuccess())
+				return CommonResultDto.fail();
+		
+		couponVo.setCoupon_img(fileResult.getUrl());
+		String adminId = RequestUtils.getAdminId("adminId");
+		couponVo.setReg_id(adminId);
+		
+		int num =adminMovieService.CouponUpdate(couponVo);
+		
+		if(num ==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+		
 	}
 	
 }

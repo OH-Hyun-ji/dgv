@@ -31,7 +31,9 @@
   			$.datepicker.setDefaults({
   			    dateFormat: 'yy-mm-dd' //Input Display Format 변경
   			});
-  			$("#couponRegister").click(function(){
+  			
+  			$("#couponUpdateBtn").click(function(){
+  				const couponNum =$("#couponNum").val()
   				const couponName = $("#couponName").val()
   				const couponDiscount =$("#couponDiscount").val()
   				const couponDate  = $("#couponDate").val()
@@ -41,6 +43,7 @@
   				const imgFile = $("#couponImg")[0].files[0]
   				
   				const couponVo ={
+  					"coupon_num":couponNum,
   					"coupon_name":couponName,
   					"coupon_discount":couponDiscount,
   					"coupon_date":couponDate,
@@ -53,7 +56,7 @@
   				
   				$.ajax({
   					method:"POST",
-  					url:"/insertCoupon.mdo",
+  					url:"/CouponUpdate.mdo",
   					enctype:"multipart/form-data",
   					contentType:false,
   					processData:false,
@@ -64,8 +67,8 @@
   							location.reload()  							
   						}
   					},
-  					error:function(){
-  						console.log("통신실패")
+  					error:function(e){
+  						console.log(e)
   					}
   				})//ajax close
   				
@@ -149,7 +152,7 @@
 			                            <div class="eventImg-wrapper1" style="margin-left: 7rem;">
 			                            	<div class="event-label-wrapping1">
 				                            	<label class="event-label1" style="font-weight:bolder;">Coupon Image</label>
-				                            	<input type="file" multiple="multiple" id="coupon-updateImg"  onchange="thumbNail(event)"  name="coupon_img" style=" border-radius: 7px;line-height: 25px;"/>
+				                            	<input type="file" multiple="multiple" id="couponImg"  onchange="thumbNail(event)"  name="coupon_img" style=" border-radius: 7px;line-height: 25px;"/>
 				                           	</div>
 				                           	<div class="thImg-wrap">
 													<img id="thImg1-style" src="${couponVo.coupon_img }" >

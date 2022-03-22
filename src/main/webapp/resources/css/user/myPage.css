@@ -183,6 +183,8 @@ table.myPage-table {
     padding-left: 3%;
     padding-top: 1%;
     font-weight: bold;
+    margin-bottom: 1rem;
+
 }
 table.myPage-table {
     text-align: center;
@@ -194,6 +196,7 @@ thead.myPage-table-wrapping {
 .myPage-table-wrap {
     margin-top: 4%;
     border-radius: 8px;
+    background-color: #e1e1d3;
 }
 thead.myPage-table-wrapping >tr {
 	border-style: solid;

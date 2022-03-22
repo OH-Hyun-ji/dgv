@@ -9,8 +9,10 @@ import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
@@ -22,6 +24,7 @@ import com.dgv.web.user.vo.CriteriaBoard;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserCouponUseVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
@@ -390,14 +393,46 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.myCouponVo(num);
 	}
+	@Override
+	public int CouponUseInsert(UserCouponUseVO vo) {
+		
+		return userBoardDAO.CouponUseInsert(vo);
+	}
 
-
+	@Override
+	public List<UserCouponUseVO> CouponUseSelect(UserCouponUseVO vo) {
 	
-
+		return userBoardDAO.CouponUseSelect(vo);
+	}
 	
-
+	@Override
+	public AdminInquiryVO adminAnswer(int num) {
+		
+		return userBoardDAO.adminAnswer(num);
+	}
 	
+	@Override
+	public UserInquiryVO userQnaVO(int num) {
+		
+		return userBoardDAO.userQnaVO(num);
+	}
+	@Override
+	public int parUserEventInsert(AdminParUserEventVO vo) {
+		
+		return userBoardDAO.parUserEventInsert(vo);
+	}
 
+	@Override
+	public List<AdminParUserEventVO> parUserEventSelec() {
+		
+		return userBoardDAO.parUserEventSelect();
+	}
+	
+	@Override
+	public int parEventCheck(AdminParUserEventVO vo) {
+		
+		return userBoardDAO.parEventCheck(vo);
+	}
 
 	
 
