@@ -9,7 +9,12 @@
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/resources/css/admin/styles.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath }/resources/css/user/button.css" rel="stylesheet"  />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
+    
     <script>
        function adminNotice(){
              var popupX =(window.screen.width/2)-(200/2);
@@ -17,6 +22,31 @@
                             
              window.open('/adminNoticeRegister.mdo','','width=650,height=850,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
 		}
+ 
+       // 공지사항 삭제
+       function deleteAction(e){
+    	   console.log("내가찍은코드pk : "+ e)
+			const res = confirm("정말로 삭제하시겠습니까?");
+			 if(res == true){
+
+				$.ajax({
+					method:"POST",
+					url:"deleteNotice.mdo",
+					contentType:"application/json",
+					dataType:"json",
+					data:JSON.stringify({"notice_num":e}),
+					success:function(result){
+						if(result.msg=="SUCCESS"){
+							alert("삭제 완료!")
+							location.reload()
+						}
+					},
+					error:function(){
+						console.log("통신실패")
+					}
+				}) //close ajax
+			 }
+       }
     </script>
 </head>
 <body class="sb-nav-fixed">
@@ -52,6 +82,7 @@
 										<th>Writer</th>
 										<th>Date</th>
 										<th>Count</th>
+										<th>Delete</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -63,6 +94,9 @@
 										<td>${noticeList.reg_id }</td>
 										<td>${noticeList.reg_date }</td>
 										<td>${noticeList.notice_count }</td>
+										<td>
+											<button id="delBt" onclick="deleteAction(${noticeList.notice_num })"><i class="fas fa-trash-alt"></i></button>
+										</td>
 									</tr>
 								</c:forEach>	
 								</tbody>

@@ -54,6 +54,7 @@
     <script>
 	$(function(){
 		alert("인증번호를 입력해주세요")
+
 		
 		$("#authCheck").click(function(){		
 		const authNumber = $("#userAuth").val();
@@ -73,10 +74,9 @@
 					},error:function(e){
 						console.log("통신실패"+e)
 					}
-				})
-			
-			
+				})	
 		})
+		
 		
 	})
 

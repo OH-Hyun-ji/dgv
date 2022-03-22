@@ -66,6 +66,7 @@
 		INSERT INTO dgv_event(event_code,event_title,event_text,start_date,end_date,reg_id,reg_date,event_status,event_winner,event_img,event_text_img)
 		VALUES(DEFAULT,#{event_title},#{event_text},#{start_date},#{end_date},#{reg_id},current_date,DEFAULT,DEFAULT,#{event_img},#{event_text_img})
 	</insert>
+
 	<select id="EventSelect" resultType="AdminEventVO">
 		SELECT * FROM dgv_event order by event_code asc
 	</select>
@@ -80,6 +81,7 @@
 	<delete id="TermDelete"  parameterType="AdminTermVO">
 		DELETE FROM term_info WHERE term_num=#{term_num}
 	</delete>
+	
 	
 	<update id="eventAdminUpdate">
 		UPDATE dgv_event SET event_status=#{event_status} WHERE event_code= #{event_code} 
@@ -132,4 +134,19 @@
 	<select id="CouponNumSelect" resultType="AdminCouponVO">
 		SELECT * FROM dgv_coupon WHERE coupon_num =#{coupon_num}
 	</select>
+	
+	<!-- 이벤트 삭제/////////////////////////////////////////////////////////// -->
+	<delete id="EventDelete"  parameterType="AdminEventVO">
+		DELETE FROM dgv_event WHERE event_code=#{event_code}
+	</delete>
+	
+	<!-- 공지사항 삭제///////////////////////////////////////////////////////// -->
+	<delete id="NoticeDelete"  parameterType="AdminNoticeVO">
+		DELETE FROM dgv_notice WHERE notice_num=#{notice_num}
+	</delete>
+	
+	<!-- 쿠폰 삭제///////////////////////////////////////////////////////// -->
+	<delete id="CouponDelete"  parameterType="AdminCouponVO">
+		DELETE FROM dgv_coupon WHERE coupon_num=#{coupon_num}
+	</delete>
 </mapper>

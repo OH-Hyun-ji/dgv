@@ -252,10 +252,11 @@ public class UserLoginController {
 			String authNum = String.valueOf(num);
 				session.setAttribute("auth", authNum);
 				RequestUtils.setUserEmail(userVo.getUser_email());
+
 				String tomail = userVo.getUser_email(); // 받는사람
 				String title = "[DGV] 비밀번호변경 인증 이메일 입니다";
 				String content = System.getProperty("line.separator") + "안녕하세요 회원님"
-						+ System.getProperty("line.separator") + "삼삼하개 비밀번호찾기(변경) 인증번호는 " + num + " 입니다."
+						+ System.getProperty("line.separator") + "DGV 회원님 비밀번호 변경을 위한 인증번호는 " + num + " 입니다."
 						+ System.getProperty("line.separator"); //
 
 				try {
@@ -294,10 +295,10 @@ public class UserLoginController {
 		if(numAuth.equals(userVo.getUser_auth())) {
 			System.out.println("인증이 성공함 ");
 			return CommonResultDto.success();
+		}else {
+			System.out.println("인증실패");
+			return CommonResultDto.fail();
 		}
-		System.out.println("인증실패");
-		return CommonResultDto.fail();
-
 	}
 	
 //	// 새 비밀번호 설정
