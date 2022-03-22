@@ -208,7 +208,7 @@ public class UserLoginController {
 	// 비밀번호 찾기 (인증번호 확인)
 	@RequestMapping("/find_auth.do")
 	public String findAuth() {
-
+		
 		return "/login/user_find_auth";
 	}
 
@@ -231,7 +231,7 @@ public class UserLoginController {
 	// 새 비밀번호 수정페이지
 	@RequestMapping("/find_updatePassword.do")
 	public String updatePassword() {
-
+		
 		return "/login/user_find_updatePassword";
 	}
 		
@@ -246,13 +246,12 @@ public class UserLoginController {
 
 		if (vo != null) {
 			Random r = new Random();
-			int num = r.nextInt(999999); // 랜덤난수설정
+			int num = r.nextInt(888888)+111111; // 랜덤난수설정
 			
+			System.out.println("NUM : "+ num);
 			String authNum = String.valueOf(num);
-			if (vo.getUser_name().equals(userVo.getUser_name())) {
 				session.setAttribute("auth", authNum);
 				RequestUtils.setUserEmail(userVo.getUser_email());
-				String setfrom = "ghdud1122@naver.com"; // naver
 				String tomail = userVo.getUser_email(); // 받는사람
 				String title = "[DGV] 비밀번호변경 인증 이메일 입니다";
 				String content = System.getProperty("line.separator") + "안녕하세요 회원님"
@@ -263,7 +262,7 @@ public class UserLoginController {
 					MimeMessage message = mailSender.createMimeMessage();
 					MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "utf-8");
 
-					messageHelper.setFrom(setfrom);
+				//	messageHelper.setFrom(setfrom);
 					messageHelper.setTo(tomail);
 					messageHelper.setSubject(title);
 					messageHelper.setText(content);
@@ -272,8 +271,7 @@ public class UserLoginController {
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
-
-			}
+		
 				Gson gson = new Gson();
 				
 			return authNum;
@@ -288,10 +286,12 @@ public class UserLoginController {
 	@ResponseBody
 	public CommonResultDto authNumberCheck(@RequestBody UserVO userVo, HttpSession session) {
 		
-		String numAuth=(String) session.getAttribute("auth");
+		String numAuth = (String)session.getAttribute("auth");
 		System.out.println("numAuth"+ numAuth);
-		userVo.setUser_auth(numAuth);
-		if(userVo.getUser_auth().equals(numAuth)) {
+		System.out.println("user_auth"+ userVo.getUser_auth());
+		
+		//userVo.setUser_auth(numAuth);
+		if(numAuth.equals(userVo.getUser_auth())) {
 			System.out.println("인증이 성공함 ");
 			return CommonResultDto.success();
 		}
@@ -300,18 +300,18 @@ public class UserLoginController {
 
 	}
 	
-	// 새 비밀번호 설정
-	@RequestMapping(value = "/pw_new.me", method = RequestMethod.POST)
-	public String pw_new(UserVO vo, HttpSession session) throws IOException{
-		int result = userService.newPassword(vo);
-		if(result == 1) {
-			return "jj/loginForm";
-		}
-		else {
-			System.out.println("pw_update"+ result);
-			return "YM/pw_new";
-		}
-	}
+//	// 새 비밀번호 설정
+//	@RequestMapping(value = "/pw_new.me", method = RequestMethod.POST)
+//	public String pw_new(UserVO vo, HttpSession session) throws IOException{
+//		int result = userService.newPassword(vo);
+//		if(result == 1) {
+//			return "jj/loginForm";
+//		}
+//		else {
+//			System.out.println("pw_update"+ result);
+//			return "YM/pw_new";
+//		}
+//	}
 	
 	
 	
