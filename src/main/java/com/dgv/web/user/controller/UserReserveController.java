@@ -294,5 +294,10 @@ public class UserReserveController {
 		
 		return "movie/user_movie_mp4";
 	}
+	
+	@RequestMapping("userReserveResult.do")
+	public String userReserveResult() {
+		return "/reserve/user_reserve_resultView";
+	}
 
 }
