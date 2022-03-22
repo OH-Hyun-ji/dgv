@@ -167,5 +167,34 @@
 		SELECT * FROM dgv_coupon WHERE coupon_num = #{coupon_num}
 	</select>
 	
+	<insert id="CouponUseInsert" parameterType="UserCouponUseVO">
+		INSERT INTO coupon_use(cu_code, user_id, coupon_num, cu_status ,coupon_code)
+		VALUES(DEFAULT,#{user_id},#{coupon_num},#{cu_status},#{coupon_code})
+	</insert>
+	
+	<select id="CouponUseSelect" resultType="UserCouponUseVO">
+		SELECT * FROM coupon_use WHERE user_id=#{user_id} order by cu_code asc
+	</select>
+	
+	<select id="adminAnswer" resultType="AdminInquiryVO">
+		SELECT * FROM dgv_qna_answer where wait_code =#{wait_code}
+	</select>
+	
+	<select id="userQnaVO" resultType="UserInquiryVO">
+		SELECT * FROM dgv_qna_wait WHERE dgv_inquiry_code=#{dgv_inquiry_code}
+	</select>
+	
+	<insert id="parUserEventInsert" parameterType="AdminParUserEventVO">
+		INSERT INTO parUserEevent(par_code,user_num,event_code,par_date)
+		VALUES(DEFAULT,#{user_num},#{event_code},current_date)
+	</insert>
+	
+	<select id="parUserEventSelect" resultType="AdminParUserEventVO">
+		SELECT * FROM parUserEevent order by par_code asc;
+	</select>
+	
+	<select id="parEventCheck" resultType="int" >		
+		select count(*) from parUserEevent where event_code = #{event_code} and user_num=#{user_num};
+	</select>
 	
 </mapper>

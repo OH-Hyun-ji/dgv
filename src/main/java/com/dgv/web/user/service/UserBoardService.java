@@ -9,8 +9,10 @@ import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminGroupVO;
+import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
+import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.AdminParVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
@@ -21,6 +23,7 @@ import com.dgv.web.user.vo.CriteriaBoard;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
+import com.dgv.web.user.vo.UserCouponUseVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserFAQKindVO;
 import com.dgv.web.user.vo.UserFAQVO;
@@ -138,5 +141,18 @@ public interface UserBoardService {
 	List<AdminCouponVO> myCouponList(int num);
 	
 	AdminCouponVO myCouponVo(int num);
+	
+	int CouponUseInsert(UserCouponUseVO vo);
 
+	List<UserCouponUseVO> CouponUseSelect(UserCouponUseVO vo);
+	
+	AdminInquiryVO adminAnswer(int num);
+	
+	UserInquiryVO userQnaVO(int num);
+	
+	int parUserEventInsert(AdminParUserEventVO vo);
+	
+	List<AdminParUserEventVO> parUserEventSelec();
+	
+	int parEventCheck(AdminParUserEventVO vo);
 }

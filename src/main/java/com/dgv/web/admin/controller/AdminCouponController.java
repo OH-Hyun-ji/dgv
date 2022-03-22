@@ -103,4 +103,24 @@ public class AdminCouponController {
 		return "/board/admin_coupon_detail";
 	}
 
+	// 쿠폰 수정 
+	@PostMapping("/CouponUpdate.mdo")
+	@ResponseBody
+	public CommonResultDto CouponUpdate(@RequestPart("couponVo") AdminCouponVO couponVo,@RequestPart MultipartFile imgFile) {
+		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "coupon/", couponVo.getCoupon_img());
+			if(!fileResult.isSuccess())
+				return CommonResultDto.fail();
+		
+		couponVo.setCoupon_img(fileResult.getUrl());
+		String adminId = RequestUtils.getAdminId("adminId");
+		couponVo.setReg_id(adminId);
+		
+		int num =adminMovieService.CouponUpdate(couponVo);
+		
+		if(num ==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+		
+	}
+
 }

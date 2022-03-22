@@ -6,12 +6,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
+import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.vo.AdminEventVO;
+import com.dgv.web.admin.vo.AdminParUserEventVO;
+import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.UserVO;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 @Controller
@@ -21,8 +30,37 @@ public class UserEventController {
 	private UserBoardService userBoardService;
 	
 	@Autowired
+	private UserService userService;
+	
+	@Autowired
 	private AdminMovieService adminMovieService;
+	
+	@Autowired
+	private AdminUserService adminUserService;
 
+	//이벤트 참여 
+	@PostMapping("/userParEvent.do")
+	@ResponseBody
+	public CommonResultDto userParEvent(@RequestBody AdminParUserEventVO parEventVo) {
+		String userId = RequestUtils.getUserId("userID");
+		UserVO userVo = userService.MyUserData(userId);	
+		
+		parEventVo.setUser_num(userVo.getUser_num());	
+		List<AdminParUserEventVO> parList = userBoardService.parUserEventSelec();
+		
+		int count = userBoardService.parEventCheck(parEventVo);
+		if(count ==0) {
+			int num = userBoardService.parUserEventInsert(parEventVo);
+			
+			if(num ==0)
+				return CommonResultDto.fail();
+			return CommonResultDto.success();
+			
+		}else {
+			return CommonResultDto.exist();
+		}		
+	}
+	
 	//이벤트 당첨자 발표 
 	@RequestMapping("eventWinnerPage.do")
 	public String eventWinnerPage(@RequestParam("event_code")int num , Model model) {

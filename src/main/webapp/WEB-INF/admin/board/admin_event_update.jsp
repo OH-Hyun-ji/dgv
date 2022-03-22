@@ -42,6 +42,7 @@
 		    dateFormat: 'yy-mm-dd' //Input Display Format 변경
 		});
   		
+  		
 		var arrUser = new Array()
 		var userList = document.querySelectorAll("option")
 		
@@ -58,7 +59,12 @@
 			$("#winnerUserId").val(arrUser)
 		})
 		
-		
+		$("select[name=CouponSelectBtn]").on('change',function(){
+			const aa = $(this).val()
+			$("#hidCouponBtn").empty()
+			$("#hidCouponBtn").val($(this).val())
+			
+		})
 		
 	
 		
@@ -74,6 +80,7 @@
   			const eventTextImg =$("#event-updateImg2").val()
   			const eventImg =$("#event-updateImg1").val()
   			const eventCode = $("#eventCodeN").val()
+  			const couponNum = $("#hidCouponBtn").val()
   			
   			const Img =eventImg.split("\\")
   			const textImg = eventTextImg.split("\\")
@@ -92,7 +99,8 @@
   					"event_text":eventText,
   					"event_img":eventImgName,
   					"event_text_img":eventTextImgName,
-  					"event_winner":winner
+  					"event_winner":winner,
+  					"coupon_num":couponNum
   			}
   			const form = new FormData();
   			form.append("imgFile",imgFile)
@@ -212,8 +220,14 @@
 										<tr>
 											<th style="font-size:18px;">Coupon Select</th>											
 											<td>
-												<input class="sameInput" id="winnerCoupon" >
+												<select class="sameInput" name="CouponSelectBtn" id="couponSelect" style="height: 29px;outline: none;">
+													<option>쿠폰 목록</option>
+													<c:forEach var="couponList" items="${couponList}"> 
+														<option value="${couponList.coupon_num }">${couponList.coupon_name }</option>
+													</c:forEach>
+												</select>										
 											</td>
+											<input type="hidden" id="hidCouponBtn">
 										</tr>
 										<tr>
 											<th scope="row" style="font-size:18px;">Event Text</th>

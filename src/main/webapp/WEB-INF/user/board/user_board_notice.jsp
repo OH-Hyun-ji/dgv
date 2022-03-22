@@ -68,9 +68,9 @@ thead.myPage-table-wrapping >tr {
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="noticeList" items="${noticeList}">
+								<c:forEach var="noticeList" items="${noticeList}" varStatus="status">
 									<tr>
-										<td>${noticeList.notice_num }</td>
+										<td>${status.index+1 }</td>
 										<td><a href="/noticeDetail.do?notice_num=${noticeList.notice_num}">${noticeList.notice_title }</a></td>
 										<td><a href="/noticeDetail.do?notice_num=${noticeList.notice_num}">${noticeList.notice_text }</a></td>
 										<td>${noticeList.reg_id }</td>

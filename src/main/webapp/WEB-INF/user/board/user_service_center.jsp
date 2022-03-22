@@ -5,34 +5,32 @@
 <html>
 <head>
 <title>Service Center</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=1024" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/user/layout.css">
-<link rel="stylesheet" media="all" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/user/myPage.css">
-<link rel="stylesheet" media="all" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/user/userModule.css" />
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/user/userService.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-	crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1024" />
+	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/layout.css">
+	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/myPage.css">
+	<link href="${pageContext.request.contextPath }/resources/css/user/button.css" rel="stylesheet"  />
+	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css" />
+	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/userModule.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/userService.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+		input#waitingAnswer {
+		    width: 70px;
+		    background-color: #c9c9c9;
+		    border: 1px solid;
+		    border-radius: 4px;
+		    text-align: center;
+		    padding: 2px;
+		    margin: 2px;
+		    outline: none;
+		    cursor: no-drop;
+		}
+	</style>
 </head>
-<script type="text/javascript">
-	$(function(){
-		
-		$("#myPage-title").on('click',function(){
-			alert("클릭!")
-		})
-	})
-</script>
+
 <body class="">
 	<div id="dgvwrap">
 		<jsp:include page="../default/user_header.jsp"></jsp:include>
@@ -122,11 +120,22 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td><a id="myPage-title" href="#">나의문의 제목</a></td>
-												<td>나 자신</td>
-											</tr>
+											<c:forEach var="inquiryList" items="${inquiryList}" varStatus="status">
+												<tr>
+													<td>${status.index+1 }</td>
+													<td><a id="myPage-title" href="#">${inquiryList.dgv_inquiry_title }</a></td>													
+													<td>
+														<c:choose>
+															<c:when test="${inquiryList.dgv_inquiry_status == 1}">
+																<button id="finishAnswer" class="w-btn w-btn-gra3 w-btn-gra-anim" style="padding: 5px; width: 72px;margin: 2px;" type="button" onclick="location.href='/adminAnswer.do?dgv_inquiry_code=${userQnaOneList.dgv_inquiry_code}'">답변완료</button>																	
+															</c:when>
+															<c:otherwise>
+																<input id="waitingAnswer" type="text" value="답변대기중" readonly="readonly">													
+															</c:otherwise>											
+														</c:choose>	
+													</td>											
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>

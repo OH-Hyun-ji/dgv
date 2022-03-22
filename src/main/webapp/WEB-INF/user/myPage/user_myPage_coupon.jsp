@@ -41,12 +41,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="myCouponList" items="${myCouponList}" varStatus="status">
+									<c:forEach var="CouponUseSelect" items="${CouponUseSelect}" varStatus="status">
 										<tr>
 											<td>${status.index+1 }</td>
-											<td><a id="myPage-title" href="/userMyCouponDetail.do?coupon_num=${myCouponList.coupon_num }">${myCouponList.coupon_code }</a></td>
-											<td><a href="/userMyCouponDetail.do?coupon_num=${myCouponList.coupon_num }">${myCouponList.coupon_name }</a></td>
-											<td>${myCouponList.coupon_date }</td>										
+											<td><a id="myPage-title" href="/userMyCouponDetail.do?coupon_num=${CouponUseSelect.coupon_num }">${CouponUseSelect.coupon_code }</a></td>
+											<td><a href="/userMyCouponDetail.do?coupon_num=${CouponUseSelect.coupon_num }">${CouponUseSelect.coupon_name }</a></td>
+											<td>${CouponUseSelect.coupon_date }</td>										
 										</tr>
 									</c:forEach>
 								</tbody>

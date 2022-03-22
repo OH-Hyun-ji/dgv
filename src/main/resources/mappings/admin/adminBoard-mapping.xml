@@ -127,7 +127,7 @@
 	</select>
 	
 	<update id="CouponUpdate">
-		UPDATE dgv_coupon SET coupon_name=#{coupon_name}, coupon_discount=#{coupon_discount}, reg_id=#{reg_id}, reg_date=#{reg_date}, coupon_img=#{coupon_img}
+		UPDATE dgv_coupon SET coupon_name=#{coupon_name}, coupon_discount=#{coupon_discount}, reg_id=#{reg_id}, reg_date=current_date, coupon_img=#{coupon_img}
 		WHERE coupon_num =#{coupon_num}
 	</update>
 	
