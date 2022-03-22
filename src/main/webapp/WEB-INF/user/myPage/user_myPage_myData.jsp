@@ -69,11 +69,15 @@
          //pw 확인 메서드
          $('#passwordRepeat').on('keyup' ,function(){
             if($(this).val() ==""){
-               $("#passwordRepeat").removeClass("issetUser");
                 $("#passwordRepeat").removeClass("nonesetUser");
                 $("#passwordRepeat").addClass("issetUser");
                 $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호를 확인해주세요. ]');    
                  chk3 = false;
+            }else if(!getPwCheck.test($("#passwordRepeat").val())){   
+           	 	$("#ppasswordRepeat").removeClass("nonesetUser");
+                $("#passwordRepeat").addClass("issetUser"); 
+                $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호는 문자, 숫자, 특수문자의 조합으로<br> 8~16자리로 입력해주세요! ]');    
+                chk3 = false;
             }else if($(this).val() != $("#password").val()){
             	$("#passwordRepeat").removeClass("nonesetUser");
                 $("#passwordRepeat").addClass("issetUser");
@@ -241,7 +245,8 @@
 	                                 <li>비밀번호</li>
 	                                 <li><input type="password" name="user_pw" placeholder="비밀번호" id="password" class="form-control" maxlength="16" min="8"> 
 	                                          <i class="zmdi zmdi-lock"></i></li>
-	                              </ul>                                 
+	                              </ul> 
+	                                                             
 	                           </div>
 	                           <div class="myPage-myPassCk">
 	                              <ul>
