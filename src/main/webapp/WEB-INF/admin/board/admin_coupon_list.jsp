@@ -15,6 +15,31 @@
 		function adminCoupon(){
 	 		window.open('/couponRegister.mdo','','width=700,height=600')	
 		}
+		
+		//이벤트 삭제
+		function deleteAction(e){
+			console.log("내가찍은코드pk : "+ e)
+			const res = confirm("정말로 삭제하시겠습니까?");
+			 if(res == true){
+
+				$.ajax({
+					method:"POST",
+					url:"deleteCoupon.mdo",
+					contentType:"application/json",
+					dataType:"json",
+					data:JSON.stringify({"coupon_num":e}),
+					success:function(result){
+						if(result.msg=="SUCCESS"){
+							alert("삭제 완료!")
+							location.reload()
+						}
+					},
+					error:function(){
+						console.log("통신실패")
+					}
+				}) //close ajax
+			 }
+		}
 	</script>
 	<style type="text/css">
 		a#idDetail {
@@ -79,7 +104,7 @@
 											<td style="padding-top: 18px;">${couponList.reg_id }</td>
 											<td style="padding-top: 18px;">${couponList.reg_date }</td>
 											<td style="padding-top: 18px;">
-												<button id="delBt" onclick="deleteAction()"><i class="fas fa-trash-alt"></i></button>
+												<button id="delBt" onclick="deleteAction(${couponList.coupon_num})"><i class="fas fa-trash-alt"></i></button>
 											</td>
 										</tr>	
 									</c:forEach>				

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.dgv.web.admin.dao.AdminUserDAO;
+import com.dgv.web.admin.vo.AdminCouponVO;
+import com.dgv.web.admin.vo.AdminEventVO;
+import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminVO;
@@ -101,6 +104,24 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public int userStatus(UserVO vo) {
 		
 		return adminUserDAO.userStatus(vo);
+	}
+	
+	@Override
+	public int eventDelete(AdminEventVO vo) {
+		
+		return adminUserDAO.eventDelete(vo);
+	}
+	
+	@Override
+	public int noticeDelete(AdminNoticeVO vo) {
+		
+		return adminUserDAO.noticeDelete(vo);
+	}
+	
+	@Override
+	public int couponDelete(AdminCouponVO vo) {
+		
+		return adminUserDAO.couponDelete(vo);
 	}
 	
 }

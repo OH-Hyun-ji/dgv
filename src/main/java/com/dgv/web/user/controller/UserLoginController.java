@@ -294,10 +294,10 @@ public class UserLoginController {
 		if(userVo.getUser_auth().equals(numAuth)) {
 			System.out.println("인증이 성공함 ");
 			return CommonResultDto.success();
+		}else {
+			System.out.println("인증실패");
+			return CommonResultDto.fail();
 		}
-		System.out.println("인증실패");
-		return CommonResultDto.fail();
-
 	}
 	
 	// 새 비밀번호 설정

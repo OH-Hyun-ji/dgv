@@ -6,6 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dgv.web.admin.vo.AdminCouponVO;
+import com.dgv.web.admin.vo.AdminEventVO;
+import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminVO;
@@ -66,6 +69,21 @@ public class AdminUserDAO {
 	
 	public int userStatus(UserVO vo) {
 		return sqlSessionTemplate.update("AdminUserDAO.userStatus",vo);
+	}
+	
+	// 이벤트 삭제
+	public int eventDelete(AdminEventVO vo) {
+		return sqlSessionTemplate.delete("AdminBoardDAO.EventDelete",vo);
+	}
+	
+	// 공지사항 삭제
+	public int noticeDelete(AdminNoticeVO vo) {
+		return sqlSessionTemplate.delete("AdminBoardDAO.NoticeDelete",vo);
+	}
+	
+	// 쿠폰 삭제
+	public int couponDelete(AdminCouponVO vo) {
+		return sqlSessionTemplate.delete("AdminBoardDAO.CouponDelete",vo);
 	}
 	
 }

@@ -271,6 +271,8 @@
 	                                 <li><input type="text" readonly="readonly" value="${userData.user_year}.${userData.user_month}.${userData.user_day}"></li>
 	                              </ul>                                 
 	                           </div>
+	                           <div style="text-align: center;"><span id="psCK"></span></div>
+	                           <div style="text-align: center;"><span id="phoneCK"></span></div>
 	                        </div>
               
                      </div>

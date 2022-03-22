@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.dgv.web.admin.vo.AdminCouponVO;
+import com.dgv.web.admin.vo.AdminEventVO;
+import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminTermVO;
 import com.dgv.web.admin.vo.AdminVO;
@@ -39,4 +42,10 @@ public interface AdminUserService {
 	AdminTermVO userTermNumVo (int num);
 	
 	int userStatus(UserVO vo);
+	
+	int eventDelete(AdminEventVO vo);
+	
+	int noticeDelete(AdminNoticeVO vo);
+	
+	int couponDelete(AdminCouponVO vo);
 }
