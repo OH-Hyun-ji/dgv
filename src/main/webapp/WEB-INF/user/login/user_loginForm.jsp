@@ -68,7 +68,7 @@ function loginWithKakao() {
 }
 
 
-		var count=0;
+		var count=1;
 	function loginCheck(){
 		const id = $('#id').val()
 		const pw = $('#password').val()
