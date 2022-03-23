@@ -30,7 +30,6 @@
 		}
 	</style>
 </head>
-
 <body class="">
 	<div id="dgvwrap">
 		<jsp:include page="../default/user_header.jsp"></jsp:include>
