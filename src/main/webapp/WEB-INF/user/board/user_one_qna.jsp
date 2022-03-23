@@ -18,14 +18,12 @@
 	<script type="text/javascript">
 	</script>
 	<style type="text/css">
-table.myPage-table {
-      height: 160px;
-}
+
 td {
     box-sizing: border-box;
     padding-top: 6px;
     border-right: 1px solid #8080807a;
-    line-height: 46px;
+    padding-bottom: 6px;
 }
 th{
 	box-sizing: border-box;

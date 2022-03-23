@@ -205,7 +205,7 @@
 											<td>
 												<select class="sameInput"  name="userSelectBtn" id="userSelect" style="height: 29px;outline: none;" >
 													<option class="sameInput" >회원목록</option>
-													<c:forEach var="userList" items="${ userList}">
+													<c:forEach var="userList" items="${userList}">
 														<option class="choiceUser" value="${ userList.user_id}">${ userList.user_id}</option>
 													</c:forEach>
 												</select>

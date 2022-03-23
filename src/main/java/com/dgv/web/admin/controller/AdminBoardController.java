@@ -257,6 +257,26 @@ public class AdminBoardController {
 		return "/board/admin_board_notice";
 	}
 
+	//공지사항 상세보기
+	@RequestMapping("/adminNoticeDetail.mdo")
+	public String adminNoticeDetail(@RequestParam("notice_num") int num, Model model) {
+		AdminNoticeVO noticeVo = adminMovieService.noticeNumVo(num);
+		
+		model.addAttribute("noticeVo",noticeVo);
+		return "/board/admin_board_noticeDetail";
+	}
+	
+	//공지사항 수정
+	@PostMapping("/updateNotice.mdo")
+	@ResponseBody
+	public CommonResultDto updateNotice(@RequestBody AdminNoticeVO noticeVo) {
+		int num = adminMovieService.noticeUpate(noticeVo);
+		
+		if(num == 0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
 	// 공지사항 등록창
 	@RequestMapping("/adminNoticeRegister.mdo")
 	public String adminNoticeRegister() {

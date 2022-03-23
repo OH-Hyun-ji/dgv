@@ -62,8 +62,8 @@
 	</select>
 	
 	<insert id="InsertMovie" useGeneratedKeys="true" keyProperty="movie_num" parameterType="AdminMovieVO">
-		INSERT INTO movie_info(movie_num,movie_genre_code,movie_img,movie_running_time,movie_open_date,movie_text,movie_title,movie_title_en,movie_age_code,reg_id,movie_time,reg_date,movie_real_img)
-		VALUES(DEFAULT,#{movie_genre_code},#{movie_img},#{movie_running_time},#{movie_open_date},#{movie_text},#{movie_title},#{movie_title_en},#{movie_age_code},#{reg_id},#{movie_time},current_date,#{movie_real_img})
+		INSERT INTO movie_info(movie_num,movie_genre_code,movie_img,movie_running_time,movie_open_date,movie_text,movie_title,movie_title_en,movie_age_code,reg_id,reg_date,movie_real_img)
+		VALUES(DEFAULT,#{movie_genre_code},#{movie_img},#{movie_running_time},#{movie_open_date},#{movie_text},#{movie_title},#{movie_title_en},#{movie_age_code},#{reg_id},current_date,#{movie_real_img})
 	</insert>
 	
 	<select id="TheaterList" resultType="AdminTheaterVO" parameterType="int">

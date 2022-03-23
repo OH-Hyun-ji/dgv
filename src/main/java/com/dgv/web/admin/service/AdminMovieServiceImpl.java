@@ -468,4 +468,15 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		
 		return adminMovieDAO.CouponNumSelect(num);
 	}
+	
+	@Override
+	public AdminNoticeVO noticeNumVo(int num) {
+		
+		return adminMovieDAO.noticeNumVo(num);
+	}
+	@Override
+	public int noticeUpate(AdminNoticeVO vo) {
+		// TODO Auto-generated method stub
+		return adminMovieDAO.noticeUpate(vo);
+	}
 }

@@ -113,9 +113,21 @@
                         </div>
                         <div class="selected-price-info">
                             <div class="selected-price-title"><span class="selected-date">가격</span> <i class="fa-solid fa-greater-than"></i></div>
-                            <div class="selected-price-total">0</div>
+                            <div class="selected-price-total">0</div>                     		
                         </div>
                     </div>
+                     <div class="discount-reserve-wrap">
+		                  <div class="coupon-select">
+		                  	<select id="discountCoupon">
+		                  		<option>사용가능한쿠폰</option>
+		                  	</select>
+		                  </div>
+		                  <div class="point-select">
+		                  	<select id="discountPoint">
+		                  		<option>사용가능한포인트</option>
+		                  	</select>
+		                  </div>
+                 </div>
                 </div>            
             </div>
             <div class="seat_introduce">
@@ -273,7 +285,7 @@
 					            		data:JSON.stringify(reserveVo),
 					            		success:function(result){
 					            			if(result.msg=="SUCCESS"){
-					            				location.href="/movieReserve.do"
+					            				location.href="userReserveResult.do?reserve_merchant_uid="+rsp.merchant_uid
 					            			}
 					            		},
 					            		error:function(){

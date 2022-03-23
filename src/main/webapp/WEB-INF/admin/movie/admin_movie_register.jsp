@@ -244,14 +244,10 @@
 				const movieRunTime = $("#dgvMovieRunTime").val()
 				const movieOpenDate =$("#movieopendate").val()
 				const movieGenre=$("#dgvGenre").val()
-				const movieAge = $("#dgvAge").val()
-				const movieStartT = $("#dgvMovieStartTime").val()
-				const movieStartM = $("#dgvMovieStartMM").val()
-				const movieStartTime =movieStartT+":"+movieStartM
+				const movieAge = $("#dgvAge").val()			
 				const movieInfo =$("#dgvMovieText").val()
 				const movieImgName = $("#movieImgName").val();
 				console.log(movieImgName)
-				console.log(movieStartTime)
 				const movieName = movieImgName.split("\\")
 				const imgName = movieName[movieName.length-1]
 				const imgFile = $("#movieImgName")[0].files[0];
@@ -312,7 +308,6 @@
 						"movie_open_date":movieOpenDate,
 						"movie_genre_code" :movieGenre,
 						"movie_age_code" :movieAge,
-						"movie_time":movieStartTime,
 						"movie_text":movieInfo,
 						"movie_img":imgName,
 						"movie_real_img":imgName,
@@ -406,10 +401,9 @@
                             </div>
                         </div>
                             <br><br>
-                            <div class="form-group" style="display: inline-grid; margin-left:3%;margin-right:1%; text-align:end;margin-top: 54px;">
+                            <div class="form-group" style="display: inline-grid; margin-left:3%;margin-right:1%; text-align:end;margin-top: 66px;">
                                 <label for="dgvGenre">genre</label>
-                                <label for="dgvAge">Age</label>
-                                <label for="dgvMovieStartTime">Start Time</label>
+                                <label for="dgvAge">Age</label>                      
                             </div>
 
                             <div class="form-group" style="display: inline-grid; margin-top: 4%;">
@@ -424,35 +418,7 @@
                                   <c:forEach var="ageList" items="${ageList}">
                                       <option value="${ageList.movie_age_num}">${ageList.movie_age_name}</option>
                                   </c:forEach> 
-                                  </select>
-                                  <div class="dgvTime-wrap" style="display: flex;">
-                                  <select id="dgvMovieStartTime" class="form-control">
-                                    <option>시</option>
-                                    <c:forEach var="i" begin="1" end="24">
-                                    <c:choose>
-                                    	<c:when test="${i<10 }">
-                                    		<option value="0${i}">0${i}시</option>                                    	
-                                    	</c:when>
-                                    	<c:otherwise>
-                                    		<option value="${i}">${i}시</option> 
-                                    	</c:otherwise>
-                                    </c:choose>
-                                    </c:forEach>
-                                </select>
-                                 <select id="dgvMovieStartMM" class="form-control">
-                                    <option>분</option>
-                                    <c:forEach var="i" begin="1" end="59">
-                                     <c:choose>
-                                    	<c:when test="${i<10 }">
-                                    		<option value="0${i}">0${i}분</option>                                    	
-                                    	</c:when>
-                                    	<c:otherwise>
-                                    		<option value="${i}">${i}분</option> 
-                                    	</c:otherwise>
-                                    </c:choose>                
-                                    </c:forEach>
-                                </select>
-                                </div>
+                                  </select>                     
                               </div>
                         
                             </div>

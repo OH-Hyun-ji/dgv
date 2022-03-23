@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.service.FileUploadService;
@@ -177,6 +178,7 @@ public class AdminTheaterController {
 		
 		// 2. 영화 정보 insert
 		movieVO.setMovie_img(fileResult.getUrl());
+		movieVO.setReg_id(RequestUtils.getAdminId("adminId"));
 		adminMovieService.insertMovie(movieVO);
 		
 		// 3. 관계자 정보 insert
@@ -187,7 +189,7 @@ public class AdminTheaterController {
 						.movie_num(movieVO.getMovie_num())
 						.movie_group_code(dto.getGroupCode())
 						.movie_actor_code(dto.getParticipantCode())
-						.reg_id((String)session.getAttribute("adminID"))
+						.reg_id((String)session.getAttribute("adminId"))
 						.build() //객체를 만들겠다.
 				)	
 			).sum();

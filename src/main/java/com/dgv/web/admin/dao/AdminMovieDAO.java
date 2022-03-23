@@ -310,5 +310,10 @@ public class AdminMovieDAO {
 	public AdminCouponVO CouponNumSelect(int num) {
 		return sqlSessionTemplate.selectOne("AdminBoardDAO.CouponNumSelect",num);
 	}
-	
+	public AdminNoticeVO noticeNumVo(int num) {
+		return sqlSessionTemplate.selectOne("AdminBoardDAO.noticeNumVo",num);
+	}
+	public int noticeUpate(AdminNoticeVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.noticeUpate",vo);
+	}
 }

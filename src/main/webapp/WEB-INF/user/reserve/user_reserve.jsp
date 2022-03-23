@@ -402,6 +402,7 @@
 		<input class="dgvR" type="hidden" id="hiddenDate" name="reserve_date">
 		<input class="dgvR" type="hidden" id="hiddenTheater" name="theater_code">
 		<input class="dgvR" type="hidden" id="hiddenTime" name="movie_time_start">
+		<input class="dgvR" type="hidden" id="hiddenMovieDate" name=reserve_movie_date>
         <input type="button" id="next-page1"  value="좌석선택=>" >
 	</form>	
    </div>
@@ -569,6 +570,7 @@
 		const date =$("#hiddenDate").val()
 		const theater =$("#hiddenTheater").val()
 		const time =$("#hiddenTime").val()
+		const movieDate =$("#hiddenMovieDate").val()
 		
 		console.log(title)
 		console.log(city)
@@ -586,7 +588,8 @@
 						"region_code":region,
 						"reserve_date":date,
 						"movie_time_start":time,
-						"theater_code":theater
+						"theater_code":theater,
+						"reserve_movie_date":movieDate
 				}
 				const target = document.getElementById('next-page1');
 				$("#next-page1").css("background-color","red")

@@ -419,7 +419,7 @@ public class AdminMovieController {
 		final FileUploadService.FileUploadResult fileResult = fileUploadService.fileUpload(imgFile, "parPeople/",
 				actorVo.getMovie_actor_img());
 
-		actorVo.setReg_id((String) session.getAttribute("adminID"));
+		actorVo.setReg_id((String) session.getAttribute("adminId"));
 
 		final int num = adminMovieService.insertActor(actorVo);
 		System.out.println(actorVo.getMovie_actor_name());

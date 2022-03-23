@@ -49,9 +49,9 @@
 											</tr>
 										</thead>
 										<tbody>
-										<c:forEach var="inquiryList" items="${inquiryList}">
+										<c:forEach var="inquiryList" items="${inquiryList}" varStatus="status">
 											<tr>
-												<td>${inquiryList.dgv_inquiry_code}</td>
+												<td>${status.index +1}</td>
 												<td>${inquiryList.dgv_inquiry_tag}</td>
 												<td>${inquiryList.dgv_inquiry_title}</td>
 												<td>${inquiryList.dgv_inquiry_text}</td>

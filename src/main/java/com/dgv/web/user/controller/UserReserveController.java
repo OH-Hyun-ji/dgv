@@ -1,10 +1,8 @@
 package com.dgv.web.user.controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminTheaterService;
@@ -34,6 +31,8 @@ import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
+import com.siot.IamportRestClient.response.PaymentCancelDetail;
+
 
 @Controller
 public class UserReserveController {
@@ -50,6 +49,50 @@ public class UserReserveController {
 	@Autowired
 	private UserService userService;
 	
+	//pdf
+
+	@RequestMapping("/pdfDownload.do")
+	public String pdfDownload(@RequestParam("reserve_merchant_uid") String merchantUid,Model model) {
+
+		List<String> list = new ArrayList<String>();
+//		list.add("Java");
+//		list.add("파이썬");
+//		list.add("R");
+//		list.add("C++");
+//		list.add("자바스크립트");
+//		list.add("Ruby");
+//		list.add("스칼라");
+//		list.add("클로져");
+//		list.add("자바");
+//		
+//		//뷰에게 전달할 데이터 저장
+//		model.addAttribute("list",list);
+	
+		
+		UserReserveVO reserveVo = userBoardService.userReserveFinish(merchantUid);
+		AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
+		reserveVo.setMovie_title(movieVo.getMovie_title());
+		DecimalFormat formatter = new DecimalFormat("$###,###,###");
+		String price = formatter.format(reserveVo.getReserve_price());
+		reserveVo.setFomatter_price(price);
+		
+		list.add("회원ID : "+reserveVo.getUser_id());
+		list.add("예매번호 : "+reserveVo.getReserve_merchant_uid());
+		list.add("영화제목 : "+reserveVo.getMovie_title());
+		list.add("결제금액 : "+reserveVo.getFomatter_price());
+		list.add("결제수단 : "+reserveVo.getReserve_method());
+		if(reserveVo.getReserve_apply_num() == "" ||reserveVo.getReserve_apply_num() == null ||reserveVo.getReserve_apply_num().length()==0 ) {
+			reserveVo.setReserve_apply_num("카드결제 x");
+		}
+		list.add("카드 승인번호 : "+reserveVo.getReserve_apply_num());
+		list.add("결제일 : "+reserveVo.getReserve_date());
+		
+		
+		model.addAttribute("list",list);
+		
+		//출력할 뷰 이름 리턴
+		return "pdf";
+	}
 	
 	
 	
@@ -296,7 +339,14 @@ public class UserReserveController {
 	}
 	
 	@RequestMapping("userReserveResult.do")
-	public String userReserveResult() {
+	public String userReserveResult(@RequestParam("reserve_merchant_uid") String merchantUid , Model model) {
+		UserReserveVO reserveVo = userBoardService.userReserveFinish(merchantUid);
+		AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
+		reserveVo.setMovie_title(movieVo.getMovie_title());
+		
+		model.addAttribute("reserveVo",reserveVo);
+		
+		
 		return "/reserve/user_reserve_resultView";
 	}
 

@@ -28,6 +28,7 @@ import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
+import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
@@ -56,7 +57,8 @@ public class UserMyPageController {
    @Autowired
    private FileUploadService fileUploadService;
    
-   
+   @Autowired
+   private AdminUserService adminUserService;
    
   
    @PostMapping("/userMyPageTopInfo.do")
@@ -98,15 +100,41 @@ public class UserMyPageController {
    }
    //마이페이지 나의 문의 내역
    @RequestMapping("/myPage.do")
-   public String myPage(Model model,HttpServletRequest request) {
-	   HttpSession session = request.getSession();
-		System.out.println("session.getId() =" + session.getAttribute("userID"));
-		System.out.println("session.getId() =" +session.getAttributeNames());
-		String id = (String) session.getAttribute("userID");
+   public String myPage(Model model,UserVO vo) {
+	   
+
+		String id = RequestUtils.getUserId("userID");
+		//user_num  추출
+		vo.setUser_id(id);
+		UserVO user = userService.login(vo);
+		
 		System.out.println("id "+id);
+		// 예매내역 뽑기
+		UserVO userVo=  adminUserService.userNumList(user.getUser_num());
+		List<UserReserveVO> myReserveList = adminMovieService.userReserveList(userVo.getUser_id());
+		List<AdminMovieVO> movieList = adminMovieService.movieList();
+		for(AdminMovieVO movieVo:movieList ) {
+			for(UserReserveVO reserveVo :myReserveList ) {
+				if(movieVo.getMovie_num() == reserveVo.getMovie_num()) {
+					UserMapVO mapVo = userBoardService.mapList(reserveVo.getRegion_code());
+					reserveVo.setMovie_title(movieVo.getMovie_title());
+					reserveVo.setTheater_name(mapVo.getMap_name());					
+				}				
+			}
+		}
+		//나의 이벤트 내역 
+		List<AdminParUserEventVO> parEventList = userBoardService.participantList(user.getUser_num());
+		for(AdminParUserEventVO parVo : parEventList) {
+			AdminEventVO eventVo = userBoardService.eventNumVo(parVo.getEvent_code());
+			parVo.setEvent_title(eventVo.getEvent_title());
+			parVo.setEvent_end_date(eventVo.getEnd_date());
+		}
+		
+		model.addAttribute("parEventList",parEventList);
+		model.addAttribute("myReserveList",myReserveList);
+		model.addAttribute("userVo",userVo);
 		model.addAttribute("MyPageQnaOneList", userService.MyPageQnaOneList(id));
 		model.addAttribute("MyPageQnaCount",userService.MyPageQnaOneList(id).size());
-  
       return "/myPage/user_myPage";
    }
    

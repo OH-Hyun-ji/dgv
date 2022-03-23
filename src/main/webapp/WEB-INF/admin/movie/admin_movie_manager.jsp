@@ -132,7 +132,7 @@ a#actorDetail {
                                     <tbody>
                                     <c:forEach var="groupList" items="${groupList}" varStatus="status" >
                                         <tr>
-                                            <td>${groupListCount-status.index}</td>
+                                            <td>${status.index +1}</td>
                                             <td>${groupList.movie_group_name}</td>
                                             <td>${groupList.reg_id}</td>
                                             <td>${groupList.reg_date}</td>
@@ -181,7 +181,7 @@ a#actorDetail {
                                             <tbody>
                                             <c:forEach var="actorList" items="${actorList}" varStatus="status">
                                                 <tr>
-                                                    <td>${actorListCount - status.index}</td>
+                                                    <td>${status.index+1}</td>
                                                     <td><a id="actorDetail" href="adminActortUpdate.mdo?movie_actor_code=${actorList.movie_actor_code }">${actorList.movie_actor_name}</a></td>
                                                     <td>${actorList.movie_actor_birth}</td>
                                                     <td>${actorList.movie_actor_nation}</td>                                          

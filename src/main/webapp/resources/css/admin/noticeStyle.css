@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+
+#backBody {
+    align-self: center;
+    background-color: #e8e8e8;
+    border-radius: 13px;
+    margin-top: 1rem;
+    border: 1px solid silver;
+    padding: 4rem 5rem 3rem 5rem;
+}
+.notice-total-wrapper {
+    display: flex;
+}
+.notice-title-wrap {
+    display: grid;
+    margin-right: 2rem;
+}
+label.notice-Tlabel {
+    font-size: 25px;
+    color: #5e300b;
+
+}
+label.notice-textLabel {
+    font-size: 20px;
+    color: #5e300b;
+
+}
+.notice-text {
+    display: grid;
+    width: 700px;
+}
+input#notice-title {
+    height: 50px;
+    border: 0;
+    border-bottom: 1px solid gray;
+    margin-bottom: 2rem;
+    outline: none;
+    padding-left: 2rem;
+    border-radius: 8px;
+    font-size: 19px;
+    font-weight: normal;
+}
+textarea.notice-textarea {
+    padding: 2rem 2rem 0;
+    overflow-y: scroll;
+    outline: none;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 100;
+}
+
+button.w-btn-outline.w-btn-gray-outline.id\= {
+    width: 200px;
+    margin-top: 1rem;
+}
+.notice-updateBtn {
+    text-align: center;
+}
+#mbId{
+	background-color: #e8e8e8;
+}

@@ -186,4 +186,7 @@ public interface AdminMovieService {
 	
 	AdminCouponVO CouponNumSelect(int num);
 	
+	AdminNoticeVO noticeNumVo(int num);
+	
+	int noticeUpate(AdminNoticeVO vo);
 }

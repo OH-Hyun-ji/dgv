@@ -34,20 +34,22 @@
 								<thead class="myPage-table-wrapping">
 									<tr>
 										<th>번호</th>
-										<th>내용</th>
-										<th>작성자</th>
-										<th>작성일</th>
-										<th>조회</th>
+										<th>예매번호</th>
+										<th>영화제목</th>
+										<th>상영날짜</th>
+										<th>예매날짜</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">참여이벤트이름</a></td>
-										<td>나 자신</td>
-										<td>2022-02-09</td>
-										<td>0</td>
-									</tr>							
+									<c:forEach var="myReserveList" items="${myReserveList}" varStatus="status">
+										<tr>
+											<td>${status.index+1 }</td>
+											<td><a id="myPage-title" href="#">${myReserveList.reserve_merchant_uid }</a></td>
+											<td>${myReserveList.movie_title}</td>
+											<td>${myReserveList.reserve_movie_date}</td>
+											<td>${myReserveList.reserve_date}</td>
+										</tr>
+									</c:forEach>						
 								</tbody>
 							</table>
                   	
@@ -58,20 +60,20 @@
 								<thead class="myPage-table-wrapping">
 									<tr>
 										<th>번호</th>
-										<th>내용</th>
-										<th>작성자</th>
-										<th>작성일</th>
-										<th>조회</th>
+										<th>이벤트</th>
+										<th>참여날짜</th>
+										<th>이벤트종료일</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">참여이벤트이름</a></td>
-										<td>나 자신</td>
-										<td>2022-02-09</td>
-										<td>0</td>
-									</tr>							
+									<c:forEach var="parEventList" items="${parEventList }" varStatus="status">
+										<tr>
+											<td>${status.index+1 }</td>
+											<td><a id="myPage-title" href="#">${parEventList.event_title }</a></td>
+											<td>${parEventList.par_date}</td>
+											<td>${parEventList.event_end_date}</td>
+										</tr>	
+									</c:forEach>						
 								</tbody>
 							</table>
                   	

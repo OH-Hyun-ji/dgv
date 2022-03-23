@@ -322,3 +322,15 @@ img#next-choice {
 .reservation-container {
     width: 1000px;
 }
+.discount-reserve-wrap {
+    width: 156px;
+    display: grid;
+}
+.coupon-select {
+    height: 29px;
+    margin-top: 6rem;
+}
+#discountCoupon, #discountPoint{
+	height: 26px;
+    width: 137px;
+}
