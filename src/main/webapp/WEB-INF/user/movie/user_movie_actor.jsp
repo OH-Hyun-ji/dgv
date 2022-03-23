@@ -66,14 +66,9 @@
           <div class="col-detail">
             <!-- 선택한 li 에 class="on" 을넣는다 -->
             <ul class="tab-menu">
-              <li class="on">
-                <a href="#" onclick="return false;" title="선택">
-                  필모그래피
-                </a>
-              </li>
               <li class="last">
-                <a href="#">
-                  포토갤러리
+                <a>
+                  작품 활동
                 </a>
               </li>
             </ul>
@@ -82,7 +77,7 @@
               <c:forEach var="movieList" items="${movieList}">
                 <li>
                   <div class="box-image">
-                    <a href="#">
+                    <a href="/movieDetail.do?movie_num=${movieList.movie_num}">
                       <span class="thumb-image">
                         <img src="${movieList.movie_img}" alt="${movieList.movie_title}">
                         <span class="ico-grade grade${movieList.age_name}">${movieList.age_name} 이상</span>

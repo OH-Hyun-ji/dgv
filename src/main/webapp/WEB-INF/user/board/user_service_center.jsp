@@ -127,7 +127,7 @@
 													<td>
 														<c:choose>
 															<c:when test="${inquiryList.dgv_inquiry_status == 1}">
-																<button id="finishAnswer" class="w-btn w-btn-gra3 w-btn-gra-anim" style="padding: 5px; width: 72px;margin: 2px;" type="button" onclick="location.href='/adminAnswer.do?dgv_inquiry_code=${userQnaOneList.dgv_inquiry_code}'">답변완료</button>																	
+																<button id="finishAnswer" class="w-btn w-btn-gra3 w-btn-gra-anim" style="padding: 5px; width: 72px;margin: 2px;" type="button" onclick="location.href='/adminAnswer.do?dgv_inquiry_code=${inquiryList.dgv_inquiry_code}'">답변완료</button>																	
 															</c:when>
 															<c:otherwise>
 																<input id="waitingAnswer" type="text" value="답변대기중" readonly="readonly">													
