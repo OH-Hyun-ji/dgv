@@ -415,15 +415,12 @@
  		const movieNumber = ${movieInfo.movie_num}
 		
 		if(movieNumber != -1 ){
-			alert("post방식이닷 ")
 			movieCode(movieNumber)
 		}else{
-			alert("get방식이닷!!!")
 		}
 		
 	})
 	function movieCode(n){
-		alert("movie code :" +n)
 		$(".movieStyle").css("background-color","")	
 		$("#movieTT"+n).css("background-color","#9e9d9ba1")
 	
@@ -561,7 +558,6 @@
 
 	
 	$("#next-page1").on('click',function(){
-		alert("////")
 		
 		const title = $("#hiddenTitle").val()
 		const city =$("#hiddenCity").val()
