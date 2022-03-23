@@ -73,6 +73,7 @@ input#waitingAnswer {
     padding: 0;
     border-radius: 6px;
 }
+
 </style>
 </head>
       <body class="">
