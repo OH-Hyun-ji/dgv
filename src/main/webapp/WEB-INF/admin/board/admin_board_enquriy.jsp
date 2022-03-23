@@ -14,6 +14,7 @@
 <style type="text/css">
 table.table{
 	table-layout:fixed;
+	
 }
 
 td{

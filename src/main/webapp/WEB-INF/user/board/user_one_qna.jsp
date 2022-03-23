@@ -21,6 +21,7 @@
 table.myPage-table {
       height: 160px;
       table-layout:fixed;
+      
 }
 td {
     box-sizing: border-box;
