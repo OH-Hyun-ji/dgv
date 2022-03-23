@@ -144,10 +144,10 @@
 	</delete>
 	
 	<select id="bestMovieList" resultType="UserReserveVO">
-		select movie_num, TO_CHAR(trunc(AVG(reserve_price)),'$999,999,999')as fomatter_price
+		select movie_num, TO_CHAR(trunc(Sum(reserve_price)),'$999,999,999')as fomatter_price
 				from movie_reserve
-						group by movie_num
-								order by 2 desc;
+						group by  movie_num
+								 order by SUM(reserve_price) desc;
 	</select>
 	
 	<select id="totalPeopleCount" resultType="UserReserveVO">
@@ -155,20 +155,19 @@
 				select movie_num , sum(reserve_basic) as a1, sum(reserve_old) as a2, sum(reserve_student) as a3
 				from movie_reserve
 				group by movie_num
-				having movie_num = movie_num)as foo;
+				having movie_num = movie_num)as foo
 	</select>
 	
 	<select id="BarChartGenreInfo" resultType="AdminMovieVO">
-		select foo.movie_genre_code, count(*) as genre_count from(
-		select mi.movie_num ,dgi.movie_genre_code 
-			from movie_info mi 
-				inner join movie_reserve ms 
-				on mi.movie_num = ms.movie_num 
-				inner join movie_genre_info dgi
-				on mi.movie_genre_code = dgi.movie_genre_code)as foo
-																	group by foo.movie_genre_code
-																	order by foo.movie_genre_code asc; 
-		
+	select foo.movie_genre_code, count(*) as genre_count from(
+				select dgi.movie_genre_code 
+					from movie_info mi 
+						inner join movie_reserve ms 
+						on mi.movie_num = ms.movie_num 
+						inner join movie_genre_info dgi
+						on mi.movie_genre_code = dgi.movie_genre_code)as foo
+																			group by foo.movie_genre_code
+																			order by foo.movie_genre_code asc; 
 	</select>
 	
 	<select id="beforeGenreCount"  resultType="Integer" parameterType="AdminGenreVO">
@@ -177,7 +176,27 @@
 	</select>
 	
 	<select id="totalMyMoney" resultType="UserReserveVO">			
-			SELECT to_char(SUM(reserve_price),'$999,999,999') as fomatter_price
-			FROM movie_reserve;				
+		SELECT to_char(SUM(reserve_price),'$999,999,999') as fomatter_price
+		FROM movie_reserve;				
+	</select>
+	
+	<select id="genreCount" parameterType="AdminGenreVO">
+		select count(*) from movie_genre_info;
+	</select>
+	
+	<select id="pieChartCount" resultType="UserReserveVO">
+		select movie_num ,a1 +a2 +a3 as total_people from(
+			select movie_num , sum(reserve_basic) as a1, sum(reserve_old) as a2, sum(reserve_student) as a3
+			from movie_reserve
+			group by movie_num
+			having movie_num = movie_num)as foo order by total_people desc limit 4;
+	</select>
+	
+	<select id="totalSum" resultType="int">
+		select  sum(a1 +a2 +a3 )as total_people from(
+			select movie_num , sum(reserve_basic) as a1, sum(reserve_old) as a2, sum(reserve_student) as a3
+			from movie_reserve
+			group by movie_num
+			having movie_num = movie_num)as foo order by total_people desc ;
 	</select>
 </mapper>

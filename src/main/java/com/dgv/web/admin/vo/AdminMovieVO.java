@@ -30,6 +30,7 @@ public class AdminMovieVO {
 	private String age_img;
 	private String age_name;
 	
+	//
 	private String url;
 	private List<AdminGenreVO> genreList;
 	private List<AdminAgeVO> ageList;
@@ -39,5 +40,6 @@ public class AdminMovieVO {
 	private List<AdminGroupVO> groupList;
 	private String movie_genre_name;
 	private Integer genre_count;
+	private Double reservationRate;
 	
 }

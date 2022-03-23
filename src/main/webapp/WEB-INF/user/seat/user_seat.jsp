@@ -199,6 +199,7 @@
 			<input type="hidden" name="reserve_student" id="reserveStudent">
 			<input type="hidden" name="reserve_old" id="reserveOld"> 
 			<input type="hidden" name="reserve_price" id="reservePrice">
+			<input type="hidden" name="reserve_movie_date" id="movieDate">
 			<input type="hidden" name="user_id" id="userId" value="${userVo.user_id }"> 
 			<input type="hidden" name="user_name" id="userName" value="${userVo.user_name }"> 
 			<input type="hidden" name="user_email" id="userEmail" value="${userVo.user_email }"> 
@@ -234,6 +235,7 @@
 				var userEamil = $("#userEmail").val()
 				var userPhone = $("#userPhone").val()			
 				var reservePrice = $("#reservePrice").val()
+				var movieDate = $("#movieDate").val()
 				console.log("reservePrice  =>  "+reservePrice)
 				
 				alert("결제버튼 클릭")
@@ -272,6 +274,7 @@
 				                	"reserve_student":reserveStudent,
 				                	"reserve_old" :reserveOld,
 				                	"reserve_price":reservePrice ,
+				                	"reserve_movie_date":movieDate,
 				                	"reserve_imp_uid":rsp.imp_uid ,
 				                	"reserve_apply_num": rsp.apply_num,
 				                	"reserve_merchant_uid":rsp.merchant_uid,

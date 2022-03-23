@@ -825,6 +825,7 @@ S .movie-chart-btn-wrap .chart-name-wrap h3 a.active {
 .movie-list .swiper-wrapper .swiper-slide .movie-info-wrap {
     display: flex;
     flex-wrap: wrap;
+    place-content: center;
 }
 .movie-list .swiper-wrapper .swiper-slide .movie-info-wrap .movie-name {
     display: block;

@@ -189,4 +189,8 @@ public interface AdminMovieService {
 	AdminNoticeVO noticeNumVo(int num);
 	
 	int noticeUpate(AdminNoticeVO vo);
+	
+	List<UserReserveVO> pieChartCount();
+	
+	int totalSum();
 }

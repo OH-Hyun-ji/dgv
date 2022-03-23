@@ -316,4 +316,14 @@ public class AdminMovieDAO {
 	public int noticeUpate(AdminNoticeVO vo) {
 		return sqlSessionTemplate.update("AdminBoardDAO.noticeUpate",vo);
 	}
+	public int genreCount() {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.genreCount");
+	}
+	public List<UserReserveVO> pieChartCount(){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.pieChartCount");
+	}
+	 
+	public int totalSum() {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.totalSum");
+	}
 }

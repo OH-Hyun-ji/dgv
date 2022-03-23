@@ -63,11 +63,13 @@
 	   					<input type="hidden" value="${totalMovieList.genre_count }" id="genreCount${status.index+1 }">
    					</c:if>
    				</c:forEach>
-			
-             	<jsp:include page="../default/admin_footer.jsp" />
+   				<c:forEach var="pieChartCount" items="${pieChartCount }" varStatus="status">
+   					<input type="hidden" value="${pieChartCount.movie_title }" id="movieTitle${status.index+1 }">
+   					<input type="hidden" value="${pieChartCount.total_people }" id="totalPeople${status.index+1 }" >
+   				</c:forEach>
+     			<jsp:include page="../default/admin_footer.jsp"/>
             </div>
         </div> 
-     <jsp:include page="../default/admin_footer.jsp"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="${pageContext.request.contextPath}/resources/js/admin/scripts.js"></script>
@@ -75,7 +77,5 @@
     <script src="${pageContext.request.contextPath}/resources/js/admin/chart-area-demo.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/admin/chart-bar-demo.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/admin/chart-pie-demo.js"></script>
-
 </body>
-
 </html>

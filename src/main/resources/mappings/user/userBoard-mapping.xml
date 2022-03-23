@@ -144,7 +144,7 @@
 	</select>
 	
 	<select id="eventList" resultType="AdminEventVO">
-		select * from dgv_event 
+		select * from dgv_event order by event_code asc
 	</select>
 	
 	<select id="continueTotal" resultType="int">

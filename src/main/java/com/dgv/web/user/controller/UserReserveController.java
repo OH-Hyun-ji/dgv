@@ -258,6 +258,7 @@ public class UserReserveController {
 	@PostMapping("/userReservation.do")
 	@ResponseBody
 	public CommonResultDto userReservation(@RequestBody UserReserveVO reserveVo) {
+	
 		int num = userBoardService.userReserveInsert(reserveVo);
 		
 		if(num ==0)

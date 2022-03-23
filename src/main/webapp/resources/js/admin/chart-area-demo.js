@@ -4,27 +4,38 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
-var to1 = document.getElementById("today1").value;
-var to2 = document.getElementById("today2").value;
-var to3 = document.getElementById("today3").value;
-var to4 = document.getElementById("today4").value;
-var to5 = document.getElementById("today5").value;
-var to6 = document.getElementById("today6").value;
+const to1 = document.getElementById("today1").value;
+const to2 = document.getElementById("today2").value;
+const to3 = document.getElementById("today3").value;
+const to4 = document.getElementById("today4").value;
+const to5 = document.getElementById("today5").value;
+const to6 = document.getElementById("today6").value;
+
+console.log(to4)
+console.log(to5)
+console.log(to6)
 
 function convertDateFormat(date) {
           return date.toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
       }
         var now = new Date();
-        var today1 = convertDateFormat(new Date());
-        var today2 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
-        var today3 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
-        var today4 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
-        var today5 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
-        var today6 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        const today1 = convertDateFormat(new Date());
+        const today2 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        const today3 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        const today4 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        const today5 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+        const today6 = convertDateFormat(new Date(now.setDate(now.getDate()-1)));
+
+console.log("today1 : "+ to1)
+console.log("today2 : "+ to2)
+console.log("today3 : "+ to3)
+console.log("today4 : "+ to4)
+console.log("today5 : "+ to5)
+console.log("today6 : "+ to6)
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [today6,today5,today4,today3,today2,today1],
+    labels: [today6+"/",today5+"/",today4+"/",today3+"/",today2+"/",today1+"/"],
     datasets: [{
       label: "day",
       lineTension: 0.3,
@@ -56,7 +67,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 500000,
+          max: 1000000,
           maxTicksLimit: 5
         },
         gridLines: {

@@ -479,4 +479,16 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		// TODO Auto-generated method stub
 		return adminMovieDAO.noticeUpate(vo);
 	}
+	
+	@Override
+	public List<UserReserveVO> pieChartCount() {
+	
+		return adminMovieDAO.pieChartCount();
+	}
+	
+	@Override
+	public int totalSum() {
+		
+		return adminMovieDAO.totalSum();
+	}
 }

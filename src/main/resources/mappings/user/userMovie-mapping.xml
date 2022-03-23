@@ -102,4 +102,5 @@
 		select * from movie_reserve where reserve_merchant_uid =#{reserve_merchant_uid}
 	</select>
 	
+	
 </mapper>

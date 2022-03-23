@@ -349,7 +349,6 @@ public class UserBoardServiceImpl implements UserBoardService {
 		return userBoardDAO.userNumSelect(id);
 	}
 
-
 	@Override
 	public List<UserReserveVO> userIdMovieReserveList(String id) {
 		

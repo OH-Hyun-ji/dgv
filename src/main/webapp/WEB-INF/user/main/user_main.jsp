@@ -234,10 +234,14 @@
 								</div>
 								<div class="movie-info-wrap">
 									<strong class="movie-name">${movieList.movie_title }</strong> 
-									<span> <img class="star-style"
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/starpreview.png">
-											10%
-									</span> <span> 예매율 2.4% </span>
+									<c:if test="${empty movieList.reservationRate }">
+										<span><img class="star-style"
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/starpreview.png"> 예매율 0 %</span>
+									</c:if>
+									<c:if test="${!empty movieList.reservationRate }">
+										<span><img class="star-style"
+											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/starpreview.png"> 예매율 ${movieList.reservationRate } %</span>
+									</c:if>
 								</div>
 							</div>
 						</c:forEach>
@@ -256,7 +260,7 @@
 			<div class="contents">
 				<div class="event_title_wrap">
 					<h3>EVENT</h3>
-					<a href="#" class="btn_allView">전체보기</a> <a href="#"
+					<a href="#" class="btn_allView">전체보기</a> <a href="/event.do"
 						class="btn_eventControl">playStop</a>
 				</div>
 				<div class="event_list_wrap">
@@ -264,46 +268,16 @@
 						class="swiper event_list swiper-container-initialized swiper-container-horizontal">
 						<div class="swiper-wrapper"
 							style="transition-duration: 300ms; transform: translate3d(-1004px, 0px, 0px);">
-							<div class="swiper-slide"
-								style="width: 310.667px; margin-right: 24px; ">
-								<a href="#">
-									<div class="img_wrap">
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/%EC%BA%A1%EC%B2%98.JPG"
-											alt="주술회전 극장판 0" style="border-radius: inherit;" onerror="errorImage(this)">
-									</div> <strong>주술회전 극장판0</strong> <span>2022.01.25~2022.02.13</span>
-								</a>
-							</div>
-							<div class="swiper-slide"
-								style="width: 310.667px; margin-right: 24px;">
-								<a href="#">
-									<div class="img_wrap">
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/event2.jpg"
-											alt="신년맞이??" onerror="errorImage(this)">
-									</div> <strong>신년맞이!! dgv챌린지</strong> <span>2022.01.25~2022.02.13</span>
-								</a>
-							</div>
-							<div class="swiper-slide"
-								style="width: 310.667px; margin-right: 24px;">
-								<a href="#">
-									<div class="img_wrap">
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/event3.jpg"
-											alt="신년맞이??" onerror="errorImage(this)">
-									</div> <strong>신년맞이!! dgv챌린지</strong> <span>2022.01.25~2022.02.13</span>
-								</a>
-							</div>
-							<div class="swiper-slide"
-								style="width: 310.667px; margin-right: 24px;">
-								<a href="#">
-									<div class="img_wrap">
-										<img
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/event2.jpg"
-											alt="신년맞이??" onerror="errorImage(this)">
-									</div> <strong>신년맞이!! dgv챌린지</strong> <span>2022.01.25~2022.02.13</span>
-								</a>
-							</div>
+							<c:forEach var="eventList" items="${eventList }" varStatus="status">
+								<div class="swiper-slide"
+									style="width: 310.667px; margin-right: 24px;">
+									<a href="eventDetail.do?event_code=${eventList.event_code}">
+										<div class="img_wrap">
+											<img src="${eventList.event_img }">
+										</div> <strong>${eventList.event_title }</strong> <span>${eventList.start_date } ~ ${eventList.end_date }</span>
+									</a>
+								</div>	
+							</c:forEach>			
 						</div>
 						<div class="swiper-button-next" tabindex="0" role="button"
 							aria-label="다음 슬라이드" aria-disabled="false"></div>
@@ -336,7 +310,12 @@
 								</dd>
 							</dl>
 							<div class="client_btn_wrap">
-								<a href="/oftenQna.do">FAQ</a> <a href="/myQna.do">1:1 문의</a>
+								<c:if test="${empty userID }">
+									<a href="/oftenQna.do">FAQ</a> <a href="/loginForm.do">1:1 문의</a>							
+								</c:if>
+								<c:if test="${!empty userID }">
+									<a href="/oftenQna.do">FAQ</a> <a href="/myQna.do">1:1 문의</a>
+								</c:if>
 							</div>
 						</div>
 					</div>

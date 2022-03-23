@@ -26,6 +26,14 @@
 		
 	
 		var test;
+		function thumbNail(event) {
+			var reader = new FileReader();
+			$("#thImg1-style").empty()
+			reader.onload= function(event){
+				document.getElementById("thImg1-style").src=event.target.result;
+			}
+			reader.readAsDataURL(event.target.files[0])
+		}
 		$(function(){
 		
 			$( "input[name='movie_open_date']" ).datepicker();
@@ -60,13 +68,14 @@
 				const select2=$("<select>")
 						.attr("name","theater")
 						.attr("class","theaterSelect")
-			
+				const option5=$("<option>")
+									.text("선택")
 						
 				//처음 생성하면서 불러오기 
 				select.on('change', function() {
 					const selectedVal = $(this).val();			
 					select1.empty();
-				
+					select1.append(option5)
 					// ajax 
 					$.ajax({
 						method:"POST",
@@ -99,6 +108,9 @@
 			const selectRegion = $(this).val();
 			select2.empty();
 				//theater ajax 
+			const option5=$("<option>")
+						.text("선택")
+			select2.append(option5)
 			$.ajax({
 				method:"POST",
 				url:"lookingTheater.mdo",
@@ -123,8 +135,9 @@
 		
 		
 			
-				
-
+				const option6 =$("<option>")
+								.text("선택")
+				select.append(option6)
 				for(let i=0;i<cityList.length;i++){
 					const option= $("<option>")
 									.attr("class","test")
@@ -173,7 +186,9 @@
 					const select1=$("<select>")
 									.attr("name","movieJoin")	
 									
-													
+					const option3=$("<option>")
+									.text("선택")
+					select.append(option3)
 				for(let i=0;i<groupList.length; i++){
 					console.log(${groupList1[i].movie_group_name}+"휴...")
  					const option = $("<option>")
@@ -188,6 +203,9 @@
 						var movieJoinGroup = $(this).val()
 						select1.empty();
 						console.log("movieJoinGroup : "+movieJoinGroup)
+						const option4=$("<option>")
+									.text("선택")
+						select1.append(option4)
 						$.ajax({
 							method:"POST",
 							url:"lookingPar.mdo",
@@ -368,10 +386,13 @@
 		    font-weight: bolder;
 		    font-size: 19px;
 		    margin-right: 7%;
-}
-
-		    
 		}
+		button#registerBtn {
+		    margin-left: 15rem;
+		    margin-top: 2rem;
+		}
+		    
+		
 		</style>
     </head>
     <body style="height: 1196px;">
@@ -425,7 +446,7 @@
 					<br> <br>
 					<div style="display: flex;">
 					<div
-						style="height: 300px; width: 403px; border: 1px solid #fff; border-bottom: 0; margin-left: 4%;">
+						style="height: 300px; width: 573px; border: 1px solid #fff; border-bottom: 0; margin-left: 4%;">
 						<div
 							style="float: right; color: antiquewhite; display: flex; margin-right: 8%;">
 							<span style="font-weight: bold; font-size: 27px; width: 266px;">
@@ -463,13 +484,11 @@
 							style="color: antiquewhite; font-weight: bolder; font-size: 28px; border-bottom: 1px solid rgba(255, 255, 255, 0.4); width: 43%; margin-bottom: 2%; margin-top: 0;">Poster
 							Upload</span>
 						<div style="display: flex;">
-							<div class="dgvMovieImg"
-								style="border: 1px solid; width: 177px; height: 215px;margin-top: 3%;">
-								<span><i class="far fa-image"
-									style="width: 20%; height: 18%; box-sizing: border-box; padding-top: 16px;"></i></span>
+							<div class="dgvMovieImg"">
+								<img id="thImg1-style">
 							</div>
 							<div style="display: flex; margin-top: 2%;">
-								<input id="movieImgName" type="file"
+								<input id="movieImgName" type="file" onchange="thumbNail(event)"
 									style="height: 32px; margin-left: 3%;margin-top: 10%;" value="파일찾기">
 							</div>
 						</div>
