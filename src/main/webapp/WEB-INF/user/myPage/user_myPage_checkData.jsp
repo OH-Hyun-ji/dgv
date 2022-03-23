@@ -18,9 +18,6 @@
 		const id = $('#id').val()
 		const pw = $('#password').val()
 		
-		
-		
-		
 		$.ajax({
 			method:"POST",
 			url:"/myPage_checkData.do",

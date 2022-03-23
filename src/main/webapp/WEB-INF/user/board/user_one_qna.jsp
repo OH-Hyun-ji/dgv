@@ -20,12 +20,16 @@
 	<style type="text/css">
 table.myPage-table {
       height: 160px;
+      table-layout:fixed;
 }
 td {
     box-sizing: border-box;
     padding-top: 6px;
     border-right: 1px solid #8080807a;
     line-height: 46px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
 }
 th{
 	box-sizing: border-box;
@@ -73,6 +77,7 @@ input#waitingAnswer {
     padding: 0;
     border-radius: 6px;
 }
+
 </style>
 </head>
       <body class="">
