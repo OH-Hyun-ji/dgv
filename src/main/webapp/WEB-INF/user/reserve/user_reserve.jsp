@@ -415,8 +415,11 @@
  		const movieNumber = ${movieInfo.movie_num}
 		
 		if(movieNumber != -1 ){
+			console.log("post방식")
 			movieCode(movieNumber)
 		}else{
+			console.log("get방식")
+
 		}
 		
 	})
@@ -436,8 +439,6 @@
 			$("#selectBtn"+n).css("background-color","#9e9d9ba1")
 		})
 	}
-
-
 
 	
 	function choiceCity(cityCode){

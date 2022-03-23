@@ -19,7 +19,7 @@
 		$(function(){
 			var teat
 			$(".often-qna-wrap").children().on('click',function(){
-				alert("????" + $(this).val())
+				
 				const choiceVal =  $(this).val()
 				$(".clean-list").empty()
 					$.ajax({

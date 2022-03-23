@@ -15,7 +15,7 @@
                     <dt>호스팅사업자</dt>
                     <dd>KG-ITBank</dd>
                     <dt>대표이메일</dt>
-                    <dd>dgv_kgItBank@abc.com</dd>
+                    <dd>dgv220401@gmail.com</dd>
                     <dt>고객센터</dt>
                     <dd>1234-1234</dd>
                 </dl>

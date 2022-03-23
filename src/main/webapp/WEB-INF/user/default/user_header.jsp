@@ -28,16 +28,26 @@
 	               </c:if>	               
 	                <c:if test="${!empty userID}">
 	                  	<li id="user-id-style" style="width: 107px;padding-right: 35px;">	
-	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;font-size: 18px;" href="/logout.do">${userID}님<br> Logout</a></span>
+	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;font-size: 18px;" href="/myPage.do">${userID}님<br> 환영합니다!</a></span>
 		                </li>
 	                </c:if>
 <!-- ///////////////////////////////////////////// -->
-				<li>
-					<a href="/join.do"> 
-						<i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> 
-						<span id="main1">회원가입</span>
-					</a>
-				</li>
+				<c:if test="${empty userID}">
+					<li>
+						<a href="/join.do"> 
+							<i id="a" class="fas fa-portrait" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> 
+							<span id="main1">회원가입</span>
+						</a>
+					</li>
+				</c:if>
+				<c:if test="${!empty userID}">
+					<li>
+						<a href="/logout.do">
+							<i id="a" class="fas fa-sign-out-alt" style="padding-left: 5px;;height: 31px;margin-bottom: 2px;"></i> 
+							<span id="main1">로그아웃</span>
+						</a>
+					</li>
+				</c:if>					
 <!-- ///////////////////////////////////////////// -->				
 				<li>
 					<c:if test="${empty userID}">

@@ -66,14 +66,9 @@
           <div class="col-detail">
             <!-- 선택한 li 에 class="on" 을넣는다 -->
             <ul class="tab-menu">
-              <li class="on">
-                <a href="#" onclick="return false;" title="선택">
-                  필모그래피
-                </a>
-              </li>
               <li class="last">
-                <a href="#">
-                  포토갤러리
+                <a>
+                  작품 활동
                 </a>
               </li>
             </ul>
