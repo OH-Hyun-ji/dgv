@@ -419,11 +419,11 @@
 			movieCode(movieNumber)
 		}else{
 			console.log("get방식")
+
 		}
 		
 	})
 	function movieCode(n){
-		alert("movie code :" +n)
 		$(".movieStyle").css("background-color","")	
 		$("#movieTT"+n).css("background-color","#9e9d9ba1")
 	
@@ -559,7 +559,6 @@
 
 	
 	$("#next-page1").on('click',function(){
-		alert("////")
 		
 		const title = $("#hiddenTitle").val()
 		const city =$("#hiddenCity").val()

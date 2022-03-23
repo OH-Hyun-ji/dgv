@@ -75,7 +75,7 @@
             <div class="sect-movielist-filmo">
               <ul>
               <c:forEach var="movieList" items="${movieList}">
-                <li>
+                <li>   
                   <div class="box-image">
                     <a href="/movieDetail.do?movie_num=${movieList.movie_num}">
                       <span class="thumb-image">
@@ -85,7 +85,7 @@
                     </a>
                   </div>
                   <div class="box-contents">
-                    <a href="">
+                    <a href="/movieDetail.do?movie_num=${movieList.movie_num}">
                       <strong>
                         ${movieList.movie_title}
                         <span>${movieList.movie_open_date}    </span>
