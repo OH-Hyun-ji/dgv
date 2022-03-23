@@ -68,7 +68,7 @@ function loginWithKakao() {
 }
 
 
-		var count=0;
+		var count=1;
 	function loginCheck(){
 		const id = $('#id').val()
 		const pw = $('#password').val()
@@ -90,7 +90,7 @@ function loginWithKakao() {
 					alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")	
 					alert("고객센터에 문의바랍니다.")	
 				}else{
-					alert("실패!! 남은횟수 :"+count+"/5")
+					alert("실패!! 남은횟수 :"+count +"/5")
 					count++;
 				}
 			},

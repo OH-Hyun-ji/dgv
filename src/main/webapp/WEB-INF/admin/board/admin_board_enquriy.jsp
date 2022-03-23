@@ -10,6 +10,20 @@
 <link href="${pageContext.request.contextPath}/resources/css/admin/styles.css" rel="stylesheet" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+<style type="text/css">
+table.table{
+	table-layout:fixed;
+	
+}
+
+td{
+	overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+</style>
+
 <script type="text/javascript">
  	function answerPage(url){
  		console.log("넘어온 값 : "+ url)
@@ -17,9 +31,6 @@
          var popupY =(window.screen.height/2)-(300/2);
  	
       window.open(url,'','width=650,height=700,left='+popupX+',top='+popupY+'screenX='+popupX+'.screenY='+popupY);
-
- 	  
-
  	}
 </script>
 </head>
