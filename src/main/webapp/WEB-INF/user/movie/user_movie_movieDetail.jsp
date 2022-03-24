@@ -239,14 +239,23 @@
                         <div class="title">
                             <strong>${movieList.movie_title}</strong>
                             <em class="round brown">
-                                <span>예매중</span>
+                            	<c:if test="${movieList.movie_status == 'true'}">
+                                	<span>예매중</span>
+                                </c:if>
+                                <c:if test="${movieList.movie_status == 'false'}">
+                                	<span>상영종료</span>
+                                </c:if>
+                                <c:if test="${movieList.movie_status == 'yet' }">
+                                	<span>상영예정</span>
+                                </c:if>
+                                
                             </em>
                             <p>${movieList.movie_title_en}</p>
                         </div>
                         <div class="score">
                             <strong class="percent">
                                 예매율&nbsp;
-                                <span>20.1%</span>
+                                <span>${movieList.reservationRate } % </span>
                             </strong>
                         </div>
                         <div class="spec">

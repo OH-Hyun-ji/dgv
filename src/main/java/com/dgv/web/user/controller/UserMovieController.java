@@ -26,6 +26,7 @@ import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.PageVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
+import com.dgv.web.user.vo.UserReserveVO;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
 
@@ -169,6 +170,18 @@ public class UserMovieController {
 		List<AdminParVO> parGroupList =userBoardService.distinctGroupList(num);
 		List<AdminActorVO> actorList = new ArrayList<AdminActorVO>();
 		List<AdminGroupVO> groupList = new ArrayList<AdminGroupVO>();
+		
+		//예매율
+		double total = adminMovieService.totalSum();
+		List<UserReserveVO> reserveList = adminMovieService.totalPeopleCount();
+		for(UserReserveVO reserveVo : reserveList) {
+			if(reserveVo.getMovie_num() == movieList.getMovie_num()) {
+				int result =(int) (reserveVo.getTotal_people()/total*100);
+				double resultPercent = result*0.01;
+				movieList.setReservationRate(resultPercent);
+			}
+		}
+		
 		
 		for(AdminParVO parG : parGroupList) {
 			groupList.addAll(userBoardService.groupList(parG.getMovie_group_code()));

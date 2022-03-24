@@ -81,7 +81,7 @@ public class HotelController {
 			
 		}
 		
-		Gson gson = new Gson();
+
 		System.out.println(dateList);
 		model.addAttribute("hotelDay",hotelDay);
 		//배열에 담음
