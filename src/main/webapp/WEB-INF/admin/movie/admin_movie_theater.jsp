@@ -158,10 +158,7 @@
  			const clickSeat = new Array();
  	
  			$(".seat-status").on('click',function(){
- 				alert($(this).val())
- 				
- 				
- 				
+	
  				if($(this).hasClass("onBtn")){
  					$(this).removeClass("onBtn")
  					for(let i =0;i<clickSeat.length;i++){
@@ -181,7 +178,7 @@
 	}
 	
 	function registerAll(){
-			alert("눌렀다!!")
+			
 		const theaterN = $("#theaterName").val();
 		const maxR =$("#maxRow").val();
 		const maxC =$("#maxColumn").val();
@@ -246,7 +243,7 @@
 		
 	}
 	function timeRegister(theaterCode){ // 영화 시간 설정 
-		alert("ㅠㅠㅠ")
+		
 		var popupX =(window.screen.width/2)-(200/2);
         var popupY =(window.screen.height/2)-(300/2);
 
