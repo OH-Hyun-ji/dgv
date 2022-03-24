@@ -160,7 +160,7 @@ public class UserMovieController {
 	}
 	
 	@RequestMapping("/movieDetail.do")
-	public String movieDetail(@RequestParam("movie_num") int num,Model model) {
+	public String movieDetail(@RequestParam("movie_num") int num,Model model,UserReserveVO reVO) {
 		
 		AdminMovieVO movieList =userBoardService.movieList(num);
 		AdminAgeVO ageList =adminMovieService.ageListInfo(movieList.getMovie_age_code());
@@ -170,6 +170,19 @@ public class UserMovieController {
 		List<AdminParVO> parGroupList =userBoardService.distinctGroupList(num);
 		List<AdminActorVO> actorList = new ArrayList<AdminActorVO>();
 		List<AdminGroupVO> groupList = new ArrayList<AdminGroupVO>();
+		
+		//연령별 예매분포
+		List<UserVO> userIdList = userBoardService.userIdList();
+		int count =userIdList.size();
+		reVO.setMovie_num(num);
+		
+		UserReserveVO user = userBoardService.movieDetailChart(reVO);
+		
+		model.addAttribute("basic",user.getNormal());
+		model.addAttribute("student",user.getStudent());
+		model.addAttribute("old",user.getOld());
+		
+		
 		
 		//예매율
 		double total = adminMovieService.totalSum();

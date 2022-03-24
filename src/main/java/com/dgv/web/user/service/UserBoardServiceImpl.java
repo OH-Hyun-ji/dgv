@@ -450,4 +450,9 @@ public class UserBoardServiceImpl implements UserBoardService {
 	
 		return userBoardDAO.eventNumVo(num);
 	}
+	@Override
+	public UserReserveVO movieDetailChart(UserReserveVO vo) {
+		
+		return userBoardDAO.movieDetailChart(vo);
+	}
 }

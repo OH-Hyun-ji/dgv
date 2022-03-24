@@ -60,4 +60,6 @@ public interface UserService {
 	
 	//유저 활성화여부
 	int userStatus(UserVO vo);
+	
+	List<UserVO> userIdList();
 }

@@ -134,5 +134,11 @@ public class UserServiceImpl implements UserService {
 		
 		return userDAO.userStatus(vo);
 	}
+	
+	@Override
+	public List<UserVO> userIdList() {
+		
+		return userDAO.userIdList();
+	}
 
 }

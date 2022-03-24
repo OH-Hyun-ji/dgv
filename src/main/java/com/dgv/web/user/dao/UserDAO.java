@@ -108,4 +108,8 @@ public class UserDAO {
 	public int userStatus(UserVO vo) {
 		return sqlSessionTemplate.update("UserDAO.userStatus",vo);
 	}
+	
+	public List<UserVO> userIdList(){
+		return sqlSessionTemplate.selectList("UserDAO.userIdList");
+	}
 }

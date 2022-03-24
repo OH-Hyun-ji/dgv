@@ -280,4 +280,8 @@ public class UserBoardDAO {
 	public AdminEventVO eventNumVo(int num) {
 		return sqlSessionTemplate.selectOne("UserBoardDAO.eventNumVo",num);
 	}
+	public UserReserveVO movieDetailChart(UserReserveVO vo) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.movieDetailChart",vo);
+	}
+		
 }
