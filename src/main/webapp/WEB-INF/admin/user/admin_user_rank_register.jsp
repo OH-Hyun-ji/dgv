@@ -10,7 +10,7 @@
 	<script type="text/javascript">
 		$(function(){
 			$("#rankRegister").click(function(){
-				alert("!!!!")
+				
 				const rankName = $("#rankName").val()
 				const rankEarn = $("#rankEarn").val()
 				const rankStandard =$("#rankStandard").val()

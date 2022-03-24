@@ -197,7 +197,7 @@
         });
        
          function reserve(result){
-        	 alert("@@@@@@@@@@@@@")
+        	 
         	var form = document.createElement('form');
 			var objs;
 			objs =document.createElement('input')
@@ -293,20 +293,11 @@
                 <div class="cols-content" id="menu">
                     <div class="col-detail">
                         <ul class="tab-menu">
-                            <li class="on">
-                                <a title="현재 선택됨" href="#" >주요정보 </a>
+                            <li>
+                                <a href="#li_01">트레일러</a>
                             </li>
                             <li>
-                                <a href="#">트레일러</a>
-                            </li>
-                            <li>
-                                <a href="#">스틸컷</a>
-                            </li>
-                            <li>
-                                <a href="#">평점/리뷰</a>
-                            </li>
-                            <li class="last">
-                                <a href="#">상영시간표</a>
+                                <a href="#li_02">스틸컷</a>
                             </li>
                         </ul>
                         <div class="sect-story-movie">
@@ -343,11 +334,12 @@
                                    </div>
                                 </li>
                             </ul>
+                            <a id="li_01"></a>
                         </div>
                         <div id="ctl00_PlaceHolderContent_Section_Trailer" class="sect-trailer">
                             <div class="heading">
                                 <h4>트레일러</h4>                            
-                                <a class="link-more" href="####">더보기</a>
+                                <a class="link-more" >더보기</a>
                             </div>
                             <ul>
                                 <!-- 사진 동영상 조회 -->                           
@@ -421,7 +413,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="ctl00_PlaceHolderContent_Section_Still_Cut" class="sect-stillcut">
+                        <div id="ctl00_PlaceHolderContent_Section_Still_Cut" class="sect-stillcut" >
                             <div class="heading">
                                 <h4>스틸컷</h4>
                                 <span id="val" class="count">
@@ -430,7 +422,7 @@
                                 <span>
                                     건
                                 </span>
-                                <a class="link-more" href="##">더보기</a>
+                                <a class="link-more" id="li_02">더보기</a>
                             </div>
                             <div>
                                 <div id="slider-wrap"  style="overflow: hidden;" class="swiper-container">
@@ -461,9 +453,9 @@
                                     </div>                
                                 </div>
                                 <div class="swiper-button-prev" style="
-                                padding-top: 90%;" ></div>
+                                padding-top: 70%;" ></div>
                                 <div class="swiper-button-next"  style="
-                                padding-top: 90%;"></div>                             
+                                padding-top: 70%;"></div>                             
                             </div>                          
                             <script>
                                 var swiper = new Swiper(".swiper-container", {
