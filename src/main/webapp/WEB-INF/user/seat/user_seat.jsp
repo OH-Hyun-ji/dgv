@@ -22,12 +22,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
 	<script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js' ></script>
-	<script type="text/javascript">
-	
-	
-	 	
-	 	
-	</script>
 </head>
 
 <body>
@@ -113,19 +107,17 @@
                         </div>
                         <div class="selected-price-info">
                             <div class="selected-price-title"><span class="selected-date">가격</span> <i class="fa-solid fa-greater-than"></i></div>
-                            <div class="selected-price-total">0</div>                     		
-                        </div>
-                    </div>
+                            <div class="selected-price-total"></div>                     		
                      <div class="discount-reserve-wrap">
 		                  <div class="coupon-select">
-		                  	<select id="discountCoupon">
+		                  	<select id="discountCoupon" name="discountCoupon" >
 		                  		<option>사용가능한쿠폰</option>
 		                  		<c:forEach var="couponList" items="${couponList}">
 		                  			<c:if test="${empty couponList.coupon_name }">
 		                  				<option>쿠폰 없음</option>
 		                  			</c:if>
 		                  			<c:if test="${!empty couponList.coupon_name }">
-		                  				<option value="${couponList.cu_code}" >${couponList.coupon_name }</option>
+		                  				<option value="${couponList.coupon_discount}" >${couponList.coupon_name }</option>
 		                  			</c:if>
 		                  		</c:forEach>
 		                  	</select>
@@ -136,10 +128,18 @@
 		                  	</select>
 		                  </div>
                  </div>
+                        </div>
+                    </div>
                 </div>            
             </div>
             <div class="seat_introduce">
-            	<img alt="" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/seat_introduce.png">
+            	<div>
+            		<img alt="" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/seat_introduce.png">
+            	</div>
+            	<div class="couponTotalPrice-wrap">
+            		<label class="totalCoupon-label">전체 금액 :</label>
+            		<input type="text" readonly="readonly" id="couponTotalPrice">
+            	</div>
             </div>
             <div class="seat-container">
                 <div class="seat-wrapper">
@@ -183,6 +183,10 @@
 		                        	<span class="movie-time-name">상영시간 : ${time}</span>
 		                        </div>
 	                        </div>
+	                        <div class="result-totalPrice-wrap">
+	                        	<span class="result-total-span">최종 결제 금액 :</span>
+	                        	<input type="text" readonly="readonly" id="result-total-money">
+	                        </div>
 	                        <div class="movie-seat-style">
 	                        	<span class="movie-seat-name">좌석 :</span>
 	                        	<input type="text" readonly="readonly" id="userChoiceSeat">
@@ -207,7 +211,7 @@
 			<input type="hidden" name="reserve_student" id="reserveStudent">
 			<input type="hidden" name="reserve_old" id="reserveOld"> 
 			<input type="hidden" name="reserve_price" id="reservePrice">
-			<input type="hidden" name="reserve_movie_date" id="movieDate">
+			<input type="hidden" name="reserve_movie_date" id="movieDate" value="${date}">
 			<input type="hidden" name="user_id" id="userId" value="${userVo.user_id }"> 
 			<input type="hidden" name="user_name" id="userName" value="${userVo.user_name }"> 
 			<input type="hidden" name="user_email" id="userEmail" value="${userVo.user_email }"> 
@@ -286,7 +290,8 @@
 				                	"reserve_imp_uid":rsp.imp_uid ,
 				                	"reserve_apply_num": rsp.apply_num,
 				                	"reserve_merchant_uid":rsp.merchant_uid,
-				                	"reserve_method":rsp.pay_method       	
+				                	"reserve_method":rsp.pay_method,
+				                	"reserve_movie_date":movieDate
 				                }
 					            	$.ajax({
 					            		method:"POST",
@@ -381,6 +386,7 @@
 
 	function selectPeopelUl(selectedUlAction){
 	    console.log('TEST 5:');
+	  
 	    _(selectedUlAction).forEach( function(li){
 	        if(li.parentNode.classList.contains('select-people-ul-adult')){
 	            basicNum = Number(li.innerHTML);
@@ -429,14 +435,16 @@
 	        }
 	        totalResultPrice.innerHTML = ' 일반 17000 X '+basicNum+' = '+ basicMoney +'원'+'<br>'+
 	                                     ' 청소년 11000 X '+studentNum+' = '+studentMoney +'원'+'<br>'+
-	                                     ' 경로 11000 X '+oldNum+' = '+oldMoney +'원'+'<br>'+'전체금액 :'+totalMoney + ' 원';
-	                                    
-	                                     $("#reservePrice").val(totalMoney)
-	                      	        	console.log("전체금액 1  : "+totalMoney)
+	                                     ' 경로 11000 X '+oldNum+' = '+oldMoney +'원';
+	            	        			console.log("전체금액 1  : "+totalMoney)
 	                      	        	console.log("전체성인  : "+basicNum)
 	                      	        	$("#reserveBasic").val(basicNum)
 	                      	        	$("#reserveStudent").val()
 										$("#reserveOld").val()
+	                                    $("#reservePrice").val(totalMoney)
+	                   $("#couponTotalPrice").val(totalMoney.toLocaleString('ko-KR')+"원")
+	        		$("#result-total-money").val(totalMoney.toLocaleString('ko-KR')+"원")
+	                                     
 	        if(totalNum > 18){
 	            li.classList.remove('select-people-ul-action');
 	            toastr.error(
@@ -444,6 +452,7 @@
 	                '<div>인원수 확인해주세요.</div>',
 	                {timeOut: 4000}
 	            );
+	           
 	            basicNum =0;
 	            studentNum = 0;
 	            oldNum =0;
@@ -454,17 +463,40 @@
 	            totalResultPrice.innerHTML = ' 일반 17000 X <input type="text" value='+basicNum+'> = '+ basicMoney +'원'+'<br>'+
 							                 ' 청소년 11000 X <input type="text" value='+studentNum+' >= '+studentMoney +'원'+'<br>'+
 							                 ' 경로 11000 X <input type="text" value='+oldNum+'> = '+oldMoney +'원'+'<br>'+'전체금액 :'+totalMoney + ' 원';
-	        	
+	                     
 	        }
 	    	
 
 	    });
+               
 	}
 	classAction(selectPeopleBasicList);
 	classAction(selectPeopleStudentList);
 	classAction(selectPeopleOldList);
 	   $(function(){
-	    	  console.log(basicNum)
+	        $("#discountCoupon").on('change',function(){
+	        	$("#couponTotalPrice").empty()
+	        	$("#result-total-money").empty()
+	        	console.log("fff : "+$("#discountCoupon option:selected").val())
+	        	const couponPrice = $("#discountCoupon option:selected").val()
+	        	const reservationPrice = $("#reservePrice").val()
+	        	
+	        	if(reservationPrice>40000){
+	        		alert("쿠폰이 적용되었습니다.")
+		        	const discountPrice = reservationPrice -couponPrice;
+		        	console.log("discountPrice : "+discountPrice)
+		        	$("#reservePrice").val(discountPrice)
+		        	$("#couponTotalPrice").val(discountPrice.toLocaleString('ko-KR')+"원")
+		        	$("#result-total-money").val(discountPrice.toLocaleString('ko-KR')+"원")
+	        	}else{
+	        		alert("4만원이상 예매시 쿠폰 사용가능합니다")
+	        		$("#couponTotalPrice").val(reservationPrice.toLocaleString('ko-KR')+"원")
+	        		$("#result-total-money").val(reservationPrice.toLocaleString('ko-KR')+"원")
+	        		console.log("reservationPrice : "+reservationPrice)
+	        	}
+	        	
+	        })   
+	    	console.log(basicNum)
 	    	const row = ${row}
 	    	const col = ${col}
 	    	const alphabetNumber = parseInt(col)+64
@@ -579,8 +611,12 @@
 			 		   			}
 			 		   		}
 			    		
-			    			alert("좌석선택수를 초과하였습니다. ")
 			    			
+			    			if(seatArr.length==0){
+			    				alert("좌석수 항목을 클릭후 선택해주세요")
+			    			}else{
+			    				alert("좌석선택수를 초과하였습니다. ")
+			    			}
 			    		}
 	    		}
 	    		

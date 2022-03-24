@@ -1,6 +1,7 @@
 package com.dgv.web.user.controller;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -201,9 +202,38 @@ public class UserReserveController {
 			for(UserCouponUseVO coupon : couponList) {				
 				AdminCouponVO couponInfo = userBoardService.myCouponVo(coupon.getCoupon_num());
 				coupon.setCoupon_name(couponInfo.getCoupon_name());
+				coupon.setCoupon_discount(couponInfo.getCoupon_discount());
 				
 			}
 			model.addAttribute("couponList",couponList);
+			
+			//날짜
+			vo.setReserve_movie_date(vo.getReserve_date());
+			System.out.print("받아온 날짜 : "+ vo.getReserve_movie_date());
+			String movieDateGet = vo.getReserve_movie_date();
+			String movieDate = movieDateGet.substring(1);
+			System.out.println("자른 문자열 : "+movieDate);
+			
+			if(movieDate.length()==1) {
+				movieDate ="0"+movieDate;
+			}
+			
+			LocalDate now = LocalDate.now();
+			String year =  String.valueOf( now.getYear());
+			String month = String.valueOf(now.getMonthValue());
+			
+			
+			if(month.length()==1) {
+				month="0"+month;
+			}
+			String movieResultDate = year+"-"+month+"-"+movieDate;
+			vo.setReserve_movie_date(movieResultDate);
+			
+			
+			
+			
+			
+			
 			
 		
 			//영화정보
@@ -245,7 +275,7 @@ public class UserReserveController {
 			System.out.println("남은 좌석"+((row*col)-seatStatus.length));
 			System.out.println("날짜 : "+vo.getReserve_date());
 			System.out.println("시간 : "+vo.getMovie_time_start());
-			model.addAttribute("date",vo.getReserve_date());
+			model.addAttribute("date",vo.getReserve_movie_date());
 			model.addAttribute("time",vo.getMovie_time_start());
 			model.addAttribute("row",row);
 			model.addAttribute("col",col);
@@ -300,8 +330,7 @@ public class UserReserveController {
 			thVo.setMovie_time_start(timeVo.getMovie_time_start());
 			
 			thVo.setSeat_status(seatVo.getSeat_status());
-			System.out.println("영화 시간 : "+thVo.getMovie_time_start());
-		
+			System.out.println("영화 시간 : "+thVo.getMovie_time_start());		
 		}
 		Gson gson = new Gson();
 		String tList =gson.toJson(theaterList);

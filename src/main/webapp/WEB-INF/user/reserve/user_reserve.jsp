@@ -502,65 +502,65 @@
 			const regionClick = $(this).val()
 			
 		
-			$.ajax({
-				method:"POST",
-				url:"/theaterList.do",
-				contentType:"application/json",
-				dataType:"json",
-				data:JSON.stringify({"region_code":regionClick}),
-				success:function(TheaterInfo){
-					const TheaterL = JSON.parse(TheaterInfo)
-						$("#theater").empty();
-					_(TheaterL).forEach(function(i){	
+// 			$.ajax({
+// 				method:"POST",
+// 				url:"/theaterList.do",
+// 				contentType:"application/json",
+// 				dataType:"json",
+// 				data:JSON.stringify({"region_code":regionClick}),
+// 				success:function(TheaterInfo){
+// 					const TheaterL = JSON.parse(TheaterInfo)
+// 						$("#theater").empty();
+// 					_(TheaterL).forEach(function(i){	
 					
-					console.log("theater11 = "+i.theater_name)
-					console.log("theater = "+ i.theater_code)
-						const div =$("<div>")
-								.attr("id","theater-title")
-						const ul =$("<ul>")
-								.attr("class","theater-name")
-								.attr("id","theater"+i.theater_code)
-						const totalSeat = i.theater_max_row * i.theater_max_column
-						const seat = (i.seat_status).split(",")
-						const seatLength = seat.length
-						const remainSeat = totalSeat-seatLength
-						const span = $("<span>")
-								.attr("class","theaterName")
-								.text(i.theater_name+" 상영관 ("+remainSeat +"/"+ totalSeat+ "석 )" )
+// 					console.log("theater11 = "+i.theater_name)
+// 					console.log("theater = "+ i.theater_code)
+// 						const div =$("<div>")
+// 								.attr("id","theater-title")
+// 						const ul =$("<ul>")
+// 								.attr("class","theater-name")
+// 								.attr("id","theater"+i.theater_code)
+// 						const totalSeat = i.theater_max_row * i.theater_max_column
+// 						const seat = (i.seat_status).split(",")
+// 						const seatLength = seat.length
+// 						const remainSeat = totalSeat-seatLength
+// 						const span = $("<span>")
+// 								.attr("class","theaterName")
+// 								.text(i.theater_name+" 상영관 ("+remainSeat +"/"+ totalSeat+ "석 )" )
 						
-						const timeSplit = (i.movie_time_start).split("/")
-						const timeSplitLength = timeSplit.length
-							console.log("timeSplitLength : "+timeSplitLength)
-							div.append(span)
-						const div1 = $("<div>")
-								.attr("class","fixed")
-						for(let j=0;j<timeSplitLength-1;j++){
-						const li =$("<li>")
-								.attr("class","timeList")
-								.attr("value",i.theater_code)
-					//			.click(timeChoice)
-								.text(timeSplit[j])
-								console.log("timeSplit[j]"+timeSplit[j])
-								ul.append(li)
-						}							
-								console.log("/.////" + i.movie_time_code)
-								div.append(ul)
-								$("#theater").append(div)	
+// 						const timeSplit = (i.movie_time_start).split("/")
+// 						const timeSplitLength = timeSplit.length
+// 							console.log("timeSplitLength : "+timeSplitLength)
+// 							div.append(span)
+// 						const div1 = $("<div>")
+// 								.attr("class","fixed")
+// 						for(let j=0;j<timeSplitLength-1;j++){
+// 						const li =$("<li>")
+// 								.attr("class","timeList")
+// 								.attr("value",i.theater_code)
+// 					//			.click(timeChoice)
+// 								.text(timeSplit[j])
+// 								console.log("timeSplit[j]"+timeSplit[j])
+// 								ul.append(li)
+// 						}							
+// 								console.log("/.////" + i.movie_time_code)
+// 								div.append(ul)
+// 								$("#theater").append(div)	
 								
-					})
-									$(".timeList").on('click',function(){
-									//	console.log($(this).val())
-// 							 			alert($(this).val())
-							 			$(".timeList").css("background-color","")	
-										$(this).css("background-color","#9e9d9ba1")
-							 			$("#hiddenTheater").val($(this).val())
-							 			$("#hiddenTime").val($(this).text())
-									})
-				},
-				error:function(e){
-					console.log("통신실패" + e)
-				}
-			})	//ajax close
+// 					})
+// 									$(".timeList").on('click',function(){
+// 									//	console.log($(this).val())
+// // 							 			alert($(this).val())
+// 							 			$(".timeList").css("background-color","")	
+// 										$(this).css("background-color","#9e9d9ba1")
+// 							 			$("#hiddenTheater").val($(this).val())
+// 							 			$("#hiddenTime").val($(this).text())
+// 									})
+// 				},
+// 				error:function(e){
+// 					console.log("통신실패" + e)
+// 				}
+// 			})	//ajax close
 							
 			
 		}) 
@@ -666,11 +666,74 @@
                         		$("#hiddenDate").val($(this).text())
                         	  
                           const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
-                          movieDateWrapperActive.forEach((list) => {
-                          list.classList.remove("movie-date-wrapper-active");
-                     	 })
-                    		 button.classList.add("movie-date-wrapper-active");
-                     	})
+                         
+                        	movieDateWrapperActive.forEach((list) => {
+                        		  list.classList.remove("movie-date-wrapper-active");
+                     		 })
+                    		 	button.classList.add("movie-date-wrapper-active");
+                        		const regionClick = $("#hiddenRegion").val()
+                        		
+	                			$.ajax({
+	                				method:"POST",
+	                				url:"/theaterList.do",
+	                				contentType:"application/json",
+	                				dataType:"json",
+	                				data:JSON.stringify({"region_code":regionClick}),
+	                				success:function(TheaterInfo){
+	                					const TheaterL = JSON.parse(TheaterInfo)
+	                						$("#theater").empty();
+	                					_(TheaterL).forEach(function(i){	
+	                					
+	                					console.log("theater11 = "+i.theater_name)
+	                					console.log("theater = "+ i.theater_code)
+	                						const div =$("<div>")
+	                								.attr("id","theater-title")
+	                						const ul =$("<ul>")
+	                								.attr("class","theater-name")
+	                								.attr("id","theater"+i.theater_code)
+	                						const totalSeat = i.theater_max_row * i.theater_max_column
+	                						const seat = (i.seat_status).split(",")
+	                						const seatLength = seat.length
+	                						const remainSeat = totalSeat-seatLength
+	                						const span = $("<span>")
+	                								.attr("class","theaterName")
+	                								.text(i.theater_name+" 상영관 ("+remainSeat +"/"+ totalSeat+ "석 )" )
+	                						
+	                						const timeSplit = (i.movie_time_start).split("/")
+	                						const timeSplitLength = timeSplit.length
+	                							console.log("timeSplitLength : "+timeSplitLength)
+	                							div.append(span)
+	                						const div1 = $("<div>")
+	                								.attr("class","fixed")
+	                						for(let j=0;j<timeSplitLength-1;j++){
+	                						const li =$("<li>")
+	                								.attr("class","timeList")
+	                								.attr("value",i.theater_code)
+	                					//			.click(timeChoice)
+	                								.text(timeSplit[j])
+	                								console.log("timeSplit[j]"+timeSplit[j])
+	                								ul.append(li)
+	                						}							
+	                								console.log("/.////" + i.movie_time_code)
+	                								div.append(ul)
+	                								$("#theater").append(div)	
+	                								
+	                					})
+	                									$(".timeList").on('click',function(){
+	                									//	console.log($(this).val())
+	//                 							 			alert($(this).val())
+	                							 			$(".timeList").css("background-color","")	
+	                										$(this).css("background-color","#9e9d9ba1")
+	                							 			$("#hiddenTheater").val($(this).val())
+	                							 			$("#hiddenTime").val($(this).text())
+	                									})
+	                				},
+	                				error:function(e){
+	                					console.log("통신실패" + e)
+	                				}
+	                			})	//ajax close
+                							
+                          })
                      }
                     
                     
