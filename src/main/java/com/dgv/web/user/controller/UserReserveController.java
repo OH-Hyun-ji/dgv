@@ -17,6 +17,7 @@ import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminTheaterService;
 import com.dgv.web.admin.vo.AdminAgeVO;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
@@ -26,6 +27,7 @@ import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.UserCouponUseVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
@@ -186,11 +188,22 @@ public class UserReserveController {
 	}
 	
 	@PostMapping("/reserveSeat.do")
-	public String reserveSeat(@ModelAttribute("reserveVo") UserReserveVO vo ,Model model,UserReserveVO reserveVO) {
+	public String reserveSeat(@ModelAttribute("reserveVo") UserReserveVO vo ,Model model,UserReserveVO reserveVO,UserCouponUseVO couponVo) {
 			//유저정보 
 			String userId =RequestUtils.getUserId("userID");
 			UserVO userVo = userService.MyUserList(userId);
 			model.addAttribute("userVo",userVo);
+			
+			//쿠폰 목록
+			couponVo.setUser_id(userId);
+			List<UserCouponUseVO> couponList = userBoardService.CouponUseSelect(couponVo);
+			
+			for(UserCouponUseVO coupon : couponList) {				
+				AdminCouponVO couponInfo = userBoardService.myCouponVo(coupon.getCoupon_num());
+				coupon.setCoupon_name(couponInfo.getCoupon_name());
+				
+			}
+			model.addAttribute("couponList",couponList);
 			
 		
 			//영화정보
@@ -250,6 +263,8 @@ public class UserReserveController {
 				}
 				
 			}
+		
+			
 			model.addAttribute("reserveVo",gson.toJson(reserveL));
 			System.out.println("/// : " +vo.toString());			
 		return "/seat/user_seat";

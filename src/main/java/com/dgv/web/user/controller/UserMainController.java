@@ -56,9 +56,8 @@ public class UserMainController {
 				}
 			}
 		}
-		List<AdminEventVO> eventList =userBoardService.eventList();
-		
-		model.addAttribute("eventList",eventList);
+		List<AdminEventVO> eventList =adminMovieService.continueEventSelect();
+		model.addAttribute("eventList", eventList);
 		model.addAttribute("movieList",movieList);
 		
 		return"/main/user_main";

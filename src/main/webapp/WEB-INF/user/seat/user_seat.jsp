@@ -120,6 +120,14 @@
 		                  <div class="coupon-select">
 		                  	<select id="discountCoupon">
 		                  		<option>사용가능한쿠폰</option>
+		                  		<c:forEach var="couponList" items="${couponList}">
+		                  			<c:if test="${empty couponList.coupon_name }">
+		                  				<option>쿠폰 없음</option>
+		                  			</c:if>
+		                  			<c:if test="${!empty couponList.coupon_name }">
+		                  				<option value="${couponList.cu_code}" >${couponList.coupon_name }</option>
+		                  			</c:if>
+		                  		</c:forEach>
 		                  	</select>
 		                  </div>
 		                  <div class="point-select">
