@@ -175,12 +175,18 @@ public class UserMovieController {
 		List<UserVO> userIdList = userBoardService.userIdList();
 		int count =userIdList.size();
 		reVO.setMovie_num(num);
+		UserReserveVO user = userBoardService.movieDetailChart(reVO);			
+		if(user != null) {
+			model.addAttribute("basic",user.getNormal());
+			model.addAttribute("student",user.getStudent());
+			model.addAttribute("old",user.getOld());
+		}else {
+			model.addAttribute("basic",0);
+			model.addAttribute("student",0);
+			model.addAttribute("old",0);
+		}
 		
-		UserReserveVO user = userBoardService.movieDetailChart(reVO);
 		
-		model.addAttribute("basic",user.getNormal());
-		model.addAttribute("student",user.getStudent());
-		model.addAttribute("old",user.getOld());
 		
 		
 		
