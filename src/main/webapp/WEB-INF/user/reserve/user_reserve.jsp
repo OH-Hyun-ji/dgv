@@ -152,7 +152,7 @@
 		}
 		li.selected:hover {
   			background-color: #9e9d9ba1;
-			color:white;
+/* 			color:white; */
 		}
 		button.regionBtn {
     		line-height: 36px;
@@ -284,11 +284,7 @@
                                         <span class="side"></span>
                                         <!-- 특별관 안한다고 하셔서 일단 보류함-->
                                     </div>
-                                    <div class="sortmenu">
-                                        <a href="#" onclick="sortMovieByRank();return false;" id="movieSortRankBtn" class="button btn-rank selected">예매율순</a>
-                                        <a href="#" onclick="sortMovieByName();return false;" id="movieSortNameBtn" class="button btn-abc">가나다순
-                                        </a>
-                                    </div>
+                                    
                                     <div class="movie-list nano has-scrollbar has-scrollbar-y" id="movie_list">
                                         <ul class="content scroll-y" id="artHouseCome"onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;padding: 0px;">
                                            <c:forEach var="movieList" items="${movieList}" varStatus="status">
@@ -334,7 +330,7 @@
                                             <ul style="padding-left: 0px;">
                                            		 <c:forEach var="cityList" items="${cityList}" varStatus="status">
                                               		  <li class="selected" id="selectBtn${cityList.city_code}"  >
-	                                                    <a href="#" class="cityNameBtn"  onclick="choiceCity(${cityList.city_code})">
+	                                                    <a href="#" class="cityNameBtn" style="padding: 4px 33px 8px 30px;" onclick="choiceCity(${cityList.city_code})">
 	                                                        <span class="name" >${cityList.city_name}</span>
 	                                                    </a>
 	                                                    <div class="" style="z-index: 1;height: 0px;">
