@@ -349,7 +349,6 @@ public class UserBoardServiceImpl implements UserBoardService {
 		return userBoardDAO.userNumSelect(id);
 	}
 
-
 	@Override
 	public List<UserReserveVO> userIdMovieReserveList(String id) {
 		
@@ -423,7 +422,7 @@ public class UserBoardServiceImpl implements UserBoardService {
 	}
 
 	@Override
-	public List<AdminParUserEventVO> parUserEventSelec() {
+	public List<AdminParUserEventVO> parUserEventSelect() {
 		
 		return userBoardDAO.parUserEventSelect();
 	}
@@ -433,7 +432,22 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.parEventCheck(vo);
 	}
-
 	
+	@Override
+	public UserReserveVO userReserveFinish(String merchantUid) {
+		
+		return userBoardDAO.userReserveFinish(merchantUid);
+	}
 
+	@Override
+	public List<AdminParUserEventVO> participantList(int num) {
+		
+		return userBoardDAO.participantList(num);
+	}
+
+	@Override
+	public AdminEventVO eventNumVo(int num) {
+	
+		return userBoardDAO.eventNumVo(num);
+	}
 }

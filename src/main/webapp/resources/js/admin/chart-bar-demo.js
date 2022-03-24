@@ -9,25 +9,25 @@ var ctx = document.getElementById("myBarChart");
 	var genreTo1 = document.getElementById("genre1").value;
 	var genreTo2 = document.getElementById("genre2").value;
 	var genreTo3 = document.getElementById("genre3").value;
-//	var genreTo4 = document.getElementById("genre4").value;
-//	var genreTo5 = document.getElementById("genre5").value;
+	var genreTo4 = document.getElementById("genre4").value;
+	var genreTo5 = document.getElementById("genre5").value;
 //	var genreTo6 = document.getElementById("genre6").value;
 //	var genreTo7 = document.getElementById("genre7").value;
 //	var genreTo8 = document.getElementById("genre8").value;
 //	var genreTo9 = document.getElementById("genre9").value;
 //	var genreTo10 = document.getElementById("genre10").value;
-//	
+	
 	var genreCount1 = document.getElementById("genreCount1").value;
 	var genreCount2 = document.getElementById("genreCount2").value;
 	var genreCount3 = document.getElementById("genreCount3").value;
-//	var genreCount4 = document.getElementById("genreCount4").value;
-//	var genreCount5 = document.getElementById("genreCount5").value;
+	var genreCount4 = document.getElementById("genreCount4").value;
+	var genreCount5 = document.getElementById("genreCount5").value;
 //	var genreCount6 = document.getElementById("genreCount6").value;
 //	var genreCount7 = document.getElementById("genreCount7").value;
 //	var genreCount8 = document.getElementById("genreCount8").value;
 //	var genreCount9 = document.getElementById("genreCount9").value;
 //	var genreCount10 = document.getElementById("genreCount10").value;
-//	
+	
 	
 	console.log("genreTo3 : "+genreTo3 )
 	if(genreTo3 === "다큐멘터리"){
@@ -45,12 +45,12 @@ var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: [genreTo1, genreTo2, genreTo3, "범죄/스릴러", "코미디", "로맨스","공포","판타지","다큐","전쟁"],
+    labels: [genreTo1, genreTo2, genreTo3, genreTo4, genreTo5],
     datasets: [{
       label: "Revenue",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [genreCount1, genreCount2, genreCount3, 0, 0, 0],
+      data: [genreCount1, genreCount2, genreCount3, genreCount4, genreCount5],
     }],
   },
   options: {

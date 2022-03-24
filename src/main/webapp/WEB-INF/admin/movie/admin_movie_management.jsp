@@ -134,7 +134,7 @@
                                     <tbody>
                                     <c:forEach var="genreList" items="${genreList}"  varStatus="status">
                                         <tr>
-                                            <td>${genreListCount-status.index}</td>
+                                            <td>${status.index+1}</td>
                                             <td>${genreList.movie_genre_name}</td>
                                             <td>${genreList.reg_id}</td>
                                             <td>${genreList.reg_date}</td>
@@ -166,7 +166,7 @@
                                             <tbody>
                                             <c:forEach var="ageList" items="${ageList }" varStatus="status">
                                                 <tr>
-                                                    <td>${ageListCount - status.index}</td>
+                                                    <td>${status.index+1}</td>
                                                     <td>${ageList.movie_age_name}</td>
                                                     <td style="text-align: center;"><img src='${ageList.movie_age_img}' style="height: 28px; box-sizing: border-box;"></td>
                                                     <td>${ageList.reg_id}</td>

@@ -310,5 +310,20 @@ public class AdminMovieDAO {
 	public AdminCouponVO CouponNumSelect(int num) {
 		return sqlSessionTemplate.selectOne("AdminBoardDAO.CouponNumSelect",num);
 	}
-	
+	public AdminNoticeVO noticeNumVo(int num) {
+		return sqlSessionTemplate.selectOne("AdminBoardDAO.noticeNumVo",num);
+	}
+	public int noticeUpate(AdminNoticeVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.noticeUpate",vo);
+	}
+	public int genreCount() {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.genreCount");
+	}
+	public List<UserReserveVO> pieChartCount(){
+		return sqlSessionTemplate.selectList("AdminMovieDAO.pieChartCount");
+	}
+	 
+	public int totalSum() {
+		return sqlSessionTemplate.selectOne("AdminMovieDAO.totalSum");
+	}
 }

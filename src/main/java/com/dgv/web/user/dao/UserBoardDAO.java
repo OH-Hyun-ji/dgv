@@ -268,4 +268,16 @@ public class UserBoardDAO {
 	public int parEventCheck(AdminParUserEventVO vo) {
 		return sqlSessionTemplate.selectOne("UserBoardDAO.parEventCheck",vo);
 	}
+	
+	public UserReserveVO userReserveFinish(String merchantUid) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.userReserveFinish",merchantUid);
+	}
+	
+	public List<AdminParUserEventVO> participantList(int num){
+		return sqlSessionTemplate.selectList("UserBoardDAO.participantList", num);
+	}
+	
+	public AdminEventVO eventNumVo(int num) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.eventNumVo",num);
+	}
 }

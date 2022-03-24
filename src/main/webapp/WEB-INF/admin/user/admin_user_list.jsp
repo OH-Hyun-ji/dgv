@@ -120,7 +120,6 @@
 											<c:if test="${userList.user_status == false}">
 												<button id="userFalse" onclick="userFalseCheck(${userList.user_num})"  class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 83px;height: 25px;padding: 0; background:#777777;">비활성</button>
 											</c:if>
-											
 										</td>
 										<td style="text-align: center;"><button id="delBt"  onclick="deleteAction('${userList.user_id}')"><i class="fas fa-trash-alt"></i></button> <button  onclick="updateRank('${userList.user_num}')"><i class="fas fa-pencil-alt"></i></button></td>
 									</tr>		

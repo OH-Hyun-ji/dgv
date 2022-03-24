@@ -82,7 +82,7 @@
                                 </a>
                             </div>
                             <div class="box-contents">
-                                <a href="/movieDetail.do?movie_num="${movieList.movie_num}">
+                                <a href="/movieDetail.do?movie_num="${movieList.movie_num}>
                                     <strong class="title">${movieList.movie_title}</strong>
                                 </a>
                                 <div class="score">

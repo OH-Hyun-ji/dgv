@@ -97,7 +97,7 @@ button#statusEnd {
 													<button id="statusYet" onclick="yetChange(${movieList.movie_num })"  class="w-btn w-btn-gra3 w-btn-gra-anim" value="${movieList.movie_num }" type="button" style="background: linear-gradient( 45deg, #2feb4a, #5bf06b, #76ff02, #06a916, #086b09 );color: white">상영예정</button>	
 												</c:if>										
 									</td>
- 									<td style="box-sizing: border-box; padding-top: 70px;"><button id="deleteMovie"  onclick="deleteMovie('${movieList.movie_num}')" value="${movieList.movie_num }" ><i class="fas fa-trash-alt"></i></button> <button ><i class="fas fa-pencil-alt"></i></button></td>
+ 									<td style="box-sizing: border-box; padding-top: 70px;"><button id="deleteMovie"  onclick="deleteMovie('${movieList.movie_num}')" value="${movieList.movie_num }" ><i class="fas fa-trash-alt"></i></button> </td>
 								</tr>
 							</c:forEach>
 							</tbody>

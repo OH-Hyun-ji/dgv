@@ -46,7 +46,7 @@ public class UserEventController {
 		UserVO userVo = userService.MyUserData(userId);	
 		
 		parEventVo.setUser_num(userVo.getUser_num());	
-		List<AdminParUserEventVO> parList = userBoardService.parUserEventSelec();
+		List<AdminParUserEventVO> parList = userBoardService.parUserEventSelect();
 		
 		int count = userBoardService.parEventCheck(parEventVo);
 		if(count ==0) {

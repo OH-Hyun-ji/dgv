@@ -70,7 +70,7 @@
  					  "hideMethod": "fadeOut"
  					}
     		
-    		let regId = $("#regId").val();
+    	
     		let actorN = $("#actorName").val();
     		let actorEn = $("#actorEName").val();
     		let actorYY = $("#actorYY").val();
@@ -88,7 +88,7 @@
     			 
     		 }	
     		console.log("groupCode"+groupCode)
-    		console.log(regId)
+    
     		console.log(actorN)
     		console.log("생일 : " +actorB)
     		console.log("이미지 넣기전 : " +actorImgSample)
@@ -165,7 +165,7 @@
 					</div>
 					<div class="card-body">
                             <div id="table-container">
-                            	<input type="hidden" id="regId" name="reg_id" value="${adminID}">                            
+                            	                       
 								<table class="type02">		
 									<tr>
 										<th scope="row" style="font-size:18px;">Actor Name</th>

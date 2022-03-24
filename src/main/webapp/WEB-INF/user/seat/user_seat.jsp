@@ -113,9 +113,21 @@
                         </div>
                         <div class="selected-price-info">
                             <div class="selected-price-title"><span class="selected-date">가격</span> <i class="fa-solid fa-greater-than"></i></div>
-                            <div class="selected-price-total">0</div>
+                            <div class="selected-price-total">0</div>                     		
                         </div>
                     </div>
+                     <div class="discount-reserve-wrap">
+		                  <div class="coupon-select">
+		                  	<select id="discountCoupon">
+		                  		<option>사용가능한쿠폰</option>
+		                  	</select>
+		                  </div>
+		                  <div class="point-select">
+		                  	<select id="discountPoint">
+		                  		<option>사용가능한포인트</option>
+		                  	</select>
+		                  </div>
+                 </div>
                 </div>            
             </div>
             <div class="seat_introduce">
@@ -187,6 +199,7 @@
 			<input type="hidden" name="reserve_student" id="reserveStudent">
 			<input type="hidden" name="reserve_old" id="reserveOld"> 
 			<input type="hidden" name="reserve_price" id="reservePrice">
+			<input type="hidden" name="reserve_movie_date" id="movieDate">
 			<input type="hidden" name="user_id" id="userId" value="${userVo.user_id }"> 
 			<input type="hidden" name="user_name" id="userName" value="${userVo.user_name }"> 
 			<input type="hidden" name="user_email" id="userEmail" value="${userVo.user_email }"> 
@@ -222,6 +235,7 @@
 				var userEamil = $("#userEmail").val()
 				var userPhone = $("#userPhone").val()			
 				var reservePrice = $("#reservePrice").val()
+				var movieDate = $("#movieDate").val()
 				console.log("reservePrice  =>  "+reservePrice)
 				
 				alert("결제버튼 클릭")
@@ -260,6 +274,7 @@
 				                	"reserve_student":reserveStudent,
 				                	"reserve_old" :reserveOld,
 				                	"reserve_price":reservePrice ,
+				                	"reserve_movie_date":movieDate,
 				                	"reserve_imp_uid":rsp.imp_uid ,
 				                	"reserve_apply_num": rsp.apply_num,
 				                	"reserve_merchant_uid":rsp.merchant_uid,
@@ -273,7 +288,7 @@
 					            		data:JSON.stringify(reserveVo),
 					            		success:function(result){
 					            			if(result.msg=="SUCCESS"){
-					            				location.href="/movieReserve.do"
+					            				location.href="userReserveResult.do?reserve_merchant_uid="+rsp.merchant_uid
 					            			}
 					            		},
 					            		error:function(){

@@ -7,7 +7,7 @@
 	</insert>
 	
 	<select id="GroupList" resultType="AdminGroupVO" >
-		SELECT * FROM movie_group 
+		SELECT * FROM movie_group order by movie_group_code asc;
 	</select>
 	
 	<insert id="InsertActor" parameterType="AdminActorVO">
@@ -16,7 +16,7 @@
 	</insert>
 	
 	<select id="ActorList" resultType="AdminActorVO">
-		SELECT * FROM movie_actor
+		SELECT * FROM movie_actor order by movie_actor_code asc;
 	</select>
 	
 	<select id="ChoiceActorList"  resultType="AdminActorVO" parameterType="int">

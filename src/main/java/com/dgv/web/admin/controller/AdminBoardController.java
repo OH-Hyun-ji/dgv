@@ -8,9 +8,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.BorderStyle;
@@ -257,6 +259,26 @@ public class AdminBoardController {
 		return "/board/admin_board_notice";
 	}
 
+	//공지사항 상세보기
+	@RequestMapping("/adminNoticeDetail.mdo")
+	public String adminNoticeDetail(@RequestParam("notice_num") int num, Model model) {
+		AdminNoticeVO noticeVo = adminMovieService.noticeNumVo(num);
+		
+		model.addAttribute("noticeVo",noticeVo);
+		return "/board/admin_board_noticeDetail";
+	}
+	
+	//공지사항 수정
+	@PostMapping("/updateNotice.mdo")
+	@ResponseBody
+	public CommonResultDto updateNotice(@RequestBody AdminNoticeVO noticeVo) {
+		int num = adminMovieService.noticeUpate(noticeVo);
+		
+		if(num == 0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
 	// 공지사항 등록창
 	@RequestMapping("/adminNoticeRegister.mdo")
 	public String adminNoticeRegister() {
@@ -351,38 +373,69 @@ public class AdminBoardController {
 		List<Integer> dataList = new ArrayList<Integer>();
 
 		System.out.println("//////////////////////////////////////");
-		int j = -1;
+		
+		int j = 0;
 		for (int i = 0; i < 6; i++) {
-			cal.add(cal.DATE, i + j);
+			cal.add(cal.DATE, j);
+			System.out.println(" j : "+j);
+			System.out.println("cal : "+cal);
+			
 			String date = sdf.format(cal.getTime());
+			System.out.println("date : "+date);
 			Date sqlDate = Date.valueOf(date);
-			System.out.println(sqlDate);
+			
+			
+			
 			vo.setRese_date(sqlDate);
 			int count = adminMovieService.beforeChartCheck(vo);
-
-			if (count != 0) {
-				today = adminMovieService.areaChart(vo);
-
-			} else {
-				today = 0;
+				if (count != 0) {
+					today = adminMovieService.areaChart(vo);
+				} else { //null 막기위해 
+					today = 0;
+				}
+///////////////////////////////////////////////////////////////////////////////////////////	
+			if(i != 0){
+				j= -1;
 			}
+			System.out.println("sqlDate" +sqlDate+"i : "+i+"today : "+today);
 			dataList.add(i, today);
-			j--;
+			j=-1;
 		}
 		model.addAttribute("dataList", dataList);
 
 		// 영화 장르별 통계
 		List<AdminMovieVO> totalMovieList = adminMovieService.BarChartGenreInfo();
 
+		int length =0;
+	
 		for (AdminMovieVO movieVo : totalMovieList) {
+			
 			AdminGenreVO genreVo = adminMovieService.genreListInfo(movieVo.getMovie_genre_code());
 			movieVo.setMovie_genre_name(genreVo.getMovie_genre_name());
+			
 		}
+		
+		
 
 		System.out.println("");
 
 		model.addAttribute("totalMovieList", totalMovieList);
 
+		
+		//영화 선호도 통계
+		
+		List<UserReserveVO> pieChartCount = adminMovieService.pieChartCount();
+		List<AdminMovieVO> movieList = adminMovieService.movieList();
+		for(UserReserveVO reserveVo : pieChartCount) {
+			for(AdminMovieVO movieVo : movieList) {
+				if(reserveVo.getMovie_num() == movieVo.getMovie_num()) {
+					reserveVo.setMovie_title(movieVo.getMovie_title());
+					
+				}
+			}
+		}
+		model.addAttribute("pieChartCount",pieChartCount);
+		
 		return "/movie/admin_movie_chart";
 	}
 

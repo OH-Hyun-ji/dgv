@@ -1,6 +1,7 @@
 package com.dgv.web.admin.controller;
 
 import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
+import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
+import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.vo.UserCouponUseVO;
@@ -32,6 +35,9 @@ public class AdminEventController {
 
 	@Autowired
 	private UserBoardService userBoardService;
+	
+	@Autowired
+	private AdminUserService adminUserService;
 	
 	@Autowired
 	private FileUploadService fileUploadService;
@@ -83,7 +89,17 @@ public class AdminEventController {
 	@RequestMapping("/eventDetail.mdo")
 	public String eventUpdate(@RequestParam("event_code") int num, Model model) {
 		AdminEventVO eventVo = adminMovieService.EventDetailSelect(num);
-		List<UserVO> userList = userBoardService.userIdList();
+		List<AdminParUserEventVO> parList = userBoardService.parUserEventSelect();
+		
+		List<UserVO> userList = new ArrayList<UserVO>();
+		
+		for(AdminParUserEventVO parVo : parList) {
+			if(eventVo.getEvent_code()==parVo.getEvent_code()) {
+				UserVO userVo = adminUserService.userNumList(parVo.getUser_num());
+				userList.add(userVo);
+			}
+			
+		}
 		List<AdminCouponVO> couponList = adminMovieService.CouponSelect();
 		
 		model.addAttribute("couponList",couponList);

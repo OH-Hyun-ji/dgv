@@ -149,4 +149,12 @@
 	<delete id="CouponDelete"  parameterType="AdminCouponVO">
 		DELETE FROM dgv_coupon WHERE coupon_num=#{coupon_num}
 	</delete>
+	
+	<select id="noticeNumVo" resultType="AdminNoticeVO">
+		SELECT * FROM dgv_notice WHERE notice_num=#{notice_num}
+	</select>
+	
+	<update id="noticeUpate">
+		UPDATE dgv_notice SET notice_title=#{notice_title},notice_text=#{notice_text},reg_date=current_date WHERE  notice_num=#{notice_num}
+	</update>
 </mapper>

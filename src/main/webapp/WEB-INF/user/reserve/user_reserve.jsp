@@ -402,6 +402,7 @@
 		<input class="dgvR" type="hidden" id="hiddenDate" name="reserve_date">
 		<input class="dgvR" type="hidden" id="hiddenTheater" name="theater_code">
 		<input class="dgvR" type="hidden" id="hiddenTime" name="movie_time_start">
+		<input class="dgvR" type="hidden" id="hiddenMovieDate" name=reserve_movie_date>
         <input type="button" id="next-page1"  value="좌석선택=>" >
 	</form>	
    </div>
@@ -415,15 +416,15 @@
  		const movieNumber = ${movieInfo.movie_num}
 		
 		if(movieNumber != -1 ){
-			alert("post방식이닷 ")
+			console.log("post방식")
 			movieCode(movieNumber)
 		}else{
-			alert("get방식이닷!!!")
+			console.log("get방식")
+
 		}
 		
 	})
 	function movieCode(n){
-		alert("movie code :" +n)
 		$(".movieStyle").css("background-color","")	
 		$("#movieTT"+n).css("background-color","#9e9d9ba1")
 	
@@ -439,8 +440,6 @@
 			$("#selectBtn"+n).css("background-color","#9e9d9ba1")
 		})
 	}
-
-
 
 	
 	function choiceCity(cityCode){
@@ -561,7 +560,6 @@
 
 	
 	$("#next-page1").on('click',function(){
-		alert("////")
 		
 		const title = $("#hiddenTitle").val()
 		const city =$("#hiddenCity").val()
@@ -569,6 +567,7 @@
 		const date =$("#hiddenDate").val()
 		const theater =$("#hiddenTheater").val()
 		const time =$("#hiddenTime").val()
+		const movieDate =$("#hiddenMovieDate").val()
 		
 		console.log(title)
 		console.log(city)
@@ -586,7 +585,8 @@
 						"region_code":region,
 						"reserve_date":date,
 						"movie_time_start":time,
-						"theater_code":theater
+						"theater_code":theater,
+						"reserve_movie_date":movieDate
 				}
 				const target = document.getElementById('next-page1');
 				$("#next-page1").css("background-color","red")

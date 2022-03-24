@@ -49,8 +49,8 @@ public class AdminUserController {
 	
 	@RequestMapping("/userDetail.mdo")
 	public String userDetail(@RequestParam("user_num") int num, Model model) {
-		UserVO userVo=  adminUserService.userNumList(num);
 		UserDetailVO detailVo = userService.userDetailVo(num);
+		UserVO userVo=  adminUserService.userNumList(num);
 		List<UserReserveVO> myReserveList = adminMovieService.userReserveList(userVo.getUser_id());
 		List<AdminMovieVO> movieList = adminMovieService.movieList();
 		for(AdminMovieVO movieVo:movieList ) {

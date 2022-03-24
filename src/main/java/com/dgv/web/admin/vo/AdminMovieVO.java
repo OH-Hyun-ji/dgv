@@ -21,7 +21,6 @@ public class AdminMovieVO {
 	private Integer movie_age_code;
 	private String reg_id;
 	private String reg_date;
-	private String  movie_time;
 	private Integer theater_code;
 	private Integer region_code;
 	private String movie_date;
@@ -31,6 +30,7 @@ public class AdminMovieVO {
 	private String age_img;
 	private String age_name;
 	
+	//
 	private String url;
 	private List<AdminGenreVO> genreList;
 	private List<AdminAgeVO> ageList;
@@ -40,5 +40,6 @@ public class AdminMovieVO {
 	private List<AdminGroupVO> groupList;
 	private String movie_genre_name;
 	private Integer genre_count;
+	private Double reservationRate;
 	
 }

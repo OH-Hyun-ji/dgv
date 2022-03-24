@@ -45,6 +45,8 @@ public class AdminMainController {
 	
 	@RequestMapping("/movie.mdo")
 	public String insertMovie1(UserReserveVO vo,Model model) {
+	
+		
 		//전체 회원수 
 		List<UserVO> userList =adminUserService.userList();
 		model.addAttribute("userList",userList.size());
@@ -54,9 +56,9 @@ public class AdminMainController {
 		model.addAttribute("totalMyMoney",reserveVO.getFomatter_price());
 		
 		//영화 구매 순위 
+		List<AdminMovieVO> movieList =adminMovieService.movieList();
 		List<UserReserveVO> bestMovieList = adminMovieService.bestMovieList();
 		List<UserReserveVO> totalPeopleCount = adminMovieService.totalPeopleCount();
-		List<AdminMovieVO> movieList =adminMovieService.movieList();
 		
 		for(UserReserveVO bestVo : bestMovieList) {
 			for(AdminMovieVO movieVo : movieList) {
@@ -75,32 +77,41 @@ public class AdminMainController {
 			}
 		}
 		model.addAttribute("bestMovieList",bestMovieList);
-		
 		// 일별 매출 통계
-		int today =0;
+		int today = 0;
 		Calendar cal = Calendar.getInstance();
-		String format= "yyyy-MM-dd";
+		String format = "yyyy-MM-dd";
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		List<Integer> dataList = new ArrayList<Integer>();
 
 		System.out.println("//////////////////////////////////////");
-		int j=-1;
-		for(int i =0 ; i<6 ; i++) {
-			cal.add(cal.DATE, i+j);
+		
+		int j = 0;
+		for (int i = 0; i < 6; i++) {
+			cal.add(cal.DATE, j);
+			System.out.println(" j : "+j);
+			System.out.println("cal : "+cal);
+			
 			String date = sdf.format(cal.getTime());
-			Date sqlDate =Date.valueOf(date);
-			System.out.println(sqlDate);
+			System.out.println("date : "+date);
+			Date sqlDate = Date.valueOf(date);
+			
+			
+			
 			vo.setRese_date(sqlDate);
 			int count = adminMovieService.beforeChartCheck(vo);
-			
-			if(count != 0) {
-				today = adminMovieService.areaChart(vo);
-				
-			}else {
-				today=0;
+				if (count != 0) {
+					today = adminMovieService.areaChart(vo);
+				} else { //null 막기위해 
+					today = 0;
+				}
+///////////////////////////////////////////////////////////////////////////////////////////	
+			if(i != 0){
+				j= -1;
 			}
+			System.out.println("sqlDate" +sqlDate+"i : "+i+"today : "+today);
 			dataList.add(i, today);
-			j--;
+			j=-1;
 		}
 		model.addAttribute("dataList",dataList);
 		

@@ -144,7 +144,7 @@
 	</select>
 	
 	<select id="eventList" resultType="AdminEventVO">
-		select * from dgv_event 
+		select * from dgv_event order by event_code asc
 	</select>
 	
 	<select id="continueTotal" resultType="int">
@@ -185,16 +185,24 @@
 	</select>
 	
 	<insert id="parUserEventInsert" parameterType="AdminParUserEventVO">
-		INSERT INTO parUserEevent(par_code,user_num,event_code,par_date)
+		INSERT INTO par_user_event(par_code,user_num,event_code,par_date)
 		VALUES(DEFAULT,#{user_num},#{event_code},current_date)
 	</insert>
 	
 	<select id="parUserEventSelect" resultType="AdminParUserEventVO">
-		SELECT * FROM parUserEevent order by par_code asc;
+		SELECT * FROM par_user_event order by par_code asc;
 	</select>
 	
 	<select id="parEventCheck" resultType="int" >		
-		select count(*) from parUserEevent where event_code = #{event_code} and user_num=#{user_num};
+		select count(*) from par_user_event where event_code = #{event_code} and user_num=#{user_num};
+	</select>
+	
+	<select id="participantList" resultType="AdminParUserEventVO">
+		SELECT * FROM par_user_event WHERE user_num =#{user_num}
+	</select>
+	
+	<select id="eventNumVo" resultType="AdminEventVO">
+		SELECT * FROM dgv_event WHERE event_code=#{event_code}
 	</select>
 	
 </mapper>

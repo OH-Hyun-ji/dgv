@@ -152,7 +152,13 @@ public interface UserBoardService {
 	
 	int parUserEventInsert(AdminParUserEventVO vo);
 	
-	List<AdminParUserEventVO> parUserEventSelec();
+	List<AdminParUserEventVO> parUserEventSelect();
 	
 	int parEventCheck(AdminParUserEventVO vo);
+	
+	UserReserveVO userReserveFinish(String merchantUid);
+	
+	List<AdminParUserEventVO> participantList(int num);
+	
+	AdminEventVO eventNumVo(int num);
 }
