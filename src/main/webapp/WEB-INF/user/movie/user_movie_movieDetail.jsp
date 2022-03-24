@@ -354,7 +354,7 @@
 	                                			window.open('/movieVideo.do?movie_video='+video+'&&movie_num='+num, '', 'status=no, height=800, width=1100, left='+ popupX + ', bottom='+ popupY);
 	                                		}
 	                                        </script>
-			                                        <a onclick="MovieVideo('${imgList.movie_play1}',${movieList.movie_num })" title="새창" class="movie_player_popup">
+			                                        <a onclick="MovieVideo('${imgList.movie_play1}',${movieList.movie_num })" title="새창" class="movie_player_popup" style="cursor:pointer;">
 			                                            <span class="thumb-image">
 			                                                <img src="${imgList.movie_img1}" alt="">
 			                                                <span class="ico-play">영상보기</span>
@@ -363,7 +363,7 @@
 	                                       
 	                                    </div>
 	                                    <div class="box-contents">
-	                                        <a onclick="MovieVideo('${imgList.movie_play1}',${movieList.movie_num })" title="새창" class="movie_player_popup" >
+	                                        <a onclick="MovieVideo('${imgList.movie_play1}',${movieList.movie_num })" title="새창" class="movie_player_popup" style="cursor:pointer;">
 	                                            <strong class="title">
 	                                                <span class="ico-trailer hd">HD</span>
 	                                                2차 예고편
@@ -375,7 +375,7 @@
 	                                </li>                 
                                 <li>
                                     <div class="box-image">
-                                        <a onclick="MovieVideo('${imgList.movie_play2}',${movieList.movie_num })"  title="새창" class="movie_player_popup">
+                                        <a onclick="MovieVideo('${imgList.movie_play2}',${movieList.movie_num })"  title="새창" class="movie_player_popup" style="cursor:pointer;">
                                             <span class="thumb-image">
                                                 <img src="${imgList.movie_img2}" >
                                                 <span class="ico-play">영상보기</span>
@@ -383,7 +383,7 @@
                                         </a>
                                     </div>
                                     <div class="box-contents">
-                                        <a onclick="MovieVideo('${imgList.movie_play2}',${movieList.movie_num })"  title="새창" class="movie_player_popup" >
+                                        <a onclick="MovieVideo('${imgList.movie_play2}',${movieList.movie_num })"  title="새창" class="movie_player_popup" style="cursor:pointer;">
                                             <strong class="title">
                                                 <span class="ico-trailer hd">HD</span>
                                                 런칭 예고편
@@ -394,7 +394,7 @@
                                 </li>
                                 <li>
                                     <div class="box-image">
-                                        <a onclick="MovieVideo('${imgList.movie_play3}',${movieList.movie_num })"  title="새창" class="movie_player_popup">
+                                        <a onclick="MovieVideo('${imgList.movie_play3}',${movieList.movie_num })"  title="새창" class="movie_player_popup" style="cursor:pointer;">
                                             <span class="thumb-image">
                                                 <img src="${imgList.movie_img3}" >
                                                 <span class="ico-play">영상보기</span>
@@ -402,7 +402,7 @@
                                         </a>
                                     </div>
                                     <div class="box-contents">
-                                        <a onclick="MovieVideo('${imgList.movie_play3}',${movieList.movie_num })"  title="새창" class="movie_player_popup" >
+                                        <a onclick="MovieVideo('${imgList.movie_play3}',${movieList.movie_num })"  title="새창" class="movie_player_popup" style="cursor:pointer;">
                                             <strong class="title">
                                                 <span class="ico-trailer hd">HD</span>
                                                 1차 예고편
