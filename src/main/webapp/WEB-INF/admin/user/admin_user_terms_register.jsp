@@ -13,7 +13,7 @@
 	$(function(){
 
 		$("#register").click(function(){
-			alert(">>>")
+			
 			$("input:checkbox[name=checkBox]:checked").each(function(){
 				const termName = $("#termName").val()	
 				const checkVal = $(this).val();
@@ -33,7 +33,7 @@
 					data:JSON.stringify(termVO),
 					success:function(result){
 						if(result.msg=="SUCCESS"){
-							alert("약관 등록 완료^^");
+							alert("약관 등록 완료");
 							window.opener.location.reload();
 							window.close()
 						}else{

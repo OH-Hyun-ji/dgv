@@ -33,7 +33,7 @@
       var getPwCheck= new RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
       var getName= new RegExp(/^[가-힣]+$/);
       var getPhone= new RegExp(/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/);
-      var getEmail= new RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+$/);
+      var getEmail= new RegExp(/^([\w\.\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9])+([\w\.\_\-])+@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,8}$/);
       var getBirth= new RegExp(/^(19[0-9][0-9]|20\d{2})$/);
 
 
@@ -108,17 +108,20 @@
       
       //pw 검증 메서드
       $('#password').on('keyup',function(){    
+    	  console.log("호순이가 입력한 값 : "+$(this).val())
          if($(this).val() ==""){
             $("#password").removeClass("issetUser");
              $("#password").removeClass("nonesetUser");
              $("#password").addClass("issetUser");
              $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호를 입력해주세요. ]');    
+             console.log("첫번째 ")
               chk2 = false;
              
           }else if(!getPwCheck.test($("#password").val())){
         	  $("#password").removeClass("nonesetUser");
               $("#password").addClass("issetUser"); 
               $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호는 문자, 숫자, 특수문자의 조합으로<br> 8~16자리로 입력해주세요! ]');    
+              console.log("두번째 ")
               chk2 = false;
           }else{
              $("#password").removeClass("issetUser");
@@ -141,7 +144,7 @@
        	  $("#passwordRepeat").removeClass("nonesetUser");
              $("#passwordRepeat").addClass("issetUser"); 
              $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호는 문자, 숫자, 특수문자의 조합으로<br> 8~16자리로 입력해주세요! ]');    
-             chk2 = false;
+             chk3 = false;
          }else if($(this).val() != $("#password").val()){
         	 $("#passwordRepeat").removeClass("nonesetUser");
             $("#passwordRepeat").addClass("issetUser");
@@ -207,50 +210,46 @@
               $("#email").addClass("issetUser");
               $("#emailCK").html('<b style="color:orangered; font-size: smaller;">[ 이메일을 입력해주세요. ]');    
                chk6 = false;
-           }else if(!getEmail.test($("#email").val())){            
+           }else if(!getEmail.test($("#email").val())){  
+        	   $("#email").removeClass("nonesetUser");
                $("#email").addClass("issetUser"); 
                $("#emailCK").html('<b style="color:orangered; font-size: smaller;">[ 이메일 형식이 맞지 않습니다. ]');    
                chk6 = false;
            }else{
-              $("#email").removeClass("issetUser");
-              $("#email").addClass("nonesetUser");
-              $("#emailCK").html('<b style="color:aquamarine; font-size: smaller;">[ 확인되었습니다. ]');    
-              chk6 = true;
-           }     
-          
-          //이메일 중복검사 
-          let userEmail = $('#email').val(); //input에 사용자가 입력한값 받아오고 
+        	   //이메일 중복검사 
+               let userEmail = $('#email').val(); //input에 사용자가 입력한값 받아오고 
+                    
+               console.log("userEmail : " + userEmail)     
                
-          console.log("userEmail : " + userEmail)     
-          
-          if($("#email").val() != ""){
-             $.ajax({
-                method:"POST", //서버전송
-                url:"/join_email.do", //controller쪽 url
-                contentType: "application/json", // 서버에 보내는 데이터 형식
-                dataType:"json", //서버응답!
-                data: JSON.stringify({"user_email":userEmail}),
-                success:function(result){
-             	   console.log("result.msg"+result.msg)
-                   if(result.msg == "FAIL"){                   
-                         $("#email").removeClass("nonesetUser");
-                         $("#email").addClass("issetUser");
-                         $("#emailCK").html('<b style="color:orangered; font-size: smaller;">[ 이미 사용중인 이메일입니다. ]');
-                         chk6=false;
-                   } else {
-                         $("#email").removeClass("issetUser");
-                         $("#email").addClass("nonesetUser");
-                         $("#emailCK").html('<b style="color:aquamarine; font-size: smaller;">[ 사용가능한 이메일입니다. ]');
-                         chk6 = true;
-                      }
-                   
-                },//success function
-                error:function(){
-                   console.log("통신실패");
-                }
-             });// 이메일 중복검사 끝
-          }
-       
+               if($("#email").val() != ""){
+                  $.ajax({
+                     method:"POST", //서버전송
+                     url:"/join_email.do", //controller쪽 url
+                     contentType: "application/json", // 서버에 보내는 데이터 형식
+                     dataType:"json", //서버응답!
+                     data: JSON.stringify({"user_email":userEmail}),
+                     success:function(result){
+                  	   console.log("result.msg"+result.msg)
+                        if(result.msg == "FAIL"){                   
+                              $("#email").removeClass("nonesetUser");
+                              $("#email").addClass("issetUser");
+                              $("#emailCK").html('<b style="color:orangered; font-size: smaller;">[ 이미 사용중인 이메일입니다. ]');
+                              chk6=false;
+                        } else {
+                              $("#email").removeClass("issetUser");
+                              $("#email").addClass("nonesetUser");
+                              $("#emailCK").html('<b style="color:aquamarine; font-size: smaller;">[ 사용가능한 이메일입니다. ]');
+                              chk6 = true;
+                        }
+                        
+                     },//success function
+                     error:function(){
+                        console.log("통신실패");
+                     }
+                  });
+               }// 이메일 중복검사 끝
+           }     
+     
        });//이메일 확인 메서드 끝
        
 
@@ -312,6 +311,7 @@
           console.log("성공")
           document.joinForm.submit();
         }else{
+        	console.log("chk1 : "+chk1+"chk2 : "+chk2+"chk3 : "+chk3+"chk4 : "+chk4+"chk5 : "+chk5+"chk6 : "+chk6 +"chk7 : "+chk7)
            alert("빈칸이나 유효하지 않는 값이 있습니다. 다시 확인해주세요!!")
            console.log("실패")
            return false;

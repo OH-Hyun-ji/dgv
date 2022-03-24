@@ -19,7 +19,7 @@
  <script type="text/javascript">
   		
   		function thumbNail(event) {
-  			alert("Ddd")
+  			
 			var reader = new FileReader();
 			$("#thImg1-style").empty()
 			reader.onload= function(event){
@@ -28,7 +28,7 @@
 			reader.readAsDataURL(event.target.files[0])
 		}
   		function thumbNail1(event) {
-  			alert("Ddd")
+  			
 			var reader = new FileReader();
 			$("#thImg2-style").empty()
 			reader.onload= function(event){

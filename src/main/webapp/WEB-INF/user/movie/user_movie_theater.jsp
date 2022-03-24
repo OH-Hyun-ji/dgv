@@ -99,7 +99,7 @@
 	//		var cityCode =$(this).val()// $(this).children().val();
 			test=this	
 			console.log("cityCode :" +cityCode)
-			alert(cityCode)
+			
 			const  ul = $("<ul>")
 			.attr("class","region-list")
 			$(".region-list").empty();

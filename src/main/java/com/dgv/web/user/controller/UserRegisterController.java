@@ -93,7 +93,7 @@ public class UserRegisterController {
 	   @ResponseBody
 	   public CommonResultDto checkEmail(@RequestBody UserVO vo) {
 	      int checkNum = userService.checkEmail(vo.getUser_email());
-	      System.out.println("id :" + vo.getUser_email());
+	      System.out.println("email :" + vo.getUser_email());
 	      System.out.println("checkNum : "+ checkNum);
 	      Gson gson = new Gson();
 	   

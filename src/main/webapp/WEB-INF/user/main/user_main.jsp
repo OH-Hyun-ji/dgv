@@ -322,13 +322,11 @@
 					<div class="qr_wrap">
 						<strong>앱 다운로드</strong> <span>DGV앱 </span>
 						<div class="img_wrap" data-scale="false">
-							<img
+							<img style="width:66px"
 								src="${pageContext.request.contextPath }/resources/images/mainQr.png"
 								alt="code">
 						</div>
-						<p>
-							"????????????" <br> "!!!!!!!!!!!!!!!"
-						</p>
+						
 					</div>
 				</div>
 				<div class="noticeClient_banner_wrap">
