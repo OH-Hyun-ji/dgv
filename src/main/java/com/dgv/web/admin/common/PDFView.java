@@ -38,8 +38,8 @@ public class PDFView extends AbstractPdfView {
 		
 		// CSS
 		CSSResolver cssResolver = new StyleAttrCSSResolver();
-		CssFile cssFile = helper.getCSS(new FileInputStream("C:\\hj\\refer_to_project\\project\\teamProject\\dgv\\src\\main\\webapp\\resources\\css\\user\\pdf.css"));
-		cssResolver.addCss(cssFile);
+	//	CssFile cssFile = helper.getCSS(new FileInputStream());
+	//	cssResolver.addCss(cssFile);
 		
 		// 기본 폰트 설정 - 폰트에 따라 한글 출력 여부가 결정된다.
 		BaseFont bfKorea = BaseFont.createFont("c:\\windows\\fonts\\batang.ttc,0",BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
