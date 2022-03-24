@@ -228,6 +228,20 @@
 		.lay-style{
 			display: grid;
 		}
+		a.cityNameBtn4 ,a.cityNameBtn5 {
+		    padding: 4px 3px 8px 4px;
+		    font-size: 12px;
+		}
+		.cityNameBtn6 {
+		    padding: 8px 18px 8px 18px;
+		    font-size: 12px;
+		}
+		
+		.cityNameBtn2, .cityNameBtn1, .cityNameBtn3, .cityNameBtn7  {
+			padding: 4px 33px 8px 30px; 
+		}
+	
+				
 	</style>
 </head>
 <body class="seatPage" >
@@ -330,7 +344,7 @@
                                             <ul style="padding-left: 0px;">
                                            		 <c:forEach var="cityList" items="${cityList}" varStatus="status">
                                               		  <li class="selected" id="selectBtn${cityList.city_code}"  >
-	                                                    <a href="#" class="cityNameBtn" style="padding: 4px 33px 8px 30px;" onclick="choiceCity(${cityList.city_code})">
+	                                                    <a href="#" class="cityNameBtn${cityList.city_code}" onclick="choiceCity(${cityList.city_code})">
 	                                                        <span class="name" >${cityList.city_name}</span>
 	                                                    </a>
 	                                                    <div class="" style="z-index: 1;height: 0px;">
