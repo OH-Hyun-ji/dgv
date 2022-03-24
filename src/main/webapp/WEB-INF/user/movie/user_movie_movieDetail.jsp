@@ -197,7 +197,7 @@
         });
        
          function reserve(result){
-        	 
+        	 alert("@@@@@@@@@@@@@")
         	var form = document.createElement('form');
 			var objs;
 			objs =document.createElement('input')
@@ -213,20 +213,23 @@
     </script>
 </head>
 <style>
-.movieBtn{
-display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  width: 80vw;
-  margin: 0 auto;
-  min-height: 100vh;
-}
-.movieB{
+
+.movieA{
   flex: 1 1 auto;
   margin: 10px;
-  padding: 30px;
+  padding: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 7px;
+ }
+ .movieB{
+ flex: 1 1 auto;
+  margin: 10px;
+  padding: 4px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -234,16 +237,40 @@ display: flex;
   color: white;
  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
+  border-radius: 7px;
+ }
+ .movieC{
+ flex: 1 1 auto;
+  margin: 10px;
+  padding: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 7px;
  }
  .movieB:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center; 
+}
+.movieA:hover {
+  background-position: right center; 
+}
+.movieC:hover {
+  background-position: right center; 
 }
 
-.movieB {
-  background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+.movieA {
+ background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
 }
-
+.movieB{
+background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+.movieC{
+background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+} 
 </style>
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
@@ -268,18 +295,18 @@ display: flex;
                             </span>
                         </a>
                     </div>
-                    <div class="box-content">
+                    <div class="box-contents">
                         <div class="title">
                             <strong>${movieList.movie_title}</strong>
                             <em  class="suin">
                             	<c:if test="${movieList.movie_status == 'true'}">
-                                	<span class="movieB">예매중</span>
+                                	<span style="cursor:default" class="movieA">상영중</span>
                                 </c:if>
                                 <c:if test="${movieList.movie_status == 'false'}">
-                                	<span>상영종료</span>
+                                	<span style="cursor:default" class="movieB">상영종료</span>
                                 </c:if>
                                 <c:if test="${movieList.movie_status == 'yet' }">
-                                	<span>상영예정</span>
+                                	<span style="cursor:default" class="movieC">상영예정</span>
                                 </c:if>
                                 
                             </em>
@@ -326,11 +353,20 @@ display: flex;
                 <div class="cols-content" id="menu">
                     <div class="col-detail">
                         <ul class="tab-menu">
-                            <li>
-                                <a href="#li_01">트레일러</a>
+                            <li class="on">
+                                <a title="현재 선택됨" href="#" >주요정보 </a>
                             </li>
                             <li>
-                                <a href="#li_02">스틸컷</a>
+                                <a href="#">트레일러</a>
+                            </li>
+                            <li>
+                                <a href="#">스틸컷</a>
+                            </li>
+                            <li>
+                                <a href="#">평점/리뷰</a>
+                            </li>
+                            <li class="last">
+                                <a href="#">상영시간표</a>
                             </li>
                         </ul>
                         <div class="sect-story-movie">
@@ -367,12 +403,11 @@ display: flex;
                                    </div>
                                 </li>
                             </ul>
-                            <a id="li_01"></a>
                         </div>
                         <div id="ctl00_PlaceHolderContent_Section_Trailer" class="sect-trailer">
                             <div class="heading">
                                 <h4>트레일러</h4>                            
-                                <a class="link-more" >더보기</a>
+                                <a class="link-more" href="####">더보기</a>
                             </div>
                             <ul>
                                 <!-- 사진 동영상 조회 -->                           
@@ -446,7 +481,7 @@ display: flex;
                                 </li>
                             </ul>
                         </div>
-                        <div id="ctl00_PlaceHolderContent_Section_Still_Cut" class="sect-stillcut" >
+                        <div id="ctl00_PlaceHolderContent_Section_Still_Cut" class="sect-stillcut">
                             <div class="heading">
                                 <h4>스틸컷</h4>
                                 <span id="val" class="count">
@@ -455,7 +490,7 @@ display: flex;
                                 <span>
                                     건
                                 </span>
-                                <a class="link-more" id="li_02">더보기</a>
+                                <a class="link-more" href="##">더보기</a>
                             </div>
                             <div>
                                 <div id="slider-wrap"  style="overflow: hidden;" class="swiper-container">
@@ -486,9 +521,9 @@ display: flex;
                                     </div>                
                                 </div>
                                 <div class="swiper-button-prev" style="
-                                padding-top: 70%;" ></div>
+                                padding-top: 90%;" ></div>
                                 <div class="swiper-button-next"  style="
-                                padding-top: 70%;"></div>                             
+                                padding-top: 90%;"></div>                             
                             </div>                          
                             <script>
                                 var swiper = new Swiper(".swiper-container", {
