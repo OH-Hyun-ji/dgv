@@ -209,9 +209,42 @@
 			form.setAttribute('action','/movieReserve.do')
 			document.body.appendChild(form)
 			form.submit()
-         }   
+         }   "C:/Users/USER/Desktop/suin.zip"
     </script>
 </head>
+<style>
+.movieBtn{
+display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 80vw;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+.movieB{
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+ }
+ .movieB:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.movieB {
+  background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+</style>
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
     <!--본격 콘텐츠-->
@@ -235,12 +268,12 @@
                             </span>
                         </a>
                     </div>
-                    <div class="box-contents">
+                    <div class="box-content">
                         <div class="title">
                             <strong>${movieList.movie_title}</strong>
-                            <em class="round brown">
+                            <em  class="suin">
                             	<c:if test="${movieList.movie_status == 'true'}">
-                                	<span>예매중</span>
+                                	<span class="movieB">예매중</span>
                                 </c:if>
                                 <c:if test="${movieList.movie_status == 'false'}">
                                 	<span>상영종료</span>

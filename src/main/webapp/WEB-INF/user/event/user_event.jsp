@@ -22,7 +22,7 @@
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
   <!--본격 콘텐츠-->
-  <div id="contaniner" class="" style="height: 1200px;">
+  <div id="contaniner" class="" style="height: 1400px;">
     <!-- Contents Area -->
     <div class="event-board-wrap"> 
     <jsp:include page="../default/user_event_header.jsp"></jsp:include>
