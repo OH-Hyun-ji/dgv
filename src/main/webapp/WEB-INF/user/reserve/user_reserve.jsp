@@ -540,7 +540,7 @@
 					})
 									$(".timeList").on('click',function(){
 									//	console.log($(this).val())
-							 			alert($(this).val())
+// 							 			alert($(this).val())
 							 			$(".timeList").css("background-color","")	
 										$(this).css("background-color","#9e9d9ba1")
 							 			$("#hiddenTheater").val($(this).val())

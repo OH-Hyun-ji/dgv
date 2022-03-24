@@ -236,7 +236,7 @@
 				var reservePrice = $("#reservePrice").val()
 				console.log("reservePrice  =>  "+reservePrice)
 				
-				alert("결제버튼 클릭")
+// 				alert("결제버튼 클릭")
 				console.log("userId " +userId)
 					//결제 아임포트 
 					 var IMP = window.IMP; // 생략가능	 
@@ -544,7 +544,7 @@
 	    	
 	    	const seatArr = new Array();
 	    	$(".seat-status").on('click',function(){
-	    		alert($(this).val())
+// 	    		alert($(this).val())
 	    		console.log("totalCheckCount" + $("#totalCheckCount").val())
 	    			
 		    		
