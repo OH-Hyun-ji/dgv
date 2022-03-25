@@ -51,7 +51,7 @@
 		<div id="contents" class="">
             <div class="wrap-movie-chart">
                 <div class="tit-heading-wrap">
-                    <h3 style="margin-top: 1%;">영화목록</h3>
+                    <h3 style="margin-top: 1%;">무비차트</h3>
                     <div class="submenu">
                         <ul>
                             <li class="on">
