@@ -546,7 +546,7 @@
 			        	var myPoint = $("#userPointUse").val()
 			        	var regExp = /^[0-9]+$/;
 			        
-			        	if(myPoint.substring(0,1) == "0" || !regExp.test(myPoint) || getDigit(parseInt(userUse)) != num ){
+			        	if(myPoint.substring(0,1) == "0" || !regExp.test(myPoint) || getDigit(parseInt(userUse)) > num ){
 			        		alert("똑바로 입력해라 죽는다 ㅡㅡ")
 			        	}else{
 				        	const reservationPrice = $("#reservePrice").val()
