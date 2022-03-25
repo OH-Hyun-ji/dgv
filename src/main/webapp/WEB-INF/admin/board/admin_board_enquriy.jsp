@@ -16,7 +16,6 @@ table.table{
 	table-layout:fixed;
 	
 }
-
 td{
 	overflow:hidden;
     white-space:nowrap;
