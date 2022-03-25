@@ -518,8 +518,19 @@
 	        	}
 	        	
 	        })   
+	        function getDigit(num){
+	        	num = num.toString()
+	        	var i =0;
+	        	while(num[i]){
+	        		i++;
+	        	};
+	        	return i
+	        	
+	        }
 	        $("#pointBtn").on('click',function(){
 	        	//console.log("길이 : "+${userPoint}.length)
+	        	const num = getDigit(${userPoint})
+	        	console.log("getDigit(${userPoint}) " +num)
 	        	const basicP = $("#reserveBasic").val()
 	        	console.log("DFDFDF : "+basicP)
 		        const studentP =  $("#reserveStudent").val()
@@ -534,7 +545,8 @@
 			        //	console.log("적용중!!! : "+ $("#userPointUse").val())
 			        	var myPoint = $("#userPointUse").val()
 			        	var regExp = /^[0-9]+$/;
-			        	if(myPoint.substring(0,1) == "0" || !regExp.test(myPoint) ){
+			        
+			        	if(myPoint.substring(0,1) == "0" || !regExp.test(myPoint) || getDigit(parseInt(userUse)) != num ){
 			        		alert("똑바로 입력해라 죽는다 ㅡㅡ")
 			        	}else{
 				        	const reservationPrice = $("#reservePrice").val()
