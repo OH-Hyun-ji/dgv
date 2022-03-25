@@ -23,6 +23,8 @@ public class UserVO {
 	private String user_rank;
 	private Integer user_point;
 	private String user_auth;
+	private String rank_name;
+	private Double rank_earn;
 	
 
 	

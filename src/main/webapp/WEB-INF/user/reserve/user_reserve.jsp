@@ -152,7 +152,7 @@
 		}
 		li.selected:hover {
   			background-color: #9e9d9ba1;
-			color:white;
+/* 			color:white; */
 		}
 		button.regionBtn {
     		line-height: 36px;
@@ -228,6 +228,20 @@
 		.lay-style{
 			display: grid;
 		}
+		a.cityNameBtn4 ,a.cityNameBtn5 {
+		    padding: 4px 3px 8px 4px;
+		    font-size: 12px;
+		}
+		.cityNameBtn6 {
+		    padding: 8px 18px 8px 18px;
+		    font-size: 12px;
+		}
+		
+		.cityNameBtn2, .cityNameBtn1, .cityNameBtn3, .cityNameBtn7  {
+			padding: 4px 33px 8px 30px; 
+		}
+	
+				
 	</style>
 </head>
 <body class="seatPage" >
@@ -284,11 +298,7 @@
                                         <span class="side"></span>
                                         <!-- 특별관 안한다고 하셔서 일단 보류함-->
                                     </div>
-                                    <div class="sortmenu">
-                                        <a href="#" onclick="sortMovieByRank();return false;" id="movieSortRankBtn" class="button btn-rank selected">예매율순</a>
-                                        <a href="#" onclick="sortMovieByName();return false;" id="movieSortNameBtn" class="button btn-abc">가나다순
-                                        </a>
-                                    </div>
+                                    
                                     <div class="movie-list nano has-scrollbar has-scrollbar-y" id="movie_list">
                                         <ul class="content scroll-y" id="artHouseCome"onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;padding: 0px;">
                                            <c:forEach var="movieList" items="${movieList}" varStatus="status">
@@ -334,7 +344,7 @@
                                             <ul style="padding-left: 0px;">
                                            		 <c:forEach var="cityList" items="${cityList}" varStatus="status">
                                               		  <li class="selected" id="selectBtn${cityList.city_code}"  >
-	                                                    <a href="#" class="cityNameBtn"  onclick="choiceCity(${cityList.city_code})">
+	                                                    <a href="#" class="cityNameBtn${cityList.city_code}" onclick="choiceCity(${cityList.city_code})">
 	                                                        <span class="name" >${cityList.city_name}</span>
 	                                                    </a>
 	                                                    <div class="" style="z-index: 1;height: 0px;">
@@ -492,65 +502,65 @@
 			const regionClick = $(this).val()
 			
 		
-			$.ajax({
-				method:"POST",
-				url:"/theaterList.do",
-				contentType:"application/json",
-				dataType:"json",
-				data:JSON.stringify({"region_code":regionClick}),
-				success:function(TheaterInfo){
-					const TheaterL = JSON.parse(TheaterInfo)
-						$("#theater").empty();
-					_(TheaterL).forEach(function(i){	
+// 			$.ajax({
+// 				method:"POST",
+// 				url:"/theaterList.do",
+// 				contentType:"application/json",
+// 				dataType:"json",
+// 				data:JSON.stringify({"region_code":regionClick}),
+// 				success:function(TheaterInfo){
+// 					const TheaterL = JSON.parse(TheaterInfo)
+// 						$("#theater").empty();
+// 					_(TheaterL).forEach(function(i){	
 					
-					console.log("theater11 = "+i.theater_name)
-					console.log("theater = "+ i.theater_code)
-						const div =$("<div>")
-								.attr("id","theater-title")
-						const ul =$("<ul>")
-								.attr("class","theater-name")
-								.attr("id","theater"+i.theater_code)
-						const totalSeat = i.theater_max_row * i.theater_max_column
-						const seat = (i.seat_status).split(",")
-						const seatLength = seat.length
-						const remainSeat = totalSeat-seatLength
-						const span = $("<span>")
-								.attr("class","theaterName")
-								.text(i.theater_name+" 상영관 ("+remainSeat +"/"+ totalSeat+ "석 )" )
+// 					console.log("theater11 = "+i.theater_name)
+// 					console.log("theater = "+ i.theater_code)
+// 						const div =$("<div>")
+// 								.attr("id","theater-title")
+// 						const ul =$("<ul>")
+// 								.attr("class","theater-name")
+// 								.attr("id","theater"+i.theater_code)
+// 						const totalSeat = i.theater_max_row * i.theater_max_column
+// 						const seat = (i.seat_status).split(",")
+// 						const seatLength = seat.length
+// 						const remainSeat = totalSeat-seatLength
+// 						const span = $("<span>")
+// 								.attr("class","theaterName")
+// 								.text(i.theater_name+" 상영관 ("+remainSeat +"/"+ totalSeat+ "석 )" )
 						
-						const timeSplit = (i.movie_time_start).split("/")
-						const timeSplitLength = timeSplit.length
-							console.log("timeSplitLength : "+timeSplitLength)
-							div.append(span)
-						const div1 = $("<div>")
-								.attr("class","fixed")
-						for(let j=0;j<timeSplitLength-1;j++){
-						const li =$("<li>")
-								.attr("class","timeList")
-								.attr("value",i.theater_code)
-					//			.click(timeChoice)
-								.text(timeSplit[j])
-								console.log("timeSplit[j]"+timeSplit[j])
-								ul.append(li)
-						}							
-								console.log("/.////" + i.movie_time_code)
-								div.append(ul)
-								$("#theater").append(div)	
+// 						const timeSplit = (i.movie_time_start).split("/")
+// 						const timeSplitLength = timeSplit.length
+// 							console.log("timeSplitLength : "+timeSplitLength)
+// 							div.append(span)
+// 						const div1 = $("<div>")
+// 								.attr("class","fixed")
+// 						for(let j=0;j<timeSplitLength-1;j++){
+// 						const li =$("<li>")
+// 								.attr("class","timeList")
+// 								.attr("value",i.theater_code)
+// 					//			.click(timeChoice)
+// 								.text(timeSplit[j])
+// 								console.log("timeSplit[j]"+timeSplit[j])
+// 								ul.append(li)
+// 						}							
+// 								console.log("/.////" + i.movie_time_code)
+// 								div.append(ul)
+// 								$("#theater").append(div)	
 								
-					})
-									$(".timeList").on('click',function(){
-									//	console.log($(this).val())
-// 							 			alert($(this).val())
-							 			$(".timeList").css("background-color","")	
-										$(this).css("background-color","#9e9d9ba1")
-							 			$("#hiddenTheater").val($(this).val())
-							 			$("#hiddenTime").val($(this).text())
-									})
-				},
-				error:function(e){
-					console.log("통신실패" + e)
-				}
-			})	//ajax close
+// 					})
+// 									$(".timeList").on('click',function(){
+// 									//	console.log($(this).val())
+// // 							 			alert($(this).val())
+// 							 			$(".timeList").css("background-color","")	
+// 										$(this).css("background-color","#9e9d9ba1")
+// 							 			$("#hiddenTheater").val($(this).val())
+// 							 			$("#hiddenTime").val($(this).text())
+// 									})
+// 				},
+// 				error:function(e){
+// 					console.log("통신실패" + e)
+// 				}
+// 			})	//ajax close
 							
 			
 		}) 
@@ -656,11 +666,74 @@
                         		$("#hiddenDate").val($(this).text())
                         	  
                           const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
-                          movieDateWrapperActive.forEach((list) => {
-                          list.classList.remove("movie-date-wrapper-active");
-                     	 })
-                    		 button.classList.add("movie-date-wrapper-active");
-                     	})
+                         
+                        	movieDateWrapperActive.forEach((list) => {
+                        		  list.classList.remove("movie-date-wrapper-active");
+                     		 })
+                    		 	button.classList.add("movie-date-wrapper-active");
+                        		const regionClick = $("#hiddenRegion").val()
+                        		
+	                			$.ajax({
+	                				method:"POST",
+	                				url:"/theaterList.do",
+	                				contentType:"application/json",
+	                				dataType:"json",
+	                				data:JSON.stringify({"region_code":regionClick}),
+	                				success:function(TheaterInfo){
+	                					const TheaterL = JSON.parse(TheaterInfo)
+	                						$("#theater").empty();
+	                					_(TheaterL).forEach(function(i){	
+	                					
+	                					console.log("theater11 = "+i.theater_name)
+	                					console.log("theater = "+ i.theater_code)
+	                						const div =$("<div>")
+	                								.attr("id","theater-title")
+	                						const ul =$("<ul>")
+	                								.attr("class","theater-name")
+	                								.attr("id","theater"+i.theater_code)
+	                						const totalSeat = i.theater_max_row * i.theater_max_column
+	                						const seat = (i.seat_status).split(",")
+	                						const seatLength = seat.length
+	                						const remainSeat = totalSeat-seatLength
+	                						const span = $("<span>")
+	                								.attr("class","theaterName")
+	                								.text(i.theater_name+" 상영관 ("+remainSeat +"/"+ totalSeat+ "석 )" )
+	                						
+	                						const timeSplit = (i.movie_time_start).split("/")
+	                						const timeSplitLength = timeSplit.length
+	                							console.log("timeSplitLength : "+timeSplitLength)
+	                							div.append(span)
+	                						const div1 = $("<div>")
+	                								.attr("class","fixed")
+	                						for(let j=0;j<timeSplitLength-1;j++){
+	                						const li =$("<li>")
+	                								.attr("class","timeList")
+	                								.attr("value",i.theater_code)
+	                					//			.click(timeChoice)
+	                								.text(timeSplit[j])
+	                								console.log("timeSplit[j]"+timeSplit[j])
+	                								ul.append(li)
+	                						}							
+	                								console.log("/.////" + i.movie_time_code)
+	                								div.append(ul)
+	                								$("#theater").append(div)	
+	                								
+	                					})
+	                									$(".timeList").on('click',function(){
+	                									//	console.log($(this).val())
+	//                 							 			alert($(this).val())
+	                							 			$(".timeList").css("background-color","")	
+	                										$(this).css("background-color","#9e9d9ba1")
+	                							 			$("#hiddenTheater").val($(this).val())
+	                							 			$("#hiddenTime").val($(this).text())
+	                									})
+	                				},
+	                				error:function(e){
+	                					console.log("통신실패" + e)
+	                				}
+	                			})	//ajax close
+                							
+                          })
                      }
                     
                     

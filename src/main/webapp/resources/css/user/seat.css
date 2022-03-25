@@ -29,6 +29,7 @@
 }
 .select-people-number-wrap{
     padding: 23px;
+    padding-top: 5rem;
 }
 
 .select-people-number > ul > li{
@@ -42,6 +43,7 @@
 }
 .select-people{
     display: flex;
+    margin-bottom: 1rem;
 }
 .select-people-number-box{
     display: flex;
@@ -64,7 +66,7 @@
 }
 
 .selected-number-wrap {
-    padding: 40px 23px 0 0px;
+    padding: 104px 23px 0 0px;
     border-right: outset;
 }
 .selected-number-title {
@@ -106,6 +108,8 @@ ul.select-people-movie-info-list {
     display: flex;
     font-family: 'Gothic A1', sans-serif;
     font-weight: bolder;
+    table-layout: fixed;
+    justify-content: space-between;
 }
 .select-people-info {
     padding-left: 15px;
@@ -119,6 +123,7 @@ li.select-theater-local.selected-theater-local-info {
 }
 .select-movie-date {
     margin-right: 106px;
+    width: 200px;
 }
 .selected-seats-view {
     margin-left: 10px;
@@ -163,8 +168,13 @@ li.select-theater-local.selected-theater-local-info {
 }
 .selected-price-total {
     padding-left: 11px;
+    table-layout: fixed;
+    font-size: 18px;
+    padding-top: 23px;
 }
-
+.discount-reserve-wrap {
+    table-layout: fixed;
+}
 /*검정바탕 예매 최종 확인버튼 */
 .reservation-wrapper {
     background-color: #343433;
@@ -333,4 +343,30 @@ img#next-choice {
 #discountCoupon, #discountPoint{
 	height: 26px;
     width: 137px;
+}
+.seat_introduce {
+    display: flex;
+}
+.couponTotalPrice-wrap{
+    margin-left: 3rem;
+    margin-top: 8px;
+    color: #404024;
+}
+input#couponTotalPrice {
+    border: 0;
+    border-bottom: 1px solid #bababa;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    font-size: 17px;
+}
+span.result-total-span {
+    color: #ffb71c;
+}
+input#result-total-money {
+    margin-left: 6px;
+    border: 0;
+    background: #343433;
+    height: 22px;
+    font-size: 16px;
+    color: white;
 }

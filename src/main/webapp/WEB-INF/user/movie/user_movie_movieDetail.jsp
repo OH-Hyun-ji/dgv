@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/button.css">
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
@@ -197,7 +198,7 @@
         });
        
          function reserve(result){
-        	 
+        	 alert("@@@@@@@@@@@@@")
         	var form = document.createElement('form');
 			var objs;
 			objs =document.createElement('input')
@@ -209,9 +210,71 @@
 			form.setAttribute('action','/movieReserve.do')
 			document.body.appendChild(form)
 			form.submit()
-         }   
+         }   "C:/Users/USER/Desktop/suin.zip"
     </script>
+
+    </style>
 </head>
+<style>
+
+.movieA{
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 7px;
+ }
+ .movieB{
+ flex: 1 1 auto;
+  margin: 10px;
+  padding: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 7px;
+ }
+ .movieC{
+ flex: 1 1 auto;
+  margin: 10px;
+  padding: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 7px;
+ }
+ .movieB:hover {
+  background-position: right center; 
+}
+.movieA:hover {
+  background-position: right center; 
+}
+.movieC:hover {
+  background-position: right center; 
+}
+
+.movieA {
+ background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+.movieB{
+background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+.movieC{
+background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+} 
+</style>
 <body class="block">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
     <!--본격 콘텐츠-->
@@ -238,15 +301,15 @@
                     <div class="box-contents">
                         <div class="title">
                             <strong>${movieList.movie_title}</strong>
-                            <em class="round brown">
+                            <em  class="suin">
                             	<c:if test="${movieList.movie_status == 'true'}">
-                                	<span>예매중</span>
+                                	<span style="cursor:default" class="movieA">상영중</span>
                                 </c:if>
                                 <c:if test="${movieList.movie_status == 'false'}">
-                                	<span>상영종료</span>
+                                	<span style="cursor:default" class="movieB">상영종료</span>
                                 </c:if>
                                 <c:if test="${movieList.movie_status == 'yet' }">
-                                	<span>상영예정</span>
+                                	<span style="cursor:default" class="movieC">상영예정</span>
                                 </c:if>
                                 
                             </em>
@@ -293,53 +356,36 @@
                 <div class="cols-content" id="menu">
                     <div class="col-detail">
                         <ul class="tab-menu">
-                            <li>
-                                <a href="#li_01">트레일러</a>
+                            <li class="on">
+                                <a title="현재 선택됨" href="#" >주요정보 </a>
                             </li>
                             <li>
-                                <a href="#li_02">스틸컷</a>
+                                <a href="#">트레일러</a>
+                            </li>
+                            <li>
+                                <a href="#">스틸컷</a>
+                            </li>
+                            <li>
+                                <a href="#">평점/리뷰</a>
+                            </li>
+                            <li class="last">
+                                <a href="#">상영시간표</a>
                             </li>
                         </ul>
                         <div class="sect-story-movie">
                            ${movieList.movie_text}
                         </div>
                         <!-- 연령별예매분포 -->
-                        <div id="ctl00_PlaceHolderContent_Section_Chart" class="sect-graph sect-graph-emotion">
-                            <ul class="graph">
-                                <li>
-                                    <strong>연령별 예매 분포</strong>
-                                    <div id="jqplot_age" class="chart jqplot-target" style="position: relative;"><canvas width="401" height="192" class="jqplot-base-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas>
-                                    <div class="jqplot-title" style="height: 0px; width: 0px;">
-                                        <canvas width="401" height="192" class="jqplot-base-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas>
-                                        <div class="jqplot-title" style="height: 0px; width: 0px;"></div>
-                                        <div class="jqplot-axis jqplot-xaxis" style="position: absolute; width: 401px; height: 15px; left: 0px; bottom: 0px;">
-                                            <div class="jqplot-xaxis-tick" style="position: absolute; font-size: 12px; left: 36.1px;">10대</div>
-                                            <div class="jqplot-xaxis-tick" style="position: absolute; font-size: 12px; left: 112.3px;">20대</div>
-                                            <div class="jqplot-xaxis-tick" style="position: absolute; font-size: 12px; left: 188.5px;">30대</div>
-                                            <div class="jqplot-xaxis-tick" style="position: absolute; font-size: 12px; left: 264.7px;">40대</div>
-                                            <div class="jqplot-xaxis-tick" style="position: absolute; font-size: 12px; left: 340.9px;">50대</div>
-                                        </div>
-                                        <div class="jqplot-axis jqplot-yaxis" style="position: absolute; height: 192px; width: 0px; left: 0px; top: 0px;"></div>
-                                        <canvas width="401" height="192" class="jqplot-grid-canvas" style="position: absolute; left: 0px; top: 0px;"></canvas>
-                                        <canvas width="381" height="157" class="jqplot-series-shadowCanvas" style="position: absolute; left: 10px; display: block; top: 10px;"></canvas>
-                                        <canvas width="381" height="157" class="jqplot-series-canvas" style="position: absolute; left: 10px; display: block; top: 10px;"></canvas>
-                                        <div class="jqplot-point-label jqplot-series-0 jqplot-point-4" style="position: absolute; left: 349.9px; top: 130.683px; display: block;">7</div>
-                                        <div class="jqplot-point-label jqplot-series-0 jqplot-point-3" style="position: absolute; left: 271.2px; top: 122.833px; display: block;">10</div>
-                                        <div class="jqplot-point-label jqplot-series-0 jqplot-point-2" style="position: absolute; left: 190.5px; top: 111.058px; display: block;">14.5</div>
-                                        <div class="jqplot-point-label jqplot-series-0 jqplot-point-1" style="position: absolute; left: 114.3px; top: 25.4933px; display: block;">47.2</div>
-                                        <div class="jqplot-point-label jqplot-series-0 jqplot-point-0" style="position: absolute; left: 38.1px; top: 93.265px; display: block;">21.3</div>
-                                        <canvas width="381" height="157" class="jqplot-barRenderer-highlight-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas>
-                                        <canvas width="381" height="157" class="jqplot-event-canvas" style="position: absolute; left: 10px; top: 10px;"></canvas>
-                                   </div>
-                                   </div>
-                                </li>
-                            </ul>
-                            <a id="li_01"></a>
-                        </div>
+                        <div style="text-align: -webkit-center;">
+		                      <div  style="display: block;height: 216px;width: 500px;margin-top: 54px;">
+									 <!--차트가 그려질 부분-->
+									<canvas id="myChart"></canvas>
+							  </div>
+					  </div>
                         <div id="ctl00_PlaceHolderContent_Section_Trailer" class="sect-trailer">
                             <div class="heading">
                                 <h4>트레일러</h4>                            
-                                <a class="link-more" >더보기</a>
+                                <a class="link-more" href="####">더보기</a>
                             </div>
                             <ul>
                                 <!-- 사진 동영상 조회 -->                           
@@ -413,7 +459,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="ctl00_PlaceHolderContent_Section_Still_Cut" class="sect-stillcut" >
+                        <div id="ctl00_PlaceHolderContent_Section_Still_Cut" class="sect-stillcut">
                             <div class="heading">
                                 <h4>스틸컷</h4>
                                 <span id="val" class="count">
@@ -422,7 +468,7 @@
                                 <span>
                                     건
                                 </span>
-                                <a class="link-more" id="li_02">더보기</a>
+                                <a class="link-more" href="##">더보기</a>
                             </div>
                             <div>
                                 <div id="slider-wrap"  style="overflow: hidden;" class="swiper-container">
@@ -453,9 +499,9 @@
                                     </div>                
                                 </div>
                                 <div class="swiper-button-prev" style="
-                                padding-top: 70%;" ></div>
+                                padding-top: 90%;" ></div>
                                 <div class="swiper-button-next"  style="
-                                padding-top: 70%;"></div>                             
+                                padding-top: 90%;"></div>                             
                             </div>                          
                             <script>
                                 var swiper = new Swiper(".swiper-container", {
@@ -476,7 +522,94 @@
         </div>
         
     </div>
+    <input type="hidden" id="basicPeople" value="${basic}">
+    <input type="hidden" id="studentPeople" value="${student}">
+    <input type="hidden" id="oldPeople" value="${old}">
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>
-</body>
+	<script type="text/javascript">
+			const basicPeople =$("#basicPeople").val()
+			const studentPeople =$("#studentPeople").val()
+			const oldPeople =$("#oldPeople").val()
+			
+            var context = document
+                .getElementById('myChart')
+                .getContext('2d');
+            var myChart = new Chart(context, {
+                type: 'bar', // 차트의 형태
+                data: { // 차트에 들어갈 데이터
+                    labels: [
+                        //x 축
+                        '성인','청소년','노인'
+                    ],
+                    datasets: [{ //데이터
+                    	barPercentage: 0.5,
+                        barThickness: 2,
+                        maxBarThickness: 4,
+                        minBarLength: 1,
+                        label: '연령별 예매 분포', //차트 제목
+                        fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+                        data: [
+                        	basicPeople,studentPeople,oldPeople //x축 label에 대응되는 데이터 값
+                        ],
+                        backgroundColor: [
+                            //색상
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 99, 132, 0.2)'
+                           
+                        ],
+                        borderColor: [
+                            //경계선 색상
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 99, 132, 1)'
+                           
+                        ],
+                        borderWidth: 1 //경계선 굵기
+                        } ,
+						/*{
+                            label: 'test2',
+                            fill: false,
+                            data: [
+                              0,0,0
+                            ],
+                            backgroundColor: 'rgb(255, 255, 255) ',
+                            borderColor: 'rgb(255, 255, 255)'
+                        }  */
+                    ]
+                },
+                options: {
+                	legend: {
+        				labels: {
+        					fontColor: "orange",
+        					fontSize: 25
+        				}
+        			},
+                    scales: {
+                        yAxes: [{
+                        	ticks: {
+                                    beginAtZero: true,
+                                    stepSize: 10, //y축 간격 
+                                    suggestedMin: 0,//y축 최소 값 
+                                    suggestedMax: 30,//y축 최대값
+                                    fontSize : 20,
 
+                                   
+                                },
+                                gridLines: {//y축 라인 스타일 설정 
+                                	borderDash: [2, 2], 
+                                	borderDashOffset: 0.2 
+                                	} 	
+                            }],
+                            xAxes: [{
+            					ticks:{
+            						fontColor : 'rgba(12, 13, 13, 1)',
+            						fontSize : 20
+            					}
+            				}]
+                    }
+                }
+            });
+        </script>
+</body>
 </html>

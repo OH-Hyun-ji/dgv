@@ -161,4 +161,12 @@ public interface UserBoardService {
 	List<AdminParUserEventVO> participantList(int num);
 	
 	AdminEventVO eventNumVo(int num);
+	
+	UserReserveVO movieDetailChart(UserReserveVO vo);
+	
+	UserVO userRankEarnPoint(String id);
+	
+	int userPointInsert(UserDetailVO vo);
+	
+	UserDetailVO userPointSelect(UserDetailVO vo);
 }

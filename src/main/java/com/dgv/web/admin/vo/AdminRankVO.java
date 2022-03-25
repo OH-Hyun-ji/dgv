@@ -7,7 +7,7 @@ public class AdminRankVO {
 
 	private Integer rank_code;
 	private String rank_name;
-	private Integer rank_earn;
+	private Double rank_earn;
 	private Integer rank_standard;
 	private String rank_img;
 	private String reg_id;

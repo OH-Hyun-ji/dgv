@@ -41,6 +41,10 @@ public class UserReserveVO {
 	private Date end_day;
 	private Date rese_date;
 	private Integer genre_count;
+	private Integer student;
+	private Integer normal;
+	private Integer old;
+	
 
 	
 }

@@ -14,4 +14,5 @@ public class UserCouponUseVO {
 	//
 	private String coupon_name;
 	private String coupon_date;
+	private Integer coupon_discount;
 }
