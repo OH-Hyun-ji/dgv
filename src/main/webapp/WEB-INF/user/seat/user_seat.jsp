@@ -519,7 +519,7 @@
 	        	
 	        })   
 	        $("#pointBtn").on('click',function(){
-	        	console.log("길이 : "+${userPoint}.length)
+	        	//console.log("길이 : "+${userPoint}.length)
 	        	const basicP = $("#reserveBasic").val()
 	        	console.log("DFDFDF : "+basicP)
 		        const studentP =  $("#reserveStudent").val()
