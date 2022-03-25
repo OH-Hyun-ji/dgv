@@ -141,7 +141,7 @@
        	  $("#passwordRepeat").removeClass("nonesetUser");
              $("#passwordRepeat").addClass("issetUser"); 
              $("#psCK").html('<b style="color:orangered; font-size: smaller;">[ 비밀번호는 문자, 숫자, 특수문자의 조합으로<br> 8~16자리로 입력해주세요! ]');    
-             chk2 = false;
+             chk3 = false;
          }else if($(this).val() != $("#password").val()){
         	 $("#passwordRepeat").removeClass("nonesetUser");
             $("#passwordRepeat").addClass("issetUser");

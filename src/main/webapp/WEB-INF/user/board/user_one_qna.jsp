@@ -18,27 +18,22 @@
 	<script type="text/javascript">
 	</script>
 	<style type="text/css">
-<<<<<<< HEAD
 
-=======
 table.myPage-table {
       height: 160px;
       table-layout:fixed;
       
 }
->>>>>>> 437889f4a5ed0036848d85436d2f877ca7366020
+
 td {
     box-sizing: border-box;
     padding-top: 6px;
     border-right: 1px solid #8080807a;
-<<<<<<< HEAD
-    padding-bottom: 6px;
-=======
+
     line-height: 46px;
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
->>>>>>> 437889f4a5ed0036848d85436d2f877ca7366020
 }
 th{
 	box-sizing: border-box;
