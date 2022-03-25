@@ -283,5 +283,16 @@ public class UserBoardDAO {
 	public UserReserveVO movieDetailChart(UserReserveVO vo) {
 		return sqlSessionTemplate.selectOne("UserBoardDAO.movieDetailChart",vo);
 	}
-		
+	
+	public UserVO userRankEarnPoint(String id) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.userRankEarnPoint",id);
+	}
+	
+	public int userPointInsert(UserDetailVO vo) {
+		return sqlSessionTemplate.update("UserMovieDAO.userPointInsert",vo);
+	}
+	
+	public UserDetailVO userPointSelect(UserDetailVO vo) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.userPointSelect",vo);
+	}
 }

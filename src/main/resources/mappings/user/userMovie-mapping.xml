@@ -102,5 +102,23 @@
 		select * from movie_reserve where reserve_merchant_uid =#{reserve_merchant_uid}
 	</select>
 	
+	<select id="userRankEarnPoint" resultType="UserVO">
+		select * from (				
+				select rank_name,rank_earn, uid.user_num from rank_info ri
+				inner join user_info_detail uid 
+				on uid.user_rank = ri.rank_name
+				) as foo 
+						inner join user_info ui 
+						on ui.user_num=foo.user_num
+						where ui.user_id =#{user_id}
+		
+	</select>
+	
+	<update id="userPointInsert" parameterType="UserDetailVO">
+		UPDATE user_info_detail SET user_point=#{user_point} WHERE user_num=#{user_num}
+	</update>
+	<select id="userPointSelect" resultType="UserDetailVO">
+		SELECT * FROM user_info_detail WHERE user_num=#{user_num}
+	</select>
 	
 </mapper>

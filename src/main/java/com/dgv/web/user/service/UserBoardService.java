@@ -163,4 +163,10 @@ public interface UserBoardService {
 	AdminEventVO eventNumVo(int num);
 	
 	UserReserveVO movieDetailChart(UserReserveVO vo);
+	
+	UserVO userRankEarnPoint(String id);
+	
+	int userPointInsert(UserDetailVO vo);
+	
+	UserDetailVO userPointSelect(UserDetailVO vo);
 }

@@ -29,6 +29,7 @@
 }
 .select-people-number-wrap{
     padding: 23px;
+    padding-top: 5rem;
 }
 
 .select-people-number > ul > li{
@@ -42,6 +43,7 @@
 }
 .select-people{
     display: flex;
+    margin-bottom: 1rem;
 }
 .select-people-number-box{
     display: flex;
@@ -64,7 +66,7 @@
 }
 
 .selected-number-wrap {
-    padding: 40px 23px 0 0px;
+    padding: 104px 23px 0 0px;
     border-right: outset;
 }
 .selected-number-title {

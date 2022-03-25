@@ -123,11 +123,18 @@
 		                  	</select>
 		                  </div>
 		                  <div class="point-select">
-		                  	<select id="discountPoint">
-		                  		<option>사용가능한포인트</option>
-		                  	</select>
+		                  	<label class="remain-point">잔여포인트 : </label> 
+		                  	<input id="myRemainPoint" value="${userPoint } p" readonly="readonly">
+		                  	<c:if test="${userPoint <10000 }">
+		                  		<input id="userPointText" value="10,000p 부터 사용가능" readonly="readonly">
+		                  	</c:if>	
+		                  	<c:if test="${userPoint >=10000 }">
+		                  		<input id="userPointUse" placeholder="1p단위부터 사용가능">
+		                  		<button id="pointBtn">포인트사용</button>
+		                  	</c:if>
+		                  
 		                  </div>
-                 </div>
+                		 </div>
                         </div>
                     </div>
                 </div>            
@@ -496,6 +503,23 @@
 	        	}
 	        	
 	        })   
+	        $("#pointBtn").on('click',function(){
+	        //	console.log("적용중!!! : "+ $("#userPointUse").val())
+	        	var myPoint = $("#userPointUse").val()
+	        	const reservationPrice = $("#reservePrice").val()
+	        	var pointDiscount = reservationPrice-myPoint;
+	        	const myRemainPoint =$("#myRemainPoint").val()
+	        	var changeMyPoint = myRemainPoint-myPoint
+	        	
+	        	console.log("changeMyPoint :" + changeMyPoint)
+	        	
+	        	console.log("pointDiscount"+pointDiscount)
+	        	$("#reservePrice").val(pointDiscount)
+	        	$("#couponTotalPrice").val(pointDiscount.toLocaleString('ko-KR')+"원")
+	        	$("#result-total-money").val(pointDiscount.toLocaleString('ko-KR')+"원")
+	        	
+	        	
+	        })
 	    	console.log(basicNum)
 	    	const row = ${row}
 	    	const col = ${col}
@@ -611,11 +635,11 @@
 			 		   			}
 			 		   		}
 			    		
-			    			
+			    			alert("좌석선택수를 초과하였습니다. ")
 			    			if(seatArr.length==0){
 			    				alert("좌석수 항목을 클릭후 선택해주세요")
 			    			}else{
-			    				alert("좌석선택수를 초과하였습니다. ")
+			    				
 			    			}
 			    		}
 	    		}

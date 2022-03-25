@@ -455,4 +455,22 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.movieDetailChart(vo);
 	}
+	
+	@Override
+	public UserVO userRankEarnPoint(String id) {
+		
+		return userBoardDAO.userRankEarnPoint(id);
+	}
+	
+	@Override
+	public int userPointInsert(UserDetailVO vo) {
+		
+		return userBoardDAO.userPointInsert(vo);
+	}
+	
+	@Override
+	public UserDetailVO userPointSelect(UserDetailVO vo) {
+		
+		return userBoardDAO.userPointSelect(vo);
+	}
 }

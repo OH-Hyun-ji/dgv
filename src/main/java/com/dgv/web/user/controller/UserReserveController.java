@@ -29,6 +29,7 @@ import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserCouponUseVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserMapVO;
 import com.dgv.web.user.vo.UserMoiveImgVO;
 import com.dgv.web.user.vo.UserReserveVO;
@@ -189,7 +190,7 @@ public class UserReserveController {
 	}
 	
 	@PostMapping("/reserveSeat.do")
-	public String reserveSeat(@ModelAttribute("reserveVo") UserReserveVO vo ,Model model,UserReserveVO reserveVO,UserCouponUseVO couponVo) {
+	public String reserveSeat(@ModelAttribute("reserveVo") UserReserveVO vo ,Model model,UserReserveVO reserveVO,UserCouponUseVO couponVo, UserDetailVO deVO) {
 			//유저정보 
 			String userId =RequestUtils.getUserId("userID");
 			UserVO userVo = userService.MyUserList(userId);
@@ -206,6 +207,12 @@ public class UserReserveController {
 				
 			}
 			model.addAttribute("couponList",couponList);
+			
+			//포인트 
+			deVO.setUser_num(userVo.getUser_num());
+			UserDetailVO userPoint = userBoardService.userPointSelect(deVO);
+			
+			model.addAttribute("userPoint",userPoint.getUser_point());
 			
 			//날짜
 			vo.setReserve_movie_date(vo.getReserve_date());
@@ -230,12 +237,6 @@ public class UserReserveController {
 			vo.setReserve_movie_date(movieResultDate);
 			
 			
-			
-			
-			
-			
-			
-		
 			//영화정보
 			AdminMovieVO movieVo = userBoardService.movieList(vo.getMovie_num());
 			model.addAttribute("movieName",movieVo.getMovie_title());
@@ -384,10 +385,31 @@ public class UserReserveController {
 	}
 	
 	@RequestMapping("userReserveResult.do")
-	public String userReserveResult(@RequestParam("reserve_merchant_uid") String merchantUid , Model model) {
+	public String userReserveResult(@RequestParam("reserve_merchant_uid") String merchantUid , Model model,UserDetailVO detailVo ) {
 		UserReserveVO reserveVo = userBoardService.userReserveFinish(merchantUid);
 		AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
 		reserveVo.setMovie_title(movieVo.getMovie_title());
+		
+		if(RequestUtils.getUserId("userID") != null) {
+			String userId = RequestUtils.getUserId("userID");
+			UserVO rankPointUser = userBoardService.userRankEarnPoint(userId);
+			int reservePrice = reserveVo.getReserve_price();
+			Double rankEarn = (rankPointUser.getRank_earn())*0.01;
+			
+			int total = (int) (reservePrice * rankEarn);
+			detailVo.setUser_num(rankPointUser.getUser_num());
+			UserDetailVO basicDetail = userBoardService.userPointSelect(detailVo);
+			
+			int realTotal = basicDetail.getUser_point()+total;
+			detailVo.setUser_point(realTotal);
+			
+			int insertResult = userBoardService.userPointInsert(detailVo);
+			
+			if(insertResult==0)
+				System.out.println("포인트 적립 실패");
+			System.out.println("포인트 적립 성공");
+		}
+		
 		
 		model.addAttribute("reserveVo",reserveVo);
 		
