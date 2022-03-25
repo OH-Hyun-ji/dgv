@@ -188,6 +188,7 @@ table.myPage-table {
 }
 table.myPage-table {
     text-align: center;
+      
 }
 thead.myPage-table-wrapping {
      border: 1px solid darkgray;
@@ -692,6 +693,7 @@ qna-often-wrapping {
     display: flex;
     background-color: rgba(0,0,0,0.1);
     border-radius: 10px;
+    height: 186px;
 }
 .qna-one-wrap01 {
     width: 380px;

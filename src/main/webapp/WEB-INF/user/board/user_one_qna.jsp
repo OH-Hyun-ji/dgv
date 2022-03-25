@@ -28,51 +28,20 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
 	</script>
-<<<<<<< HEAD
 <style type="text/css">
-=======
-	<style type="text/css">
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'develop' of https://github.com/OH-Hyun-ji/dgv.git
 table.myPage-table {
-<<<<<<< HEAD
-	height: 160px;
-=======
-      height: 160px;
-      table-layout:fixed;
+    height: 68px;
+    table-layout: fixed;
       
->>>>>>> branch 'develop' of https://github.com/OH-Hyun-ji/dgv.git
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 437889f4a5ed0036848d85436d2f877ca7366020
->>>>>>> branch 'develop' of https://github.com/OH-Hyun-ji/dgv.git
 td {
-<<<<<<< HEAD
-=======
+
     box-sizing: border-box;
     padding-top: 6px;
     border-right: 1px solid #8080807a;
-<<<<<<< HEAD
-    padding-bottom: 6px;
-=======
-    line-height: 46px;
-    overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
->>>>>>> 437889f4a5ed0036848d85436d2f877ca7366020
 }
-th{
->>>>>>> branch 'develop' of https://github.com/OH-Hyun-ji/dgv.git
-	box-sizing: border-box;
-	padding-top: 6px;
-	border-right: 1px solid #8080807a;
-	
-}
-
 th {
 	box-sizing: border-box;
 	padding-top: 3px;

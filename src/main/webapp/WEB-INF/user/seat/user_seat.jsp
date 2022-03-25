@@ -237,8 +237,14 @@
 			const booking = $("#reserveSeat").val().split(",")
 			console.log("booking : "+booking)
 			console.log("길이 : "+booking.length)
+			const basicP = $("#reserveBasic").val()
+	        const studentP =  $("#reserveStudent").val()
+			const reserveP = $("#reserveOld").val()
+			const allPeopleTotalCount =  parseInt(basicP)+parseInt(studentP)+parseInt(reserveP)
+			console.log("allPeopleTotalCount : "+ allPeopleTotalCount)
 			
-			if(selectedCount == booking.length && selectedCount !=0 ){
+			
+			if(allPeopleTotalCount == booking.length && selectedCount !=0 ){
 			
 				var movieTitle = $("#movieTitle").val()			
 				var movieNum = $("#movieNum").val()			
@@ -324,6 +330,7 @@
 			            alert(msg);
 		        });
 			}else{
+				console.log("???왜안떠?")
 				alert("인원에 맞게 좌석수를 선택해주세요")
 			}
 		}) // close click function
@@ -449,8 +456,9 @@
 	                      	        	$("#reserveStudent").val()
 										$("#reserveOld").val()
 	                                    $("#reservePrice").val(totalMoney)
-	                   $("#couponTotalPrice").val(totalMoney.toLocaleString('ko-KR')+"원")
+	                 $("#couponTotalPrice").val(totalMoney.toLocaleString('ko-KR')+"원")
 	        		$("#result-total-money").val(totalMoney.toLocaleString('ko-KR')+"원")
+	        		
 	                                     
 	        if(totalNum > 18){
 	            li.classList.remove('select-people-ul-action');
