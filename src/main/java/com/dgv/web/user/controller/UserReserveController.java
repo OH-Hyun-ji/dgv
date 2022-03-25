@@ -192,7 +192,7 @@ public class UserReserveController {
 	@PostMapping("/reserveSeat.do")
 	public String reserveSeat(@ModelAttribute("reserveVo") UserReserveVO vo ,Model model,UserReserveVO reserveVO,UserCouponUseVO couponVo, UserDetailVO deVO) {
 			
-			
+			if(RequestUtils.getUserId("userID") != null) {
 				//유저정보 
 				String userId =RequestUtils.getUserId("userID");
 				UserVO userVo = userService.MyUserList(userId);
@@ -209,18 +209,17 @@ public class UserReserveController {
 					
 				}
 				model.addAttribute("couponList",couponList);
-				if(RequestUtils.getUserId("userID") != null) {
 				
-				//포인트 
+				//포인트
 				
 				deVO.setUser_num(userVo.getUser_num());
-				UserDetailVO userPoint = userBoardService.userPointSelect(deVO);
+			//	deVO.setUser_point(vo.getReserve_myPoint());
+				UserDetailVO detail = userBoardService.userPointSelect(deVO);
+				model.addAttribute("userPoint",detail.getUser_point());
 				
-				model.addAttribute("userPoint",userPoint.getUser_point());
 			}else {
-				
+				model.addAttribute("couponList","");
 				model.addAttribute("userPoint","");
-				
 			}
 			//날짜
 			vo.setReserve_movie_date(vo.getReserve_date());
@@ -312,20 +311,22 @@ public class UserReserveController {
 	@PostMapping("/userReservation.do")
 	@ResponseBody
 	public CommonResultDto userReservation(@RequestBody UserReserveVO reserveVo ,UserDetailVO detailVo) {
+		
 		if(reserveVo.getUser_id() != null) {
-			
+		//	String userId = RequestUtils.getUserId("userID");
 			UserVO userVo = userBoardService.userNumSelect(reserveVo.getUser_id());
 			detailVo.setUser_point(reserveVo.getReserve_myPoint());
 			detailVo.setUser_num(userVo.getUser_num());
 			
 			int pointupdate = userBoardService.userPointInsert(detailVo);
-			if(pointupdate ==0)
-				return CommonResultDto.fail();
-			return CommonResultDto.success();
 			
+		}else {
+			System.out.println("??/엥??");
 		}
-		int num = userBoardService.userReserveInsert(reserveVo);
 		
+		
+		int num = userBoardService.userReserveInsert(reserveVo);
+		System.out.println("???잉이잉이  : "+num);
 		if(num ==0 )
 			return CommonResultDto.fail();
 		return CommonResultDto.success();
@@ -419,6 +420,7 @@ public class UserReserveController {
 			detailVo.setUser_num(rankPointUser.getUser_num());
 			UserDetailVO basicDetail = userBoardService.userPointSelect(detailVo);
 			
+			model.addAttribute("userPoint",basicDetail.getUser_point());
 			int realTotal = basicDetail.getUser_point()+total;
 			detailVo.setUser_point(realTotal);
 			
