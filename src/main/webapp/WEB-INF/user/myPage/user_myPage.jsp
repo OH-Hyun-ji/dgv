@@ -16,7 +16,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
       <body class="">
-        <div id="cgvwrap">
+        <div id="dgvwrap">
         	<jsp:include page="../default/user_header.jsp"></jsp:include>
         
                <!-- Contaniner -->

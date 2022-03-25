@@ -625,7 +625,8 @@
              const year = date.getFullYear();
              const month = date.getMonth();
              
-             for (i = date.getDate(); i <= lastDay.getDate(); i++) {                          
+             for (let i = date.getDate(); i <= lastDay.getDate(); i++) {        
+            	 
                    const button = document.createElement("button");
                
                    const spanWeekOfDay = document.createElement("span");
@@ -654,7 +655,7 @@
                     test=this;
                     button.append(spanDay);
                     
-                    //button.append(i);
+                   // button.append(i);
                     reserveDate.append(button);                            
                     dayClickEvent(button);
                     }

@@ -44,6 +44,7 @@ public class UserReserveVO {
 	private Integer student;
 	private Integer normal;
 	private Integer old;
+	private Integer reserve_myPoint;
 	
 
 	
