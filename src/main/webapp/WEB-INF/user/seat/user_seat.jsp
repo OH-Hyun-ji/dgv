@@ -512,10 +512,15 @@
 	        	
 	        })   
 	        $("#pointBtn").on('click',function(){
+	        	alert("쿠폰적용");
+	        	//myRemainPoint = 잔여포인트
+	        	//userPointUse = 사용할 포인트
+	        	//pointDiscount = 할인금액
+	        	// reservationPrice = 전체 금액
 	        //	console.log("적용중!!! : "+ $("#userPointUse").val())
-	        	var myPoint = $("#userPointUse").val()
-	        	const reservationPrice = $("#reservePrice").val()
-	        	var pointDiscount = reservationPrice-myPoint;
+	        	var myPoint = $("#userPointUse").val() 
+	        	const reservationPrice = $("#reservePrice").val() 
+	        	var pointDiscount = reservationPrice-myPoint; // 할인금액
 	        	const myRemainPoint =$("#myRemainPoint").val()
 	        	var changeMyPoint = myRemainPoint-myPoint
 	        	
@@ -526,7 +531,15 @@
 	        	$("#couponTotalPrice").val(pointDiscount.toLocaleString('ko-KR')+"원")
 	        	$("#result-total-money").val(pointDiscount.toLocaleString('ko-KR')+"원")
 	        	
-	        	
+	        	if(myPoint > myRemainPoint){ //입력값이 사용가능 포인트보다 클 때
+	        		myPoint = myRemainPoint;
+	        		alert("포인트를 초과하셨습니다");
+	        	}
+	        	if(myPoint > reservationPrice){ //사용할 포인트가 결제금액보다 클 때
+	        		myPoing = reservationPrice;
+	        		alert("결제 금액보다 사용한 포인트가 더 많습니다.");
+	        		
+	        	}
 	        })
 	    	console.log(basicNum)
 	    	const row = ${row}

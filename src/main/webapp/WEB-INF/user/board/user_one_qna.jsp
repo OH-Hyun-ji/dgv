@@ -26,12 +26,7 @@
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
    crossorigin="anonymous"></script>
-<script type="text/javascript">
-<<<<<<< HEAD
-	</script>
-=======
-   </script>
->>>>>>> cef9998a67ff56ba4203e3ad1623bc9ee2fbf873
+
 <style type="text/css">
 
 table.myPage-table {
@@ -45,6 +40,9 @@ td {
     box-sizing: border-box;
     padding-top: 6px;
     border-right: 1px solid #8080807a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 th {
    box-sizing: border-box;
