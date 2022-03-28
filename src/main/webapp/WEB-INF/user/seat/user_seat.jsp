@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/png" sizes="192x192"  href="${pageContext.request.contextPath }/resources/images/banana_real.png">
 <meta charset="UTF-8">
 <title>좌석배치</title>
 	<meta charset="UTF-8">
@@ -124,15 +126,19 @@
 		                  </div>
 		                  <div class="point-select">
 		                  	<label class="remain-point">잔여포인트 : </label> 
-		                  	<input id="myRemainPoint" value="${userPoint } p" readonly="readonly">
-		                  	<c:if test="${userPoint <10000 }">
-		                  		<input id="userPointText" value="10,000p 부터 사용가능" readonly="readonly">
-		                  	</c:if>	
-		                  	<c:if test="${userPoint >=10000 }">
-		                  		<input id="userPointUse" placeholder="1p단위부터 사용가능">
-		                  		<button id="pointBtn">포인트사용</button>
-		                  	</c:if>
-		                  
+		                  	<input id="myRemainPoint" value="${userPoint}" readonly="readonly">
+		                  	<c:choose>
+			                  	<c:when test="${empty userPoint ||userPoint <10000 }">
+			                  		<input id="userPointText" value="10,000p 부터 사용가능" readonly="readonly">
+			                  	</c:when>	
+			                  	<c:otherwise>
+			                  		<input id="userPointUse" placeholder="1p단위부터 사용가능" value="0">
+			                  		<div style="display: flex;width: 195px;">
+				                  		<button id="pointBtn">포인트사용</button>
+				                  		<button id="pointResetBtn">포인트되돌리기</button>	
+			                  		</div>		                  		
+			                  	</c:otherwise>
+		                  </c:choose>
 		                  </div>
                 		 </div>
                         </div>
@@ -214,10 +220,12 @@
 			<input type="hidden" name="movie_time_start" id="movieStartTime" value=" ${time}">
 			<input type="hidden" name="theater_code" id="theaterCode" value="${theaterList.theater_code }">
 			<input type="hidden" name="seat_reservation" id="reserveSeat" >
-			<input type="hidden" name="reserve_basic" id="reserveBasic">
-			<input type="hidden" name="reserve_student" id="reserveStudent">
-			<input type="hidden" name="reserve_old" id="reserveOld"> 
+			<input type="hidden" name="reserve_basic" id="reserveBasic" value="0">
+			<input type="hidden" name="reserve_student" id="reserveStudent" value="0">
+			<input type="hidden" name="reserve_old" id="reserveOld" value="0"> 
 			<input type="hidden" name="reserve_price" id="reservePrice">
+			<input type="hidden" name="reserve_myPoint" id="myRemainPoint" value="">
+			<input type="hidden"  id="fixReservePrice">
 			<input type="hidden" name="reserve_movie_date" id="movieDate" value="${date}">
 			<input type="hidden" name="user_id" id="userId" value="${userVo.user_id }"> 
 			<input type="hidden" name="user_name" id="userName" value="${userVo.user_name }"> 
@@ -261,6 +269,7 @@
 				var userPhone = $("#userPhone").val()			
 				var reservePrice = $("#reservePrice").val()
 				var movieDate = $("#movieDate").val()
+				var myPoint  =	$("#myRemainPoint").val()
 				console.log("reservePrice  =>  "+reservePrice)
 				
 // 				alert("결제버튼 클릭")
@@ -304,7 +313,8 @@
 				                	"reserve_apply_num": rsp.apply_num,
 				                	"reserve_merchant_uid":rsp.merchant_uid,
 				                	"reserve_method":rsp.pay_method,
-				                	"reserve_movie_date":movieDate
+				                	"reserve_movie_date":movieDate,
+				                	"reserve_myPoint":myPoint
 				                }
 					            	$.ajax({
 					            		method:"POST",
@@ -317,8 +327,8 @@
 					            				location.href="userReserveResult.do?reserve_merchant_uid="+rsp.merchant_uid
 					            			}
 					            		},
-					            		error:function(){
-					            			console.log("통신실패")
+					            		error:function(e){
+					            			console.log("통신실패"+e)
 					            		}
 					            		
 					            	}) //close ajax
@@ -456,6 +466,7 @@
 	                      	        	$("#reserveStudent").val()
 										$("#reserveOld").val()
 	                                    $("#reservePrice").val(totalMoney)
+	                                    $("#fixReservePrice").val(totalMoney)
 	                 $("#couponTotalPrice").val(totalMoney.toLocaleString('ko-KR')+"원")
 	        		$("#result-total-money").val(totalMoney.toLocaleString('ko-KR')+"원")
 	        		
@@ -511,7 +522,17 @@
 	        	}
 	        	
 	        })   
+	        function getDigit(num){
+	        	num = num.toString()
+	        	var i =0;
+	        	while(num[i]){
+	        		i++;
+	        	};
+	        	return i
+	        	
+	        }
 	        $("#pointBtn").on('click',function(){
+
 	        	alert("쿠폰적용");
 	        	//myRemainPoint = 잔여포인트
 	        	//userPointUse = 사용할 포인트
@@ -523,7 +544,54 @@
 	        	var pointDiscount = reservationPrice-myPoint; // 할인금액
 	        	const myRemainPoint =$("#myRemainPoint").val()
 	        	var changeMyPoint = myRemainPoint-myPoint
-	        	
+
+	        	//console.log("길이 : "+${userPoint}.length)
+	        	const num = getDigit(${userPoint})
+	        	console.log("getDigit(${userPoint}) " +num)
+	        	const basicP = $("#reserveBasic").val()
+	        	console.log("DFDFDF : "+basicP)
+		        const studentP =  $("#reserveStudent").val()
+				const reserveP = $("#reserveOld").val()
+				const allPeopleTotalCount =  parseInt(basicP)+parseInt(studentP)+parseInt(reserveP)
+				console.log("allPeopleTotalCount :"+parseInt(allPeopleTotalCount))
+	        	if(allPeopleTotalCount != 0){
+	        		const userUse = $("#userPointUse").val()
+	        		const fixReservePrice = $("#fixReservePrice").val()
+	        		const reservationPrice = $("#reservePrice").val()
+		        	if(parseInt(userUse) != ""){
+			        //	console.log("적용중!!! : "+ $("#userPointUse").val())
+			        	const myPoint = $("#userPointUse").val()
+			        	var regExp = /^[0-9]+$/;
+			        	$("#reservePrice").val(fixReservePrice)
+			        	if(myPoint.substring(0,1) == "0" || !regExp.test(myPoint) || getDigit(parseInt(userUse)) > num ){
+			        		alert("똑바로 입력해라 죽는다 ㅡㅡ")
+			        	}else{
+			        		
+				        	const pointDiscount = parseInt(reservationPrice)-parseInt(myPoint);
+				        	console.log("reservationPrice : " +reservationPrice)
+				        	
+				        	console.log("myPoint : "+myPoint)
+				        	const myRemainPoint =$("#myRemainPoint").val()
+				        	const changeMyPoint = parseInt(myRemainPoint)-parseInt(myPoint)
+				        	$("#reservePrice").val(pointDiscount)
+				        	console.log("changeMyPoint :" + changeMyPoint)
+				        	$("#myRemainPoint").val(changeMyPoint)
+				        	console.log("reservationPrice1111 : " +reservationPrice)
+				        	console.log("myPoint1111 : " +myPoint)
+				        	
+				        	console.log("pointDiscount"+pointDiscount)
+				        	
+				        	
+				        	$("#couponTotalPrice").val(pointDiscount.toLocaleString('ko-KR')+"원")
+				        	$("#result-total-money").val(pointDiscount.toLocaleString('ko-KR')+"원")
+			        	}
+		        	}else{
+		        		alert("사용할 포인트를 입력해주세요!")
+		        	}
+	        	}else{
+	        		alert("인원 수를 먼저 선택해주세요 ")
+	        	}
+
 	        	console.log("changeMyPoint :" + changeMyPoint)
 	        	
 	        	console.log("pointDiscount"+pointDiscount)
@@ -540,6 +608,19 @@
 	        		alert("결제 금액보다 사용한 포인트가 더 많습니다.");
 	        		
 	        	}
+
+	        })
+	        $("#pointResetBtn").on('click',function(){
+	        	const fixReservePrice = $("#fixReservePrice").val()
+	        	console.log("$(#reservePrice).val(parseInt(fixReservePrice)) : "+$("#reservePrice").val(parseInt(fixReservePrice)))
+	        	console.log("@@@@@@@@@@   " + $("#reservePrice").val())
+	        	$("#reservePrice").val(fixReservePrice+"원")
+	        	$("#myRemainPoint").val(${userPoint})
+	        	$("#userPointUse").val(0)
+	        	$("#couponTotalPrice").val(parseInt(fixReservePrice).toLocaleString('ko-KR')+"원")
+	        	$("#reservePrice").val(fixReservePrice)
+	        	$("#result-total-money").val(parseInt(fixReservePrice).toLocaleString('ko-KR')+"원")	
+
 	        })
 	    	console.log(basicNum)
 	    	const row = ${row}

@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/png" sizes="192x192"  href="${pageContext.request.contextPath }/resources/images/banana_real.png">
 <meta charset="UTF-8">
 <title>예매</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -625,7 +627,8 @@
              const year = date.getFullYear();
              const month = date.getMonth();
              
-             for (i = date.getDate(); i <= lastDay.getDate(); i++) {                          
+             for (let i = date.getDate(); i <= lastDay.getDate(); i++) {        
+            	 
                    const button = document.createElement("button");
                
                    const spanWeekOfDay = document.createElement("span");
@@ -654,7 +657,7 @@
                     test=this;
                     button.append(spanDay);
                     
-                    //button.append(i);
+                   // button.append(i);
                     reserveDate.append(button);                            
                     dayClickEvent(button);
                     }

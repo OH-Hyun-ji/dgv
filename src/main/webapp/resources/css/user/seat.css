@@ -370,3 +370,6 @@ input#result-total-money {
     font-size: 16px;
     color: white;
 }
+button#pointResetBtn {
+    margin-left: 3px;
+}

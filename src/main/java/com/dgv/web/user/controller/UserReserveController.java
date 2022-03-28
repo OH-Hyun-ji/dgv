@@ -191,29 +191,36 @@ public class UserReserveController {
 	
 	@PostMapping("/reserveSeat.do")
 	public String reserveSeat(@ModelAttribute("reserveVo") UserReserveVO vo ,Model model,UserReserveVO reserveVO,UserCouponUseVO couponVo, UserDetailVO deVO) {
-			//유저정보 
-			String userId =RequestUtils.getUserId("userID");
-			UserVO userVo = userService.MyUserList(userId);
-			model.addAttribute("userVo",userVo);
 			
-			//쿠폰 목록
-			couponVo.setUser_id(userId);
-			List<UserCouponUseVO> couponList = userBoardService.CouponUseSelect(couponVo);
-			
-			for(UserCouponUseVO coupon : couponList) {				
-				AdminCouponVO couponInfo = userBoardService.myCouponVo(coupon.getCoupon_num());
-				coupon.setCoupon_name(couponInfo.getCoupon_name());
-				coupon.setCoupon_discount(couponInfo.getCoupon_discount());
+			if(RequestUtils.getUserId("userID") != null) {
+				//유저정보 
+				String userId =RequestUtils.getUserId("userID");
+				UserVO userVo = userService.MyUserList(userId);
+				model.addAttribute("userVo",userVo);
 				
+				//쿠폰 목록
+				couponVo.setUser_id(userId);
+				List<UserCouponUseVO> couponList = userBoardService.CouponUseSelect(couponVo);
+				
+				for(UserCouponUseVO coupon : couponList) {				
+					AdminCouponVO couponInfo = userBoardService.myCouponVo(coupon.getCoupon_num());
+					coupon.setCoupon_name(couponInfo.getCoupon_name());
+					coupon.setCoupon_discount(couponInfo.getCoupon_discount());
+					
+				}
+				model.addAttribute("couponList",couponList);
+				
+				//포인트
+				
+				deVO.setUser_num(userVo.getUser_num());
+			//	deVO.setUser_point(vo.getReserve_myPoint());
+				UserDetailVO detail = userBoardService.userPointSelect(deVO);
+				model.addAttribute("userPoint",detail.getUser_point());
+				
+			}else {
+				model.addAttribute("couponList","");
+				model.addAttribute("userPoint","");
 			}
-			model.addAttribute("couponList",couponList);
-			
-			//포인트 
-			deVO.setUser_num(userVo.getUser_num());
-			UserDetailVO userPoint = userBoardService.userPointSelect(deVO);
-			
-			model.addAttribute("userPoint",userPoint.getUser_point());
-			
 			//날짜
 			vo.setReserve_movie_date(vo.getReserve_date());
 			System.out.print("받아온 날짜 : "+ vo.getReserve_movie_date());
@@ -303,11 +310,24 @@ public class UserReserveController {
 	
 	@PostMapping("/userReservation.do")
 	@ResponseBody
-	public CommonResultDto userReservation(@RequestBody UserReserveVO reserveVo) {
-	
-		int num = userBoardService.userReserveInsert(reserveVo);
+	public CommonResultDto userReservation(@RequestBody UserReserveVO reserveVo ,UserDetailVO detailVo) {
 		
-		if(num ==0)
+		if(reserveVo.getUser_id() != null) {
+		//	String userId = RequestUtils.getUserId("userID");
+			UserVO userVo = userBoardService.userNumSelect(reserveVo.getUser_id());
+			detailVo.setUser_point(reserveVo.getReserve_myPoint());
+			detailVo.setUser_num(userVo.getUser_num());
+			
+			int pointupdate = userBoardService.userPointInsert(detailVo);
+			
+		}else {
+			System.out.println("??/엥??");
+		}
+		
+		
+		int num = userBoardService.userReserveInsert(reserveVo);
+		System.out.println("???잉이잉이  : "+num);
+		if(num ==0 )
 			return CommonResultDto.fail();
 		return CommonResultDto.success();
 	}
@@ -400,6 +420,7 @@ public class UserReserveController {
 			detailVo.setUser_num(rankPointUser.getUser_num());
 			UserDetailVO basicDetail = userBoardService.userPointSelect(detailVo);
 			
+			model.addAttribute("userPoint",basicDetail.getUser_point());
 			int realTotal = basicDetail.getUser_point()+total;
 			detailVo.setUser_point(realTotal);
 			

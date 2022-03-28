@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/png" sizes="192x192"  href="${pageContext.request.contextPath }/resources/images/banana_real.png">
 <title>Movie List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/button.css">
@@ -51,7 +53,7 @@
 		<div id="contents" class="">
             <div class="wrap-movie-chart">
                 <div class="tit-heading-wrap">
-                    <h3 style="margin-top: 1%;">영화목록</h3>
+                    <h3 style="margin-top: 1%;">무비차트</h3>
                     <div class="submenu">
                         <ul>
                             <li class="on">

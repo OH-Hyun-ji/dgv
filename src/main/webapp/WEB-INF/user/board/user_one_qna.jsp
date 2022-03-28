@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/png" sizes="192x192"  href="${pageContext.request.contextPath }/resources/images/banana_real.png">
 <title>My QNA</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1024" />
@@ -26,6 +28,11 @@
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
    crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript">
+</script>
 
 <style type="text/css">
 

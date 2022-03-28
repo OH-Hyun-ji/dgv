@@ -187,6 +187,7 @@ input#thisLogin {
 				</div>	
 			</form>
 		</div>
+		
 	</div>
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>
 </body>
