@@ -20,12 +20,12 @@
                                         </a>
                                         <ul>
                                             <li >
-                                                <a href="/myPage_coupon.do">DGV할인쿠폰</a>
+                                                <a href="/myPage_coupon.do">- DGV할인쿠폰</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li >
-                                        <a href="/myPage_event.do" title="현재선택">이벤트 참여내역
+                                        <a href="/myPage_event.do" >이벤트 참여내역
                                         </a>
                                     </li>
                                     <li >
@@ -33,7 +33,7 @@
                                         </a>
                                         <ul>
                                             <li >
-                                                <a href="/myPage_checkData.do">개인정보 변경</a>
+                                                <a href="/myPage_checkData.do">- 개인정보 변경</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -46,7 +46,7 @@
                                         </a>
                                         <ul>
                                             <li >
-                                                <a href="/myQna.do" style="padding-left: 26%;">1:1 문의</a>
+                                                <a href="/myQna.do" style="padding-left: 26%;">- 1:1 문의</a>
                                             </li>
                                         </ul>
                                     </li>

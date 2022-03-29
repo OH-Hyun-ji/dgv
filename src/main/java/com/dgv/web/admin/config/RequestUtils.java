@@ -43,6 +43,12 @@ public class RequestUtils {
 	public static String getRankEarn(final String rankEarn) {
 		return (String) RequestUtils.getSession().getAttribute("rankEarn");
 	}
+	public static String getCouponCount(final String couponCount) {
+		return (String) RequestUtils.getSession().getAttribute("couponCount");
+	}
+	public static String getPoint(final String string) {
+		return (String) RequestUtils.getSession().getAttribute("point");
+	}
 
 	
 	
@@ -64,11 +70,22 @@ public class RequestUtils {
 	public static void setRankImg(final String rankImg) {
 		RequestUtils.getSession().setAttribute("rankImg",rankImg);
 	}
+	
 	public static void setAdminId(final String adminId) {
 		RequestUtils.getSession().setAttribute("adminId",adminId);
 	}
+	
 	public static void setRankEarn(final String rankEarn) {
 		RequestUtils.getSession().setAttribute("rankEarn",rankEarn);
 	}
+	
+	public static void setCouponCount(final String couponCount) {
+		RequestUtils.getSession().setAttribute("couponCount",couponCount);
+	}
+	
+	public static void setPoint(final String point) {
+		RequestUtils.getSession().setAttribute("point",point);
+	}
+
 
 }

@@ -25,6 +25,7 @@ import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.CommonResultDto;
+import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserVO;
@@ -40,6 +41,9 @@ public class UserLoginController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private UserBoardService userBoardService;
+	
 	@Autowired
 	private AdminUserService adminUserService;
 	
@@ -91,8 +95,13 @@ public class UserLoginController {
 					RequestUtils.setRankImg("0");
 					RequestUtils.setRankName("0");
 				}
+				//포인트 
+				String formatPoint = String.valueOf(detailVo.getUser_point());
+				RequestUtils.setPoint(formatPoint);
 				
-	
+				String formatCouponCount = String.valueOf(userBoardService.myCouponCount(vo.getUser_id()));
+				RequestUtils.setCouponCount(formatCouponCount);
+				
 				// session.setAttribute("userID",vo.getUser_id());
 				System.out.println(jsonObject);
 			} else {
@@ -167,7 +176,7 @@ public class UserLoginController {
 	public String userLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return "redirect:loginForm.do";
+		return "redirect:dgvMain.do";
 	}
 
 	// 아이디 찾기
@@ -219,6 +228,7 @@ public class UserLoginController {
 		
 		if(numCheck == 0)
 			return CommonResultDto.fail();
+		count =0;
 		return CommonResultDto.success();
 	}
 	

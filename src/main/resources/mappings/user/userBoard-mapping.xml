@@ -25,7 +25,7 @@
 
 
 	<select id="NoticeList" resultType="AdminNoticeVO">
-		SELECT * FROM dgv_notice
+		SELECT * FROM dgv_notice order by reg_date asc
 	</select>
 	
 	<select id="UserQnaOneList" resultType="UserInquiryVO">
@@ -72,17 +72,19 @@
 		<![CDATA[
 			select*from(
 					select *,(row_number() over()) as rn1 from (
-								select *,(row_number() over()) as rn from dgv_community)as foo where rn <= #{pageNum} * #{amount})
-											 as fd where rn1 > (#{pageNum}-1) * #{amount}  
-		]]>								
+								select *,(row_number() over()) as rn from dgv_community)as foo where rn <= #{pageNum} * #{amount}  ORDER BY write_date desc)
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}
+		]]>							
+											
+							
 												<if test="searchType=='community_title' and keyword != null and keyword !=''">
-													AND community_title like '%'||#{keyword}||'%' ORDER BY community_code asc
+													AND community_title like '%'||#{keyword}||'%' ORDER BY write_date desc
 												</if>
 												<if test="searchType=='community_text' and keyword != null and keyword !=''">
-													AND community_text like '%'||#{keyword}||'%' ORDER BY community_code asc
+													AND community_text like '%'||#{keyword}||'%' ORDER BY write_date desc
 												</if>
 												<if test="searchType=='user_id' and keyword != null and keyword !=''">
-													AND user_id like '%'||#{keyword}||'%' ORDER BY community_code asc
+													AND user_id like '%'||#{keyword}||'%' ORDER BY write_date desc
 												</if>
 											
 		
@@ -198,7 +200,7 @@
 	</select>
 	
 	<select id="participantList" resultType="AdminParUserEventVO">
-		SELECT * FROM par_user_event WHERE user_num =#{user_num}
+		SELECT * FROM par_user_event WHERE user_num =#{user_num}  order by event_code asc
 	</select>
 	
 	<select id="eventNumVo" resultType="AdminEventVO">
@@ -207,5 +209,30 @@
 	
 	<select id="movieDetailChart" resultType="UserReserveVO" >
 		select sum(reserve_student) as student ,sum(reserve_basic) as normal ,sum(reserve_old) as old  from movie_reserve where movie_num= #{movie_num};
+	</select>
+	
+	<select id="moviePeopleTotalCount" resultType="int">
+		select sum (a1 +a2 +a3) as total_people from(
+		select movie_num , sum(reserve_basic) as a1, sum(reserve_old) as a2, sum(reserve_student) as a3
+		from movie_reserve
+		group by movie_num
+		having movie_num = movie_num)as foo 
+	</select>
+	
+	<select id="myPagePaging" resultType="UserReserveVO" >
+		<![CDATA[
+			select*from(
+						select *,(row_number() over()) as rn1 from (
+											select *,(row_number() over()) as rn from  movie_reserve where  user_id= #{user_id})as foo where rn <= #{pageNum} * #{amount} )
+														 as fd where rn1 > (#{pageNum}-1) * #{amount} order by reserve_date desc
+		]]>
+	</select>
+	
+	<select id="myReserveCount" resultType="int">
+		select count(*) from movie_reserve where  user_id= #{user_id}		
+	</select>
+	
+	<select id="userFaqTotalList" resultType="UserFAQVO">		
+		select * from dgv_faq order by faq_kind_num asc 
 	</select>
 </mapper>

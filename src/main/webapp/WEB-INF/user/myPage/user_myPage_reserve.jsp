@@ -233,6 +233,25 @@
 									</c:forEach>						
 								</tbody>
 							</table>
+									<div class="page-info-wrap">
+								<div class="page-info-area">
+									<ul id="pageInfo" class="pageInfo">
+										<c:if test="${pageMake.prev}">
+											<li class="pageInfo-btn previous"><a
+												href="${pageMake.startPage-1}">Previous</a></li>
+										</c:if>
+										<c:forEach var="num" begin="${pageMake.startPage}"
+											end="${pageMake.endPage}">
+											<li class="pageInfo_btn ${pageMake.page.pageNum == num ? "active":""}"><a
+												href="/myPage_reserve.do?pageNum=${num }&amount=${pageMake.page.amount }">${num}</a></li>
+										</c:forEach>
+										<c:if test="${pageMake.next}">
+											<li class="pageInfo_btn next"><a
+												href="${pageMake.endPage + 1}">Next</a></li>
+										</c:if>
+									</ul>
+								</div>
+							</div>
                   </div>
                  	<!-- swiper -->
 				<!-- 1번 -->

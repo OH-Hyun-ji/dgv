@@ -33,6 +33,8 @@ import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.MyPagePaging;
+import com.dgv.web.user.vo.MyPagePagingVO;
 import com.dgv.web.user.vo.UserCouponUseVO;
 import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserMapVO;
@@ -48,6 +50,7 @@ public class UserMyPageController {
    
    @Autowired
    private UserService userService;
+   
    @Autowired
    private UserBoardService userBoardService;
    
@@ -61,6 +64,11 @@ public class UserMyPageController {
    private AdminUserService adminUserService;
    
   
+   @RequestMapping("/myEventJoinDetail.do")
+   public String myEventJoinDetail() {
+	   return "/myPage/user_myPage_event_detail";
+   }
+   
    @PostMapping("/userMyPageTopInfo.do")
    @ResponseBody
    public String userMyPageTopInfo(@RequestBody UserVO vo,Model model) {
@@ -100,10 +108,12 @@ public class UserMyPageController {
    }
    //마이페이지 나의 문의 내역
    @RequestMapping("/myPage.do")
-   public String myPage(Model model,UserVO vo) {
+   public String myPage(Model model,UserVO vo , MyPagePaging page) {
 	   
 
 		String id = RequestUtils.getUserId("userID");
+		
+		int total= userBoardService.myReserveCount(id);
 		//user_num  추출
 		vo.setUser_id(id);
 		UserVO user = userService.login(vo);
@@ -111,7 +121,9 @@ public class UserMyPageController {
 		System.out.println("id "+id);
 		// 예매내역 뽑기
 		UserVO userVo=  adminUserService.userNumList(user.getUser_num());
-		List<UserReserveVO> myReserveList = adminMovieService.userReserveList(userVo.getUser_id());
+//		List<UserReserveVO> myReserveList = adminMovieService.userReserveList(userVo.getUser_id());
+		page.setUser_id(id);
+		List<UserReserveVO> myReserveList = userBoardService.myPagePaging(page);
 		List<AdminMovieVO> movieList = adminMovieService.movieList();
 		for(AdminMovieVO movieVo:movieList ) {
 			for(UserReserveVO reserveVo :myReserveList ) {
@@ -122,13 +134,13 @@ public class UserMyPageController {
 				}				
 			}
 		}
+		//예매 페이징
+		MyPagePagingVO pageMake = new MyPagePagingVO(total, page);
+		model.addAttribute("pageMake",pageMake);
+		
 		//나의 이벤트 내역 
-		List<AdminParUserEventVO> parEventList = userBoardService.participantList(user.getUser_num());
-		for(AdminParUserEventVO parVo : parEventList) {
-			AdminEventVO eventVo = userBoardService.eventNumVo(parVo.getEvent_code());
-			parVo.setEvent_title(eventVo.getEvent_title());
-			parVo.setEvent_end_date(eventVo.getEnd_date());
-		}
+		List<AdminEventVO> parEventList = userBoardService.myJoinEvent(user.getUser_num());
+	
 		
 		model.addAttribute("parEventList",parEventList);
 		model.addAttribute("myReserveList",myReserveList);
@@ -139,22 +151,41 @@ public class UserMyPageController {
    }
    
    @RequestMapping("/myPage_reserve.do")
-   public String myPage_reserve(Model model) {
-	   	String userId=RequestUtils.getUserId("userID");
-	     List<UserReserveVO> userReserveList = userBoardService.userReserveMyPage(userId);
+   public String myPage_reserve(Model model,UserVO vo, MyPagePaging page) {
+	   	String id =RequestUtils.getUserId("userID");
+		int total= userBoardService.myReserveCount(id);
+	
+		//user_num  추출
+		vo.setUser_id(id);
+		UserVO user = userService.login(vo);
+		
+		System.out.println("id "+id);
+		// 예매내역 뽑기
+//		UserVO userVo=  adminUserService.userNumList(user.getUser_num());
+//		List<UserReserveVO> myReserveList = adminMovieService.userReserveList(userVo.getUser_id());
+		page.setUser_id(id);
+		List<UserReserveVO> myReserveList = userBoardService.myPagePaging(page);
+		List<AdminMovieVO> movieList = adminMovieService.movieList();
 	  
 	     DecimalFormat formatter =new DecimalFormat("###,###,###");
 	     
-	     for(UserReserveVO userReserveVO :userReserveList) {
-	    	 AdminMovieVO movieVo = userBoardService.movieList(userReserveVO.getMovie_num());
-	    	 userReserveVO.setMovie_title(movieVo.getMovie_title());
-	    	 String price = formatter.format(userReserveVO.getReserve_price());
-	    	 userReserveVO.setFomatter_price(price);
-	     }
-	     model.addAttribute("userReserveList",userReserveList);
+	     for(AdminMovieVO movieVo:movieList ) {
+				for(UserReserveVO reserveVo :myReserveList ) {
+					if(movieVo.getMovie_num() == reserveVo.getMovie_num()) {
+						UserMapVO mapVo = userBoardService.mapList(reserveVo.getRegion_code());
+						reserveVo.setMovie_title(movieVo.getMovie_title());
+						reserveVo.setTheater_name(mapVo.getMap_name());		
+				    	String price = formatter.format(reserveVo.getReserve_price());
+				    	reserveVo.setFomatter_price(price);
+
+					}				
+				}
+			}
+	     MyPagePagingVO pageMake = new MyPagePagingVO(total, page);
 	     
-	     List<AdminMovieVO> movieList = adminMovieService.movieList();
-	  
+	     model.addAttribute("pageMake",pageMake);
+	     model.addAttribute("userReserveList",myReserveList);
+  
 	     for(AdminMovieVO movieVo:movieList) {
 	    	 AdminAgeVO ageVO = adminMovieService.ageListInfo(movieVo.getMovie_age_code());
 	    	 movieVo.setAge_img(ageVO.getMovie_age_img());
@@ -172,7 +203,6 @@ public class UserMyPageController {
 	   
 	   return "/myPage/user_myPage_couponDetail";
    }
-   
    
    //나의 쿠폰 목록
    @RequestMapping("/myPage_coupon.do")
@@ -192,7 +222,21 @@ public class UserMyPageController {
    }
    
    @RequestMapping("/myPage_event.do")
-   public String myPage_event() {
+   public String myPage_event(Model model,UserVO vo ) {
+	   
+	   String id = RequestUtils.getUserId("userID");
+		vo.setUser_id(id);
+		
+		UserVO user = userService.login(vo);
+		List<AdminParUserEventVO> parEventList = userBoardService.participantList(user.getUser_num());
+		for(AdminParUserEventVO parVo : parEventList) {
+			AdminEventVO eventVo = userBoardService.eventNumVo(parVo.getEvent_code());
+			parVo.setEvent_title(eventVo.getEvent_title());
+			parVo.setEvent_end_date(eventVo.getEnd_date());
+			parVo.setEvent_status(eventVo.getEvent_status());
+		}
+		
+		model.addAttribute("parEventList",parEventList);
       return "/myPage/user_myPage_event";
    }
    
@@ -203,36 +247,46 @@ public class UserMyPageController {
    }
    
    @RequestMapping("/myPage_userMovie.do")
-   public String myPage_userMovie(Model model) {
+   public String myPage_userMovie(Model model,MyPagePaging page, UserVO vo) {
+	   
 	   String userId = RequestUtils.getUserId("userID");
+	   int totalCount= userBoardService.myReserveCount(userId);
+				
+		vo.setUser_id(userId);
+		UserVO user = userService.login(vo);
+		
+	//   List<UserReserveVO> myMovieList = userBoardService.userIdMovieReserveList(userId);
+	   page.setUser_id(userId);
+	   List<UserReserveVO> myMovieList = userBoardService.myPagePaging(page);
+	   List<AdminMovieVO> movieList = adminMovieService.movieList();
 	   
-	   List<UserReserveVO> myMovieList = userBoardService.userIdMovieReserveList(userId);
-	   
-	   for(UserReserveVO reserveVo : myMovieList) {
-		   AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
-		   reserveVo.setMovie_title(movieVo.getMovie_title());
-		   reserveVo.setMovie_title_en(movieVo.getMovie_title_en());
-		   reserveVo.setMovie_img(movieVo.getMovie_img()); 
-		   
-		   AdminTheaterVO theaterVo = userBoardService.theaterListInfo(reserveVo.getTheater_code());
-		   reserveVo.setTheater_name(theaterVo.getTheater_name());
-		   
-		   UserMapVO mapVo = userBoardService.mapList(theaterVo.getRegion_code());
-		   reserveVo.setRegion_name(mapVo.getMap_name());
-		   
-		   int total = reserveVo.getReserve_basic()+reserveVo.getReserve_student()+reserveVo.getReserve_old();
-		   reserveVo.setTotal_people(total);
-		    
-		   AdminAgeVO ageVo = adminMovieService.ageListInfo(movieVo.getMovie_age_code());
-		   reserveVo.setAge_name(ageVo.getMovie_age_name());
+	   for(AdminMovieVO movieVo : movieList) {
+		   for(UserReserveVO reserveVo : myMovieList) {
+			    if(movieVo.getMovie_num()==reserveVo.getMovie_num()) {
+					   reserveVo.setMovie_title(movieVo.getMovie_title());
+					   reserveVo.setMovie_title_en(movieVo.getMovie_title_en());
+					   reserveVo.setMovie_img(movieVo.getMovie_img()); 
+					   
+					   AdminTheaterVO theaterVo = userBoardService.theaterListInfo(reserveVo.getTheater_code());
+					   reserveVo.setTheater_name(theaterVo.getTheater_name());
+					   
+					   UserMapVO mapVo = userBoardService.mapList(theaterVo.getRegion_code());
+					   reserveVo.setRegion_name(mapVo.getMap_name());
+					   
+					   int total = reserveVo.getReserve_basic()+reserveVo.getReserve_student()+reserveVo.getReserve_old();
+					   reserveVo.setTotal_people(total);
+					    
+					   AdminAgeVO ageVo = adminMovieService.ageListInfo(movieVo.getMovie_age_code());
+					   reserveVo.setAge_name(ageVo.getMovie_age_name());
+			    }
+		    }
 	   }
-	   
-	  
-	   
-	   
-	   
+	   MyPagePagingVO pageMake = new MyPagePagingVO(totalCount, page);
+	     
+	   model.addAttribute("pageMake",pageMake);
+
 	   model.addAttribute("myMovieList",myMovieList);
-	   model.addAttribute("myMovieListCount",myMovieList.size());
+	   model.addAttribute("myMovieListCount",totalCount);
 	   
       return "/myPage/user_myPage_userMovie";
    }

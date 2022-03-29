@@ -38,8 +38,6 @@ public class UserMainController {
 					movie.setAge_img(age.getMovie_age_img());
 				}
 			}
-			System.out.println("???" + movie.getAge_img());
-			System.out.println("???" + movie.getAge_img());
 		}
 		
 		//예매율
@@ -48,11 +46,10 @@ public class UserMainController {
 		for(UserReserveVO reserveVo : reserveList) {
 			for(AdminMovieVO movieVo : movieList) {
 				if(reserveVo.getMovie_num()==movieVo.getMovie_num()) {				
-					int result = (int) (reserveVo.getTotal_people()/total*100);
-					System.out.println("result : "+result);
-					double resultPercent = result*0.01;
-					System.out.println("resultPercent : "+ resultPercent);
-					movieVo.setReservationRate(resultPercent);
+					double totalPeople =  reserveVo.getTotal_people();
+					double result =totalPeople/total*100;
+					String totalResult = String.format("%.1f", result);
+					movieVo.setReservationRate(totalResult);
 				}
 			}
 		}

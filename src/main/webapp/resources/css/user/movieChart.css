@@ -311,12 +311,7 @@ div {
 .tit-heading-wrap > .submenu > ul > li:first-child {
     margin-left: 0;
 }
-.tit-heading-wrap > .submenu > ul > li > a:focus,
-.tit-heading-wrap > .submenu > ul > li > a:hover,
-.tit-heading-wrap > .submenu > ul > li.on > a {
-    background: url("https://img.cgv.co.kr/r2014/images/common/ico/ico_arrow07.png") no-repeat 0 3px;
-    color: #fb4357;
-}
+
 .tit-heading-wrap > .submenu > ul > li {
     float: left;
     margin-left: 15px;
@@ -396,7 +391,7 @@ div[class^="sect-"] {
     float: left;
     width: 197px;
     margin-left: 64px;
-    padding-bottom: 30px;
+    padding-bottom: 37px
 }
 [class|="sect"][class*="chart"] .box-image {
     position: relative;
@@ -572,4 +567,24 @@ a:hover {
 .active{
 	background-color: #9191917a;
     border-radius: 35px;
+}
+.tit-heading-wrap > .submenu > ul > li > a:focus,
+.tit-heading-wrap > .submenu > ul > li > a:hover,
+.tit-heading-wrap > .submenu > ul > li.on > a {
+    background: url("https://dgvworld.s3.ap-northeast-2.amazonaws.com/ico_arrow07.png") no-repeat 0 3px;
+    color: #fb4357;
+}
+.score {
+    font-size: 13px;
+    color: #db4a00;
+}
+.box-contents {
+    text-align: center;
+}
+strong.title {
+    font-weight: bold;
+}
+strong.date-style {
+    font-size: 15px;
+    color: #bf640b;
 }

@@ -2,6 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="UserMovieDAO">
+<resultMap type="AdminParUserEventVO" id="AdminParUserEventVO">
+	<result column="par_code" property="par_code" jdbcType="INTEGER"/>
+	<result column="user_num" property="user_num" jdbcType="INTEGER"/>
+	<result column="event_code" property="event_code" jdbcType="INTEGER"/>
+	<result column="par_date" property="par_date" jdbcType="VARCHAR"/>
+</resultMap>
+<resultMap type="AdminEventVO" id="AdminEventVO">
+	<result column="event_code" property="event_code" jdbcType="INTEGER"/>
+	<result column="event_title" property="event_title" jdbcType="VARCHAR"/>
+	<result column="event_text" property="event_text" jdbcType="VARCHAR"/>
+	<result column="start_date" property="start_date" jdbcType="VARCHAR"/>
+	<result column="end_date" property="end_date" jdbcType="VARCHAR"/>
+	<result column="reg_id" property="reg_id" jdbcType="VARCHAR"/>
+	<result column="reg_date" property="reg_date" jdbcType="VARCHAR"/>
+	<result column="event_status" property="event_status" jdbcType="VARCHAR"/>
+	<result column="event_winner" property="event_winner" jdbcType="VARCHAR"/>
+	<result column="event_img" property="event_img" jdbcType="VARCHAR"/>
+	<result column="event_text_img" property="event_text_img" jdbcType="VARCHAR"/>
+	<result column="event_check" property="event_check" jdbcType="VARCHAR"/>
+	<collection property="parUserEvent"  resultMap="AdminParUserEventVO" ></collection>
+</resultMap>
 
 	<select id="TheaterList" resultType="AdminCityVO">
 		SELECT * FROM dgv_city_info 
@@ -74,9 +95,9 @@
 	
 	<insert id="userReserveInsert" parameterType="UserReserveVO" >
 		INSERT INTO movie_reserve(reserve_code,movie_num,region_code,reserve_date,movie_time_start,theater_code,seat_reservation,
-		reserve_basic,reserve_student,reserve_old,reserve_price,user_id,reserve_imp_uid,reserve_apply_num,reserve_merchant_uid,reserve_method,reserve_movie_date)
+		reserve_basic,reserve_student,reserve_old,reserve_price,user_id,reserve_imp_uid,reserve_apply_num,reserve_merchant_uid,reserve_method,reserve_movie_date,use_point,coupon_discount)
 		VALUES(DEFAULT,#{movie_num},#{region_code},current_date,#{movie_time_start},#{theater_code},#{seat_reservation},
-		#{reserve_basic},#{reserve_student},#{reserve_old},#{reserve_price},#{user_id},#{reserve_imp_uid},#{reserve_apply_num},#{reserve_merchant_uid},#{reserve_method},#{reserve_movie_date})
+		#{reserve_basic},#{reserve_student},#{reserve_old},#{reserve_price},#{user_id},#{reserve_imp_uid},#{reserve_apply_num},#{reserve_merchant_uid},#{reserve_method},#{reserve_movie_date},#{use_point},#{coupon_discount})
 		
 	</insert>
 	<select id="userReserveMyPage" resultType="UserReserveVO">
@@ -119,6 +140,50 @@
 	</update>
 	<select id="userPointSelect" resultType="UserDetailVO">
 		SELECT * FROM user_info_detail WHERE user_num=#{user_num}
+	</select>
+	
+	<select id="userCouponList" resultType="UserCouponUseVO">
+	select foo1.coupon_discount, dc1.coupon_num from (
+		select foo.coupon_discount  from (
+										select * from coupon_use cu 
+												inner join dgv_coupon dc 
+												on cu.coupon_num = dc.coupon_num )as foo 
+												where foo.user_id=#{user_id} and foo.cu_status ='true'
+												group by foo.coupon_discount)as foo1 
+																					inner join  dgv_coupon dc1
+																					on foo1.coupon_discount = dc1.coupon_discount
+																					group by foo1.coupon_discount, dc1.coupon_num
+	</select>
+	
+	<update id="usePointReset">
+		UPDATE movie_reserve SET use_point=0 WHERE reserve_imp_uid =#{Reserve_imp_uid}
+	</update>
+	
+	<select id="couponCancel" resultType="AdminCouponVO">
+		SELECT * FROM dgv_coupon WHERE coupon_discount = #{coupon_discount}
+	</select>
+	
+	<select id="couponUseAbleList" resultType="UserCouponUseVO">
+		select * from coupon_use where user_id=#{user_id} and coupon_num=#{coupon_num} and cu_status='true' order by cu_code asc
+	</select>
+	<update id="couponUseFalse" >
+		UPDATE coupon_use SET cu_status='false' where cu_code=#{cu_code}
+	</update>
+	<update id="couponUseTrue" >
+		UPDATE coupon_use SET cu_status='true' where cu_code=#{cu_code}
+	</update>
+	
+	<select id="couponUseEnAbleList" resultType="UserCouponUseVO">
+		select * from coupon_use where user_id=#{user_id} and coupon_num=#{coupon_num} and cu_status='false' order by cu_code asc
+	</select>
+	
+	<select id="myJoinEvent" resultMap="AdminEventVO" parameterType="Integer">
+		SELECT * FROM  (
+							SELECT  *FROM dgv_event de 
+							FULL JOIN par_user_event pue
+							ON pue.event_code = de.event_code 
+							WHERE pue.user_num=#{user_num}) as foo 
+							ORDER BY par_code desc
 	</select>
 	
 </mapper>

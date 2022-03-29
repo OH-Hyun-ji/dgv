@@ -197,19 +197,15 @@ public class UserReserveController {
 				String userId =RequestUtils.getUserId("userID");
 				UserVO userVo = userService.MyUserList(userId);
 				model.addAttribute("userVo",userVo);
+
+				//쿠폰 
 				
-				//쿠폰 목록
-				couponVo.setUser_id(userId);
-				List<UserCouponUseVO> couponList = userBoardService.CouponUseSelect(couponVo);
-				
-				for(UserCouponUseVO coupon : couponList) {				
-					AdminCouponVO couponInfo = userBoardService.myCouponVo(coupon.getCoupon_num());
-					coupon.setCoupon_name(couponInfo.getCoupon_name());
-					coupon.setCoupon_discount(couponInfo.getCoupon_discount());
-					
+				List<UserCouponUseVO> couponList =userBoardService.userCouponList(userId);
+				for(UserCouponUseVO couponUseVo :couponList) {
+					AdminCouponVO adminCouponVo = adminMovieService.CouponNumSelect(couponUseVo.getCoupon_num());
+					couponUseVo.setCoupon_name(adminCouponVo.getCoupon_name());
 				}
 				model.addAttribute("couponList",couponList);
-				
 				//포인트
 				
 				deVO.setUser_num(userVo.getUser_num());
@@ -310,7 +306,9 @@ public class UserReserveController {
 	
 	@PostMapping("/userReservation.do")
 	@ResponseBody
-	public CommonResultDto userReservation(@RequestBody UserReserveVO reserveVo ,UserDetailVO detailVo) {
+	public CommonResultDto userReservation(@RequestBody UserReserveVO reserveVo ,UserDetailVO detailVo,AdminCouponVO couponVo, UserCouponUseVO cuVo) {
+		
+		
 		
 		if(reserveVo.getUser_id() != null) {
 		//	String userId = RequestUtils.getUserId("userID");
@@ -321,12 +319,34 @@ public class UserReserveController {
 			int pointupdate = userBoardService.userPointInsert(detailVo);
 			
 		}else {
-			System.out.println("??/엥??");
+		
+		}
+		if(reserveVo.getCoupon_discount() != 0) {
+			couponVo.setCoupon_discount(reserveVo.getCoupon_discount());
+			AdminCouponVO cvo = userBoardService.couponCancel(couponVo);
+			cuVo.setUser_id(reserveVo.getUser_id());
+			cuVo.setCoupon_num(cvo.getCoupon_num());
+			List<UserCouponUseVO> couponUseAbleList = userBoardService.couponUseAbleList(cuVo);
+			
+			int cuCode = 0;
+			int count =0;
+			for(UserCouponUseVO couponUseVo :couponUseAbleList ) {
+				cuCode += couponUseVo.getCu_code();
+				count++;
+				if(count <= 1) {
+					break;
+				}
+			}
+			int falseCheck = userBoardService.couponUseFalse(cuCode);
+			if(falseCheck ==0)
+				return CommonResultDto.fail();
+			
+			System.out.println("count : "+ count);
 		}
 		
 		
 		int num = userBoardService.userReserveInsert(reserveVo);
-		System.out.println("???잉이잉이  : "+num);
+		
 		if(num ==0 )
 			return CommonResultDto.fail();
 		return CommonResultDto.success();

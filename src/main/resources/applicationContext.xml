@@ -44,13 +44,7 @@
 	</bean>
 	
 	
-	<bean id="loginInterceptor" class="com.dgv.web.commons.interceptor.LoginInterceptor"/>
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/login/user_login"/>
-			<ref bean = "loginInterceptor"/>
-		</mvc:interceptor>
-	</mvc:interceptors> 
+
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	

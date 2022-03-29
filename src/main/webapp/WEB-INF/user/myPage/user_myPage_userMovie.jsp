@@ -23,7 +23,16 @@
 	    margin: 0;
 	    padding: 3px;
 	}
-
+	ul#pageInfo {
+	    display: flex;
+	    justify-content: center;
+	    margin-top: 1rem;
+	    margin-left: 6rem;
+	}
+	li.pageInfo_btn {
+	    margin-right: 1rem;
+	    font-size: 18px;
+	}
   </style>
 </head>
 
@@ -87,6 +96,11 @@
            		  <c:forEach var="myMovieList" items="${myMovieList}">
 	                <ul id="watched_list_container">
 	                  <li class="movie_info_82012">
+	                  <div class="close-btn">
+	                   <button type="button" data="390047546" class="btn-del" style="padding-top: 6px;">
+	                      	<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/btn_del_01.gif" >
+	                      </button>
+	                    </div>
 	                    <div class="article-movie-info">
 	                      <div class="box-image">
 	                        <a id="phototicket_popup_82012" title="포스터 크게 보기" href="#">
@@ -107,14 +121,31 @@
 	                        <p class="date">${myMovieList.reserve_date }</p>
 	                        <p class="theater">${myMovieList.region_name} ${myMovieList.theater_name } / ${myMovieList.total_people} 명</p>
 	                      </div>
-	                      <button type="button" data="390047546" class="btn-del">
-	                      	<img src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif" >
-	                      </button>
+	                     
 	                    </div>
 	                  </li>
 	                  
 	                </ul>
                 </c:forEach>
+                	<div class="page-info-wrap">
+								<div class="page-info-area">
+									<ul id="pageInfo" class="pageInfo">
+										<c:if test="${pageMake.prev}">
+											<li class="pageInfo-btn previous"><a
+												href="${pageMake.startPage-1}">Previous</a></li>
+										</c:if>
+										<c:forEach var="num" begin="${pageMake.startPage}"
+											end="${pageMake.endPage}">
+											<li class="pageInfo_btn ${pageMake.page.pageNum == num ? "active":""}"><a
+												href="/myPage_userMovie.do?pageNum=${num }&amount=${pageMake.page.amount }">${num}</a></li>
+										</c:forEach>
+										<c:if test="${pageMake.next}">
+											<li class="pageInfo_btn next"><a
+												href="${pageMake.endPage + 1}">Next</a></li>
+										</c:if>
+									</ul>
+								</div>
+							</div>
               </div>
 
             </div>

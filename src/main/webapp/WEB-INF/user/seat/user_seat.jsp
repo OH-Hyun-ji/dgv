@@ -108,40 +108,56 @@
                             </div>
                         </div>
                         <div class="selected-price-info">
-                            <div class="selected-price-title"><span class="selected-date">가격</span> <i class="fa-solid fa-greater-than"></i></div>
+                            <div class="selected-price-title">
+                          		<div class="price-style">
+                            		<span class="selected-date">가격</span>
+                            	</div>
+                            	<div class="price-icon">
+                             		<i class="fas fa-hand-point-right"></i>
+                             	</div>
+                            </div>
                             <div class="selected-price-total"></div>                     		
-                     <div class="discount-reserve-wrap">
-		                  <div class="coupon-select">
-		                  	<select id="discountCoupon" name="discountCoupon" >
-		                  		<option>사용가능한쿠폰</option>
-		                  		<c:forEach var="couponList" items="${couponList}">
-		                  			<c:if test="${empty couponList.coupon_name }">
-		                  				<option>쿠폰 없음</option>
-		                  			</c:if>
-		                  			<c:if test="${!empty couponList.coupon_name }">
-		                  				<option value="${couponList.coupon_discount}" >${couponList.coupon_name }</option>
-		                  			</c:if>
-		                  		</c:forEach>
-		                  	</select>
-		                  </div>
-		                  <div class="point-select">
-		                  	<label class="remain-point">잔여포인트 : </label> 
-		                  	<input id="myRemainPoint" value="${userPoint}" readonly="readonly">
-		                  	<c:choose>
-			                  	<c:when test="${empty userPoint ||userPoint <10000 }">
-			                  		<input id="userPointText" value="10,000p 부터 사용가능" readonly="readonly">
-			                  	</c:when>	
-			                  	<c:otherwise>
-			                  		<input id="userPointUse" placeholder="1p단위부터 사용가능" value="0">
-			                  		<div style="display: flex;width: 195px;">
-				                  		<button id="pointBtn">포인트사용</button>
-				                  		<button id="pointResetBtn">포인트되돌리기</button>	
-			                  		</div>		                  		
-			                  	</c:otherwise>
-		                  </c:choose>
-		                  </div>
-                		 </div>
                         </div>
+                   		<div class="coupon-point-wrapping">
+		                     <div class="discount-reserve-wrap">
+				                  <div class="coupon-select">
+			                  		<label>쿠폰 목록</label>
+				                  	<select id="discountCoupon" name="discountCoupon" >
+				                  		<option value="0">선택안함</option>
+				                  		<c:forEach var="couponList" items="${couponList}">
+				                  			<c:if test="${empty couponList.coupon_name }">
+				                  				<option>쿠폰 없음</option>
+				                  			</c:if>
+				                  			<c:if test="${!empty couponList.coupon_name }">
+				                  					<option value="${couponList.coupon_discount}" >${couponList.coupon_name }</option>
+				                  			</c:if>
+				                  		</c:forEach>
+				                  	</select>
+				                  </div>
+				                  <div class="point-select">
+				                  	<label class="remain-point">잔여포인트 : </label> 
+				                  	<input id="myRemainPoint" value="${userPoint}" readonly="readonly">
+				                  </div>
+				                  	<c:choose>
+					                  	<c:when test="${empty userPoint ||userPoint <10000 }">
+					                  		<input id="userPointText" value="10,000p 부터 사용가능" readonly="readonly">
+					                  	</c:when>	
+					                  	<c:otherwise>
+					                  		<div class="point-wrapping">
+						                  		<input id="userPointUse" name="use_point" placeholder="1p단위부터 사용가능" value="0">
+						                  		<div id="userMsg"></div>
+					                  		</div>
+					                  		<div style="display: flex;width: 195px;">
+						                  		<button id="pointBtn">포인트사용</button>
+					                  		</div>		                  		
+					                  	</c:otherwise>
+				                  </c:choose>
+		                		 </div>
+		                		 <div class="use-coupon-view">
+		                		 	<div id="use-coupon-name"></div>
+		                		 </div>
+		                		 </div>
+ 
                     </div>
                 </div>            
             </div>
@@ -151,7 +167,16 @@
             	</div>
             	<div class="couponTotalPrice-wrap">
             		<label class="totalCoupon-label">전체 금액 :</label>
-            		<input type="text" readonly="readonly" id="couponTotalPrice">
+            		<input type="text" readonly="readonly" id="allTotalPrice">
+            	</div>
+            	<div class="paymentKind-wrap">
+            		<select id="paymentKind" >
+            			<option value="">결제수단</option>
+            			<option value="samsung">삼성페이</option>
+            			<option value="card">신용카드</option>
+            			<option value="trans">실시간계좌이체</option>
+            			<option value="phone">휴대폰소액결제</option>
+            		</select>
             	</div>
             </div>
             <div class="seat-container">
@@ -224,8 +249,12 @@
 			<input type="hidden" name="reserve_student" id="reserveStudent" value="0">
 			<input type="hidden" name="reserve_old" id="reserveOld" value="0"> 
 			<input type="hidden" name="reserve_price" id="reservePrice">
+			<input type="hidden" id="myFixedRemainPoint" value="${userPoint}">
+			<input type="hidden" id="couponTotalPriceFixed" >
+			<input type="hidden" id="couponPriceAfterFixed" >
+			<input type="hidden" id="couponCancelBefore" >
+			<input type="hidden" id="fixedPrice" >
 			<input type="hidden" name="reserve_myPoint" id="myRemainPoint" value="">
-			<input type="hidden"  id="fixReservePrice">
 			<input type="hidden" name="reserve_movie_date" id="movieDate" value="${date}">
 			<input type="hidden" name="user_id" id="userId" value="${userVo.user_id }"> 
 			<input type="hidden" name="user_name" id="userName" value="${userVo.user_name }"> 
@@ -270,16 +299,23 @@
 				var reservePrice = $("#reservePrice").val()
 				var movieDate = $("#movieDate").val()
 				var myPoint  =	$("#myRemainPoint").val()
+				const couponDiscount =$("#discountCoupon option:selected").val()
+				const usePoint = $("#userPointUse").val()
+				const formatUsePoint = parseInt(usePoint)
 				console.log("reservePrice  =>  "+reservePrice)
+				console.log("myPoint  =>  "+myPoint)
+				console.log(usePoint)
 				
 // 				alert("결제버튼 클릭")
 				console.log("userId " +userId)
+				
+			
 					//결제 아임포트 
 					 var IMP = window.IMP; // 생략가능	 
 					 IMP.init('imp31303840');
 					 IMP.request_pay({
 		            	pg: 'html5_inicis', //version 1.1.0부터 지원.
-		            	pay_method: "card",
+		            	pay_method: $("#paymentKind option:selected").val(),
 		            	merchant_uid:'merchant_' + new Date().getTime(),
 		            	name:movieTitle,
 		            	amount: 1000,
@@ -307,14 +343,16 @@
 				                	"reserve_basic":reserveBasic,
 				                	"reserve_student":reserveStudent,
 				                	"reserve_old" :reserveOld,
-				                	"reserve_price":reservePrice ,
+				                	"reserve_price":parseInt(reservePrice) ,
 				                	"reserve_movie_date":movieDate,
 				                	"reserve_imp_uid":rsp.imp_uid ,
 				                	"reserve_apply_num": rsp.apply_num,
 				                	"reserve_merchant_uid":rsp.merchant_uid,
 				                	"reserve_method":rsp.pay_method,
 				                	"reserve_movie_date":movieDate,
-				                	"reserve_myPoint":myPoint
+				                	"reserve_myPoint":parseInt(myPoint),
+				                	"use_point":formatUsePoint,
+				                	"coupon_discount":couponDiscount
 				                }
 					            	$.ajax({
 					            		method:"POST",
@@ -467,8 +505,11 @@
 										$("#reserveOld").val()
 	                                    $("#reservePrice").val(totalMoney)
 	                                    $("#fixReservePrice").val(totalMoney)
-	                 $("#couponTotalPrice").val(totalMoney.toLocaleString('ko-KR')+"원")
-	        		$("#result-total-money").val(totalMoney.toLocaleString('ko-KR')+"원")
+	                 $("#allTotalPrice").val(totalMoney.toLocaleString('ko-KR')+"원")
+	                 $("#couponTotalPriceFixed").val(totalMoney.toLocaleString('ko-KR')+"원")
+	                 $("#couponPriceAfterFixed").val(totalMoney.toLocaleString('ko-KR')+"원")
+	                 $("#fixedPrice").val(totalMoney.toLocaleString('ko-KR')+"원")
+	        //		$("#result-total-money").val(totalMoney.toLocaleString('ko-KR')+"원")
 	        		
 	                                     
 	        if(totalNum > 18){
@@ -500,28 +541,161 @@
 	classAction(selectPeopleStudentList);
 	classAction(selectPeopleOldList);
 	   $(function(){
-	        $("#discountCoupon").on('change',function(){
-	        	$("#couponTotalPrice").empty()
-	        	$("#result-total-money").empty()
-	        	console.log("fff : "+$("#discountCoupon option:selected").val())
-	        	const couponPrice = $("#discountCoupon option:selected").val()
-	        	const reservationPrice = $("#reservePrice").val()
-	        	
-	        	if(reservationPrice>40000){
-	        		alert("쿠폰이 적용되었습니다.")
-		        	const discountPrice = reservationPrice -couponPrice;
-		        	console.log("discountPrice : "+discountPrice)
-		        	$("#reservePrice").val(discountPrice)
-		        	$("#couponTotalPrice").val(discountPrice.toLocaleString('ko-KR')+"원")
-		        	$("#result-total-money").val(discountPrice.toLocaleString('ko-KR')+"원")
-	        	}else{
-	        		alert("4만원이상 예매시 쿠폰 사용가능합니다")
-	        		$("#couponTotalPrice").val(reservationPrice.toLocaleString('ko-KR')+"원")
-	        		$("#result-total-money").val(reservationPrice.toLocaleString('ko-KR')+"원")
-	        		console.log("reservationPrice : "+reservationPrice)
-	        	}
-	        	
-	        })   
+	      	
+		   var count =0
+		   //쿠폰 적용(누를때마다 변경감지해야하므로 change)
+		   $("#discountCoupon").change(function(){
+			   //쿠폰 적용금액
+			   const couponValue = $("#discountCoupon option:selected").val()
+			   
+			   //사용한 쿠폰을 취소하기위해 따로 저장한 값불러올때 사용
+			   const couponCancelBefore =$("#couponCancelBefore").val()
+			   
+			   const couponTotalPriceFixed = $("#couponTotalPriceFixed").val()	
+			   
+			   const allTotalPrice = $("#allTotalPrice").val()
+			   
+			    const userPointUse = $("#userPointUse").val()
+			   
+			   //콤마제거
+			   const removeCommaTotalP = parseInt(removeComma(allTotalPrice))
+			   
+			   const couponResultPrice =removeCommaTotalP-couponValue
+			   
+			   //인원지정과 전체 금액이없을경우 쿠폰 사용시 막기위해서
+			   const basicP = $("#reserveBasic").val()
+			   const studentP =$("#reserveStudent").val()
+			   const reserveP = $("#reserveOld").val()
+			   const allPeopleTotalCount =  parseInt(basicP)+parseInt(studentP)+parseInt(reserveP)
+			   
+			   
+			   if(couponValue == 0){
+				   const couponPriceAfterFixed = $("#couponPriceAfterFixed").val()
+				   console.log(couponPriceAfterFixed)
+				   console.log(userPointUse)
+				    $("#allTotalPrice").val(couponPriceAfterFixed)
+				   	if(userPointUse != 0){
+						   const resultPrice = removeComma(allTotalPrice)
+						   const couponCancel = resultPrice+parseInt(couponCancelBefore)
+						   console.log(resultPrice)
+						   console.log(parseInt(couponCancelBefore))
+						   console.log(couponCancel)
+						   $("#allTotalPrice").val(couponCancel.toLocaleString('ko-KR')+"원")
+						   
+					  }
+				   $("#use-coupon-name").text("")
+			   }else{
+				   if(allPeopleTotalCount == 0){
+					   alert("인원을 먼저 선택해주세요")
+					   $('#discountCoupon').val(0)
+				   }else{
+					   $("#couponTotalPriceFixed").val(couponResultPrice.toLocaleString('ko-KR')+"원")
+					   $("#allTotalPrice").val(couponResultPrice.toLocaleString('ko-KR')+"원")
+					   $("#result-total-money").val(couponResultPrice.toLocaleString('ko-KR')+"원")
+					   $("#reservePrice").val(couponResultPrice.toLocaleString('ko-KR')+"원")
+				   	   $("#couponCancelBefore").val(couponValue)
+				   	   $("#use-coupon-name").text("[ "+couponValue+"원 할인쿠폰 사용 ]")
+				   }
+			   }
+			   
+			   
+		   })
+		   
+		   //포인트 적용
+		   $("#pointBtn").on('click',function(){
+			  	
+			   //사용자가 적은 사용포인트의 길이
+			   const usePointLength = getDigit($("#userPointUse").val())
+			   
+			   //사용자의 보유 포인트의 길이
+			   const userHavePointLength = getDigit(${userPoint})
+			   
+			   //사용자의 보유 포인트 
+			   const myRemainPoint = $("#myRemainPoint").val()
+			   
+			   //사용할 포인트 입력값 (0을 입력시 포인트를 되돌리기 위함,정규식 적용)
+			   const userPointUse = $("#userPointUse").val()
+			   
+			   //0을 입력시 포인트를 되돌리기 위해서 사용
+			   const myFixedRemainPoint = $("#myFixedRemainPoint").val()
+				
+			   //전체금액을 리셋할때 사용
+			   const couponTotalPriceFixed = $("#couponTotalPriceFixed").val()
+			   
+			   //결제할 전체금액
+			   const allTotalPrice = $("#allTotalPrice").val()
+		   
+			   //인원을 선택했을때 포인트와 쿠폰사용이 가능해야 하므로 선언 
+			   const basicP = $("#reserveBasic").val()
+			   const studentP =$("#reserveStudent").val()
+			   const reserveP = $("#reserveOld").val()
+			   const allPeopleTotalCount =  parseInt(basicP)+parseInt(studentP)+parseInt(reserveP)
+			   
+			   //정규식으로 숫자만 입력
+			   var regExp = /^[0-9]+$/;
+			   
+			   //쿠폰도 0을 받았을때 전체리셋하기위해
+			    const couponValue = $("#discountCoupon option:selected").val()
+		       //변하지않는 전체 가격	
+			    const fixedPrice = $("#fixedPrice").val()
+			    
+			   if(allPeopleTotalCount != 0){
+				   if(userPointUse ==0){
+					   $("#myRemainPoint").val(myFixedRemainPoint)
+					   $("#allTotalPrice").val(couponTotalPriceFixed)
+					   $("#result-total-money").val(couponTotalPriceFixed)
+					   if(couponValue == 0){
+						   alert("DFsdf")
+						   $("#allTotalPrice").val(fixedPrice)
+						   $("#result-total-money").val(fixedPrice)
+					   }
+				   }else if(userPointUse.substring(0,1) == "0" ){
+					   $("#userMsg").text("[앞에 0 빼주세요]")
+				   }else if(!regExp.test(userPointUse)){
+					   $("#userMsg").text("[숫자만 입력가능합니다.]")
+				   }else if(usePointLength <2 ){
+					   $("#userMsg").text("[10p 이상부터 사용가능합니다.]")
+				   }else if(userHavePointLength < usePointLength){
+					   $("#userMsg").text("[잔여포인트 확인후 입력해주세요]")
+				   }else{
+					   if(count==0){
+					   const myRemainPoint = $("#myRemainPoint").val()
+					   const userPointUse  = $("#userPointUse").val()	
+					   const resultPrice =removeComma(allTotalPrice)-userPointUse
+					   const formatCouponTotalPrice = resultPrice.toLocaleString('ko-KR')+"원"
+					 
+					   $("#myRemainPoint").val(myRemainPoint-userPointUse)
+					   $("#allTotalPrice").val(formatCouponTotalPrice)
+					   $("#result-total-money").val(formatCouponTotalPrice)
+					   $("#reservePrice").val(formatCouponTotalPrice)
+		
+					   }if(couponValue == 0){
+						   const removeCommaFixedP = removeComma(fixedPrice)
+						   const resultTotalP = removeCommaFixedP-userPointUse
+						   $("#allTotalPrice").val(resultTotalP.toLocaleString('ko-KR')+"원")
+					  	   $("#result-total-money").val(resultTotalP.toLocaleString('ko-KR')+"원")
+					   }				  
+					   count+=1;			   
+				   }
+			   }else{
+				   alert("인원을 먼저 선택해주세요")
+				   
+			   }
+			   //포인트 적용을 고정적으로 하기위해서 사용
+			   $("#userPointUse").on('keyup',function(){
+				   $("#myRemainPoint").val(myFixedRemainPoint)
+				   count =0;
+			   })
+			 
+		   })
+		   //콤마제거 함수
+		   function removeComma(str){
+			  var n=parseInt(str.replace(/,/g,""));
+			   return parseInt(n);
+		   }
+		   
+		   
+		   //자릿수 판별함수
 	        function getDigit(num){
 	        	num = num.toString()
 	        	var i =0;
@@ -531,66 +705,8 @@
 	        	return i
 	        	
 	        }
-	        $("#pointBtn").on('click',function(){
-	        	//console.log("길이 : "+${userPoint}.length)
-	        	const num = getDigit(${userPoint})
-	        	console.log("getDigit(${userPoint}) " +num)
-	        	const basicP = $("#reserveBasic").val()
-	        	console.log("DFDFDF : "+basicP)
-		        const studentP =  $("#reserveStudent").val()
-				const reserveP = $("#reserveOld").val()
-				const allPeopleTotalCount =  parseInt(basicP)+parseInt(studentP)+parseInt(reserveP)
-				console.log("allPeopleTotalCount :"+parseInt(allPeopleTotalCount))
-	        	if(allPeopleTotalCount != 0){
-	        		const userUse = $("#userPointUse").val()
-	        		const fixReservePrice = $("#fixReservePrice").val()
-	        		const reservationPrice = $("#reservePrice").val()
-		        	if(parseInt(userUse) != ""){
-			        //	console.log("적용중!!! : "+ $("#userPointUse").val())
-			        	const myPoint = $("#userPointUse").val()
-			        	var regExp = /^[0-9]+$/;
-			        	$("#reservePrice").val(fixReservePrice)
-			        	if(myPoint.substring(0,1) == "0" || !regExp.test(myPoint) || getDigit(parseInt(userUse)) > num ){
-			        		alert("똑바로 입력해라 죽는다 ㅡㅡ")
-			        	}else{
-			        		
-				        	const pointDiscount = parseInt(reservationPrice)-parseInt(myPoint);
-				        	console.log("reservationPrice : " +reservationPrice)
-				        	
-				        	console.log("myPoint : "+myPoint)
-				        	const myRemainPoint =$("#myRemainPoint").val()
-				        	const changeMyPoint = parseInt(myRemainPoint)-parseInt(myPoint)
-				        	$("#reservePrice").val(pointDiscount)
-				        	console.log("changeMyPoint :" + changeMyPoint)
-				        	$("#myRemainPoint").val(changeMyPoint)
-				        	console.log("reservationPrice1111 : " +reservationPrice)
-				        	console.log("myPoint1111 : " +myPoint)
-				        	
-				        	console.log("pointDiscount"+pointDiscount)
-				        	
-				        	
-				        	$("#couponTotalPrice").val(pointDiscount.toLocaleString('ko-KR')+"원")
-				        	$("#result-total-money").val(pointDiscount.toLocaleString('ko-KR')+"원")
-			        	}
-		        	}else{
-		        		alert("사용할 포인트를 입력해주세요!")
-		        	}
-	        	}else{
-	        		alert("인원 수를 먼저 선택해주세요 ")
-	        	}
-	        	
-	        })
-	        $("#pointResetBtn").on('click',function(){
-	        	const fixReservePrice = $("#fixReservePrice").val()
-	        	console.log("$(#reservePrice).val(parseInt(fixReservePrice)) : "+$("#reservePrice").val(parseInt(fixReservePrice)))
-	        	console.log("@@@@@@@@@@   " + $("#reservePrice").val())
-	        	$("#reservePrice").val(fixReservePrice+"원")
-	        	$("#myRemainPoint").val(${userPoint})
-	        	$("#userPointUse").val(0)
-	        	$("#couponTotalPrice").val(parseInt(fixReservePrice).toLocaleString('ko-KR')+"원")
-	        	$("#reservePrice").val(fixReservePrice)
-	        	$("#result-total-money").val(parseInt(fixReservePrice).toLocaleString('ko-KR')+"원")	
-	        })
+	
+	   
 	    	console.log(basicNum)
 	    	const row = ${row}
 	    	const col = ${col}
@@ -682,11 +798,11 @@
 	    	
 	    	const seatArr = new Array();
 	    	$(".seat-status").on('click',function(){
-// 	    		alert($(this).val())
-	    		console.log("totalCheckCount" + $("#totalCheckCount").val())
-	    			
-		    		
-	    	
+	    		const basicP = $("#reserveBasic").val()
+				const studentP =$("#reserveStudent").val()
+				const reserveP = $("#reserveOld").val()
+				const allPeopleTotalCount =  parseInt(basicP)+parseInt(studentP)+parseInt(reserveP)
+
 	    		if($(this).hasClass("choiceBtnStyle")){
 	    			$(this).removeClass("choiceBtnStyle")  			 		
 		    			for(let i=0;i<seatArr.length;i++){
@@ -695,24 +811,21 @@
 		 		   			}
 		 		   		}
 	    		}else{
-	 		   		$(this).addClass("choiceBtnStyle")
-		    			seatArr.push($(this).val())
-		    		//	$("#selected-count").val(selectedCount++)
-		    			if(seatArr.length >$("#totalCheckCount").val()){			
-		    				$(this).removeClass("choiceBtnStyle") 
-		    				for(let i=0;i<seatArr.length;i++){
-			 		   			if(seatArr[i]==$(this).val()){
-			 		   				seatArr.splice(i,1)
-			 		   			}
-			 		   		}
-			    		
-			    			alert("좌석선택수를 초과하였습니다. ")
-			    			if(seatArr.length==0){
-			    				alert("좌석수 항목을 클릭후 선택해주세요")
-			    			}else{
-			    				
-			    			}
-			    		}
+		    			if(allPeopleTotalCount ==0){
+		    				alert("좌석수 항목을 클릭후 선택해주세요")
+		    			}else{		    				
+			 		   		$(this).addClass("choiceBtnStyle")
+				    		seatArr.push($(this).val())
+			    			if(seatArr.length >$("#totalCheckCount").val()){			
+			    				$(this).removeClass("choiceBtnStyle") 
+			    				for(let i=0;i<seatArr.length;i++){
+				 		   			if(seatArr[i]==$(this).val()){
+				 		   				seatArr.splice(i,1)
+				 		   			}
+				 		   		}
+				    			alert("좌석선택수를 초과하였습니다. ")	
+				    		}
+		    			}
 	    		}
 	    		
 	    		$("#selected-count").val(seatArr.length)    		

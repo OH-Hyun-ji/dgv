@@ -434,7 +434,7 @@ input[type=checkbox]:checked ~ .c-window .the-cat:hover .eyes{
 											<c:forEach var="inquiryList" items="${inquiryList}" varStatus="status">
 												<tr>
 													<td>${status.index+1 }</td>
-													<td><a id="myPage-title" href="#">${inquiryList.dgv_inquiry_title }</a></td>													
+													<td><a id="myPage-title" href="adminAnswer.do?dgv_inquiry_code=${inquiryList.dgv_inquiry_code }">${inquiryList.dgv_inquiry_title }</a></td>													
 													<td>
 														<c:choose>
 															<c:when test="${inquiryList.dgv_inquiry_status == 1}">

@@ -26,6 +26,7 @@ import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.controller.Pagination;
 import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.CriteriaBoard;
+import com.dgv.web.user.vo.MyPagePaging;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
@@ -295,4 +296,52 @@ public class UserBoardDAO {
 	public UserDetailVO userPointSelect(UserDetailVO vo) {
 		return sqlSessionTemplate.selectOne("UserMovieDAO.userPointSelect",vo);
 	}
+	public int moviePeopleTotalCount() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.moviePeopleTotalCount");
+	}
+	
+	public List<UserCouponUseVO> userCouponList(String id){
+		return sqlSessionTemplate.selectList("UserMovieDAO.userCouponList", id);
+	}
+	
+	public int usePointReset(String id) {
+		return sqlSessionTemplate.update("UserMovieDAO.usePointReset",id);
+	}
+	public AdminCouponVO couponCancel(AdminCouponVO vo) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.couponCancel",vo);
+	}
+	
+	public List<UserCouponUseVO> couponUseAbleList(UserCouponUseVO vo){
+		return sqlSessionTemplate.selectList("UserMovieDAO.couponUseAbleList", vo);
+	}
+	public List<UserCouponUseVO> couponUseEnAbleList(UserCouponUseVO vo){
+		return sqlSessionTemplate.selectList("UserMovieDAO.couponUseEnAbleList", vo);
+	}
+	
+	public int couponUseFalse(int cuCode) {
+		return sqlSessionTemplate.update("UserMovieDAO.couponUseFalse",cuCode);
+	}
+	public int couponUseTrue(int cuCode) {
+		return sqlSessionTemplate.update("UserMovieDAO.couponUseTrue",cuCode);
+	}
+	public List<UserReserveVO> myPagePaging(MyPagePaging page){
+		return sqlSessionTemplate.selectList("UserBoardDAO.myPagePaging", page);
+	}
+	
+	public int myReserveCount(String id) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.myReserveCount",id);
+	}
+	
+	public List<UserFAQVO> userFaqTotalList(){
+		return sqlSessionTemplate.selectList("UserBoardDAO.userFaqTotalList");
+	}
+	
+	public int myCouponCount(String id) {
+		return sqlSessionTemplate.selectOne("UserDAO.myCouponCount",id);
+	}
+	
+	public List<AdminEventVO> myJoinEvent(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.myJoinEvent", num);
+	}
+	
 }

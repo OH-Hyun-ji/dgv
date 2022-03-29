@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,20 +37,27 @@
 								<thead class="myPage-table-wrapping">
 									<tr>
 										<th>NO</th>
-										<th>Event</th>
-										<th>Witer</th>
-										<th>Date</th>
-										<th>Count</th>
+										<th>Event</th>									
+										<th>JoinDate</th>
+										<th>EndDate</th>
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="parEventList" items="${parEventList }" varStatus="status">
 									<tr>
-										<td>1</td>
-										<td><a id="myPage-title" href="#">참여이벤트이름</a></td>
-										<td>나 자신</td>
-										<td>2022-02-09</td>
-										<td>0</td>
+										<td>${status.index+1 }</td>
+										<td>
+											<a id="myPage-title" href="eventDetail.do?event_code=${parEventList.event_code}">${parEventList.event_title }</a>
+										</td>										
+										<td>${parEventList.par_date }</td>
+										<c:if test="${parEventList.event_status == '0' }">
+											<td><a href="/eventWinnerPage.do?event_code=${parEventList.event_code}">[당첨자 확인]</a></td>
+										</c:if>
+										<c:if test="${parEventList.event_status == '1' }">
+											<td>${parEventList.event_end_date }</td>
+										</c:if>
 									</tr>
+								</c:forEach>
 								</tbody>
 							</table>
 

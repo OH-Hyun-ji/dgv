@@ -1,6 +1,12 @@
 package com.dgv.web.user.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,8 +90,22 @@ public class UserEventController {
 	
 	//이벤트 상세보기
 	@RequestMapping("eventDetail.do")
-	public String event(@RequestParam("event_code") int num,Model model) {
+	public String event(@RequestParam("event_code") int num,Model model) throws ParseException {
 		AdminEventVO eventVo = adminMovieService.EventDetailSelect(num);
+		String endDate = eventVo.getEnd_date();
+		
+		DateTimeFormatter formatter =DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate endDay = LocalDate.parse(endDate, formatter);
+		LocalDate now = LocalDate.now();
+		
+		if(now.isAfter(endDay)) {//날짜비교 isAfter는 주어진날짜가 파라미터 날짜보다 클경우 true리턴
+			eventVo.setButton_status(false); //종료된 이벤트 날짜라면 버튼 비활성화 하기위해 
+		}else {
+			eventVo.setButton_status(true);
+		}
+		
+		
+		
 		model.addAttribute("eventVo",eventVo);
 		return "/event/event_detail";
 	}

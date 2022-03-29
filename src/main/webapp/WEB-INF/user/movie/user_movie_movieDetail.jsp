@@ -473,8 +473,8 @@ background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100
                                 <a class="link-more" href="##">더보기</a>
                             </div>
                             <div>
-                                <div id="slider-wrap"  style="overflow: hidden;" class="swiper-container">
-                                    <div class="swiper-wrapper" style=" margin-left: 37px;">
+                                <div id="slider-wrap"  style="overflow: hidden;width: 800px;height: 427px;position: absolute;" class="swiper-container">
+                                    <div class="swiper-wrapper" style=" margin-left: 37px;height: 395px;">
                                         <div class="swiper-slide">
                                             <img src="${imgList.movie_img4}" style="margin-top: 23px;">
                                         </div>
@@ -498,12 +498,14 @@ background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100
                                             val.innerHTML = num;    
                                         </script>
                                      
-                                    </div>                
-                                </div>
+                                    </div>    
+                                    <div style="display: flex;justify-content: space-between;">          
                                 <div class="swiper-button-prev" style="
-                                padding-top: 90%;" ></div>
+                               position: initial;" ></div>
                                 <div class="swiper-button-next"  style="
-                                padding-top: 90%;"></div>                             
+                                 position: initial;"></div> 
+                                 </div>                              
+                                </div>
                             </div>                          
                             <script>
                                 var swiper = new Swiper(".swiper-container", {

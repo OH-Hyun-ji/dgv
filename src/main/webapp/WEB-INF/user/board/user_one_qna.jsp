@@ -132,8 +132,8 @@ input#waitingAnswer {
                               <tr>
                                  <td>${status.index+1}</td>
                                  <td>${userQnaOneList.dgv_inquiry_tag}</td>
-                                 <td ><a id="myPage-title" href="#">${userQnaOneList.dgv_inquiry_title}</a></td>
-                                 <td ><a id="myPage-text" href="#">${userQnaOneList.dgv_inquiry_text}</a></td>
+                                 <td ><a id="myPage-title" href="adminAnswer.do?dgv_inquiry_code=${userQnaOneList.dgv_inquiry_code }">${userQnaOneList.dgv_inquiry_title}</a></td>
+                                 <td ><a id="myPage-text" href="adminAnswer.do?dgv_inquiry_code=${userQnaOneList.dgv_inquiry_code }">${userQnaOneList.dgv_inquiry_text}</a></td>
                                  <td>${userQnaOneList.dgv_inquiry_date}</td>
                                  <td><c:choose>
                                        <c:when test="${userQnaOneList.dgv_inquiry_status == 1}">

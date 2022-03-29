@@ -84,11 +84,11 @@ function loginWithKakao() {
 				const reT = JSON.parse(result)
 				
 				if(reT.msg == "SUCCESS"){
-					alert("로그인 성공!!")
+					//alert("로그인 성공!!")
 					location.href='/dgvMain.do';
 				}else if(reT.msg=="STATUS"){
 					alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")	
-					alert("고객센터에 문의바랍니다.")	
+					alert("비밀번호 찾기후 다시 시도해주세요")	
 				}else{
 					alert("실패!! 남은횟수 :"+(5-count)+"/5")
 					count++;

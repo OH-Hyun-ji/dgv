@@ -185,7 +185,6 @@
 		.CheckHiddenBtn {
 		    display: flex;
 		    justify-self: center;
-   			margin-left: 149px;
 		}
 		input#next-page1 {
 		    width: 150px;
@@ -258,6 +257,7 @@
                 <!-- 타이틀 -->
                 <div class="navi">
                     <span class="right">
+                    	<button id="next-page1">좌석선택 하러가기</button>
                         <a class="button button-reservation-restart" href="#" onclick="ticketRestart()">
                             <span>예매 다시하기</span>
                         </a>
@@ -415,7 +415,7 @@
 		<input class="dgvR" type="hidden" id="hiddenTheater" name="theater_code">
 		<input class="dgvR" type="hidden" id="hiddenTime" name="movie_time_start">
 		<input class="dgvR" type="hidden" id="hiddenMovieDate" name=reserve_movie_date>
-        <input type="button" id="next-page1"  value="좌석선택=>" >
+       
 	</form>	
    </div>
    </div>
@@ -423,6 +423,8 @@
 	<script>
 	var test;
 	$(function(){
+		
+		
 		test = this;
  		console.log("num : "+${movieInfo.movie_num})
  		const movieNumber = ${movieInfo.movie_num}
@@ -434,6 +436,8 @@
 			console.log("get방식")
 
 		}
+		
+		
 		
 	})
 	function movieCode(n){
@@ -469,7 +473,7 @@
 			success:function(regionListInfo){
 				const regionList =JSON.parse(regionListInfo)
 				_(regionList).forEach(function(n){
-					const button =$("<button>")
+					const button =$("<li>")
 					.attr("class","regionBtn")
 					.click(regionChoicBtn)
 					.attr("value",n.region_code)
@@ -581,13 +585,6 @@
 		const time =$("#hiddenTime").val()
 		const movieDate =$("#hiddenMovieDate").val()
 		
-		console.log(title)
-		console.log(city)
-		console.log(region)
-		console.log(date)
-		console.log(time)
-		console.log("////")
-		
 		if(title != ""&& city !=""&& region != ""&&date != "" &&time != "" &&theater != ""){
 			let result = confirm("좌석선택하시겠습니까??")
 			if(result){
@@ -601,7 +598,6 @@
 						"reserve_movie_date":movieDate
 				}
 				const target = document.getElementById('next-page1');
-				$("#next-page1").css("background-color","red")
 				
 	 				document.reserveInfo.submit();
 				
@@ -616,8 +612,7 @@
 		}
 	})
 
-
-	
+		
           var test
         	 const date = new Date();
              console.log(date.getFullYear());
@@ -729,6 +724,20 @@
 	                										$(this).css("background-color","#9e9d9ba1")
 	                							 			$("#hiddenTheater").val($(this).val())
 	                							 			$("#hiddenTime").val($(this).text())
+	                							 			
+	                							 		    const title = $("#hiddenTitle").val()
+	                					            		const city =$("#hiddenCity").val()
+	                					            		const region = $("#hiddenRegion").val()
+	                					            		const date =$("#hiddenDate").val()
+	                					            		const theater =$("#hiddenTheater").val()
+	                					            		const time =$("#hiddenTime").val()
+	                					            		const movieDate =$("#hiddenMovieDate").val()
+	                					            		
+	                					            		if(title != ""&& city !=""&& region != ""&&date != "" &&time != "" &&theater != ""){
+	                					            			$("#next-page1").css("background-color","#fb9100")
+	                					            			$("#next-page1").css("color","white")
+	                					            			
+	                					            		}
 	                									})
 	                				},
 	                				error:function(e){
@@ -739,6 +748,10 @@
                           })
                      }
                     
+               
+                    	
+                
+                
                     
 </script>
 </body>

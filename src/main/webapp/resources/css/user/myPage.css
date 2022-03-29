@@ -77,14 +77,11 @@ button#myPage-change-info:hover{
 button#myPage-view_usergrade {
     margin-top: 2%;
     line-height: 27px;
-    margin-left: 16%;
+    margin-left: 55px;
     border-radius: 6px;
-    border: 2px solid darkgrey;
+    border: 0;
 }
-button#myPage-view_usergrade:hover {
-	background-color: gray;
-	color:white;
-}
+
 
 .myPage-box-contents.newtype {
  	margin-left: 4%;
@@ -755,16 +752,62 @@ button#myCouponList {
     border: 3px solid darkgray;
     width: 71%;
     border-radius: 7px;
+    cursor: pointer;
+    box-sizing: border-box;
+    z-index: 10;
 }
+
 button#myCouponList:hover {
 	background-color: gray;
 	color:white;
-	cursor: pointer;
 }
 .myPage-coupon-count {
     margin-bottom: 76px;
+    width: 193px;
+    color: #6b0000;
 }
 .page-style {
     display: flex;
     width: 300px;
+    
+}
+li.pageInfo_btn.active {
+    border: 1px solid gray;
+    border-radius: 4px;
+    width: 15px;
+    text-align: center;
+    background-color: #fdfff0de;
+   
+
+}
+ul#pageInfo {
+    display: flex;
+    justify-content: center;
+}
+li.pageInfo_btn {
+    margin-right: 1rem;
+}
+.myPage-event-container {
+    display: flex;
+}
+.myEvent-wrap {
+    height: 500px;
+    width: 700px;
+}
+.myEvent-wrapper {
+    width: 700px;
+    height: 500px;
+}
+.myEvent-wrapping {
+    width: 450px;
+    height: 250px;
+}
+.close-btn {
+    display: flex;
+    justify-content: end;
+}
+a#winnerStyle-change {
+    color: #e9e8e9;
+    background-color: #fa0735;
+    border-radius: 8px;
 }
