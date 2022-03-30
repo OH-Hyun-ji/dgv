@@ -291,8 +291,31 @@
 	  		window.name ="parentForm"
 	  		window.open('termPage.do','childForm','width=600 height=800')
 	  	})
-  	
-      
+
+
+	  	////회원가입 이미지 슬라이드
+	  	
+	  	var now =0;
+        var img = 4;
+        
+        $(".slideShow > img").eq(0).siblings().hide()
+        
+        function slide(){
+        	if(now == img){
+        		$(".slideShow > img ").eq(now).fadeOut(1000)
+        		$(".slideShow > img ").eq(0).fadeIn(1000)
+        		
+        		now =0;
+        		
+        	}else{
+        		$(".slideShow > img ").eq(now).fadeOut(1000)
+        		$(".slideShow > img ").eq(now+1).fadeIn(1000)
+        		
+        		now++;
+        	}
+        }
+        setInterval(slide,3000)
+	  	
    });
    
    // 회원가입 최종조건 검증
@@ -428,8 +451,12 @@
       <div class="inner">
          <div class="spidy-wrapper">
   <div class="spidy__frame">
-  	<div>
-  		<img style="position: absolute;" src="" >
+  	<div class="slideShow">
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/yyyyyyyyy.jpg" >
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/xxxxxxxx.jpg" >
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/zzzzzzzzzzzzzzz.jpg" >
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/ccccccccc.jpg" >
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/ddd.jpg" >
   	</div>
       <div class="center">
       <div class="center__element">
