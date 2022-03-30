@@ -324,15 +324,122 @@
          
   
 </script>
+<style>
+
+.spidy-wrapper {
+    width: 100%;
+    height: 79%;
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center;
+    padding-top: 3rem;
+}
+
+.spidy__frame {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+    background: #181041;
+    box-shadow: 10px 5px 20px #5d0c0f;
+    cursor: pointer;
+}
+
+.spidy__frame > img {
+    width: 115%;
+    bottom: -5rem;
+    left: -1.8rem;
+    position: absolute;
+}
+
+.center {
+    height: 100%;
+    position: relative;
+}
+
+.center__element {
+    width: 200px;
+    margin: auto;
+    margin-top: -2rem;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.52, 0.11, 0.07, 0.62);
+}
+
+.spidy__frame:hover .center__element {
+    margin-top: 7rem;
+}
+
+.center__element img {
+    width: 100%;
+    filter: drop-shadow(0px 40px 10px #0e072c);
+}
+
+.element__tooltip {
+    background: #ffffff1a;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 150%;
+    border-radius: 5px;
+    position: absolute;
+    top: -6rem;
+    left: -3.5rem;
+    z-index: 2;
+    opacity: 0;
+    transition: all .5s;
+    color: #d6d2e8;
+    letter-spacing: 2px;
+    box-shadow: 0px 5px 10px #100932;
+}
+
+.element__tooltip:before {
+    content: '';
+    width: 1px;
+    height: 120%;
+    position: absolute;
+    top: 100%;
+    left: 4.5rem;
+    border-radius: 40%;
+    transform: rotate(20deg);
+    background-image: repeating-linear-gradient(50deg, #ffffff, #ffffff 3px, #000000 3px, #000000 5px);
+}
+
+.element__tooltip:after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    border-radius: 40%;
+    right: 3.8rem;
+    transform: rotate(-25deg);
+    background-image: repeating-linear-gradient(50deg, #ffffff, #ffffff 3px, #000000 3px, #000000 4px);
+}
+
+.spidy__frame:hover .element__tooltip {
+    opacity: 1;
+    transition: all 2s;
+}
+</style>
 </head>
 
 <body class="block" style="">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
    <div class="wrapper sign-up-background">
       <div class="inner">
-         <div class="image-holder">
-            <img id="poster" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/join.jpg" alt="">
-         </div>
+         <div class="spidy-wrapper">
+  <div class="spidy__frame">
+  	<div>
+  		<img style="position: absolute;" src="" >
+  	</div>
+      <div class="center">
+      <div class="center__element">
+        <img class="element__spidy" style="position: relative;" src="https://vignette.wikia.nocookie.net/marveldatabase/images/9/92/Peter_Parker_%28Earth-30847%29_from_Marvel_vs._Capcom_Infinite_0001.png/revision/latest?cb=20170922195944%22" alt="Spiderman, credit:wikia">
+        <div class="element__tooltip"> 영화 그 이상의 감동을 DGV</div>
+      </div>
+    </div>
+    <img src="" >
+</div>
+</div>
       <form action="/register.do" method="post" name="joinForm" >
           <div class="register-wrapping">
             <p class="register-title">
