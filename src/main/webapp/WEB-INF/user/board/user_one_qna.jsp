@@ -43,6 +43,10 @@ td {
     box-sizing: border-box;
     padding-top: 6px;
     border-right: 1px solid #8080807a;
+    /* 지우지 말아요.. 글 ...처리*/
+    overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
 }
 th {
    box-sizing: border-box;
