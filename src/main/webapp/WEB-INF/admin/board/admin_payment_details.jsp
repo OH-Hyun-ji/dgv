@@ -16,7 +16,7 @@
 	<script type="text/javascript">
 		function cancelAction(reserveCode, reserveImpUid, reserveMerchantUid, reservePrice , userId, userPoint,couponDiscount){
 			
-			var msg = confirm("정말로 삭제하시겠습니까?")
+			var msg = confirm("정말로 취소하시겠습니까?")
 			console.log("userId : " + userId)
 			if(msg){
 			  $.ajax({
