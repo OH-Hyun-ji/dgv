@@ -1217,7 +1217,7 @@ S .movie-chart-btn-wrap .chart-name-wrap h3 a.active {
 /* .client_wrap{} */
 .client_wrap .client_list {
     display: flex;
-    padding: 19px 0 22px;
+    padding: 19px 0 7px;
    	width: 692px;
 }
 .client_wrap .client_list dt {

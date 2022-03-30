@@ -22,6 +22,16 @@
 	<result column="user_day" property="user_day" jdbcType="VARCHAR"/>
 	<collection property="detailVO" resultMap="UserDetailVO"></collection>
 </resultMap>
+<resultMap type="AdminRankVO" id="AdminRankVO">
+	<result column="rank_code" property="rank_code" jdbcType="INTEGER"/>
+	<result column="rank_name" property="rank_name" jdbcType="VARCHAR"/>
+	<result column="rank_earn" property="rank_earn" jdbcType="DOUBLE"/>
+	<result column="rank_standard" property="rank_standard" jdbcType="INTEGER"/>
+	<result column="rank_img" property="rank_img" jdbcType="VARCHAR"/>
+	<result column="user_id" property="reg_id" jdbcType="VARCHAR"/>
+	<result column="user_id" property="reg_date" jdbcType="VARCHAR"/>
+	<collection property="detailVO"  resultMap="UserDetailVO"></collection>
+</resultMap>
 
 
 	<select id="NoticeList" resultType="AdminNoticeVO">
@@ -234,5 +244,27 @@
 	
 	<select id="userFaqTotalList" resultType="UserFAQVO">		
 		select * from dgv_faq order by faq_kind_num asc 
+	</select>
+	
+	<select id="userMyPointLog" resultType="UserReserveVO">
+		select * from movie_reserve mr
+		inner join user_info ui
+		on mr.user_id=ui.user_id
+		where mr.user_id=#{user_id} and mr.earn_point!=0
+	</select>
+	
+	<select id="userRankPoint" resultMap="AdminRankVO" >
+		select * from rank_info ri
+		left join user_info_detail uid
+		on ri.rank_name=uid.user_rank
+		where uid.user_num=#{user_num}
+	</select>
+	
+	<update id="userEarnPoint" >
+		UPDATE movie_reserve SET earn_point = #{earn_point} where reserve_code=#{reserve_code}
+	</update>
+	
+	<select id="mainNotice" resultType="AdminNoticeVO">
+		select *from dgv_notice order by reg_date asc limit 1
 	</select>
 </mapper>

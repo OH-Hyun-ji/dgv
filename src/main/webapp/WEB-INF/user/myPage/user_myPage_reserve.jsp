@@ -22,6 +22,9 @@
 	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+							$("#myReserve").addClass("on")
+							$("#myMain").removeClass("on")
+							
 							$("#btnMovie").click(function() {
 								$("#myPage-movie-list").show();
 								$("#myPage-movie-list-reser").hide();
@@ -208,7 +211,7 @@
                     <jsp:include page="../default/user_myPage_side.jsp"></jsp:include>
                   <div class="myPage-content-wrap">
                   <div class="myPage-table-wrap">
-                  	<span><i class="fas fa-table me-1" style=" margin-right: 1%;"></i>나의 예매내역<button onclick="#" >내가본영화</button></span>
+                  	<span><i class="fas fa-table me-1" style=" margin-right: 1%;"></i>나의 예매내역<button style="cursor:pointer; " onclick="location.href='/myPage_userMovie.do'" >내가본영화</button></span>
                   	<table class="myPage-table">
 								<thead class="myPage-table-wrapping">
 									<tr>
@@ -224,8 +227,8 @@
 									<c:forEach var="userReserveList" items="${userReserveList}" varStatus="status">
 										<tr>
 											<td>${status.index +1 }</td>
-											<td>${userReserveList.reserve_merchant_uid }</td>
-											<td><a id="myPage-title" href="#">${userReserveList.movie_title}</a></td>
+											<td><a href="/myReserveMovieDetail.do?reserve_code=${userReserveList.reserve_code}">${userReserveList.reserve_merchant_uid }</a></td>
+											<td><a id="myPage-title" href="/myReserveMovieDetail.do?reserve_code=${userReserveList.reserve_code}">${userReserveList.movie_title}</a></td>
 											<td>${userReserveList.reserve_movie_date }</td>
 											<td>${userReserveList.fomatter_price }</td>
 											<td>${userReserveList.reserve_date }</td>
@@ -276,7 +279,10 @@
 								</div>
 								<div class="movie-info-wrap">
 									<strong class="movie-name">${movieList.movie_title }</strong>
-									<span> 예매율 2.4% </span>
+									<div style="display: flex;justify-content: center;place-items: center;">
+										<img class="star-style" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/starpreview.png">
+										<span style="font-size: 14px;color: #eb6600;"> 예매율 ${movieList.reservationRate } % </span>
+									</div>
 								</div>
 							</div>
 						</c:forEach>

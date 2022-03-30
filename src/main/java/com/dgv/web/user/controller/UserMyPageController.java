@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminUserService;
@@ -63,7 +62,34 @@ public class UserMyPageController {
    @Autowired
    private AdminUserService adminUserService;
    
+   
+   @RequestMapping("/pointLog.do")
+   public String pointLog(Model model) {
+	   String id = RequestUtils.getUserId("userID");
+	   List<UserReserveVO> userMyPointLog = userBoardService.userMyPointLog(id);
+	
+	   model.addAttribute("userMyPointLog",userMyPointLog);
+	   return"/myPage/user_myPage_pointLog";
+   }
   
+   @RequestMapping("/myReserveMovieDetail.do")
+	public String myReserveMovieDetail(@RequestParam("reserve_code")int num, Model model,UserVO vo){
+	   String id = RequestUtils.getUserId("userID");
+	   UserReserveVO reserveVo = userBoardService.userReserveDetailView(num);
+	   AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
+	   AdminTheaterVO thVo = adminMovieService.theaterListInfo(reserveVo.getTheater_code());
+	   UserMapVO mapVo = userBoardService.mapList(reserveVo.getRegion_code());
+	
+	   reserveVo.setMovie_title(movieVo.getMovie_title());
+	   reserveVo.setMovie_img(movieVo.getMovie_img());
+	   reserveVo.setTheater_name(thVo.getTheater_name());
+	   reserveVo.setRegion_name(mapVo.getMap_name());
+			
+	   model.addAttribute("reserveVo",reserveVo);
+	   
+		return "/myPage/user_myPage_reserveDetail";
+	}
+    
    @RequestMapping("/myEventJoinDetail.do")
    public String myEventJoinDetail() {
 	   return "/myPage/user_myPage_event_detail";
@@ -140,7 +166,6 @@ public class UserMyPageController {
 		
 		//나의 이벤트 내역 
 		List<AdminEventVO> parEventList = userBoardService.myJoinEvent(user.getUser_num());
-	
 		
 		model.addAttribute("parEventList",parEventList);
 		model.addAttribute("myReserveList",myReserveList);
@@ -181,6 +206,20 @@ public class UserMyPageController {
 					}				
 				}
 			}
+	 	
+	     //예매율 
+		double totalCount = adminMovieService.totalSum();
+		List<UserReserveVO> reserveList = adminMovieService.totalPeopleCount();
+		for(UserReserveVO reserveVo : reserveList) {
+			for(AdminMovieVO movieVo : movieList) {
+				if(reserveVo.getMovie_num()==movieVo.getMovie_num()) {				
+					double totalPeople =  reserveVo.getTotal_people();
+					double result =totalPeople/totalCount*100;
+					String totalResult = String.format("%.1f", result);
+					movieVo.setReservationRate(totalResult);
+				}
+			}
+		}
 	     MyPagePagingVO pageMake = new MyPagePagingVO(total, page);
 	     
 	     model.addAttribute("pageMake",pageMake);
@@ -234,6 +273,7 @@ public class UserMyPageController {
 			parVo.setEvent_title(eventVo.getEvent_title());
 			parVo.setEvent_end_date(eventVo.getEnd_date());
 			parVo.setEvent_status(eventVo.getEvent_status());
+			parVo.setEvent_check(eventVo.getEvent_check());
 		}
 		
 		model.addAttribute("parEventList",parEventList);

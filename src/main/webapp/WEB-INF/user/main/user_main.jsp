@@ -296,7 +296,12 @@
 				<div class="noticeClient_container">
 					<div class="noticeClient_content">
 						<div id="ctl00_PlaceHolderContent_notice_wrap" class="notice_wrap">
-							<strong>공지사항</strong> <a href="/notice.do" class="btn_more">더보기</a>
+							<strong>
+								<a href="/noticeDetail.do?notice_num=${noticeVo.notice_num }">[공지사항]<br> 
+									<span style="padding-left: 5rem;">${noticeVo.notice_title}</span>
+								</a>
+							</strong> 
+							<a href="/notice.do" class="btn_more">더보기</a>
 						</div>
 						<div class="client_wrap">
 							<dl class="client_list">
@@ -304,9 +309,9 @@
 									<strong>고객센터</strong>
 								</dt>
 								<dd>
-									<strong>1544-1122</strong> <span> "고객센터 운영기관(평일
-										09:00~12:00)"
-										<p>업무끝</p>
+									<strong>1544-1122</strong> 
+									<span> "고객센터 운영기관(평일 09:00~12:00)"
+									<p>업무끝</p>
 									</span>
 								</dd>
 							</dl>

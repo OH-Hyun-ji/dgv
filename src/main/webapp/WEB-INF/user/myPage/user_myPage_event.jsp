@@ -11,14 +11,38 @@
 <meta name="viewport" content="width=1024"/>
 	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/layout.css">
 	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/myPage.css">
+	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/button.css">
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css"/>
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/userModule.css"/>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	
+	function classAction(list){
+	    list.forEach(li => {
+	        console.log('TEST 2:');
+	        cleanList(list, li);
+	    });
+	}
+	function cleanList(list, li){
+		li.addEventListener('click',function(){
+			list.forEach(li => {
+				li.classList.remove('on')
+			})
+			
+		})
+		const selectLi = document.querySelectorAll('.mySide li')
+		classAction(selectLi)
+	}
+	$(function(){
+		$("#myEventJoin").addClass("on")
+		$("#myMain").removeClass("on")
+	})
+	</script>
 </head>
 <body class="">
-	<div id="cgvwrap">
+	<div id="dgvwrap">
 		<jsp:include page="../default/user_header.jsp"></jsp:include>
 
 		<!-- Contaniner -->
@@ -50,10 +74,10 @@
 											<a id="myPage-title" href="eventDetail.do?event_code=${parEventList.event_code}">${parEventList.event_title }</a>
 										</td>										
 										<td>${parEventList.par_date }</td>
-										<c:if test="${parEventList.event_status == '0' }">
-											<td><a href="/eventWinnerPage.do?event_code=${parEventList.event_code}">[당첨자 확인]</a></td>
+										<c:if test="${parEventList.event_check == '1' }">
+											<td><button class="w-btn w-btn-gra3 w-btn-gra-anim" id="winnerStyle-change" onclick="javascript:location.href='/eventWinnerPage.do?event_code=${parEventList.event_code}'">당첨자 확인</button></td>
 										</c:if>
-										<c:if test="${parEventList.event_status == '1' }">
+										<c:if test="${parEventList.event_check == '0' }">
 											<td>${parEventList.event_end_date }</td>
 										</c:if>
 									</tr>

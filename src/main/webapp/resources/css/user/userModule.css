@@ -100,10 +100,10 @@
 .mycgv-info-wrap .cols-benefit-info > [class^='col-'][class$='one-now'] .round i:before,
 .mycgv-info-wrap .cols-benefit-info > [class^='col-'][class$='one-now'] .round i:after {background-color:#c3a570;}
 
-/*141013 추가*/
+
 .cols-point-wrap {color: #342929;text-align: right;position: absolute;top: 424px;font-size: 13px;width: 895px;font-weight:500;}
 .cols-point-wrap span.vr {color:#695c3e;font-weight:500;display: inline-block;margin: 0 5px;}
-/* MY CGV Aside Area */
+
 .cols-content {margin-top:25px;}
 .cols-content .col-aside h2 {font:0/0 a; visibility:hidden; zoom:1;}
 .cols-content .col-aside .snb a {display:block; position:relative;}
@@ -133,7 +133,7 @@
 .cols-content .col-aside .snb li ul {padding:15px 0;}
 .cols-content .col-aside .snb li li {margin-top:10px;}
 .cols-content .col-aside .snb li li:first-child {margin-top:0;}
-.cols-content .col-aside .snb li li > a {width:125px; height:14px; padding:0 0 0 35px; font-size:12px; line-height:14px;white-space: nowrap;letter-spacing: -0.02em;}
+.cols-content .col-aside .snb li li > a {width:125px; height:14px; padding:0 0 0 35px; font-size:14px; line-height:14px;white-space: nowrap;letter-spacing: -0.02em;}
 .cols-content .col-aside .snb li li:hover > a,
 .cols-content .col-aside .snb li li > a:focus,
 .cols-content .col-aside .snb li li.on > a {background:url(../images/ico_smenu_hand.png) no-repeat 0 0; color:#fb4357;}

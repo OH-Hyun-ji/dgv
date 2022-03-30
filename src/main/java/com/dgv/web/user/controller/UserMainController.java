@@ -13,6 +13,7 @@ import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
+import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.UserReserveVO;
@@ -53,6 +54,11 @@ public class UserMainController {
 				}
 			}
 		}
+		
+		//공지사항 
+		AdminNoticeVO noticeVo = userBoardService.mainNotice();
+		model.addAttribute("noticeVo",noticeVo);
+		
 		List<AdminEventVO> eventList =adminMovieService.continueEventSelect();
 		model.addAttribute("eventList", eventList);
 		model.addAttribute("movieList",movieList);

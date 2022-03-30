@@ -126,6 +126,12 @@ input#thisLogin {
 .sort1 {
     text-align: -webkit-center;
 }
+.image-holder.loginPoster-wrap {
+    padding: 0;
+}
+.nav{
+    padding: 7px 0;
+}
 </style>
 </head>
 
@@ -133,13 +139,13 @@ input#thisLogin {
 	<jsp:include page="../default/user_header.jsp"></jsp:include>
 	<div class="wrapper sign-up-background">
 		<div class="inner">
-			<div class="image-holder">
-				<img id="poster"
+			<div class="image-holder loginPoster-wrap" >
+				<img id="poster" class="loginPoster"
 					src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg"
 					alt="">
 			</div>
 			<form action="login.do" id="loginForm" method="post"
-				style="padding-top: 90px;">
+				style="padding-top: 127px;">
 				<p class="register-title">
 					<img
 						src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png">

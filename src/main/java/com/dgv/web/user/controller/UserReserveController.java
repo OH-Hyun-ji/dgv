@@ -21,6 +21,7 @@ import com.dgv.web.admin.vo.AdminAgeVO;
 import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminMovieVO;
+import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
@@ -312,14 +313,29 @@ public class UserReserveController {
 		
 		if(reserveVo.getUser_id() != null) {
 		//	String userId = RequestUtils.getUserId("userID");
+			//포인트 적립
 			UserVO userVo = userBoardService.userNumSelect(reserveVo.getUser_id());
-			detailVo.setUser_point(reserveVo.getReserve_myPoint());
+			UserDetailVO  dvo = userService.userDetailVo(userVo.getUser_num());
+			AdminRankVO rankVo = userBoardService.userRankPoint(userVo.getUser_num());
+			double pointEarn = rankVo.getRank_earn() * 0.01;
+			
+			int pointResult = (int) (reserveVo.getReserve_price() * pointEarn);
+			int pointTotal = reserveVo.getReserve_myPoint() + pointResult;
+			
+			detailVo.setUser_point(pointTotal);
 			detailVo.setUser_num(userVo.getUser_num());
 			
 			int pointupdate = userBoardService.userPointInsert(detailVo);
+			reserveVo.setEarn_point(pointResult);
 			
+			if(pointupdate ==0) {
+				return CommonResultDto.fail();
+			}else {
+				String formatPoint = String.valueOf(pointTotal);
+				RequestUtils.setPoint(formatPoint);
+			}
 		}else {
-		
+			
 		}
 		if(reserveVo.getCoupon_discount() != 0) {
 			couponVo.setCoupon_discount(reserveVo.getCoupon_discount());

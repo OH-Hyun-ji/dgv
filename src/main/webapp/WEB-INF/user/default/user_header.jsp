@@ -27,8 +27,8 @@
                		 </li>
 	               </c:if>	               
 	                <c:if test="${!empty userID}">
-	                  	<li id="user-id-style" style="width: 107px;padding-right: 35px;">	
-	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;font-size: 16px;cursor: default;">${userID}님<br> 환영합니다!</a></span>
+	                  	<li id="user-id-style" style="width: 107px;padding-right: 35px;box-sizing: unset;">	
+	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;font-size: 16px;cursor: default;padding-right: 10px;">${userID}님<br> 환영합니다!</a></span>
 		                </li>
 	                </c:if>
 <!-- ///////////////////////////////////////////// -->

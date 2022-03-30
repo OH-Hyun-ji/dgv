@@ -53,7 +53,7 @@
 					<jsp:include page="../default/user_myPage_side.jsp"></jsp:include>
 					<div class="myPage-content-wrap">
 						<div class="myProfile-sub-contain">
-							<h3>나의 쿠폰 상세보기</h3>
+							<h3 style="padding: 0">나의 쿠폰 상세보기</h3>
 						</div>						
 							<div class="select-coupon-img">
 												<div class="user-box-img" style="height: 133px;text-align: center;">

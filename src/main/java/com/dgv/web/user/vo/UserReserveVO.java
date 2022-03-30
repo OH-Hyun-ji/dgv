@@ -26,7 +26,9 @@ public class UserReserveVO {
 	private Integer reserve_status;
 	private String reserve_movie_date;
 	private Integer use_point;
-	
+	private Integer coupon_discount;
+	private Integer earn_point;
+	private Integer reserve_myPoint;
 	///////
 	private Integer city_code;
 	private String  city_name;
@@ -46,8 +48,7 @@ public class UserReserveVO {
 	private Integer student;
 	private Integer normal;
 	private Integer old;
-	private Integer reserve_myPoint;
-	private Integer coupon_discount;
+	
 	
 
 	
