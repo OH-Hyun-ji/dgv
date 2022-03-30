@@ -43,7 +43,7 @@
 										<th style="width: 200px;">제목</th>
 										<th style="width: 308px;">내용</th>
 										<th style="width: 80px">관리자</th>
-										<th style="width: 95px">날짜</th>
+										<th style="width: 90px">날짜</th>
 										<th>조회수</th>
 									</tr>
 								</thead>

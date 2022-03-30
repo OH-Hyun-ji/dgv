@@ -331,7 +331,7 @@
    <div class="wrapper sign-up-background">
       <div class="inner">
          <div class="image-holder">
-            <img id="poster" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/aaoin.jpg" alt="">
+            <img id="poster" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/join.jpg" alt="">
          </div>
       <form action="/register.do" method="post" name="joinForm" >
           <div class="register-wrapping">
