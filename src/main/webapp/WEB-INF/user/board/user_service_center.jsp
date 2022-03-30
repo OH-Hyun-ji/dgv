@@ -19,28 +19,28 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<style type="text/css">
-		input#waitingAnswer {
-		    width: 70px;
-		    background-color: #c9c9c9;
-		    border: 1px solid;
-		    border-radius: 4px;
-		    text-align: center;
-		    padding: 2px;
-		    margin: 2px;
-		    outline: none;
-		    cursor: no-drop;
-		}
-		.the-container{
-  display: block;
-  position: absolute;
-  width: 500px;
-  height: 350px;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+input#waitingAnswer {
+    width: 70px;
+    background-color: #c9c9c9;
+    border: 1px solid;
+    border-radius: 4px;
+    text-align: center;
+    padding: 2px;
+    margin: 2px;
+    outline: none;
+    cursor: no-drop;
 }
+.the-container{
+	  display: block;
+	  position: absolute;
+	  width: 258px;
+      height: 320px;
+	  margin: auto;
+	  top: 0;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	}
 
 .c-window{
   display: block;
@@ -434,7 +434,7 @@ input[type=checkbox]:checked ~ .c-window .the-cat:hover .eyes{
 											<c:forEach var="inquiryList" items="${inquiryList}" varStatus="status">
 												<tr>
 													<td>${status.index+1 }</td>
-													<td><a id="myPage-title" href="#">${inquiryList.dgv_inquiry_title }</a></td>													
+													<td><a id="myPage-title" href="adminAnswer.do?dgv_inquiry_code=${inquiryList.dgv_inquiry_code }">${inquiryList.dgv_inquiry_title }</a></td>													
 													<td>
 														<c:choose>
 															<c:when test="${inquiryList.dgv_inquiry_status == 1}">
@@ -517,7 +517,7 @@ input[type=checkbox]:checked ~ .c-window .the-cat:hover .eyes{
 					</div>
 				</div>
 			</div>
-<div class="the-container" style="margin: 755px; left: 700px; top: -45px;">
+<div class="the-container" style="margin: 755px;left: 633px;top: -93px;">
   
   <input type="checkbox" id="toggle" />
   <label for="toggle"></label>

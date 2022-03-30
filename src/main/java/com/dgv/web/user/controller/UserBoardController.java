@@ -19,12 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.dgv.web.admin.common.TimeCalc;
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.FileUploadService;
 import com.dgv.web.admin.vo.AdminInquiryVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
-import com.dgv.web.commons.interceptor.TimeCalc;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
 import com.dgv.web.user.vo.Criteria;
@@ -111,9 +112,11 @@ public class UserBoardController {
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
 		String formatted = now.format(formatter);
 		for(UserCommunityVO communityVo:communityList) {
+			
 			long writeTime = TimeCalc.timeMillis(communityVo.getWrite_time());
 			long writeCurrent = TimeCalc.timeMillis(formatted);
-			communityVo.setWrite_time(TimeCalc.compareTime(writeTime, writeCurrent));
+			communityVo.setWrite_time(TimeCalc.compareTime(writeTime, writeCurrent, communityVo.getWrite_date()));
+			
 		}
 		
 
@@ -130,7 +133,7 @@ public class UserBoardController {
 		userBoardService.communityCountView(communityCode);
 		long writeTime=TimeCalc.timeMillis(communityVo.getWrite_time());
 		long currentTime =TimeCalc.timeMillis(formatted);
-		communityVo.setWrite_time(TimeCalc.compareTime(writeTime, currentTime));
+		communityVo.setWrite_time(TimeCalc.compareTime(writeTime, currentTime, communityVo.getWrite_date()));
 
 		List<UserCommentVO> commentList =  userBoardService.commentSelect(communityCode);
 			for(UserCommentVO comment:commentList ) {
@@ -204,8 +207,15 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping("/oftenQna.do")
-	public String oftenQna() {
+	public String oftenQna(Model model) {
+		List<UserFAQVO> userFaqTotalList = userBoardService.userFaqTotalList();
 		
+		for(UserFAQVO faqVO :userFaqTotalList) {
+			UserFAQKindVO faqKind = userBoardService.faqKindList(faqVO.getFaq_kind_num());
+			faqVO.setKind_name(faqKind.getFaq_kind_name());
+		}
+		
+		model.addAttribute("userFaqTotalList",userFaqTotalList);
 		return "/board/user_often_qna";	
 	}
 	

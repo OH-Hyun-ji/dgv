@@ -1,5 +1,7 @@
 package com.dgv.web.admin.vo;
 
+import com.dgv.web.user.vo.UserDetailVO;
+
 import lombok.Data;
 
 @Data
@@ -13,6 +15,6 @@ public class AdminRankVO {
 	private String reg_id;
 	private String reg_date;
 	
-	
+	private UserDetailVO detailVO;
 	
 }

@@ -43,14 +43,6 @@
 // 		});
 	})
 </script>
-<style type="text/css">
-.tit-heading-wrap > .submenu > ul > li > a:focus,
-.tit-heading-wrap > .submenu > ul > li > a:hover,
-.tit-heading-wrap > .submenu > ul > li.on > a {
-    background: url("https://dgvworld.s3.ap-northeast-2.amazonaws.com/ico_arrow07.png") no-repeat 0 3px;
-    color: #fb4357;
-}
-</style>
 </head>
 
 <body class="block">
@@ -62,13 +54,13 @@
             <div class="wrap-movie-chart">
                 <div class="tit-heading-wrap">
                 	
-                    <h3 style="margin-top: 1%;">무비차트</h3>
+                    <h3 style="margin-top: 1%;">상영예정작</h3>
                     <div class="submenu">
                         <ul>
-                            <li class="on">
+                            <li>
                                 <a href="movieChart.do" >무비차트</a>
                             </li>
-                            <li>
+                            <li class="on">
                                 <a href="/yetMovie.do">상영예정작</a>
                             </li>
                             <li>
@@ -97,12 +89,13 @@
                                     <strong class="title">${movieList.movie_title}</strong>
                                 </a>
                                 <div class="score">
+                                	<img class="star-style" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/starpreview.png">
                                     <strong class="percent">예매율
                                         <span>${movieList.reservationRate } %</span>
                                     </strong>
                                 </div>
                                 <span class="txt-info">
-                                    <strong class="date-style">${movieList.movie_open_date}
+                                    <strong>${movieList.movie_open_date}
                                         <span>개봉</span>
                                     </strong>
                                 </span>

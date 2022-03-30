@@ -123,5 +123,9 @@
 	<update id="userStatus" >
 		UPDATE user_info SET user_status='false' WHERE user_id =#{user_id}
 	</update>
+	
+	<select id="myCouponCount" resultType="int">
+		select count(*) from coupon_use where user_id=#{user_id}
+	</select>
 </mapper>
       

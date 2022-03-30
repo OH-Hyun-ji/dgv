@@ -83,6 +83,7 @@ ul {
     color: #222;
     letter-spacing: 0.313em;
     line-height: 1.500em;
+    cursor: default;
 }
 
 a {
@@ -397,6 +398,7 @@ var {
     opacity: 1;
     pointer-events: auto;
     transition: opacity 0.4s;
+    cursor: pointer;
 }
 
 .fixedBtn_wrap.topBtn .btn_fixedTicketing {
@@ -846,7 +848,7 @@ S .movie-chart-btn-wrap .chart-name-wrap h3 a.active {
     float: left;
     margin-top: 9px;
     font-size: 14px;
-    color: rgb(99, 97, 97);
+    color: rgb(223 100 0);
     line-height: 1.2em;
     font-weight: 600;
 
@@ -1078,8 +1080,9 @@ S .movie-chart-btn-wrap .chart-name-wrap h3 a.active {
     display: block;
     margin-top: 4px;
     font-size: 14px;
-    color: #666;
+    color: rgb(223 100 0);
     line-height: 1.429em;
+    font-weight: bold;
 }
 .event_list_wrap .swiper-button-prev {
     overflow: hidden;
@@ -1169,6 +1172,7 @@ S .movie-chart-btn-wrap .chart-name-wrap h3 a.active {
     display: block;
     padding-bottom: 21px;
     border-bottom: 1px solid #f4f4f4;
+    width: 688px;
 }
 .noticeClient_wrap .contents .noticeClient_container .noticeClient_content .notice_wrap:after {
     content: '';
@@ -1213,17 +1217,21 @@ S .movie-chart-btn-wrap .chart-name-wrap h3 a.active {
 /* .client_wrap{} */
 .client_wrap .client_list {
     display: flex;
-    padding: 19px 0 22px;
+    padding: 19px 0 7px;
+   	width: 692px;
 }
 .client_wrap .client_list dt {
     font-weight: 500;
     font-size: 16px;
     color: #222;
     line-height: 1.500em;
+    padding-right: 21px;
+    width: 100px;
 }
 .client_wrap .client_list dd {
     overflow: hidden;
     padding-left: 28px;
+    width: 600px;
 }
 .client_wrap .client_list dd strong {
     display: block;
@@ -1246,6 +1254,8 @@ S .movie-chart-btn-wrap .chart-name-wrap h3 a.active {
 }
 .client_wrap .client_btn_wrap {
     display: flex;
+    justify-content: end;
+    width: 681px;
 }
 .client_wrap .client_btn_wrap a {
     padding: 7px 14px;

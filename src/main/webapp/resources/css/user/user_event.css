@@ -312,3 +312,17 @@ input.winner-user-id {
     font-weight: bolder;
     color: #9e6846;
 }
+.event-list {
+    margin-bottom: 4rem;
+}
+.event-list-disables-btn{
+	width: 200px;
+    margin-left: 37rem;
+    height: 48px;
+    border-radius: 9px;
+    background-color: #c10020;
+    color: #d4d4d4;
+    font-weight: 900;
+}
+
+  

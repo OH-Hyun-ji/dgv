@@ -354,6 +354,7 @@ button.sokdak-writer {
     margin-right: 3rem;
     width: 137px;
     font-weight: bolder;
+    cursor: pointer;
 }
 span.buttonName {
     font-size: 20px;
@@ -495,4 +496,18 @@ select#searchType {
 img.user-beautiful.beauty-style {
     height: 54px;
     width: 50px;
+}
+button#searchGo {
+    width: 68px;
+    height: 30px;
+    border-radius: 16px;
+    border: 0.1rem solid #dde0ea;
+}
+.searchStyles{
+    height: 50px;
+    box-sizing: border-box;
+    padding-top: 9px;
+}
+button#searchGo:hover{
+	background-color: #f6f6f7;
 }

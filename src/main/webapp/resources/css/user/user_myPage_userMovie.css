@@ -252,7 +252,7 @@ em {
     color: #fff;
     font-weight: 500;
     font-size: 14px;
-    line-height: 34px;
+    line-height: 31px;
     text-align: left;
     border: 1px solid #a0a0a0;
     border-radius: 15px;
@@ -343,6 +343,7 @@ ol, ul {
 }
 .movielog-detail-wrap > .sect-movielog-lst > ul > li:first-child {
   margin-top: 0;
+  margin-left: 2rem;
 }
 .movielog-detail-wrap > .sect-movielog-lst > ul > li {
   margin-top: 15px;
@@ -418,7 +419,7 @@ i {
   font-size: 22px;
 }
 .movielog-detail-wrap .article-movie-info > .box-contents > .title > p {
-  color: #666;
+  color: #85086a;
   font-family: verdana, sans-serif;
   font-size: 11px;
   font-weight: bold;
@@ -426,20 +427,15 @@ i {
 .movielog-detail-wrap .article-movie-info > .box-contents > .date {
   margin-bottom: 9px;
 }
-.movielog-detail-wrap .article-movie-info > .box-contents > .date, .movielog-detail-wrap .article-movie-info > .box-contents > .theater {
-  color: #222;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-}
 .movielog-detail-wrap .article-movie-info > .box-contents > .theater {
   margin-bottom: 15px;
 }
 .movielog-detail-wrap .article-movie-info > .box-contents > .date, .movielog-detail-wrap .article-movie-info > .box-contents > .theater {
-  color: #222;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
+    color: #ff6d00;
+    font-weight: bolder;
+    font-size: 12px;
+    line-height: 14px;
+    cursor: default;
 }
 .writerinfo li:first-child {
   background: none;

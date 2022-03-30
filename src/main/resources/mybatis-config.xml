@@ -29,7 +29,6 @@
 			<typeAlias alias="AdminCouponVO"   type="com.dgv.web.admin.vo.AdminCouponVO"/>
 			<typeAlias alias="AdminParUserEventVO"   type="com.dgv.web.admin.vo.AdminParUserEventVO"/>
 			<typeAlias alias="S3keyVO"   type="com.dgv.web.admin.common.S3KeyVO"/>
-			<typeAlias alias="HotelVO"   type="com.dgv.web.admin.common.HotelVO"/>
 			<typeAlias alias="UserVO" type="com.dgv.web.user.vo.UserVO"/>
 			<typeAlias alias="UserDetailVO" type="com.dgv.web.user.vo.UserDetailVO"/>
 			<typeAlias alias="UserInquiryVO" type="com.dgv.web.user.vo.UserInquiryVO"/>
@@ -57,6 +56,5 @@
 				<mapper resource="mappings/user/userBoard-mapping.xml"/>
 				<mapper resource="mappings/user/userMapper.xml"/>
 				<mapper resource="mappings/user/userMovie-mapping.xml"/>
-				<mapper resource="mappings/admin/hotel-mapping.xml"/>
 			</mappers>
 </configuration>

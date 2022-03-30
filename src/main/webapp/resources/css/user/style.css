@@ -44,7 +44,7 @@ a:hover {
 }
 
 .wrapper {
-    min-height: 100vh;
+    min-height: 109vh;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
@@ -67,7 +67,7 @@ a:hover {
 
 .inner form {
     width: 84%;
- 	padding-top: 36px;
+ 	padding-top: 52px;
     padding-left: 3%;
     padding-right: 3%;
 }
@@ -139,6 +139,7 @@ a:hover {
 .image-holder {
     display: flex;
     align-items: center;
+    padding-top: 4rem;
 }
 
 .image-holder>img {
@@ -176,6 +177,7 @@ a:hover {
 
 #id {
     position: relative;
+    height: 52px;
 }
 
 .idCheckButton {
@@ -332,12 +334,12 @@ button:active i {
 }
 
 .form-wrapper > input {
- 	height: 43px;
-    margin-bottom: 4%;
-    margin-top: 2%;
+    height: 35px;
+    margin-bottom: 7px;
+    margin-top: 6px;
     box-sizing: border-box;
-    padding-left: 12%;
-    padding-right: 12%;
+    padding-left: 26px;
+    padding-right: 26px;
 }
 
 input.userYear {
@@ -436,7 +438,7 @@ input#joinBtn {
     padding-top: 8px;
     text-align: center;
     font-size: 22px;
-    margin-top: 5%;
+    margin-top: 6px;
 }
 #thisLogin, #thisJoin{
 	margin-top: 10px;
@@ -452,4 +454,7 @@ input#joinBtn {
 }
 .kakaoLogin-wrap {
     text-align: center;
+}
+input#password {
+    height: 52px;
 }

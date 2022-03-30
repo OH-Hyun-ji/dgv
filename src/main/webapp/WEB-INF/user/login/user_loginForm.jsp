@@ -66,49 +66,47 @@ function loginWithKakao() {
   })
 
 }
-
-
-      var count=1;
-   function loginCheck(){
-      const id = $('#id').val()
-      const pw = $('#password').val()
-//       console.log("내가입력한 id : "+ id)
-//       console.log("내가입력한 pw : "+ pw)
-      $.ajax({
-         method:"POST",
-         url:"/login.do",
-         contentType:"application/json",
-         dataType:"json",
-         data:JSON.stringify({"user_id":id, "user_pw": pw}),
-         success:function(result){
-            const reT = JSON.parse(result)
-            
-            if(reT.msg == "SUCCESS"){
-               //alert("로그인 성공!!")
-               location.href='/dgvMain.do';
-            }else if(reT.msg=="STATUS"){
-               alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")   
-               alert("비밀번호 찾기후 다시 시도해주세요")   
-            }else{
-               alert("실패!! 남은횟수 :"+(5-count)+"/5")
-               count++;
-            }
-         },
-         error:function(){
-            console.log("통신실패!!!")
-         }
-      }); //ajax close()
-      
-         
-   }
-   
-   function findId() {
-      window.open('/find_id.do','','width=800 height=500')
-   }
-   
-   function findPassword() {
-      window.open('/find_password.do','','width=800 height=500')   
-   }
+		var count=1;
+	function loginCheck(){
+		const id = $('#id').val()
+		const pw = $('#password').val()
+// 		console.log("내가입력한 id : "+ id)
+// 		console.log("내가입력한 pw : "+ pw)
+		$.ajax({
+			method:"POST",
+			url:"/login.do",
+			contentType:"application/json",
+			dataType:"json",
+			data:JSON.stringify({"user_id":id, "user_pw": pw}),
+			success:function(result){
+				const reT = JSON.parse(result)
+				
+				if(reT.msg == "SUCCESS"){
+					//alert("로그인 성공!!")
+					location.href='/dgvMain.do';
+				}else if(reT.msg=="STATUS"){
+					alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")	
+					alert("비밀번호 찾기후 다시 시도해주세요")	
+				}else{
+					alert("실패!! 남은횟수 :"+(5-count)+"/5")
+					count++;
+				}
+			},
+			error:function(){
+				console.log("통신실패!!!")
+			}
+		}); //ajax close()
+		
+			
+	}
+	
+	function findId() {
+		window.open('/find_id.do','','width=800 height=500')
+	}
+	
+	function findPassword() {
+		window.open('/find_password.do','','width=800 height=500')	
+	}
 </script>
 <style type="text/css">
 .social-login-button {
@@ -126,37 +124,43 @@ input#thisLogin {
 .sort1 {
     text-align: -webkit-center;
 }
+.image-holder.loginPoster-wrap {
+    padding: 0;
+}
+.nav{
+    padding: 7px 0;
+}
 </style>
 </head>
 
 <body class="block" style="">
-   <jsp:include page="../default/user_header.jsp"></jsp:include>
-   <div class="wrapper sign-up-background">
-      <div class="inner">
-         <div class="image-holder">
-            <img id="poster"
-               src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg"
-               alt="">
-         </div>
-         <form action="login.do" id="loginForm" method="post"
-            style="padding-top: 90px;">
-            <p class="register-title">
-               <img
-                  src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png">
-               <span class="sign-up">Login♥</span>
-            </p>
-            <div class="id_wrapping">
-            <div class="form-wrapper form-wrapper-id">
-               <div class="form-wrapper">
-                  <input id="id" name="user_id" type="text" placeholder="아이디"
-                     class="form-control"> <i class="zmdi zmdi-accounts"></i>
-               </div>
-            </div>
-            <div class="form-wrapper">
-               <input type="password" name="user_pw" placeholder="비밀번호"
-                  id="password" class="form-control"> <i
-                  class="zmdi zmdi-lock"></i>
-            </div>
+	<jsp:include page="../default/user_header.jsp"></jsp:include>
+	<div class="wrapper sign-up-background">
+		<div class="inner">
+			<div class="image-holder loginPoster-wrap" >
+				<img id="poster" class="loginPoster"
+					src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg"
+					alt="">
+			</div>
+			<form action="login.do" id="loginForm" method="post"
+				style="padding-top: 127px;">
+				<p class="register-title">
+					<img
+						src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png">
+					<span class="sign-up">Login♥</span>
+				</p>
+				<div class="id_wrapping">
+				<div class="form-wrapper form-wrapper-id">
+					<div class="form-wrapper">
+						<input id="id" name="user_id" type="text" placeholder="아이디"
+							class="form-control"> <i class="zmdi zmdi-accounts"></i>
+					</div>
+				</div>
+				<div class="form-wrapper">
+					<input type="password" name="user_pw" placeholder="비밀번호"
+						id="password" class="form-control"> <i
+						class="zmdi zmdi-lock"></i>
+				</div>
 
             <div class="sort1">
          <!--      <input type="checkbox" id="checkSaveId" name="useCookie"> 

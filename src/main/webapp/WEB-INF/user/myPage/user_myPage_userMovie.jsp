@@ -23,7 +23,16 @@
 	    margin: 0;
 	    padding: 3px;
 	}
-
+	ul#pageInfo {
+	    display: flex;
+	    justify-content: center;
+	    margin-top: 1rem;
+	    margin-left: 6rem;
+	}
+	li.pageInfo_btn {
+	    margin-right: 1rem;
+	    font-size: 18px;
+	}
   </style>
 </head>
 
@@ -65,21 +74,6 @@
                 <div class="tit-mycgv">
                   <h3>내가 본 영화</h3>
                   <p><em id="count-em-style">${myMovieListCount}건</em></p>
-                  <div class="set-combo">
-                    <label for="year">내가 본 영화 년도별 정렬</label>
-                    <select id="year" name="year">      
-                      <option value="" selected="selected">전체</option>
-                      <option value="2016">2016</option>
-                      <option value="2017">2017</option>
-                      <option value="2018">2018</option>
-                      <option value="2019">2019</option>
-                      <option value="2020">2020</option>
-                      <option value="2021">2021</option>
-                    </select>
-                    <button type="submit" class="round gray">
-                      <span>GO</span>
-                    </button>
-                  </div>
                 </div>
               </form>
               <!-- 내가 본 영화 리스트 -->
@@ -107,14 +101,31 @@
 	                        <p class="date">${myMovieList.reserve_date }</p>
 	                        <p class="theater">${myMovieList.region_name} ${myMovieList.theater_name } / ${myMovieList.total_people} 명</p>
 	                      </div>
-	                      <button type="button" data="390047546" class="btn-del">
-	                      	<img src="https://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif" >
-	                      </button>
+	                     
 	                    </div>
 	                  </li>
 	                  
 	                </ul>
                 </c:forEach>
+                	<div class="page-info-wrap">
+								<div class="page-info-area">
+									<ul id="pageInfo" class="pageInfo">
+										<c:if test="${pageMake.prev}">
+											<li class="pageInfo-btn previous"><a
+												href="${pageMake.startPage-1}">Previous</a></li>
+										</c:if>
+										<c:forEach var="num" begin="${pageMake.startPage}"
+											end="${pageMake.endPage}">
+											<li class="pageInfo_btn ${pageMake.page.pageNum == num ? "active":""}"><a
+												href="/myPage_userMovie.do?pageNum=${num }&amount=${pageMake.page.amount }">${num}</a></li>
+										</c:forEach>
+										<c:if test="${pageMake.next}">
+											<li class="pageInfo_btn next"><a
+												href="${pageMake.endPage + 1}">Next</a></li>
+										</c:if>
+									</ul>
+								</div>
+							</div>
               </div>
 
             </div>

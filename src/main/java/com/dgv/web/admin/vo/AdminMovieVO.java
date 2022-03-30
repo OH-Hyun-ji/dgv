@@ -40,6 +40,6 @@ public class AdminMovieVO {
 	private List<AdminGroupVO> groupList;
 	private String movie_genre_name;
 	private Integer genre_count;
-	private Double reservationRate;
+	private String reservationRate;
 	
 }

@@ -6,7 +6,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" type="image/png" sizes="192x192"  href="${pageContext.request.contextPath }/resources/images/banana_real.png">
-<title>My Coupon</title>
+<title>User Event Detail</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1024" />
 	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/layout.css">
@@ -49,75 +49,19 @@
 			<div id="contents" class="">
 				<!-- Contents Start -->
 				<jsp:include page="../default/user_myPage_top.jsp"></jsp:include>
-				<div class="myPage-cols-container">
+				<div class="myPage-event-container">
 					<jsp:include page="../default/user_myPage_side.jsp"></jsp:include>
-					<div class="myPage-content-wrap">
-						<div class="myProfile-sub-contain">
-							<h3 style="padding: 0">나의 쿠폰 상세보기</h3>
-						</div>						
-							<div class="select-coupon-img">
-												<div class="user-box-img" style="height: 133px;text-align: center;">
-													<span class="thumb-box-img" style="width: 724px;height: 101px;">
-														<img id="coupon-img" src="${couponVo.coupon_img}">
-														<span class="profile-mask-box"></span>
-													</span>
-												</div>
-											</div>
-						<table id="myProfile-tableN" style="margin-top: 1rem;">
-							<colgroup>
-								<col width="19%">
-								<col width="*">
-							</colgroup>
-							<tbody>
-								<tr style="background-color: antiquewhite;">
-									<th style="width: 27%;">쿠폰 명</th>
-									<th style="width: 185px;">쿠폰 코드</th>
-									<th>쿠폰 할인률</th>
-									<th>사용종료일</th>
-								</tr>
-								<tr>
-									<td>${couponVo.coupon_name}</td>
-									<td>${couponVo.coupon_code}</td>
-									<td>${couponVo.coupon_discount} 원</td>
-									<td> ~ ${couponVo.coupon_date} 까지</td>
-								</tr>
-								<tr>
-									<th style="background-color: antiquewhite;box-sizing: border-box; vertical-align: middle;">쿠폰 설명</th>
-									<td colspan="3">
-										<div class="profile-agree-status">
-											<table id="userAgree-info" style="width: 530px;margin-bottom: 1rem;">
-												<colgroup>
-													<col style="width: 16%;">
-													<col style="width: 34%;">
-													<col style="width: 34%;">
-													<col style="width: 16%;">
-												</colgroup>
-												<thead>
-													<tr>
-														<th scope="col">항목</th>
-														<th scope="col">이용목적</th>
-														<th scope="col">보유기간</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<th>쿠폰</th>
-														<td>
-															<ul class="agree-dep">
-																<li class="agree-dep-list">예매시 할인</li>
-															</ul>
-														</td>
-														<td>~ ${couponVo.coupon_date} 까지</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-
-					</div>
+					<div class="myEvent-wrap">
+						<div class="myEvent-wrapper">
+							<div class="myEvent-wrapping">
+								<div class="event-notice-title"></div>
+							</div>
+							<div class="event-notice-btn-wrap">
+								<button class="event-notice-prev">이전으로</button>
+								<button class="event-notice-list">이벤트참여목록으로</button>
+							</div>
+						</div>
+					</div>	
 				</div>
 			</div>
 

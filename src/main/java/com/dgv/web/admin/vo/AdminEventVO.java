@@ -1,6 +1,9 @@
 package com.dgv.web.admin.vo;
 
+import java.util.List;
+
 import lombok.Data;
+
 
 @Data
 public class AdminEventVO {
@@ -17,7 +20,13 @@ public class AdminEventVO {
 	private String event_img;
 	private String event_text_img;
 	private String event_check;
+	private AdminParUserEventVO parUserEvent;
+	
+	
 	//
 	private Integer coupon_num;
 	private String coupon_img;
+	private boolean button_status;
+	
+	
 }

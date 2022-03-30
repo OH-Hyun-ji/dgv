@@ -1,4 +1,7 @@
-package com.dgv.web.commons.interceptor;
+package com.dgv.web.admin.common;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TimeCalc {
 	
@@ -19,19 +22,23 @@ public class TimeCalc {
 		return totalMillis;
 	}
 	
-	public static String compareTime(long millisTime, long currentMillis ) {
+	public static String compareTime(long millisTime, long currentMillis ,String date) {
 	//	long currentMillis = System.currentTimeMillis();
 		long resultTime = (currentMillis-millisTime)/1000; //초를 구하고
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+		String formatted = now.format(formatter);
+		
 		
 		String msg = "";
 		
-		if(resultTime < ZERO){
+		if(resultTime < ZERO && !date.equals(formatted)){
 			msg = "null";
-		}else if( resultTime < SEC) {
+		}else if( resultTime < SEC && date.equals(formatted)) {
 			msg = resultTime + "초전";			
-		}else if((resultTime /= SEC) < MIN) {
+		}else if((resultTime /= SEC) < MIN && date.equals(formatted)) {
 			msg = resultTime + "분전";
-		}else if((resultTime /= MIN) < HOUR) {
+		}else if((resultTime /= MIN) < HOUR && date.equals(formatted)) {
 			msg = resultTime + "시간전";
 		}else {
 			msg ="null";

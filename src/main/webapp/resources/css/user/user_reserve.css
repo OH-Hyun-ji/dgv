@@ -885,7 +885,7 @@ div {
   width: 81px;
   height: 30px;
   overflow: hidden;
-  background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/top_buttons.png);
+  background-image: url(https://dgvworld.s3.ap-northeast-2.amazonaws.com/myseat.png);
   background-repeat: no-repeat;
 }
 
@@ -1987,3 +1987,15 @@ span.title-text:hover {
 	
 }
 
+button#next-page1 {
+    margin-left: 20px;
+    margin-right: 12px;
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #240c03;
+    background: #f2f0e5;
+    font-weight: bold;
+    color: #4d4d4b;
+    cursor: pointer;
+}

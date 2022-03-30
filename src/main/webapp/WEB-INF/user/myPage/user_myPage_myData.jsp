@@ -43,6 +43,13 @@
   
       
       $(function(){
+    	  
+ 	
+			$("#myInfo").addClass("on")
+			$(".feat-show1").addClass("fix")
+			$(".feat-show1 li a#changeInfo").css("color","red")
+			$("#myMain").removeClass("on")
+    	
          //keyup -> 마우스 눌렀다가 떼면 이벤트 발생
          console.log("???????");
          //pw 검증 메서드

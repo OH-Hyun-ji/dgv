@@ -18,4 +18,5 @@ public class UserCommunityVO {
 	//
 	private String user_img;
 	private String rank_name;
+	private String today;
 }

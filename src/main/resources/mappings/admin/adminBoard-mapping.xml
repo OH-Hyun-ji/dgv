@@ -55,7 +55,7 @@
 	</update>
 	
 	<select id="SelectReserveInfo" resultType="UserReserveVO">
-		SELECT * FROM movie_reserve
+		SELECT * FROM movie_reserve order by reserve_date desc
 	</select>
 	
 	<update id="updateReserveStatus" >

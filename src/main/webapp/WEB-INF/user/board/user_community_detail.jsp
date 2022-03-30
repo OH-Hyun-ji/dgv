@@ -174,20 +174,20 @@
 										</div>
 									</div>
 									<div class="community-footer">
-										<div class="community-vote">
-											<div class="community-vote-wrapper">
-												<span class="community-vote-btn">
-													<i class="fas fa-thumbs-up" style="color: orange;"></i>
-												</span>
-												<span class="detail-recommend">추천 0</span>
-											</div>
-											<div class="community-vote-wrapper">
-												<span class="community-vote-btn">
-													<i class="fas fa-thumbs-down" style="color: orange;"></i>
-												</span>
-												<span  class="detail-no-recommend"> 비추천 </span>
-											</div>
-										</div>
+<!-- 										<div class="community-vote"> -->
+<!-- 											<div class="community-vote-wrapper"> -->
+<!-- 												<span class="community-vote-btn"> -->
+<!-- 													<i class="fas fa-thumbs-up" style="color: orange;"></i> -->
+<!-- 												</span> -->
+<!-- 												<span class="detail-recommend">추천 0</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="community-vote-wrapper"> -->
+<!-- 												<span class="community-vote-btn"> -->
+<!-- 													<i class="fas fa-thumbs-down" style="color: orange;"></i> -->
+<!-- 												</span> -->
+<!-- 												<span  class="detail-no-recommend"> 비추천 </span> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
 										<div class="community-subMenu">
 											<span class="community-count">조회수 ${communityVo.community_count }</span>
 											<span class="community-any-text">의견수 ${communityVo.community_answerCount }</span>								

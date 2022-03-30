@@ -63,9 +63,13 @@
 		<url-pattern>*.mdo</url-pattern>
 	</servlet-mapping>
 	
-	<welcome-file-list>
+	<!-- <welcome-file-list>
 		<welcome-file>
 			/WEB-INF/user/main/user_main.jsp
 		</welcome-file>
-	</welcome-file-list>
+	</welcome-file-list> -->
+	
+	<welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

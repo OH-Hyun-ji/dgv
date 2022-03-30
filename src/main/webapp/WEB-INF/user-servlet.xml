@@ -24,5 +24,26 @@
 		<property name="prefix" value="/WEB-INF/user/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+<!-- 	<mvc:interceptors> -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/*.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/dgvMain.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/Join.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/loginForm.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/kakaoLogin.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/artHouse.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/endMovie.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/yetMovie.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/movieChart.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/board.do"/> -->
+<!-- 			<bean id="LoginInterceptor" class="com.dgv.web.commons.interceptor.UserLoginInterceptor"></bean> -->
+<!-- 		</mvc:interceptor> -->
+<!-- 	</mvc:interceptors> -->
+
+
+
+
+
 
 </beans>

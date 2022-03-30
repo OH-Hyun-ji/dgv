@@ -36,8 +36,8 @@
 							<thead>
 								<tr>
 									<th>번호</th>
-									<th>이벤트 제목</th>
-									<th>이벤트 내용</th>
+									<th style="width: 346px;">이벤트 제목</th>
+									<th style="width: 262px;">이벤트 내용</th>
 									<th>이벤트 종료일</th>
 									<th>작성자</th>
 									<th>작성일</th>
@@ -47,7 +47,7 @@
 								<c:forEach var="winnerList" items="${winnerList }" varStatus="status">
 									<tr>
 										<th>${status.index+1 }</th>
-										<td><a href="eventDetail.do?event_code=${winnerList.event_code}">${winnerList.event_title }</a></td>
+										<td><a href="eventWinnerPage.do?event_code=${winnerList.event_code}">${winnerList.event_title }</a></td>
 										<td><a href="eventWinnerPage.do?event_code=${winnerList.event_code}">♥ 당첨자 발표 ♥</a></td>								
 										<td>${winnerList.end_date }</td>								
 										<td>${winnerList.reg_id }</td>

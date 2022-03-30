@@ -19,6 +19,7 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.AdminParVO;
+import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
@@ -26,6 +27,7 @@ import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.controller.Pagination;
 import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.CriteriaBoard;
+import com.dgv.web.user.vo.MyPagePaging;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
@@ -294,5 +296,71 @@ public class UserBoardDAO {
 	
 	public UserDetailVO userPointSelect(UserDetailVO vo) {
 		return sqlSessionTemplate.selectOne("UserMovieDAO.userPointSelect",vo);
+	}
+	public int moviePeopleTotalCount() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.moviePeopleTotalCount");
+	}
+	
+	public List<UserCouponUseVO> userCouponList(String id){
+		return sqlSessionTemplate.selectList("UserMovieDAO.userCouponList", id);
+	}
+	
+	public int usePointReset(String id) {
+		return sqlSessionTemplate.update("UserMovieDAO.usePointReset",id);
+	}
+	public AdminCouponVO couponCancel(AdminCouponVO vo) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.couponCancel",vo);
+	}
+	
+	public List<UserCouponUseVO> couponUseAbleList(UserCouponUseVO vo){
+		return sqlSessionTemplate.selectList("UserMovieDAO.couponUseAbleList", vo);
+	}
+	public List<UserCouponUseVO> couponUseEnAbleList(UserCouponUseVO vo){
+		return sqlSessionTemplate.selectList("UserMovieDAO.couponUseEnAbleList", vo);
+	}
+	
+	public int couponUseFalse(int cuCode) {
+		return sqlSessionTemplate.update("UserMovieDAO.couponUseFalse",cuCode);
+	}
+	public int couponUseTrue(int cuCode) {
+		return sqlSessionTemplate.update("UserMovieDAO.couponUseTrue",cuCode);
+	}
+	public List<UserReserveVO> myPagePaging(MyPagePaging page){
+		return sqlSessionTemplate.selectList("UserBoardDAO.myPagePaging", page);
+	}
+	
+	public int myReserveCount(String id) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.myReserveCount",id);
+	}
+	
+	public List<UserFAQVO> userFaqTotalList(){
+		return sqlSessionTemplate.selectList("UserBoardDAO.userFaqTotalList");
+	}
+	
+	public int myCouponCount(String id) {
+		return sqlSessionTemplate.selectOne("UserDAO.myCouponCount",id);
+	}
+	
+	public List<AdminEventVO> myJoinEvent(int num){
+		return sqlSessionTemplate.selectList("UserMovieDAO.myJoinEvent", num);
+	}
+	
+	public UserReserveVO userReserveDetailView(int num) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.userReserveDetailView",num);
+	}
+	public List<UserReserveVO> userMyPointLog(String id){
+		return sqlSessionTemplate.selectList("UserBoardDAO.userMyPointLog", id);
+	}
+	
+	public AdminRankVO userRankPoint(int num) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.userRankPoint",num);
+	}
+	
+	public int userEarnPoint(UserReserveVO vo) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.userEarnPoint",vo);
+	}
+	
+	public AdminNoticeVO mainNotice() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.mainNotice");
 	}
 }

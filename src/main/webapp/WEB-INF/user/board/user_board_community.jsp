@@ -16,6 +16,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		$(function(){
+			
+			let now = new Date();
+			$("#todayDate").val(now)
+			
 			$("#writePage").on('click',function(){
 			                    
 		       location.href='/sokdakRegister.do'
@@ -25,6 +29,14 @@
 				location.href='loginForm.do'
 			})
 		
+			
+			$("#searchGo").on('click',function(){
+				var url = "/board.do?pageNum="+$("#numVal").val();
+				url = url+"&amountVal="+$("#amountVal").val();			
+				url =url+"&searchType="+$("#searchType").val();
+				url= url+"&keyword="+$("#keyword").val();
+				location.href = url;
+			})
 		})
 		
 	</script>
@@ -42,16 +54,21 @@
 					<button class="sokdak-writer" id="noClick" ><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i><span class="buttonName">작성하기</span></button>
 				</c:if>
 			</div>
-			<div class="sokdak-search-wrap">
-				<label class="sokdak-search-img">
-					<i class="fas fa-search"></i>
-				</label>
-				<select name="searchType" id="searchType">
-					<option value="community_title">제목</option>
-					<option value="community_text">본문</option>
-					<option value="user_id" >작성자</option>
-				</select>
-				<input class="sokdak-search" onkeypress="enterKey(event)" name="keyword" id="keyword" placeholder="궁금한 내용을 찾아보세요">
+			<div style="display: flex;">
+				<div class="sokdak-search-wrap">
+					<label class="sokdak-search-img">
+						<i class="fas fa-search"></i>
+					</label>
+					<select name="searchType" id="searchType">
+						<option value="community_title">제목</option>
+						<option value="community_text">본문</option>
+						<option value="user_id" >작성자</option>
+					</select>
+					<input class="sokdak-search" onkeypress="enterKey(event)" name="keyword" id="keyword" placeholder="궁금한 내용을 찾아보세요">				
+				</div>
+				<div class="searchStyles">
+					<button id="searchGo">검색</button>
+				</div>
 			</div>
 		</div>
 		<div class="sokdak-dgv-total">
@@ -78,6 +95,7 @@
 						<button class="sokdak-profile-wrapping">
 							<div class="sokdak-user-info">
 								<p class="sokdak-user-id">${communityList.user_id}</p>
+								<input type="hidden" id="todayDate">
 								<c:if test="${communityList.write_time != 'null'}">
 									<p class="sokdak-time-view">${communityList.write_time}</p>
 								</c:if>
@@ -85,16 +103,17 @@
 									<div class="sokdak-date">${communityList.write_date}</div>		
 								</c:if>
 								<div class="sokdak-user-img">
-									<c:if test="${communityList.user_img == '0' }">
-										<img
-											style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;"
-											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg">
-									</c:if>
-									<c:if test="${communityList.user_img != '0' }">
-										<img 
-											style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;"
-											src="${communityList.user_img}">
-									</c:if>							
+<%-- 									<c:if test="${communityList.user_img == '0' }"> --%>
+<!-- 										<img -->
+<!-- 											style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;" -->
+<!-- 											src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg"> -->
+<%-- 									</c:if> --%>
+<%-- 									<c:if test="${communityList.user_img != '0' }"> --%>
+<!-- 										<img style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;" -->
+<%-- 											src="${communityList.user_img}"> --%>
+<%-- 									</c:if>							 --%>
+
+										<img style="width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover;" src="${communityList.user_img}" onerror="this.src='https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg';">
 								</div>
 							</div>
 						</button>
@@ -132,6 +151,8 @@
 	</div>
 	<jsp:include page="../default/user_footer.jsp"></jsp:include>
 	<script type="text/javascript">
+	
+	
 	function enterKey(e){
 		if(e.keyCode == 13){
 			console.log("ddd : "+$("#searchType").val() )

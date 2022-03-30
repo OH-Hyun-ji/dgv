@@ -47,6 +47,8 @@ public class UserMovieController {
 		return "/movie/user_movie_artHouse";
 	}
 	
+	
+	
 	@RequestMapping("/arthouseVideo.do")
 	public String artVideo(Model model) {
 		List<AdminMovieVO> movieList = adminMovieService.movieList();
@@ -108,12 +110,26 @@ public class UserMovieController {
 				}
 			}
 		}
+		//예매율
+		double totalCount = adminMovieService.totalSum();
+		List<UserReserveVO> reserveList = adminMovieService.totalPeopleCount();
+		for(UserReserveVO reserveVo : reserveList) {
+			for(AdminMovieVO movieVo : movieList) {
+				if(reserveVo.getMovie_num()==movieVo.getMovie_num()) {				
+					double totalPeople =  reserveVo.getTotal_people();
+					double result =totalPeople/totalCount*100;
+					String totalResult = String.format("%.1f", result);
+					movieVo.setReservationRate(totalResult);
+				}
+			}
+		}
+		
 		PageVO pageMake = new PageVO(total, cri);
 		model.addAttribute("pageMake",pageMake);
 		model.addAttribute("url","/yetMovie.do");
 		model.addAttribute("movieList",movieList);
 
-		return "/movie/user_movie_movieChart";
+		return "/movie/user_movie_movieChartEnd";
 	}
 	
 	@RequestMapping("/yetMovie.do")
@@ -129,27 +145,57 @@ public class UserMovieController {
 				}
 			}
 		}
+		//예매율
+		double totalCount = adminMovieService.totalSum();
+		List<UserReserveVO> reserveList = adminMovieService.totalPeopleCount();
+		for(UserReserveVO reserveVo : reserveList) {
+			for(AdminMovieVO movieVo : movieList) {
+				if(reserveVo.getMovie_num()==movieVo.getMovie_num()) {				
+					double totalPeople =  reserveVo.getTotal_people();
+					double result =totalPeople/totalCount*100;
+					String totalResult = String.format("%.1f", result);
+					movieVo.setReservationRate(totalResult);
+				}
+			}
+		}
+		
 		PageVO pageMake = new PageVO(total, cri);
 		model.addAttribute("pageMake",pageMake);
 		model.addAttribute("url","/yetMovie.do");
 		model.addAttribute("movieList",movieList);
 		
-		return "/movie/user_movie_movieChart";
+		return "/movie/user_movie_movieChartYet";
 	}
 	
 	
 	@RequestMapping("/movieChart.do")
 	public String movieChart(Model model,Criteria cri) {
+		
+	
+		
 		List<AdminMovieVO> movieList =  adminMovieService.continueMovie(cri); 
 		List<AdminAgeVO> ageList = adminMovieService.ageList();
 		for(AdminMovieVO movieVo: movieList) {
-			
 			for(AdminAgeVO ageVo:ageList) {
 				if(movieVo.getMovie_age_code() == ageVo.getMovie_age_num()) {
 					movieVo.setAge_name(ageVo.getMovie_age_name());
 				}
 			}
 		}
+		//예매율
+		double totalCount = adminMovieService.totalSum();
+		List<UserReserveVO> reserveList = adminMovieService.totalPeopleCount();
+		for(UserReserveVO reserveVo : reserveList) {
+			for(AdminMovieVO movieVo : movieList) {
+				if(reserveVo.getMovie_num()==movieVo.getMovie_num()) {				
+					double totalPeople =  reserveVo.getTotal_people();
+					double result =totalPeople/totalCount*100;
+					String totalResult = String.format("%.1f", result);
+					movieVo.setReservationRate(totalResult);
+				}
+			}
+		}
+		
 		int total = userBoardService.continueTotal();
 		PageVO pageMake = new PageVO(total, cri);
 		model.addAttribute("pageMake",pageMake);
@@ -193,11 +239,15 @@ public class UserMovieController {
 		//예매율
 		double total = adminMovieService.totalSum();
 		List<UserReserveVO> reserveList = adminMovieService.totalPeopleCount();
+	
+		
 		for(UserReserveVO reserveVo : reserveList) {
 			if(reserveVo.getMovie_num() == movieList.getMovie_num()) {
-				int result =(int) (reserveVo.getTotal_people()/total*100);
-				double resultPercent = result*0.01;
-				movieList.setReservationRate(resultPercent);
+				double totalPeople =  reserveVo.getTotal_people();
+				double result =totalPeople/total*100;
+				String totalResult = String.format("%.1f", result);
+				
+				movieList.setReservationRate(totalResult);
 			}
 		}
 		

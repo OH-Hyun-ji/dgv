@@ -296,7 +296,12 @@
 				<div class="noticeClient_container">
 					<div class="noticeClient_content">
 						<div id="ctl00_PlaceHolderContent_notice_wrap" class="notice_wrap">
-							<strong>공지사항</strong> <a href="/notice.do" class="btn_more">더보기</a>
+							<strong>
+								<a href="/noticeDetail.do?notice_num=${noticeVo.notice_num }">[공지사항]<br> 
+									<span style="padding-left: 5rem;">${noticeVo.notice_title}</span>
+								</a>
+							</strong> 
+							<a href="/notice.do" class="btn_more">더보기</a>
 						</div>
 						<div class="client_wrap">
 							<dl class="client_list">
@@ -304,9 +309,9 @@
 									<strong>고객센터</strong>
 								</dt>
 								<dd>
-									<strong>1544-1122</strong> <span> "고객센터 운영기관(평일
-										09:00~12:00)"
-										<p>업무끝</p>
+									<strong>1544-1122</strong> 
+									<span> "고객센터 운영기관(평일 09:00~12:00)"
+									<p>업무끝</p>
 									</span>
 								</dd>
 							</dl>
@@ -320,15 +325,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="qr_wrap">
-						<strong>앱 다운로드</strong> <span>DGV앱 </span>
-						<div class="img_wrap" data-scale="false">
-							<img style="width:66px"
-								src="${pageContext.request.contextPath }/resources/images/mainQr.png"
-								alt="code">
-						</div>
-						
-					</div>
+				
 				</div>
 				<div class="noticeClient_banner_wrap">
 					<div
@@ -337,7 +334,7 @@
 							style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
 							<div class="swiper-slide swiper-slide-active"
 								style="width: 211px;">
-								<a href="#"> <img
+								<a href="javascript:;" style="cursor: default;"> <img
 									src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/banner1.jpg">
 								</a>
 							</div>

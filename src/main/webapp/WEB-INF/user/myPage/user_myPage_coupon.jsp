@@ -16,6 +16,14 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#myDiscount").addClass("on")
+			$(".feat-show").addClass("fix")
+			$(".feat-show li a").css("color","red")
+			$("#myMain").removeClass("on")
+		})
+	</script>
 </head>
 <body class="">
 	<div id="cgvwrap">

@@ -110,6 +110,8 @@ ul.select-people-movie-info-list {
     font-weight: bolder;
     table-layout: fixed;
     justify-content: space-between;
+    width: 419px;
+    height: 93px;
 }
 .select-people-info {
     padding-left: 15px;
@@ -119,7 +121,7 @@ ul.select-people-movie-info-list {
 }
 
 li.select-theater-local.selected-theater-local-info {
-    margin-right: 23px;
+    margin-right: 66px;
 }
 .select-movie-date {
     margin-right: 106px;
@@ -227,6 +229,7 @@ input#selected-count {
     font-size: 30px;
     text-align: center;
     width: 100px;
+    outline: none;
 }
 span.selected-date {
     border-bottom: 1px solid;
@@ -333,16 +336,16 @@ img#next-choice {
     width: 1000px;
 }
 .discount-reserve-wrap {
-    width: 156px;
+    width: 200px;
     display: grid;
 }
 .coupon-select {
-    height: 29px;
-    margin-top: 6rem;
+    display: grid;
+    margin-bottom: 2px;
 }
 #discountCoupon, #discountPoint{
 	height: 26px;
-    width: 137px;
+    width: 177px;
 }
 .seat_introduce {
     display: flex;
@@ -372,4 +375,52 @@ input#result-total-money {
 }
 button#pointResetBtn {
     margin-left: 3px;
+}
+.point-wrapping {
+    display: flex;
+}
+div#userMsg {
+    width: 250px;
+    margin-left: 13px;
+}
+.point-select {
+    display: grid;
+    width: 177px;
+    margin-bottom: 1px;
+}
+input#userPointUse, input#myRemainPoint {
+    outline: none;
+} 
+input#allTotalPrice {
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid gray;
+    font-size: 20px;
+    width: 146px;
+    text-align: center;
+    margin-left: 13px;
+}
+.coupon-point-wrapping {
+    display: flex;
+}
+.use-coupon-view {
+    padding-top: 22px;
+    padding-left: 5px;
+    font-size: 18px;
+}
+.selected-price-title {
+    width: 197px;
+}
+svg.svg-inline--fa.fa-hand-point-right.fa-w-16 {
+    width: 100px;
+    height: 56px;
+    padding-left: 5rem;
+    color : #4d4d4d;
+}
+select#paymentKind {
+    outline: none;
+    width: 150px;
+    height: 27px;
+    margin-top: 7px;
+    margin-left: 50px;
 }

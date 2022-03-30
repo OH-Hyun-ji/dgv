@@ -20,13 +20,13 @@
    
    <style type="text/css">
    .issetUser {
-      box-shadow : 0px 0px 20px 11px tomato;
-      background-color : pink;
+      box-shadow: 0px 0px 20px 4px tomato;
+      background-color: #ffdae0;
    }
    
    .nonesetUser {
-      box-shadow : 0px 0px 20px 11px aquamarine;
-      background-color : rgb(177 224 205);
+      box-shadow: 0px 0px 20px 11px #7fffd482;
+   	  background-color: rgb(199 234 220);
    }
    </style>
    
@@ -331,7 +331,7 @@
    <div class="wrapper sign-up-background">
       <div class="inner">
          <div class="image-holder">
-            <img id="poster" src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" alt="">
+            <img id="poster" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/aaoin.jpg" alt="">
          </div>
       <form action="/register.do" method="post" name="joinForm" >
           <div class="register-wrapping">
@@ -341,13 +341,13 @@
             </p>
             <div class="form-wrapper form-wrapper-id">
                <div class="form-wrapper">
-                  <input id="id" name="user_id" type="text" placeholder="아이디" class="form-control" maxlength="15">
+                  <input id="id" name="user_id" type="text" placeholder="아이디" class="form-control" maxlength="15" style="height: 35px;">
                      <div style="text-align: center;"><span id="idCK"></span></div>
                </div>
             </div>
 
             <div class="form-wrapper">
-               <input type="password" name="user_pw" placeholder="비밀번호" id="password" class="form-control" maxlength="16" min="8"> 
+               <input type="password" name="user_pw" placeholder="비밀번호" id="password" class="form-control" maxlength="16" min="8"style="height: 35px;"> 
                   <i class="zmdi zmdi-lock"></i>
                      
             </div>

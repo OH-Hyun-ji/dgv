@@ -14,12 +14,14 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.AdminParVO;
+import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
 import com.dgv.web.admin.vo.AdminTimeVO;
 import com.dgv.web.user.vo.Criteria;
 import com.dgv.web.user.vo.CriteriaBoard;
+import com.dgv.web.user.vo.MyPagePaging;
 import com.dgv.web.user.vo.SearchVO;
 import com.dgv.web.user.vo.UserCommentVO;
 import com.dgv.web.user.vo.UserCommunityVO;
@@ -169,4 +171,40 @@ public interface UserBoardService {
 	int userPointInsert(UserDetailVO vo);
 	
 	UserDetailVO userPointSelect(UserDetailVO vo);
+	
+	int moviePeopleTotalCount();
+	
+	List<UserCouponUseVO> userCouponList(String id);
+	
+	int usePointReset(String id);
+	
+	AdminCouponVO couponCancel(AdminCouponVO vo);
+	
+	List<UserCouponUseVO> couponUseAbleList(UserCouponUseVO vo);
+
+	List<UserCouponUseVO> couponUseEnAbleList(UserCouponUseVO vo);
+	
+	int couponUseFalse(int cuCode);
+	
+	int couponUseTrue(int cuCode);
+	
+	List<UserReserveVO> myPagePaging(MyPagePaging page);
+	
+	int myReserveCount(String id);
+	
+	List<UserFAQVO> userFaqTotalList();
+	
+	int myCouponCount(String id);
+	
+	List<AdminEventVO> myJoinEvent(int num);
+	
+	UserReserveVO userReserveDetailView(int num);
+	
+	List<UserReserveVO> userMyPointLog(String id);
+	
+	AdminRankVO userRankPoint(int num);
+	
+	int userEarnPoint(UserReserveVO vo);
+	
+	AdminNoticeVO mainNotice();
 }

@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminUserService;
+import com.dgv.web.admin.vo.AdminCouponVO;
 import com.dgv.web.admin.vo.AdminEventVO;
 import com.dgv.web.admin.vo.AdminGenreVO;
 import com.dgv.web.admin.vo.AdminInquiryVO;
@@ -40,8 +41,12 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
+import com.dgv.web.user.service.UserService;
+import com.dgv.web.user.vo.UserCouponUseVO;
+import com.dgv.web.user.vo.UserDetailVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserReserveVO;
+import com.dgv.web.user.vo.UserVO;
 import com.fasterxml.jackson.core.format.DataFormatDetector;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -64,6 +69,9 @@ public class AdminBoardController {
 
 	@Autowired
 	private UserBoardService userBoardService;
+	
+	@Autowired
+	private UserService userService;
 
 	private IamportClient api;
 
@@ -209,13 +217,61 @@ public class AdminBoardController {
 
 	@PostMapping("/adminpaymentCancel.mdo")
 	@ResponseBody
-	public CommonResultDto paymentCancel(@RequestBody UserReserveVO reserveVo) {
+	public CommonResultDto paymentCancel(@RequestBody UserReserveVO reserveVo,AdminCouponVO cVo, UserCouponUseVO cuVo) {
 		String merchantUid = null;
 		BigDecimal amount = null;
 		IamportResponse<Payment> reservePaymentResponse = null;
 		IamportResponse<Payment> paymentResponse = null;
 		String reserveImpUid = reserveVo.getReserve_imp_uid();
-
+		UserVO userVo = userBoardService.userNumSelect(reserveVo.getUser_id());
+		UserDetailVO detailVo = userService.userDetailVo(userVo.getUser_num());
+		
+		//사용한 쿠폰 정보가 있다면
+		if(reserveVo.getCoupon_discount() != 0) {
+			//사용한 쿠폰 조회
+			cVo.setCoupon_discount(reserveVo.getCoupon_discount()); 
+			AdminCouponVO couponVo = userBoardService.couponCancel(cVo);
+			cuVo.setUser_id(reserveVo.getUser_id());
+			cuVo.setCoupon_num(couponVo.getCoupon_num());
+			
+			List<UserCouponUseVO> couponUseEnAbleList = userBoardService.couponUseEnAbleList(cuVo);
+			int cuCode=0;
+			int count =0;
+			for(UserCouponUseVO couponUseVo:couponUseEnAbleList ) {
+				cuCode = couponUseVo.getCu_code();
+				count ++;
+				if(count <=1 ) {
+					break;
+				}
+			}
+					
+			int checkCuCode = userBoardService.couponUseTrue(cuCode);
+			if(checkCuCode ==0)
+				return CommonResultDto.fail();
+		}
+		
+		int addPoint = 0;
+		if(reserveVo.getUse_point()==0) {
+			addPoint =0;
+		}else {
+			addPoint = reserveVo.getUse_point();
+		}
+		
+		int remainPoint = detailVo.getUser_point();
+		int totalPoint = addPoint+remainPoint;
+		detailVo.setUser_point(totalPoint);
+		
+		int updatePoint = userBoardService.userPointInsert(detailVo);
+			if(updatePoint ==0)
+				return CommonResultDto.fail();
+//		if(updatePoint!=0) {
+//			int resetNum = userBoardService.usePointReset(reserveVo.getReserve_imp_uid());
+//				if(resetNum==0)
+//					return CommonResultDto.fail();
+//		}else {
+//			return CommonResultDto.fail();
+//		}
+		
 		try {
 			reservePaymentResponse = api.paymentByImpUid(reserveImpUid);
 			Payment reservePayment = reservePaymentResponse.getResponse();
