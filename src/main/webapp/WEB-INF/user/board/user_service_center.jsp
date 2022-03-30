@@ -517,7 +517,7 @@ input[type=checkbox]:checked ~ .c-window .the-cat:hover .eyes{
 					</div>
 				</div>
 			</div>
-<div class="the-container" style="margin: 755px;left: 633px;top: -93px;">
+<div class="the-container" style="margin: 755px;left: 809px;top: -93px;">
   
   <input type="checkbox" id="toggle" />
   <label for="toggle"></label>

@@ -209,7 +209,7 @@
                     <jsp:include page="../default/user_myPage_top.jsp"></jsp:include>
 		<div class="myPage-cols-container">
                     <jsp:include page="../default/user_myPage_side.jsp"></jsp:include>
-                  <div class="myPage-content-wrap">
+                  <div class="myPage-content-wrap" style="height: 673px;">
                   <div class="myPage-table-wrap">
                   	<span><i class="fas fa-table me-1" style=" margin-right: 1%;"></i>나의 예매내역<button style="cursor:pointer; " onclick="location.href='/myPage_userMovie.do'" >내가본영화</button></span>
                   	<table class="myPage-table">
