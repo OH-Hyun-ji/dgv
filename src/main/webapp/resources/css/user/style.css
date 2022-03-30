@@ -343,13 +343,13 @@ button:active i {
 }
 
 input.userYear {
-    height: 39px;
+    height: 31px;
     width: 38%;
     border-radius: 8px;
 }
 
 select.userMonth {
-    height: 44px;
+    height:  35px;
     width: 27%;
     font-size: 12px;
     font-weight: bold;
@@ -358,7 +358,7 @@ select.userMonth {
 }
 
 select.userDay {
-    height: 44px;
+    height: 35px;
     width: 23%;
     font-size: 13px;
     font-weight: bold;
@@ -367,7 +367,6 @@ select.userDay {
 }
 
 .user-birth {
-    margin-bottom: 8%;
     display: flex;
     justify-content: space-between;
 }
