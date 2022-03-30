@@ -281,7 +281,6 @@
         	 
         		console.log("dddsss : " +	$("#userRealCheck").val())
         	  	if($("#userRealCheck").val() === 'true'){
-        	  		alert("오나요 ")
         	  		$('input:checkbox[id="userTerm"]').removeAttr('disabled')
         	  		$('input:checkbox[id="userTerm"]').prop("checked",true)
         	  	}
@@ -289,7 +288,7 @@
       
 	  	$("#termCheckInfo").on('click',function(){
 	  		window.name ="parentForm"
-	  		window.open('termPage.do','childForm','width=600 height=800')
+	  		window.open('termPage.do','childForm','width=800 height=800')
 	  	})
   	
       
@@ -494,13 +493,7 @@
                   
                   <!-- BIRTH_DD -->
                   <!-- 사용자가 선택시 택(1) -->
-                  <select class="userDay" id="userDD" name="user_day" style="
-                           height: 44px;
-                      width: 29%;
-                      font-size: 13px;
-                      font-weight: bold;
-                      color: gray;
-                      border-radius: 8px;">   
+                  <select class="userDay" id="userDD" name="user_day" >   
                      <option class="optionDay" name="day">일</option>
                      <c:forEach var="i" begin="1" end="31" >
                      <c:choose>

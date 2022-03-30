@@ -27,5 +27,17 @@
 		<property name="prefix" value="/WEB-INF/admin/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*.mdo"/>
+			<mvc:exclude-mapping path="/login.mdo"/>
+			<mvc:exclude-mapping path="/loginCheck.mdo"/>
+			<mvc:exclude-mapping path="/logout.mdo"/>
+			<mvc:exclude-mapping path="/movie.mdo"/>
+			<bean id="AdminLoginInterceptor" class="com.dgv.web.commons.interceptor.AdminLoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 
 </beans>

@@ -204,9 +204,6 @@
 							<a href="/movieChart.do" class="active" id="btnMovie"
 								style="font-weight: bold; font-size: 31px;">Movie List</a>
 						</h3>
-						<h3>
-							<a href="#" id="btnNextMovie" style="font-size: 30px;">상영예정작</a>
-						</h3>
 					</div>
 					<a href="/movieChart.do" class="movie-all-view">전체보기</a>
 				</div>
