@@ -68,66 +68,96 @@
 			
 		})
 		
-	
+		$("#winnerChoice").on('click',function(){
+			const eventCode = $("#eventCodeN").val()
+			const winner = $("#winnerUserId").val()
+			
+			const eventVo = {
+				"event_code":eventCode,
+				"event_winner":winner	
+			}
+			
+			
+			$.ajax({
+				method:"POST",
+				url:"eventWinnerChoice.mdo",
+				contentType:"application/json",
+				dataType:"json",
+				data:JSON.stringify(eventVo),
+				success:function(result){
+					if(result.msg=="SUCCESS"){
+						alert("당첨자가 추가되었습니다.")
+						location.reload()
+					}
+				},
+				error:function(){
+					console.log("통신실패")
+				}
+				
+			})// close ajax
+		})
 		
   		
   		
   		$("#eventUpdateBtn").click(function(){
-  			alert("이벤트 수정 ")
-  			const eventTitle =$("#eventTitle").val()
-  			const startDate =$("#startDate").val()
-  			const endDate = $("#endDate").val()
-  			const eventText =$("#eventText").val()
-  			const winner = $("#winnerUserId").val()
-  			const eventTextImg =$("#event-updateImg2").val()
-  			const eventImg =$("#event-updateImg1").val()
-  			const eventCode = $("#eventCodeN").val()
-  			const couponNum = $("#hidCouponBtn").val()
-  			
-  			const Img =eventImg.split("\\")
-  			const textImg = eventTextImg.split("\\")
-  			
-  			const eventImgName=Img[Img.length-1]
-  			const eventTextImgName = textImg[textImg.length-1]
-  			
-  			const imgFile = $("#event-updateImg1")[0].files[0];
-  			const imgFile1 = $("#event-updateImg2")[0].files[0];
-  			
-  			const eventVo ={
-  					"event_code":eventCode,
-  					"event_title":eventTitle,
-  					"start_date":startDate,
-  					"end_date":endDate,
-  					"event_text":eventText,
-  					"event_img":eventImgName,
-  					"event_text_img":eventTextImgName,
-  					"event_winner":winner,
-  					"coupon_num":couponNum
+			const result = confirm("정말로 수정하시겠습니까? ")
+			if(result){
+	  			const eventTitle =$("#eventTitle").val()
+	  			const startDate =$("#startDate").val()
+	  			const endDate = $("#endDate").val()
+	  			const eventText =$("#eventText").val()	  			
+	  			const eventTextImg =$("#event-updateImg2").val()
+	  			const eventImg =$("#event-updateImg1").val()
+	  			const eventCode = $("#eventCodeN").val()
+	  			const couponNum = $("#hidCouponBtn").val()
+	  			
+	  			const Img =eventImg.split("\\")
+	  			const textImg = eventTextImg.split("\\")
+	  			
+	  			const eventImgName=Img[Img.length-1]
+	  			const eventTextImgName = textImg[textImg.length-1]
+	  			
+	  			const imgFile = $("#event-updateImg1")[0].files[0];
+	  			const imgFile1 = $("#event-updateImg2")[0].files[0];
+	  			
+	  			const eventVo ={
+	  					"event_code":eventCode,
+	  					"event_title":eventTitle,
+	  					"start_date":startDate,
+	  					"end_date":endDate,
+	  					"event_text":eventText,
+	  					"event_img":eventImgName,
+	  					"event_text_img":eventTextImgName,
+	  					"event_winner":winner,
+	  					"coupon_num":couponNum
+	  			}
+	  			const form = new FormData();
+	  			form.append("imgFile",imgFile)
+	  			form.append("imgFile1",imgFile1)
+	  			form.append("eventVo",new Blob([JSON.stringify(eventVo)],{type:"application/json"}));
+	  			
+	  			$.ajax({
+	  				method:"POST",
+	  				url:"/eventUpdate.mdo",
+	  				enctype:"multipart/form-data",
+	  				contentType:false,
+	  				processData:false,
+	  				data:form,
+	  				success:function(result){
+	  					if(result.msg =="SUCCESS"){
+	  						alert("수정 성공!")
+	  						location.reload()
+	  						
+	  					}
+	  				},
+	  				error:function(e){
+	  					console.log("통신실패"+e)
+	  				}
+	  			})//close ajax
+	  			
+  			}else{
+  				console.log("수정 취소")
   			}
-  			const form = new FormData();
-  			form.append("imgFile",imgFile)
-  			form.append("imgFile1",imgFile1)
-  			form.append("eventVo",new Blob([JSON.stringify(eventVo)],{type:"application/json"}));
-  			
-  			$.ajax({
-  				method:"POST",
-  				url:"/eventUpdate.mdo",
-  				enctype:"multipart/form-data",
-  				contentType:false,
-  				processData:false,
-  				data:form,
-  				success:function(result){
-  					if(result.msg =="SUCCESS"){
-  						alert("수정 성공!")
-  						location.reload()
-  						
-  					}
-  				},
-  				error:function(e){
-  					console.log("통신실패"+e)
-  				}
-  			})//close ajax
-  			
   		})
   	})
   </script>
@@ -166,6 +196,13 @@
 		}
 		th {
 		    width: 179px;
+		}
+		button#winnerChoice {
+		    letter-spacing: unset;
+		    transform: none;
+		    margin-left: 15px;
+		    padding: 10px;
+		    box-shadow: none;
 		}
     </style>
 </head>
@@ -217,6 +254,7 @@
 											<th></th>
 											<td>
 												<input id="winnerUserId" class="sameInput"  value="${ eventVo.event_winner}">
+												<button class="w-btn-outline w-btn-yellow-outline" id="winnerChoice">당첨자 선택완료</button>
 											</td>
 										</tr>
 										<tr>

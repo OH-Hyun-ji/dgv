@@ -588,3 +588,12 @@ strong.date-style {
     font-size: 15px;
     color: #bf640b;
 }
+.score {
+    display: flex;
+    justify-content: center;
+}
+img.star-style {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+}

@@ -43,6 +43,28 @@ public class AdminEventController {
 	private FileUploadService fileUploadService;
 
 	
+	@PostMapping("eventWinnerChoice.mdo")
+	@ResponseBody
+	public CommonResultDto eventWinnerChoice(@RequestBody AdminEventVO vo,UserCouponUseVO cuVo) {
+		int num = adminMovieService.eventWinnerChoice(vo);
+		String[] arr = vo.getEvent_winner().split(",");
+		int count =0;
+		AdminCouponVO couVo = adminMovieService.CouponNumSelect(vo.getCoupon_num());
+		for(String winner : arr) {
+			cuVo.setUser_id(winner);
+			cuVo.setCoupon_num(vo.getCoupon_num());
+			cuVo.setCu_status(true);
+			cuVo.setCoupon_code(couVo.getCoupon_code());
+			cuVo.setCoupon_name(couVo.getCoupon_name());
+			cuVo.setCoupon_date(couVo.getCoupon_date());
+			count = userBoardService.CouponUseInsert(cuVo);	
+		}
+		if(num ==0)
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	}
+	
+	
 	
 	//이벤트 수정
 	@PostMapping("/eventUpdate.mdo")

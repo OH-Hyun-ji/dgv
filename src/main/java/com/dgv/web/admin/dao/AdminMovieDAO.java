@@ -326,4 +326,8 @@ public class AdminMovieDAO {
 	public int totalSum() {
 		return sqlSessionTemplate.selectOne("AdminMovieDAO.totalSum");
 	}
+	
+	public  int eventWinnerChoice(AdminEventVO vo) {
+		return sqlSessionTemplate.update("AdminBoardDAO.eventWinnerChoice",vo);
+	}
 }
