@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,34 +32,34 @@ function loginWithKakao() {
           window.Kakao.API.request({
               url:'/v2/user/me',
               success:res =>{
-				const kakao_account = res.kakao_account;
-		         console.log(kakao_account);
-		         const userEmail = kakao_account.email;
-			      console.log(userEmail);
-		          $.ajax({
-					method:"POST",
-					url:"/kakaoLogin.do",
-					contentType:"application/json",
-					dataType:"json",
-					data:JSON.stringify({"user_email": userEmail}),
-					success:function(result){
-						if(result.msg=="SUCCESS"){
-							alert("Kakao 로그인 성공♥ 환영합니다~!  ")
-							location.href='/dgvMain.do';
-						}else{
-							alert("등록되지 않은 아이디입니다. 회원가입을 먼저 진행해주세요.")
-							location.href='/join.do';
-						}
-					},
-					error: function(e) {
-						alert("등록되지 않은 아이디입니다. 회원가입을 먼저 진행해주세요.")
-						location.href='/join.do';
-					}
-				})//ajax close
+            const kakao_account = res.kakao_account;
+               console.log(kakao_account);
+               const userEmail = kakao_account.email;
+               console.log(userEmail);
+                $.ajax({
+               method:"POST",
+               url:"/kakaoLogin.do",
+               contentType:"application/json",
+               dataType:"json",
+               data:JSON.stringify({"user_email": userEmail}),
+               success:function(result){
+                  if(result.msg=="SUCCESS"){
+                     alert("Kakao 로그인 성공♥ 환영합니다~!  ")
+                     location.href='/dgvMain.do';
+                  }else{
+                     alert("등록되지 않은 아이디입니다. 회원가입을 먼저 진행해주세요.")
+                     location.href='/join.do';
+                  }
+               },
+               error: function(e) {
+                  alert("등록되지 않은 아이디입니다. 회원가입을 먼저 진행해주세요.")
+                  location.href='/join.do';
+               }
+            })//ajax close
 
               },
               fail:function(err){
-            	  alert(JSON.stringify(err));
+                 alert(JSON.stringify(err));
               }
           })
       }
@@ -68,47 +68,47 @@ function loginWithKakao() {
 }
 
 
-		var count=1;
-	function loginCheck(){
-		const id = $('#id').val()
-		const pw = $('#password').val()
-// 		console.log("내가입력한 id : "+ id)
-// 		console.log("내가입력한 pw : "+ pw)
-		$.ajax({
-			method:"POST",
-			url:"/login.do",
-			contentType:"application/json",
-			dataType:"json",
-			data:JSON.stringify({"user_id":id, "user_pw": pw}),
-			success:function(result){
-				const reT = JSON.parse(result)
-				
-				if(reT.msg == "SUCCESS"){
-					alert("로그인 성공!!")
-					location.href='/dgvMain.do';
-				}else if(reT.msg=="STATUS"){
-					alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")	
-					alert("고객센터에 문의바랍니다.")	
-				}else{
-					alert("실패!! 남은횟수 :"+(5-count)+"/5")
-					count++;
-				}
-			},
-			error:function(){
-				console.log("통신실패!!!")
-			}
-		}); //ajax close()
-		
-			
-	}
-	
-	function findId() {
-		window.open('/find_id.do','','width=800 height=500')
-	}
-	
-	function findPassword() {
-		window.open('/find_password.do','','width=800 height=500')	
-	}
+      var count=1;
+   function loginCheck(){
+      const id = $('#id').val()
+      const pw = $('#password').val()
+//       console.log("내가입력한 id : "+ id)
+//       console.log("내가입력한 pw : "+ pw)
+      $.ajax({
+         method:"POST",
+         url:"/login.do",
+         contentType:"application/json",
+         dataType:"json",
+         data:JSON.stringify({"user_id":id, "user_pw": pw}),
+         success:function(result){
+            const reT = JSON.parse(result)
+            
+            if(reT.msg == "SUCCESS"){
+               //alert("로그인 성공!!")
+               location.href='/dgvMain.do';
+            }else if(reT.msg=="STATUS"){
+               alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")   
+               alert("비밀번호 찾기후 다시 시도해주세요")   
+            }else{
+               alert("실패!! 남은횟수 :"+(5-count)+"/5")
+               count++;
+            }
+         },
+         error:function(){
+            console.log("통신실패!!!")
+         }
+      }); //ajax close()
+      
+         
+   }
+   
+   function findId() {
+      window.open('/find_id.do','','width=800 height=500')
+   }
+   
+   function findPassword() {
+      window.open('/find_password.do','','width=800 height=500')   
+   }
 </script>
 <style type="text/css">
 .social-login-button {
@@ -130,66 +130,66 @@ input#thisLogin {
 </head>
 
 <body class="block" style="">
-	<jsp:include page="../default/user_header.jsp"></jsp:include>
-	<div class="wrapper sign-up-background">
-		<div class="inner">
-			<div class="image-holder">
-				<img id="poster"
-					src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg"
-					alt="">
-			</div>
-			<form action="login.do" id="loginForm" method="post"
-				style="padding-top: 90px;">
-				<p class="register-title">
-					<img
-						src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png">
-					<span class="sign-up">Login♥</span>
-				</p>
-				<div class="id_wrapping">
-				<div class="form-wrapper form-wrapper-id">
-					<div class="form-wrapper">
-						<input id="id" name="user_id" type="text" placeholder="아이디"
-							class="form-control"> <i class="zmdi zmdi-accounts"></i>
-					</div>
-				</div>
-				<div class="form-wrapper">
-					<input type="password" name="user_pw" placeholder="비밀번호"
-						id="password" class="form-control"> <i
-						class="zmdi zmdi-lock"></i>
-				</div>
+   <jsp:include page="../default/user_header.jsp"></jsp:include>
+   <div class="wrapper sign-up-background">
+      <div class="inner">
+         <div class="image-holder">
+            <img id="poster"
+               src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg"
+               alt="">
+         </div>
+         <form action="login.do" id="loginForm" method="post"
+            style="padding-top: 90px;">
+            <p class="register-title">
+               <img
+                  src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png">
+               <span class="sign-up">Login♥</span>
+            </p>
+            <div class="id_wrapping">
+            <div class="form-wrapper form-wrapper-id">
+               <div class="form-wrapper">
+                  <input id="id" name="user_id" type="text" placeholder="아이디"
+                     class="form-control"> <i class="zmdi zmdi-accounts"></i>
+               </div>
+            </div>
+            <div class="form-wrapper">
+               <input type="password" name="user_pw" placeholder="비밀번호"
+                  id="password" class="form-control"> <i
+                  class="zmdi zmdi-lock"></i>
+            </div>
 
-				<div class="sort1">
-			<!--		<input type="checkbox" id="checkSaveId" name="useCookie"> 
- 					<span style="color: white;">아이디 저장</span> -->
-					<a onclick="findId()" style="color: white; cursor: pointer;" >[ 아이디 찾기 ]</a>
-					<a onclick="findPassword()" style="color: white; cursor: pointer;">[ 비밀번호 찾기 ]</a>
-				</div>
-				</div>
-				<div class="action-button"  style="display: flex;">
-				<input type="button" id="thisLogin" class="w-btn w-btn-gra3 w-btn-gra-anim"
-					onclick="loginCheck()" value="Login">
+            <div class="sort1">
+         <!--      <input type="checkbox" id="checkSaveId" name="useCookie"> 
+                <span style="color: white;">아이디 저장</span> -->
+               <a onclick="findId()" style="color: white; cursor: pointer;" >[ 아이디 찾기 ]</a>
+               <a onclick="findPassword()" style="color: white; cursor: pointer;">[ 비밀번호 찾기 ]</a>
+            </div>
+            </div>
+            <div class="action-button"  style="display: flex;">
+            <input type="button" id="thisLogin" class="w-btn w-btn-gra3 w-btn-gra-anim"
+               onclick="loginCheck()" value="Login">
 
-				<button type="button" id="thisJoin" onclick="location.href='/join.do'"
-					class="w-btn w-btn-gra3 w-btn-gra-anim" >
-					<span>Join</span> <i class="zmdi zmdi-arrow-right"></i>
-				</button>
-				</div>
-				<div class="social-login-button">
-					<div class="kakaoLogin-wrap">
-					<a id="custom-login-btn" href="javascript:loginWithKakao()"> 
-						<img
-							src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-							width="222" alt="카카오 로그인 버튼" />
-					</a>
-						<p id="token-result"></p>
-					</div>
-					
-				</div>	
-			</form>
-		</div>
-		
-	</div>
-	<jsp:include page="../default/user_footer.jsp"></jsp:include>
+            <button type="button" id="thisJoin" onclick="location.href='/join.do'"
+               class="w-btn w-btn-gra3 w-btn-gra-anim" >
+               <span>Join</span> <i class="zmdi zmdi-arrow-right"></i>
+            </button>
+            </div>
+            <div class="social-login-button">
+               <div class="kakaoLogin-wrap">
+               <a id="custom-login-btn" href="javascript:loginWithKakao()"> 
+                  <img
+                     src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+                     width="222" alt="카카오 로그인 버튼" />
+               </a>
+                  <p id="token-result"></p>
+               </div>
+               
+            </div>   
+         </form>
+      </div>
+      
+   </div>
+   <jsp:include page="../default/user_footer.jsp"></jsp:include>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 
