@@ -491,4 +491,9 @@ public class AdminMovieServiceImpl implements AdminMovieService {
 		
 		return adminMovieDAO.totalSum();
 	}
+	@Override
+	public int eventWinnerChoice(AdminEventVO vo) {
+		
+		return adminMovieDAO.eventWinnerChoice(vo);
+	}
 }
