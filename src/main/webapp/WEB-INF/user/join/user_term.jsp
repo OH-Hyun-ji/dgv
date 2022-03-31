@@ -16,6 +16,7 @@
 
 		function termNameCheck(e){
 			alert("dfdf")
+			
 			console.log("this  : " +$("#termTitle"+e).val())
 			var id = $(this).attr('id')				
 			console.log("bodt id : " +id )
