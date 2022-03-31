@@ -556,21 +556,21 @@ input#thisLogin {
   animation: swing 7s cubic-bezier(0.5, 0, 0.5, 1) infinite both;
 }
 .all:before {
-    height: 11rem;
-    width: 3px;
-    background-color: #DB242A;
-    left: calc(30% - 1px);
-    bottom: 23rem;
+    height: 5rem;
+    width: 2px;
+    background-color: #ec1b24;
+    left: calc(15% - 1px);
+    bottom: 366px;
 }
 
 .yarn {
- position: absolute;
-    top: -207px;
-    left: -20px;
+    position: absolute;
+    top: -299px;
+    left: -28px;
     width: 84px;
     height: 75px;
     border-radius: 50%;
-    background-image: radial-gradient(circle at top left, #e97c7f, #DB242A 50%, #af1d22);
+    background-image: radial-gradient(circle at top left, #e97c7f, #ec1b24 50%, #af1d22);
     z-index: 1;
 }
 .yarn:before, .yarn:after {
@@ -591,9 +591,9 @@ input#thisLogin {
 }
 
 .cat-wrap {
- position: absolute;
-    top: -179px;
-    left: calc(50% - 45px);
+    position: absolute;
+    top: -290px;
+    left: calc(42% - 45px);
     width: 90px;
     height: 140px;
     animation: reverse-swing 7s cubic-bezier(0.5, 0, 0.5, 1) infinite both;
@@ -1098,8 +1098,8 @@ input#thisLogin {
   display: block;
 }
 img#posterCat {
-    width: 258px;
-    height: 113px;
+    width: 226px;
+    height: 106px;
     margin-bottom: 449px;
     margin-left: 111px;
 }

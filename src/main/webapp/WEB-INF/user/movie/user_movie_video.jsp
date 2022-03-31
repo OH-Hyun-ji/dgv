@@ -79,12 +79,9 @@ h3{
 				<h1 style="font-size: 17px; color: white; margin-left: 2%;">
 					<span class="artVideo_icon">HD</span> [좋은 빛, 좋은 공기]닮은 역사 예고편
 				</h1>
-				<iframe width="560" height="315"
+				<video width="560" height="315" controls="controls"
 					src="http://h.vod.cgv.co.kr:80/vodCGVa/84558/84558_190327_1200_128_960_540.mp4"
-					title="YouTube video player" frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					allowfullscreen
-					style="box-sizing: border-box; margin-left: 8%; width: 86%; height: 120%;"></iframe>
+					style="box-sizing: border-box; margin-left: 8%; width: 86%;height: 56%;"></video>
 					<div class="video_info">
 						<h3>영상설명</h3>
 						<textarea readonly="readonly" id="artVideo_text">독립의소재 솰라솰라</textarea>

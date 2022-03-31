@@ -201,16 +201,9 @@
 					<h3 style="margin-top: 1%;">아트하우스</h3>
 					<a href="#" class="link-question" id="btn_aboutCollage"
 						title="아트하우스란?"></a>
-					<div class="submenu">
-						<ul>
-							<li class="on"><a href="#" title="현재 선택">HOME</a></li>
-							<li><a href="#">영화</a></li>
-							<li><a href="#">톡프로그램</a></li>
-						</ul>
-					</div>
 				</div>
 				<div class="sect-arthouse-visual">
-					<a href="#"> 
+					<a style="cursor: default;"> 
 					<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20220220_175402868.png">
 					</a>
 				</div>

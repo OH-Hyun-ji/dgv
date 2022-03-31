@@ -90,8 +90,8 @@ img {
 				<h1 style="font-size: 17px; color: white; margin-left: 2%;">
 					<span class="artVideo_icon">HD</span> ${movieVo.movie_title}
 				</h1>
-				<video  width="560" height="315" autoplay muted loop>
-					<source src="${video}" style="box-sizing: border-box; margin-left: 8%; width: 86%; height: 120%;">
+				<video  width="560" height="315" autoplay muted loop controls="controls">
+					<source src="${video}" style="box-sizing: border-box; margin-left: 8%; width: 86%; height: 120%;" >
 				</video>
 
 					<div class="video_info">

@@ -84,7 +84,7 @@ public class UserMovieController {
 		return result;
 	}
 	
-	@PostMapping("cityViewList.mdo")
+	@PostMapping("cityViewList.do")
 	@ResponseBody
 	public String  cityViewList(@RequestBody AdminRegionVO vo){
 		List<AdminRegionVO> regionList = userBoardService.regionTheater(vo.getCity_code());

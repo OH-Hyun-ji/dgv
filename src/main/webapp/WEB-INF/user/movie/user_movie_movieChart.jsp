@@ -99,7 +99,14 @@
                                 <div class="score">
                                 	<img class="star-style" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/starpreview.png">
                                     <strong class="percent">예매율
-                                        <span>${movieList.reservationRate } %</span>
+                                    	<c:choose>
+                                    	<c:when test="${empty movieList.reservationRate }">
+                                    		<span>0 % </span>
+                                    	</c:when>
+                                    	<c:otherwise>
+	                                        <span>${movieList.reservationRate } %</span>                                    		
+                                    	</c:otherwise>
+                                    	</c:choose>
                                     </strong>
                                 </div>
                                 <span class="txt-info">
