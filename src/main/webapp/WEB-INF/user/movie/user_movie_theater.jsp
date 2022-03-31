@@ -107,7 +107,7 @@
 			$(".region-list").empty();
 			$.ajax ({
 				method:"POST",
-				url:"cityViewList.mdo",
+				url:"cityViewList.do",
 				contentType:"application/json",
 				dataType:"json",
 				data:JSON.stringify({"city_code":cityCode}),

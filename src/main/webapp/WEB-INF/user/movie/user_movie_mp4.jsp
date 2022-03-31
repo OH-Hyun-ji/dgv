@@ -90,10 +90,10 @@ img {
 				<h1 style="font-size: 17px; color: white; margin-left: 2%;">
 					<span class="artVideo_icon">HD</span> ${movieVo.movie_title}
 				</h1>
+
 				<video  width="560" height="315" autoplay muted loop oncontextmenu="return false;" controls autoplay="autoplay">
 					<source src="${video}" style="box-sizing: border-box; margin-left: 8%; width: 86%; height: 120%;">
 				</video>
-
 					<div class="video_info">
 						<h3>영상설명</h3>
 						<textarea readonly="readonly" id="artVideo_text">${movieVo.movie_title} 예고편</textarea>

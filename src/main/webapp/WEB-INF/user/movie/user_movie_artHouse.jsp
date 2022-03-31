@@ -203,7 +203,7 @@
 						title="아트하우스란?"></a>
 				</div>
 				<div class="sect-arthouse-visual">
-					<a href="#"> 
+					<a style="cursor: default;"> 
 					<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20220220_175402868.png">
 					</a>
 				</div>

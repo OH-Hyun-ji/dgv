@@ -120,7 +120,7 @@
 			select*from(
 					select *,(row_number() over()) as rn1 from (
 								select *,(row_number() over()) as rn from movie_info)as foo where rn <= #{pageNum} * #{amount})
-											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='true' ORDER BY movie_num asc
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='true' ORDER BY movie_open_date desc
 		]]>
 	</select>
 	<select id="endMovie" resultType="AdminMovieVO">
@@ -128,7 +128,7 @@
 			select*from(
 					select *,(row_number() over()) as rn1 from (
 								select *,(row_number() over()) as rn from movie_info)as foo where rn <= #{pageNum} * #{amount})
-											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='false' ORDER BY movie_num asc
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='false' ORDER BY movie_open_date desc
 		]]>
 	</select>
 	<select id="yetMovie" resultType="AdminMovieVO">
@@ -136,7 +136,7 @@
 			select*from(
 					select *,(row_number() over()) as rn1 from (
 								select *,(row_number() over()) as rn from movie_info)as foo where rn <= #{pageNum} * #{amount})
-											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='yet' ORDER BY movie_num asc
+											 as fd where rn1 > (#{pageNum}-1) * #{amount}  and movie_status ='yet' ORDER BY movie_open_date desc
 		]]>
 	</select>
 	<delete id="deleteMovie" parameterType="AdminMovieVO">
@@ -144,7 +144,7 @@
 	</delete>
 	
 	<select id="bestMovieList" resultType="UserReserveVO">
-		select movie_num, TO_CHAR(trunc(Sum(reserve_price)),'$999,999,999')as fomatter_price
+		select movie_num, TO_CHAR(trunc(Sum(reserve_price)),'￦999,999,999')as fomatter_price
 				from movie_reserve
 						group by  movie_num
 								 order by SUM(reserve_price) desc;
@@ -176,7 +176,7 @@
 	</select>
 	
 	<select id="totalMyMoney" resultType="UserReserveVO">			
-		SELECT to_char(SUM(reserve_price),'$999,999,999') as fomatter_price
+		SELECT to_char(SUM(reserve_price),'￦999,999,999') as fomatter_price
 		FROM movie_reserve;				
 	</select>
 	

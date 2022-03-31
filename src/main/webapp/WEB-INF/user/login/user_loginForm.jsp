@@ -278,7 +278,7 @@ function loginWithKakao() {
 				style="padding-top: 127px;">
 					<div style="display: flex;">
 						<p class="register-title">
-							<span style="right:-19px"class="sign-up">Login♥</span>
+							<span style="right:-19px;left: 0rem;"class="sign-up">Login♥</span>
 						</p>
 					</div>
 				<div class="id_wrapping" style="text-align: -webkit-center;">

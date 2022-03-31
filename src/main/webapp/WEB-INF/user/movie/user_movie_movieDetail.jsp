@@ -200,7 +200,6 @@
         });
        
          function reserve(result){
-        	 alert("@@@@@@@@@@@@@")
         	var form = document.createElement('form');
 			var objs;
 			objs =document.createElement('input')
@@ -214,8 +213,6 @@
 			form.submit()
          }   "C:/Users/USER/Desktop/suin.zip"
     </script>
-
-
 </head>
 <style>
 .after{
