@@ -281,7 +281,7 @@
         	 
         		console.log("dddsss : " +	$("#userRealCheck").val())
         	  	if($("#userRealCheck").val() === 'true'){
-        	  		alert("오나요 ")
+        	  		alert("확인되었습니다.")
         	  		$('input:checkbox[id="userTerm"]').removeAttr('disabled')
         	  		$('input:checkbox[id="userTerm"]').prop("checked",true)
         	  	}
