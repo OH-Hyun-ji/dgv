@@ -14,6 +14,8 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
 <script type="text/javascript" src=""></script>
@@ -69,6 +71,16 @@ function loginWithKakao() {
 }
 		var count=1;
 	function loginCheck(){
+		toastr.options = {
+					  "closeButton": true,
+					  "newestOnTop": false,
+					  "progressBar": true,
+					  "positionClass": "toast-top-center",
+					  "preventDuplicates": true,	
+					  "hideEasing": "linear",
+					  "showMethod": "fadeIn",
+					  "hideMethod": "fadeOut"
+					}
 		const id = $('#id').val()
 		const pw = $('#password').val()
 // 		console.log("내가입력한 id : "+ id)
@@ -88,6 +100,8 @@ function loginWithKakao() {
 				}else if(reT.msg=="STATUS"){
 					alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")	
 					alert("비밀번호 찾기후 다시 시도해주세요")	
+				}else if(reT.msg=="IdFail"){
+					toastr.warning("없는 아이디입니다.");
 				}else{
 					alert("실패!! 남은횟수 :"+(5-count)+"/5")
 					count++;
@@ -115,8 +129,12 @@ function loginWithKakao() {
     	margin-left: 0rem;
 	}
 	.register-title {
-    margin-left: 2rem;
-}
+    	margin-left: 2rem;
+	}
+	#toast-container >div{
+		padding:0;
+	}
+
 </style>
 </head>
 
