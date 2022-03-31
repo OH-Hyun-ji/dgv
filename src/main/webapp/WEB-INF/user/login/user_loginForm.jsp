@@ -109,6 +109,15 @@ function loginWithKakao() {
 		window.open('/find_password.do','','width=800 height=500')	
 	}
 </script>
+<style type="text/css">
+	#conStyle{
+		width: 704px;
+    	margin-left: 0rem;
+	}
+	.register-title {
+    margin-left: 2rem;
+}
+</style>
 </head>
 
 <body class="block" style="">

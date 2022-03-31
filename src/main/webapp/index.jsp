@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>영화 그 이상적인 감동을</title>
 <script>
-window.location.href = "http://localhost/dgvMain.do"
+window.location.href = "dgvMain.do"
 </script>
 </head>
 </html>

@@ -20,6 +20,7 @@
     box-sizing: unset;
     animation-timing-function: unset;
     animation-fill-mode: none;
+    
 }
 
 </style>
@@ -28,7 +29,7 @@
 <div class="header">
 	<div class="header_content">
 		<div class="contents">
-			<h1>
+			<h1 id="conStyle">
 				<!-- 상단 로고와 사이드 로고 -->
 				<a href="/dgvMain.do">
 					<img src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png" style="width: 82%;">

@@ -101,7 +101,7 @@
 										varStatus="status">
 										<tr>
 											<td style="cursor: default;">${status.index+1 }</td>
-											<td><a id="myPage-title" href="/myEventJoinDetail.do?event_code=${parEventList.event_code }">${parEventList.event_title }</a></td>
+											<td><a id="myPage-title" href="eventDetail.do?event_code=${parEventList.event_code }">${parEventList.event_title }</a></td>
 											<td style="cursor: default;">${parEventList.parUserEvent.par_date}</td>
 											<c:if test="${parEventList.event_check == '1' }">
 												<td>
