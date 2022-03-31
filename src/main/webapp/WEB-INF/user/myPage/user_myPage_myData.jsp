@@ -260,7 +260,7 @@
 	                           <div class="myPage-myPassCk">
 	                              <ul>
 	                                 <li >비밀번호 확인</li>
-	                                 <li><input type="password" placeholder="비밀번호 확인" class="form-control" id="passwordRepeat" maxlength="16" min="8" style="margin-left: 224px;"> 
+	                                 <li><input type="password" placeholder="비밀번호 확인" class="form-control" id="passwordRepeat" maxlength="16" min="8" style="margin-left: 194px;"> 
 	                                          <i class="zmdi zmdi-lock"></i></li>
 	                              </ul>                                 
 	                           </div>

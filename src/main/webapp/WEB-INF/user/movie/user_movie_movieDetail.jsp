@@ -215,9 +215,12 @@
          }   "C:/Users/USER/Desktop/suin.zip"
     </script>
 
-    </style>
+
 </head>
 <style>
+.after{
+	margin-bottom: 330px;
+}
 
 .movieA{
   flex: 1 1 auto;
@@ -358,26 +361,18 @@ background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100
                 <div class="cols-content" id="menu">
                     <div class="col-detail">
                         <ul class="tab-menu">
-                            <li class="on">
-                                <a title="현재 선택됨" href="#" >주요정보 </a>
+                            <li>
+                                <a href="#list_1">트레일러</a>
                             </li>
                             <li>
-                                <a href="#">트레일러</a>
-                            </li>
-                            <li>
-                                <a href="#">스틸컷</a>
-                            </li>
-                            <li>
-                                <a href="#">평점/리뷰</a>
-                            </li>
-                            <li class="last">
-                                <a href="#">상영시간표</a>
-                            </li>
+                                <a href="#list_2">스틸컷</a>
+                            </li> 
                         </ul>
                         <div class="sect-story-movie">
                            ${movieList.movie_text}
                         </div>
                         <!-- 연령별예매분포 -->
+                        <a id="list_1"></a>
                         <div style="text-align: -webkit-center;">
 		                      <div  style="display: block;height: 216px;width: 500px;margin-top: 54px;">
 									 <!--차트가 그려질 부분-->
@@ -441,6 +436,7 @@ background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100
                                     </div>
                                 </li>
                                 <li>
+                                	<a id="list_2"></a>
                                     <div class="box-image">
                                         <a onclick="MovieVideo('${imgList.movie_play3}',${movieList.movie_num })"  title="새창" class="movie_player_popup" style="cursor:pointer;">
                                             <span class="thumb-image">
@@ -462,6 +458,7 @@ background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100
                             </ul>
                         </div>
                         <div id="ctl00_PlaceHolderContent_Section_Still_Cut" class="sect-stillcut">
+                        
                             <div class="heading">
                                 <h4>스틸컷</h4>
                                 <span id="val" class="count">
@@ -500,10 +497,8 @@ background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100
                                      
                                     </div>    
                                     <div style="display: flex;justify-content: space-between;">          
-                                <div class="swiper-button-prev" style="
-                               position: initial;" ></div>
-                                <div class="swiper-button-next"  style="
-                                 position: initial;"></div> 
+                                <div class="swiper-button-prev" ></div>
+                                <div class="swiper-button-next" ></div> 
                                  </div>                              
                                 </div>
                             </div>                          

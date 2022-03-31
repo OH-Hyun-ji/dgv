@@ -32,9 +32,7 @@
         <div class="total-wrap">
             <div class="top-navi-menu">
                 <span class="navi-bar-button">
-                    <button class="w-btn-neon2" type="button" >
-                        상영시간표
-                    </button>
+                  
                     <button class="w-btn-neon2" type="button" style="margin-left: 20px;">
                         예매 다시하기
                     </button>

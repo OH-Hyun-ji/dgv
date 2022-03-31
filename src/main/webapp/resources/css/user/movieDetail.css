@@ -796,6 +796,7 @@ element.style {
     zoom: 1;
 }
 .slider > .btn-prev {
+	
     left: 19px;
     background-position: 0 -97px;
 }
@@ -807,6 +808,7 @@ element.style {
     text-indent: 100%;
     white-space: nowrap;
     margin-top: -26px;
+    margin-bottom: 330px;
 }
 button, input[type='submit'], input[type='button'] {
     cursor: pointer;

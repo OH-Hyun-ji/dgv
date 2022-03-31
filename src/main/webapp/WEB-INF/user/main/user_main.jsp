@@ -204,9 +204,6 @@
 							<a href="/movieChart.do" class="active" id="btnMovie"
 								style="font-weight: bold; font-size: 31px;">Movie List</a>
 						</h3>
-						<h3>
-							<a href="#" id="btnNextMovie" style="font-size: 30px;">상영예정작</a>
-						</h3>
 					</div>
 					<a href="/movieChart.do" class="movie-all-view">전체보기</a>
 				</div>
@@ -309,7 +306,7 @@
 									<strong>고객센터</strong>
 								</dt>
 								<dd>
-									<strong>1544-1122</strong> 
+									<strong>1234-1234</strong> 
 									<span> "고객센터 운영기관(평일 09:00~12:00)"
 									<p>업무끝</p>
 									</span>

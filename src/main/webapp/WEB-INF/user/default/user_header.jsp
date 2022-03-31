@@ -2,11 +2,34 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<head>
+	<style type="text/css">
+#headerId-status {
+	width: 100%;
+	font-weight: bold;
+	box-sizing: border-box;
+	padding-top: 7%;
+	color: lightcoral;
+	text-align: center;
+	border-bottom: 1px solid;
+	padding-bottom: 2px;
+	font-size: 16px;
+	cursor: default;
+}
+*, *:before, *:after {
+    box-sizing: unset;
+    animation-timing-function: unset;
+    animation-fill-mode: none;
+    
+}
+
+</style>
+</head>
 
 <div class="header">
 	<div class="header_content">
 		<div class="contents">
-			<h1>
+			<h1 id="conStyle">
 				<!-- 상단 로고와 사이드 로고 -->
 				<a href="/dgvMain.do">
 					<img src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png" style="width: 82%;">
@@ -19,16 +42,16 @@
 				<c:if test="${empty userID}">
 					<li>
 	                     <span>
-	                     	<a href="/loginForm.do" title="로그인">
+	                     	<a id="headerLogin" href="/loginForm.do" title="로그인">
 							  <i id="a" style="padding-left: 9px;" class="fas fa-lock"></i>
-							  <span id="main1" class="modiImg1">로그인</span>
+							  <span id="main1" class="modiImg1 ">로그인</span>
 							</a>
 	                     </span>
                		 </li>
 	               </c:if>	               
 	                <c:if test="${!empty userID}">
 	                  	<li id="user-id-style" style="width: 107px;padding-right: 35px;box-sizing: unset;">	
-	                     <span><a style="width: 100%;font-weight: bold;box-sizing: border-box;padding-top: 7%;color: lightcoral;text-align: center;border-bottom: 1px solid;padding-bottom: 2px;font-size: 16px;cursor: default;">${userID}님<br> 환영합니다!</a></span>
+	                     <span><a id="headerId-status" >${userID}님<br> 환영합니다!</a></span>
 		                </li>
 	                </c:if>
 <!-- ///////////////////////////////////////////// -->

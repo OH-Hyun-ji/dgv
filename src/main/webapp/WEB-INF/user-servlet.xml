@@ -25,21 +25,35 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-<!-- 	<mvc:interceptors> -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/*.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/dgvMain.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/Join.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/loginForm.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/kakaoLogin.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/artHouse.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/endMovie.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/yetMovie.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/movieChart.do"/> -->
-<!-- 			<mvc:exclude-mapping path="/board.do"/> -->
-<!-- 			<bean id="LoginInterceptor" class="com.dgv.web.commons.interceptor.UserLoginInterceptor"></bean> -->
-<!-- 		</mvc:interceptor> -->
-<!-- 	</mvc:interceptors> -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*.do"/>
+			<mvc:exclude-mapping path="/dgvMain.do"/>
+			<mvc:exclude-mapping path="/join.do"/>
+			<mvc:exclude-mapping path="/loginForm.do"/>
+			<mvc:exclude-mapping path="/login.do"/>
+			<mvc:exclude-mapping path="/find_userId.do"/>
+			<mvc:exclude-mapping path="/find_id.do"/>
+			<mvc:exclude-mapping path="/find_password.do"/>
+			<mvc:exclude-mapping path="/find_auth.do"/>
+			<mvc:exclude-mapping path="/changeMyPw.do"/>
+			<mvc:exclude-mapping path="/find_updatePassword.do"/>
+			<mvc:exclude-mapping path="/send_auth.do"/>
+			<mvc:exclude-mapping path="/authNumberCheck.do"/>
+			<mvc:exclude-mapping path="/register.do"/>
+			<mvc:exclude-mapping path="/join_email.do"/>
+			<mvc:exclude-mapping path="/termPage.do"/>
+			<mvc:exclude-mapping path="/termCheck.do"/>
+			<mvc:exclude-mapping path="/kakaoLogin.do"/>
+			<mvc:exclude-mapping path="/artHouse.do"/>
+			<mvc:exclude-mapping path="/endMovie.do"/>
+			<mvc:exclude-mapping path="/yetMovie.do"/>
+			<mvc:exclude-mapping path="/movieChart.do"/>
+			<mvc:exclude-mapping path="/board.do"/>
+			<mvc:exclude-mapping path="/movieDetail.do"/>
+			<bean id="LoginInterceptor" class="com.dgv.web.commons.interceptor.UserLoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 
 
