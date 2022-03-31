@@ -63,12 +63,20 @@ public class UserLoginController {
 	public String loginPOST(@RequestBody UserVO userVO, Model model) {
 		System.out.println("id : " + userVO.getUser_id());
 		System.out.println("pw : " + userVO.getUser_pw());
+		
+		Gson gson = new Gson();
+		JsonObject jsonObject = new JsonObject();
+		
 		UserVO vo = userService.login(userVO);
+		if(vo == null) {
+			System.out.println("없는 아이디 ");
+			jsonObject.addProperty("msg", "IdFail");
+			String idCheck = gson.toJson(jsonObject);
+			return idCheck;
+		}
 
 		// System.out.println(BCrypt.checkpw(userVO.getUser_pw(), userId.getUser_pw()));
 		System.out.println("TEST 1 : " + vo.getUser_pw());
-		Gson gson = new Gson();
-		JsonObject jsonObject = new JsonObject();
 		if(vo.getUser_status()) {
 			if (userVO.getUser_id().equals(vo.getUser_id()) && BCrypt.checkpw(userVO.getUser_pw(), vo.getUser_pw())) {
 				System.out.println("로그인 성공!!");
