@@ -9,7 +9,7 @@ public class Criteria {
 	private String keyword;
 		
 	public Criteria() {
-		this(1,13);
+		this(1,12);
 		this.skip = 0;
 				
 	}

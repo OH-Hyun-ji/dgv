@@ -21,8 +21,8 @@
 	</resultMap>
 	
 	<insert parameterType="AdminNoticeVO" id="InsertNotice">
-		INSERT INTO dgv_notice(notice_num,reg_id,notice_title,notice_text,reg_date,notice_count)
-		VALUES(DEFAULT,#{reg_id},#{notice_title},#{notice_text},current_date,#{notice_count}) 
+		INSERT INTO dgv_notice(notice_num,reg_id,notice_title,notice_text,reg_date)
+		VALUES(DEFAULT,#{reg_id},#{notice_title},#{notice_text},current_date) 
 	</insert>
 	
 	<select id="NoticeList" resultType="AdminNoticeVO">
@@ -112,6 +112,7 @@
 			UPDATE dgv_event SET event_title=#{event_title}, event_text=#{event_text}, start_date=#{start_date}, end_date=#{end_date}, reg_id=#{reg_id},
 				reg_date=current_date,event_img=#{event_img},event_text_img=#{event_text_img} WHERE event_code=#{event_code}
 	</update>
+	
 	
 	<update id="eventWinnerChoice" >
 		UPDATE dgv_event SET event_winner=#{event_winner} WHERE event_code=#{event_code}

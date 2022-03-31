@@ -50,6 +50,7 @@
 			<mvc:exclude-mapping path="/yetMovie.do"/>
 			<mvc:exclude-mapping path="/movieChart.do"/>
 			<mvc:exclude-mapping path="/board.do"/>
+			<mvc:exclude-mapping path="/movieDetail.do"/>
 			<bean id="LoginInterceptor" class="com.dgv.web.commons.interceptor.UserLoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
