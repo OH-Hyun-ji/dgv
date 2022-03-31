@@ -97,6 +97,7 @@
                                     <strong class="title">${movieList.movie_title}</strong>
                                 </a>
                                 <div class="score">
+                                	<img class="star-style" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/starpreview.png">
                                     <strong class="percent">예매율
                                         <span>${movieList.reservationRate } %</span>
                                     </strong>

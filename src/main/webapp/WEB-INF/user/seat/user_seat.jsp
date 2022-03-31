@@ -32,7 +32,7 @@
         <div class="total-wrap">
             <div class="top-navi-menu">
                 <span class="navi-bar-button">
-                    <button class="w-btn-neon2" type="button">
+                    <button class="w-btn-neon2" type="button" >
                         상영시간표
                     </button>
                     <button class="w-btn-neon2" type="button" style="margin-left: 20px;">
@@ -299,10 +299,11 @@
 				var reservePrice = $("#reservePrice").val()
 				var movieDate = $("#movieDate").val()
 				var myPoint  =	$("#myRemainPoint").val()
+				const formatReserve =parseInt(reservePrice)
 				const couponDiscount =$("#discountCoupon option:selected").val()
 				const usePoint = $("#userPointUse").val()
 				const formatUsePoint = parseInt(usePoint)
-				console.log("reservePrice  =>  "+reservePrice)
+				console.log("reservePrice  =>  "+formatReserve)
 				console.log("myPoint  =>  "+myPoint)
 				console.log(usePoint)
 				
@@ -318,7 +319,7 @@
 		            	pay_method: $("#paymentKind option:selected").val(),
 		            	merchant_uid:'merchant_' + new Date().getTime(),
 		            	name:movieTitle,
-		            	amount: 1000,
+		            	amount: formatReserve,     // 결제금액
 		            	buyer_email: userEamil,
 		                buyer_name: userName,
 		                buyer_tel: userPhone

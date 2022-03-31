@@ -13,13 +13,15 @@
 	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/myPage.css">
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css"/>
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/userModule.css"/>
+    <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/button.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/modal.css">  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		function notYetWinner(code){
-			alert("아직 이벤트가 진행중입니다.")
-		}
+
 	</script>
 </head>
       <body class="">
@@ -53,8 +55,8 @@
 										varStatus="status">
 										<tr>
 											<td style="cursor: default;">${status.index+1 }</td>
-											<td><a id="myPage-title" href="javascript:;">${myReserveList.reserve_merchant_uid }</a></td>
-											<td>${myReserveList.movie_title}</td>
+											<td><a id="myPage-title" href="/myReserveMovieDetail.do?reserve_code=${myReserveList.reserve_code }">${myReserveList.reserve_merchant_uid }</a></td>
+											<td><a href="/myReserveMovieDetail.do?reserve_code=${myReserveList.reserve_code }">${myReserveList.movie_title}</a></td>
 											<td style="cursor: default;">${myReserveList.reserve_movie_date}</td>
 											<td style="cursor: default;">${myReserveList.reserve_date}</td>
 										</tr>
@@ -99,16 +101,16 @@
 										varStatus="status">
 										<tr>
 											<td style="cursor: default;">${status.index+1 }</td>
-											<td><a id="myPage-title" href="/myEventJoinDetail.do">${parEventList.event_title }</a></td>
+											<td><a id="myPage-title" href="/myEventJoinDetail.do?event_code=${parEventList.event_code }">${parEventList.event_title }</a></td>
 											<td style="cursor: default;">${parEventList.parUserEvent.par_date}</td>
-											<c:if test="${parEventList.event_status == '0' }">
+											<c:if test="${parEventList.event_check == '1' }">
 												<td>
-													<a id="winnerStyle-change" href="/eventWinnerPage.do?event_code=${parEventList.event_code}">당첨자 확인</a>
+													<button class="w-btn w-btn-gra3 w-btn-gra-anim" id="winnerStyle-change" onclick="javascript:location.href='/eventWinnerPage.do?event_code=${parEventList.event_code}'">당첨자 확인</button>
 												</td>
 											</c:if>
-											<c:if test="${parEventList.event_status == '1' }">
+											<c:if test="${parEventList.event_check == '0' }">
 												<td>
-													<a onclick="notYetWinner('${parEventList.event_code}')" style="cursor: pointer;">${parEventList.end_date }</a>
+													<button type="button" class="btn btn-primary btn-lg" id="myModelBtnStyle" data-toggle="modal" data-target="#myModal">${parEventList.end_date }</button>
 												</td>
 											</c:if>
 										</tr>
@@ -149,25 +151,21 @@
 			</div>
 		</div>
 	</div>
-	<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">DGV EVENT</h4>
       </div>
       <div class="modal-body">
-        ...
+      	<div class="modal-myImg">
+       		<img id="modalEventInfo" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20220329_002021793.png">
+     	</div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="modal-footer" style="background: #fffff0;">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-myBtnX">Close</button>
       </div>
     </div>
   </div>

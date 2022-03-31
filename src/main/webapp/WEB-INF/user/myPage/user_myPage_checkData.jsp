@@ -16,6 +16,13 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
+	$(function(){
+		$("#myInfo").addClass("on")
+		$(".feat-show1").addClass("fix")
+		$(".feat-show1 li a#changeInfo").css("color","red")
+		$("#myMain").removeClass("on")
+	})
+
 	function passwordCheck(){
 		const id = $('#id').val()
 		const pw = $('#password').val()
@@ -68,9 +75,7 @@
 									<ul>
 										<li id="myIdCk">
 											<input id="id" name="user_id" type="text" readonly="readonly" value="${userID}" 
-												style="line-height: 26px;
-													    border-radius: 8px;
-													    border: 1px solid rgba(0,0,0,0.2);">
+												style="line-height: 26px;border-radius: 8px;border: 1px solid rgba(0,0,0,0.2);padding-left: 1rem;">
 										</li>
 											
 										<li><input type="password" id="password" class="myPwCk" name="user_pw"></li>

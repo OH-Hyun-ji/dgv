@@ -14,6 +14,7 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.AdminParVO;
+import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
@@ -196,4 +197,14 @@ public interface UserBoardService {
 	int myCouponCount(String id);
 	
 	List<AdminEventVO> myJoinEvent(int num);
+	
+	UserReserveVO userReserveDetailView(int num);
+	
+	List<UserReserveVO> userMyPointLog(String id);
+	
+	AdminRankVO userRankPoint(int num);
+	
+	int userEarnPoint(UserReserveVO vo);
+	
+	AdminNoticeVO mainNotice();
 }

@@ -343,6 +343,7 @@ ol, ul {
 }
 .movielog-detail-wrap > .sect-movielog-lst > ul > li:first-child {
   margin-top: 0;
+  margin-left: 2rem;
 }
 .movielog-detail-wrap > .sect-movielog-lst > ul > li {
   margin-top: 15px;

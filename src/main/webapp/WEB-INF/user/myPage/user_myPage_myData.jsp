@@ -43,6 +43,13 @@
   
       
       $(function(){
+    	  
+ 	
+			$("#myInfo").addClass("on")
+			$(".feat-show1").addClass("fix")
+			$(".feat-show1 li a#changeInfo").css("color","red")
+			$("#myMain").removeClass("on")
+    	
          //keyup -> 마우스 눌렀다가 떼면 이벤트 발생
          console.log("???????");
          //pw 검증 메서드
@@ -253,7 +260,7 @@
 	                           <div class="myPage-myPassCk">
 	                              <ul>
 	                                 <li >비밀번호 확인</li>
-	                                 <li><input type="password" placeholder="비밀번호 확인" class="form-control" id="passwordRepeat" maxlength="16" min="8" style="margin-left: 224px;"> 
+	                                 <li><input type="password" placeholder="비밀번호 확인" class="form-control" id="passwordRepeat" maxlength="16" min="8" style="margin-left: 194px;"> 
 	                                          <i class="zmdi zmdi-lock"></i></li>
 	                              </ul>                                 
 	                           </div>

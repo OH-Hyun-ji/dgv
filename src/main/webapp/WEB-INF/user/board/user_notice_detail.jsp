@@ -82,6 +82,24 @@
 		color: white;
 		border:none;
 	}
+	@charset "UTF-8";
+:root {
+    --color-fur: #ffb141;
+    --color-fur-dark: #F5832C;
+    --color-spot: #F9584C;
+    --color-snout: #544258;
+    --color-collar: #3EAB6C;
+    --duration: .7s;
+    --semi-duration: calc(var(--duration) / 2);
+    --easing: cubic-bezier(.5, 0, .5, 1);
+    --stagger: calc(-1 * var(--semi-duration) / 2);
+}
+
+*, *:before, *:after {
+    animation-timing-function: var(--easing) !important;
+}
+
+
 	</style>
 </head>
       <body class="">
@@ -129,6 +147,8 @@
                   <div class="bottom-text-wrap">
                    <span class="bottom-text">DGV 고객센터 : 1234-1234(상담가능 시간, 월~금 12:00~15:00) *이 외 시간은 자동 응답 안내 가능</span>
                   </div>
+               
+                  
                   </div>
                </div> 
                 </div>

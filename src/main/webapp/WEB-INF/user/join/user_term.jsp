@@ -14,14 +14,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 <script type="text/javascript">
 
+		var state
 		function termNameCheck(e){
-			alert("dfdf")
-			console.log("this  : " +$("#termTitle"+e).val())
+	
 			var id = $(this).attr('id')				
-			console.log("bodt id : " +id )
 			var test;
-			
-			
 			$(".termTR").empty()
 			$(".thisTd").remove()
 			$(".otherTd").empty()
@@ -46,6 +43,7 @@
 								.attr("class","thisTd")
 						const td1 =$("<td>")
 								.attr("class","otherTd")
+								
 						
 								
 						const textarea =$("<textarea>")
@@ -108,8 +106,8 @@ textarea#noticeText {
 }
 .bottom {
     display: flex;
-    justify-content: end;
     margin-right: 3rem;
+    justify-content: flex-start;
 }
 </style>
 </head>
@@ -141,7 +139,7 @@ textarea#noticeText {
                     </table>
                     <div class="bottom" >     
                     	<input type="hidden" id="agree" value="true">            
-                        <input type="button"  onclick="termCheck()" value="약관동의하기">         
+                        <input type="button" style="width: 150px;height: 50px;margin-top: 1rem;border-radius: 1rem;" onclick="termCheck()" value="약관동의하기">         
                 	</div>  
             	</div>    
             </div>  

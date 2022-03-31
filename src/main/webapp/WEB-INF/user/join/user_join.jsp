@@ -20,13 +20,13 @@
    
    <style type="text/css">
    .issetUser {
-      box-shadow : 0px 0px 20px 11px tomato;
-      background-color : pink;
+      box-shadow: 0px 0px 20px 4px tomato;
+      background-color: #ffdae0;
    }
    
    .nonesetUser {
-      box-shadow : 0px 0px 20px 11px aquamarine;
-      background-color : rgb(177 224 205);
+      box-shadow: 0px 0px 20px 11px #7fffd482;
+   	  background-color: rgb(199 234 220);
    }
    </style>
    
@@ -281,7 +281,6 @@
         	 
         		console.log("dddsss : " +	$("#userRealCheck").val())
         	  	if($("#userRealCheck").val() === 'true'){
-        	  		alert("확인되었습니다.")
         	  		$('input:checkbox[id="userTerm"]').removeAttr('disabled')
         	  		$('input:checkbox[id="userTerm"]').prop("checked",true)
         	  	}
@@ -289,10 +288,33 @@
       
 	  	$("#termCheckInfo").on('click',function(){
 	  		window.name ="parentForm"
-	  		window.open('termPage.do','childForm','width=600 height=800')
+	  		window.open('termPage.do','childForm','width=800 height=800')
 	  	})
-  	
-      
+
+
+	  	////회원가입 이미지 슬라이드
+	  	
+	  	var now =0;
+        var img = 4;
+        
+        $(".slideShow > img").eq(0).siblings().hide()
+        
+        function slide(){
+        	if(now == img){
+        		$(".slideShow > img ").eq(now).fadeOut(1000)
+        		$(".slideShow > img ").eq(0).fadeIn(1000)
+        		
+        		now =0;
+        		
+        	}else{
+        		$(".slideShow > img ").eq(now).fadeOut(1000)
+        		$(".slideShow > img ").eq(now+1).fadeIn(1000)
+        		
+        		now++;
+        	}
+        }
+        setInterval(slide,3000)
+	  	
    });
    
    // 회원가입 최종조건 검증
@@ -324,15 +346,126 @@
          
   
 </script>
+<style>
+
+.spidy-wrapper {
+    width: 100%;
+    height: 79%;
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center;
+    padding-top: 3rem;
+}
+
+.spidy__frame {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+    background: #181041;
+    box-shadow: 10px 5px 20px #5d0c0f;
+    cursor: pointer;
+}
+
+.spidy__frame > img {
+    width: 115%;
+    bottom: -5rem;
+    left: -1.8rem;
+    position: absolute;
+}
+
+.center {
+    height: 100%;
+    position: relative;
+}
+
+.center__element {
+    width: 200px;
+    margin: auto;
+    margin-top: -2rem;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.52, 0.11, 0.07, 0.62);
+}
+
+.spidy__frame:hover .center__element {
+    margin-top: 7rem;
+}
+
+.center__element img {
+    width: 100%;
+    filter: drop-shadow(0px 40px 10px #0e072c);
+}
+
+.element__tooltip {
+    background: #ffffff1a;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 150%;
+    border-radius: 5px;
+    position: absolute;
+    top: -6rem;
+    left: -3.5rem;
+    z-index: 2;
+    opacity: 0;
+    transition: all .5s;
+    color: #d6d2e8;
+    letter-spacing: 2px;
+    box-shadow: 0px 5px 10px #100932;
+}
+
+.element__tooltip:before {
+    content: '';
+    width: 1px;
+    height: 120%;
+    position: absolute;
+    top: 100%;
+    left: 4.5rem;
+    border-radius: 40%;
+    transform: rotate(20deg);
+    background-image: repeating-linear-gradient(50deg, #ffffff, #ffffff 3px, #000000 3px, #000000 5px);
+}
+
+.element__tooltip:after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    border-radius: 40%;
+    right: 3.8rem;
+    transform: rotate(-25deg);
+    background-image: repeating-linear-gradient(50deg, #ffffff, #ffffff 3px, #000000 3px, #000000 4px);
+}
+
+.spidy__frame:hover .element__tooltip {
+    opacity: 1;
+    transition: all 2s;
+}
+</style>
 </head>
 
 <body class="block" style="">
 <jsp:include page="../default/user_header.jsp"></jsp:include>
    <div class="wrapper sign-up-background">
       <div class="inner">
-         <div class="image-holder">
-            <img id="poster" src="https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" alt="">
-         </div>
+         <div class="spidy-wrapper">
+  <div class="spidy__frame">
+  	<div class="slideShow">
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/yyyyyyyyy.jpg" >
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/xxxxxxxx.jpg" >
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/zzzzzzzzzzzzzzz.jpg" >
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/ccccccccc.jpg" >
+  		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/ddd.jpg" >
+  	</div>
+      <div class="center">
+      <div class="center__element">
+        <img class="element__spidy" style="position: relative;" src="https://vignette.wikia.nocookie.net/marveldatabase/images/9/92/Peter_Parker_%28Earth-30847%29_from_Marvel_vs._Capcom_Infinite_0001.png/revision/latest?cb=20170922195944%22" alt="Spiderman, credit:wikia">
+        <div class="element__tooltip"> 영화 그 이상의 감동을 DGV</div>
+      </div>
+    </div>
+    <img src="" >
+</div>
+</div>
       <form action="/register.do" method="post" name="joinForm" >
           <div class="register-wrapping">
             <p class="register-title">
@@ -341,13 +474,13 @@
             </p>
             <div class="form-wrapper form-wrapper-id">
                <div class="form-wrapper">
-                  <input id="id" name="user_id" type="text" placeholder="아이디" class="form-control" maxlength="15">
+                  <input id="id" name="user_id" type="text" placeholder="아이디" class="form-control" maxlength="15" style="height: 35px;">
                      <div style="text-align: center;"><span id="idCK"></span></div>
                </div>
             </div>
 
             <div class="form-wrapper">
-               <input type="password" name="user_pw" placeholder="비밀번호" id="password" class="form-control" maxlength="16" min="8"> 
+               <input type="password" name="user_pw" placeholder="비밀번호" id="password" class="form-control" maxlength="16" min="8"style="height: 35px;"> 
                   <i class="zmdi zmdi-lock"></i>
                      
             </div>
@@ -387,13 +520,7 @@
                   
                   <!-- BIRTH_DD -->
                   <!-- 사용자가 선택시 택(1) -->
-                  <select class="userDay" id="userDD" name="user_day" style="
-                           height: 44px;
-                      width: 29%;
-                      font-size: 13px;
-                      font-weight: bold;
-                      color: gray;
-                      border-radius: 8px;">   
+                  <select class="userDay" id="userDD" name="user_day" >   
                      <option class="optionDay" name="day">일</option>
                      <c:forEach var="i" begin="1" end="31" >
                      <c:choose>

@@ -74,21 +74,6 @@
                 <div class="tit-mycgv">
                   <h3>내가 본 영화</h3>
                   <p><em id="count-em-style">${myMovieListCount}건</em></p>
-                  <div class="set-combo">
-                    <label for="year">내가 본 영화 년도별 정렬</label>
-                    <select id="year" name="year">      
-                      <option value="" selected="selected">전체</option>
-                      <option value="2016">2016</option>
-                      <option value="2017">2017</option>
-                      <option value="2018">2018</option>
-                      <option value="2019">2019</option>
-                      <option value="2020">2020</option>
-                      <option value="2021">2021</option>
-                    </select>
-                    <button type="submit" class="round gray">
-                      <span>GO</span>
-                    </button>
-                  </div>
                 </div>
               </form>
               <!-- 내가 본 영화 리스트 -->
@@ -96,11 +81,6 @@
            		  <c:forEach var="myMovieList" items="${myMovieList}">
 	                <ul id="watched_list_container">
 	                  <li class="movie_info_82012">
-	                  <div class="close-btn">
-	                   <button type="button" data="390047546" class="btn-del" style="padding-top: 6px;">
-	                      	<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/btn_del_01.gif" >
-	                      </button>
-	                    </div>
 	                    <div class="article-movie-info">
 	                      <div class="box-image">
 	                        <a id="phototicket_popup_82012" title="포스터 크게 보기" href="#">

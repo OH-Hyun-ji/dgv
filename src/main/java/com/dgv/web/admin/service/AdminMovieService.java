@@ -193,4 +193,6 @@ public interface AdminMovieService {
 	List<UserReserveVO> pieChartCount();
 	
 	int totalSum();
+	
+	int eventWinnerChoice(AdminEventVO vo);
 }

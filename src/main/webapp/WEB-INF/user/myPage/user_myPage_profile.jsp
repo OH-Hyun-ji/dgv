@@ -29,6 +29,12 @@
 		}
 		
 		$(function(){
+		
+			$("#myInfo").addClass("on")
+			$(".feat-show1").addClass("fix")
+			$(".feat-show1 li a#profileInfo").css("color","red")
+			$("#myMain").removeClass("on")
+			
 			$("#profile-picture").click(function(){
 				var msg = confirm("프로필 사진을 등록하시겠습니까?")
 				var userImg = $("#profileUserImgInfo").val()
@@ -101,12 +107,12 @@
 								</colgroup>
 								<tbody>
 									<tr>
-										<th>이름</th>
-										<td>바나나</td>
+										<th>아이디</th>
+										<td>${userID}</td>
 									</tr>
 									<tr>
-										<th>아이디</th>
-										<td>바나나</td>
+										<th>이메일</th>
+										<td>${userEmail }</td>
 									</tr>
 									<tr>
 										<th>프로필 이미지</th>

@@ -14,6 +14,7 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.AdminParVO;
+import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
@@ -546,5 +547,33 @@ public class UserBoardServiceImpl implements UserBoardService {
 	public List<AdminEventVO> myJoinEvent(int num) {
 		
 		return userBoardDAO.myJoinEvent(num);
+	}
+	
+	@Override
+	public UserReserveVO userReserveDetailView(int num) {
+		
+		return userBoardDAO.userReserveDetailView(num);
+	}
+	
+	@Override
+	public List<UserReserveVO> userMyPointLog(String id) {
+		
+		return userBoardDAO.userMyPointLog(id);
+	}
+	@Override
+	public AdminRankVO userRankPoint(int num) {
+		
+		return userBoardDAO.userRankPoint(num);
+	}
+	
+	@Override
+	public int userEarnPoint(UserReserveVO vo) {
+		
+		return userBoardDAO.userEarnPoint(vo);
+	}
+	@Override
+	public AdminNoticeVO mainNotice() {
+		
+		return userBoardDAO.mainNotice();
 	}
 }

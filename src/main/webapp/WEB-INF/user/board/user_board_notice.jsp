@@ -13,30 +13,11 @@
 	<link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/myPage.css">
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/movieTheater.css"/>
     <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/userModule.css"/>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css"> 
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/user-main-style.css">
+    <link rel="stylesheet" media="all" type="text/css" href="${pageContext.request.contextPath }/resources/css/user/user_board_notice.css"> 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-<style type="text/css">
-td {
-    box-sizing: border-box;
-    padding-top: 6px;
-    border-right: 1px solid #8080807a;
-}
-th{
-	box-sizing: border-box;
-    padding-top: 3px;
-    border-right: 1px solid #8080807a;
-}
-.myPage-table-wrap > span {
-	height: 49px;
-    box-sizing: border-box;
-    padding-top: 2%;
-    font-size: 18px;
-}
-thead.myPage-table-wrapping >tr {
-	line-height: 40px;
-}
-</style>
+
 </head>
       <body class="">
         <div id="cgvwrap">
@@ -50,7 +31,7 @@ thead.myPage-table-wrapping >tr {
 		<div class="myPage-cols-container">
              
                 <jsp:include page="../default/user_notice_side.jsp"></jsp:include>
-                  <div class="myPage-content-wrap">
+                  <div style="height:1100px" class="myPage-content-wrap">
                   <span class="service-center-text">공지사항</span>                 
               
                     <div class="myPage-table-wrap" >
@@ -62,7 +43,7 @@ thead.myPage-table-wrapping >tr {
 										<th style="width: 200px;">제목</th>
 										<th style="width: 308px;">내용</th>
 										<th style="width: 80px">관리자</th>
-										<th style="width: 95px">날짜</th>
+										<th style="width: 90px">날짜</th>
 										<th>조회수</th>
 									</tr>
 								</thead>
@@ -86,6 +67,109 @@ thead.myPage-table-wrapping >tr {
                   <div class="bottom-text-wrap">
                    <span class="bottom-text">DGV 고객센터 : 1234-1234(상담가능 시간, 월~금 12:00~15:00) *이 외 시간은 자동 응답 안내 가능</span>
                   </div>
+                  <div style="right:16px" class="bar">
+  <div class="background-1"></div>
+  <div class="background-2"></div>
+  <div class="background-3"></div>
+  <div class="background-4"></div>
+  <div class="background-5"></div>
+  <div class="background-6"></div>
+
+  <div class="tree-1"></div>
+  <div class="tree-2"></div>
+  <div class="tree-3"></div>
+  <div class="tree-4"></div>
+  <div class="tree-5"></div>
+  <div class="tree-6"></div>
+  <div class="tree-7"></div>
+  <div class="tree-8"></div>
+  <div class="tree-9"></div>
+  <div class="tree-10"></div>
+  <div class="tree-11"></div>
+  <div class="tree-12"></div>
+  <div class="tree-13"></div>
+  <div class="tree-14"></div>
+  <div class="tree-15"></div>
+  <div class="tree-16"></div>
+  <div class="tree-17"></div>
+  <div class="tree-18"></div>
+  <div class="tree-19"></div>
+  <div class="tree-20"></div>
+  <div class="tree-21"></div>
+  <div class="tree-22"></div>
+  <div class="tree-23"></div>
+  <div class="tree-24"></div>
+  <div class="tree-25"></div>
+  <div class="tree-26"></div>
+  <div class="tree-27"></div>
+  <div class="tree-28"></div>
+  <div class="tree-29"></div>
+
+  <div class="balcony"></div>
+
+  <div class="back-sofa">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="coctail">
+      <div></div>
+    </div>
+    <div class="rabbit-1">
+      <div class="rabbit-1__back-leg"></div>
+      <div class="rabbit-1__body"></div>
+      <div class="rabbit-1__arm1"></div>
+      <div class="rabbit-1__head">
+        <div class="rabbit-1__ear1"></div>
+        <div class="rabbit-1__ear2">
+          <div></div>
+        </div>
+        <div class="rabbit-1__mouth">
+          <div></div>
+        </div>
+        <div class="rabbit-1__nose"></div>
+        <div class="rabbit-1__eye1"></div>
+        <div class="rabbit-1__eye2"></div>
+      </div>
+      <div class="rabbit-1__leg"></div>
+      <div class="rabbit-1__arm2"></div>
+    </div>
+    <div></div>
+  </div>
+
+  <div class="table">
+    <div></div>
+    <div class="lightning">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="front-sofa">
+    <div class="rabbit-2">
+      <div class="rabbit-2__body"></div>
+      <div class="rabbit-2__arm1"></div>
+      <div class="rabbit-2__head">
+        <div class="rabbit-2__ear1">
+          <div></div>
+        </div>
+        <div class="rabbit-2__ear2"></div>
+        <div class="rabbit-2__mouth">
+          <div></div>
+        </div>
+        <div class="rabbit-2__nose"></div>
+        <div class="rabbit-2__eye1"></div>
+        <div class="rabbit-2__eye2"></div>
+      </div>
+      <div class="rabbit-2__leg"></div>
+      <div class="rabbit-2__arm2">
+        <div class="coctail">
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+  </div>
+</div>
                   </div>
                </div> 
                 </div>

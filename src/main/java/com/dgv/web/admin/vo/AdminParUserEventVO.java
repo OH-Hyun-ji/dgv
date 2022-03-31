@@ -20,4 +20,5 @@ public class AdminParUserEventVO {
 	private String event_title;
 	private String event_end_date;
 	private String event_status;
+	private String event_check;
 }

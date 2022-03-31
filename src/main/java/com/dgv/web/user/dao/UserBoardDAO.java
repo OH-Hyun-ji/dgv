@@ -19,6 +19,7 @@ import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminNoticeVO;
 import com.dgv.web.admin.vo.AdminParUserEventVO;
 import com.dgv.web.admin.vo.AdminParVO;
+import com.dgv.web.admin.vo.AdminRankVO;
 import com.dgv.web.admin.vo.AdminRegionVO;
 import com.dgv.web.admin.vo.AdminSeatVO;
 import com.dgv.web.admin.vo.AdminTheaterVO;
@@ -344,4 +345,22 @@ public class UserBoardDAO {
 		return sqlSessionTemplate.selectList("UserMovieDAO.myJoinEvent", num);
 	}
 	
+	public UserReserveVO userReserveDetailView(int num) {
+		return sqlSessionTemplate.selectOne("UserMovieDAO.userReserveDetailView",num);
+	}
+	public List<UserReserveVO> userMyPointLog(String id){
+		return sqlSessionTemplate.selectList("UserBoardDAO.userMyPointLog", id);
+	}
+	
+	public AdminRankVO userRankPoint(int num) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.userRankPoint",num);
+	}
+	
+	public int userEarnPoint(UserReserveVO vo) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.userEarnPoint",vo);
+	}
+	
+	public AdminNoticeVO mainNotice() {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.mainNotice");
+	}
 }

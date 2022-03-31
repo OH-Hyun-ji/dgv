@@ -28,27 +28,28 @@
 			<div class="myPage-box-contents  newtype">
 				<div class="person-info">
 					<strong style="cursor: default;">${userID}님</strong> <em style="cursor: default;">${userEmail}</em>
+					<div class="myPage-benefit-info"  style="width: 188px;">
+						<div class="myPage-coupon">
+							<div class="myPage-coupon-count">
+								<strong style="cursor: default;">보유한 할인쿠폰</strong> 
+									<span style="cursor: default;">
+										<c:if test="${couponCount == '0'  }">
+											<em style="cursor: default;">없음</em>
+										</c:if>
+										<c:if test="${couponCount != '0'  }">
+											<em style="cursor: default;">${couponCount}</em><span style="color: #4a4444;margin-left: 5px;">개</span>
+										</c:if>								
+									</span>
+								</div>
+							</div>
+						</div>
 					<div class="page-style">
 						<button id="myPage-change-info" type="button"
 							onclick="location.href='/myPage_checkData.do'" title="새창열림">나의 정보 변경</button>							
 						<button id="myCouponList" onclick="location.href='myPage_coupon.do'">나의 쿠폰 목록</button>	
 					</div>
-				</div>
-				<div class="myPage-benefit-info"  style="width: 188px; padding-top: 141px;">
-					<div class="myPage-coupon">
-						<div class="myPage-coupon-count">
-							<strong style="cursor: default;">보유한 할인쿠폰</strong> 
-								<span style="cursor: default;">
-									<c:if test="${couponCount == '0'  }">
-										<em style="cursor: default;">없음</em>
-									</c:if>
-									<c:if test="${couponCount != '0'  }">
-										<em style="cursor: default;">${couponCount}</em>개
-									</c:if>								
-								</span>
-						</div>
 					</div>
-				</div>
+			
 				<div class="myPage-grade-info">
 					<div class="myPage-grade-title">
 						<span style="cursor: default;">MY GRADE</span>

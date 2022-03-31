@@ -36,7 +36,7 @@
 					</div>
 				</div>
 				<div class="event-list">
-					<button class="w-btn w-btn-gra3 w-btn-gra-anim event-list-btn" onclick="location.href='/event.do'">목록으로</button>
+					<button class="w-btn w-btn-gra3 w-btn-gra-anim event-list-btn" onclick="location.href='/eventWinner.do'">목록으로</button>
 				</div>
 			</div>
 		</div>
