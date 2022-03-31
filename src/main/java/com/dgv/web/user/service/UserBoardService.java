@@ -207,4 +207,6 @@ public interface UserBoardService {
 	int userEarnPoint(UserReserveVO vo);
 	
 	AdminNoticeVO mainNotice();
+	
+	int commentCount(int num);
 }

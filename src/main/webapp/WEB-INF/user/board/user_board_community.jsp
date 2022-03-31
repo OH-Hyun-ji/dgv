@@ -40,6 +40,11 @@
 		})
 		
 	</script>
+	<style type="text/css">
+	.nav:before {
+		background-color: #ff0e0000;
+	}
+	</style>
 </head>
 <body>
 	<div class="dgv_all_container">
@@ -121,7 +126,7 @@
 					<div class="sokdak-submenu-wrap">
 						<div class="sokdak-submenu">
 							<div class="sokdak-count">조회수 : ${communityList.community_count} </div>
-							<div class="sokdak-answerCount">댓글 수 : ${communityList.community_answerCount}</div>
+							<div class="sokdak-answerCount">답변 수 : ${communityList.community_answerCount}</div>
 						</div>
 						<div class="sokdak-date-wrap">
 						

@@ -48,7 +48,7 @@
 	</insert>
 	
 	<update id="viewCount" parameterType="int">
-		UPDATE dgv_notice SET notice_count = notice_count+1 WHERE notice_num =#{notice_num}
+		UPDATE dgv_notice SET notice_count = notice_count+1 WHERE notice_num =#{notice_num}  order by reg_date desc
 	</update>
 	
 	<select id="noticeView" resultType="AdminNoticeVO">
@@ -266,5 +266,9 @@
 	
 	<select id="mainNotice" resultType="AdminNoticeVO">
 		select *from dgv_notice order by reg_date asc limit 1
+	</select>
+	
+	<select id="commentCount" resultType="int">
+		select count(*) from dgv_comment where community_code=#{community_code}
 	</select>
 </mapper>

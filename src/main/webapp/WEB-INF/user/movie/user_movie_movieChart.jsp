@@ -44,11 +44,19 @@
 	})
 </script>
 <style type="text/css">
-.tit-heading-wrap > .submenu > ul > li > a:focus,
-.tit-heading-wrap > .submenu > ul > li > a:hover,
-.tit-heading-wrap > .submenu > ul > li.on > a {
-    background: url("https://dgvworld.s3.ap-northeast-2.amazonaws.com/ico_arrow07.png") no-repeat 0 3px;
-    color: #fb4357;
+.tit-heading-wrap>.submenu>ul>li>a:focus, 
+.tit-heading-wrap>.submenu>ul>li>a:hover,
+.tit-heading-wrap>.submenu>ul>li.on>a {
+	background:url("https://dgvworld.s3.ap-northeast-2.amazonaws.com/ico_arrow07.png") no-repeat 0 3px;
+	color: #fb4357;
+}
+
+.nav:before {
+	background-color: #ff0e0000;
+}
+
+.nav {
+	padding: 6px 0;
 }
 </style>
 </head>

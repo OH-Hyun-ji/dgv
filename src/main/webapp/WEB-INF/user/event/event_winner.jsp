@@ -18,6 +18,11 @@
 	<script src="js/scripts.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="js/datatables-simple-demo.js"></script>
+	<style type="text/css">
+	.nav:before {
+		background-color: #ff0e0000;
+	}
+</style>
 </head>
 <body class="block">
 	<jsp:include page="../default/user_header.jsp"></jsp:include>

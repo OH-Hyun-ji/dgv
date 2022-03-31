@@ -43,6 +43,15 @@
 // 		});
 	})
 </script>
+<style type="text/css">
+.nav:before {
+	background-color: #ff0e0000;
+}
+
+.nav {
+	padding: 6px 0;
+}
+</style>
 </head>
 
 <body class="block">

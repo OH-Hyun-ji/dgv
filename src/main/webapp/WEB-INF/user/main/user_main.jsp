@@ -226,8 +226,8 @@
 											alt="12세">
 									</div>
 									<div class="movie-hidden-btn">
-										<a href="/movieDetail.do?movie_num=${movieList.movie_num}"${movieList.movie_num})" class="movie-detail">"상세보기"</a> 
-										<a onclick="reservePage(${movieList.movie_num})" class="movie-ticketing">예매하기</a>
+										<a href="/movieDetail.do?movie_num=${movieList.movie_num}"${movieList.movie_num})" class="movie-detail" style="cursor: pointer;">상세보기</a> 
+										<a onclick="reservePage(${movieList.movie_num})" class="movie-ticketing" style="cursor: pointer;">예매하기</a>
 									</div>
 								</div>
 								<div class="movie-info-wrap">

@@ -56,13 +56,13 @@
 				</div>
          	   <img class="event-text-img" src="${eventVo.event_text_img}">          
           </div>
-          <div class="event-list">
+          <div class="event-list" style="display: inline-flex;">
           		<button class="w-btn w-btn-gra3 w-btn-gra-anim event-list-btn" onclick="location.href='/eventWinner.do'" style="margin-left: 1rem;">목록으로</button>
           		<c:if test="${eventVo.button_status == true}">
-	          		<button class="w-btn w-btn-gra3 w-btn-gra-anim event-list-btn" onclick="eventAction(${eventVo.event_code})" style="width: 200px;margin-left: 37rem;">이벤트 참여하기</button>          		
+	          		<button class="w-btn w-btn-gra3 w-btn-gra-anim event-list-btn" onclick="eventAction(${eventVo.event_code})" style="width: 200px;margin-left: 29rem;">이벤트 참여하기</button>          		
           		</c:if>
           		<c:if test="${eventVo.button_status == false}">
-	          		<button class="event-list-disables-btn" disabled="disabled" style="width: 200px;margin-left: 37rem;">이벤트 참여하기</button>          		
+	          		<button class="event-list-disables-btn" disabled="disabled" style="width: 200px;margin-left: 29rem;">이벤트 참여하기</button>          		
           		</c:if>
           </div>
         </div>

@@ -129,7 +129,7 @@ function loginWithKakao() {
     	margin-left: 0rem;
 	}
 	.register-title {
-    	margin-left: 2rem;
+    	margin-left: 7px;
 	}
 	#toast-container >div{
 		padding:0;
@@ -325,7 +325,6 @@ function loginWithKakao() {
       </div>
       
    </div>
-   <jsp:include page="../default/user_footer.jsp"></jsp:include>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 

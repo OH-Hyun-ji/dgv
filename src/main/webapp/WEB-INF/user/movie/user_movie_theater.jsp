@@ -133,6 +133,13 @@
   .theater-info {
   		width: 400px;
 	}
+.nav:before {
+	background-color: #ff0e0000;
+}
+
+.nav {
+	padding: 6px 0;
+}
 </style>
 </head>
 <body class="block">

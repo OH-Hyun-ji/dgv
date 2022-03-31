@@ -99,10 +99,14 @@ public class UserBoardController {
 		
 		for(UserCommunityVO comVo :communityList) {
 			UserVO userVo = userBoardService.communityUserInfo(comVo.getUser_id());
+			int answerC = userBoardService.commentCount(comVo.getCommunity_code());
+			
+			comVo.setCommunity_answerCount(answerC);
 			for(UserDetailVO detailVo :userVo.getDetailVO()) {
 				comVo.setUser_img(detailVo.getUser_img());
 			}
 		}
+		
 		model.addAttribute("pageMake",pageMake);
 		model.addAttribute("communityList",communityList);
 		
