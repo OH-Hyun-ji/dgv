@@ -15,7 +15,7 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/user/swiper-bundle.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d2551cba1f0fc7db3031725ad908c785"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	8e2df3e9bebf8b3982f4d23137e42962"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/swiper.min.js"></script>
 	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
@@ -132,6 +132,7 @@
  	}
   .theater-info {
   		width: 400px;
+  		font-size: 23px;
 	}
 .nav:before {
 	background-color: #ff0e0000;
@@ -195,33 +196,11 @@
 							<div class="box-contents">
 								<div class="theater-info"></div>
 								<div class="noti-theater">
-									<h5>공지사항</h5>
-									<ul>
-	
-										<li><a
-											href="http://section.cgv.co.kr/support/news/view.aspx?Idx=7883"
-											target="_blank" title="새창 열림">22년 문화가 있는 날 가격 조정 안내</a></li>
-	
-										<li><a
-											href="http://section.cgv.co.kr/support/news/view.aspx?Idx=7872"
-											target="_blank" title="새창 열림">PAYCO 서비스 개선 작업에 따른 서비스 이용
-												일시중지 (12/8 04:00~04:30)</a></li>
-	
-									</ul>
-									<a class="link-more"
-										href="http://section.cgv.co.kr/support/news/Default.aspx?TheaterCode=0056&amp;Category=2"
-										target="_blank" title="새창 열림">공지사항 더보기</a>
+								
+								
 								</div>
 						</div>
 					</div>
-				</div>
-				<!-- .sect-theater -->
-				<div class="theater-ad">
-					<iframe
-						src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@SponsorBar_980"
-						width="980" height="90" title="" frameborder="0" scrolling="no"
-						marginwidth="0" marginheight="0" name="SponsorBar_980"
-						id="SponsorBar_980"></iframe>
 				</div>
 			</div>
 

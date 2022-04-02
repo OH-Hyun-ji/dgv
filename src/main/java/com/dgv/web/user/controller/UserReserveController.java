@@ -320,7 +320,7 @@ public class UserReserveController {
 			double pointEarn = rankVo.getRank_earn() * 0.01;
 			
 			int pointResult = (int) (reserveVo.getReserve_price() * pointEarn);
-			int pointTotal = reserveVo.getReserve_myPoint() + pointResult;
+			int pointTotal = reserveVo.getReserve_mypoint()+ pointResult;
 			
 			detailVo.setUser_point(pointTotal);
 			detailVo.setUser_num(userVo.getUser_num());

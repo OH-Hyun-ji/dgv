@@ -101,7 +101,7 @@ function loginWithKakao() {
 					alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")	
 					alert("비밀번호 찾기후 다시 시도해주세요")	
 				}else if(reT.msg=="IdFail"){
-					toastr.warning("없는 아이디입니다.");
+					toastr.warning("빈칸 혹은 없는 아이디입니다.","경고!!!");
 				}else{
 					alert("실패!! 남은횟수 :"+(5-count)+"/5")
 					count++;
@@ -131,10 +131,16 @@ function loginWithKakao() {
 	.register-title {
     	margin-left: 7px;
 	}
-	#toast-container >div{
-		padding:0;
+	div.toast .toast-warning{
+		text-align: center;
+		width: 800px;
 	}
-
+.toast-close-button{
+	width:10px;
+}
+.toast-title{
+	
+}
 </style>
 </head>
 

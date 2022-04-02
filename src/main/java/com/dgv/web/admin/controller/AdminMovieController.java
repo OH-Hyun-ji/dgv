@@ -180,7 +180,7 @@ public class AdminMovieController {
 	// admin 연령등록 페이지
 	@RequestMapping("/adminAge.mdo")
 	public String adminAge() {
-		return "/movie/admin_age_register";
+		return "/movie/admin_movie_age_register";
 	}
 
 	// 연령 수정페이지

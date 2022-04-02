@@ -62,7 +62,7 @@ th {
 }
 
 .myPage-table-wrap {
-   height: 78%;
+   height: 460px;
 }
 
 #qna-often-btn, #qna-btn {
@@ -97,7 +97,9 @@ input#waitingAnswer {
    padding: 0;
    border-radius: 6px;
 }
-
+.nav:before {
+		background-color: #ff0e0000;
+	}
 </style>
 </head>
 <body class="">
@@ -122,11 +124,11 @@ input#waitingAnswer {
                      <table class="myPage-table">
                         <thead class="myPage-table-wrapping">
                            <tr>
-                              <th>번호</th>
-                              <th>유형</th>
+                              <th style="width: 42px;">번호</th>
+                              <th style=" width: 62px;">유형</th>
                               <th>제목</th>
-                              <th>내용</th>
-                              <th>날짜</th>
+                              <th style="width: 246px;">내용</th>
+                              <th style="width: 105px;">날짜</th>
                               <th>답변상태</th>
                            </tr>
                         </thead>
@@ -146,7 +148,7 @@ input#waitingAnswer {
                                              onclick="location.href='/adminAnswer.do?dgv_inquiry_code=${userQnaOneList.dgv_inquiry_code}'">답변완료</button>
                                        </c:when>
                                        <c:otherwise>
-                                          <input id="waitingAnswer" type="text" value="답변대기중"
+                                          <input id="waitingAnswer" type="text" style="cursor: default;" value="답변대기중"
                                              readonly="readonly">
                                        </c:otherwise>
                                     </c:choose></td>

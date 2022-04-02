@@ -21,12 +21,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	<style type="text/css">
 		.nav:before {
-			background-color: #ff0e0000;
-			
-		}
-		.nav{
-			padding: 6px 0;
-		}
+		background-color: #ff0e0000;
+		
+	}
+	.nav{
+		padding: 6px 0;
+	}
 		
 	</style>
 </head>
@@ -178,10 +178,9 @@
 								월~금 12:00~15:00) *이 외 시간은 자동 응답 안내 가능</span>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="the-container"
-				style="margin: 755px;left: -480px;top: -230px;">
+					<div>
+						<div class="the-container"
+				style="margin-top: 17rem;left: -57rem;"">
 
 				<input type="checkbox" id="toggle" /> <label for="toggle"></label>
 
@@ -218,6 +217,12 @@
 				</div>
 
 			</div>
+			</div>
+				</div>
+                      
+			</div>
+			
+	
 		</div>
 
 	</div>

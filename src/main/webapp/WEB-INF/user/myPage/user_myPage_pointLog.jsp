@@ -83,7 +83,7 @@
 											                     </c:if>					
 															</td>
 										                    <td>${userMyPointLog.earn_point } P </td>
-										                    <td>${userMyPointLog.reserve_myPoint } P</td>
+										                    <td>${userMyPointLog.reserve_mypoint } P</td>
 										                    <td>${userMyPointLog.reserve_date }</td>
 										                </tr>
 									                 </c:forEach>									

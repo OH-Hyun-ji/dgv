@@ -173,6 +173,7 @@ li.select-theater-local.selected-theater-local-info {
     table-layout: fixed;
     font-size: 18px;
     padding-top: 23px;
+    width: 250px;
 }
 .discount-reserve-wrap {
     table-layout: fixed;
