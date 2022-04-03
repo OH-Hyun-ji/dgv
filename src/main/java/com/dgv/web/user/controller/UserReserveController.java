@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.dgv.web.admin.common.SMSMessage;
 import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminTheaterService;
@@ -442,6 +444,7 @@ public class UserReserveController {
 	
 	@RequestMapping("userReserveResult.do")
 	public String userReserveResult(@RequestParam("reserve_merchant_uid") String merchantUid , Model model,UserDetailVO detailVo ) {
+		
 		UserReserveVO reserveVo = userBoardService.userReserveFinish(merchantUid);
 		AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
 		reserveVo.setMovie_title(movieVo.getMovie_title());
@@ -451,7 +454,16 @@ public class UserReserveController {
 			UserVO rankPointUser = userBoardService.userRankEarnPoint(userId);
 			int reservePrice = reserveVo.getReserve_price();
 			Double rankEarn = (rankPointUser.getRank_earn())*0.01;
-			
+			String[] arr = (rankPointUser.getUser_phone()).split("-");
+			String phone ="";
+			for(String arrElement : arr) {
+				phone +=arrElement;
+				
+			}
+			rankPointUser.setUser_phone(phone);
+			System.out.println(rankPointUser.getUser_phone());
+			SMSMessage message = new SMSMessage();
+			message.sendMessage(rankPointUser.getUser_phone(), movieVo.getMovie_title());
 			int total = (int) (reservePrice * rankEarn);
 			detailVo.setUser_num(rankPointUser.getUser_num());
 			UserDetailVO basicDetail = userBoardService.userPointSelect(detailVo);
