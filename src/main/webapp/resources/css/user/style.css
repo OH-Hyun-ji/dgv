@@ -54,9 +54,9 @@ a:hover {
 .inner {
  	height: 641px;
     display: flex;
-    width: 43%;
+    width: 50rem;
     margin-bottom: 3%;
-    margin-left: 28%;
+/*     margin-left: 13%; */
   	box-sizing: border-box;
 }
 
@@ -66,9 +66,9 @@ a:hover {
 }
 
 .inner form {
-    width: 84%;
- 	padding-top: 52px;
-    padding-left: 3%;
+    width: 309px;
+    padding-top: 52px;
+    /* padding-left: 3%; */
     padding-right: 3%;
 }
 
@@ -375,6 +375,7 @@ select.userDay {
     background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('https://dgvworld.s3.ap-northeast-2.amazonaws.com/bg4.PNG');
     background-repeat: no-repeat;
     background-size: cover;
+    justify-content: center;
 }
 
 span.sign-up-font {

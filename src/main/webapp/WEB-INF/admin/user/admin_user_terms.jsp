@@ -98,7 +98,7 @@ a#termStyle {
 							<button id="userLankAdd" onclick='adminTerms()'>약관등록</button>
 						</div>
 						<div class="card-body">
-							<table id="datatablesSimple">
+							<table id="datatablesSimple" style="width: 1200px;text-align: center;">
 								<thead>
 									<tr>
 										<th>No</th>
@@ -107,12 +107,13 @@ a#termStyle {
 										<th>Term Agree User</th>
 										<th>Writer</th>
 										<th>Date</th>
+										<th>Delete</th>
 									</tr>
 								</thead>
 								<tbody>
 								<c:forEach var="termList" items="${termList}" varStatus="status" >
 									<tr>
-										<td>${termListCount - status.index }</td>
+										<td>${status.index+1 }</td>
 										<td><a id="termStyle"  onclick="termDetail(${termList.term_num })">${termList.term_name }</a></td>
 										<c:if test="${termList.term_status ==true }">
 											<td style="text-align: center;"><button id="statusTrue"  class="w-btn w-btn-gra3 w-btn-gra-anim" type="button"  style="width: 70px;height: 25px;padding: 0;">활성</button></td>

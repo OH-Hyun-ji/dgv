@@ -34,7 +34,6 @@
 			<mvc:exclude-mapping path="/login.mdo"/>
 			<mvc:exclude-mapping path="/loginCheck.mdo"/>
 			<mvc:exclude-mapping path="/logout.mdo"/>
-			<mvc:exclude-mapping path="/movie.mdo"/>
 			<bean id="AdminLoginInterceptor" class="com.dgv.web.commons.interceptor.AdminLoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

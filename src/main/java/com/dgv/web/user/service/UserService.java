@@ -62,4 +62,8 @@ public interface UserService {
 	int userStatus(UserVO vo);
 	
 	List<UserVO> userIdList();
+	
+	List<AdminTermVO> termList();
+	
+	int termUserInsert(AdminTermVO vo);
 }

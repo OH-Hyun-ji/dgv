@@ -140,5 +140,19 @@ public class UserServiceImpl implements UserService {
 		
 		return userDAO.userIdList();
 	}
+	
+	@Override
+	public List<AdminTermVO> termList() {
+		
+		return userDAO.termList();
+	}
+	@Override
+	public int termUserInsert(AdminTermVO vo) {
+	
+		return userDAO.termUserInsert(vo);
+	}
+	
+	
+	
 
 }

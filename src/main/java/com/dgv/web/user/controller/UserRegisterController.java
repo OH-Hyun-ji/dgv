@@ -42,10 +42,20 @@ public class UserRegisterController {
 	// 회원가입 처리
 	@PostMapping("/register.do")
 	public String registerPOST(UserVO userVO, UserDetailVO detailVo ,RedirectAttributes redirectAttributes){
-		System.out.println("??????");
 		String hashedPw = BCrypt.hashpw(userVO.getUser_pw(), BCrypt.gensalt());
 		userVO.setUser_pw(hashedPw);
-		
+		List<AdminTermVO> termList = userService.termList();
+		for(AdminTermVO term : termList) {
+			String userTerm = term.getUser_term();
+			if(userTerm.equals("0")) {
+				userTerm = userVO.getUser_id()+",";	
+				
+			}else {
+				userTerm += userVO.getUser_id()+",";	
+			}
+			term.setUser_term(userTerm);
+			int termResult =userService.termUserInsert(term);
+		}
 		int num =userService.register(userVO);
 		detailVo.setUser_num(userVO.getUser_num());
 		int detailNum = userService.userDetail(detailVo);

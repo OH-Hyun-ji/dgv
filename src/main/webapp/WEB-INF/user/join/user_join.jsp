@@ -349,8 +349,8 @@
 <style>
 
 .spidy-wrapper {
-    width: 100%;
-    height: 79%;
+    width: 26rem;
+    height: 286px;
     display: flex;
     flex-wrap: wrap;
     place-content: center;
@@ -359,7 +359,7 @@
 
 .spidy__frame {
     position: relative;
-    width: 400px;
+    width: 335px;
     height: 400px;
     box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
     background: #181041;
@@ -441,6 +441,43 @@
     opacity: 1;
     transition: all 2s;
 }
+.moon_area {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  margin: 0;
+  height: 163px;
+  width: 169px;
+}
+
+div.moon {
+     width: 68px;
+    height: 62px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ffb10e, 
+    		-20px 0 80px #ff9700, 
+    		 20px 0 80px #fff700, 
+    		 inset 0 0 50px #fff, 
+    		 inset 50px 0 80px #fbe207, 
+    		 inset -50px 0 80px #ffa100, 
+    		 inset 50px 0 300px #fb831b, 
+    		 inset -50px 0 300px #f00;
+    animation: pulsate 6s linear infinite;
+}
+
+@keyframes pulsate {
+  50% {
+         box-shadow: 0 0 20px #ffb10e, 
+         -20px 0 80px #ff9700, 
+         20px 0 80px #ff6100, 
+         inset 0 0 50px #fad2a1, 
+         inset 50px 0 80px #fb6e07, 
+         inset -50px 0 80px #ff6100, 
+         inset 50px 0 300px #f05e04, 
+         inset -50px 0 300px #f00;
+  }
+}
+
 </style>
 </head>
 
@@ -449,6 +486,9 @@
    <div class="wrapper sign-up-background">
       <div class="inner">
          <div class="spidy-wrapper">
+	         <div class="moon_area">
+		     	<div class="moon"></div>
+		     </div>
   <div class="spidy__frame">
   	<div class="slideShow">
   		<img style="position: absolute; height:100%" src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/yyyyyyyyy.jpg" >

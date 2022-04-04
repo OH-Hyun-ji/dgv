@@ -141,12 +141,14 @@ function loginWithKakao() {
 .toast-title{
 	
 }
+
 </style>
 </head>
 
 <body class="block" style="">
 	<jsp:include page="../default/user_header.jsp"></jsp:include>
 	<div class="wrapper sign-up-background">
+
 		<div class="inner">
 			<div style="width: 409px;">
 				<div class="image-holder loginPoster-wrap"  style="width: 450px;" >

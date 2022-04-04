@@ -98,17 +98,17 @@ public class AdminUserController {
 	
 	@PostMapping("/userDelete.mdo")
 	@ResponseBody
-	public int userDelete(@RequestBody UserVO vo) {
+	public CommonResultDto userDelete(@RequestBody UserVO vo) {
 		int num = adminUserService.userDelete(vo);
 		System.out.println("num" + num);
 		System.out.println("쿄쿄 : "+vo.getUser_id());
 		
 		if(num ==0) {
 			System.out.println("삭제 실패!!");
-			return num;
+			return CommonResultDto.fail();
 		}else {
 			System.out.println("삭제성공 !!");
-			return num;
+			return CommonResultDto.success();
 		}
 		//return "/user/admin_user_list";
 	}
