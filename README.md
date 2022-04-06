@@ -1,9 +1,9 @@
 # dgv
 영화예매사이트(DGV)
 
-
-![header](https://capsule-render.vercel.app/api?type=Rounded&color=auto&height=300&section=header&text=DGV&fontSize=90)
-
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=Rounded&color=auto&height=300&section=header&text=DGV&fontSize=90"/>
+</p>
 
 
 <h3 align="center">⭐use as the  main⭐</h3>
