@@ -1,6 +1,5 @@
-<h2>DGV</h2>
-<br>
-영화예매사이트(DGV)
+<h2>DGV 영화예매사이트</h2>
+
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=Rounded&color=auto&height=300&section=header&text=DGV&fontSize=90"/>
