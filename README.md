@@ -17,7 +17,7 @@
   <img src="https://img.shields.io/badge/AmazonS3-569A31?style=flat-square&logo=AmazonS3&logoColor=white" /> 
   <img src="https://img.shields.io/badge/EclipseIDE-2C2255?style=flat-square&logo=EclipseIDE&logoColor=white" />
 </div>
-
+<br>
 <p align="center">
   <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FOH-Hyun-ji%2Fdgv%2Fhit-counter&count_bg=%23DFCB00&title_bg=%23DFCB00&icon=aerlingus.svg&icon_color=%2340FF01&title=hits&edge_flat=false" />
 </p>
