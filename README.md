@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=Slice&color=auto&height=300&section=header&text=DGV&fontSize=90"/>
+  <img src="https://capsule-render.vercel.app/api?type=Rounded&color=auto&height=300&section=header&text=DGV&fontSize=90"/>
 </p>
 
 
