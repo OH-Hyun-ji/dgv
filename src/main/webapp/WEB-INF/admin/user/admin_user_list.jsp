@@ -11,6 +11,14 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
 	<script type="text/javascript">
+		$(function(){
+			$("#smsCheck").on('change',function(){
+				
+				alert($(this).val())
+				
+			})
+		})
+	
 		function userTrueCheck(statusNum) {
 			const userStatus = false;
 			
@@ -68,8 +76,7 @@
 		function updateRank(userCode){
 			window.open('/rankChoice.mdo?user_num='+userCode,'','width=430,height=500,scrollbars=yes')
 		}
-		function deleteAction(userCode){
-			alert("Dfd")
+		function deleteAction(userCode){		
 			const vo ={
 					"user_num":userCode
 			}
@@ -97,7 +104,10 @@
 		.dataTable-container {
 		    text-align-last: center;
 		}
-		
+		input#userCheckMsg {
+		    width: 31px;
+		    height: 26px;
+		}
 	</style>
 </head>
 <body class="sb-nav-fixed">
@@ -115,6 +125,9 @@
 						<div class="card-body">
 							<table id="datatablesSimple" name="userTable">
 								<thead>
+									<div style="display: flex;justify-content: end;">
+										<button id="smsCheck" style="width: 115px;height: 32px;margin-right: 45px;border-radius: 6px;background: #ea80fc;color: black;font-weight: bolder;margin-bottom: 6px;">SMS단체전송</button>
+									</div>
 									<tr>
 										<th>No</th>
 										<th>ID</th>
@@ -124,7 +137,7 @@
 										<th>Rank</th>
 										<th>Point</th>
 										<th>Status</th>
-										<th>Rank Update</th>
+										<th>Rank Update/Choice</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -145,7 +158,7 @@
 												<button id="userFalse" onclick="userFalseCheck(${userList.user_num})"  class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 83px;height: 25px;padding: 0; background:#777777;">비활성</button>
 											</c:if>
 										</td>
-										<td style="text-align: center;"><button  onclick="updateRank('${userList.user_num}')"><i class="fas fa-lightbulb"></i></button></td>
+										<td style="justify-content: center; display: flex;"><button  onclick="updateRank('${userList.user_num}')"><i class="fas fa-lightbulb"></i></button><input value="${userList.user_phone}" type="checkbox" id="userCheckMsg"></td>
 									</tr>		
 								</c:forEach>						
 								</tbody>
