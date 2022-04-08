@@ -1,5 +1,8 @@
 package com.dgv.web.user.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +17,7 @@ public class UserSeatController {
 
 	@RequestMapping("/seatReservation.do")
 	public String seatView() {
+
 		return "/seat/user_seat";
 
 	}

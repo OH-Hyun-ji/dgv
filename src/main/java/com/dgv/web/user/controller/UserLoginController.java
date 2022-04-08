@@ -170,6 +170,7 @@ public class UserLoginController {
 			// session.setAttribute("userID", userVo.getUser_id());
 			RequestUtils.setUserId(userVo.getUser_id());
 			RequestUtils.setUserEmail(userVo.getUser_email());
+			RequestUtils.setToken(vo.getKakao_token());
 			RequestUtils.getUserId("userID");
 
 			return CommonResultDto.success();

@@ -25,6 +25,7 @@ public class UserVO {
 	private String user_auth;
 	private String rank_name;
 	private Double rank_earn;
+	private Object kakao_token;
 	
 
 	

@@ -3,14 +3,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  	<link>
  	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>	
-<script type="text/javascript">
-
-	var userId = "${userEmail}"
-	$(function(){
-		console.log("아이디 : "+ userId)
-
-	})
-</script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+	
+		var userId = "${userEmail}"
+	
+			console.log("아이디 : "+ userId)
+			Kakao.init("8e2df3e9bebf8b3982f4d23137e42962");
+		    function sendLinkCustom(templateId) {
+		    	 Kakao.Link.createCustomButton({
+		             container: '#btn-link-template',
+		             templateId: templateId,
+		             templateArgs: {
+		            
+             }
+         });
+    }
+			
+	</script>
+	<style>
+		button#sendLinkCustom {
+		    font-size: 13px;
+		    height: 34px;
+		    border: 2px solid #542b2b;
+		    width: 173px;
+		    border-radius: 7px;
+		    cursor: pointer;
+		    box-sizing: border-box;
+		    z-index: 10;
+		    background: #ffeb00;
+		    padding: 5px;
+		    font-weight: 800;
+		    color: #623d2f;
+		    display: flex;
+		}
+		img#ohmsgImg {
+		    width: 21px;
+		}
+		span#kakaLink {
+		    margin-left: 8px;
+		}
+	</style>
 <!DOCTYPE html>
 <div class="myPage-sect-common">
 	<div class="mydgv-info-wrap">
@@ -46,7 +79,15 @@
 					<div class="page-style">
 						<button id="myPage-change-info" type="button"
 							onclick="location.href='/myPage_checkData.do'" title="새창열림">나의 정보 변경</button>							
-						<button id="myCouponList" onclick="location.href='myPage_coupon.do'">나의 쿠폰 목록</button>	
+						<button id="myCouponList" onclick="location.href='myPage_coupon.do'">나의 쿠폰 목록</button>
+					</div>
+					<div>
+						<p id="btn-link-template">
+							<button id="sendLinkCustom" onclick="sendLinkCustom(74724);" >
+								<img id="ohmsgImg" src="${pageContext.request.contextPath }/resources/images/ohmsg.png">
+								<span id="kakaLink">카카오링크 소식받기</span>
+							</button>
+						</p>	
 					</div>
 					</div>
 			

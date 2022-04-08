@@ -560,12 +560,12 @@ input#thisLogin {
     width: 2px;
     background-color: #ec1b24;
     left: calc(15% - 1px);
-    bottom: 366px;
+    bottom: 341px;
 }
 
 .yarn {
     position: absolute;
-    top: -299px;
+    top: -282px;
     left: -28px;
     width: 84px;
     height: 75px;
@@ -592,7 +592,7 @@ input#thisLogin {
 
 .cat-wrap {
     position: absolute;
-    top: -290px;
+    top: -267px;
     left: calc(42% - 45px);
     width: 90px;
     height: 140px;

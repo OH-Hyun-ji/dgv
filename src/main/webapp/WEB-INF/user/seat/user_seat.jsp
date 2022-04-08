@@ -88,7 +88,7 @@
                                 <li class="select-theater-local selected-theater-local-info"><span class="selected-date">위치 :</span>  ${mapName}</li>
                                 <li class="select-theater-local selected-theater-local-info"><span class="selected-date">상영관 :</span>  ${theaterName}</li>
                                 <li>
-                                    <span class="selected-date"">남은좌석 </span> 
+                                    <span class="selected-date"">남은좌석 : </span> 
                                     <span class="remain-seats"> ${seatRemain}</span>
                                     /
                                     <span class="total-seats">${seatAll}</span> 
@@ -716,7 +716,7 @@
 				   }else if(allTotalPriceLength-2 <usePointLength){
 					   $("#userMsg").text("[결제금액 확인후 입력해주세요]")
 				   }else if( removeComma(allTotalPrice)-userPointUse<=1000){
-					   $("#userMsg").text("[최소 1000원은 결제해야 합니다.]")
+					   $("#userMsg").text("[최소 2000원은 결제해야 합니다.]")
 				   }else{
 					   $("#userMsg").text("")
 					   if(count==0){
@@ -729,9 +729,18 @@
 						   $("#allTotalPrice").val(formatCouponTotalPrice)
 						   $("#result-total-money").val(formatCouponTotalPrice)
 						   $("#reservePrice").val(formatCouponTotalPrice)
-						   
-			
+					   }else{
+						   const resultPrice = totalMoney - couponValue
+						   const myRemainPoint = $("#myRemainPoint").val()
+						   const userPointUse  = $("#userPointUse").val()
+						   const resultP =removeComma(resultPrice)-userPointUse
+						  
+						   $("#myRemainPoint").val(myRemainPoint-userPointUse)
+						   $("#allTotalPrice").val(resultP.toLocaleString('ko-KR')+"원")
+						   $("#result-total-money").val($("#allTotalPrice").val())
+						   $("#reservePrice").val($("#allTotalPrice").val())
 					   }
+					   
 					   if(couponValue == 0){
 						   const removeCommaFixedP = removeComma(fixedPrice)
 						   const resultTotalP = removeCommaFixedP-userPointUse

@@ -79,7 +79,7 @@ public class UserReserveController {
 		UserReserveVO reserveVo = userBoardService.userReserveFinish(merchantUid);
 		AdminMovieVO movieVo = userBoardService.movieList(reserveVo.getMovie_num());
 		reserveVo.setMovie_title(movieVo.getMovie_title());
-		DecimalFormat formatter = new DecimalFormat("$###,###,###");
+		DecimalFormat formatter = new DecimalFormat("￦###,###,###");
 		String price = formatter.format(reserveVo.getReserve_price());
 		reserveVo.setFomatter_price(price);
 		
