@@ -49,12 +49,11 @@
 						<div class="myPage-table-wrap">
 							<span><i class="fas fa-table me-1"
 								style="margin-right: 1%;"></i>공지사항</span>
-							<table class="myPage-table">
+						<table class="myPage-table">
 								<thead class="myPage-table-wrapping">
 									<tr>
 										<th style="width: 34px;">번호</th>
-										<th style="width: 200px;">제목</th>
-										<th style="width: 308px;">내용</th>
+										<th style="width: 500px;">제목</th>
 										<th style="width: 80px">관리자</th>
 										<th style="width: 90px">날짜</th>
 										<th>조회수</th>
@@ -65,10 +64,8 @@
 										varStatus="status">
 										<tr>
 											<td>${status.index+1 }</td>
-											<td><a
-												href="/noticeDetail.do?notice_num=${noticeList.notice_num}">${noticeList.notice_title }</a></td>
-											<td><a
-												href="/noticeDetail.do?notice_num=${noticeList.notice_num}">${noticeList.notice_text }</a></td>
+											<td style="display: grid;">
+											<a style=" white-space: nowrap;overflow: hidden; text-overflow: ellipsis;" href="/noticeDetail.do?notice_num=${noticeList.notice_num}">${noticeList.notice_title }</a></td>
 											<td>${noticeList.reg_id }</td>
 											<td>${noticeList.reg_date }</td>
 											<td>${noticeList.notice_count }</td>

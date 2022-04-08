@@ -52,9 +52,9 @@ a:hover {
 }
 
 .inner {
- 	height: 641px;
+ 	height: 577px;
     display: flex;
-    width: 50rem;
+    width: 50;
     margin-bottom: 3%;
 /*     margin-left: 13%; */
   	box-sizing: border-box;
@@ -66,8 +66,8 @@ a:hover {
 }
 
 .inner form {
-    width: 309px;
-    padding-top: 52px;
+    width: 326px;
+    /* padding-top: 52px; */
     /* padding-left: 3%; */
     padding-right: 3%;
 }
@@ -150,13 +150,13 @@ a:hover {
 .register-title {
     display: flex;
     align-items: center;
-    justify-content: center;
+/*     justify-content: center; */
     font-size: 25px;
 }
 
 .register-title>img {
-    width: 55%;
-    height: auto;
+    width: 150px;
+    height: 70px;
     padding-bottom: 10px;
 }
 

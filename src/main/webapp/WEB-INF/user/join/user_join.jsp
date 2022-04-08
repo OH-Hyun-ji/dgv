@@ -350,7 +350,7 @@
 
 .spidy-wrapper {
     width: 26rem;
-    height: 286px;
+    height: 338px;
     display: flex;
     flex-wrap: wrap;
     place-content: center;
@@ -360,7 +360,7 @@
 .spidy__frame {
     position: relative;
     width: 335px;
-    height: 400px;
+    height: 376px;
     box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
     background: #181041;
     box-shadow: 10px 5px 20px #5d0c0f;
@@ -446,7 +446,7 @@
   align-items: center;
   justify-items: center;
   margin: 0;
-  height: 163px;
+  height: 113px;
   width: 169px;
 }
 

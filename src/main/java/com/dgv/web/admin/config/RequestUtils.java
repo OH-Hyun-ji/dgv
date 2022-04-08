@@ -49,6 +49,10 @@ public class RequestUtils {
 	public static String getPoint(final String string) {
 		return (String) RequestUtils.getSession().getAttribute("point");
 	}
+	public static Object getToken(final Object token) {
+		return (Object) RequestUtils.getSession().getAttribute("token");
+	}
+
 
 	
 	
@@ -87,5 +91,7 @@ public class RequestUtils {
 		RequestUtils.getSession().setAttribute("point",point);
 	}
 
-
+	public static void setToken(final Object token) {
+		RequestUtils.getSession().setAttribute("token",token);
+	}
 }

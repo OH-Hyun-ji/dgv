@@ -1,11 +1,10 @@
 
-table.myPage-table {
-    height: 220px;
-}
+
 td {
     box-sizing: border-box;
     padding-top: 6px;
     border-right: 1px solid #8080807a;
+    padding-bottom: 6px;
 }
 th{
 	box-sizing: border-box;

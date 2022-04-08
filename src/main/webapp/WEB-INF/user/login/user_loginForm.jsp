@@ -32,19 +32,23 @@ function loginWithKakao() {
       scope:'profile_nickname, account_email, birthday',
       success:function(authObj){
           console.log("access  토큰값 : "+authObj)
+          alert(JSON.stringify(authObj.access_token))
+          Kakao.Auth.setAccessToken(authObj.access_token);
           window.Kakao.API.request({
               url:'/v2/user/me',
               success:res =>{
+           	  
             const kakao_account = res.kakao_account;
                console.log(kakao_account);
                const userEmail = kakao_account.email;
+               const token = authObj;
                console.log(userEmail);
                 $.ajax({
                method:"POST",
                url:"/kakaoLogin.do",
                contentType:"application/json",
                dataType:"json",
-               data:JSON.stringify({"user_email": userEmail}),
+               data:JSON.stringify({"user_email": userEmail,"kakao_token":token}),
                success:function(result){
                   if(result.msg=="SUCCESS"){
                      alert("Kakao 로그인 성공♥ 환영합니다~!  ")
@@ -65,6 +69,7 @@ function loginWithKakao() {
                  alert(JSON.stringify(err));
               }
           })
+          
       }
   })
 
@@ -151,7 +156,7 @@ function loginWithKakao() {
 
 		<div class="inner">
 			<div style="width: 409px;">
-				<div class="image-holder loginPoster-wrap"  style="width: 450px;" >
+				<div class="image-holder loginPoster-wrap"  style="width: 364px" >
 					<img id="posterCat" class="loginPoster"
 						src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png"
 						alt="">
