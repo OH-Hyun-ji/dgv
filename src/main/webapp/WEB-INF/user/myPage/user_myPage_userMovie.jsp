@@ -33,6 +33,9 @@
 	    margin-right: 1rem;
 	    font-size: 18px;
 	}
+	.nav {
+	    padding: 6px 0;
+	}
   </style>
 </head>
 
@@ -51,7 +54,7 @@
                 <div class="inner-contents-profile">
                   <div class="box-image">
                     <div class="thumb-image">
-                      <img src="${userImg }" style="border: 2px solid #cecece; border-radius: 41px;">
+                      <img src="${userImg}" style="border: 2px solid #cecece; border-radius: 41px;box-sizing: border-box;"onerror="this.src='${pageContext.request.contextPath }/resources/images/default_profile.gif';">
                       <span class="profile-mask"></span>
                     </div>
                   </div>
@@ -85,7 +88,7 @@
 	                      <div class="box-image">
 	                        <a id="phototicket_popup_82012" title="포스터 크게 보기" href="#">
 	                          <span class="thumb-image"> 
-	                            <img src="${myMovieList.movie_img }">
+	                            <img src="${myMovieList.movie_img }" >
 	                            <span class="ico-grade grade-12">${myMovieList.age_name }</span>
 	                            <i></i>
 	                          </span>

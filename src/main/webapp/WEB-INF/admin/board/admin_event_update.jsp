@@ -71,10 +71,12 @@
 		$("#winnerChoice").on('click',function(){
 			const eventCode = $("#eventCodeN").val()
 			const winner = $("#winnerUserId").val()
+			const coupon = $("#couponSelect").val()
 			
 			const eventVo = {
 				"event_code":eventCode,
-				"event_winner":winner	
+				"event_winner":winner,
+				"coupon_num":coupon
 			}
 			
 			

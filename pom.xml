@@ -95,6 +95,41 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.9</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.itextpdf/itext-pdfa -->
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itext-pdfa</artifactId>
+			<version>5.5.9</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.itextpdf/itext-xtra -->
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itext-xtra</artifactId>
+			<version>5.5.9</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.itextpdf.tool/xmlworker -->
+		<dependency>
+			<groupId>com.itextpdf.tool</groupId>
+			<artifactId>xmlworker</artifactId>
+			<version>5.5.9</version>
+		</dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/com.itextpdf/itext-asian -->
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itext-asian</artifactId>
+			<version>5.2.0</version>
+		</dependency>
 
 
 		<!--postgresql -->
@@ -124,6 +159,38 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
 		</dependency>
+		<!-- spring-messaging -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework</groupId> -->
+		<!-- <artifactId>spring-messaging</artifactId> -->
+		<!-- <version>5.3.15</version> -->
+		<!-- </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.json</groupId> -->
+		<!-- <artifactId>json</artifactId> -->
+		<!-- <version>20160810</version> -->
+		<!-- </dependency> -->
+		<!-- 구글 json 라이브러리 -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.googlecode.json-simple</groupId> -->
+		<!-- <artifactId>json-simple</artifactId> -->
+		<!-- <version>1.1</version> -->
+		<!-- </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework</groupId> -->
+		<!-- <artifactId>spring-websocket</artifactId> -->
+		<!-- <version>5.3.14</version> -->
+		<!-- </dependency> -->
+
+		<dependency>
+			<groupId>net.nurigo</groupId>
+			<artifactId>javaSDK</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+
 
 		<!-- lombok -->
 		<dependency>

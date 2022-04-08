@@ -52,11 +52,11 @@ a:hover {
 }
 
 .inner {
- 	height: 641px;
+ 	height: 577px;
     display: flex;
-    width: 43%;
+    width: 50;
     margin-bottom: 3%;
-    margin-left: 28%;
+/*     margin-left: 13%; */
   	box-sizing: border-box;
 }
 
@@ -66,9 +66,9 @@ a:hover {
 }
 
 .inner form {
-    width: 84%;
- 	padding-top: 52px;
-    padding-left: 3%;
+    width: 326px;
+    /* padding-top: 52px; */
+    /* padding-left: 3%; */
     padding-right: 3%;
 }
 
@@ -150,13 +150,13 @@ a:hover {
 .register-title {
     display: flex;
     align-items: center;
-    justify-content: center;
+/*     justify-content: center; */
     font-size: 25px;
 }
 
 .register-title>img {
-    width: 55%;
-    height: auto;
+    width: 150px;
+    height: 70px;
     padding-bottom: 10px;
 }
 
@@ -375,6 +375,7 @@ select.userDay {
     background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('https://dgvworld.s3.ap-northeast-2.amazonaws.com/bg4.PNG');
     background-repeat: no-repeat;
     background-size: cover;
+    justify-content: center;
 }
 
 span.sign-up-font {

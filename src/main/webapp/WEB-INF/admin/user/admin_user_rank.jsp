@@ -52,7 +52,7 @@
 	                                <button id="userLankAdd" onclick="window.open('/userRankRegister.mdo','window_name','width=430,height=500,scrollbars=yes');">회원등급추가</button>
 	                            </div>
 	                            <div class="card-body">
-	                                <table id="datatablesSimple" style="text-align: center;">
+	                                <table id="datatablesSimple" style="text-align: center;width: 1200px;">
 	                                    <thead>
 	                                        <tr>
 	                                            <th>No</th>
@@ -65,12 +65,12 @@
 	                                    <tbody>
 	                                    	<c:forEach var="rankList" items="${rankList}" varStatus="status">
 	                                        <tr>
-	                                            <td>${rankListCount - status.index }</td>
-	                                            <td>${rankList.rank_name }</td>
-	                                            <td><img src="${rankList.rank_img }" style="width: 50px;height: 64px;"></td>
-	                                            <td>${rankList.rank_earn }</td>
-	                                            <td>${rankList.rank_standard }</td>
-	                                            <td><button id="delBT" ><i class="fas fa-times"></i></button></td>                                           
+	                                            <td style="padding-top: 30px;">${rankListCount - status.index }</td>
+	                                            <td style="padding-top: 30px;">${rankList.rank_name }</td>
+	                                            <td ><img src="${rankList.rank_img }" style="width: 50px;height: 64px;"></td>
+	                                            <td style="padding-top: 30px;">${rankList.rank_earn }</td>
+	                                            <td style="padding-top: 30px;">${rankList.rank_standard }</td>
+	                                            <td style="padding-top: 30px;"><button id="delBT" ><i class="fas fa-times"></i></button></td>                                           
 	                                        </tr>
 	                                       </c:forEach>
 	                                    </tbody>

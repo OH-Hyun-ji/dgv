@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-  <div class="cols-content" id="menu" style="float: none;">
+  <div class="cols-content" id="menu" style="display: grid;">
                         <div class="col-aside" style="width: 166px;">
                            
                             <h2>MY DGV 서브메뉴</h2>
@@ -30,5 +30,5 @@
                                 </ul>
                             </div>
                         </div>
-                      
+                        
                     </div>

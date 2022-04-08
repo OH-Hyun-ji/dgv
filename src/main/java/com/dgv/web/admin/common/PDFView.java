@@ -1,5 +1,6 @@
 package com.dgv.web.admin.common;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
 import java.util.Map;
@@ -42,8 +43,10 @@ public class PDFView extends AbstractPdfView {
 	//	cssResolver.addCss(cssFile);
 		
 		// 기본 폰트 설정 - 폰트에 따라 한글 출력 여부가 결정된다.
-		BaseFont bfKorea = BaseFont.createFont("c:\\windows\\fonts\\batang.ttc,0",BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
-		Font font = new Font(bfKorea);
+	//	BaseFont bfKorea = BaseFont.createFont("C:\\Windows\\Fonts\\batang.ttc,0",BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
+		String path =request.getSession().getServletContext().getRealPath("/");
+		BaseFont baseFont= BaseFont.createFont(path +"/resources/template/font/HoonJunglebook.ttf".replace('/', File.separatorChar), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+		Font font = new Font(baseFont);
 		
 		Cell cell = new Cell(new Paragraph("결제 영수증",font));
 		cell.setHeader(true);

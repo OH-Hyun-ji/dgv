@@ -233,10 +233,15 @@
 											<div class="user-img-wrapper">
 												<div class="user-img-wrapping">
 													<div class="user-img-profile" style="flex-direction: unset;">		
-														<img class="user-beautiful beauty-style" src="${commentList.user_img }">
+														<img class="user-beautiful beauty-style" src="${commentList.user_img }"onerror="this.src='https://dgvworld.s3.ap-northeast-2.amazonaws.com/default_1.jpg';">
 													</div>
-													<span class="user-id-umm user-umm">${commentList.user_id}</span>									
-													<span class="user-rank-name rank-style" style="color: #ff9f4c; font-weight: 700;">${commentList.user_rank}</span>
+													<span class="user-id-umm user-umm">${commentList.user_id}</span>		
+													<c:if test="${commentList.user_rank != '0'}">						
+														<span class="user-rank-name rank-style" style="color: #ff9f4c; font-weight: 700;">${commentList.user_rank}</span>
+													</c:if>	
+													<c:if test="${commentList.user_rank == '0'}">						
+														<span class="user-rank-name rank-style" style="color: #ff9f4c; font-weight: 700;">등급없음</span>
+													</c:if>	
 												</div>
 											</div>
 										</div>

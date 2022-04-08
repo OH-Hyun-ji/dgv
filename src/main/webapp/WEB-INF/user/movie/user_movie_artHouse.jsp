@@ -189,7 +189,13 @@
 		.fixedBtn_wrap.topBtn {
 		    display: block!important;
 		}
-		
+		.nav:before {
+			background-color: #ff0e0000;
+			
+		}
+		.nav{
+			padding: 6px 0;
+		}		
 	</style>
 </head>
 <body class="block">
@@ -203,7 +209,7 @@
 						title="아트하우스란?"></a>
 				</div>
 				<div class="sect-arthouse-visual">
-					<a href="#"> 
+					<a style="cursor: default;"> 
 					<img src="https://dgvworld.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20220220_175402868.png">
 					</a>
 				</div>

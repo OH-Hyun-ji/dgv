@@ -31,6 +31,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.dgv.web.admin.common.SMSMessage;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.vo.AdminCouponVO;
@@ -302,10 +304,14 @@ public class AdminBoardController {
 		}
 
 		int num = adminMovieService.updateReserveStatus(reserveVo);
-
-		if (num == 0)
-			return CommonResultDto.fail();
-		return CommonResultDto.success();
+		
+		if (num == 0) {
+			return CommonResultDto.fail();			
+		}else {
+			SMSMessage message = new SMSMessage();
+			message.sendCancelMessage(userVo.getUser_phone(), reserveVo.getMovie_title());
+			return CommonResultDto.success();
+		}
 	}
 
 	@RequestMapping("/adminNotice.mdo")

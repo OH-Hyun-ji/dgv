@@ -112,4 +112,11 @@ public class UserDAO {
 	public List<UserVO> userIdList(){
 		return sqlSessionTemplate.selectList("UserDAO.userIdList");
 	}
+	
+	public List<AdminTermVO> termList(){
+		return sqlSessionTemplate.selectList("UserDAO.termList");
+	}
+	public int termUserInsert(AdminTermVO vo) {
+		return sqlSessionTemplate.update("UserDAO.termUserInsert",vo);
+	}
 }

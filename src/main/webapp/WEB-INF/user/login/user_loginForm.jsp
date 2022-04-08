@@ -32,19 +32,23 @@ function loginWithKakao() {
       scope:'profile_nickname, account_email, birthday',
       success:function(authObj){
           console.log("access  토큰값 : "+authObj)
+          alert(JSON.stringify(authObj.access_token))
+          Kakao.Auth.setAccessToken(authObj.access_token);
           window.Kakao.API.request({
               url:'/v2/user/me',
               success:res =>{
+           	  
             const kakao_account = res.kakao_account;
                console.log(kakao_account);
                const userEmail = kakao_account.email;
+               const token = authObj;
                console.log(userEmail);
                 $.ajax({
                method:"POST",
                url:"/kakaoLogin.do",
                contentType:"application/json",
                dataType:"json",
-               data:JSON.stringify({"user_email": userEmail}),
+               data:JSON.stringify({"user_email": userEmail,"kakao_token":token}),
                success:function(result){
                   if(result.msg=="SUCCESS"){
                      alert("Kakao 로그인 성공♥ 환영합니다~!  ")
@@ -65,6 +69,7 @@ function loginWithKakao() {
                  alert(JSON.stringify(err));
               }
           })
+          
       }
   })
 
@@ -101,7 +106,7 @@ function loginWithKakao() {
 					alert("비밀번호 5회 불일치로 계정이 비활성화 되었습니다.")	
 					alert("비밀번호 찾기후 다시 시도해주세요")	
 				}else if(reT.msg=="IdFail"){
-					toastr.warning("없는 아이디입니다.");
+					toastr.warning("빈칸 혹은 없는 아이디입니다.","경고!!!");
 				}else{
 					alert("실패!! 남은횟수 :"+(5-count)+"/5")
 					count++;
@@ -129,11 +134,18 @@ function loginWithKakao() {
     	margin-left: 0rem;
 	}
 	.register-title {
-    	margin-left: 2rem;
+    	margin-left: 7px;
 	}
-	#toast-container >div{
-		padding:0;
+	div.toast .toast-warning{
+		text-align: center;
+		width: 800px;
 	}
+.toast-close-button{
+	width:10px;
+}
+.toast-title{
+	
+}
 
 </style>
 </head>
@@ -141,9 +153,10 @@ function loginWithKakao() {
 <body class="block" style="">
 	<jsp:include page="../default/user_header.jsp"></jsp:include>
 	<div class="wrapper sign-up-background">
+
 		<div class="inner">
 			<div style="width: 409px;">
-				<div class="image-holder loginPoster-wrap"  style="width: 450px;" >
+				<div class="image-holder loginPoster-wrap"  style="width: 364px" >
 					<img id="posterCat" class="loginPoster"
 						src="${pageContext.request.contextPath }/resources/images/dgvMainLogo.png"
 						alt="">
@@ -278,7 +291,7 @@ function loginWithKakao() {
 				style="padding-top: 127px;">
 					<div style="display: flex;">
 						<p class="register-title">
-							<span style="right:-19px"class="sign-up">Login♥</span>
+							<span style="right:-19px;left: 0rem;"class="sign-up">Login♥</span>
 						</p>
 					</div>
 				<div class="id_wrapping" style="text-align: -webkit-center;">
@@ -325,7 +338,6 @@ function loginWithKakao() {
       </div>
       
    </div>
-   <jsp:include page="../default/user_footer.jsp"></jsp:include>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 

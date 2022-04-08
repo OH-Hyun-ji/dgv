@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dgv.web.admin.config.RequestUtils;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.vo.AdminActorVO;
 import com.dgv.web.admin.vo.AdminAgeVO;
@@ -48,6 +49,12 @@ public class UserMovieController {
 	}
 	
 	
+	@RequestMapping("kao.do")
+	public String kao(Model model) {
+		Object token = RequestUtils.getToken("token");
+		model.addAttribute("token",token);
+		return "/movie/kakao";
+	}
 	
 	@RequestMapping("/arthouseVideo.do")
 	public String artVideo(Model model) {
@@ -84,7 +91,7 @@ public class UserMovieController {
 		return result;
 	}
 	
-	@PostMapping("cityViewList.mdo")
+	@PostMapping("cityViewList.do")
 	@ResponseBody
 	public String  cityViewList(@RequestBody AdminRegionVO vo){
 		List<AdminRegionVO> regionList = userBoardService.regionTheater(vo.getCity_code());

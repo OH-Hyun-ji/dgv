@@ -66,6 +66,10 @@
        #table-container {
             padding-left: 15%;
         }
+        select#RankList {
+		    width: 216px;
+		    height: 30px;
+		}
     </style>
 	</head>
 	<body>
@@ -101,7 +105,7 @@
 								</table>
                             </div>
                             <div class="bottomBar">
-                                <input type="submit" value="Choice" id="rankChoice" style="margin-left: 10px;"/>
+                                <input type="button" value="Choice" id="rankChoice" style="margin-left: 10px;"/>
                             </div>
 						
 					</div>

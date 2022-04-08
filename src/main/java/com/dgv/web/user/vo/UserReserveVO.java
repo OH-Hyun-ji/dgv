@@ -28,7 +28,7 @@ public class UserReserveVO {
 	private Integer use_point;
 	private Integer coupon_discount;
 	private Integer earn_point;
-	private Integer reserve_myPoint;
+	private Integer reserve_mypoint;
 	///////
 	private Integer city_code;
 	private String  city_name;

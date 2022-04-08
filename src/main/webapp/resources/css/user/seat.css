@@ -66,7 +66,7 @@
 }
 
 .selected-number-wrap {
-    padding: 104px 23px 0 0px;
+    padding: 102px 20px 0 0px;
     border-right: outset;
 }
 .selected-number-title {
@@ -121,10 +121,10 @@ ul.select-people-movie-info-list {
 }
 
 li.select-theater-local.selected-theater-local-info {
-    margin-right: 66px;
+    margin-right: 29px;
 }
 .select-movie-date {
-    margin-right: 106px;
+    margin-right: 105px;
     width: 200px;
 }
 .selected-seats-view {
@@ -149,7 +149,7 @@ li.select-theater-local.selected-theater-local-info {
 	       
 }
 .seat-wrapper {
-    width: 700px;
+    width: 744px;
     height: 470px;
     background-color: black;
     opacity: 0.7;
@@ -159,6 +159,7 @@ li.select-theater-local.selected-theater-local-info {
     margin-top: 38px;
     display: flex;
     justify-content: center;
+    width: 1067px;
 }
 .screen-site {
     width: 150px;
@@ -173,6 +174,7 @@ li.select-theater-local.selected-theater-local-info {
     table-layout: fixed;
     font-size: 18px;
     padding-top: 23px;
+    width: 250px;
 }
 .discount-reserve-wrap {
     table-layout: fixed;
@@ -265,7 +267,7 @@ img#movie-poster-img{
 span.movie-title-en {
     font-weight: 100;
  	color: #ced0d1;
- 	width: 250px;
+ 	width: 287px;
 }
 .movie-age-style {
     display: flex;
@@ -294,7 +296,7 @@ span.movie-genre-style {
     display: grid;
     padding-top: 19px;
     padding-left: 20px;
-    width: 330px;
+    width: 358px;
 }
 
 span.movie-map-name {
@@ -333,7 +335,7 @@ img#next-choice {
     border-radius: 12px;
 }
 .reservation-container {
-    width: 1000px;
+    width: 1068px;
 }
 .discount-reserve-wrap {
     width: 200px;

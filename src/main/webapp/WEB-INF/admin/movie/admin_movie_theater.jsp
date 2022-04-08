@@ -380,7 +380,7 @@
 												<td>${theaterList.theater_max_row + theaterList.theater_max_column }</td>
 												<td>${theaterList.theater_max_row }</td>
 												<td>${theaterList.theater_max_column }</td>
-												<td><button id="deleteTheater"  onclick="deleteAction('${theaterList.theater_code}')"><i class="fas fa-trash-alt"></i></button> <button><i class="fas fa-pencil-alt"></i></button><button style="margin-left: 3%;" onclick="timeRegister('${theaterList.theater_code}')"><i class="fas fa-clock"></i></button></td>
+												<td><button id="deleteTheater"  onclick="deleteAction('${theaterList.theater_code}')"><i class="fas fa-trash-alt"></i></button><button style="margin-left: 3%;" onclick="timeRegister('${theaterList.theater_code}')"><i class="fas fa-clock"></i></button></td>
 											</tr>
 										</c:forEach>	
 										</tbody>

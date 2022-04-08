@@ -661,6 +661,7 @@ span.service-center-text {
     font-size: 22px;
     font-weight: bolder;
     align-self: center;
+    margin-top: 16px;
 }
 .button-wrapping {
     display: flex;

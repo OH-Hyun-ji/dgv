@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<head>
+</head>
  <footer>
         <article class="company_info_wrap">
             <section class="company_info">

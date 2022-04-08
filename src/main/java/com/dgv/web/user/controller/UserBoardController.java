@@ -41,6 +41,7 @@ import com.dgv.web.user.vo.UserFAQVO;
 import com.dgv.web.user.vo.UserInquiryVO;
 import com.dgv.web.user.vo.UserVO;
 import com.google.gson.Gson;
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 @Controller
 public class UserBoardController {
@@ -99,10 +100,14 @@ public class UserBoardController {
 		
 		for(UserCommunityVO comVo :communityList) {
 			UserVO userVo = userBoardService.communityUserInfo(comVo.getUser_id());
+			int answerC = userBoardService.commentCount(comVo.getCommunity_code());
+			
+			comVo.setCommunity_answerCount(answerC);
 			for(UserDetailVO detailVo :userVo.getDetailVO()) {
 				comVo.setUser_img(detailVo.getUser_img());
 			}
 		}
+		
 		model.addAttribute("pageMake",pageMake);
 		model.addAttribute("communityList",communityList);
 		
@@ -273,15 +278,14 @@ public class UserBoardController {
 	
 
 	@PostMapping("/qnaInsert.do")
-	public String qnaRegisterAction(UserInquiryVO vo) {
+	@ResponseBody
+	public CommonResultDto qnaRegisterAction(@RequestBody UserInquiryVO vo) {
 		int num = userBoardService.insertMyQna(vo);
 		
-		if(num ==0) {
-			System.out.println("등록 실패");
-		}else {
-			System.out.println("등록 성공 ");
-		}
-		return "redirect:/myQna.do";
+		if(num ==0) 
+			return CommonResultDto.fail();
+		return CommonResultDto.success();
+	
 	}
 	
 }

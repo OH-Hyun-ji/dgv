@@ -242,7 +242,9 @@
 			padding: 4px 33px 8px 30px; 
 		}
 	
-				
+		.nav:before {
+			background-color: #ff0e0000;
+		}		
 	</style>
 </head>
 <body class="seatPage" >

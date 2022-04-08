@@ -18,7 +18,11 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
-
+<style type="text/css">
+	.nav:before {
+		background-color: #ff0e0000;
+	}
+</style>
 </head>
 
 <body class="block">

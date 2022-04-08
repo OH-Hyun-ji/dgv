@@ -363,4 +363,8 @@ public class UserBoardDAO {
 	public AdminNoticeVO mainNotice() {
 		return sqlSessionTemplate.selectOne("UserBoardDAO.mainNotice");
 	}
+	
+	public int commentCount(int num) {
+		return sqlSessionTemplate.selectOne("UserBoardDAO.commentCount",num);
+	}
 }

@@ -127,5 +127,12 @@
 	<select id="myCouponCount" resultType="int">
 		select count(*) from coupon_use where user_id=#{user_id}
 	</select>
+	
+	<select id="termList" resultType="AdminTermVO">
+		select * from term_info where term_status='true'
+	</select>
+	<update id="termUserInsert" parameterType="AdminTermVO">
+		UPDATE term_info SET user_term =#{user_term}
+	</update>
 </mapper>
       

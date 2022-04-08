@@ -576,4 +576,9 @@ public class UserBoardServiceImpl implements UserBoardService {
 		
 		return userBoardDAO.mainNotice();
 	}
+	@Override
+	public int commentCount(int num) {
+		
+		return userBoardDAO.commentCount(num);
+	}
 }

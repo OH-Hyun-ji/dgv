@@ -56,7 +56,6 @@
    							console.log(result)
    							const res = JSON.parse(result);
    							if(res.msg =="SUCCESS"){
-   								alert("로그인 성공!!");
    								location.href="/movie.mdo";
    							}else{
    								alert("로그인 실패!!");

@@ -14,7 +14,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- jQuery CDN --->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		function cancelAction(reserveCode, reserveImpUid, reserveMerchantUid, reservePrice , userId, userPoint,couponDiscount){
+		function cancelAction(reserveCode, reserveImpUid, reserveMerchantUid, reservePrice , userId, userPoint,couponDiscount,movieTitle){
 			
 			var msg = confirm("정말로 취소하시겠습니까?")
 			console.log("userId : " + userId)
@@ -30,7 +30,8 @@
 			        "reserve_price": reservePrice, // 환불금액
 			        "user_id":userId,
 			        "use_point":userPoint,
-			        "coupon_discount":couponDiscount
+			        "coupon_discount":couponDiscount,
+			        "movie_title":movieTitle
 			      //  "reason": "테스트 결제 환불" // 환불사유
 			      })		     	
 			    }).done(function(result){
@@ -100,7 +101,7 @@
 													</button>
 												</c:when>
 												<c:otherwise>
-													<button id="delBt" onclick="cancelAction('${paymentList.reserve_code}','${paymentList.reserve_imp_uid}','${paymentList.reserve_merchant_uid}','${paymentList.reserve_price}','${paymentList.user_id}','${paymentList.use_point }','${paymentList.coupon_discount }')">
+													<button id="delBt" onclick="cancelAction('${paymentList.reserve_code}','${paymentList.reserve_imp_uid}','${paymentList.reserve_merchant_uid}','${paymentList.reserve_price}','${paymentList.user_id}','${paymentList.use_point }','${paymentList.coupon_discount }','${paymentList.movie_title}' )">
 														결제취소
 													</button>
 												</c:otherwise>

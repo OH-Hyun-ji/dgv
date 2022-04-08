@@ -44,11 +44,18 @@
 				const qnaT = $("#inquiryTitle").val();
 				const qnaTag = $('input[name="dgv_inquiry_tag"]:checked').val();
 				const qnaText = $("#inquiryText").val();
-				
+				const qnaVo ={
+						"dgv_inquiry_user":userId,
+						"dgv_inquiry_title":qnaT,
+						"dgv_inquiry_tag":qnaTag,
+						"dgv_inquiry_text":qnaText
+				}
 				console.log(userId)
 				console.log(qnaT)
 				console.log(qnaTag)
 				console.log(qnaText)
+				
+		
 				
 				if(qnaT == ""){
 					toastr.warning("제목란을 입력해주세요","빈칸이 있습니다.")
@@ -59,7 +66,26 @@
 				if(qnaText ==""){
 					toastr.warning("문의 내용 작성해주세요","빈칸이 있습니다.")
 				}
-				document.QnaSendForm.submit();
+				if(qnaT != ""&& qnaTag != null && qnaText !=""){
+					$.ajax({
+						method:"POST",
+						url:"/qnaInsert.do",
+						contentType:"application/json",
+						dataType:"json",
+						data:JSON.stringify(qnaVo),
+						success:function(result){
+							if(result.msg =="SUCCESS"){
+								location.href="/myQna.do"
+							}
+						},error:function(){
+							console.log("통신실패")
+						}
+					})//ajax close
+					
+				}else{
+					toastr.warning("빈칸없이 작성해주세요")
+				}
+				
 				
 				
 			});
@@ -105,7 +131,7 @@
 	</style>
 </head>
       <body class="">
-        <div id="cgvwrap">
+        <div id="dgvwrap">
         	<jsp:include page="../default/user_header.jsp"></jsp:include>
         
                <!-- Contaniner -->
@@ -122,15 +148,15 @@
                     </div>
                     <div class="myPage-table-wrap" >
                   	<span><i class="fas fa-table me-1" style=" margin-right: 1%;"></i>문의작성</span>
-                  	<form action="/qnaInsert.do" method="post" name="QnaSendForm">
+                  	<div>
                   	 <table border="1" style="border-color: coral;margin-left: 4%;">                      
                           <tr>
                             <td id="noT">Writer</td>
-                            <td><input type="text" readonly="readonly" name="dgv_inquiry_user" id="inquiryUser" value="${userID}" style="border-color: lightgray;"></td>
+                            <td><input type="text" readonly="readonly" name="dgv_inquiry_user" id="inquiryUser" value="${userID}" style="cursor: default;outline:none; border-color: lightgray;padding-left: 1rem;"></td>
                         </tr>
                         <tr>
                             <td id="noT">QNA Title</td>
-                            <td><input type="text" name="dgv_inquiry_title" id="inquiryTitle"style="border-color: lightgray;"></td>
+                            <td><input type="text" name="dgv_inquiry_title" id="inquiryTitle"style="border-color: lightgray;outline:none;padding-left: 1rem;"></td>
                         </tr>
              			 <tr>
                             <td id="noT">QNA Tag</td>
@@ -143,10 +169,10 @@
                         </tr>
                          <tr>
                             <td id="noT" style="position: absolute; box-sizing: border-box;  padding-top: 120px;">QNA Text</td>
-                            <td> <textarea rows="20" cols="65" name="dgv_inquiry_text" id="inquiryText" style="border-color: lightgray;" ></textarea></td>
+                            <td> <textarea rows="20" cols="65" name="dgv_inquiry_text" id="inquiryText" style="border-color: lightgray;outline:none;padding-left: 1rem;padding-top: 1rem;" ></textarea></td>
                         </tr>
                     </table>  
-                    </form>  
+                    </div>  
                     <div class="qnaBtn">
                     	 <button class="w-btn-outline w-btn-grey-outline qna-button" id="myQnaBtn" type="button" >
                       문의하기

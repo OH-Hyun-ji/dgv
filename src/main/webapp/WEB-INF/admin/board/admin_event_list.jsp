@@ -156,31 +156,31 @@
 								<tbody>
 									<c:forEach var="eventList" items="${eventList}" varStatus="status">
 										<tr id="trWrap" style="text-align-last: center;">
-											<td style="padding-top: 6%;">${status.index+1}</td>
+											<td style="padding-top: 64px;">${status.index+1}</td>
 											<td><a href="/eventDetail.mdo?event_code=${eventList.event_code}"><img src="${eventList.event_img }" style="height: 129px;width: 192px;box-sizing: border-box;"></a></td>
-											<td style="padding-top: 6%;">${eventList.event_title }</td>
-											<td style="padding-top: 6%;">${eventList.start_date }</td>
-											<td style="padding-top: 6%;">${eventList.end_date }</td>
+											<td style="padding-top: 64px;;">${eventList.event_title }</td>
+											<td style="padding-top: 64px;">${eventList.start_date }</td>
+											<td style="padding-top: 64px;">${eventList.end_date }</td>
 											<c:if test="${eventList.event_check != '1' }">
 												<c:if test="${eventList.event_status == '0' }">
-													<td style="padding-top: 6%;">
+													<td style="padding-top: 64px;">
 														<button id="eventEndNum" onclick="eventEndCheck(${eventList.event_code})" value="0" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button" style="width: 83px;height: 25px;padding: 0; background:#777777;">비활성(예정)</button>
 													</td>
 												</c:if>
 												<c:if test="${eventList.event_status == '1' }">
-													<td style="padding-top: 6%;">
+													<td style="padding-top: 64px;">
 														<button id="eventContinueNum"  onclick="eventContinueCheck(${eventList.event_code})" value="1" class="w-btn w-btn-gra3 w-btn-gra-anim" type="button"  style="width: 83px;height: 25px;padding: 0;">활성(진행중)</button>
 													</td>
 												</c:if>		
 											</c:if>
 											<c:if test="${eventList.event_check == '1' }">
-												<td style="padding-top: 6%;">
+												<td style="padding-top: 64px;">
 													<input id="eventEnd" disabled="disabled" type="button" value="기간 종료" readonly="readonly">
 												</td>
 											</c:if>									
-												<td style="padding-top: 6%;">${eventList.event_winner }</td>
-												<td style="padding-top: 6%;">${eventList.reg_id }</td>										
-												<td style="text-align: center;padding-top: 6%;">
+												<td style="padding-top: 64px;">${eventList.event_winner }</td>
+												<td style="padding-top: 64px;">${eventList.reg_id }</td>										
+												<td style="text-align: center;padding-top: 64px;">
 													<button id="delBt" onclick="deleteAction(${eventList.event_code })"><i class="fas fa-trash-alt"></i></button>
 												</td>
 										</tr>		
