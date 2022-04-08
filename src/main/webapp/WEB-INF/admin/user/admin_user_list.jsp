@@ -13,7 +13,10 @@
 	<script type="text/javascript">
 		$(function(){
 			$("#smsCheck").on('click',function(){
-				
+			
+				$('input:checkbox[id=userCheckMsg]').each(function(){
+					
+				})
 				alert($(this).val())
 				
 			})
