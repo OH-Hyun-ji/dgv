@@ -12,7 +12,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		$(function(){
-			$("#smsCheck").on('change',function(){
+			$("#smsCheck").on('click',function(){
 				
 				alert($(this).val())
 				
