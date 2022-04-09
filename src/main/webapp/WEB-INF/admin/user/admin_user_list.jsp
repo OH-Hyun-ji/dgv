@@ -11,16 +11,30 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/user/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"	crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		$(function(){
-			$("#smsCheck").on('click',function(){
-			
-				$('input:checkbox[id=userCheckMsg]').each(function(){
-					
-				})
-				alert($(this).val())
+			var openWin;
+			function smsCheck(){
+				let chk_val = [];
 				
-			})
-		})
+				window.name = "parentForm";
+				const formDate = new FormData()
+				 
+				$('input:checkbox[id=userCheckMsg]').each(function(i){
+					if($(this).is(":checked")==true && chk_val.indexOf($(this).val())== -1){
+						chk_val.push($(this).val())						
+					}				
+				})
+		
+				
+				$("#userPhoneList").val(chk_val)
+				openWin = window.open('groupSMS.mdo','childForm','width=700,height=600')	
+			//	opener.document.getElementById("userPhoneList").value = document.getElementById("smsUser").value
+				openWin.document.getElementById("smsUser").value = document.getElementById("userPhoneList").value;        
+		
+				console.log("?? : "+ chk_val)
+				console.log("??ss : "+ openWin.document.getElementById("smsUser").value)
+	
+			}
+	
 	
 		function userTrueCheck(statusNum) {
 			const userStatus = false;
@@ -129,7 +143,7 @@
 							<table id="datatablesSimple" name="userTable">
 								<thead>
 									<div style="display: flex;justify-content: end;">
-										<button id="smsCheck" style="width: 115px;height: 32px;margin-right: 45px;border-radius: 6px;background: #ea80fc;color: black;font-weight: bolder;margin-bottom: 6px;">SMS단체전송</button>
+										<button onclick="smsCheck()" style="width: 115px;height: 32px;margin-right: 45px;border-radius: 6px;background: #ea80fc;color: black;font-weight: bolder;margin-bottom: 6px;">SMS단체전송</button>
 									</div>
 									<tr>
 										<th>No</th>
@@ -172,6 +186,9 @@
 			</main>
 			<jsp:include page="../default/admin_footer.jsp" />
 		</div>
+		<form  method="post" name="formDataPhone">
+			<input type="hidden" id="userPhoneList">
+		</form>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/admin/scripts.js"></script>
