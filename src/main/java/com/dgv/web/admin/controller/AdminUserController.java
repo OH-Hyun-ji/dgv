@@ -11,16 +11,21 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dgv.web.admin.common.SMSMessage;
 import com.dgv.web.admin.service.AdminMovieService;
 import com.dgv.web.admin.service.AdminUserService;
 import com.dgv.web.admin.vo.AdminMovieVO;
 import com.dgv.web.admin.vo.AdminRankVO;
+import com.dgv.web.admin.vo.AdminSMSListDTO;
+import com.dgv.web.admin.vo.AdminSMSVO;
 import com.dgv.web.admin.vo.CommonResultDto;
 import com.dgv.web.user.service.UserBoardService;
 import com.dgv.web.user.service.UserService;
@@ -45,7 +50,35 @@ public class AdminUserController {
 	@Autowired
 	private AdminMovieService adminMovieService;
 	
-
+	@RequestMapping("groupSMS.mdo")
+	public String groupGetSMS(String phoneList) {
+		System.out.println("adminSMSListDTO  "+ phoneList);
+		return "/user/admin_groupSMS";
+	}
+	
+	@PostMapping("groupSMS.mdo")
+	@ResponseBody
+	public void groupSMS(@RequestBody AdminSMSVO vo) {
+		System.out.println("adminSMSListDTO 오이가 없네 + ");
+		
+		
+		String[] PhoneList = vo.getSms_user().split(",");
+		
+		
+		SMSMessage smsMessage = new SMSMessage();
+		
+		for(String userPhone :PhoneList) {
+			String[] arr = userPhone.split("-");
+			String phone ="";
+			for(String arrElement : arr) {
+				phone +=arrElement;
+				
+			}
+			smsMessage.sendGroup(vo.getSms_title(), vo.getSms_text(), phone);			
+		}
+		System.out.println("전송완료됬을걸???");
+		
+	}
 	
 	@RequestMapping("/userDetail.mdo")
 	public String userDetail(@RequestParam("user_num") int num, Model model) {

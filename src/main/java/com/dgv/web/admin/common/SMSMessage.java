@@ -4,11 +4,35 @@ import java.util.HashMap;
 
 import org.json.simple.JSONObject;
 
+import com.google.gson.JsonObject;
+
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 
 public class SMSMessage {
+	public void sendGroup(String title, String view, String toNumber) {
+		String apiKey="NCSIGXZPTDLXMH7U";// = "";
+		String apiSecret="KMYXCPJ4EV64INJS9NII8PNADPF2FMCE";// = "";
+		String fromNumber="01066252872";// = "";
+		Message coolsms = new Message(apiKey, apiSecret);
+		
+		HashMap<String, String> msg = new HashMap<String, String>();
+		
+		msg.put("to", toNumber);
+		msg.put("from", fromNumber);
+		msg.put("type", "SMS");
+		msg.put("text", "[DGV 소식!] ["+title+"] -> [ "+view+" ] ");
+		msg.put("app_version", "test app 1.2");
+		
+		try {
+			JSONObject obj = (JSONObject) coolsms.send(msg);
+			
+		}catch(CoolsmsException e) {
+			
+		}
+	}
+	
 	
 	public void sendMessage(String toNumber,String title) {
 		String apiKey="NCSIGXZPTDLXMH7U";// = "";
