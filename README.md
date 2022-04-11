@@ -102,7 +102,7 @@
 
 ## 4. 시연
 
-<iframe width="640" height="360" src="./src/main/webapp/resources/video/user_one.mp4" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+<iframe width="640" height="360" src="https://www.youtube.com/watch?v=i_KkLC5Is8Q&ab_channel=DGV" frameborder="0" gesture="media" allowfullscreen=""></iframe>
 
 <br>
 <br>
