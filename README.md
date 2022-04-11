@@ -96,7 +96,7 @@
 ## 3. 시스템 구조도
 ---
 
-<img src="/image/dgv_detail.png">
+<img src="./src/main/webapp/resources/images/dgv_detail.png">
 
 <br>
 <br>
