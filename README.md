@@ -44,10 +44,10 @@
 ---
 <br>
 
-### &nbsp;&nbsp;&nbsp;&nbsp;2-1 각종 기능
+### &nbsp;&nbsp;&nbsp;&nbsp;2-1 기능
 
 
-|:small_orange_diamond: 각종기능 |
+|:small_orange_diamond: 사용자 기능 |
 |:----------|
 |   :white_check_mark: <span style="color: #ffd33d">(Ajax) 영화 예매를 위한 영화, 도시, 지역, 날짜, 상영관, 인원수 등 선택가능 </span>
 |   :white_check_mark: <span style="color: #ffd33d">총 예매가격에 쿠폰과 포인트 사용, 적립이 가능하며 영화 목록에서는 예매율    표시</span>| 
@@ -57,14 +57,29 @@
 |   :white_check_mark: 커뮤니티(게시판) search기능, 답급기능, 작성후 24시간기준 시간표시 (ex 몇초전, 몇분전, 몇시간전)|
 |   :white_check_mark: S3를 사용한 이미지 업로드 구현|
 |   :white_check_mark: Amazon AWS Ec2 서버 구축 |
----
 
+---
+<br>
+
+
+|:small_orange_diamond: 관리자 기능 |
+|:----------|
+|   :white_check_mark: <span style="color: #ffd33d">(Ajax) 영화 예매를 위한 영화, 도시, 지역, 날짜, 상영관, 인원수 등 선택가능 </span>
+|   :white_check_mark: <span style="color: #ffd33d">총 예매가격에 쿠폰과 포인트 사용, 적립이 가능하며 영화 목록에서는 예매율    표시</span>| 
+|   :white_check_mark: 관리자쪽에서 영화상태 제어가능 (ex 상영중, 상영예정, 상영종료)|
+|   :white_check_mark: 카카오 api를 이용한 지도와 소셜 로그인, 소식전하기 등 활용|
+|   :white_check_mark: 예매시 개인 예매 완료 문자 및 관리자측에서 단체 문자 전송가능(소식 알릴때)|
+|   :white_check_mark: 커뮤니티(게시판) search기능, 답급기능, 작성후 24시간기준 시간표시 (ex 몇초전, 몇분전, 몇시간전)|
+|   :white_check_mark: S3를 사용한 이미지 업로드 구현|
+|   :white_check_mark: Amazon AWS Ec2 서버 구축 |
+
+---
 <br>
 <br>
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;2-2 프로젝트 기간
 
-&nbsp;&nbsp; :clock1: 2022. 03. 01  - 2022. 03. 31 (31일)
+&nbsp;&nbsp; :clock1: 2022. 03. 01  - 2022. 04. 08 
 
 ---
 <br>
@@ -78,7 +93,15 @@
 <br>
 <br>
 
-## 3. 개발 환경
+## 3. 시스템 구조도
+---
+
+<img src="/image/dgv_detail.png">
+
+<br>
+<br>
+
+## 4. 개발 환경
 
 | :small_blue_diamond: 분류   | :small_orange_diamond: 개발환경 |
 |:--------------:|:--------------:|
