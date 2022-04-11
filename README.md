@@ -101,7 +101,7 @@
 <br>
 
 ## 4. 시연
-### 링크를 
+### :star: 링크를 클릭해주세요
 https://www.youtube.com/watch?v=i_KkLC5Is8Q&ab_channel=DGV
 
 <br>
