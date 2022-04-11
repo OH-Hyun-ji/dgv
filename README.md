@@ -101,8 +101,11 @@
 
 ## 4. 시연
 
-<video src="./src/main/webapp/resources/video/user_one.mp4" />
-
+<video autoplay muted loop>
+						<source
+							src="./src/main/webapp/resources/video/user_one.mp4"
+							type="video/mp4" >
+					</video>
 ## 5. 개발 환경
 
 | :small_blue_diamond: 분류   | :small_orange_diamond: 개발환경 |
