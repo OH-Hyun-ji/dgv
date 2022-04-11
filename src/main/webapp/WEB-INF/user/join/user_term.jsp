@@ -16,13 +16,6 @@
 
 		var state
 		function termNameCheck(e){
-<<<<<<< HEAD
-			alert("dfdf")
-			
-			console.log("this  : " +$("#termTitle"+e).val())
-=======
-	
->>>>>>> branch 'develop' of https://github.com/OH-Hyun-ji/dgv.git
 			var id = $(this).attr('id')				
 			var test;
 			$(".termTR").empty()

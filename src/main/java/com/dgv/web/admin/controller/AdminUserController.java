@@ -58,7 +58,7 @@ public class AdminUserController {
 	
 	@PostMapping("groupSMS.mdo")
 	@ResponseBody
-	public void groupSMS(@RequestBody AdminSMSVO vo) {
+	public CommonResultDto groupSMS(@RequestBody AdminSMSVO vo) {
 		System.out.println("adminSMSListDTO 오이가 없네 + ");
 		
 		
@@ -77,7 +77,7 @@ public class AdminUserController {
 			smsMessage.sendGroup(vo.getSms_title(), vo.getSms_text(), phone);			
 		}
 		System.out.println("전송완료됬을걸???");
-		
+		return CommonResultDto.success();
 	}
 	
 	@RequestMapping("/userDetail.mdo")

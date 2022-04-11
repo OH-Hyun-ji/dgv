@@ -158,13 +158,9 @@
 						<div class="card-body">
 							<table id="datatablesSimple" name="userTable">
 								<thead>
-									<div style="display: flex;justify-content: end;">
-
-										<button id="movieC" class = "movieC"style="width: 115px;height: 32px;margin-right: 45px;border-radius: 6px;color: black;font-weight: bolder;margin-bottom: 6px; 
-											background-image: linear-gradient(to right, #fbc2eb 0%,#ef32d9 51%, #4286f4 100%);">SMS단체전송</button>
-
-										
-
+									<div style="display:flex; justify-content: end;">
+										<button id="movieC" class="movieC"style="width: 115px;height: 32px;margin-right: 45px;border-radius: 6px;color: black;font-weight: bolder;margin-bottom: 6px; 
+											background-image: linear-gradient(to right, #fbc2eb 0%,#ef32d9 51%, #4286f4 100%);" onclick="smsCheck()">SMS단체전송</button>								
 									</div>
 									<tr>
 										<th>No</th>
