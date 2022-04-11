@@ -125,6 +125,22 @@
 		    width: 31px;
 		    height: 26px;
 		}
+		.movieC {
+    
+    margin: 10px;
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    /* text-shadow: 0px 0px 10px rgb(0 0 0 / 20%); */
+    box-shadow: 0 0 20px #eee;
+    border-radius: 7px;
+}
+.movieC:hover {
+    background-position: right center;
+}
 	</style>
 </head>
 <body class="sb-nav-fixed">
@@ -143,7 +159,12 @@
 							<table id="datatablesSimple" name="userTable">
 								<thead>
 									<div style="display: flex;justify-content: end;">
-										<button onclick="smsCheck()" style="width: 115px;height: 32px;margin-right: 45px;border-radius: 6px;background: #ea80fc;color: black;font-weight: bolder;margin-bottom: 6px;">SMS단체전송</button>
+
+										<button id="movieC" class = "movieC"style="width: 115px;height: 32px;margin-right: 45px;border-radius: 6px;color: black;font-weight: bolder;margin-bottom: 6px; 
+											background-image: linear-gradient(to right, #fbc2eb 0%,#ef32d9 51%, #4286f4 100%);">SMS단체전송</button>
+
+										
+
 									</div>
 									<tr>
 										<th>No</th>
