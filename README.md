@@ -43,6 +43,7 @@
 ## 2. 프로젝트 설명
 ---
 <br>
+
 ### &nbsp;&nbsp;&nbsp;&nbsp;2-1 기능
 
 
@@ -100,8 +101,8 @@
 <br>
 
 ## 4. 시연
-
-<iframe width="640" height="360" src="./src/main/webapp/resources/video/user_one.mp4" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+### :star: 링크를 클릭해주세요
+https://www.youtube.com/watch?v=i_KkLC5Is8Q&ab_channel=DGV
 
 <br>
 <br>
