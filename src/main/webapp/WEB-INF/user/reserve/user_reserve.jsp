@@ -622,8 +622,8 @@
              const reserveDate = document.querySelector(".reserve-date");
              const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
              const year = date.getFullYear();
-             const month = date.getMonth();
-             
+             const month = date.getMonth()+1;
+             console.log("lastDay "+ lastDay)
              for (let i = date.getDate(); i <= lastDay.getDate(); i++) {        
             	 
                    const button = document.createElement("button");
@@ -638,7 +638,11 @@
                             
                     //weekOfDay[new Date(2020-03-날짜)]
                     const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
-                            
+                          console.log("dayOfWeek "+ dayOfWeek)
+                          console.log( year)
+                         
+                          console.log("date "+ date.getDate())
+                          
                     //요일 넣기
                     if (dayOfWeek === "토") {
                          spanWeekOfDay.classList.add("saturday");
